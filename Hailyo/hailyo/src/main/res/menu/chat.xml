@@ -1,0 +1,9 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+	<item
+        android:id="@+id/menu_chat"
+        android:icon="@drawable/ic_chat"
+        android:showAsAction="always"
+        android:title="@string/online_taxi_driver"
+        />
+</menu>

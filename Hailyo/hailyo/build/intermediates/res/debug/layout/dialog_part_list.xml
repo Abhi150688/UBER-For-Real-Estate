@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:id="@+id/sdl__listview"
+	style="@style/SDL.ListView"/><!-- From: file:/Users/Abhishek/Dropbox/AndroidApps/Hailyo/stylishDialogLib/src/main/res/layout/dialog_part_list.xml --><!-- From: file:/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/exploded-aar/Hailyo/stylishDialogLib/unspecified/res/layout/dialog_part_list.xml -->

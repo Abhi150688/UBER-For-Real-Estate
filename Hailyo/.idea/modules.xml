@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Hailyo.iml" filepath="$PROJECT_DIR$/Hailyo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Hailyo.iml" filepath="$PROJECT_DIR$/Hailyo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hailyo/hailyo.iml" filepath="$PROJECT_DIR$/hailyo/hailyo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/stylishDialogLib/stylishDialogLib.iml" filepath="$PROJECT_DIR$/stylishDialogLib/stylishDialogLib.iml" />
+    </modules>
+  </component>
+</project>
+

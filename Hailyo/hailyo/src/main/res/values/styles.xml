@@ -1,0 +1,29 @@
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="AppBaseTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+    </style>
+
+    <style name="AppTheme" parent="AppBaseTheme">
+        <item name="sdlDialogStyle">@style/DialogStyleLight.Custom</item>
+    </style>
+    
+    <style name="DialogStyleLight.Custom" >
+		<!-- anything can be left out: -->
+		<item name="titleSeparatorColor">@color/theme_yellow</item>
+		<item name="titleTextColor">@color/gray_dk</item>
+	</style>
+
+    
+    <style name="tab_btn" parent="android:Widget.Holo.Light.TextView">
+        <item name="android:background">@drawable/btn_tab</item>
+        <item name="android:clickable">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:textColor">@color/tab_color</item>
+    </style>
+    
+    <style name="Theme.CustomDialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowBackground">@drawable/trans_draw</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+</resources>

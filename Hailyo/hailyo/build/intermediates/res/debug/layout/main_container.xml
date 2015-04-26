@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sda"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <com.google.android.gms.maps.MapView
+
+   android:clickable="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/map"
+    android:layout_above="@+id/vBottom"> </com.google.android.gms.maps.MapView>
+
+
+<ImageButton
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:src="@drawable/ic_launcher"
+    android:layout_gravity="center"
+    android:background="@null"
+    android:id="@+id/ic_launcher" />
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:layout_gravity="top"
+    android:id="@+id/search_bar">
+
+    <TextView
+        android:id="@+id/btnSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:background="@drawable/ic_search"
+
+        android:clickable="true" />
+
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal|center"
+        android:layout_height="wrap_content"
+        android:text="Site Visit Location"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#28b54c" />
+
+
+    <EditText
+        android:id="@+id/addressBar"
+        android:singleLine="true"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@android:color/white"
+        android:hint="@string/placeholder"
+        android:layout_gravity="center_horizontal|top" />
+</LinearLayout>
+
+</FrameLayout><!-- From: file:/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/src/main/res/layout/main_container.xml -->

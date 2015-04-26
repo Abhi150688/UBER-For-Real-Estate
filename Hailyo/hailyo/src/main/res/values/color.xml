@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="theme_black">#393939</color>
+    <drawable name="theme_black">#393939</drawable>
+    <color name="theme_red_light">#e74c3c</color>
+    <drawable name="theme_red_light">#e74c3c</drawable>
+    <color name="theme_yellow">#FFDC00</color>
+    <drawable name="theme_yellow">#FFDC00</drawable>
+    
+    <color name="red_light">#e74c3c</color>
+    <color name="gray_dk">#313031</color>
+    <color name="white_smoke">#F7F7F7</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="transparent">#00000000</color>
+    <color name="blue_sky">#33b5e5</color>
+    <color name="gray">#5B5B5B</color>
+    <drawable name="trans_draw">#00000000</drawable>
+</resources>

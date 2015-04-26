@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-plus/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0e8228b4bc69c6a2c8d7c18498a77e53417d2574">
+        <dex dex="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/pre-dexed/debug/classes-69b337d24b25fd2161d5b005b7efe01c1d346333.jar" />
+    </item>
+    <item
+        jar="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-appstate/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="7ff613bf78ab057293892fdbd4169eda899c89b9">
+        <dex dex="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/pre-dexed/debug/classes-04b7bc30cca19d693025e343be04484faf58a6e6.jar" />
+    </item>
+    <item
+        jar="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-games/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="055783146ba9654a725442563be78cad303aad1f">
+        <dex dex="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/pre-dexed/debug/classes-33c0c5b7fd891dfc3f624d961d20fd14eb94013f.jar" />
+    </item>
+    <item
+        jar="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/exploded-aar/Hailyo/stylishDialogLib/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="8a11facfb5d7d4d4320fa7eb0a161ade1a19a41f">
+        <dex dex="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/pre-dexed/debug/classes-2ffe24d05361b67bfd94c8c17de4fb3761093c74.jar" />
+    </item>
+    <item
+        jar="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4c93d99d454c975536bbe3b42283eee847f03ea3">
+        <dex dex="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/pre-dexed/debug/classes-464ec5355be33795106bb8fbe93ce2cee9451bee.jar" />
+    </item>
+    <item
+        jar="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="17f8750d5c0749e44dd7c54aa390d9c937803825">
+        <dex dex="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/pre-dexed/debug/classes-43be759bef4644def73f88ba4e473db3f56bbd10.jar" />
+    </item>
+    <item
+        jar="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ef5f051e7308febe289dc93c67c5f32785b4260a">
+        <dex dex="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/pre-dexed/debug/classes-b7f2353bcc0a785353d2ebe84d75cfa8a4ff17aa.jar" />
+    </item>
+    <item
+        jar="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-location/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="73ccb92b70112f2e463e415ef8d7275de7da6516">
+        <dex dex="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/pre-dexed/debug/classes-a638a4028cb64a6f5bcefe81ef15c4215bc0397c.jar" />
+    </item>
+    <item
+        jar="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/pre-dexed/debug/classes-6d2b2ed9146b909c52b8259ac370e2c6a178165f.jar" />
+    </item>
+    <item
+        jar="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-appindexing/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a08d65794b844d8e7540bf9a33859bf3b2482d7f">
+        <dex dex="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/pre-dexed/debug/classes-2d8ec753ca0bd59dd49ba41e760b4be2e3026446.jar" />
+    </item>
+    <item
+        jar="/Users/Abhishek/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
+        <dex dex="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-15c44fa99b8e1b95104687e330f4c4685ba4b5b2.jar" />
+    </item>
+    <item
+        jar="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-1fcf92ae427a341f2f022cabce3d20e42260f83a.jar" />
+    </item>
+    <item
+        jar="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-panorama/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1c5a76debf0c2857ccad422c4a80ed785982f8df">
+        <dex dex="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/pre-dexed/debug/classes-bfba922fcd9608b311835edfd068d37a0d876ff4.jar" />
+    </item>
+    <item
+        jar="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-identity/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="fb04b12526b0073c7fb1ebb70c5842d82ee95596">
+        <dex dex="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/pre-dexed/debug/classes-323afb282f7f3e174fc53745b04223b688c4e65c.jar" />
+    </item>
+    <item
+        jar="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4cd0b093824b3228fffc21ea369b98d0b1db6566">
+        <dex dex="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/pre-dexed/debug/classes-cad69aaa332533b5b056ce337068f5ca9135c4fc.jar" />
+    </item>
+    <item
+        jar="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3033cc3a2c68dff3e5b646d6d084bdbdf7d00b25">
+        <dex dex="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/pre-dexed/debug/classes-dff470a62c3d9c65d35815da02064a3ecfa4a3d5.jar" />
+    </item>
+    <item
+        jar="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-wallet/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="a96b762bde4139de855735f175ec4d17dca55a6d">
+        <dex dex="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/pre-dexed/debug/classes-c7e3b2d229bdcf84ac7e401c4c3a8c5fdfc7aa3f.jar" />
+    </item>
+    <item
+        jar="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c976518693e89ad44fbfccfc654941eaec198d08">
+        <dex dex="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/pre-dexed/debug/classes-47a8ae48d2f81012eb51263bc369381618ad5da0.jar" />
+    </item>
+    <item
+        jar="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-drive/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="41b3870cbe5fa546d8095b5b89d42cb69f3dd175">
+        <dex dex="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/pre-dexed/debug/classes-7ffdf7ebe5ac74d828f9b9aea29ec38ef7399bbd.jar" />
+    </item>
+    <item
+        jar="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="9224bc4c54ba95147c7eabd874573763c07cb6be">
+        <dex dex="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/pre-dexed/debug/classes-6a38576457076830c2471fb16a80c14ba3108905.jar" />
+    </item>
+    <item
+        jar="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="29fd6d3794b71491c2789708cd8d03c71feb8954">
+        <dex dex="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/pre-dexed/debug/classes-0df261d6a987816b801bd3f3193b26a908d530cf.jar" />
+    </item>
+    <item
+        jar="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="e3d791b42eaa90416cd0b2d2e608092794a3baa4">
+        <dex dex="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/pre-dexed/debug/classes-612f85dc9fd637887881db9c6b0e4c11c5ed9f21.jar" />
+    </item>
+    <item
+        jar="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/7.0.0/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3c0b099f9de16b265ecd6122fcb603e7d0d29f90">
+        <dex dex="/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/pre-dexed/debug/classes-dd8e0586a5e83d8f50b7769a05d0e371378d36d7.jar" />
+    </item>
+
+</items>

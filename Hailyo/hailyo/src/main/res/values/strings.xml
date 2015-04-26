@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Hailyo</string>
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+    <string name="search">Search</string>
+
+    <string name="online_taxi_driver">Online Brokers</string>
+    <string name="from">From</string>
+    <string name="to">To</string>
+    <string name="cash">Cash</string>
+    <string name="card">Card</string>
+    <string name="account">Account</string>
+    <string name="cancel">Cancel</string>
+    <string name="reserve">Reserve</string>
+    <string name="call">Call</string>
+    <string name="receipt">Receipt</string>
+    <string name="home">Home</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="placeholder">Drag Map or Enter Location here....</string>
+
+
+</resources>
