@@ -27,4 +27,4 @@
         android:background="@color/theme_black"
         android:headerDividersEnabled="true" />
 
-</android.support.v4.widget.DrawerLayout><!-- From: file:/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/src/main/res/layout/activity_main.xml -->
+</android.support.v4.widget.DrawerLayout><!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/src/main/res/layout/activity_main.xml -->

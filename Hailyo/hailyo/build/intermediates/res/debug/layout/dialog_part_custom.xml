@@ -5,4 +5,4 @@
              style="@style/SDL.Group.Content">
     <FrameLayout android:id="@+id/sdl__custom"
                  style="@style/SDL.Group"/>
-</FrameLayout><!-- From: file:/Users/Abhishek/Dropbox/AndroidApps/Hailyo/stylishDialogLib/src/main/res/layout/dialog_part_custom.xml --><!-- From: file:/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/exploded-aar/Hailyo/stylishDialogLib/unspecified/res/layout/dialog_part_custom.xml -->
+</FrameLayout><!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/stylishDialogLib/src/main/res/layout/dialog_part_custom.xml --><!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/Hailyo/stylishDialogLib/unspecified/res/layout/dialog_part_custom.xml -->

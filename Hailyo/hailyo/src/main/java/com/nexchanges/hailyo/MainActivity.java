@@ -1,6 +1,7 @@
 package com.nexchanges.hailyo;
 
 import android.app.ActionBar;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -15,12 +16,14 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 
+import com.nexchanges.hailyo.services.MyService;
+import com.pubnub.api.*;
 import com.nexchanges.hailyo.custom.CustomActivity;
 import com.nexchanges.hailyo.model.Feed;
 import com.nexchanges.hailyo.ui.LeftNavAdapter;
 import com.nexchanges.hailyo.ui.MainFragment;
 import com.nexchanges.hailyo.ui.RightNavAdapter;
-
+import org.json.*;
 import java.util.ArrayList;
 
 /**
@@ -53,9 +56,21 @@ public class MainActivity extends CustomActivity
 		setupActionBar();
 		setupDrawer();
 		setupContainer();
-	}
+        	}
 
-	/**
+    public void startService(View v){
+
+        Intent i = new Intent(this, MyService.class);
+        startService(i);
+    }
+
+
+    public void stopService(View v){
+        stopService(new Intent(this, MyService.class));
+    }
+
+
+    /**
 	 * This method will setup the top title bar (Action bar) content and display
 	 * values. It will also setup the custom background theme for ActionBar. You
 	 * can override this method to change the behavior of ActionBar for
@@ -271,6 +286,9 @@ public class MainActivity extends CustomActivity
 	public boolean onKeyDown(int keyCode, KeyEvent event)
 	{
 		Log.e("KEy", "YEs");
-		return super.onKeyDown(keyCode, event);
+        Intent i = new Intent(this, MyService.class);
+        startService(i);
+
+        return super.onKeyDown(keyCode, event);
 	}
 }

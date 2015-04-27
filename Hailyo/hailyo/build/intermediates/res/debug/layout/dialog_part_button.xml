@@ -3,4 +3,4 @@
 <Button xmlns:android="http://schemas.android.com/apk/res/android"
         style="@style/SDL.Button" />
 
-<!-- From: file:/Users/Abhishek/Dropbox/AndroidApps/Hailyo/stylishDialogLib/src/main/res/layout/dialog_part_button.xml --><!-- From: file:/Users/Abhishek/Dropbox/AndroidApps/Hailyo/hailyo/build/intermediates/exploded-aar/Hailyo/stylishDialogLib/unspecified/res/layout/dialog_part_button.xml -->
+<!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/stylishDialogLib/src/main/res/layout/dialog_part_button.xml --><!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/Hailyo/stylishDialogLib/unspecified/res/layout/dialog_part_button.xml -->

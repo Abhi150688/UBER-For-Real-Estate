@@ -1,11 +1,16 @@
 package com.nexchanges.hailyo.custom;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 
+import com.nexchanges.hailyo.services.MyService;
 import com.nexchanges.hailyo.utils.TouchEffect;
+import com.pubnub.api.*;
+import org.json.*;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -38,8 +43,7 @@ public class CustomActivity extends FragmentActivity implements OnClickListener
 	@Override
 	public void onClick(View v)
 	{
-		// TODO Auto-generated method stub
 
-	}
+    }
 
 }
