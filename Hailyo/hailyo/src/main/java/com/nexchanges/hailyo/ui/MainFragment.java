@@ -122,8 +122,10 @@ public class MainFragment extends Fragment implements OnClickListener
 
         MarkerOptions opt = new MarkerOptions();
         LatLng l = new LatLng(37.42, -122.084);
-        opt.position(l).title("Taxi 00689").snippet("8 min");
-        opt.icon(BitmapDescriptorFactory.fromResource(R.drawable.map_pin));
+
+        //mMap.setMyLocationEnabled(true);
+        opt.position(l).title("Set Visit Location").snippet("5 min");
+        opt.icon(BitmapDescriptorFactory.fromResource(R.drawable.ic_launcher));
         mMap.addMarker(opt).showInfoWindow();
         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(l, 16));
     }

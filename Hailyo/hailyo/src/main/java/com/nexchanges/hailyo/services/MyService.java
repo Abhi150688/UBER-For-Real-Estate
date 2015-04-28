@@ -20,6 +20,7 @@ public class MyService extends IntentService {
         super.onCreate();
         Toast.makeText(this, "Service Created",Toast.LENGTH_SHORT).show();
         new PubnubHandler(this).subscribe();
+        new PubnubHandler(this).publish("Received from Dev Console.....hahahahhahahahahah");
     }
 
     @Override

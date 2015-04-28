@@ -58,6 +58,7 @@ public class PubnubHandler {
             @Override
             public void connectCallback(String channel, Object message) {
                 Log.d("Service Message", "Subscribed");
+
             }
 
             @Override
@@ -103,6 +104,7 @@ public class PubnubHandler {
 
         Callback callback = new Callback() {
             public void successCallback(String channel, Object response) {
+
 
             }
             public void errorCallback(String channel, PubnubError error) {

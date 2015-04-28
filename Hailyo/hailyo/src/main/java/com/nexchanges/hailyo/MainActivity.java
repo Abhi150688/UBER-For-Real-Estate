@@ -1,10 +1,13 @@
 package com.nexchanges.hailyo;
 
 import android.app.ActionBar;
+import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
@@ -15,8 +18,16 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-
 import com.nexchanges.hailyo.services.MyService;
+import com.nexchanges.hailyo.ui.AboutFragment;
+import com.nexchanges.hailyo.ui.HelpFragment;
+import com.nexchanges.hailyo.ui.HistoryFragment;
+import com.nexchanges.hailyo.ui.MyProfileFragment;
+import com.nexchanges.hailyo.ui.PaymentFragment;
+import com.nexchanges.hailyo.ui.PromotionsFragment;
+import com.nexchanges.hailyo.ui.SettingsFragment;
+import com.parse.ParseObject;
+import com.parse.ParseUser;
 import com.pubnub.api.*;
 import com.nexchanges.hailyo.custom.CustomActivity;
 import com.nexchanges.hailyo.model.Feed;
@@ -34,6 +45,8 @@ public class MainActivity extends CustomActivity
 
 	/** The drawer layout. */
 	private DrawerLayout drawerLayout;
+
+    public static final String TAG = MainActivity.class.getSimpleName();
 
 	/** ListView for left side drawer. */
 	private ListView drawerLeft;
@@ -53,9 +66,24 @@ public class MainActivity extends CustomActivity
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
+        ParseUser currentUser = ParseUser.getCurrentUser();
+        ParseObject testObject = new ParseObject("TestObject");
+        testObject.put("foo", "bar");
+        testObject.saveInBackground();
+
+        if (currentUser == null) {
+            // It's an anonymous user, hence show the login screen
+            navigateToLogin();
+        }
+        else {
+            // The user is logged in, yay!!
+            Log.i(TAG, currentUser.getUsername());
+        }
+
 		setupActionBar();
 		setupDrawer();
 		setupContainer();
+
         	}
 
     public void startService(View v){
@@ -120,8 +148,9 @@ public class MainActivity extends CustomActivity
 				}
 				else
 				{
-					getActionBar().setLogo(R.drawable.ic_chat);
-					getActionBar().setTitle(R.string.online_taxi_driver);
+					//getActionBar().setLogo(R.drawable.ic_chat);
+					//getActionBar().setTitle(R.string.online_taxi_driver);
+                    getActionBar().setTitle("Hailyo");
 				}
 				invalidateOptionsMenu();
 			}
@@ -139,7 +168,7 @@ public class MainActivity extends CustomActivity
 	 * the Header and Footer contents of left drawer. This method also apply the
 	 * Theme for components of Left drawer.
 	 */
-	private void setupLeftNavDrawer()
+	private void setupLeftNavDrawer2()
 	{
 		drawerLeft = (ListView) findViewById(R.id.left_drawer);
 
@@ -149,11 +178,12 @@ public class MainActivity extends CustomActivity
 		drawerLeft.addHeaderView(header);
 
 		final ArrayList<Feed> al = new ArrayList<Feed>();
-		al.add(new Feed("Get a Taxi", "", R.drawable.ic_left1));
-		al.add(new Feed("Recents", null, R.drawable.ic_left2));
-		al.add(new Feed("Costs", null, R.drawable.ic_left3));
-		al.add(new Feed("Favorites", null, R.drawable.ic_left4));
-		al.add(new Feed("Contacts", null, R.drawable.ic_left5));
+		//al.add(new Feed("My Profile", "", R.drawable.ic_left1));
+        al.add(new Feed("Payment", "", R.drawable.ic_left1));
+		al.add(new Feed("History", null, R.drawable.ic_left2));
+		al.add(new Feed("Help", null, R.drawable.ic_left3));
+		al.add(new Feed("Promotions", null, R.drawable.ic_left4));
+		al.add(new Feed("About", null, R.drawable.ic_left5));
 		al.add(new Feed("Settings", null, R.drawable.ic_left6));
 
 		final LeftNavAdapter adp = new LeftNavAdapter(this, al);
@@ -176,6 +206,94 @@ public class MainActivity extends CustomActivity
 
 	}
 
+
+    private void setupLeftNavDrawer()
+    {
+        drawerLeft = (ListView) findViewById(R.id.left_drawer);
+
+        View header = getLayoutInflater().inflate(R.layout.left_nav_header,
+                null);
+
+        drawerLeft.addHeaderView(header);
+
+        final ArrayList<Feed> al = new ArrayList<Feed>();
+       // al.add(new Feed("My Profile", "", R.drawable.ic_left1));
+        al.add(new Feed("Payment", "", R.drawable.ic_left1));
+        al.add(new Feed("History", null, R.drawable.ic_left2));
+        al.add(new Feed("Help", null, R.drawable.ic_left3));
+        al.add(new Feed("Promotions", null, R.drawable.ic_left4));
+        al.add(new Feed("About", null, R.drawable.ic_left5));
+        al.add(new Feed("Settings", null, R.drawable.ic_left6));
+
+        drawerLeft.setOnItemClickListener(new SlideMenuClickListener());
+
+        final LeftNavAdapter adp = new LeftNavAdapter(this, al);
+        drawerLeft.setAdapter(adp);
+
+    }
+
+    private class SlideMenuClickListener implements
+            ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position,
+                                long id) {
+            // display view for selected nav drawer item
+            displayView(position);
+        }
+    }
+
+
+
+    private void displayView(int position) {
+        // update the main content by replacing fragments
+        Fragment fragment = null;
+        switch (position) {
+            //case 0:
+              //  fragment = new MyProfileFragment();
+                //break;
+            case 0:
+                fragment = new PaymentFragment();
+
+                break;
+            case 1:
+                fragment = new HistoryFragment();
+                break;
+            case 2:
+                fragment = new HelpFragment();
+                break;
+            case 3:
+                fragment = new PromotionsFragment();
+                break;
+            case 4:
+                fragment = new AboutFragment();
+                break;
+
+            case 5:
+                fragment = new SettingsFragment();
+                break;
+
+            default:
+                fragment = new MainFragment();
+        }
+
+        if (fragment != null) {
+            FragmentManager fragmentManager = getFragmentManager();
+            fragmentManager.beginTransaction()
+                    .replace(R.id.content_frame, fragment).commit();
+
+            // update selected item and title, then close the drawer
+            //drawerLeft.setItemChecked(position, true);
+           // drawerLeft.setSelection(position);
+           // setTitle(navMenuTitles[position]);
+            //drawerLayout.closeDrawer(drawerLeft);
+        } else {
+            // error in creating fragment
+            Log.e("MainActivity", "Error in creating fragment");
+        }
+    }
+
+
+
 	/**
 	 * Setup the right navigation drawer/slider. You can add your logic to load
 	 * the contents to be displayed on the right side drawer. It will also setup
@@ -190,12 +308,12 @@ public class MainActivity extends CustomActivity
 		drawerRight.addHeaderView(header);
 
 		ArrayList<Feed> al = new ArrayList<Feed>();
-		al.add(new Feed("Taxi 00689", "touch to chat", R.drawable.img_f1, true));
-		al.add(new Feed("Taxi 00783", "unavailable for chat",
+		al.add(new Feed("Broker Smith", "touch to chat", R.drawable.img_f1, true));
+		al.add(new Feed("Broker James", "unavailable for chat",
 				R.drawable.img_f2, false));
-		al.add(new Feed("Taxi 01632", "unavailable for chat",
+		al.add(new Feed("Broker Andy", "unavailable for chat",
 				R.drawable.img_f3, false));
-		al.add(new Feed("Taxi 00321", "touch to chat", R.drawable.img_f4, true));
+		al.add(new Feed("Broker Ricky", "touch to chat", R.drawable.img_f4, true));
 
 		drawerRight.setAdapter(new RightNavAdapter(this, al));
 	}
@@ -291,4 +409,13 @@ public class MainActivity extends CustomActivity
 
         return super.onKeyDown(keyCode, event);
 	}
+
+    private void navigateToLogin() {
+        // Launch the login activity
+
+        Intent intent = new Intent(this, LoginActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+    }
 }
