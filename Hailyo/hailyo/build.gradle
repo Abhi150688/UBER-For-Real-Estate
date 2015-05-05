@@ -1,13 +1,28 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
 
 android {
-    compileSdkVersion 18
+    compileSdkVersion 21
     buildToolsVersion "21.1.2"
 
     defaultConfig {
         applicationId "com.nexchanges.hailyo"
-        minSdkVersion 14
-        targetSdkVersion 18
+        minSdkVersion 21
+        targetSdkVersion 21
     }
 
     buildTypes {
@@ -25,13 +40,16 @@ android {
 
 dependencies {
     compile project(':stylishDialogLib')
-    compile 'com.android.support:support-v4:18.0.0'
+    compile 'com.android.support:support-v4:21.0.0'
     compile 'com.google.android.gms:play-services:+'
     compile files('libs/bcprov-jdk15on-1.47.jar')
     compile files('libs/Pubnub-Android-3.7.2.jar')
     compile files('libs/Parse-1.9.1.jar')
 
     compile 'com.parse.bolts:bolts-android:1.+'
+    compile('com.twitter.sdk.android:twitter:1.4.0@aar') {
+        transitive = true;
+    }
 
 
 

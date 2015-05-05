@@ -28,7 +28,6 @@ import java.util.Locale;
  */
 public class GeoFetcher extends AsyncTask<LatLng, Void, List<Address>> {
 
-
     private boolean isExecuting = false;
     private Context context;
     private OnLocationAddressAvailableListener listener;

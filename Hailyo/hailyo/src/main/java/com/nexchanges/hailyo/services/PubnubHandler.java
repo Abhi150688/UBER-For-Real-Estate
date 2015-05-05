@@ -9,6 +9,11 @@ import com.pubnub.api.*;
 import com.pubnub.api.Callback;
 import android.os.Handler;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.Date;
+
 
 /**
  * Created by Abhishek on 27/04/15.
@@ -115,6 +120,49 @@ public class PubnubHandler {
         pubnub.publish(GLOBAL_CHANNEL, message , callback);
 
 
+    }
+
+    JSONObject state = new JSONObject();
+
+    public void presence()
+    {
+        try {
+            state.put("name", "presence-tutorial-user");
+            state.put("timestamp", (new Date()).toString());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        pubnub.setState("demo_tutorial", pubnub.getUUID(), state, new Callback() {});
+
+        try {
+            pubnub.subscribe("demo_tutorial", new Callback() {
+                public void successCallback(String channel, Object message) {
+                    System.out.println(message);
+                }
+            });
+        } catch (PubnubException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            pubnub.presence("demo_tutorial", new Callback() {
+                public void successCallback(String channel, Object message) {
+                    System.out.println(message);
+                }
+            });
+        } catch (PubnubException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void herenow()
+    {
+        pubnub.hereNow("demo_tutorial", true, true, new Callback() {
+            public void successCallback(String channel, Object message) {
+                System.out.println(message);
+            }
+        });
     }
 
 }

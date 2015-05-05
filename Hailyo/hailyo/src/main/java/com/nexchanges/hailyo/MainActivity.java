@@ -57,8 +57,11 @@ public class MainActivity extends CustomActivity
 	/** The drawer toggle. */
 	private ActionBarDrawerToggle drawerToggle;
 
+    private LoginActivity l;
+
+
 	/* (non-Javadoc)
-	 * @see com.newsfeeder.custom.CustomActivity#onCreate(android.os.Bundle)
+	 * @see com.news.feeder.custom.CustomActivity#onCreate(android.os.Bundle)
 	 */
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -71,7 +74,8 @@ public class MainActivity extends CustomActivity
         testObject.put("foo", "bar");
         testObject.saveInBackground();
 
-        if (currentUser == null) {
+
+       /* if (currentUser == null) {
             // It's an anonymous user, hence show the login screen
             navigateToLogin();
         }
@@ -79,7 +83,7 @@ public class MainActivity extends CustomActivity
             // The user is logged in, yay!!
             Log.i(TAG, currentUser.getUsername());
         }
-
+*/
 		setupActionBar();
 		setupDrawer();
 		setupContainer();
@@ -115,6 +119,7 @@ public class MainActivity extends CustomActivity
 				R.drawable.action_bar_bg));
 		actionBar.setDisplayHomeAsUpEnabled(true);
 		actionBar.setHomeButtonEnabled(true);
+
 
 		// getActionBar().setBackgroundDrawable(getResources().getDrawable(theme));
 	}
@@ -281,11 +286,11 @@ public class MainActivity extends CustomActivity
             fragmentManager.beginTransaction()
                     .replace(R.id.content_frame, fragment).commit();
 
-            // update selected item and title, then close the drawer
-            //drawerLeft.setItemChecked(position, true);
-           // drawerLeft.setSelection(position);
-           // setTitle(navMenuTitles[position]);
-            //drawerLayout.closeDrawer(drawerLeft);
+            //update selected item and title, then close the drawer
+            drawerLeft.setItemChecked(position, true);
+            drawerLeft.setSelection(position);
+           //setTitle(navMenuTitles[position]);
+            drawerLayout.closeDrawer(drawerLeft);
         } else {
             // error in creating fragment
             Log.e("MainActivity", "Error in creating fragment");
@@ -413,7 +418,7 @@ public class MainActivity extends CustomActivity
     private void navigateToLogin() {
         // Launch the login activity
 
-        Intent intent = new Intent(this, LoginActivity.class);
+        Intent intent = new Intent(this, LoginActivity1.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);

@@ -33,4 +33,10 @@
     <string msgid="9071884888741449141" name="common_signin_button_text">"Увійти"</string>
     <string msgid="2429381841831957106" name="common_signin_button_text_long">"Увійти в обл.запис Google"</string>
     <string msgid="5000919058582214855" name="commono_google_play_services_api_unavailable_text">"Цей додаток використовує один або декілька сервісів Google Play, які зараз недоступні. Зверніться по допомогу до розробника."</string>
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.3.2/res/values-uk/values.xml -->
+    <eat-comment/>
+    <string name="tw__allow_btn_txt">Дозволити</string>
+    <string name="tw__not_now_btn_txt">Не зараз</string>
+    <string name="tw__share_email_desc">Отримуйте оновлення та іншу інформацію від користувача(ки) %1$s, надавши йому(їй) доступ до адреси електронної пошти у вашому профілі у Твіттері \@%2$s</string>
+    <string name="tw__share_email_title">Поділіться своєю адресою електронної пошти</string>
 </resources>

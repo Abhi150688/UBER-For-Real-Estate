@@ -24,6 +24,16 @@ import com.parse.SignUpCallback;
 
 import java.util.ArrayList;
 import java.util.List;
+import android.content.Intent;
+import com.twitter.sdk.android.core.Callback;
+import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.TwitterException;
+import com.twitter.sdk.android.core.TwitterSession;
+import com.twitter.sdk.android.core.identity.TwitterLoginButton;
+import com.digits.sdk.android.AuthCallback;
+import com.digits.sdk.android.DigitsAuthButton;
+import com.digits.sdk.android.DigitsException;
+import com.digits.sdk.android.DigitsSession;
 
 /**
  * Created by Abhishek on 28/04/15.
@@ -33,11 +43,25 @@ public class LoginActivity extends Activity {
 
     Button loginButtonView;
     private String sphoneNumber;
+    private TwitterLoginButton loginButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login2);
+
+       // loginButton = (TwitterLoginButton) findViewById(R.id.twitter_login_button);
+       // loginButton.setCallback(new Callback<TwitterSession>() {
+         /*   @Override
+            public void success(Result<TwitterSession> result) {
+                //navigateToHome(); // Do something with result, which provides a TwitterSession for making API calls
+            }
+
+            @Override
+            public void failure(TwitterException exception) {
+                // Do something on failure
+                }
+        });*/
 
         // All the views from our login form
         final EditText firstNameView = (EditText) findViewById(R.id.firstName);
@@ -192,8 +216,6 @@ public class LoginActivity extends Activity {
     public void navigateToHome() {
         // Let's go to the MainActivity
 
-
-
         Intent intent = new Intent(LoginActivity.this, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -201,6 +223,12 @@ public class LoginActivity extends Activity {
         startActivity(intent);
     }
 
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        loginButton.onActivityResult(requestCode, resultCode, data);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -223,6 +251,12 @@ public class LoginActivity extends Activity {
 
     }
 
+    public void logout(){
+        ParseUser.logOut();
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivity(intent);
+        this.finish();
+    }
 
 
 }

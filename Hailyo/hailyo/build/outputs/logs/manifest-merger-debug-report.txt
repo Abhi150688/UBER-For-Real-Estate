@@ -96,6 +96,24 @@ MERGED from com.android.support:support-v4:22.0.0:20:5
 MERGED from com.google.android.gms:play-services-wearable:7.0.0:18:5
 MERGED from com.google.android.gms:play-services-base:7.0.0:18:5
 MERGED from com.android.support:support-v4:22.0.0:20:5
+MERGED from com.twitter.sdk.android:twitter:1.4.0:7:5
+MERGED from com.twitter.sdk.android:tweet-ui:1.1.0:7:5
+MERGED from com.twitter.cobalt:performance-metrics:0.2.0:5:5
+MERGED from com.twitter.sdk.android:twitter-core:1.3.2:7:5
+MERGED from io.fabric.sdk.android:fabric:1.3.0:7:5
+MERGED from io.fabric.sdk.android:fabric:1.3.0:7:5
+MERGED from com.android.support:support-v4:22.0.0:20:5
+MERGED from com.twitter.sdk.android:twitter-core:1.3.2:7:5
+MERGED from io.fabric.sdk.android:fabric:1.3.0:7:5
+MERGED from io.fabric.sdk.android:fabric:1.3.0:7:5
+MERGED from com.twitter.sdk.android:tweet-composer:0.7.3:7:5
+MERGED from io.fabric.sdk.android:fabric:1.3.0:7:5
+MERGED from com.twitter.sdk.android:twitter-core:1.3.2:7:5
+MERGED from io.fabric.sdk.android:fabric:1.3.0:7:5
+MERGED from com.digits.sdk.android:digits:1.4.0:7:5
+MERGED from com.twitter.sdk.android:twitter-core:1.3.2:7:5
+MERGED from io.fabric.sdk.android:fabric:1.3.0:7:5
+MERGED from io.fabric.sdk.android:fabric:1.3.0:7:5
 	android:targetSdkVersion
 		ADDED from AndroidManifest.xml:9:9
 		INJECTED from AndroidManifest.xml:0:0
@@ -105,37 +123,56 @@ MERGED from com.android.support:support-v4:22.0.0:20:5
 		INJECTED from AndroidManifest.xml:0:0
 		INJECTED from AndroidManifest.xml:0:0
 uses-permission#android.permission.INTERNET
+ADDED from AndroidManifest.xml:11:5
+MERGED from com.twitter.sdk.android:tweet-ui:1.1.0:9:5
+MERGED from com.twitter.sdk.android:twitter-core:1.3.2:9:5
+MERGED from com.twitter.sdk.android:twitter-core:1.3.2:9:5
+MERGED from com.twitter.sdk.android:tweet-composer:0.7.3:9:5
+MERGED from com.twitter.sdk.android:twitter-core:1.3.2:9:5
+MERGED from com.digits.sdk.android:digits:1.4.0:9:5
+MERGED from com.twitter.sdk.android:twitter-core:1.3.2:9:5
+	android:name
+		ADDED from AndroidManifest.xml:11:22
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from AndroidManifest.xml:12:5
+	android:name
+		ADDED from AndroidManifest.xml:12:22
+uses-permission#android.permission.ACCESS_FINE_LOCATION
 ADDED from AndroidManifest.xml:13:5
 	android:name
 		ADDED from AndroidManifest.xml:13:22
-uses-permission#android.permission.ACCESS_NETWORK_STATE
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
 ADDED from AndroidManifest.xml:14:5
 	android:name
 		ADDED from AndroidManifest.xml:14:22
-uses-permission#android.permission.ACCESS_FINE_LOCATION
+uses-permission#android.permission.CALL_PHONE
 ADDED from AndroidManifest.xml:15:5
 	android:name
 		ADDED from AndroidManifest.xml:15:22
-uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+uses-permission#com.google.android.providers.gsf.permission.READ_GSERVICES
 ADDED from AndroidManifest.xml:16:5
 	android:name
 		ADDED from AndroidManifest.xml:16:22
-uses-permission#android.permission.CALL_PHONE
+uses-permission#android.permission.READ_PHONE_STATE
 ADDED from AndroidManifest.xml:17:5
 	android:name
 		ADDED from AndroidManifest.xml:17:22
-uses-permission#com.google.android.providers.gsf.permission.READ_GSERVICES
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
 ADDED from AndroidManifest.xml:18:5
 	android:name
 		ADDED from AndroidManifest.xml:18:22
+uses-permission#android.permission.RECEIVE_SMS
+ADDED from AndroidManifest.xml:19:5
+	android:name
+		ADDED from AndroidManifest.xml:19:22
 uses-feature#0x00020000
-ADDED from AndroidManifest.xml:20:5
+ADDED from AndroidManifest.xml:23:5
 	android:glEsVersion
-		ADDED from AndroidManifest.xml:21:9
+		ADDED from AndroidManifest.xml:24:9
 	android:required
-		ADDED from AndroidManifest.xml:22:9
+		ADDED from AndroidManifest.xml:25:9
 application
-ADDED from AndroidManifest.xml:24:5
+ADDED from AndroidManifest.xml:28:5
 MERGED from com.android.support:support-v4:22.0.0:22:5
 MERGED from com.android.support:support-v4:22.0.0:22:5
 MERGED from com.google.android.gms:play-services:7.0.0:19:5
@@ -216,91 +253,317 @@ MERGED from com.android.support:support-v4:22.0.0:22:5
 MERGED from com.google.android.gms:play-services-wearable:7.0.0:19:5
 MERGED from com.google.android.gms:play-services-base:7.0.0:20:5
 MERGED from com.android.support:support-v4:22.0.0:22:5
+MERGED from com.twitter.sdk.android:twitter:1.4.0:9:5
+MERGED from com.twitter.sdk.android:tweet-ui:1.1.0:11:5
+MERGED from com.twitter.cobalt:performance-metrics:0.2.0:9:5
+MERGED from com.twitter.sdk.android:twitter-core:1.3.2:11:5
+MERGED from io.fabric.sdk.android:fabric:1.3.0:9:5
+MERGED from io.fabric.sdk.android:fabric:1.3.0:9:5
+MERGED from com.android.support:support-v4:22.0.0:22:5
+MERGED from com.twitter.sdk.android:twitter-core:1.3.2:11:5
+MERGED from io.fabric.sdk.android:fabric:1.3.0:9:5
+MERGED from io.fabric.sdk.android:fabric:1.3.0:9:5
+MERGED from com.twitter.sdk.android:tweet-composer:0.7.3:11:5
+MERGED from io.fabric.sdk.android:fabric:1.3.0:9:5
+MERGED from com.twitter.sdk.android:twitter-core:1.3.2:11:5
+MERGED from io.fabric.sdk.android:fabric:1.3.0:9:5
+MERGED from com.digits.sdk.android:digits:1.4.0:11:5
+MERGED from com.twitter.sdk.android:twitter-core:1.3.2:11:5
+MERGED from io.fabric.sdk.android:fabric:1.3.0:9:5
+MERGED from io.fabric.sdk.android:fabric:1.3.0:9:5
 	android:label
-		ADDED from AndroidManifest.xml:28:9
+		ADDED from AndroidManifest.xml:32:9
 	android:allowBackup
-		ADDED from AndroidManifest.xml:26:9
+		ADDED from AndroidManifest.xml:30:9
 	android:icon
-		ADDED from AndroidManifest.xml:27:9
+		ADDED from AndroidManifest.xml:31:9
 	android:theme
+		ADDED from AndroidManifest.xml:33:9
+	android:name
 		ADDED from AndroidManifest.xml:29:9
-	android:name
-		ADDED from AndroidManifest.xml:25:9
 meta-data#com.google.android.maps.v2.API_KEY
-ADDED from AndroidManifest.xml:30:9
+ADDED from AndroidManifest.xml:34:9
 	android:value
-		ADDED from AndroidManifest.xml:32:13
+		ADDED from AndroidManifest.xml:36:13
 	android:name
-		ADDED from AndroidManifest.xml:31:13
-meta-data#com.google.android.gms.version
-ADDED from AndroidManifest.xml:33:9
-MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
-MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
-MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
-MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
-MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
-MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
-MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
-MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
-MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
-MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
-MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
-MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
-MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
-MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
-MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
-MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
-MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
-MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
-MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
-MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
-MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
-MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
-MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
-MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
-MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
-MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
-	android:value
 		ADDED from AndroidManifest.xml:35:13
-	android:name
-		ADDED from AndroidManifest.xml:34:13
-activity#com.nexchanges.hailyo.MainActivity
+meta-data#com.google.android.gms.version
 ADDED from AndroidManifest.xml:37:9
-	android:screenOrientation
-		ADDED from AndroidManifest.xml:40:13
-	android:label
+MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
+MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
+MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
+MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
+MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
+MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
+MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
+MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
+MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
+MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
+MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
+MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
+MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
+MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
+MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
+MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
+MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
+MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
+MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
+MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
+MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
+MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
+MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
+MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
+MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
+MERGED from com.google.android.gms:play-services-base:7.0.0:21:9
+	android:value
 		ADDED from AndroidManifest.xml:39:13
 	android:name
 		ADDED from AndroidManifest.xml:38:13
-intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from AndroidManifest.xml:41:13
-action#android.intent.action.MAIN
-ADDED from AndroidManifest.xml:42:17
-	android:name
-		ADDED from AndroidManifest.xml:42:25
-category#android.intent.category.LAUNCHER
-ADDED from AndroidManifest.xml:44:17
-	android:name
-		ADDED from AndroidManifest.xml:44:27
-activity#com.nexchanges.hailyo.PaymentPopup
-ADDED from AndroidManifest.xml:48:9
+activity#com.nexchanges.hailyo.MainActivity
+ADDED from AndroidManifest.xml:41:9
 	android:screenOrientation
-		ADDED from AndroidManifest.xml:51:13
-	android:windowSoftInputMode
-		ADDED from AndroidManifest.xml:52:13
-	android:theme
-		ADDED from AndroidManifest.xml:50:13
-	android:name
-		ADDED from AndroidManifest.xml:49:13
-activity#com.nexchanges.hailyo.LoginActivity
-ADDED from AndroidManifest.xml:55:9
+		ADDED from AndroidManifest.xml:44:13
 	android:label
-		ADDED from AndroidManifest.xml:57:13
+		ADDED from AndroidManifest.xml:43:13
+	android:name
+		ADDED from AndroidManifest.xml:42:13
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:45:13
+action#android.intent.action.MAIN
+ADDED from AndroidManifest.xml:46:17
+	android:name
+		ADDED from AndroidManifest.xml:46:25
+category#android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:48:17
+	android:name
+		ADDED from AndroidManifest.xml:48:27
+activity#com.nexchanges.hailyo.PaymentPopup
+ADDED from AndroidManifest.xml:51:9
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:53:13
 	android:windowSoftInputMode
+		ADDED from AndroidManifest.xml:55:13
+	android:theme
+		ADDED from AndroidManifest.xml:54:13
+	android:name
+		ADDED from AndroidManifest.xml:52:13
+activity#com.nexchanges.hailyo.LoginActivity1
+ADDED from AndroidManifest.xml:57:9
+	android:label
+		ADDED from AndroidManifest.xml:59:13
+	android:windowSoftInputMode
+		ADDED from AndroidManifest.xml:60:13
+	android:name
 		ADDED from AndroidManifest.xml:58:13
-	android:name
-		ADDED from AndroidManifest.xml:56:13
 service#com.nexchanges.hailyo.services.MyService
-ADDED from AndroidManifest.xml:61:9
+ADDED from AndroidManifest.xml:63:9
 	android:name
-		ADDED from AndroidManifest.xml:61:18
+		ADDED from AndroidManifest.xml:63:18
+meta-data#io.fabric.ApiKey
+ADDED from AndroidManifest.xml:67:9
+	android:value
+		ADDED from AndroidManifest.xml:69:13
+	android:name
+		ADDED from AndroidManifest.xml:68:13
+activity#com.twitter.sdk.android.core.identity.OAuthActivity
+ADDED from com.twitter.sdk.android:twitter-core:1.3.2:12:9
+MERGED from com.twitter.sdk.android:twitter-core:1.3.2:12:9
+MERGED from com.twitter.sdk.android:twitter-core:1.3.2:12:9
+MERGED from com.twitter.sdk.android:twitter-core:1.3.2:12:9
+	android:excludeFromRecents
+		ADDED from com.twitter.sdk.android:twitter-core:1.3.2:15:13
+	android:exported
+		ADDED from com.twitter.sdk.android:twitter-core:1.3.2:16:13
+	android:configChanges
+		ADDED from com.twitter.sdk.android:twitter-core:1.3.2:14:13
+	android:name
+		ADDED from com.twitter.sdk.android:twitter-core:1.3.2:13:13
+activity#com.twitter.sdk.android.core.identity.ShareEmailActivity
+ADDED from com.twitter.sdk.android:twitter-core:1.3.2:17:9
+MERGED from com.twitter.sdk.android:twitter-core:1.3.2:17:9
+MERGED from com.twitter.sdk.android:twitter-core:1.3.2:17:9
+MERGED from com.twitter.sdk.android:twitter-core:1.3.2:17:9
+	android:label
+		ADDED from com.twitter.sdk.android:twitter-core:1.3.2:23:13
+	android:excludeFromRecents
+		ADDED from com.twitter.sdk.android:twitter-core:1.3.2:20:13
+	android:exported
+		ADDED from com.twitter.sdk.android:twitter-core:1.3.2:21:13
+	android:configChanges
+		ADDED from com.twitter.sdk.android:twitter-core:1.3.2:19:13
+	android:icon
+		ADDED from com.twitter.sdk.android:twitter-core:1.3.2:22:13
+	android:name
+		ADDED from com.twitter.sdk.android:twitter-core:1.3.2:18:13
+activity#com.digits.sdk.android.PhoneNumberActivity
+ADDED from com.digits.sdk.android:digits:1.4.0:12:9
+	android:excludeFromRecents
+		ADDED from com.digits.sdk.android:digits:1.4.0:15:13
+	android:exported
+		ADDED from com.digits.sdk.android:digits:1.4.0:16:13
+	android:windowSoftInputMode
+		ADDED from com.digits.sdk.android:digits:1.4.0:18:13
+	android:configChanges
+		ADDED from com.digits.sdk.android:digits:1.4.0:14:13
+	android:taskAffinity
+		ADDED from com.digits.sdk.android:digits:1.4.0:17:13
+	android:name
+		ADDED from com.digits.sdk.android:digits:1.4.0:13:13
+activity#com.digits.sdk.android.ConfirmationCodeActivity
+ADDED from com.digits.sdk.android:digits:1.4.0:19:9
+	android:excludeFromRecents
+		ADDED from com.digits.sdk.android:digits:1.4.0:22:13
+	android:exported
+		ADDED from com.digits.sdk.android:digits:1.4.0:23:13
+	android:windowSoftInputMode
+		ADDED from com.digits.sdk.android:digits:1.4.0:25:13
+	android:configChanges
+		ADDED from com.digits.sdk.android:digits:1.4.0:21:13
+	android:taskAffinity
+		ADDED from com.digits.sdk.android:digits:1.4.0:24:13
+	android:name
+		ADDED from com.digits.sdk.android:digits:1.4.0:20:13
+activity#com.digits.sdk.android.LoginCodeActivity
+ADDED from com.digits.sdk.android:digits:1.4.0:26:9
+	android:excludeFromRecents
+		ADDED from com.digits.sdk.android:digits:1.4.0:29:13
+	android:launchMode
+		ADDED from com.digits.sdk.android:digits:1.4.0:31:13
+	android:exported
+		ADDED from com.digits.sdk.android:digits:1.4.0:30:13
+	android:windowSoftInputMode
+		ADDED from com.digits.sdk.android:digits:1.4.0:33:13
+	android:configChanges
+		ADDED from com.digits.sdk.android:digits:1.4.0:28:13
+	android:taskAffinity
+		ADDED from com.digits.sdk.android:digits:1.4.0:32:13
+	android:name
+		ADDED from com.digits.sdk.android:digits:1.4.0:27:13
+activity#com.digits.sdk.android.PinCodeActivity
+ADDED from com.digits.sdk.android:digits:1.4.0:34:9
+	android:excludeFromRecents
+		ADDED from com.digits.sdk.android:digits:1.4.0:37:13
+	android:launchMode
+		ADDED from com.digits.sdk.android:digits:1.4.0:39:13
+	android:exported
+		ADDED from com.digits.sdk.android:digits:1.4.0:38:13
+	android:windowSoftInputMode
+		ADDED from com.digits.sdk.android:digits:1.4.0:41:13
+	android:configChanges
+		ADDED from com.digits.sdk.android:digits:1.4.0:36:13
+	android:taskAffinity
+		ADDED from com.digits.sdk.android:digits:1.4.0:40:13
+	android:name
+		ADDED from com.digits.sdk.android:digits:1.4.0:35:13
+activity#com.digits.sdk.android.FailureActivity
+ADDED from com.digits.sdk.android:digits:1.4.0:42:9
+	android:excludeFromRecents
+		ADDED from com.digits.sdk.android:digits:1.4.0:45:13
+	android:exported
+		ADDED from com.digits.sdk.android:digits:1.4.0:46:13
+	android:configChanges
+		ADDED from com.digits.sdk.android:digits:1.4.0:44:13
+	android:taskAffinity
+		ADDED from com.digits.sdk.android:digits:1.4.0:47:13
+	android:name
+		ADDED from com.digits.sdk.android:digits:1.4.0:43:13
+activity#com.digits.sdk.android.ContactsActivity
+ADDED from com.digits.sdk.android:digits:1.4.0:48:9
+	android:excludeFromRecents
+		ADDED from com.digits.sdk.android:digits:1.4.0:51:13
+	android:exported
+		ADDED from com.digits.sdk.android:digits:1.4.0:52:13
+	android:configChanges
+		ADDED from com.digits.sdk.android:digits:1.4.0:50:13
+	android:name
+		ADDED from com.digits.sdk.android:digits:1.4.0:49:13
+activity#com.digits.sdk.android.PhoneNumberActionBarActivity
+ADDED from com.digits.sdk.android:digits:1.4.0:53:9
+	android:excludeFromRecents
+		ADDED from com.digits.sdk.android:digits:1.4.0:56:13
+	android:exported
+		ADDED from com.digits.sdk.android:digits:1.4.0:57:13
+	android:windowSoftInputMode
+		ADDED from com.digits.sdk.android:digits:1.4.0:59:13
+	android:configChanges
+		ADDED from com.digits.sdk.android:digits:1.4.0:55:13
+	android:taskAffinity
+		ADDED from com.digits.sdk.android:digits:1.4.0:58:13
+	android:name
+		ADDED from com.digits.sdk.android:digits:1.4.0:54:13
+activity#com.digits.sdk.android.ConfirmationCodeActionBarActivity
+ADDED from com.digits.sdk.android:digits:1.4.0:60:9
+	android:excludeFromRecents
+		ADDED from com.digits.sdk.android:digits:1.4.0:63:13
+	android:exported
+		ADDED from com.digits.sdk.android:digits:1.4.0:64:13
+	android:windowSoftInputMode
+		ADDED from com.digits.sdk.android:digits:1.4.0:66:13
+	android:configChanges
+		ADDED from com.digits.sdk.android:digits:1.4.0:62:13
+	android:taskAffinity
+		ADDED from com.digits.sdk.android:digits:1.4.0:65:13
+	android:name
+		ADDED from com.digits.sdk.android:digits:1.4.0:61:13
+activity#com.digits.sdk.android.LoginCodeActionBarActivity
+ADDED from com.digits.sdk.android:digits:1.4.0:67:9
+	android:excludeFromRecents
+		ADDED from com.digits.sdk.android:digits:1.4.0:70:13
+	android:launchMode
+		ADDED from com.digits.sdk.android:digits:1.4.0:72:13
+	android:exported
+		ADDED from com.digits.sdk.android:digits:1.4.0:71:13
+	android:windowSoftInputMode
+		ADDED from com.digits.sdk.android:digits:1.4.0:74:13
+	android:configChanges
+		ADDED from com.digits.sdk.android:digits:1.4.0:69:13
+	android:taskAffinity
+		ADDED from com.digits.sdk.android:digits:1.4.0:73:13
+	android:name
+		ADDED from com.digits.sdk.android:digits:1.4.0:68:13
+activity#com.digits.sdk.android.FailureActionBarActivity
+ADDED from com.digits.sdk.android:digits:1.4.0:75:9
+	android:excludeFromRecents
+		ADDED from com.digits.sdk.android:digits:1.4.0:78:13
+	android:exported
+		ADDED from com.digits.sdk.android:digits:1.4.0:79:13
+	android:configChanges
+		ADDED from com.digits.sdk.android:digits:1.4.0:77:13
+	android:taskAffinity
+		ADDED from com.digits.sdk.android:digits:1.4.0:80:13
+	android:name
+		ADDED from com.digits.sdk.android:digits:1.4.0:76:13
+activity#com.digits.sdk.android.ContactsActionBarActivity
+ADDED from com.digits.sdk.android:digits:1.4.0:81:9
+	android:excludeFromRecents
+		ADDED from com.digits.sdk.android:digits:1.4.0:84:13
+	android:exported
+		ADDED from com.digits.sdk.android:digits:1.4.0:85:13
+	android:configChanges
+		ADDED from com.digits.sdk.android:digits:1.4.0:83:13
+	android:name
+		ADDED from com.digits.sdk.android:digits:1.4.0:82:13
+activity#com.digits.sdk.android.PinCodeActionBarActivity
+ADDED from com.digits.sdk.android:digits:1.4.0:86:9
+	android:excludeFromRecents
+		ADDED from com.digits.sdk.android:digits:1.4.0:89:13
+	android:launchMode
+		ADDED from com.digits.sdk.android:digits:1.4.0:91:13
+	android:exported
+		ADDED from com.digits.sdk.android:digits:1.4.0:90:13
+	android:windowSoftInputMode
+		ADDED from com.digits.sdk.android:digits:1.4.0:93:13
+	android:configChanges
+		ADDED from com.digits.sdk.android:digits:1.4.0:88:13
+	android:taskAffinity
+		ADDED from com.digits.sdk.android:digits:1.4.0:92:13
+	android:name
+		ADDED from com.digits.sdk.android:digits:1.4.0:87:13
+service#com.digits.sdk.android.ContactsUploadService
+ADDED from com.digits.sdk.android:digits:1.4.0:95:9
+	android:enabled
+		ADDED from com.digits.sdk.android:digits:1.4.0:97:13
+	android:exported
+		ADDED from com.digits.sdk.android:digits:1.4.0:98:13
+	android:name
+		ADDED from com.digits.sdk.android:digits:1.4.0:96:13
