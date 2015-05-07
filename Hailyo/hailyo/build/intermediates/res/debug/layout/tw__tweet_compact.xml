@@ -5,16 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/tw__CompactTweetContainer">
 
-    <TextView
-        android:id="@+id/tw__tweet_retweeted_by"
-        android:layout_alignLeft="@+id/tw__author_attribution"
-        style="@style/tw__TweetRetweetedBy.Compact"
-        tools:text="retweeted by"/>
-
     <ImageView
         tools:ignore="ContentDescription"
         android:id="@+id/tw__tweet_author_avatar"
-        android:layout_below="@id/tw__tweet_retweeted_by"
         style="@style/tw__TweetAvatar.Compact"
         tools:background="@color/tw__tweet_media_preview_bg_color"/>
 
@@ -22,7 +15,6 @@
     <LinearLayout
         android:id="@+id/tw__author_attribution"
         style="@style/tw__CompactAttributionLine"
-        android:layout_below="@id/tw__tweet_retweeted_by"
         android:layout_toRightOf="@id/tw__tweet_author_avatar"
         android:layout_toEndOf="@id/tw__tweet_author_avatar">
 
@@ -47,7 +39,6 @@
         tools:ignore="ContentDescription"
         android:id="@+id/tw__twitter_logo"
         style="@style/tw__TwitterLogo.Compact"
-        android:layout_below="@id/tw__tweet_retweeted_by"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"/>
 
@@ -68,4 +59,4 @@
         tools:text="just setting up my twttr"/>
 
 </RelativeLayout>
-<!-- From: file:/Users/android/workspace/jenkins/workspace/fabric-android-deploy-to-staging/sdk/kits/tweetui/src/main/res/layout/tw__tweet_compact.xml --><!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.1.0/res/layout/tw__tweet_compact.xml -->
+<!-- From: file:/Users/android/workspace/jenkins/workspace/fabric-android-deploy-to-staging/sdk/kits/tweetui/src/main/res/layout/tw__tweet_compact.xml --><!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/layout/tw__tweet_compact.xml -->

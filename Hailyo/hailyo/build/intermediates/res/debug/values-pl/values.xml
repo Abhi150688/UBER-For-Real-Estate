@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.1.0/res/values-pl/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-pl/values.xml -->
     <eat-comment/>
     <plurals name="tw__time_hours">
         <item quantity="one">1 godz.</item>
@@ -47,14 +47,14 @@
     <string msgid="9071884888741449141" name="common_signin_button_text">"Zaloguj się"</string>
     <string msgid="2429381841831957106" name="common_signin_button_text_long">"Zaloguj się przez Google"</string>
     <string msgid="5000919058582214855" name="commono_google_play_services_api_unavailable_text">"Ta aplikacja wymaga co najmniej jednej usługi Google Play, która jest obecnie niedostępna. Skontaktuj się z programistą, by uzyskać pomoc."</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.4.0/res/values-pl/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.2.0/res/values-pl/values.xml -->
     <eat-comment/>
     <string name="dgts__cancel">Anuluj</string>
     <string name="dgts__communication_error">Błąd połączenia</string>
     <string name="dgts__confirmation_code">Kod potwierdzenia</string>
     <string name="dgts__confirmation_edit_hint">Wpisz kod potwierdzenia</string>
     <string name="dgts__confirmation_error">Nie udało nam się potwierdzić Twojego numeru telefonu</string>
-    <string name="dgts__confirmation_error_alternative">Przepraszamy, mamy problem z wysłaniem Ci kodu potwierdzającego.</string>
+    <string name="dgts__confirmation_error_alternative">Mamy problem z wysłaniem Ci kodu potwierdzenia. Spróbuj zalogować się poniżej.</string>
     <string name="dgts__confirmation_expired">Ten kod jest już nieważny. Poproś o nowy kod potwierdzający.</string>
     <string name="dgts__confirmation_send_text">Wyślij kod potwierdzenia</string>
     <string name="dgts__confirmation_sending_text">Wysyłanie kodu potwierdzenia</string>
@@ -62,8 +62,6 @@
     <string name="dgts__confirmation_sms">Kod potwierdzenia: %1$s. Wpisz ten kod w ciągu %2$s</string>
     <string name="dgts__create_account_text">Utwórz konto</string>
     <string name="dgts__creating_account_text">Tworzenie konta</string>
-    <string name="dgts__digits_logo_desc">ikona logo digits</string>
-    <string name="dgts__digits_logo_name_desc">nazwa logo digits</string>
     <string name="dgts__dismiss">Odrzuć</string>
     <string name="dgts__find_your_friends">Znajdź znajomych</string>
     <string name="dgts__image_header_description">Nagłówek obrazu logowania</string>
@@ -73,7 +71,6 @@
     <string name="dgts__okay">OK</string>
     <string name="dgts__phone_number_edit_hint">Twój numer</string>
     <string name="dgts__phone_number_text">Wpisz swój numer telefonu</string>
-    <string name="dgts__pin_code_verification_title">Wpisz dwuetapowy kod weryfikacyjny</string>
     <string name="dgts__resend">Wyślij ponownie</string>
     <string name="dgts__resend_confirmation_text">Wyślij ponownie kod potwierdzenia</string>
     <string name="dgts__sign_in">Zaloguj się</string>
@@ -81,40 +78,26 @@
     <string name="dgts__sign_in_twitter">Zaloguj się, używając danych logowania z Twittera</string>
     <string name="dgts__signing_in">Logowanie</string>
     <string name="dgts__success_desc">Ikona sukcesu</string>
-    <string name="dgts__terms_text">Gdy stukniesz %1$sWyślij kod potwierdzający%1$s powyżej, Digits by Twitter, wyślemy Ci SMS-a, aby potwierdzić Twój numer telefonu.</string>
-    <string name="dgts__terms_text_create">Stukając %1$sZałóż konto%1$s powyżej, zgadzasz się na Warunki korzystania, Politykę prywatności i Politykę ciasteczek Digits by Twitter oraz na to, że inni użytkownicy tej aplikacji mogą Cię znaleźć po numerze telefonu i/lub adresie e-mail.</string>
-    <string name="dgts__terms_text_sign_in">Stukając %1$sZarejestruj się%1$s powyżej, akceptujesz Warunki korzystania, Politykę prywatności, Politykę ciasteczek Digits by Twitter i zgadzasz się, by inny użytkownicy %1$s mogli Cię znaleźć po numerze telefonu i/lub adresie e-mail.</string>
+    <string name="dgts__terms_text">Stuknij przycisk „Wyślij kod potwierdzenia” powyżej, a otrzymasz SMS z usługi <u>Digits zarządzanej przez Twittera</u>, za pomocą którego potwierdzimy Twój numer telefonu.</string>
+    <string name="dgts__terms_text_create">Stuknij przycisk „Utwórz konto” powyżej, aby zaakceptować <u>zasady użytkowania</u>, <u>politykę prywatności</u> i <u>politykę ciasteczek</u> usługi Digits zarządzanej przez Twittera oraz to, że inni użytkownicy tej aplikacji mogą rozpoznać Cię po numerze telefonu lub adresie e-mail.</string>
+    <string name="dgts__terms_text_create_app">Stuknij przycisk „Utwórz konto” powyżej, aby zaakceptować <u>zasady \
+użytkowania</u>, <u>politykę prywatności</u> i <u>politykę ciasteczek</u> usługi Digits \
+zarządzanej przez Twittera oraz to, że inni użytkownicy aplikacji %1$s \
+mogą rozpoznać Cię po numerze telefonu lub adresie e-mail.</string>
     <string name="dgts__try_again">Spróbuj ponownie</string>
     <string name="dgts__try_again_confirmation">Sprawdź kod i spróbuj ponownie.</string>
     <string name="dgts__try_again_phone_number">Sprawdź numer i spróbuj ponownie.</string>
     <string name="dgts__try_another_phone">Wpisz inny numer telefonu</string>
-    <string name="dgts__upload_contacts">Używamy Digits by Twitter, aby znaleźć więcej Twoich znajomych, którzy korzystają z tej aplikacji. Stuknij OK, a prześlemy Twoje kontakty do Digits by Twitter, aby Ci pomóc znaleźć użytkowników aplikacji %1$s, których znasz oraz by użytkownicy %1$s mogli znaleźć Ciebie.</string>
-    <string name="dgts__verification_code">Kod weryfikacyjny</string>
-    <string name="dgts_pin_code_terms">Ustawiono poprzednio dwuetapową weryfikację kodu na digits.com</string>
-    <string name="dgts_verify">Zweryfikuj</string>
-    <string name="dgts_verifying">Weryfikowanie</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.3.2/res/values-pl/values.xml -->
+    <string name="dgts__upload_contacts">Za pomocą usługi Digits zarządzanej przez Twittera szukamy Twoich znajomych, którzy korzystają z tej aplikacji. Stuknij OK, a prześlemy Twoją książkę adresową do usługi Digits zarządzanej przez Twittera i sprawimy, że inni użytkownicy naszej aplikacji będą mogli Cię rozpoznać.</string>
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.0.0/res/values-pl/values.xml -->
     <eat-comment/>
-    <string name="tw__allow_btn_txt">Zezwól</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.1.0/res/values-pl/values.xml -->
+    <string name="messenger_send_button_text">Wyślij</string>
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-pl/values.xml -->
     <eat-comment/>
     <string name="tw__loading_tweet">Wczytywanie tweeta</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.3.2/res/values-pl/values.xml -->
-    <eat-comment/>
-    <string name="tw__login_btn_txt">Zaloguj się przez Twittera</string>
-    <string name="tw__not_now_btn_txt">Nie teraz</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.1.0/res/values-pl/values.xml -->
-    <eat-comment/>
     <string name="tw__relative_date_format_long">d.MM.y</string>
     <string name="tw__relative_date_format_short">d MMM</string>
-    <string name="tw__retweeted_by_format">Podane dalej przez %1$s</string>
     <string name="tw__share_content_format">Zobacz tweet od \@%1$s\: https://twitter.com/%1$s/status/%2$s</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.3.2/res/values-pl/values.xml -->
-    <eat-comment/>
-    <string name="tw__share_email_desc">Otrzymasz aktualizacje i inne informacje od %1$s, jeśli zezwolisz im na dostęp do Twojego adresu e-mail na swoim koncie na Twitterze \@%2$s</string>
-    <string name="tw__share_email_title">Udostępnij swój adres e-mail</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.1.0/res/values-pl/values.xml -->
-    <eat-comment/>
     <string name="tw__share_subject_format">Tweet od użytkownika %1$s (\@%2$s)</string>
     <string name="tw__share_tweet">Udostępnij tweet</string>
     <string name="tw__tweet_content_description">%1$s. %2$s. %3$s.</string>

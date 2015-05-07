@@ -1,6 +1,7 @@
 package com.nexchanges.hailyo;
 
 import android.app.Application;
+import com.crashlytics.android.Crashlytics;
 import com.parse.Parse;
 import com.twitter.sdk.android.Twitter;
 import com.twitter.sdk.android.core.TwitterAuthConfig;
@@ -21,7 +22,7 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
-        Fabric.with(this, new Twitter(authConfig));
+        Fabric.with(this, new Twitter(authConfig), new Crashlytics());
 
         Parse.enableLocalDatastore(this);
         Parse.initialize(this, "oH91zJa39ixjVYKNPHl4vpKRdW27NwEFrzSF8j2o", "jaLWrQ34xPUwYc0iUZuXdONI8ZwGCCnyh1fbdwyY");

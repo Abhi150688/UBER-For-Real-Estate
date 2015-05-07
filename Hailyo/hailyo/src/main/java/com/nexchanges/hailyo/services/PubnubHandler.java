@@ -102,7 +102,7 @@ public class PubnubHandler {
     }
 
     public void unsubscribe() {
-        pubnub.unsubscribe(GLOBAL_CHANNEL);
+        pubnub.unsubscribe("demo_tutorial");
     }
 
     public void publish(String message) {
@@ -117,7 +117,7 @@ public class PubnubHandler {
                 notifyUser("Something went wrong. Try again.");
             }
         };
-        pubnub.publish(GLOBAL_CHANNEL, message , callback);
+        pubnub.publish("demo_tutorial", message , callback);
 
 
     }

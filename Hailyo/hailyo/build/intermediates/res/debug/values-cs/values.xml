@@ -33,10 +33,7 @@
     <string msgid="9071884888741449141" name="common_signin_button_text">"Přihlásit se"</string>
     <string msgid="2429381841831957106" name="common_signin_button_text_long">"Přihlásit se účtem Google"</string>
     <string msgid="5000919058582214855" name="commono_google_play_services_api_unavailable_text">"Tato aplikace vyžaduje jednu nebo více služeb Google Play, které aktuálně nejsou k dispozici. S žádostí o pomoc se obraťte na vývojáře."</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.3.2/res/values-cs/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.0.0/res/values-cs/values.xml -->
     <eat-comment/>
-    <string name="tw__allow_btn_txt">Povolit</string>
-    <string name="tw__not_now_btn_txt">Nepovolit</string>
-    <string name="tw__share_email_desc">Když uživateli %1$s povolíte přístup k e-mailové adrese ve svém účtu na Twitteru \@%2$s, budete od něj dostávat novinky a další informace.</string>
-    <string name="tw__share_email_title">Sdílejte svou e-mailovou adresu</string>
+    <string name="messenger_send_button_text">Odeslat</string>
 </resources>

@@ -31,6 +31,9 @@
     <string name="action_example">Example action</string>
 
     <string name="action_settings">Settings</string>
+    <string name="toast_twitter_signin_fail">It was not possible to Sign in with Twitter, try again later</string>
+    <string name="toast_twitter_digits_fail">It was not possible to Sign up with your Phone, try again later</string>
+
 
 
 </resources>

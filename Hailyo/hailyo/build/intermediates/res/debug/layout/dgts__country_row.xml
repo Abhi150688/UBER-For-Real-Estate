@@ -7,4 +7,4 @@
     android:gravity="center_vertical"
     android:padding="@dimen/dgts__padding_title"
     android:textAppearance="?android:attr/textAppearanceMedium"
-    /><!-- From: file:/Users/android/workspace/jenkins/workspace/fabric-android-deploy-to-staging/sdk/kits/digits/src/main/res/layout/dgts__country_row.xml --><!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.4.0/res/layout/dgts__country_row.xml -->
+    /><!-- From: file:/Users/android/workspace/jenkins/workspace/fabric-android-deploy-to-staging/sdk/kits/digits/src/main/res/layout/dgts__country_row.xml --><!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.2.0/res/layout/dgts__country_row.xml -->

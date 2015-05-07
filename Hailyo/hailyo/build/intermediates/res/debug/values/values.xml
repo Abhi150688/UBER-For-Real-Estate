@@ -1,12 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.4.0/res/values/values.xml -->
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.2.0/res/values/values.xml -->
     <eat-comment/>
     <attr format="reference|color" name="dgts__accentColor"/>
     <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/src/main/res/values/color.xml -->
     <eat-comment/>
     <color name="black">#000000</color>
     <color name="blue_sky">#33b5e5</color>
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.0.0/res/values/values.xml -->
+    <eat-comment/>
+    <color name="com_facebook_blue">#3B5998</color>
+    <color name="com_facebook_button_background_color">#415dae</color>
+    <color name="com_facebook_button_background_color_disabled">#bdc1c9</color>
+    <color name="com_facebook_button_background_color_pressed">#2f477a</color>
+    <color name="com_facebook_button_like_background_color_selected">#7c8fc8</color>
+    <color name="com_facebook_button_login_silver_background_color">#f4f6f8</color>
+    <color name="com_facebook_button_login_silver_background_color_pressed">#e9eaf0</color>
+    <color name="com_facebook_button_send_background_color">#0084ff</color>
+    <color name="com_facebook_button_send_background_color_pressed">#006fff</color>
+    <color name="com_facebook_likeboxcountview_border_color">#6a7180</color>
+    <color name="com_facebook_likeboxcountview_text_color">#6a7180</color>
+    <color name="com_facebook_likeview_text_color">#6a7180</color>
+    <color name="com_facebook_share_button_text_color">#FFFFFF</color>
     <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.0.0/res/values/common_colors.xml -->
     <eat-comment/>
     <color name="common_action_bar_splitter">#d2d2d2</color>
@@ -19,7 +34,7 @@
     <color name="common_signin_btn_light_text_disabled">#FFAAAAAA</color>
     <color name="common_signin_btn_light_text_focused">#FF737373</color>
     <color name="common_signin_btn_light_text_pressed">@android:color/white</color>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.4.0/res/values/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.2.0/res/values/values.xml -->
     <eat-comment/>
     <color name="dgts__default_accent">#5baaf4</color>
     <color name="dgts__default_logo_name">#56626d</color>
@@ -60,7 +75,7 @@
     <color name="theme_red_light">#e74c3c</color>
     <color name="theme_yellow">#FFDC00</color>
     <color name="transparent">#00000000</color>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.3.2/res/values/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.3.0/res/values/values.xml -->
     <eat-comment/>
     <color name="tw__blue_default">#FF5BAAF4</color>
     <color name="tw__blue_pressed">#FF4186C8</color>
@@ -69,7 +84,7 @@
     <color name="tw__medium_gray">#8899a6</color>
     <color name="tw__solid_white">#FFFFFFFF</color>
     <color name="tw__transparent">#00000000</color>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.1.0/res/values/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values/values.xml -->
     <eat-comment/>
     <color name="tw__tweet_action_color">#55acee</color>
     <color name="tw__tweet_container_border">#1a000000</color>
@@ -106,13 +121,37 @@
     <declare-styleable name="StyledDialogs"><attr format="reference" name="sdlDialogStyle"/><attr format="reference" name="sdlTitleTextStyle"/><attr format="reference" name="sdlMessageTextStyle"/></declare-styleable>
     <declare-styleable name="WalletFragmentOptions"><attr format="enum" name="appTheme"><enum name="holo_dark" value="0"/><enum name="holo_light" value="1"/></attr><attr format="enum" name="environment"><enum name="production" value="1"/><enum name="sandbox" value="0"/><enum name="strict_sandbox" value="2"/></attr><attr format="reference" name="fragmentStyle"/><attr format="enum" name="fragmentMode"><enum name="buyButton" value="1"/><enum name="selectionDetails" value="2"/></attr></declare-styleable>
     <declare-styleable name="WalletFragmentStyle"><attr format="dimension" name="buyButtonHeight"><enum name="match_parent" value="-1"/><enum name="wrap_content" value="-2"/></attr><attr format="dimension" name="buyButtonWidth"><enum name="match_parent" value="-1"/><enum name="wrap_content" value="-2"/></attr><attr format="enum" name="buyButtonText"><enum name="buy_with_google" value="1"/><enum name="buy_now" value="2"/><enum name="book_now" value="3"/><enum name="donate_with_google" value="4"/></attr><attr format="enum" name="buyButtonAppearance"><enum name="classic" value="1"/><enum name="grayscale" value="2"/><enum name="monochrome" value="3"/></attr><attr format="reference" name="maskedWalletDetailsTextAppearance"/><attr format="reference" name="maskedWalletDetailsHeaderTextAppearance"/><attr format="reference|color" name="maskedWalletDetailsBackground"/><attr format="reference" name="maskedWalletDetailsButtonTextAppearance"/><attr format="reference|color" name="maskedWalletDetailsButtonBackground"/><attr format="color" name="maskedWalletDetailsLogoTextColor"/><attr format="enum" name="maskedWalletDetailsLogoImageType"><enum name="classic" value="1"/><enum name="monochrome" value="2"/></attr></declare-styleable>
+    <declare-styleable name="com_facebook_like_view"><attr format="color" name="foreground_color"/><attr format="string" name="object_id"/><attr name="object_type"><enum name="unknown" value="0"/><enum name="open_graph" value="1"/><enum name="page" value="2"/></attr><attr name="style"><enum name="standard" value="0"/><enum name="button" value="1"/><enum name="box_count" value="2"/></attr><attr name="auxiliary_view_position"><enum name="bottom" value="0"/><enum name="inline" value="1"/><enum name="top" value="2"/></attr><attr name="horizontal_alignment"><enum name="center" value="0"/><enum name="left" value="1"/><enum name="right" value="2"/></attr></declare-styleable>
+    <declare-styleable name="com_facebook_login_view"><attr format="boolean" name="confirm_logout"/><attr format="string" name="login_text"/><attr format="string" name="logout_text"/></declare-styleable>
+    <declare-styleable name="com_facebook_profile_picture_view"><attr name="preset_size"><enum name="small" value="-2"/><enum name="normal" value="-3"/><enum name="large" value="-4"/></attr><attr format="boolean" name="is_cropped"/></declare-styleable>
     <declare-styleable name="tw__AspectRatioImageView"><attr format="float" name="tw__image_aspect_ratio"/><attr format="enum" name="tw__image_dimension_to_adjust"><enum name="height" value="0"/><enum name="width" value="1"/></attr></declare-styleable>
     <declare-styleable name="tw__TweetView"><attr format="string" name="tw__tweet_id"/><attr format="color" name="tw__container_bg_color"/><attr format="color" name="tw__primary_text_color"/><attr format="color" name="tw__action_color"/></declare-styleable>
     <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.4.0/res/values/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.0.0/res/values/values.xml -->
+    <eat-comment/>
+    <dimen name="com_facebook_likeboxcountview_border_radius">3dp</dimen>
+    <dimen name="com_facebook_likeboxcountview_border_width">1dp</dimen>
+    <dimen name="com_facebook_likeboxcountview_caret_height">3dp</dimen>
+    <dimen name="com_facebook_likeboxcountview_caret_width">6dp</dimen>
+    <dimen name="com_facebook_likeboxcountview_text_padding">6dp</dimen>
+    <dimen name="com_facebook_likeboxcountview_text_size">11.0sp</dimen>
+    <dimen name="com_facebook_likeview_edge_padding">2dp</dimen>
+    <dimen name="com_facebook_likeview_internal_padding">6dp</dimen>
+    <dimen name="com_facebook_likeview_text_size">11.0sp</dimen>
+    <dimen name="com_facebook_profilepictureview_preset_size_large">180dp</dimen>
+    <dimen name="com_facebook_profilepictureview_preset_size_normal">100dp</dimen>
+    <dimen name="com_facebook_profilepictureview_preset_size_small">50dp</dimen>
+    <dimen name="com_facebook_share_button_compound_drawable_padding">12dp</dimen>
+    <dimen name="com_facebook_share_button_padding_bottom">12dp</dimen>
+    <dimen name="com_facebook_share_button_padding_left">12dp</dimen>
+    <dimen name="com_facebook_share_button_padding_right">16dp</dimen>
+    <dimen name="com_facebook_share_button_padding_top">12dp</dimen>
+    <dimen name="com_facebook_share_button_text_size">16.0sp</dimen>
+    <dimen name="com_facebook_tooltip_horizontal_padding">10dp</dimen>
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.2.0/res/values/values.xml -->
     <eat-comment/>
     <dimen name="dgts__country_code_margin_bottom">1dp</dimen>
     <dimen name="dgts__margin_bottom">16dp</dimen>
@@ -157,11 +196,11 @@
     <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="navigation_drawer_width">240dp</dimen>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.3.2/res/values/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.3.0/res/values/values.xml -->
     <eat-comment/>
     <dimen name="tw__btn_bar_margin_left">8dp</dimen>
     <dimen name="tw__btn_bar_margin_right">8dp</dimen>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.1.0/res/values/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values/values.xml -->
     <eat-comment/>
     <dimen name="tw__compact_tweet_attribution_line_margin_right">36dp</dimen>
     <dimen name="tw__compact_tweet_avatar_margin_left">12dp</dimen>
@@ -176,10 +215,6 @@
     <dimen name="tw__compact_tweet_media_margin_bottom">3dp</dimen>
     <dimen name="tw__compact_tweet_media_margin_right">12dp</dimen>
     <dimen name="tw__compact_tweet_media_margin_top">7dp</dimen>
-    <dimen name="tw__compact_tweet_retweeted_by_drawable_padding">7dp</dimen>
-    <dimen name="tw__compact_tweet_retweeted_by_margin_bottom">0dp</dimen>
-    <dimen name="tw__compact_tweet_retweeted_by_margin_left">-25dp</dimen>
-    <dimen name="tw__compact_tweet_retweeted_by_margin_top">0dp</dimen>
     <dimen name="tw__compact_tweet_screen_name_layout_width">0dp</dimen>
     <dimen name="tw__compact_tweet_screen_name_margin_bottom">0dp</dimen>
     <dimen name="tw__compact_tweet_screen_name_margin_top">0dp</dimen>
@@ -195,13 +230,13 @@
     <dimen name="tw__login_btn_radius">5dp</dimen>
     <dimen name="tw__login_btn_right_padding">12dp</dimen>
     <dimen name="tw__login_btn_text_size">14sp</dimen>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.3.2/res/values/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.3.0/res/values/values.xml -->
     <eat-comment/>
     <dimen name="tw__padding_permission_horizontal_container">24dp</dimen>
     <dimen name="tw__padding_permission_vertical_container">24dp</dimen>
     <dimen name="tw__permission_description_text_size">16sp</dimen>
     <dimen name="tw__permission_title_text_size">24sp</dimen>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.1.0/res/values/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values/values.xml -->
     <eat-comment/>
     <dimen name="tw__text_size_large">16dp</dimen>
     <dimen name="tw__text_size_medium">14dp</dimen>
@@ -216,10 +251,6 @@
     <dimen name="tw__tweet_full_name_margin_top">15dp</dimen>
     <dimen name="tw__tweet_logo_margin_right">20dp</dimen>
     <dimen name="tw__tweet_logo_margin_top">18dp</dimen>
-    <dimen name="tw__tweet_retweeted_by_drawable_padding">3dp</dimen>
-    <dimen name="tw__tweet_retweeted_by_margin_bottom">-10dp</dimen>
-    <dimen name="tw__tweet_retweeted_by_margin_left">20dp</dimen>
-    <dimen name="tw__tweet_retweeted_by_margin_top">10dp</dimen>
     <dimen name="tw__tweet_screen_name_margin_bottom">1dp</dimen>
     <dimen name="tw__tweet_screen_name_margin_top">-4dp</dimen>
     <dimen name="tw__tweet_share_extra_bottom_margin">2dp</dimen>
@@ -248,7 +279,7 @@
     <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.0.0/res/values/version.xml -->
     <eat-comment/>
     <integer name="google_play_services_version">7095000</integer>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.1.0/res/values/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values/values.xml -->
     <eat-comment/>
     <plurals name="tw__time_hours">
         <item quantity="one">1h</item>
@@ -281,6 +312,24 @@
     <string name="cancel">Cancel</string>
     <string name="card">Card</string>
     <string name="cash">Cash</string>
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.0.0/res/values/values.xml -->
+    <eat-comment/>
+    <string name="com_facebook_image_download_unknown_error">Unexpected error while downloading an image.</string>
+    <string name="com_facebook_internet_permission_error_message">WebView login requires INTERNET permission</string>
+    <string name="com_facebook_internet_permission_error_title">AndroidManifest Error</string>
+    <string name="com_facebook_like_button_liked">Liked</string>
+    <string name="com_facebook_like_button_not_liked">Like</string>
+    <string name="com_facebook_loading">Loading...</string>
+    <string name="com_facebook_loginview_cancel_action">Cancel</string>
+    <string name="com_facebook_loginview_log_in_button">Log in</string>
+    <string name="com_facebook_loginview_log_in_button_long">Log in with Facebook</string>
+    <string name="com_facebook_loginview_log_out_action">Log out</string>
+    <string name="com_facebook_loginview_log_out_button">Log out</string>
+    <string name="com_facebook_loginview_logged_in_as">Logged in as: %1$s</string>
+    <string name="com_facebook_loginview_logged_in_using_facebook">Logged in using Facebook</string>
+    <string name="com_facebook_send_button_text">Send</string>
+    <string name="com_facebook_share_button_text">Share</string>
+    <string name="com_facebook_tooltip_default">New! You\'re in control - choose what info you want to share with apps.</string>
     <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.0.0/res/values/common_strings.xml -->
     <eat-comment/>
     <string name="common_android_wear_notification_needs_update_text">An application requires an update to the Android Wear app.</string>
@@ -320,8 +369,10 @@ available. Please contact the developer for assistance.</string>
     <string name="create_calendar_message">Allow Ad to create a calendar event?</string>
     <string name="create_calendar_title">Create calendar event</string>
     <string name="decline">Decline</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.4.0/res/values/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.2.0/res/values/values.xml -->
     <eat-comment/>
+    <string name="dgts__associated_with_twitter_error">Number associated with Twitter account</string>
+    <string name="dgts__associated_with_twitter_error_alternative">Your number is already associated with a Twitter account.</string>
     <string name="dgts__cancel">Cancel</string>
     <string name="dgts__communication_error">Communication Error</string>
     <string name="dgts__confirmation_code">Confirmation code</string>
@@ -334,7 +385,7 @@ available. Please contact the developer for assistance.</string>
     <string name="dgts__confirmation_sending_text">Sending confirmation code</string>
     <string name="dgts__confirmation_sent_text">Sent confirmation code</string>
     <string name="dgts__confirmation_sms">Confirmation code: %1$s. Enter this code in %2$s</string>
-    <string name="dgts__country_spinner_format" translatable="false">%1$s +%2$d</string>
+    <string name="dgts__country_spinner_format">%1$s +%2$d</string>
     <string name="dgts__create_account_text">Create account</string>
     <string name="dgts__creating_account_text">Creating account</string>
     <string name="dgts__digits_logo_desc">digits logo icon</string>
@@ -357,14 +408,14 @@ available. Please contact the developer for assistance.</string>
     <string name="dgts__sign_in_twitter">Sign in with Twitter</string>
     <string name="dgts__signing_in">Signing in</string>
     <string name="dgts__success_desc">Success Icon</string>
-    <string name="dgts__terms_text">By tapping %1$sSend confirmation code%1$s above, <u>Digits by Twitter</u>, will send you a SMS message to confirm your phone number.</string>
-    <string name="dgts__terms_text_create">By tapping %1$sCreate account%1$s above, you agree to the <u>Terms of Service</u>, <u>Privacy Policy</u>, and <u>Cookies Policy</u> of Digits by Twitter, and that other users of this app can discover you by phone number and/or email.</string>
-    <string name="dgts__terms_text_sign_in">By tapping %1$sSign in%1$s above, you agree to the updated <u>Terms of Service</u>, <u>Privacy Policy</u>, and <u>Cookies Policy</u> of Digits by Twitter, and that other users of %1$s can discover you by phone number and/or email.</string>
+    <string name="dgts__terms_text">By tapping \"Send confirmation code\" above, <u>Digits by Twitter</u>, will send you a SMS message to confirm your phone number.</string>
+    <string name="dgts__terms_text_create">By tapping \"Create account\" above, you agree to the <u>Terms of Service</u>, <u>Privacy Policy</u>, and <u>Cookies Policy</u> of Digits by Twitter, and that other users of this app can discover you by phone number and/or email.</string>
+    <string name="dgts__terms_text_create_app">By tapping \"Create account\" above, you agree to the <u>Terms of Service</u>, <u>Privacy Policy</u>, and <u>Cookies Policy</u> of Digits by Twitter, and that other users of %1$s can discover you by phone number and/or email.</string>
     <string name="dgts__try_again">Try Again</string>
     <string name="dgts__try_again_confirmation">Please check your code and try again.</string>
     <string name="dgts__try_again_phone_number">Please check your number and try again.</string>
     <string name="dgts__try_another_phone">Try a different phone number</string>
-    <string name="dgts__upload_contacts">We use Digits by Twitter to find more of your friends who use this app. When you tap Okay, we\'ll upload your address book to Digits by Twitter so that we can help you find users of %1$s that you know or help other users of %1$s find you.</string>
+    <string name="dgts__upload_contacts">We use Digits by Twitter to find more of your friends who use this app. When you tap Okay, we\'ll upload your address book to Digits by Twitter and enable other users of our app to discover you.</string>
     <string name="dgts__verification_code">Verification code</string>
     <string name="dgts_pin_code_terms">You have previously set a 2-step verification code on digits.com</string>
     <string name="dgts_verify">Verify</string>
@@ -386,9 +437,12 @@ available. Please contact the developer for assistance.</string>
     <eat-comment/>
     <string name="from">From</string>
     <string name="home">Home</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.3.2/res/values/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.3.0/res/values/values.xml -->
     <eat-comment/>
     <string name="kit_name">Twitter</string>
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.0.0/res/values/values.xml -->
+    <eat-comment/>
+    <string name="messenger_send_button_text">Send</string>
     <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -419,28 +473,29 @@ available. Please contact the developer for assistance.</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
     <string name="to">To</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.3.2/res/values/values.xml -->
+    <string name="toast_twitter_digits_fail">It was not possible to Sign up with your Phone, try again later</string>
+    <string name="toast_twitter_signin_fail">It was not possible to Sign in with Twitter, try again later</string>
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.3.0/res/values/values.xml -->
     <eat-comment/>
     <string name="tw__allow_btn_txt">Allow</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.1.0/res/values/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values/values.xml -->
     <eat-comment/>
     <string name="tw__loading_tweet">Loading Tweet</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.3.2/res/values/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.3.0/res/values/values.xml -->
     <eat-comment/>
     <string name="tw__login_btn_txt">Log in with Twitter</string>
     <string name="tw__not_now_btn_txt">Not now</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.1.0/res/values/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values/values.xml -->
     <eat-comment/>
     <string name="tw__relative_date_format_long">MM/dd/yy</string>
     <string name="tw__relative_date_format_short">MMM dd</string>
-    <string name="tw__retweeted_by_format">Retweeted by %1$s</string>
     <string name="tw__share_content_format">Check out @%1$s\'s Tweet: https://twitter.com/%1$s/status/%2$s</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.3.2/res/values/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.3.0/res/values/values.xml -->
     <eat-comment/>
     <string name="tw__share_email_desc">Get updates and other information from %1$s when you allow
         them access to your email on your Twitter account \@%2$s</string>
     <string name="tw__share_email_title">Share your email address</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.1.0/res/values/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values/values.xml -->
     <eat-comment/>
     <string name="tw__share_subject_format">Tweet from %1$s (@%2$s)</string>
     <string name="tw__share_tweet">Share Tweet</string>
@@ -454,6 +509,18 @@ available. Please contact the developer for assistance.</string>
     </style>
     <style name="AppTheme" parent="AppBaseTheme">
         <item name="sdlDialogStyle">@style/DialogStyleLight.Custom</item>
+    </style>
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/src/main/res/style/Theme_Material.xml -->
+    <eat-comment/>
+    <style name="CustomDigitsTheme" parent="android:Theme.Holo.Light">
+        <item name="android:textColorPrimary">
+            @android:color/black</item>
+        <item name="android:textColorSecondary">
+            @android:color/darker_gray</item>
+        <item name="android:windowBackground">
+            @android:color/white</item>
+        <item name="android:textColorLink">#ff398622</item>
+        <item name="dgts__accentColor">#ff398622</item>
     </style>
     <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/Hailyo/stylishDialogLib/unspecified/res/values/values.xml -->
     <eat-comment/>
@@ -486,11 +553,71 @@ available. Please contact the developer for assistance.</string>
 		<item name="titleSeparatorColor">@color/theme_yellow</item>
 		<item name="titleTextColor">@color/gray_dk</item>
 	</style>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.4.0/res/values/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.2.0/res/values/values.xml -->
     <eat-comment/>
     <style name="Digits_default" parent="@android:style/Theme.Light">
         <item name="dgts__accentColor">@color/dgts__default_accent</item>
     </style>
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.0.0/res/values/values.xml -->
+    <eat-comment/>
+    <style name="MessengerButton">
+    <item name="android:clickable">true</item>
+  </style>
+    <style name="MessengerButton.Blue">
+    <item name="android:background">@drawable/messenger_button_blue_bg_selector</item>
+  </style>
+    <style name="MessengerButton.Blue.Large">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">44dp</item>
+    <item name="android:layout_marginLeft">16dp</item>
+    <item name="android:layout_marginRight">16dp</item>
+  </style>
+    <style name="MessengerButton.Blue.Small">
+    <item name="android:layout_width">158dp</item>
+    <item name="android:layout_height">36dp</item>
+  </style>
+    <style name="MessengerButton.White">
+    <item name="android:background">@drawable/messenger_button_white_bg_selector</item>
+  </style>
+    <style name="MessengerButton.White.Large">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">44dp</item>
+    <item name="android:layout_marginLeft">16dp</item>
+    <item name="android:layout_marginRight">16dp</item>
+  </style>
+    <style name="MessengerButton.White.Small">
+    <item name="android:layout_width">158dp</item>
+    <item name="android:layout_height">36dp</item>
+  </style>
+    <style name="MessengerButtonText">
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:layout_gravity">center</item>
+    <item name="android:drawablePadding">4dp</item>
+    <item name="android:gravity">center</item>
+    <!--suppress NewApi -->
+    <item name="android:textAllCaps">true</item>
+    <item name="android:textSize">14sp</item>
+    <item name="android:textStyle">bold</item>
+  </style>
+    <style name="MessengerButtonText.Blue">
+    <item name="android:textColor">#ffffff</item>
+  </style>
+    <style name="MessengerButtonText.Blue.Large">
+    <item name="android:drawableLeft">@drawable/messenger_bubble_large_white</item>
+  </style>
+    <style name="MessengerButtonText.Blue.Small">
+    <item name="android:drawableLeft">@drawable/messenger_bubble_small_white</item>
+  </style>
+    <style name="MessengerButtonText.White">
+    <item name="android:textColor">#0084ff</item>
+  </style>
+    <style name="MessengerButtonText.White.Large">
+    <item name="android:drawableLeft">@drawable/messenger_bubble_large_blue</item>
+  </style>
+    <style name="MessengerButtonText.White.Small">
+    <item name="android:drawableLeft">@drawable/messenger_bubble_small_blue</item>
+  </style>
     <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/Hailyo/stylishDialogLib/unspecified/res/values/values.xml -->
     <eat-comment/>
     <style name="SDL"/>
@@ -654,11 +781,46 @@ available. Please contact the developer for assistance.</string>
         <item name="maskedWalletDetailsLogoTextColor">@color/wallet_bright_foreground_holo_dark</item>
         <item name="maskedWalletDetailsLogoImageType">classic</item>
     </style>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.4.0/res/values/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.0.0/res/values/values.xml -->
+    <eat-comment/>
+    <style name="com_facebook_button" parent="@android:style/Widget.Button">
+        <item name="android:background">@drawable/com_facebook_button_background</item>
+        <item name="android:drawablePadding">6dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:paddingTop">5dp</item>
+        <item name="android:textColor">#ffffff</item>
+        <item name="android:textSize">14.0dp</item>
+    </style>
+    <style name="com_facebook_button_like" parent="com_facebook_button">
+        <item name="android:background">@drawable/com_facebook_button_like_background</item>
+    </style>
+    <style name="com_facebook_button_send" parent="com_facebook_button">
+        <item name="android:background">@drawable/com_facebook_button_send_background</item>
+        <item name="android:drawableLeft">@drawable/com_facebook_button_send_icon</item>
+        <item name="android:text">@string/com_facebook_send_button_text</item>
+    </style>
+    <style name="com_facebook_button_share" parent="com_facebook_button">
+        <item name="android:drawableLeft">@drawable/com_facebook_button_icon</item>
+        <item name="android:text">@string/com_facebook_share_button_text</item>
+    </style>
+    <style name="com_facebook_loginview_default_style" parent="com_facebook_button">
+        <item name="android:drawableLeft">@drawable/com_facebook_button_icon</item>
+    </style>
+    <style name="com_facebook_loginview_silver_style" parent="com_facebook_loginview_default_style">
+        <item name="android:background">@drawable/com_facebook_button_login_silver_background</item>
+        <item name="android:drawableLeft">@null</item>
+        <item name="android:textColor">#4b5164</item>
+    </style>
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.2.0/res/values/values.xml -->
     <eat-comment/>
     <style name="dgts__ButtonText">
         <item name="android:textAppearance">?android:attr/textAppearanceButton</item>
         <item name="android:textSize">@dimen/tw__login_btn_text_size</item>
+        <item name="android:paddingLeft">@dimen/tw__login_btn_left_padding</item>
+        <item name="android:paddingRight">@dimen/tw__login_btn_right_padding</item>
     </style>
     <style name="dgts__Container">
         <item name="android:paddingLeft">@dimen/dgts__padding_container</item>
@@ -684,7 +846,17 @@ available. Please contact the developer for assistance.</string>
         <item name="android:paddingBottom">5dp</item>
         <item name="android:textColor">@color/tab_color</item>
     </style>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.1.0/res/values/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.0.0/res/values/values.xml -->
+    <eat-comment/>
+    <style name="tooltip_bubble_text">
+	    <item name="android:textColor">@android:color/white</item>
+	    <item name="android:gravity">left</item>
+	    <item name="android:textSize">12sp</item>
+	    <item name="android:shadowDy">-1</item>
+	    <item name="android:shadowRadius">0.25</item>
+	    <item name="android:shadowColor">#40000000</item>
+    </style>
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values/values.xml -->
     <eat-comment/>
     <style name="tw__AttributionText" ns1:ignore="NewApi">
         <item name="android:layout_width">wrap_content</item>
@@ -693,7 +865,7 @@ available. Please contact the developer for assistance.</string>
         <item name="android:fontFamily">sans-serif</item>
         <item name="android:singleLine">true</item>
     </style>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.3.2/res/values/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.3.0/res/values/values.xml -->
     <eat-comment/>
     <style name="tw__Button">
         <item name="android:background">@drawable/tw__login_btn</item>
@@ -713,7 +885,7 @@ available. Please contact the developer for assistance.</string>
         <item name="android:paddingRight">0dp</item>
         <item name="android:paddingBottom">0dp</item>
     </style>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.1.0/res/values/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values/values.xml -->
     <eat-comment/>
     <style name="tw__CompactAttributionLine" ns1:ignore="NewApi">
         <item name="android:layout_width">wrap_content</item>
@@ -726,7 +898,7 @@ available. Please contact the developer for assistance.</string>
         <item name="android:paddingTop">@dimen/tw__compact_tweet_container_padding_top</item>
         <item name="android:paddingBottom">@dimen/tw__compact_tweet_container_padding_bottom</item>
     </style>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.3.2/res/values/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.3.0/res/values/values.xml -->
     <eat-comment/>
     <style name="tw__Permission_Container">
         <item name="android:paddingLeft">@dimen/tw__padding_permission_horizontal_container</item>
@@ -744,7 +916,7 @@ available. Please contact the developer for assistance.</string>
         <item name="android:layout_marginBottom">5dp</item>
         <item name="android:layout_marginTop">30dp</item>
     </style>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.1.0/res/values/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values/values.xml -->
     <eat-comment/>
     <style name="tw__TweetAction" ns1:ignore="NewApi">
         <item name="android:layout_width">wrap_content</item>
@@ -815,27 +987,6 @@ available. Please contact the developer for assistance.</string>
         <item name="android:layout_marginRight">@dimen/tw__compact_tweet_media_margin_right</item>
         <item name="tw__image_aspect_ratio">@dimen/tw__compact_tweet_media_aspect_ratio</item>
         <item name="tw__image_dimension_to_adjust">height</item>
-    </style>
-    <style name="tw__TweetRetweetedBy" ns1:ignore="NewApi">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">@dimen/tw__tweet_retweeted_by_margin_top</item>
-        <item name="android:layout_marginLeft">@dimen/tw__tweet_retweeted_by_margin_left</item>
-        <item name="android:layout_marginBottom">@dimen/tw__tweet_retweeted_by_margin_bottom</item>
-        <item name="android:drawableLeft">@drawable/tw__ic_retweet_light</item>
-        <item name="android:drawablePadding">@dimen/tw__tweet_retweeted_by_drawable_padding</item>
-        <item name="android:textSize">@dimen/tw__text_size_medium</item>
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="android:focusable">false</item>
-        <item name="android:singleLine">true</item>
-        <item name="android:ellipsize">end</item>
-        <item name="android:visibility">gone</item>
-    </style>
-    <style name="tw__TweetRetweetedBy.Compact">
-        <item name="android:layout_marginLeft">@dimen/tw__compact_tweet_retweeted_by_margin_left</item>
-        <item name="android:layout_marginBottom">@dimen/tw__compact_tweet_retweeted_by_margin_bottom</item>
-        <item name="android:layout_marginTop">@dimen/tw__compact_tweet_retweeted_by_margin_top</item>
-        <item name="android:drawablePadding">@dimen/tw__compact_tweet_retweeted_by_drawable_padding</item>
     </style>
     <style name="tw__TweetScreenName" ns1:ignore="NewApi" parent="tw__AttributionText">
         <item name="android:layout_marginTop">@dimen/tw__tweet_screen_name_margin_top</item>

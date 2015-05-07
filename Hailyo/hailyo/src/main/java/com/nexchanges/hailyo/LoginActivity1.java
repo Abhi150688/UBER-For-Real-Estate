@@ -3,21 +3,38 @@ package com.nexchanges.hailyo;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import com.facebook.login.LoginManager;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
+import com.nexchanges.hailyo.ui.SessionRecorder;
 import com.parse.FindCallback;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
+import com.twitter.sdk.android.Twitter;
+import com.twitter.sdk.android.core.TwitterAuthToken;
+import com.twitter.sdk.android.core.identity.TwitterLoginButton;
+import android.content.Intent;
+import android.widget.Toast;
+import com.facebook.FacebookSdk;
+import com.twitter.sdk.android.core.Callback;
+import com.twitter.sdk.android.core.Result;
+import com.twitter.sdk.android.core.TwitterException;
+import com.twitter.sdk.android.core.TwitterSession;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
 import java.util.ArrayList;
@@ -26,6 +43,10 @@ import com.digits.sdk.android.AuthCallback;
 import com.digits.sdk.android.DigitsAuthButton;
 import com.digits.sdk.android.DigitsException;
 import com.digits.sdk.android.DigitsSession;
+import com.twitter.sdk.android.core.models.User;
+import com.facebook.FacebookSdk;
+import com.facebook.*;
+
 
 /**
  * Created by Abhishek on 28/04/15.
@@ -37,19 +58,125 @@ public class LoginActivity1 extends Activity {
  //   publicString phoneNumber;
     private TwitterLoginButton loginButton;
     private DigitsAuthButton d;
+    //CallbackManager callbackManager;
+
+    // Your Facebook APP ID
+    //private static String APP_ID = "1587256568190457"; // Replace your App ID here
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login1);
+        setUpViews();
+    }
 
+
+
+
+
+    private void setUpViews() {
+
+        setUpTwitterButton();
+        setUpDigitsButton();
+        //setupFb();
+    }
+
+   /* private void setupFb()
+    {
+        FacebookSdk.sdkInitialize(this.getApplicationContext());
+
+        callbackManager = CallbackManager.Factory.create();
+
+        LoginManager.getInstance().registerCallback(callbackManager,
+                new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+                        // App code
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        // App code
+                    }
+
+                    @Override
+                    public void onError(FacebookException exception) {
+                        // App code
+                    }
+                });
+    }*/
+
+
+    private void setUpTwitterButton() {
+        loginButton = (TwitterLoginButton) findViewById(R.id.twitter_login_button);
+        loginButton.setCallback(new Callback<TwitterSession>() {
+            @Override
+            public void success(Result<TwitterSession> result) {
+                SessionRecorder.recordSessionActive("Login: twitter account active", result.data);
+                final String username = result.data.getUserName();
+
+                final ParseUser user = new ParseUser();
+                user.setUsername(username);
+                user.setPassword("Fake Password");
+
+                // First query to check whether a ParseUser with
+                // the given phone number already exists or not
+                ParseQuery<ParseUser> query = ParseUser.getQuery();
+                query.whereEqualTo("username", username);
+
+                query.findInBackground(new FindCallback<ParseUser>() {
+                    @Override
+                    public void done(List<ParseUser> parseUsers, ParseException e) {
+
+                        if (e == null) {
+                            // Successful Query
+
+                            // User already exists ? then login
+                            if (parseUsers.size() > 0) {
+                                loginUser(username, "Fake Password");
+                            }
+                            else {
+                                // No user found, so signup
+                                signupUser(user);
+                            }
+                        }
+                        else {
+                            // Shit happened!
+                            AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity1.this);
+                            builder.setMessage(e.getMessage())
+                                    .setTitle("Oops-ZO!")
+                                    .setPositiveButton(android.R.string.ok, null);
+                            AlertDialog dialog = builder.create();
+                            dialog.show();
+                        }
+                    }
+                });
+
+                navigateToHome();
+
+
+            }
+
+            @Override
+            public void failure(TwitterException exception) {
+                Toast.makeText(getApplicationContext(),
+                        getResources().getString(R.string.toast_twitter_signin_fail),
+                        Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
+
+    private void setUpDigitsButton() {
         DigitsAuthButton digitsButton = (DigitsAuthButton) findViewById(R.id.auth_button);
 
         digitsButton.setCallback(new AuthCallback() {
             @Override
             public void success(DigitsSession session, final String phoneNumber) {
 
+                SessionRecorder.recordSessionActive("Login: digits account active", session);
                 // Create a ParseUser object to create a new user
                 final ParseUser user = new ParseUser();
                 user.setUsername(phoneNumber);
@@ -97,16 +224,17 @@ public class LoginActivity1 extends Activity {
 
             @Override
             public void failure(DigitsException exception) {
-                // Do something on failure
+                Toast.makeText(getApplicationContext(),
+                        getResources().getString(R.string.toast_twitter_digits_fail),
+                        Toast.LENGTH_SHORT).show();
+
             }
         });
 
 
+            } //end of SetupDigits.
 
 
-
-
-            } //end of oncreate.
 
     private void loginUser(String username, String password) {
         ParseUser.logInInBackground(username, password, new LogInCallback() {
@@ -187,6 +315,8 @@ public class LoginActivity1 extends Activity {
         return super.onOptionsItemSelected(item);
 
     }
+
+
 
     public void logout(){
         ParseUser.logOut();
