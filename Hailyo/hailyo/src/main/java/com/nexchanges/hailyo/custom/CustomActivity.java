@@ -43,8 +43,6 @@ public class CustomActivity extends FragmentActivity implements OnClickListener
 	@Override
 	public void onClick(View v)
 	{
-        Intent i = new Intent(this, MyService.class);
-        startService(i);
 
     }
 

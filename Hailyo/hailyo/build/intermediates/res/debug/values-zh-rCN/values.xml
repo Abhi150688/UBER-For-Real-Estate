@@ -14,6 +14,24 @@
         <item quantity="one">1秒</item>
         <item quantity="other">%d秒</item>
     </plurals>
+    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values-zh-rCN/values.xml -->
+    <eat-comment/>
+    <string msgid="4600421777120114993" name="abc_action_bar_home_description">"转到主屏幕"</string>
+    <string msgid="1397052879051804371" name="abc_action_bar_home_description_format">"%1$s：%2$s"</string>
+    <string msgid="6623331958280229229" name="abc_action_bar_home_subtitle_description_format">"%1$s - %2$s：%3$s"</string>
+    <string msgid="1594238315039666878" name="abc_action_bar_up_description">"转到上一层级"</string>
+    <string msgid="3588849162933574182" name="abc_action_menu_overflow_description">"更多选项"</string>
+    <string msgid="4076576682505996667" name="abc_action_mode_done">"完成"</string>
+    <string msgid="7468859129482906941" name="abc_activity_chooser_view_see_all">"查看全部"</string>
+    <string msgid="2031811694353399454" name="abc_activitychooserview_choose_application">"选择应用"</string>
+    <string msgid="3691816814315814921" name="abc_searchview_description_clear">"清除查询"</string>
+    <string msgid="2550479030709304392" name="abc_searchview_description_query">"搜索查询"</string>
+    <string msgid="8264924765203268293" name="abc_searchview_description_search">"搜索"</string>
+    <string msgid="8928215447528550784" name="abc_searchview_description_submit">"提交查询"</string>
+    <string msgid="893419373245838918" name="abc_searchview_description_voice">"语音搜索"</string>
+    <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"分享方式"</string>
+    <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"通过%s分享"</string>
+    <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"收起"</string>
     <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.0.0/res/values-zh-rCN/common_strings.xml -->
     <eat-comment/>
     <string msgid="473679118463211576" name="common_android_wear_notification_needs_update_text">"某个应用需要更新Android Wear应用才能正常运行。"</string>
@@ -86,9 +104,6 @@
     <string name="dgts__try_again_phone_number">请检查你的手机号码并重试。</string>
     <string name="dgts__try_another_phone">请尝试其他手机号码</string>
     <string name="dgts__upload_contacts">我们使用Twitter位数来查找更多你身边使用这个应用的朋友。当你请按「好的」，我们将在Twitter位数上传你的通讯录，并使我们的应用程序的其他用户能找到你。</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.0.0/res/values-zh-rCN/values.xml -->
-    <eat-comment/>
-    <string name="messenger_send_button_text">发送</string>
     <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-zh-rCN/values.xml -->
     <eat-comment/>
     <string name="tw__loading_tweet">加载推文</string>

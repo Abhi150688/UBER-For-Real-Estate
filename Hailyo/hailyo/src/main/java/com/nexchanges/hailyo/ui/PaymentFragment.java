@@ -1,6 +1,7 @@
 package com.nexchanges.hailyo.ui;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,5 +22,7 @@ public class PaymentFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_payment, container, false);
 
         return rootView;
-    }
+
+
+          }
 }

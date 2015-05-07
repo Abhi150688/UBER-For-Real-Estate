@@ -15,9 +15,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.facebook.login.LoginManager;
-import com.facebook.login.LoginResult;
-import com.facebook.login.widget.LoginButton;
 import com.nexchanges.hailyo.ui.SessionRecorder;
 import com.parse.FindCallback;
 import com.parse.LogInCallback;
@@ -30,7 +27,6 @@ import com.twitter.sdk.android.core.TwitterAuthToken;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 import android.content.Intent;
 import android.widget.Toast;
-import com.facebook.FacebookSdk;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.TwitterException;
@@ -44,8 +40,7 @@ import com.digits.sdk.android.DigitsAuthButton;
 import com.digits.sdk.android.DigitsException;
 import com.digits.sdk.android.DigitsSession;
 import com.twitter.sdk.android.core.models.User;
-import com.facebook.FacebookSdk;
-import com.facebook.*;
+
 
 
 /**

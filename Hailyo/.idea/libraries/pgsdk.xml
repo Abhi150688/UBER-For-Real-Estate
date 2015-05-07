@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="pgsdk">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/hailyo/libs/pgsdk.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

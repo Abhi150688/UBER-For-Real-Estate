@@ -34,6 +34,23 @@
     <string name="toast_twitter_signin_fail">It was not possible to Sign in with Twitter, try again later</string>
     <string name="toast_twitter_digits_fail">It was not possible to Sign up with your Phone, try again later</string>
 
+    <string name="merchant_id">Crypsi82771941768698</string>
+    <string name="merchant_key"> %6k\u0026fNAj1unwJw4V </string>
+    <string name="user_name">9711139557</string>
+    <string name="user_password">Paytm@198</string>
+
+    <string-array name="listItems">
+        <item>PAYMENT</item>
+        <item>HISTORY</item>
+        <item>HELP</item>
+        <item>PROMOTIONS</item>
+        <item>ABOUT</item>
+        <item>SETTINGS</item>
+    </string-array>
+
+
+    <string name="title_activity_select_payment_type">Payment Type</string>
+    <string name="title_activity_paytm_wallet">Paytm Wallet</string>
 
 
 </resources>
