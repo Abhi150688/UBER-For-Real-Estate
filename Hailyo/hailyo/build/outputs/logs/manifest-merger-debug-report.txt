@@ -378,34 +378,40 @@ ADDED from AndroidManifest.xml:63:9
 		ADDED from AndroidManifest.xml:65:13
 	android:name
 		ADDED from AndroidManifest.xml:64:13
-activity#com.nexchanges.hailyo.PaymentPopup
-ADDED from AndroidManifest.xml:69:9
-	android:windowSoftInputMode
-		ADDED from AndroidManifest.xml:73:13
+activity#com.nexchanges.hailyo.ui.SearchActivity
+ADDED from AndroidManifest.xml:68:9
 	android:screenOrientation
-		ADDED from AndroidManifest.xml:71:13
-	android:theme
-		ADDED from AndroidManifest.xml:72:13
-	android:name
 		ADDED from AndroidManifest.xml:70:13
-activity#com.nexchanges.hailyo.LoginActivity1
-ADDED from AndroidManifest.xml:75:9
+	android:name
+		ADDED from AndroidManifest.xml:69:13
+activity#com.nexchanges.hailyo.PaymentPopup
+ADDED from AndroidManifest.xml:73:9
 	android:windowSoftInputMode
-		ADDED from AndroidManifest.xml:79:13
-	android:label
-		ADDED from AndroidManifest.xml:78:13
-	android:name
+		ADDED from AndroidManifest.xml:77:13
+	android:screenOrientation
+		ADDED from AndroidManifest.xml:75:13
+	android:theme
 		ADDED from AndroidManifest.xml:76:13
+	android:name
+		ADDED from AndroidManifest.xml:74:13
+activity#com.nexchanges.hailyo.LoginActivity1
+ADDED from AndroidManifest.xml:80:9
+	android:windowSoftInputMode
+		ADDED from AndroidManifest.xml:84:13
+	android:label
+		ADDED from AndroidManifest.xml:83:13
+	android:name
+		ADDED from AndroidManifest.xml:81:13
 service#com.nexchanges.hailyo.services.MyService
-ADDED from AndroidManifest.xml:82:9
+ADDED from AndroidManifest.xml:87:9
 	android:name
-		ADDED from AndroidManifest.xml:82:18
+		ADDED from AndroidManifest.xml:87:18
 meta-data#io.fabric.ApiKey
-ADDED from AndroidManifest.xml:86:9
+ADDED from AndroidManifest.xml:91:9
 	android:name
-		ADDED from AndroidManifest.xml:87:13
+		ADDED from AndroidManifest.xml:92:13
 	android:value
-		ADDED from AndroidManifest.xml:88:13
+		ADDED from AndroidManifest.xml:93:13
 activity#com.digits.sdk.android.PhoneNumberActivity
 ADDED from com.digits.sdk.android:digits:1.2.0:12:9
 	android:windowSoftInputMode

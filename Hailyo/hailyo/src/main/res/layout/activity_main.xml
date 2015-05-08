@@ -45,14 +45,6 @@
         android:layout_gravity="top"
         android:id="@+id/search_bar">
 
-    <TextView
-        android:id="@+id/btnSearch"
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:background="@drawable/ic_search"
-
-        android:clickable="true" />
-
 
     <TextView
         android:id="@+id/SiteVisitLocation"
@@ -63,7 +55,24 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColor="#28b54c" />
 
-    <EditText
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:id="@+id/searchLocation">
+
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="20dp"
+                android:src="@drawable/search"/>
+
+
+
+            <TextView
         android:id="@+id/SiteVisitAddressBar"
         android:singleLine="true"
         android:layout_width="match_parent"
@@ -73,7 +82,7 @@
         android:layout_gravity="center_horizontal|top" />
 
     </LinearLayout>
-
+</LinearLayout>
     </FrameLayout>
     </LinearLayout>
     </FrameLayout>

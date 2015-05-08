@@ -1,14 +1,10 @@
 package com.nexchanges.hailyo;
 
-import android.app.ActionBar;
-import android.app.Fragment;
-import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.location.Location;
 import android.os.Bundle;
-import android.provider.Contacts;
 import android.support.v4.app.ActionBarDrawerToggle;
 
 import android.support.v4.view.GravityCompat;
@@ -16,13 +12,11 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -31,25 +25,12 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.nexchanges.hailyo.services.MyService;
-import com.nexchanges.hailyo.ui.AboutFragment;
 import com.nexchanges.hailyo.ui.CustomMapFragment;
 import com.nexchanges.hailyo.ui.GetCurrentLocation;
 import com.nexchanges.hailyo.ui.GetPlaceName;
-import com.nexchanges.hailyo.ui.HelpFragment;
-import com.nexchanges.hailyo.ui.HistoryFragment;
 import com.nexchanges.hailyo.ui.MapWrapperLayout;
-import com.nexchanges.hailyo.ui.PaymentFragment;
-import com.nexchanges.hailyo.ui.PromotionsFragment;
-import com.nexchanges.hailyo.ui.SettingsFragment;
-import com.parse.ParseObject;
+import com.nexchanges.hailyo.ui.SearchActivity;
 import com.parse.ParseUser;
-import com.nexchanges.hailyo.custom.CustomActivity;
-import com.nexchanges.hailyo.model.Feed;
-import com.nexchanges.hailyo.ui.LeftNavAdapter;
-import com.nexchanges.hailyo.ui.MainFragment;
-import com.nexchanges.hailyo.ui.RightNavAdapter;
-
-import java.util.ArrayList;
 
 /**
  * The Activity MainActivity will launched at the start of the app.
@@ -78,7 +59,7 @@ public class MainActivity extends ActionBarActivity
 
     GoogleMap map;
     LinearLayout searchLocation;
-    EditText SiteVisitAddressBar;
+    TextView SiteVisitAddressBar;
 
     LatLng currentLocation;
 
@@ -92,6 +73,19 @@ public class MainActivity extends ActionBarActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = this;
+
+        searchLocation = (LinearLayout) findViewById(R.id.searchLocation);
+        SiteVisitAddressBar = (TextView) findViewById(R.id.SiteVisitAddressBar);
+
+        searchLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent searchActivity=new Intent(context, SearchActivity.class);
+                searchActivity.putExtra("nearLocation", currentLocation);
+                startActivityForResult(searchActivity, 1);
+            }
+        });
+
 
         ParseUser currentUser = ParseUser.getCurrentUser();
 
@@ -157,7 +151,7 @@ public class MainActivity extends ActionBarActivity
         // setupContainer();
 
         // Google Map ..
-        SiteVisitAddressBar = (EditText) findViewById(R.id.SiteVisitAddressBar);
+        SiteVisitAddressBar = (TextView) findViewById(R.id.SiteVisitAddressBar);
 
         CustomMapFragment customMapFragment = ((CustomMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
         map = customMapFragment.getMap();

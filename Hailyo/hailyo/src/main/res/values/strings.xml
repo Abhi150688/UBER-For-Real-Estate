@@ -38,6 +38,7 @@
     <string name="merchant_key"> %6k\u0026fNAj1unwJw4V </string>
     <string name="user_name">9711139557</string>
     <string name="user_password">Paytm@198</string>
+    <string name="api_key">AIzaSyDN7Beoz8F2pV5iyfbWCGBj_fOa3mG616c</string>
 
     <string-array name="listItems">
         <item>PAYMENT</item>

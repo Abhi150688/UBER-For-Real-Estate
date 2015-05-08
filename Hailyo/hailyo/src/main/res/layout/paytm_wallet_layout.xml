@@ -12,6 +12,7 @@ android:orientation="vertical">
     android:textAppearance="?android:attr/textAppearanceMedium"
     android:layout_marginTop="20dp"
     android:layout_gravity="center"
+    android:textColor="#0000ff"
     android:text="Enter the Amount to Pay?"/>
 
 <LinearLayout
@@ -24,8 +25,8 @@ android:orientation="vertical">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="38dp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="45dp"
         android:text="Rs. "
         android:id="@+id/textView2" />
 
@@ -41,13 +42,13 @@ android:orientation="vertical">
 </LinearLayout>
 
 <Button
-    android:layout_width="300dp"
+    android:layout_width="350dp"
     android:layout_height="wrap_content"
     android:layout_marginTop="35dp"
     style="@style/ShadowText"
     android:background="@drawable/button_background_states"
     android:layout_gravity="center"
-    android:text="Pay Money with Paytm Wallet"
+    android:text="Pay with Paytm Wallet"
     android:textAllCaps="false"
     android:textSize="20sp"
     android:id="@+id/payMoney" />

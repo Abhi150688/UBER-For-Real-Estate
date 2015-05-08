@@ -17,7 +17,7 @@ import com.nexchanges.hailyo.model.Feed;
 /**
  * The Adapter class for the ListView displayed in the left navigation drawer.
  */
-public class RightNavAdapter extends BaseAdapter
+public class RightNavAdapter //extends BaseAdapter
 {
 
 	/** The items. */
@@ -29,12 +29,12 @@ public class RightNavAdapter extends BaseAdapter
 	/**
 	 * Instantiates a new left navigation adapter.
 	 * 
-	 * @param context
+	 * //@param context
 	 *            the context of activity
-	 * @param items
+	 * //@param items
 	 *            the array of items to be displayed on ListView
 	 */
-	public RightNavAdapter(Context context, ArrayList<Feed> items)
+	/*public RightNavAdapter(Context context, ArrayList<Feed> items)
 	{
 		this.context = context;
 		this.items = items;
@@ -43,7 +43,7 @@ public class RightNavAdapter extends BaseAdapter
 	/* (non-Javadoc)
 	 * @see android.widget.Adapter#getCount()
 	 */
-	@Override
+	/*@Override
 	public int getCount()
 	{
 		return items.size();
@@ -52,7 +52,7 @@ public class RightNavAdapter extends BaseAdapter
 	/* (non-Javadoc)
 	 * @see android.widget.Adapter#getItem(int)
 	 */
-	@Override
+	/*@Override
 	public Feed getItem(int arg0)
 	{
 		return items.get(arg0);
@@ -61,7 +61,7 @@ public class RightNavAdapter extends BaseAdapter
 	/* (non-Javadoc)
 	 * @see android.widget.Adapter#getItemId(int)
 	 */
-	@Override
+	/*@Override
 	public long getItemId(int position)
 	{
 		return position;
@@ -70,7 +70,7 @@ public class RightNavAdapter extends BaseAdapter
 	/* (non-Javadoc)
 	 * @see android.widget.Adapter#getView(int, android.view.View, android.view.ViewGroup)
 	 */
-	@Override
+	/*@Override
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
 		if (convertView == null)
@@ -92,5 +92,5 @@ public class RightNavAdapter extends BaseAdapter
 
 		return convertView;
 	}
-
+*/
 }

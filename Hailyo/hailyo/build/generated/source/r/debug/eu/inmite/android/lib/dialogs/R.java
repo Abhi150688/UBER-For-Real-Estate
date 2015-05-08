@@ -78,8 +78,8 @@ public final class R {
 		public static final int grid_90 = 0x7f0b0057;
 	}
 	public static final class drawable {
-		public static final int sdl_background_dark = 0x7f02009a;
-		public static final int sdl_background_light = 0x7f02009b;
+		public static final int sdl_background_dark = 0x7f020097;
+		public static final int sdl_background_light = 0x7f020098;
 	}
 	public static final class id {
 		public static final int dialog_button_panel = 0x7f0c0086;
@@ -113,7 +113,7 @@ public final class R {
 		public static final int dialog_part_title = 0x7f040029;
 	}
 	public static final class string {
-		public static final int dialog_close = 0x7f07006d;
+		public static final int dialog_close = 0x7f07006e;
 	}
 	public static final class style {
 		public static final int DialogStyleDark = 0x7f0f006f;

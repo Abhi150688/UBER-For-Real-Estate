@@ -518,6 +518,7 @@
     <string name="action_sign_in_short">Sign in</string>
     <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/src/main/res/values/strings.xml -->
     <eat-comment/>
+    <string name="api_key">AIzaSyDN7Beoz8F2pV5iyfbWCGBj_fOa3mG616c</string>
     <string name="app_name">Hailyo</string>
     <string name="call">Call</string>
     <string name="cancel">Cancel</string>
