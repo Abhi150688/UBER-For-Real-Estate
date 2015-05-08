@@ -6,7 +6,78 @@
     <FrameLayout
         android:id="@+id/content_frame"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/main_background">
+
+    <FrameLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:orientation="vertical"
+        android:layout_marginTop="1dp"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/root_view">
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <ImageButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_launcher"
+        android:layout_gravity="center"
+        android:background="@null"
+        android:id="@+id/ic_launcher" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:layout_gravity="top"
+        android:id="@+id/search_bar">
+
+    <TextView
+        android:id="@+id/btnSearch"
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:background="@drawable/ic_search"
+
+        android:clickable="true" />
+
+
+    <TextView
+        android:id="@+id/SiteVisitLocation"
+        android:layout_width="wrap_content"
+        android:layout_gravity="center_horizontal|center"
+        android:layout_height="wrap_content"
+        android:text="Site Visit Location"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColor="#28b54c" />
+
+    <EditText
+        android:id="@+id/SiteVisitAddressBar"
+        android:singleLine="true"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@android:color/white"
+        android:hint="@string/placeholder"
+        android:layout_gravity="center_horizontal|top" />
+
+    </LinearLayout>
+
+    </FrameLayout>
+    </LinearLayout>
+    </FrameLayout>
+
 
     <ListView
         android:id="@+id/left_drawer"
@@ -19,12 +90,5 @@
         android:listSelector="@color/theme_yellow"
          />
 
-    <ListView
-        android:id="@+id/right_drawer"
-        android:layout_width="260dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="end"
-        android:background="@color/theme_black"
-        android:headerDividersEnabled="true" />
 
 </android.support.v4.widget.DrawerLayout>

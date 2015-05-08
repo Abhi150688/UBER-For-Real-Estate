@@ -6,6 +6,7 @@ import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.location.Location;
 import android.os.Bundle;
 import android.provider.Contacts;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -17,14 +18,26 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
 import com.nexchanges.hailyo.services.MyService;
 import com.nexchanges.hailyo.ui.AboutFragment;
+import com.nexchanges.hailyo.ui.CustomMapFragment;
+import com.nexchanges.hailyo.ui.GetCurrentLocation;
+import com.nexchanges.hailyo.ui.GetPlaceName;
 import com.nexchanges.hailyo.ui.HelpFragment;
 import com.nexchanges.hailyo.ui.HistoryFragment;
+import com.nexchanges.hailyo.ui.MapWrapperLayout;
 import com.nexchanges.hailyo.ui.PaymentFragment;
 import com.nexchanges.hailyo.ui.PromotionsFragment;
 import com.nexchanges.hailyo.ui.SettingsFragment;
@@ -63,12 +76,21 @@ public class MainActivity extends ActionBarActivity
 	private ActionBarDrawerToggle drawerToggle;
 
 
+    GoogleMap map;
+    LinearLayout searchLocation;
+    EditText SiteVisitAddressBar;
 
-	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+    LatLng currentLocation;
+
+    LatLng selectedLocation;
+    String selectedLocation_Name;
+
+
+
+    @Override
+	protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
         context = this;
 
         ParseUser currentUser = ParseUser.getCurrentUser();
@@ -88,17 +110,15 @@ public class MainActivity extends ActionBarActivity
                 R.string.drawer_close) {
 
             @Override
-            public void onDrawerClosed(View view)
-            {
+            public void onDrawerClosed(View view) {
 
-                    super.onDrawerClosed(view);
+                super.onDrawerClosed(view);
             }
 
             @Override
-            public void onDrawerOpened(View drawerView)
-            {
+            public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
-                }
+            }
         };
 
         drawerLayout.setDrawerListener(drawerToggle);
@@ -134,15 +154,84 @@ public class MainActivity extends ActionBarActivity
                 }
             }
         });
-        setupContainer();
+        // setupContainer();
+
+        // Google Map ..
+        SiteVisitAddressBar = (EditText) findViewById(R.id.SiteVisitAddressBar);
+
+        CustomMapFragment customMapFragment = ((CustomMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
+        map = customMapFragment.getMap();
+        map.setMyLocationEnabled(true);
+
+        customMapFragment.setOnDragListener(new MapWrapperLayout.OnDragListener() {
+            @Override
+            public void onDrag(MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_MOVE) {
+                    SiteVisitAddressBar.setText("Fetching...");
+                } else {
+                    selectedLocation = map.getCameraPosition().target;
+                    selectedLocation_Name = "Lat: " + selectedLocation.latitude + ", Lng: " + selectedLocation.longitude;
+                    getPlaceName(selectedLocation);
+                }
+            }
+        });
+
+// Current Location ..
+
+        new GetCurrentLocation(context, new GetCurrentLocation.CurrentLocationCallback() {
+            @Override
+            public void onComplete(Location location) {
+                if (location != null) {
+                    currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
+                    map.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
+                    map.animateCamera(CameraUpdateFactory.zoomTo(15));
+
+                    getPlaceName(currentLocation);
+                }
+            }
+        });
 
     }
 
-   	private void setupContainer()
-	{
-		getFragmentManager().beginTransaction()
-				.replace(R.id.content_frame, new MainFragment()).commit();
-	}
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if ( requestCode == 1 ){
+            try {
+                LatLng placeLatLng = data.getParcelableExtra("placeLatLng");
+                String placeName = data.getStringExtra("placeName");
+                if ( placeLatLng != null && placeName != null) {
+                    selectedLocation = placeLatLng;
+                    selectedLocation_Name = placeName;
+
+                    SiteVisitAddressBar.setText(selectedLocation_Name);
+
+                    map.moveCamera(CameraUpdateFactory.newLatLng(selectedLocation));
+                    map.animateCamera(CameraUpdateFactory.zoomTo(15));
+
+                }
+            }catch (Exception e){e.printStackTrace();}
+        }
+    }
+
+    public void getPlaceName(LatLng location){
+        new GetPlaceName(location, new GetPlaceName.GetPlaceNameCallback() {
+            @Override
+            public void onStart() {
+                SiteVisitAddressBar.setText("Fetching Site Visit Location, wait..");
+            }
+
+            @Override
+            public void onComplete(boolean result, LatLng location, String placeName) {
+                if ( result == true ) {
+                  SiteVisitAddressBar.setText(placeName);
+                }else{
+                    SiteVisitAddressBar.setText("Sorry, No Such Location, Please Try Again..");
+                }
+            }
+        });
+    }
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event)
