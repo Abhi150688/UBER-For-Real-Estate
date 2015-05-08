@@ -282,6 +282,7 @@ public class LoginActivity1 extends Activity {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         //intent.putExtra("Mobile",sphoneNumber);
         startActivity(intent);
+        finish();
     }
 
     @Override
@@ -320,6 +321,10 @@ public class LoginActivity1 extends Activity {
         this.finish();
     }
 
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
 
 }
 

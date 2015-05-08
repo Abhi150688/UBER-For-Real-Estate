@@ -55,6 +55,7 @@ public class InitialActivity extends Activity {
 
     private void startThemeActivity() {
         startActivity(new Intent(this, MainActivity.class));
+        finish();
     }
 
     private void startLoginActivity() {
