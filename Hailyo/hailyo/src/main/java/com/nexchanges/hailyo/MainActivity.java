@@ -74,6 +74,10 @@ public class MainActivity extends ActionBarActivity
         setContentView(R.layout.activity_main);
         context = this;
 
+        Intent i = new Intent(this, MyService.class);
+        startService(i);
+
+
         searchLocation = (LinearLayout) findViewById(R.id.searchLocation);
         SiteVisitAddressBar = (TextView) findViewById(R.id.SiteVisitAddressBar);
 
@@ -132,23 +136,41 @@ public class MainActivity extends ActionBarActivity
 
                 drawerLayout.closeDrawer(drawerLeft);
 
-                if (listItems[position].equalsIgnoreCase("PAYMENT")) {
 
-                    Intent i = new Intent(MainActivity.this, SelectPaymentTypeActivity.class);
-                    startActivity(i);
+                switch(position){
 
-                    //Intent selectPaymentActivity=new Intent(context.getApplicationContext(), SelectPaymentTypeActivity.class);
-                    //startActivity(selectPaymentActivity);
-                } else {
-                    Intent dispatcherActivity = new Intent(context, SelectPaymentTypeActivity.class);
-                    dispatcherActivity.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-                    dispatcherActivity.addFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
-                    startActivity(dispatcherActivity);
-                    finish();
+                    case 1:
+                        Intent selectPaymentAct = new Intent(context, SelectPaymentTypeActivity.class);
+                        startActivity(selectPaymentAct);
+                        break;
+
+                    case 2:
+                    Intent historyAct = new Intent(context, HistoryActivity.class);
+                    startActivity(historyAct);
+
+                    case 3:
+                    Intent helpAct = new Intent(context, HelpActivity.class);
+                    startActivity(helpAct);
+
+                    case 4:
+                    Intent promotionsAct = new Intent(context, PromotionsActivity.class);
+                    startActivity(promotionsAct);
+
+                    case 5:
+                    Intent aboutAct = new Intent(context, AboutActivity.class);
+                    startActivity(aboutAct);
+
+                    case 6:
+                    Intent settingsAct = new Intent(context, SettingsActivity.class);
+                    startActivity(settingsAct);
+
+                    default:
+                        break;
                 }
+
+
             }
         });
-        // setupContainer();
 
         // Google Map ..
         SiteVisitAddressBar = (TextView) findViewById(R.id.SiteVisitAddressBar);
@@ -231,8 +253,9 @@ public class MainActivity extends ActionBarActivity
 	public boolean onKeyDown(int keyCode, KeyEvent event)
 	{
 		Log.e("KEy", "YEs");
-        Intent i = new Intent(this, MyService.class);
+        Intent i = new Intent(this, MainActivity.class);
         startService(i);
+        finish();
 
         return super.onKeyDown(keyCode, event);
 	}

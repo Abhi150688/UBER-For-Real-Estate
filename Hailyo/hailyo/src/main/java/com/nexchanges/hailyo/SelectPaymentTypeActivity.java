@@ -3,6 +3,8 @@ package com.nexchanges.hailyo;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -37,7 +39,7 @@ public class SelectPaymentTypeActivity extends ActionBarActivity implements View
         if ( selected == usePaytm ){
             Intent paytmWalletActivity=new Intent(context, PaytmWalletActivity.class);
             startActivity(paytmWalletActivity);
-            finish();
+            //finish();
         }
 
     }

@@ -56,6 +56,27 @@
         <activity
             android:name=".SelectPaymentTypeActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".AboutActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".HelpActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".HistoryActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".PromotionsActivity"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".SettingsActivity"
+            android:screenOrientation="portrait" />
+
         <activity
             android:name=".PaytmWalletActivity"
             android:screenOrientation="portrait" />

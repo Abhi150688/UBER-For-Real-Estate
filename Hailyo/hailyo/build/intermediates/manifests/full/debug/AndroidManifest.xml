@@ -52,6 +52,21 @@
             android:name="com.nexchanges.hailyo.SelectPaymentTypeActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name="com.nexchanges.hailyo.AboutActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.nexchanges.hailyo.HelpActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.nexchanges.hailyo.HistoryActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.nexchanges.hailyo.PromotionsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.nexchanges.hailyo.SettingsActivity"
+            android:screenOrientation="portrait" />
+        <activity
             android:name="com.nexchanges.hailyo.PaytmWalletActivity"
             android:screenOrientation="portrait" />
         <activity
