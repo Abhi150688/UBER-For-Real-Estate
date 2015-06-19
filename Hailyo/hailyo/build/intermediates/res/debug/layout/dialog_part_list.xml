@@ -2,4 +2,4 @@
 
 <ListView xmlns:android="http://schemas.android.com/apk/res/android"
 	android:id="@+id/sdl__listview"
-	style="@style/SDL.ListView"/><!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/stylishDialogLib/src/main/res/layout/dialog_part_list.xml --><!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/Hailyo/stylishDialogLib/unspecified/res/layout/dialog_part_list.xml -->
+	style="@style/SDL.ListView"/><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/stylishDialogLib/src/main/res/layout/dialog_part_list.xml --><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/Hailyo/stylishDialogLib/unspecified/res/layout/dialog_part_list.xml -->

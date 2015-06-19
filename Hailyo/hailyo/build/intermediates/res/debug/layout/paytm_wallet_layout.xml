@@ -54,4 +54,4 @@ android:orientation="vertical">
     android:id="@+id/payMoney" />
 
 </LinearLayout>
-<!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/src/main/res/layout/paytm_wallet_layout.xml -->
+<!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/layout/paytm_wallet_layout.xml -->

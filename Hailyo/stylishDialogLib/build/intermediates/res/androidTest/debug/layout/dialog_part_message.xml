@@ -4,4 +4,4 @@
               style="@style/SDL.Group.Wrap">
     <TextView android:id="@+id/sdl__message"
               style="?attr/sdlMessageTextStyle" />
-</ScrollView><!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/stylishDialogLib/src/main/res/layout/dialog_part_message.xml --><!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/stylishDialogLib/build/intermediates/bundles/debug/res/layout/dialog_part_message.xml -->
+</ScrollView><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/stylishDialogLib/src/main/res/layout/dialog_part_message.xml --><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/stylishDialogLib/build/intermediates/bundles/debug/res/layout/dialog_part_message.xml -->

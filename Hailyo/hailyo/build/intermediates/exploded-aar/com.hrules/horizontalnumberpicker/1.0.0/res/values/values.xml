@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="HorizontalNumberPicker"><attr format="integer" name="value"/><attr format="integer" name="minValue"/><attr format="integer" name="maxValue"/><attr format="string" name="plusButtonText"/><attr format="string" name="minusButtonText"/><attr format="integer" name="repeatDelay"/><attr format="integer" name="stepSize"/><attr format="boolean" name="showLeadingZeros"/></declare-styleable>
+</resources>

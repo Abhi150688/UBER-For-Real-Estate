@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-ur/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-ur/values.xml -->
     <eat-comment/>
     <plurals name="tw__time_hours">
         <item quantity="one">1 گھنٹہ</item>
@@ -14,7 +14,7 @@
         <item quantity="one">پہلا</item>
         <item quantity="other">%dسیکنڈ</item>
     </plurals>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.2.0/res/values-ur/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.2.0/res/values-ur/values.xml -->
     <eat-comment/>
     <string name="dgts__cancel">منسوخ کریں</string>
     <string name="dgts__communication_error">مواصلاتی خرابی</string>
@@ -48,7 +48,7 @@
     <string name="dgts__try_again_phone_number">برائے مہربانی اپنے نمبر کی پڑتال کریں اور دوبارہ کوشش کریں-</string>
     <string name="dgts__try_another_phone">ایک مختلف فون نمبر آزمائیں</string>
     <string name="dgts__upload_contacts">ہم آپ کے مزید دوستوں کو تلاش کرنے کیلئے جو یہ ایپ استعمال کرتے ہیں، اعداد بطرف ٹوئٹر استعمال کرتے ہیں۔ جب آپ ٹھیک ہے پر تھپتھپاتے ہیں، تو ہم اعداد بطرف ٹوئٹر پر آپ کی ایڈریس بک کو اپ لوڈ کریں گے اور اپنی ایپ کے دیگر صارفین کو آپ کو دریافت کر سکنے کے قابل بنائیں گے۔</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-ur/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-ur/values.xml -->
     <eat-comment/>
     <string name="tw__relative_date_format_long">d/M/y</string>
     <string name="tw__relative_date_format_short">d MMM</string>

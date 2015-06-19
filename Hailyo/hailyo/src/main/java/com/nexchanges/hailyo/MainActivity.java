@@ -3,10 +3,13 @@ package com.nexchanges.hailyo;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.location.Address;
+import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
@@ -17,6 +20,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -31,6 +35,10 @@ import com.nexchanges.hailyo.ui.GetPlaceName;
 import com.nexchanges.hailyo.ui.MapWrapperLayout;
 import com.nexchanges.hailyo.ui.SearchActivity;
 import com.parse.ParseUser;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 /**
  * The Activity MainActivity will launched at the start of the app.
@@ -60,8 +68,10 @@ public class MainActivity extends ActionBarActivity
     GoogleMap map;
     LinearLayout searchLocation;
     TextView SiteVisitAddressBar;
+    ImageButton SetSiteVisitLocation;
 
     LatLng currentLocation;
+    List<Address> addresses;
 
     LatLng selectedLocation;
     String selectedLocation_Name;
@@ -80,6 +90,18 @@ public class MainActivity extends ActionBarActivity
 
         searchLocation = (LinearLayout) findViewById(R.id.searchLocation);
         SiteVisitAddressBar = (TextView) findViewById(R.id.SiteVisitAddressBar);
+
+        SetSiteVisitLocation = (ImageButton) findViewById(R.id.ic_launcher);
+        SetSiteVisitLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent EnterConfigActivity=new Intent(context, EnterConfigActivity.class);
+                EnterConfigActivity.putExtra("selectedLocation", selectedLocation);
+                startActivity(EnterConfigActivity);
+            }
+        });
+
 
         searchLocation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -175,6 +197,7 @@ public class MainActivity extends ActionBarActivity
         // Google Map ..
         SiteVisitAddressBar = (TextView) findViewById(R.id.SiteVisitAddressBar);
 
+
         CustomMapFragment customMapFragment = ((CustomMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
         map = customMapFragment.getMap();
         map.setMyLocationEnabled(true);
@@ -208,6 +231,7 @@ public class MainActivity extends ActionBarActivity
         });
 
     }
+
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -248,6 +272,10 @@ public class MainActivity extends ActionBarActivity
             }
         });
     }
+
+
+
+
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event)

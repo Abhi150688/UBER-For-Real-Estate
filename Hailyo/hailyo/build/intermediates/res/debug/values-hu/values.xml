@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-hu/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-hu/values.xml -->
     <eat-comment/>
     <plurals name="tw__time_hours">
         <item quantity="one">1 ó</item>
@@ -14,7 +14,7 @@
         <item quantity="one">1 mp</item>
         <item quantity="other">%d mp</item>
     </plurals>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values-hu/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values-hu/values.xml -->
     <eat-comment/>
     <string msgid="4600421777120114993" name="abc_action_bar_home_description">"Ugrás a főoldalra"</string>
     <string msgid="1397052879051804371" name="abc_action_bar_home_description_format">"%1$s, %2$s"</string>
@@ -32,7 +32,7 @@
     <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Megosztás a következővel:"</string>
     <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"Megosztás a következővel: %s"</string>
     <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"Összecsukás"</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.0.0/res/values-hu/common_strings.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.0.0/res/values-hu/common_strings.xml -->
     <eat-comment/>
     <string msgid="473679118463211576" name="common_android_wear_notification_needs_update_text">"Egy alkalmazás az Android Wear-alkalmazás frissítését igényli."</string>
     <string msgid="3046420540094071256" name="common_android_wear_update_text">"Ez az alkalmazás nem működik, amíg nem frissíti az Android Wear-alkalmazást."</string>
@@ -65,7 +65,7 @@
     <string msgid="9071884888741449141" name="common_signin_button_text">"Belépés"</string>
     <string msgid="2429381841831957106" name="common_signin_button_text_long">"Google-bejelentkezés"</string>
     <string msgid="5000919058582214855" name="commono_google_play_services_api_unavailable_text">"Az alkalmazásnak szüksége vagy egy vagy több, jelenleg nem elérhető Google Play-szolgáltatásra. További segítségért vegye fel a kapcsolatot a fejlesztővel."</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.2.0/res/values-hu/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.2.0/res/values-hu/values.xml -->
     <eat-comment/>
     <string name="dgts__cancel">Mégse</string>
     <string name="dgts__communication_error">Kommunikációs hiba</string>
@@ -99,7 +99,7 @@
     <string name="dgts__try_again_phone_number">Ellenőrizd a számod és próbálkozz újra!</string>
     <string name="dgts__try_another_phone">Próbálkozz másik telefonszámmal!</string>
     <string name="dgts__upload_contacts">A Digits by Twitter segítségével megkeressük az alkalmazást használó ismerőseidet. Az OK gombra koppintva feltöltjük a címjegyzéked a Digits by Twitter szolgáltatásba, és lehetővé tesszük az alkalmazásunk többi felhasználójának, hogy megkereshessenek Téged.</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-hu/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-hu/values.xml -->
     <eat-comment/>
     <string name="tw__relative_date_format_long">y. MM. dd.</string>
     <string name="tw__relative_date_format_short">MMM d.</string>

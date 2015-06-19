@@ -10,4 +10,4 @@
         android:text="About Hailyo"
         android:id="@+id/textView"
         android:layout_gravity="center_horizontal" />
-</LinearLayout><!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/src/main/res/layout/fragment_about.xml -->
+</LinearLayout><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/layout/fragment_about.xml -->

@@ -30,4 +30,4 @@
         android:layout_toLeftOf="@+id/dgts__state_button"
         android:layout_toStartOf="@+id/dgts__state_button"
         android:src="@drawable/dgts__ic_success"/>
-</merge><!-- From: file:/Users/android/workspace/jenkins/workspace/fabric-android-deploy-to-staging/sdk/kits/digits/src/main/res/layout/dgts__state_button.xml --><!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.2.0/res/layout/dgts__state_button.xml -->
+</merge><!-- From: file:/Users/android/workspace/jenkins/workspace/fabric-android-deploy-to-staging/sdk/kits/digits/src/main/res/layout/dgts__state_button.xml --><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.2.0/res/layout/dgts__state_button.xml -->

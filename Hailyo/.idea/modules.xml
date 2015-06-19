@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Hailyo.iml" filepath="$PROJECT_DIR$/Hailyo.iml" />
       <module fileurl="file://$PROJECT_DIR$/hailyo/hailyo.iml" filepath="$PROJECT_DIR$/hailyo/hailyo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/horizontalnumberpicker-library/horizontalnumberpicker-library.iml" filepath="$PROJECT_DIR$/horizontalnumberpicker-library/horizontalnumberpicker-library.iml" />
       <module fileurl="file://$PROJECT_DIR$/stylishDialogLib/stylishDialogLib.iml" filepath="$PROJECT_DIR$/stylishDialogLib/stylishDialogLib.iml" />
     </modules>
   </component>

@@ -1,2 +1,2 @@
-include ':stylishDialogLib'
+include ':stylishDialogLib', ':horizontalnumberpicker-library'
 include ':hailyo'

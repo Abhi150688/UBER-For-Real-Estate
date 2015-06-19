@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-zh-rCN/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-zh-rCN/values.xml -->
     <eat-comment/>
     <plurals name="tw__time_hours">
         <item quantity="one">1时</item>
@@ -14,7 +14,7 @@
         <item quantity="one">1秒</item>
         <item quantity="other">%d秒</item>
     </plurals>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values-zh-rCN/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values-zh-rCN/values.xml -->
     <eat-comment/>
     <string msgid="4600421777120114993" name="abc_action_bar_home_description">"转到主屏幕"</string>
     <string msgid="1397052879051804371" name="abc_action_bar_home_description_format">"%1$s：%2$s"</string>
@@ -32,7 +32,7 @@
     <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"分享方式"</string>
     <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"通过%s分享"</string>
     <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"收起"</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.0.0/res/values-zh-rCN/common_strings.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.0.0/res/values-zh-rCN/common_strings.xml -->
     <eat-comment/>
     <string msgid="473679118463211576" name="common_android_wear_notification_needs_update_text">"某个应用需要更新Android Wear应用才能正常运行。"</string>
     <string msgid="3046420540094071256" name="common_android_wear_update_text">"只有更新Android Wear应用后，此应用才能正常运行。"</string>
@@ -65,7 +65,7 @@
     <string msgid="9071884888741449141" name="common_signin_button_text">"登录"</string>
     <string msgid="2429381841831957106" name="common_signin_button_text_long">"使用Google帐户登录"</string>
     <string msgid="5000919058582214855" name="commono_google_play_services_api_unavailable_text">"运行此应用所需的一项或多项 Google Play 服务目前无法使用。请与开发者联系以寻求帮助。"</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.2.0/res/values-zh-rCN/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.2.0/res/values-zh-rCN/values.xml -->
     <eat-comment/>
     <string name="dgts__cancel">取消</string>
     <string name="dgts__communication_error">通讯出错</string>
@@ -104,7 +104,7 @@
     <string name="dgts__try_again_phone_number">请检查你的手机号码并重试。</string>
     <string name="dgts__try_another_phone">请尝试其他手机号码</string>
     <string name="dgts__upload_contacts">我们使用Twitter位数来查找更多你身边使用这个应用的朋友。当你请按「好的」，我们将在Twitter位数上传你的通讯录，并使我们的应用程序的其他用户能找到你。</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-zh-rCN/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-zh-rCN/values.xml -->
     <eat-comment/>
     <string name="tw__loading_tweet">加载推文</string>
     <string name="tw__relative_date_format_long">y/M/d</string>

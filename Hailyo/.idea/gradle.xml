@@ -10,6 +10,7 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/hailyo" />
+            <option value="$PROJECT_DIR$/horizontalnumberpicker-library" />
             <option value="$PROJECT_DIR$/stylishDialogLib" />
           </set>
         </option>

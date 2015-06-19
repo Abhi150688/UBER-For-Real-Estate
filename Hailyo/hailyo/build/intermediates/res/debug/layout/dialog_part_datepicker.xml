@@ -2,4 +2,4 @@
 
 <DatePicker xmlns:android="http://schemas.android.com/apk/res/android"
 	android:id="@+id/sdl__datepicker"
-	style="@style/SDL.DatePicker"/><!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/stylishDialogLib/src/main/res/layout/dialog_part_datepicker.xml --><!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/Hailyo/stylishDialogLib/unspecified/res/layout/dialog_part_datepicker.xml -->
+	style="@style/SDL.DatePicker"/><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/stylishDialogLib/src/main/res/layout/dialog_part_datepicker.xml --><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/Hailyo/stylishDialogLib/unspecified/res/layout/dialog_part_datepicker.xml -->

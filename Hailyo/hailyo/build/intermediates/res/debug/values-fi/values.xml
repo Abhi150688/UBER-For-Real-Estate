@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-fi/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-fi/values.xml -->
     <eat-comment/>
     <plurals name="tw__time_hours">
         <item quantity="one">1 h</item>
@@ -14,7 +14,7 @@
         <item quantity="one">1 s</item>
         <item quantity="other">%d s</item>
     </plurals>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values-fi/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values-fi/values.xml -->
     <eat-comment/>
     <string msgid="4600421777120114993" name="abc_action_bar_home_description">"Siirry etusivulle"</string>
     <string msgid="1397052879051804371" name="abc_action_bar_home_description_format">"%1$s, %2$s"</string>
@@ -32,7 +32,7 @@
     <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Jakaminen:"</string>
     <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"Jakaminen: %s"</string>
     <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"Kutista"</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.0.0/res/values-fi/common_strings.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.0.0/res/values-fi/common_strings.xml -->
     <eat-comment/>
     <string msgid="473679118463211576" name="common_android_wear_notification_needs_update_text">"Android Wear -sovellus täytyy päivittää toisen sovelluksen takia."</string>
     <string msgid="3046420540094071256" name="common_android_wear_update_text">"Tämä sovellus ei toimi, ellet päivitä Android Wear -sovellusta."</string>
@@ -65,7 +65,7 @@
     <string msgid="9071884888741449141" name="common_signin_button_text">"Kirjaudu"</string>
     <string msgid="2429381841831957106" name="common_signin_button_text_long">"Kirjaudu Google-tiliin"</string>
     <string msgid="5000919058582214855" name="commono_google_play_services_api_unavailable_text">"Sovellus tarvitsee yhtä tai useampaa Google Play -palvelua, jotka eivät ole saatavilla tällä hetkellä. Voit pyytää lisätietoja kehittäjältä."</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.2.0/res/values-fi/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.2.0/res/values-fi/values.xml -->
     <eat-comment/>
     <string name="dgts__cancel">Peruuta</string>
     <string name="dgts__communication_error">Viestintävirhe</string>
@@ -104,7 +104,7 @@
     <string name="dgts__try_again_phone_number">Tarkista numero ja yritä uudelleen.</string>
     <string name="dgts__try_another_phone">Kokeile toista puhelinnumeroa</string>
     <string name="dgts__upload_contacts">Digits by Twitter -palvelu auttaa löytämään muita tätä sovellusta käyttäviä ystäviäsi. Kun napautat OK, lähetämme osoitekirjasi Digits by Twitterille ja sallimme sovelluksen muiden käyttäjien löytää sinut.</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-fi/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-fi/values.xml -->
     <eat-comment/>
     <string name="tw__loading_tweet">Ladataan twiittiä</string>
     <string name="tw__relative_date_format_long">d.M.y</string>

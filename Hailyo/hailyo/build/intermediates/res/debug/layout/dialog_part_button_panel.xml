@@ -11,4 +11,4 @@
 	<LinearLayout
 		android:id="@+id/dialog_button_panel"
 		style="@style/SDL.Group.Horizontal.ButtonPanel"></LinearLayout>
-</LinearLayout><!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/stylishDialogLib/src/main/res/layout/dialog_part_button_panel.xml --><!-- From: file:/Users/Abhishek/Dropbox/hailyo/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/Hailyo/stylishDialogLib/unspecified/res/layout/dialog_part_button_panel.xml -->
+</LinearLayout><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/stylishDialogLib/src/main/res/layout/dialog_part_button_panel.xml --><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/Hailyo/stylishDialogLib/unspecified/res/layout/dialog_part_button_panel.xml -->
