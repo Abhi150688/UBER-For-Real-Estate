@@ -3,6 +3,7 @@ package com.nexchanges.hailyo;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -20,10 +21,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.ViewFlipper;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -43,9 +47,10 @@ import java.util.Locale;
 /**
  * The Activity MainActivity will launched at the start of the app.
  */
-public class MainActivity extends ActionBarActivity
+public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBarChangeListener
 {
 
+    SeekBar sb1;
 	/** The drawer layout. */
 	private DrawerLayout drawerLayout;
 
@@ -75,8 +80,10 @@ public class MainActivity extends ActionBarActivity
 
     LatLng selectedLocation;
     String selectedLocation_Name;
+    ViewFlipper VF;
 
 
+    boolean continuosProgress;
 
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +118,12 @@ public class MainActivity extends ActionBarActivity
                 startActivityForResult(searchActivity, 1);
             }
         });
+
+        sb1 = (SeekBar)findViewById(R.id.seekBar2);
+        sb1.setOnSeekBarChangeListener(this);
+
+        VF = (ViewFlipper) findViewById(R.id.ViewFlipper01);
+
 
 
         ParseUser currentUser = ParseUser.getCurrentUser();
@@ -231,6 +244,36 @@ public class MainActivity extends ActionBarActivity
         });
 
     }
+
+
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress,
+                                  boolean fromTouch) {
+        if (progress == 0) {
+            VF.setDisplayedChild(0);
+        } else if (progress == 50) {
+            VF.setDisplayedChild(1);
+        } else VF.setDisplayedChild(0);
+    }
+
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+         }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
+
+        int mProgress = seekBar.getProgress();
+        if(mProgress > 0 & mProgress < 34) {
+            seekBar.setProgress(0);
+            }
+        else if (mProgress >33 & mProgress <68){
+            seekBar.setProgress(50);
+            }
+          else seekBar.setProgress(100);
+        
+          }
+
 
 
     @Override

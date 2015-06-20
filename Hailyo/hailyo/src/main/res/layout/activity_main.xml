@@ -8,85 +8,145 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@drawable/main_background">
-
-    <FrameLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:orientation="vertical"
-        android:layout_marginTop="1dp"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:id="@+id/root_view">
-
-    <fragment
-        android:id="@+id/map"
-        android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/self_marker"
-        android:layout_gravity="center"
-        android:background="@null"
-        android:id="@+id/ic_launcher" />
-
-
-
         <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:background="@android:color/white"
-        android:orientation="vertical"
-        android:layout_gravity="top"
-        android:id="@+id/search_bar">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/main_background">
 
 
-    <TextView
-        android:id="@+id/SiteVisitLocation"
-        android:layout_width="wrap_content"
-        android:layout_gravity="center_horizontal|center"
-        android:layout_height="wrap_content"
-        android:text="Site Visit Location"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="#28b54c" />
+            <FrameLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_marginTop="1dp"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/root_view">
+
+                <ViewFlipper android:id="@+id/ViewFlipper01"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+                <fragment
+                    android:id="@+id/map"
+                    android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="454dp"/>
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/self_marker"
+                    android:layout_gravity="center"
+                    android:background="@null"
+                    android:id="@+id/ic_launcher" />
+                </LinearLayout>
+
+
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+
+                    <include layout="@layout/payment_type_layout"></include>
+                    </LinearLayout>
+
+                </ViewFlipper>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="@android:color/white"
+                    android:orientation="vertical"
+                    android:layout_gravity="top"
+                    android:id="@+id/search_bar">
+
+
+                    <TextView
+                        android:id="@+id/SiteVisitLocation"
+                        android:layout_width="wrap_content"
+                        android:layout_gravity="center_horizontal|center"
+                        android:layout_height="wrap_content"
+                        android:text="Site Visit Location"
+                        android:textAppearance="?android:attr/textAppearanceMedium"
+                        android:textColor="#28b54c" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="25dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:id="@+id/searchLocation">
+
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/search"/>
+
+
+
+                        <TextView
+                            android:id="@+id/SiteVisitAddressBar"
+                            android:singleLine="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="30dp"
+                            android:background="@android:color/white"
+                            android:hint="@string/placeholder"
+                            android:layout_gravity="center_horizontal|top" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+
+            </FrameLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="25dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:id="@+id/searchLocation">
+            android:layout_height="75dp"
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:layout_gravity="center_horizontal|bottom">
+
+            <SeekBar
+                android:id="@+id/seekBar2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_span= "3"
+                android:progressDrawable="@android:color/transparent"
+                android:max="100" />
+                <!--android:thumb="@drawable/thumbbroker"-->
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="vertical"
+            android:background="@color/lightgrey"
+            android:layout_gravity="center_horizontal|bottom">
+
+            <include
+                android:id="@+id/tableRow1_ref"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/description" />
 
 
-            <ImageView
-                android:layout_width="18dp"
-                android:layout_height="20dp"
-                android:src="@drawable/search"/>
+        </LinearLayout>
 
 
-
-            <TextView
-        android:id="@+id/SiteVisitAddressBar"
-        android:singleLine="true"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:background="@android:color/white"
-        android:hint="@string/placeholder"
-        android:layout_gravity="center_horizontal|top" />
-
-    </LinearLayout>
-</LinearLayout>
-    </FrameLayout>
-    </LinearLayout>
     </FrameLayout>
 
 
@@ -99,7 +159,7 @@
         android:choiceMode="singleChoice"
         android:headerDividersEnabled="true"
         android:listSelector="@color/theme_yellow"
-         />
+        />
 
 
 </android.support.v4.widget.DrawerLayout>

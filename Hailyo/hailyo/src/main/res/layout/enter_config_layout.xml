@@ -7,17 +7,16 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="45dp"
+        android:textSize="25dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:layout_marginTop="20dp"
         android:gravity="center"
-        android:background="@color/black"
+        android:background="@color/blue_sky"
         android:textColor="@color/white"
-        android:text="Enter Details "/>
+        android:text="Enter Details"/>
 
 
 
-    <LinearLayout
+        <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
@@ -62,17 +61,93 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="5dp"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:id="@+id/yourmode">
+
+        <TextView
+            android:id="@+id/yourchosenMode"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal|center"
+            android:layout_height="wrap_content"
+            android:text="What do you wish to do"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#28b54c" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:gravity="center"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal"
+            >
+
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/black"
+                android:textColor="@color/white"
+                android:text="SEE PROPERTY"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/seeprop" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/lightgrey"
+                android:textColor="@color/black"
+                android:text="SHOW PROPERTY"
+                android:paddingLeft="5dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:paddingRight="5dp"
+                android:layout_gravity="center_horizontal"
+                android:textAllCaps="false"
+                android:textSize="20sp"
+                android:id="@+id/showprop" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:background="@android:color/white"
         android:orientation="vertical"
         android:layout_gravity="top"
         android:id="@+id/nm_bhk">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
 
 
         <TextView
             android:id="@+id/textViewconfig"
             android:layout_width="wrap_content"
             android:layout_gravity="center_horizontal|center"
+            android:gravity="center"
             android:layout_height="wrap_content"
             android:text="Size-BHK"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -85,8 +160,10 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_gravity="center_horizontal|center"
             android:textColor="#28b54c"
+            android:gravity="center_horizontal"
             />
 
+</LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -114,11 +191,20 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp"
+        android:layout_margin="5dp"
         android:background="@android:color/white"
         android:orientation="vertical"
         android:layout_gravity="top"
         android:id="@+id/budget_pricing">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@android:color/white"
+            android:orientation="horizontal"
+            android:gravity="center"
+            >
 
 
         <TextView
@@ -138,7 +224,7 @@
             android:layout_gravity="center_horizontal|center"
             android:textColor="#28b54c"
            />
-
+</LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -146,54 +232,60 @@
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:gravity="center"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:id="@+id/enterpri">
 
-            <RelativeLayout
-                android:layout_width="fill_parent"
+            <include
+                android:id="@+id/tableRow1_ref"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:orientation="horizontal" >
-                <TextView
-                    android:id="@+id/tvLabel1"
-                    android:paddingLeft="10dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:text="0" />
-                <TextView
-                    android:id="@+id/tvLabel3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:paddingRight="10dp"
-                    android:textColor="@color/black"
-                    android:text="10 Lac" />
+                layout="@layout/price" />
+
+
 
                 <SeekBar
                     android:id="@+id/sbBar"
                     android:layout_width="match_parent"
-                    android:paddingTop="10dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:max="1000000"></SeekBar>
 
 
-            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="49dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:id="@+id/enterSalepri">
+
+            <include
+                android:id="@+id/tableRow1_ref"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                layout="@layout/pricesale" />
 
 
 
-
-
+            <SeekBar
+                android:id="@+id/sbSBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="1000000"></SeekBar>
 
 
         </LinearLayout>
+
+
     </LinearLayout>
 
 
     <Button
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="20dp"
         android:background="@color/black"
         android:textColor="@color/white"
         android:layout_gravity="center"

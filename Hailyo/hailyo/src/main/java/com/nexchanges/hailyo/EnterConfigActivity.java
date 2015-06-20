@@ -2,6 +2,7 @@ package com.nexchanges.hailyo;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Bundle;
 import android.app.Activity;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 import com.google.android.gms.maps.model.LatLng;
 import com.hrules.horizontalnumberpicker.HorizontalNumberPicker;
 import com.hrules.horizontalnumberpicker.HorizontalNumberPickerListener;
+import com.nexchanges.hailyo.custom.Words;
 import com.nexchanges.hailyo.ui.GetPlaceName;
 
 
@@ -30,7 +32,7 @@ import com.nexchanges.hailyo.ui.GetPlaceName;
 public class EnterConfigActivity extends Activity implements OnSeekBarChangeListener, HorizontalNumberPickerListener{
 
     //declare variables
-    SeekBar seekbar1;
+    SeekBar seekbar1, seekbar2;
     int value;
     int bhkval;
     int endValue;
@@ -41,8 +43,18 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
     final int step_size1 = 5000;
     final int step_size2 = 50000;
     final int step_size3 = 100000;
+
+    final int step_Sale1 = 2500000;
+    final int step_Sale2 = 5000000;
+    final int step_Sale3 = 10000000;
+
+
     Button hailBtn;
     private String message;
+    Button seeProp;
+    Button showProp;
+    Boolean isOnePressed = true, isSecondPlace = false;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +72,8 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
 
         seekbar1 = (SeekBar)this.findViewById(R.id.sbBar);
 
+        seekbar2 = (SeekBar)this.findViewById(R.id.sbSBar);
+
 
         result = (TextView)this.findViewById(R.id.tvResult);
 
@@ -70,6 +84,8 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
 
         //set change listener
         seekbar1.setOnSeekBarChangeListener(this);
+        seekbar2.setOnSeekBarChangeListener(this);
+
         Intent locationIntent= getIntent();
         Bundle b = locationIntent.getExtras();
 
@@ -80,6 +96,47 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
             getPlaceName(j);
             //pasloc.setText(j);
         }
+
+
+        seeProp = (Button) findViewById(R.id.seeprop);
+        showProp = (Button) findViewById(R.id.showprop);
+
+
+
+        seeProp.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                isOnePressed = true;
+                seeProp.setBackgroundColor(Color.BLACK);
+                seeProp.setTextColor(Color.WHITE);
+                if (isSecondPlace) {
+                    showProp.setBackgroundColor(Color.LTGRAY);
+                    showProp.setTextColor(Color.BLACK);
+
+                    isSecondPlace = false;
+                }
+
+            }
+        });
+        showProp.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                showProp.setBackgroundColor(Color.BLACK);
+                showProp.setTextColor(Color.WHITE);
+
+                isSecondPlace = true;
+                if (isOnePressed) {
+                    seeProp.setBackgroundColor(Color.LTGRAY);
+                    seeProp.setTextColor(Color.BLACK);
+                    isOnePressed = false;
+                }
+
+            }
+        });
 
 
 
@@ -124,21 +181,42 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress,
                                   boolean fromUser) {
-        if(progress <300000)
-        {
-        progress = ((int)Math.round(progress/step_size1))*step_size1;
-        value = progress;
-        result.setText (":"+value);}
-        else if (progress > 305000 && progress < 600000)
-        {
-        progress = ((int)Math.round(progress/step_size2))*step_size2;
-        value = progress;
-        result.setText (":"+value);}
-        else
-        progress = ((int)Math.round(progress/step_size3))*step_size3;
-        value = progress;
-        result.setText (":"+value);
 
+        switch (seekBar.getId()) {
+
+            case R.id.sbBar:
+                seekbar2.setProgress(0);
+            if (progress < 300000) {
+                progress = ((int) Math.round(progress / step_size1)) * step_size1;
+                value = progress;
+                result.setText(" Rent:" + value);
+            } else if (progress > 305000 && progress < 600000) {
+                progress = ((int) Math.round(progress / step_size2)) * step_size2;
+                value = progress;
+                result.setText(" Rent:" + value);
+            } else
+                progress = ((int) Math.round(progress / step_size3)) * step_size3;
+            value = progress;
+            result.setText(" Rent:" + value);
+                break;
+
+            case R.id.sbSBar:
+                seekbar1.setProgress(0);
+                if (progress < 10000000) {
+                    progress = ((int) Math.round(progress/ step_Sale1)) * step_Sale1;
+                    value = progress;
+                    result.setText(" Price:" + value);
+                } else if (progress > 10000000 && progress < 100000000) {
+                    progress = ((int) Math.round(progress / step_Sale2)) * step_Sale2;
+                    value = progress;
+                    result.setText(" Price:" + value);
+                } else
+                    progress = ((int) Math.round(progress/ step_Sale3)) * step_Sale3;
+                value = progress;
+                result.setText(" Price:" + value);
+                break;
+
+        }
 
 
 }

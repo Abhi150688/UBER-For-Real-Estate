@@ -199,14 +199,14 @@ public class HorizontalNumberPicker extends LinearLayout {
     }
 
     public void increment() {
-        if (value < maxValue) {
-            this.setValue(value + stepSize);
+        if (value < 5) {
+            this.setValue(value + 1);
         }
     }
 
     public void decrement() {
-        if (value > minValue) {
-            this.setValue(value - stepSize);
+        if (value > 1) {
+            this.setValue(value - 1);
         }
     }
 
@@ -215,11 +215,11 @@ public class HorizontalNumberPicker extends LinearLayout {
     }
 
     public void setValue(int value) {
-        if (value > maxValue) {
-            value = maxValue;
+        if (value > 5) {
+            value = 5;
         }
-        if (value < minValue) {
-            value = minValue;
+        if (value < 1) {
+            value = 1;
         }
 
         this.value = value;
