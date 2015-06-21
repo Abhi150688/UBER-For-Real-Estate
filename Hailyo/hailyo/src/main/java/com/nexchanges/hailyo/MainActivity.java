@@ -271,7 +271,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
             seekBar.setProgress(50);
             }
           else seekBar.setProgress(100);
-        
+
           }
 
 
