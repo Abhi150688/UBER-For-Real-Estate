@@ -27,24 +27,24 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content">
 
-                    <LinearLayout
-                    android:orientation="vertical"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content">
-                <fragment
-                    android:id="@+id/map"
-                    android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
-                    android:layout_width="match_parent"
-                    android:layout_height="454dp"/>
+                    <FrameLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+                        <fragment
+                            android:id="@+id/map"
+                            android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
+                            android:layout_width="match_parent"
+                            android:layout_height="454dp"/>
 
-                <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/self_marker"
-                    android:layout_gravity="center"
-                    android:background="@null"
-                    android:id="@+id/ic_launcher" />
-                </LinearLayout>
+                        <!--<ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/self_marker"
+                            android:layout_gravity="center"
+                            android:background="@null"
+                            android:id="@+id/ic_launcher" />-->
+                    </FrameLayout>
 
 
                     <LinearLayout
@@ -52,10 +52,11 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content">
 
-                    <include layout="@layout/payment_type_layout"></include>
+                        <include layout="@layout/payment_type_layout"></include>
                     </LinearLayout>
 
                 </ViewFlipper>
+
 
 
                 <LinearLayout
@@ -112,10 +113,11 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="75dp"
-            android:orientation="vertical"
+            android:layout_height="80dp"
+            android:orientation="horizontal"
             android:background="@color/white"
             android:layout_gravity="center_horizontal|bottom">
+
 
             <SeekBar
                 android:id="@+id/seekBar2"
@@ -125,10 +127,11 @@
                 android:layout_marginRight="15dp"
                 android:layout_span= "3"
                 android:progressDrawable="@android:color/transparent"
+                android:thumb="@drawable/seekthumb"
                 android:max="100" />
-                <!--android:thumb="@drawable/thumbbroker"-->
 
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"

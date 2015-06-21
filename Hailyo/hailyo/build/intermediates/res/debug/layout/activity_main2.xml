@@ -101,7 +101,6 @@
                 android:layout_marginBottom="5dp"
                 android:layout_span= "3"
                 android:progressDrawable="@android:color/transparent"
-                android:thumb="@drawable/thumbbroker"
                 android:max="100" />
 
         </LinearLayout>

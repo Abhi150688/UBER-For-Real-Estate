@@ -23,15 +23,19 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
-
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.nexchanges.hailyo.custom.MyMarker;
 import com.nexchanges.hailyo.services.MyService;
 import com.nexchanges.hailyo.ui.CustomMapFragment;
 import com.nexchanges.hailyo.ui.GetCurrentLocation;
@@ -41,6 +45,8 @@ import com.nexchanges.hailyo.ui.SearchActivity;
 import com.parse.ParseUser;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -82,8 +88,10 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
     String selectedLocation_Name;
     ViewFlipper VF;
 
+    private ArrayList<MyMarker> mMyMarkersArray = new ArrayList<MyMarker>();
+    private HashMap<Marker, MyMarker> mMarkersHashMap;
 
-    boolean continuosProgress;
+
 
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -94,11 +102,10 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         Intent i = new Intent(this, MyService.class);
         startService(i);
 
-
         searchLocation = (LinearLayout) findViewById(R.id.searchLocation);
         SiteVisitAddressBar = (TextView) findViewById(R.id.SiteVisitAddressBar);
 
-        SetSiteVisitLocation = (ImageButton) findViewById(R.id.ic_launcher);
+        /*SetSiteVisitLocation = (ImageButton) findViewById(R.id.ic_launcher);
         SetSiteVisitLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -108,7 +115,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                 startActivity(EnterConfigActivity);
             }
         });
-
+*/
 
         searchLocation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,7 +129,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         sb1 = (SeekBar)findViewById(R.id.seekBar2);
         sb1.setOnSeekBarChangeListener(this);
 
-        VF = (ViewFlipper) findViewById(R.id.ViewFlipper01);
+      VF = (ViewFlipper) findViewById(R.id.ViewFlipper01);
 
 
 
@@ -207,13 +214,28 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
             }
         });
 
+
         // Google Map ..
+
+
+        // Initialize the HashMap for Markers and MyMarker object
+        mMarkersHashMap = new HashMap<Marker, MyMarker>();
+
+        mMyMarkersArray.add(new MyMarker("Abhishek-3BHK-75K", "icon1", Double.parseDouble("19.116612"), Double.parseDouble("72.910285")));
+        mMyMarkersArray.add(new MyMarker("Client-Sh", "icon2", Double.parseDouble("19.114427"), Double.parseDouble("72.911102")));
+        mMyMarkersArray.add(new MyMarker("Hemant-4BHK-2Lac", "icon3", Double.parseDouble("19.117774"), Double.parseDouble("72.9076828")));
+        mMyMarkersArray.add(new MyMarker("Client-Aj", "icon4", Double.parseDouble("19.1148607"), Double.parseDouble("72.8999415")));
+
+
+
         SiteVisitAddressBar = (TextView) findViewById(R.id.SiteVisitAddressBar);
 
 
         CustomMapFragment customMapFragment = ((CustomMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
         map = customMapFragment.getMap();
         map.setMyLocationEnabled(true);
+
+        plotMarkers(mMyMarkersArray);
 
         customMapFragment.setOnDragListener(new MapWrapperLayout.OnDragListener() {
             @Override
@@ -246,11 +268,83 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
     }
 
 
+    private void plotMarkers(ArrayList<MyMarker> markers)
+    {
+        if(markers.size() > 0)
+        {
+            for (MyMarker myMarker : markers)
+            {
+
+                // Create user marker with custom icon and other options
+                MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude()));
+                markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.currentlocation_icon1));
+
+                Marker currentMarker = map.addMarker(markerOption);
+                mMarkersHashMap.put(currentMarker, myMarker);
+
+                map.setInfoWindowAdapter(new MarkerInfoWindowAdapter());
+            }
+        }
+    }
+
+
+    private int manageMarkerIcon(String markerIcon)
+    {
+        if (markerIcon.equals("icon1"))
+            return R.drawable.client_1;
+        else if(markerIcon.equals("icon2"))
+            return R.drawable.client_1;
+        else if(markerIcon.equals("icon3"))
+            return R.drawable.broker_plus_1;
+        else if(markerIcon.equals("icon4"))
+            return R.drawable.client_1;
+        else return R.drawable.client_1;
+         }
+
+
+
+
+    public class MarkerInfoWindowAdapter implements GoogleMap.InfoWindowAdapter
+    {
+        public MarkerInfoWindowAdapter()
+        {
+        }
+
+        @Override
+        public View getInfoWindow(Marker marker)
+        {
+            return null;
+        }
+
+        @Override
+        public View getInfoContents(Marker marker)
+        {
+            View v  = getLayoutInflater().inflate(R.layout.infowindow_layout, null);
+
+            MyMarker myMarker = mMarkersHashMap.get(marker);
+
+            ImageView markerIcon = (ImageView) v.findViewById(R.id.marker_icon);
+
+            TextView markerLabel = (TextView)v.findViewById(R.id.marker_label);
+
+            markerIcon.setImageResource(manageMarkerIcon(myMarker.getmIcon()));
+
+            markerLabel.setText(myMarker.getmLabel());
+
+            return v;
+        }
+    }
+
+
+
+
+
+
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress,
                                   boolean fromTouch) {
         if (progress == 0) {
-            VF.setDisplayedChild(0);
+           VF.setDisplayedChild(0);
         } else if (progress == 50) {
             VF.setDisplayedChild(1);
         } else VF.setDisplayedChild(0);

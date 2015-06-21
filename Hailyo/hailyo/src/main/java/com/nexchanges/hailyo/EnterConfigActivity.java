@@ -54,6 +54,7 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
     Button seeProp;
     Button showProp;
     Boolean isOnePressed = true, isSecondPlace = false;
+    LatLng j;
 
 
     @Override
@@ -91,7 +92,7 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
 
         if(b!=null)
         {
-            LatLng j =(LatLng) b.get("selectedLocation");
+            j =(LatLng) b.get("selectedLocation");
 
             getPlaceName(j);
             //pasloc.setText(j);
@@ -148,6 +149,7 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
                 String msg1 = pasloc.getText().toString();
                 String msg2 = result.getText().toString();
                 String msg3 = configresult.getText().toString();
+               // String msg4 = j.toString();
 
                 message = msg1 + " " + msg2 + " " + msg3;
 
@@ -203,7 +205,7 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
             case R.id.sbSBar:
                 seekbar1.setProgress(0);
                 if (progress < 10000000) {
-                    progress = ((int) Math.round(progress/ step_Sale1)) * step_Sale1;
+                    progress = ((int) Math.round(progress / step_Sale1)) * step_Sale1;
                     value = progress;
                     result.setText(" Price:" + value);
                 } else if (progress > 10000000 && progress < 100000000) {
@@ -211,11 +213,10 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
                     value = progress;
                     result.setText(" Price:" + value);
                 } else
-                    progress = ((int) Math.round(progress/ step_Sale3)) * step_Sale3;
+                    progress = ((int) Math.round(progress / step_Sale3)) * step_Sale3;
                 value = progress;
                 result.setText(" Price:" + value);
                 break;
-
         }
 
 
