@@ -8,25 +8,25 @@ package com.hrules.horizontalnumberpicker;
 
 public final class R {
 	public static final class attr {
-		public static final int maxValue = 0x7f010038;
-		public static final int minValue = 0x7f010037;
-		public static final int minusButtonText = 0x7f01003a;
-		public static final int plusButtonText = 0x7f010039;
-		public static final int repeatDelay = 0x7f01003b;
-		public static final int showLeadingZeros = 0x7f01003d;
-		public static final int stepSize = 0x7f01003c;
-		public static final int value = 0x7f010036;
+		public static final int maxValue = 0x7f01003f;
+		public static final int minValue = 0x7f01003e;
+		public static final int minusButtonText = 0x7f010041;
+		public static final int plusButtonText = 0x7f010040;
+		public static final int repeatDelay = 0x7f010042;
+		public static final int showLeadingZeros = 0x7f010044;
+		public static final int stepSize = 0x7f010043;
+		public static final int value = 0x7f01003d;
 	}
 	public static final class id {
-		public static final int button_minus = 0x7f0c00b0;
-		public static final int button_plus = 0x7f0c00b2;
-		public static final int text_value = 0x7f0c00b1;
+		public static final int button_minus = 0x7f0c00cb;
+		public static final int button_plus = 0x7f0c00cd;
+		public static final int text_value = 0x7f0c00cc;
 	}
 	public static final class layout {
-		public static final int horizontal_number_picker = 0x7f040035;
+		public static final int horizontal_number_picker = 0x7f040039;
 	}
 	public static final class styleable {
-		public static final int[] HorizontalNumberPicker = { 0x7f010036, 0x7f010037, 0x7f010038, 0x7f010039, 0x7f01003a, 0x7f01003b, 0x7f01003c, 0x7f01003d };
+		public static final int[] HorizontalNumberPicker = { 0x7f01003d, 0x7f01003e, 0x7f01003f, 0x7f010040, 0x7f010041, 0x7f010042, 0x7f010043, 0x7f010044 };
 		public static final int HorizontalNumberPicker_maxValue = 2;
 		public static final int HorizontalNumberPicker_minValue = 1;
 		public static final int HorizontalNumberPicker_minusButtonText = 4;

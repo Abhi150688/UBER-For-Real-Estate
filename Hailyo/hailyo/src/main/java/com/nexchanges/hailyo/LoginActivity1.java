@@ -3,17 +3,10 @@ package com.nexchanges.hailyo;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Spinner;
 
 import com.nexchanges.hailyo.ui.SessionRecorder;
 import com.parse.FindCallback;
@@ -22,25 +15,19 @@ import com.parse.ParseException;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
 import com.parse.SignUpCallback;
-import com.twitter.sdk.android.Twitter;
-import com.twitter.sdk.android.core.TwitterAuthToken;
 import com.twitter.sdk.android.core.identity.TwitterLoginButton;
-import android.content.Intent;
+
 import android.widget.Toast;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.TwitterException;
 import com.twitter.sdk.android.core.TwitterSession;
-import com.twitter.sdk.android.core.identity.TwitterLoginButton;
 
-import java.util.ArrayList;
 import java.util.List;
 import com.digits.sdk.android.AuthCallback;
 import com.digits.sdk.android.DigitsAuthButton;
 import com.digits.sdk.android.DigitsException;
 import com.digits.sdk.android.DigitsSession;
-import com.twitter.sdk.android.core.models.User;
-
 
 
 /**
@@ -277,7 +264,7 @@ public class LoginActivity1 extends Activity {
     public void navigateToHome() {
         // Let's go to the MainActivity
 
-        Intent intent = new Intent(LoginActivity1.this, MainActivity.class);
+        Intent intent = new Intent(LoginActivity1.this, ChooseRoleActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         //intent.putExtra("Mobile",sphoneNumber);

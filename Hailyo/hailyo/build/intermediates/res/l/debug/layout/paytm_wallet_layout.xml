@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@drawable/main_background"
+android:orientation="vertical">
+
+<TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="22dp"
+    android:textAppearance="?android:attr/textAppearanceMedium"
+    android:layout_marginTop="20dp"
+    android:layout_gravity="center"
+    android:textColor="#0000ff"
+    android:text="Enter the Amount to Pay?"/>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_marginTop="35dp"
+    android:layout_marginLeft="18dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="45dp"
+        android:text="Rs. "
+        android:id="@+id/textView2" />
+
+    <EditText
+        android:layout_width="220dp"
+        android:layout_height="60dp"
+        style="@style/SignInEditText"
+        android:gravity="center"
+        android:layout_marginLeft="10dp"
+        android:inputType="number"
+        android:id="@+id/moneyAmount" />
+
+</LinearLayout>
+
+<Button
+    android:layout_width="350dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="35dp"
+    style="@style/ShadowText"
+    android:background="@drawable/button_background_states"
+    android:layout_gravity="center"
+    android:text="Pay with Paytm Wallet"
+    android:textAllCaps="false"
+    android:textSize="20sp"
+    android:id="@+id/payMoney" />
+
+</LinearLayout>
+<!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/layout/paytm_wallet_layout.xml -->

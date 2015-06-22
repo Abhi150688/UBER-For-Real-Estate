@@ -8,18 +8,18 @@ package eu.inmite.android.lib.dialogs;
 
 public final class R {
 	public static final class attr {
-		public static final int buttonBackgroundColorFocused = 0x7f01002d;
-		public static final int buttonBackgroundColorNormal = 0x7f01002b;
-		public static final int buttonBackgroundColorPressed = 0x7f01002c;
-		public static final int buttonSeparatorColor = 0x7f01002a;
-		public static final int buttonTextColor = 0x7f010029;
-		public static final int dialogBackground = 0x7f010025;
-		public static final int messageTextColor = 0x7f010028;
-		public static final int sdlDialogStyle = 0x7f01006e;
-		public static final int sdlMessageTextStyle = 0x7f010070;
-		public static final int sdlTitleTextStyle = 0x7f01006f;
-		public static final int titleSeparatorColor = 0x7f010027;
-		public static final int titleTextColor = 0x7f010026;
+		public static final int buttonBackgroundColorFocused = 0x7f010034;
+		public static final int buttonBackgroundColorNormal = 0x7f010032;
+		public static final int buttonBackgroundColorPressed = 0x7f010033;
+		public static final int buttonSeparatorColor = 0x7f010031;
+		public static final int buttonTextColor = 0x7f010030;
+		public static final int dialogBackground = 0x7f01002c;
+		public static final int messageTextColor = 0x7f01002f;
+		public static final int sdlDialogStyle = 0x7f010076;
+		public static final int sdlMessageTextStyle = 0x7f010078;
+		public static final int sdlTitleTextStyle = 0x7f010077;
+		public static final int titleSeparatorColor = 0x7f01002e;
+		public static final int titleTextColor = 0x7f01002d;
 	}
 	public static final class color {
 		public static final int sdl_bright_foreground_disabled_holo_dark = 0x7f0a00d2;
@@ -78,42 +78,42 @@ public final class R {
 		public static final int grid_90 = 0x7f0b0057;
 	}
 	public static final class drawable {
-		public static final int sdl_background_dark = 0x7f0200a0;
-		public static final int sdl_background_light = 0x7f0200a1;
+		public static final int sdl_background_dark = 0x7f0200c8;
+		public static final int sdl_background_light = 0x7f0200c9;
 	}
 	public static final class id {
-		public static final int dialog_button_panel = 0x7f0c0089;
-		public static final int dialog_button_separator = 0x7f0c008a;
-		public static final int dialog_horizontal_separator = 0x7f0c0088;
-		public static final int sdl__button_panel = 0x7f0c0087;
-		public static final int sdl__content = 0x7f0c0095;
-		public static final int sdl__contentPanel = 0x7f0c008f;
-		public static final int sdl__custom = 0x7f0c008c;
-		public static final int sdl__customPanel = 0x7f0c008b;
-		public static final int sdl__datepicker = 0x7f0c008d;
-		public static final int sdl__listview = 0x7f0c008e;
-		public static final int sdl__message = 0x7f0c0090;
-		public static final int sdl__negative_button = 0x7f0c0007;
-		public static final int sdl__neutral_button = 0x7f0c0008;
-		public static final int sdl__positive_button = 0x7f0c0009;
-		public static final int sdl__progress = 0x7f0c0092;
-		public static final int sdl__progressPanel = 0x7f0c0091;
-		public static final int sdl__title = 0x7f0c0093;
-		public static final int sdl__titleDivider = 0x7f0c0094;
+		public static final int dialog_button_panel = 0x7f0c009e;
+		public static final int dialog_button_separator = 0x7f0c009f;
+		public static final int dialog_horizontal_separator = 0x7f0c009d;
+		public static final int sdl__button_panel = 0x7f0c009c;
+		public static final int sdl__content = 0x7f0c00aa;
+		public static final int sdl__contentPanel = 0x7f0c00a4;
+		public static final int sdl__custom = 0x7f0c00a1;
+		public static final int sdl__customPanel = 0x7f0c00a0;
+		public static final int sdl__datepicker = 0x7f0c00a2;
+		public static final int sdl__listview = 0x7f0c00a3;
+		public static final int sdl__message = 0x7f0c00a5;
+		public static final int sdl__negative_button = 0x7f0c0008;
+		public static final int sdl__neutral_button = 0x7f0c0009;
+		public static final int sdl__positive_button = 0x7f0c000a;
+		public static final int sdl__progress = 0x7f0c00a7;
+		public static final int sdl__progressPanel = 0x7f0c00a6;
+		public static final int sdl__title = 0x7f0c00a8;
+		public static final int sdl__titleDivider = 0x7f0c00a9;
 	}
 	public static final class layout {
-		public static final int dialog_part_button = 0x7f040022;
-		public static final int dialog_part_button_panel = 0x7f040023;
-		public static final int dialog_part_button_separator = 0x7f040024;
-		public static final int dialog_part_custom = 0x7f040025;
-		public static final int dialog_part_datepicker = 0x7f040026;
-		public static final int dialog_part_list = 0x7f040027;
-		public static final int dialog_part_message = 0x7f040028;
-		public static final int dialog_part_progress = 0x7f040029;
-		public static final int dialog_part_title = 0x7f04002a;
+		public static final int dialog_part_button = 0x7f040024;
+		public static final int dialog_part_button_panel = 0x7f040025;
+		public static final int dialog_part_button_separator = 0x7f040026;
+		public static final int dialog_part_custom = 0x7f040027;
+		public static final int dialog_part_datepicker = 0x7f040028;
+		public static final int dialog_part_list = 0x7f040029;
+		public static final int dialog_part_message = 0x7f04002a;
+		public static final int dialog_part_progress = 0x7f04002b;
+		public static final int dialog_part_title = 0x7f04002c;
 	}
 	public static final class string {
-		public static final int dialog_close = 0x7f070070;
+		public static final int dialog_close = 0x7f070076;
 	}
 	public static final class style {
 		public static final int DialogStyleDark = 0x7f0f006f;
@@ -138,7 +138,7 @@ public final class R {
 		public static final int SDL_TitleSeparator = 0x7f0f0098;
 	}
 	public static final class styleable {
-		public static final int[] DialogStyle = { 0x7f010025, 0x7f010026, 0x7f010027, 0x7f010028, 0x7f010029, 0x7f01002a, 0x7f01002b, 0x7f01002c, 0x7f01002d };
+		public static final int[] DialogStyle = { 0x7f01002c, 0x7f01002d, 0x7f01002e, 0x7f01002f, 0x7f010030, 0x7f010031, 0x7f010032, 0x7f010033, 0x7f010034 };
 		public static final int DialogStyle_buttonBackgroundColorFocused = 8;
 		public static final int DialogStyle_buttonBackgroundColorNormal = 6;
 		public static final int DialogStyle_buttonBackgroundColorPressed = 7;
@@ -148,7 +148,7 @@ public final class R {
 		public static final int DialogStyle_messageTextColor = 3;
 		public static final int DialogStyle_titleSeparatorColor = 2;
 		public static final int DialogStyle_titleTextColor = 1;
-		public static final int[] StyledDialogs = { 0x7f01006e, 0x7f01006f, 0x7f010070 };
+		public static final int[] StyledDialogs = { 0x7f010076, 0x7f010077, 0x7f010078 };
 		public static final int StyledDialogs_sdlDialogStyle = 0;
 		public static final int StyledDialogs_sdlMessageTextStyle = 2;
 		public static final int StyledDialogs_sdlTitleTextStyle = 1;

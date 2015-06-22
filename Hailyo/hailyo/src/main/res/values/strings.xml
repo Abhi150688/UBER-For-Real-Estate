@@ -50,10 +50,10 @@
     </string-array>
 
 
-    <string name="pbroker">PROPERTY\n BROKER</string>
-    <string name="abroker">AUCTION\nBROKER</string>
+    <string name="pbroker">PROPERTY\n  BROKER</string>
+    <string name="abroker">AUCTION\n BROKER</string>
 
-    <string name="bbroker">BUILDER\nOFFICE</string>
+    <string name="bbroker">BUILDER\n OFFICE</string>
 
     <string name="title_activity_select_payment_type">Payment Type</string>
     <string name="title_activity_paytm_wallet">Paytm Wallet</string>

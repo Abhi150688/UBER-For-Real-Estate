@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:gravity="center"
+        android:background="@color/blue_sky"
+        android:textColor="@color/white"
+        android:padding="3dp"
+        android:text="Take your Pick!"/>
+
+
+
+    <LinearLayout
+      android:layout_width="fill_parent"
+      android:layout_height="fill_parent"
+      android:orientation="vertical"
+      android:background="@color/white"
+      android:paddingTop="10dp">
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:background="@color/black"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="@color/white"
+            android:text="LIKED MORE THAN ONE PROPERTY"/>
+
+            <Button
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/newbid"
+                android:layout_gravity="center"
+                android:text="New Bid"
+                android:layout_marginTop="5dp"
+                android:textSize="20dp"
+                android:layout_marginRight="5dp"
+                android:inputType="text"/>
+
+        <LinearLayout
+            android:layout_width="325dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:background="@color/lightslategray">
+
+            </LinearLayout>
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:background="@color/black"
+            android:layout_gravity="center"
+            android:layout_marginTop="35dp"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="@color/white"
+            android:text="VIIE ALL ACTIVE DEALS!"/>
+
+
+        <Button
+                android:layout_width="180dp"
+                android:id="@+id/trans"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="My Transactions"
+                android:layout_marginTop="5dp"
+                android:layout_marginRight="5dp"
+                android:textSize="20dp"
+                android:inputType="text"/>
+
+        <LinearLayout
+            android:layout_width="325dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:background="@color/lightslategray">
+
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:background="@color/black"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="35dp"
+            android:padding="5dp"
+            android:textColor="@color/white"
+            android:text="HAIL AGAIN!"/>
+
+
+        <Button
+                android:layout_width="180dp"
+                android:id="@+id/newvisit"
+                android:layout_marginTop="5dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="New Visit"
+                android:textSize="20dp"
+                android:layout_marginRight="5dp"
+                android:hint="Enter Name"
+                android:inputType="text"/>
+
+
+</LinearLayout>
+
+
+
+
+</LinearLayout>

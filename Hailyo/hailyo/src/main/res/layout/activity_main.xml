@@ -37,23 +37,53 @@
                             android:layout_width="match_parent"
                             android:layout_height="454dp"/>
 
-                        <!--<ImageButton
+                        <ImageButton
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:src="@drawable/self_marker"
                             android:layout_gravity="center"
                             android:background="@null"
-                            android:id="@+id/ic_launcher" />-->
+                            android:id="@+id/ic_launcher" />
                     </FrameLayout>
 
-
-                    <LinearLayout
+                    <FrameLayout
                         android:orientation="vertical"
                         android:layout_width="fill_parent"
-                        android:layout_height="wrap_content">
+                        android:layout_height="fill_parent">
+                        <fragment
+                            android:id="@+id/map2"
+                            android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
+                            android:layout_width="match_parent"
+                            android:layout_height="454dp"/>
 
-                        <include layout="@layout/payment_type_layout"></include>
-                    </LinearLayout>
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/self_marker"
+                            android:layout_gravity="center"
+                            android:background="@null"
+                            android:id="@+id/ic_launcher2" />
+                    </FrameLayout>
+
+                    <FrameLayout
+                        android:orientation="vertical"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent">
+                        <fragment
+                            android:id="@+id/map3"
+                            android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
+                            android:layout_width="match_parent"
+                            android:layout_height="454dp"/>
+
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/self_marker"
+                            android:layout_gravity="center"
+                            android:background="@null"
+                            android:id="@+id/ic_launcher3" />
+                    </FrameLayout>
+
 
                 </ViewFlipper>
 
@@ -140,17 +170,50 @@
             android:background="@color/lightgrey"
             android:layout_gravity="center_horizontal|bottom">
 
-            <include
-                android:id="@+id/tableRow1_ref"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                layout="@layout/description" />
+            <TableRow
+                android:id="@+id/tableRow1"
+                android:layout_width="fill_parent"
+                android:orientation="horizontal"
+                android:weightSum="1.0"
+                android:layout_height="wrap_content" >
 
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:layout_gravity="left"
+                    android:paddingLeft="5dp"
+                    android:textColor="@color/red"
+                    android:text="@string/pbroker" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".45"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center"
+                    android:text="@string/abroker" />
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:textColor="@color/black"
+                    android:layout_gravity="right"
+                    android:text="@string/bbroker" />
+
+
+            </TableRow>
 
         </LinearLayout>
 
 
     </FrameLayout>
+
+
 
 
     <ListView

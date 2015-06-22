@@ -23,6 +23,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.hrules.horizontalnumberpicker.HorizontalNumberPicker;
 import com.hrules.horizontalnumberpicker.HorizontalNumberPickerListener;
 import com.nexchanges.hailyo.custom.Words;
+import com.nexchanges.hailyo.model.SharedPrefs;
 import com.nexchanges.hailyo.ui.GetPlaceName;
 
 
@@ -55,12 +56,14 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
     Button showProp;
     Boolean isOnePressed = true, isSecondPlace = false;
     LatLng j;
+    Context context;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.enter_config_layout);
+        context = this;
 
         HorizontalNumberPicker horizontalNumberPicker3 = (HorizontalNumberPicker) findViewById(R.id.horizontal_number_picker3);
         horizontalNumberPicker3.setBackgroundColor(getResources().getColor(android.R.color.white));
@@ -154,6 +157,21 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
                 message = msg1 + " " + msg2 + " " + msg3;
 
                 System.out.println("Message is:" + message);
+
+                SharedPrefs.save(context, SharedPrefs.CURRENT_SPEC, message);
+
+
+                Intent PostYoActivity=new Intent(context, PostYoActivity.class);
+                Bundle extras = new Bundle();
+                extras.putString("Phone", "9967307197");
+                extras.putString("Broker_Name", "Rajiv Lakhpti");
+                extras.putString("Timer", "15");
+                extras.putString("Rating", "3");
+                PostYoActivity.putExtras(extras);
+                startActivity(PostYoActivity);
+
+
+
             }
         });
     }
@@ -208,7 +226,7 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
                     progress = ((int) Math.round(progress / step_Sale1)) * step_Sale1;
                     value = progress;
                     result.setText(" Price:" + value);
-                } else if (progress > 10000000 && progress < 100000000) {
+                } if (progress > 10000000 && progress < 100000000) {
                     progress = ((int) Math.round(progress / step_Sale2)) * step_Sale2;
                     value = progress;
                     result.setText(" Price:" + value);
