@@ -1,7 +1,8 @@
 <android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout12"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent">
 
     <FrameLayout
         android:id="@+id/content_frame"
@@ -13,6 +14,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@drawable/main_background">
+
 
 
             <FrameLayout
@@ -35,6 +37,7 @@
                             android:id="@+id/map"
                             android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
                             android:layout_width="match_parent"
+                            tools:context=".MainActivity"
                             android:layout_height="454dp"/>
 
                         <ImageButton

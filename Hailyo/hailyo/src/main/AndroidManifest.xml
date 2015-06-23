@@ -5,8 +5,8 @@
     android:versionName="1.0" >
 
     <uses-sdk
-        android:minSdkVersion="21"
-        android:targetSdkVersion="21" />
+        android:minSdkVersion="14"
+        android:targetSdkVersion="18" />
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -60,10 +60,6 @@
             android:name=".PostYoActivity"
             android:screenOrientation="portrait"></activity>
 
-        <activity
-            android:name=".ActionBeforeMain"
-            android:screenOrientation="portrait"></activity>
-
 
         <activity
             android:name=".ChooseRoleActivity"
@@ -99,6 +95,11 @@
         <activity
             android:name=".PromotionsActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".NewBid"
+            android:screenOrientation="portrait" />
+
 
         <activity
             android:name=".SettingsActivity"

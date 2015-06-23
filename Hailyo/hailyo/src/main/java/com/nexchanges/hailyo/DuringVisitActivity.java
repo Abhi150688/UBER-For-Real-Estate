@@ -49,7 +49,7 @@ public class DuringVisitActivity extends Activity {
                         dialog.dismiss();
 
                         Intent GiveRatingActivity=new Intent(context, GiveRatingActivity.class);
-                        startActivity(GiveRatingActivity);
+                        context.startActivity(GiveRatingActivity);
 
                     }
                 });

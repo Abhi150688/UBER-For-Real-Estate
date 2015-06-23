@@ -34,6 +34,7 @@ import android.widget.TextView;
 import android.widget.ViewFlipper;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.Circle;
 import com.google.android.gms.maps.model.CircleOptions;
@@ -43,6 +44,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.nexchanges.hailyo.custom.MyMarker;
 import com.nexchanges.hailyo.model.SharedPrefs;
 import com.nexchanges.hailyo.services.MyService;
+
 import com.nexchanges.hailyo.ui.CustomMapFragment;
 import com.nexchanges.hailyo.ui.GetCurrentLocation;
 import com.nexchanges.hailyo.ui.GetPlaceName;
@@ -265,29 +267,39 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         SiteVisitAddressBar = (TextView) findViewById(R.id.SiteVisitAddressBar);
 
 
+
         CustomMapFragment customMapFragment = ((CustomMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
-        map = customMapFragment.getMap();
-        //map.setMyLocationEnabled(true);
 
-        plotMarkers(mMyMarkersArray);
+                customMapFragment.getMapAsync(new OnMapReadyCallback() {
+                                                  @Override
+                                                  public void onMapReady(GoogleMap googleMap) {
+                                                      map = googleMap;
+                                                      map.setMyLocationEnabled(true);
 
-        customMapFragment.setOnDragListener(new MapWrapperLayout.OnDragListener() {
-            @Override
-            public void onDrag(MotionEvent motionEvent) {
-                if (motionEvent.getAction() == MotionEvent.ACTION_MOVE) {
-                    SiteVisitAddressBar.setText("Fetching...");
-                } else {
-                    selectedLocation = map.getCameraPosition().target;
-                    selectedLocation_Name = "Lat: " + selectedLocation.latitude + ", Lng: " + selectedLocation.longitude;
-                    getPlaceName(selectedLocation);
-
-                    System.out.print("Name is " + fetchname);
-                    System.out.print("Email is " + fetchemail);
+                                                      plotMarkers(mMyMarkersArray);
+                                                  }
+                                              });
 
 
+            customMapFragment.setOnDragListener(new MapWrapperLayout.OnDragListener() {
+                @Override
+                public void onDrag(MotionEvent motionEvent) {
+                    if (motionEvent.getAction() == MotionEvent.ACTION_MOVE) {
+                        SiteVisitAddressBar.setText("Fetching...");
+                    } else {
+                        selectedLocation = map.getCameraPosition().target;
+                        selectedLocation_Name = "Lat: " + selectedLocation.latitude + ", Lng: " + selectedLocation.longitude;
+                        getPlaceName(selectedLocation);
+
+                        System.out.print("Name is " + fetchname);
+                        System.out.print("Email is " + fetchemail);
+
+
+                    }
                 }
-            }
-        });
+            });
+
+
 
 // Current Location ..
 

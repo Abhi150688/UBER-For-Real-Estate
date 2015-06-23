@@ -58,9 +58,6 @@
             android:name="com.nexchanges.hailyo.PostYoActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.nexchanges.hailyo.ActionBeforeMain"
-            android:screenOrientation="portrait" />
-        <activity
             android:name="com.nexchanges.hailyo.ChooseRoleActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -83,6 +80,9 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.nexchanges.hailyo.PromotionsActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.nexchanges.hailyo.NewBid"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.nexchanges.hailyo.SettingsActivity"

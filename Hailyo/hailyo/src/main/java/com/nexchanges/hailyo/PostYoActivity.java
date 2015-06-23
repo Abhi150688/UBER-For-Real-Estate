@@ -41,6 +41,7 @@ package com.nexchanges.hailyo;
         import android.widget.ViewFlipper;
         import com.google.android.gms.maps.CameraUpdateFactory;
         import com.google.android.gms.maps.GoogleMap;
+        import com.google.android.gms.maps.OnMapReadyCallback;
         import com.google.android.gms.maps.model.BitmapDescriptorFactory;
         import com.google.android.gms.maps.model.Circle;
         import com.google.android.gms.maps.model.CircleOptions;
@@ -279,8 +280,15 @@ public class PostYoActivity extends ActionBarActivity
         // Initialize the HashMap for Markers and MyMarker object
 
         CustomMapFragment customMapFragment = ((CustomMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
-        map = customMapFragment.getMap();
-        map.setMyLocationEnabled(true);
+        customMapFragment.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(GoogleMap googleMap) {
+                map = googleMap;
+                map.setMyLocationEnabled(true);
+
+                 }
+        });
+
 
 
 
@@ -295,9 +303,7 @@ public class PostYoActivity extends ActionBarActivity
                     map.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
                     map.animateCamera(CameraUpdateFactory.zoomTo(15));
 
-                    //getPlaceName(currentLocation);
-
-                }
+                              }
             }
         });
 

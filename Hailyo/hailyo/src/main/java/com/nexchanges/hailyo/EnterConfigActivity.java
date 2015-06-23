@@ -165,7 +165,7 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
                 Bundle extras = new Bundle();
                 extras.putString("Phone", "9967307197");
                 extras.putString("Broker_Name", "Rajiv Lakhpti");
-                extras.putString("Timer", "15");
+                extras.putString("Timer", "1");
                 extras.putString("Rating", "3");
                 PostYoActivity.putExtras(extras);
                 startActivity(PostYoActivity);
