@@ -15,6 +15,23 @@
             android:orientation="vertical"
             android:background="@drawable/main_background">
 
+            <FrameLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_marginTop="1dp"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/root_view_parent">
+
+
+        <ViewFlipper android:id="@+id/ViewFlipper01"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
 
 
             <FrameLayout
@@ -25,191 +42,220 @@
                 android:layout_height="fill_parent"
                 android:id="@+id/root_view">
 
-                <ViewFlipper android:id="@+id/ViewFlipper01"
+                <ViewFlipper android:id="@+id/ViewFlipper02"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content">
 
-                    <FrameLayout
-                        android:orientation="vertical"
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent">
+
+                <FrameLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
                         <fragment
-                            android:id="@+id/map"
+                            android:id="@+id/mapreq"
                             android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
                             android:layout_width="match_parent"
                             tools:context=".MainActivity"
                             android:layout_height="454dp"/>
 
-                        <ImageButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/self_marker"
-                            android:layout_gravity="center"
-                            android:background="@null"
-                            android:id="@+id/ic_launcher" />
-                    </FrameLayout>
+                </FrameLayout>
 
-                    <FrameLayout
-                        android:orientation="vertical"
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent">
-                        <fragment
-                            android:id="@+id/map2"
-                            android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
-                            android:layout_width="match_parent"
-                            android:layout_height="454dp"/>
+                <FrameLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
 
-                        <ImageButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/self_marker"
-                            android:layout_gravity="center"
-                            android:background="@null"
-                            android:id="@+id/ic_launcher2" />
-                    </FrameLayout>
+                    <fragment
+                        android:id="@+id/mapavl"
+                        android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
+                        android:layout_width="match_parent"
+                        tools:context=".MainActivity"
+                        android:layout_height="454dp"/>
 
-                    <FrameLayout
-                        android:orientation="vertical"
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent">
-                        <fragment
-                            android:id="@+id/map3"
-                            android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
-                            android:layout_width="match_parent"
-                            android:layout_height="454dp"/>
-
-                        <ImageButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/self_marker"
-                            android:layout_gravity="center"
-                            android:background="@null"
-                            android:id="@+id/ic_launcher3" />
-                    </FrameLayout>
-
-
+                </FrameLayout>
                 </ViewFlipper>
 
+                //button - See Availability
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:background="@android:color/white"
-                    android:orientation="vertical"
-                    android:layout_gravity="top"
-                    android:id="@+id/search_bar">
+                    android:layout_height="40dp"
+                    android:padding="2dp"
+                    android:background="@color/lightslategray"
+                    android:orientation="horizontal"
+                    android:layout_gravity="center_horizontal|bottom">
 
 
-                    <TextView
-                        android:id="@+id/SiteVisitLocation"
+                    <Button
+                        android:id="@+id/seeavail"
+                        android:layout_marginTop="2dp"
                         android:layout_width="wrap_content"
-                        android:layout_gravity="center_horizontal|center"
                         android:layout_height="wrap_content"
-                        android:text="Site Visit Location"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="#28b54c" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="5dp"
+                        android:background="@color/blue_sky"
+                        android:layout_weight=".6"
+                        android:textSize="20dp"
+                        android:layout_gravity="left"
                         android:layout_marginRight="5dp"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:id="@+id/searchLocation">
+                        android:layout_marginLeft="5dp"
+                        android:paddingLeft="5dp"
+                        android:textColor="@color/white"
+                        android:text="VIEW REQ" />
+
+                    <Button
+                        android:id="@+id/seerequire"
+                        android:background="@color/white"
+                        android:layout_marginRight="5dp"
+                        android:textSize="20dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight=".5"
+                        android:textColor="@color/black"
+                        android:layout_gravity="center"
+                        android:text="VIEW AVL" />
 
 
-                        <ImageView
-                            android:layout_width="18dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/search"/>
-
-
-
-                        <TextView
-                            android:id="@+id/SiteVisitAddressBar"
-                            android:singleLine="true"
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:background="@android:color/white"
-                            android:hint="@string/placeholder"
-                            android:layout_gravity="center_horizontal|top" />
-
-                    </LinearLayout>
                 </LinearLayout>
 
 
+                //end buttons
             </FrameLayout>
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:orientation="horizontal"
-            android:background="@color/white"
-            android:layout_gravity="center_horizontal|bottom">
+              </FrameLayout>
 
 
-            <SeekBar
-                android:id="@+id/seekBar2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_span= "3"
-                android:progressDrawable="@android:color/transparent"
-                android:thumb="@drawable/seekthumb"
-                android:max="100" />
 
-        </LinearLayout>
+            //2nd frame
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:orientation="vertical"
-            android:background="@color/lightgrey"
-            android:layout_gravity="center_horizontal|bottom">
-
-            <TableRow
-                android:id="@+id/tableRow1"
+            <FrameLayout
+                android:orientation="vertical"
                 android:layout_width="fill_parent"
-                android:orientation="horizontal"
-                android:weightSum="1.0"
-                android:layout_height="wrap_content" >
+                android:layout_height="fill_parent">
 
-                <TextView
-                    android:id="@+id/textView1"
+
+                <FrameLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:orientation="vertical"
+                    android:layout_marginTop="1dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/root_view2">
+
+                    <fragment
+                        android:id="@+id/maphail"
+                        android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
+                        android:layout_width="match_parent"
+                        tools:context=".MainActivity"
+                        android:layout_height="454dp"/>
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/self_marker"
+                        android:layout_gravity="center"
+                        android:background="@null"
+                        android:id="@+id/ic_launcher" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:background="@android:color/white"
+                        android:orientation="vertical"
+                        android:layout_gravity="top"
+                        android:id="@+id/search_bar">
+
+
+                        <TextView
+                            android:id="@+id/SiteVisitLocation"
+                            android:layout_width="wrap_content"
+                            android:layout_gravity="center_horizontal|center"
+                            android:layout_height="wrap_content"
+                            android:text="Site Visit Location"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="#28b54c" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="25dp"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:id="@+id/searchLocation">
+
+
+                            <ImageView
+                                android:layout_width="18dp"
+                                android:layout_height="20dp"
+                                android:src="@drawable/search"/>
+
+
+
+                            <TextView
+                                android:id="@+id/SiteVisitAddressBar"
+                                android:singleLine="true"
+                                android:layout_width="match_parent"
+                                android:layout_height="30dp"
+                                android:background="@android:color/white"
+                                android:hint="@string/placeholder"
+                                android:layout_gravity="center_horizontal|top" />
+
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </FrameLayout>
+
+            </FrameLayout>
+//2nd frame ends
+
+
+        </ViewFlipper>
+
+        </FrameLayout>
+        </LinearLayout>
+
+        //end dynamic frames
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:padding="2dp"
+            android:orientation="horizontal"
+            android:background="@color/lightslategray"
+            android:layout_gravity="center_horizontal|bottom">
+
+
+                <Button
+                    android:id="@+id/yomode"
+                    android:layout_marginTop="2dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@color/black"
+                    android:layout_weight=".6"
+                    android:textSize="20dp"
+                    android:layout_gravity="left"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="5dp"
+                    android:paddingLeft="5dp"
+                    android:textColor="@color/white"
+                    android:text="@string/yomode" />
+
+                <Button
+                    android:id="@+id/hailmode"
+                    android:background="@color/white"
+                    android:layout_marginRight="5dp"
+                    android:textSize="20dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight=".5"
-                    android:layout_gravity="left"
-                    android:paddingLeft="5dp"
-                    android:textColor="@color/red"
-                    android:text="@string/pbroker" />
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".45"
                     android:textColor="@color/black"
                     android:layout_gravity="center"
-                    android:text="@string/abroker" />
+                    android:text="@string/hailmode" />
 
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".5"
-                    android:textColor="@color/black"
-                    android:layout_gravity="right"
-                    android:text="@string/bbroker" />
-
-
-            </TableRow>
 
         </LinearLayout>
 

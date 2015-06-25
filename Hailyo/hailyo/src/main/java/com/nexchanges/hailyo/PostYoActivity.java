@@ -9,8 +9,6 @@ package com.nexchanges.hailyo;
         import android.content.Intent;
         import android.content.res.Configuration;
         import android.graphics.Color;
-        import android.location.Address;
-        import android.location.Geocoder;
         import android.location.Location;
         import android.net.Uri;
         import android.os.Bundle;
@@ -18,50 +16,31 @@ package com.nexchanges.hailyo;
         import android.os.Vibrator;
         import android.support.v4.app.ActionBarDrawerToggle;
 
-        import android.support.v4.app.FragmentActivity;
         import android.support.v4.view.GravityCompat;
         import android.support.v4.widget.DrawerLayout;
         import android.support.v7.app.ActionBarActivity;
-        import android.text.style.StyleSpan;
+        import android.telephony.SmsManager;
         import android.util.Log;
         import android.view.KeyEvent;
         import android.view.MenuItem;
-        import android.view.MotionEvent;
         import android.view.View;
         import android.widget.AdapterView;
         import android.widget.ArrayAdapter;
         import android.widget.Button;
         import android.widget.ImageButton;
-        import android.widget.ImageView;
-        import android.widget.LinearLayout;
         import android.widget.ListView;
         import android.widget.RatingBar;
         import android.widget.SeekBar;
         import android.widget.TextView;
-        import android.widget.ViewFlipper;
+        import android.widget.Toast;
+
         import com.google.android.gms.maps.CameraUpdateFactory;
         import com.google.android.gms.maps.GoogleMap;
         import com.google.android.gms.maps.OnMapReadyCallback;
-        import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-        import com.google.android.gms.maps.model.Circle;
-        import com.google.android.gms.maps.model.CircleOptions;
         import com.google.android.gms.maps.model.LatLng;
-        import com.google.android.gms.maps.model.Marker;
-        import com.google.android.gms.maps.model.MarkerOptions;
-        import com.nexchanges.hailyo.custom.MyMarker;
-        import com.nexchanges.hailyo.services.MyService;
         import com.nexchanges.hailyo.ui.CustomMapFragment;
-        import com.nexchanges.hailyo.ui.GetCurrentLocation;
-        import com.nexchanges.hailyo.ui.GetPlaceName;
-        import com.nexchanges.hailyo.ui.MapWrapperLayout;
-        import com.nexchanges.hailyo.ui.SearchActivity;
-        import com.parse.ParseUser;
+        import com.nexchanges.hailyo.custom.GetCurrentLocation;
 
-        import java.io.IOException;
-        import java.util.ArrayList;
-        import java.util.HashMap;
-        import java.util.List;
-        import java.util.Locale;
         import java.util.concurrent.TimeUnit;
 
 /**
@@ -100,7 +79,7 @@ public class PostYoActivity extends ActionBarActivity
     ImageButton cancel;
     TextView timerTv, brokerTv;
     RatingBar ratingTv;
-    String phone, brokerName, timer, rating;
+    String phone, brokerName, timer, rating, body,phoneNo;
 
 
     @Override
@@ -140,16 +119,17 @@ public class PostYoActivity extends ActionBarActivity
         new CountDownTimer(ltimer1, 1000) {
 
             public void onTick(long millisUntilFinished) {
-                timerTv.setText(""+String.format(" %d min, %d sec" + " to start Site Visit ",
-                        TimeUnit.MILLISECONDS.toMinutes( millisUntilFinished),
-                        TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished) -
-                                TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
+                timerTv.setText(""+String.format("%d min",
+                        TimeUnit.MILLISECONDS.toMinutes( millisUntilFinished)-
+                           TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
+
             }
 
             public void onFinish() {
                 timerTv.setText(brokerName + " should have arrived!");
                 Intent DuringVisitActivity=new Intent(context, DuringVisitActivity.class);
                 startActivity(DuringVisitActivity);
+                finish();
                 Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
                 // Vibrate for 500 milliseconds
                 v.vibrate(500);
@@ -171,12 +151,12 @@ public class PostYoActivity extends ActionBarActivity
 
         cancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
+                body = "Your site visit Id: ST123453 with Mr. Abhishek has just been cancelled";
 
-                Intent cancelIntent = new Intent(Intent.ACTION_VIEW);
-                cancelIntent.setType("vnd.android-dir/mms-sms");
-                cancelIntent.putExtra("address", phone);
-                cancelIntent.putExtra("sms_body", "Your site visit Id: ST123453 with Mr. Abhishek has just been cancelled");
-                startActivity(cancelIntent);
+
+                sendSMSMessage(phone, body);
+                Intent MainActivity = new Intent (context, MainActivity.class);
+                startActivity(MainActivity);
             }
         });
 
@@ -340,6 +320,26 @@ public class PostYoActivity extends ActionBarActivity
         drawerToggle.onConfigurationChanged(newConfig);
     }
 
+    protected void sendSMSMessage(String phoneNo,String message) {
+        Log.i("Send SMS", "");
+
+        try {
+            SmsManager smsManager = SmsManager.getDefault();
+            smsManager.sendTextMessage(phoneNo, null, message, null, null);
+            Toast.makeText(getApplicationContext(), "VISIT CANCELLED", Toast.LENGTH_LONG).show();
+        }
+
+        catch (Exception e) {
+            Toast.makeText(getApplicationContext(), "SMS faild, please try again.", Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        //do nothing
+    }
 
 }
 

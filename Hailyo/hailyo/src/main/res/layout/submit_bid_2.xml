@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:gravity="center"
+        android:background="@color/blue_sky"
+        android:textColor="@color/white"
+        android:padding="3dp"
+        android:text="Liked the property? \n Start online dealing room with Owner"/>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+
+            android:text="Broker: "/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/bname"
+            android:layout_marginLeft="8dp"/>
+
+        </LinearLayout>
+
+    <ViewFlipper
+        android:layout_width="match_parent"
+        android:id="@+id/VF"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="20dp"
+                >
+
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="left"
+                    android:background="@color/transparent"
+                    android:layout_marginTop="2dp"
+                    android:id="@+id/srowtv1"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingLeft="10dp"
+                    android:hint="Enter Property - Unit No, Building, Floor">
+
+                </EditText>
+                <requestFocus/>
+
+
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="2dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/black"
+                    />
+
+
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:id="@+id/srowtv2"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:layout_gravity="left"
+                    android:paddingTop="10dp"
+                    android:layout_marginTop="2dp"
+                    android:hint="Rent Amount"
+                    android:paddingLeft="10dp"
+                    android:inputType="number"
+
+                    />
+
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="2dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/black"
+                    />
+
+
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:id="@+id/srowtv3"
+                    android:layout_height="wrap_content"
+                    android:hint="Deposit Amount"
+                    android:layout_marginTop="2dp"
+
+                    android:layout_gravity="left"
+                    android:paddingTop="10dp"
+                    android:background="@color/transparent"
+                    android:paddingLeft="10dp"
+                    android:inputType="number"/>
+
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="2dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/black"
+                    />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:id="@+id/srowtv4"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+
+                    android:background="@color/transparent"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:hint="Agreement Start Date"
+                    android:layout_gravity="left"
+                    />
+
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="2dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/black"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center"
+                android:gravity="center">
+
+                <ImageButton
+                    android:id="@+id/plus"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/roundbutton"
+                    android:text="+"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:textSize="20dp"
+                    android:textColor="@color/white"
+                    android:background="@null"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Send Detailed Bid"/>
+
+                </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/ssubmit"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:text="SUBMIT"
+                    android:layout_weight=".4"
+                    android:textSize="20dp"
+                    android:layout_marginRight="5dp"
+                    android:inputType="text"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:id="@+id/scancel"
+                    android:layout_height="wrap_content"
+
+                    android:layout_gravity="center"
+                    android:text="LATER"
+                    android:layout_weight=".4"
+                    android:layout_marginRight="10dp"
+                    android:textSize="20dp"
+                    android:inputType="text"/>
+
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="20dp"
+        android:id="@+id/yourloc"
+        >
+
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="left"
+                    android:background="@color/transparent"
+                    android:layout_marginTop="2dp"
+                    android:id="@+id/rowtv1"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingLeft="10dp"
+                    android:hint="Enter Property - Unit No, Building, Floor">
+
+                    </EditText>
+                <requestFocus/>
+
+
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="2dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/black"
+                    />
+
+
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:id="@+id/rowtv2"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:layout_gravity="left"
+                    android:paddingTop="10dp"
+                    android:layout_marginTop="2dp"
+                    android:hint="Rent Amount"
+                    android:paddingLeft="10dp"
+                    android:inputType="number"
+
+                  />
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/black"
+            />
+
+
+
+        <EditText
+                    android:layout_width="wrap_content"
+                    android:id="@+id/rowtv3"
+                    android:layout_height="wrap_content"
+                    android:hint="Deposit Amount"
+                    android:layout_marginTop="2dp"
+
+                    android:layout_gravity="left"
+                    android:paddingTop="10dp"
+                    android:background="@color/transparent"
+                    android:paddingLeft="10dp"
+                    android:inputType="number"/>
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/black"
+            />
+
+        <EditText
+                    android:layout_width="wrap_content"
+                    android:id="@+id/rowtv4"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+
+                    android:background="@color/transparent"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:hint="Agreement Start Date"
+                    android:layout_gravity="left"
+                    />
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/black"
+            />
+
+
+        <EditText
+                    android:layout_width="wrap_content"
+                    android:id="@+id/rowtv5"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:layout_marginTop="2dp"
+
+                    android:hint="Agreement Tenure (in months)"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:layout_gravity="left"
+                    android:inputType="number"/>
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/black"
+            />
+
+
+        <EditText
+                    android:layout_width="wrap_content"
+                    android:id="@+id/rowtv6"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:hint="Lock-in Period (in months)"
+                    android:layout_marginTop="2dp"
+
+                    android:paddingLeft="10dp"
+                    android:layout_gravity="left"
+                    android:paddingTop="10dp"
+                    android:inputType="number"/>
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/black"
+            />
+
+        <EditText
+                    android:layout_width="wrap_content"
+                    android:id="@+id/rowtv7"
+                    android:layout_height="wrap_content"
+                    android:hint="Lease - Individual/Company?"
+                    android:layout_marginTop="2dp"
+
+                    android:background="@color/transparent"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_gravity="left"
+                    android:inputType="text"
+                    />
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/black"
+            />
+
+
+        <EditText
+                    android:layout_width="wrap_content"
+                    android:id="@+id/rowtv8"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_marginTop="2dp"
+
+                    android:background="@color/transparent"
+                    android:hint="Occupant Name"
+                    android:inputType="text"/>
+
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="2dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="1dp"
+            android:background="@color/black"
+            />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center"
+            android:gravity="center">
+
+            <ImageButton
+                android:id="@+id/minus"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                android:src="@drawable/roundbutton"
+                android:text="-"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:background="@null"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Send Basic Bid"/>
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/submit"
+                    android:layout_gravity="center"
+                    android:text="SUBMIT"
+                    android:layout_weight=".4"
+                    android:textSize="20dp"
+                    android:layout_marginRight="5dp"
+                    android:inputType="text"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:id="@+id/reset"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="RESET"
+                    android:layout_weight=".4"
+                    android:layout_marginRight="5dp"
+                    android:textSize="20dp"
+                    android:inputType="text"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:id="@+id/cancel"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="LATER"
+                    android:textSize="20dp"
+                    android:layout_marginRight="1dp"
+                    android:hint="Enter Name"
+                    android:inputType="text"/>
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+            </LinearLayout>
+    //end of frame2
+    </ViewFlipper>
+
+</LinearLayout>

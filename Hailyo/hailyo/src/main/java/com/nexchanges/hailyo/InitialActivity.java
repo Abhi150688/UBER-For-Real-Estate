@@ -1,11 +1,6 @@
 package com.nexchanges.hailyo;
 
 import android.os.Bundle;
-import android.view.Gravity;
-import android.view.View;
-import android.view.WindowManager;
-
-import com.nexchanges.hailyo.custom.CustomActivity;
 
 /**
  * Copyright (C) 2014 Twitter Inc and other contributors.
@@ -25,9 +20,9 @@ import com.nexchanges.hailyo.custom.CustomActivity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Bundle;
 
-import com.nexchanges.hailyo.ui.SessionRecorder;
+import com.nexchanges.hailyo.model.SessionRecorder;
+import com.nexchanges.hailyo.model.SharedPrefs;
 import com.twitter.sdk.android.Twitter;
 
 import com.digits.sdk.android.Digits;
@@ -35,6 +30,8 @@ import com.twitter.sdk.android.core.Session;
 
 
 public class InitialActivity extends Activity {
+
+    String role;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,20 +42,33 @@ public class InitialActivity extends Activity {
                 Digits.getSessionManager().getActiveSession()
         );
 
+        role = SharedPrefs.getString(this, SharedPrefs.MY_ROLE_KEY);
+        System.out.print("My role as per SP is" + role);
 
-        if (activeSession != null) {
-            startThemeActivity();
-        } else {
+
+
+        if (activeSession != null && role.matches("Customer")) {
+            startCustomerActivity();
+        }
+        else if (activeSession != null && role.matches("Broker")) {
+            startBrokerActivity();
+        }
+        else {
             startLoginActivity();
         }
+
     }
 
-    private void startThemeActivity() {
+    private void startCustomerActivity() {
         startActivity(new Intent(this, MainActivity.class));
         finish();
     }
 
     private void startLoginActivity() {
         startActivity(new Intent(this, LoginActivity1.class));
+    }
+
+    private void startBrokerActivity() {
+        startActivity(new Intent(this, MainBrokerActivity.class));
     }
 }

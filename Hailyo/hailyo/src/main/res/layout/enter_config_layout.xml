@@ -31,7 +31,7 @@
             android:layout_width="wrap_content"
             android:layout_gravity="center_horizontal|center"
             android:layout_height="wrap_content"
-            android:text="Your Chosen Location"
+            android:text="Site Visit Location"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#28b54c" />
 
@@ -72,7 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_gravity="center_horizontal|center"
             android:layout_height="wrap_content"
-            android:text="What do you wish to do"
+            android:text="Intent"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:textColor="#28b54c" />
 
@@ -93,8 +93,8 @@
                 android:background="@color/black"
                 android:textColor="@color/white"
                 android:text="SEE PROPERTY"
-                android:paddingLeft="5dp"
-                android:paddingRight="5dp"
+                android:paddingLeft="9dp"
+                android:paddingRight="9dp"
                 android:paddingTop="2dp"
                 android:paddingBottom="2dp"
                 android:textAllCaps="false"
@@ -256,6 +256,7 @@
             android:layout_width="match_parent"
             android:layout_height="49dp"
             android:layout_marginLeft="5dp"
+            android:layout_marginTop="15dp"
             android:layout_marginRight="5dp"
             android:gravity="center"
             android:orientation="vertical"
@@ -273,7 +274,7 @@
                 android:id="@+id/sbSBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:max="1000000"></SeekBar>
+                android:max="150000000"></SeekBar>
 
 
         </LinearLayout>

@@ -42,7 +42,17 @@
                 android:padding="5dp"
                 android:layout_gravity="center"
                 android:id="@+id/clock"
-                android:layout_weight="0.27" />
+                android:layout_weight="0.27"
+                />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/gray"
+                />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -53,20 +63,28 @@
                 android:id="@+id/billed"
                 android:text="Rs. 250 "/>
 
-            </LinearLayout>
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/gray"
+                />
+
+
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_gravity="center"
             android:gravity="center"
             android:padding="5dp"
             android:layout_marginTop="20dp"
-            android:background="@color/blue_sky"
-            android:textColor="@color/white"
-            android:text="Liked an apartment? \nClick here to submit your bid"
+            android:text="Liked an apartment? \nClick to inform broker and submit your bid"
             android:layout_weight="0.03" />
 
         <LinearLayout
@@ -109,7 +127,6 @@
             android:background="@color/lightslategray"
             android:layout_marginTop="40dp"
             android:gravity="center"
-            android:layout_marginBottom="5dp"
             android:orientation="vertical">
 
 

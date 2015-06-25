@@ -19,10 +19,10 @@ public class MyService extends IntentService {
     public void onCreate() {
         super.onCreate();
         //Toast.makeText(this, "Service Created",Toast.LENGTH_SHORT).show();
-        new PubnubHandler(this).subscribe();
-        new PubnubHandler(this).publish("Received from Dev Console.....hahahahhahahahahah");
-        new PubnubHandler(this).herenow();
-        new PubnubHandler(this).presence();
+        //new PubnubHandler(this).subscribe();
+        //new PubnubHandler(this).publish("Received from Dev Console.....hahahahhahahahahah");
+        //new PubnubHandler(this).herenow();
+        //new PubnubHandler(this).presence();
 
     }
 

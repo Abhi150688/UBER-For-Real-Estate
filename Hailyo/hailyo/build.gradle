@@ -54,4 +54,5 @@ dependencies {
     }
     compile 'com.android.support:appcompat-v7:22.0.0'
     compile files('libs/pgsdk.jar')
+    compile 'me.alexrs:wave-drawable:1.0.0'
 }

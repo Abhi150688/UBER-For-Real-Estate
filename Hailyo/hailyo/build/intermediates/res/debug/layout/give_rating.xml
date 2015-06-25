@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:gravity="center"
+        android:background="@color/blue_sky"
+        android:textColor="@color/white"
+        android:padding="3dp"
+        android:text="RECEIPT"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:id="@+id/yourloc"
+        >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginTop="30dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:id="@+id/searchLocation"
+            >
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:padding="5dp"
+                android:layout_gravity="center"
+                android:id="@+id/clock"
+                android:layout_weight="0.27"
+                />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/gray"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textSize="40dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/billed"
+                android:text="Rs. 250 "/>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/gray"
+                />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="387dp"
+            android:layout_height="140dp"
+            android:background="@color/lightslategray"
+            android:layout_marginTop="40dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:text="RATE YOUR SITE VISIT"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:gravity="center"/>
+
+            <RatingBar
+                android:layout_width="wrap_content"
+
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:id="@+id/ratingBar"
+                android:gravity="center"
+                android:layout_marginTop="10dp"
+
+                />
+
+
+
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+</LinearLayout><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/layout/give_rating.xml -->

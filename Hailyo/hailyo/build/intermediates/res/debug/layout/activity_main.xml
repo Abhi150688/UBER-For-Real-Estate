@@ -15,15 +15,14 @@
             android:orientation="vertical"
             android:background="@drawable/main_background">
 
-
-
             <FrameLayout
                 xmlns:android="http://schemas.android.com/apk/res/android"
                 android:orientation="vertical"
                 android:layout_marginTop="1dp"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:id="@+id/root_view">
+                android:id="@+id/root_view_parent">
+
 
                 <ViewFlipper android:id="@+id/ViewFlipper01"
                     android:layout_width="fill_parent"
@@ -33,64 +32,79 @@
                         android:orientation="vertical"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent">
-                        <fragment
-                            android:id="@+id/map"
-                            android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
-                            android:layout_width="match_parent"
-                            tools:context=".MainActivity"
-                            android:layout_height="454dp"/>
 
-                        <ImageButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/self_marker"
-                            android:layout_gravity="center"
-                            android:background="@null"
-                            android:id="@+id/ic_launcher" />
-                    </FrameLayout>
+                            <fragment
+                                android:id="@+id/map"
+                                android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
+                                android:layout_width="match_parent"
+                                tools:context=".MainActivity"
+                                android:layout_height="454dp"/>
+
+                            <ImageButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/self_marker"
+                                android:layout_gravity="center"
+                                android:background="@null"
+                                android:id="@+id/ic_launcher" />
+
+                     </FrameLayout>
+
+
+                   //2nd frame
+
+                <FrameLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+
+
+
+                    <fragment
+                        android:id="@+id/map2"
+                        android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
+                        android:layout_width="match_parent"
+                        tools:context=".MainActivity"
+                        android:layout_height="454dp"/>
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/self_marker"
+                        android:layout_gravity="center"
+                        android:background="@null"
+                        android:id="@+id/ic_launcher2" />
+
+</FrameLayout>
+
+                    //3rd frame
+
 
                     <FrameLayout
                         android:orientation="vertical"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent">
-                        <fragment
-                            android:id="@+id/map2"
-                            android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
-                            android:layout_width="match_parent"
-                            android:layout_height="454dp"/>
-
-                        <ImageButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/self_marker"
-                            android:layout_gravity="center"
-                            android:background="@null"
-                            android:id="@+id/ic_launcher2" />
-                    </FrameLayout>
-
-                    <FrameLayout
-                        android:orientation="vertical"
-                        android:layout_width="fill_parent"
-                        android:layout_height="fill_parent">
-                        <fragment
-                            android:id="@+id/map3"
-                            android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
-                            android:layout_width="match_parent"
-                            android:layout_height="454dp"/>
-
-                        <ImageButton
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/self_marker"
-                            android:layout_gravity="center"
-                            android:background="@null"
-                            android:id="@+id/ic_launcher3" />
-                    </FrameLayout>
 
 
-                </ViewFlipper>
 
+                            <fragment
+                                android:id="@+id/map3"
+                                android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
+                                android:layout_width="match_parent"
+                                tools:context=".MainActivity"
+                                android:layout_height="454dp"/>
 
+                            <ImageButton
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/self_marker"
+                                android:layout_gravity="center"
+                                android:background="@null"
+                                android:id="@+id/ic_launcher3" />
+
+                        </FrameLayout>
+
+                  </ViewFlipper>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -143,6 +157,7 @@
 
             </FrameLayout>
         </LinearLayout>
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -231,4 +246,6 @@
         />
 
 
-</android.support.v4.widget.DrawerLayout><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/layout/activity_main.xml -->
+</android.support.v4.widget.DrawerLayout>
+
+<!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/layout/activity_main.xml -->

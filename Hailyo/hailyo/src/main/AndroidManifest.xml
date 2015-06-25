@@ -62,6 +62,16 @@
 
 
         <activity
+            android:name=".MainBrokerActivity"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".SearchSplashActivity"
+            android:screenOrientation="portrait"></activity>
+
+
+
+        <activity
             android:name=".ChooseRoleActivity"
             android:screenOrientation="portrait"></activity>
 
@@ -97,7 +107,7 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".NewBid"
+            android:name=".NewBidActivity"
             android:screenOrientation="portrait" />
 
 
@@ -123,16 +133,9 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".ui.SearchActivity"
+            android:name=".custom.SearchActivity"
             android:screenOrientation="portrait"/>
 
-
-        <activity
-            android:name=".PaymentPopup"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.CustomDialog"
-            android:windowSoftInputMode="stateHidden" >
-        </activity>
 
         <activity
             android:name=".LoginActivity1"

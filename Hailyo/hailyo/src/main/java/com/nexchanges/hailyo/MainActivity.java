@@ -2,21 +2,17 @@ package com.nexchanges.hailyo;
 
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.location.Address;
-import android.location.Geocoder;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
-import android.text.style.StyleSpan;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -24,7 +20,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -36,8 +31,6 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.Circle;
-import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -46,18 +39,15 @@ import com.nexchanges.hailyo.model.SharedPrefs;
 import com.nexchanges.hailyo.services.MyService;
 
 import com.nexchanges.hailyo.ui.CustomMapFragment;
-import com.nexchanges.hailyo.ui.GetCurrentLocation;
-import com.nexchanges.hailyo.ui.GetPlaceName;
-import com.nexchanges.hailyo.ui.MapWrapperLayout;
-import com.nexchanges.hailyo.ui.SearchActivity;
+import com.nexchanges.hailyo.custom.GetCurrentLocation;
+import com.nexchanges.hailyo.custom.GetPlaceName;
+import com.nexchanges.hailyo.custom.MapWrapperLayout;
+import com.nexchanges.hailyo.custom.SearchActivity;
 import com.parse.ParseUser;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Locale;
-import java.util.jar.Attributes;
 
 /**
  * The Activity MainActivity will launched at the start of the app.
@@ -66,26 +56,20 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
 {
 
     SeekBar sb1;
-	/** The drawer layout. */
 	private DrawerLayout drawerLayout;
-
     String []listItems;
-
     Context context;
 
     public static final String TAG = MainActivity.class.getSimpleName();
 
-	/** ListView for left side drawer. */
 	private ListView drawerLeft;
 
-	/** ListView for left side drawer. */
 	private ListView drawerRight;
 
-	/** The drawer toggle. */
 	private ActionBarDrawerToggle drawerToggle;
 
 
-    GoogleMap map;
+    GoogleMap map,map2,map3;
     LinearLayout searchLocation;
     TextView SiteVisitAddressBar, tv1, tv2,tv3,smallname, smallemail;
     ImageButton SetSiteVisitLocation;
@@ -93,13 +77,16 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
     LatLng currentLocation;
     List<Address> addresses;
 
-    LatLng selectedLocation;
+    LatLng selectedLocation,curLatLng;
+    Location curLoc;
     String selectedLocation_Name;
-    String fetchname, fetchemail;
+    String fetchname, fetchemail,fetchphoto;
     ViewFlipper VF;
+    ImageView smallphoto;
 
     private ArrayList<MyMarker> mMyMarkersArray = new ArrayList<MyMarker>();
     private HashMap<Marker, MyMarker> mMarkersHashMap;
+    private static LayoutInflater inflate =null;
 
 
 
@@ -120,16 +107,8 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         searchLocation = (LinearLayout) findViewById(R.id.searchLocation);
         SiteVisitAddressBar = (TextView) findViewById(R.id.SiteVisitAddressBar);
 
-        SetSiteVisitLocation = (ImageButton) findViewById(R.id.ic_launcher);
-        SetSiteVisitLocation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                Intent EnterConfigActivity=new Intent(context, EnterConfigActivity.class);
-                EnterConfigActivity.putExtra("selectedLocation", selectedLocation);
-                startActivity(EnterConfigActivity);
-            }
-        });
+        SetSiteVisitLocation = (ImageButton) findViewById(R.id.ic_launcher);
 
 
         searchLocation.setOnClickListener(new View.OnClickListener() {
@@ -148,7 +127,6 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
 
 
 
-        ParseUser currentUser = ParseUser.getCurrentUser();
 
         //Nav Drawer
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout12);
@@ -183,28 +161,32 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        View header = getLayoutInflater().inflate(R.layout.left_nav_header,
-                null);
-        drawerLeft.addHeaderView(header);
 
 
-
-       LayoutInflater inflate = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-     //  LinearLayout myRoot = new LinearLayout();
+       inflate = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View vi = inflate.inflate(R.layout.left_nav_header,null);
+        drawerLeft.addHeaderView(vi);
 
        smallname =  (TextView)vi.findViewById(R.id.mynamesmall);
 
        smallemail =  (TextView)vi.findViewById(R.id.myemailsmall);
+
+        smallphoto = (ImageView)vi.findViewById(R.id.smallphoto);
 
 
         fetchname = SharedPrefs.getString(this, SharedPrefs.NAME_KEY, "No_Name");
 
         fetchemail = SharedPrefs.getString(this, SharedPrefs.EMAIL_KEY, "No_Email");
 
-       smallname.setText(fetchname);
+        fetchphoto = SharedPrefs.getString(this, SharedPrefs.PHOTO_KEY);
+
+
+
+        smallname.setText(fetchname);
+
         smallemail.setText(fetchemail);
 
+        smallphoto.setImageBitmap(BitmapFactory.decodeFile(fetchphoto));
 
 
         drawerLeft.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -257,16 +239,13 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         // Initialize the HashMap for Markers and MyMarker object
         mMarkersHashMap = new HashMap<Marker, MyMarker>();
 
-        mMyMarkersArray.add(new MyMarker("Abhishek-3BHK-75K", "icon1", Double.parseDouble("19.116612"), Double.parseDouble("72.910285")));
-        mMyMarkersArray.add(new MyMarker("Client-Sh", "icon2", Double.parseDouble("19.114427"), Double.parseDouble("72.911102")));
-        mMyMarkersArray.add(new MyMarker("Hemant-4BHK-2Lac", "icon3", Double.parseDouble("19.117774"), Double.parseDouble("72.9076828")));
-        mMyMarkersArray.add(new MyMarker("Client-Aj", "icon4", Double.parseDouble("19.1148607"), Double.parseDouble("72.8999415")));
+        mMyMarkersArray.add(new MyMarker("3BHK-75K", "icon1", Double.parseDouble("19.116612"), Double.parseDouble("72.910285")));
+        mMyMarkersArray.add(new MyMarker("2BHK-50K", "icon2", Double.parseDouble("19.114427"), Double.parseDouble("72.911102")));
+        mMyMarkersArray.add(new MyMarker("4BHK-2Lac", "icon3", Double.parseDouble("19.117774"), Double.parseDouble("72.9076828")));
+        mMyMarkersArray.add(new MyMarker("4BHK-2.5Lac", "icon4", Double.parseDouble("19.1148607"), Double.parseDouble("72.8999415")));
 
 
-
-        SiteVisitAddressBar = (TextView) findViewById(R.id.SiteVisitAddressBar);
-
-
+//Map Fragment 1
 
         CustomMapFragment customMapFragment = ((CustomMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
 
@@ -280,8 +259,61 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                                                   }
                                               });
 
+        //curLoc = map.getMyLocation();
+        //curLatLng = new LatLng(curLoc.getLatitude(), curLoc.getLongitude());
 
-            customMapFragment.setOnDragListener(new MapWrapperLayout.OnDragListener() {
+        SetSiteVisitLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (selectedLocation != null) {
+
+                    Intent EnterConfigActivity = new Intent(context, EnterConfigActivity.class);
+                    EnterConfigActivity.putExtra("selectedLocation", selectedLocation);
+                    startActivity(EnterConfigActivity);
+                }
+                else
+                {
+
+                    Intent EnterConfigActivity = new Intent(context, EnterConfigActivity.class);
+                    EnterConfigActivity.putExtra("selectedLocation", selectedLocation);
+                    startActivity(EnterConfigActivity);
+
+                }
+            }
+        });
+
+
+
+
+        CustomMapFragment customMapFragment2 = ((CustomMapFragment) getSupportFragmentManager().findFragmentById(R.id.map2));
+
+        customMapFragment2.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(GoogleMap googleMap) {
+                map2 = googleMap;
+                map2.setMyLocationEnabled(true);
+
+                plotMarkers2(mMyMarkersArray);
+            }
+        });
+
+
+        CustomMapFragment customMapFragment3 = ((CustomMapFragment) getSupportFragmentManager().findFragmentById(R.id.map3));
+
+        customMapFragment3.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(GoogleMap googleMap) {
+                map3 = googleMap;
+                map3.setMyLocationEnabled(true);
+
+                plotMarkers3(mMyMarkersArray);
+            }
+        });
+
+
+
+        customMapFragment.setOnDragListener(new MapWrapperLayout.OnDragListener() {
                 @Override
                 public void onDrag(MotionEvent motionEvent) {
                     if (motionEvent.getAction() == MotionEvent.ACTION_MOVE) {
@@ -290,14 +322,37 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                         selectedLocation = map.getCameraPosition().target;
                         selectedLocation_Name = "Lat: " + selectedLocation.latitude + ", Lng: " + selectedLocation.longitude;
                         getPlaceName(selectedLocation);
-
-                        System.out.print("Name is " + fetchname);
-                        System.out.print("Email is " + fetchemail);
-
-
                     }
                 }
             });
+
+
+        customMapFragment3.setOnDragListener(new MapWrapperLayout.OnDragListener() {
+            @Override
+            public void onDrag(MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_MOVE) {
+                    SiteVisitAddressBar.setText("Fetching...");
+                } else {
+                    selectedLocation = map3.getCameraPosition().target;
+                    selectedLocation_Name = "Lat: " + selectedLocation.latitude + ", Lng: " + selectedLocation.longitude;
+                    getPlaceName(selectedLocation);
+                }
+            }
+        });
+
+
+        customMapFragment2.setOnDragListener(new MapWrapperLayout.OnDragListener() {
+            @Override
+            public void onDrag(MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_MOVE) {
+                    SiteVisitAddressBar.setText("Fetching...");
+                } else {
+                    selectedLocation = map2.getCameraPosition().target;
+                    selectedLocation_Name = "Lat: " + selectedLocation.latitude + ", Lng: " + selectedLocation.longitude;
+                    getPlaceName(selectedLocation);
+                }
+            }
+        });
 
 
 
@@ -318,6 +373,40 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
             }
         });
 
+
+        new GetCurrentLocation(context, new GetCurrentLocation.CurrentLocationCallback() {
+            @Override
+            public void onComplete(Location location) {
+                if (location != null) {
+                    currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
+                    map2.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
+                    map2.animateCamera(CameraUpdateFactory.zoomTo(15));
+
+                    getPlaceName(currentLocation);
+
+
+                }
+            }
+        });
+
+
+
+        new GetCurrentLocation(context, new GetCurrentLocation.CurrentLocationCallback() {
+            @Override
+            public void onComplete(Location location) {
+                if (location != null) {
+                    currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
+                    map3.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
+                    map3.animateCamera(CameraUpdateFactory.zoomTo(15));
+
+                    getPlaceName(currentLocation);
+
+
+                }
+            }
+        });
+
+
     }
 
 
@@ -333,63 +422,53 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                 markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.currentlocation_icon1));
 
                 Marker currentMarker = map.addMarker(markerOption);
+
                 mMarkersHashMap.put(currentMarker, myMarker);
 
-               // map.setInfoWindowAdapter(new MarkerInfoWindowAdapter());
+
             }
         }
     }
 
-
-   /* private int manageMarkerIcon(String markerIcon)
+    private void plotMarkers2(ArrayList<MyMarker> markers)
     {
-        if (markerIcon.equals("icon1"))
-            return R.drawable.client_1;
-        else if(markerIcon.equals("icon2"))
-            return R.drawable.client_1;
-        else if(markerIcon.equals("icon3"))
-            return R.drawable.broker_plus_1;
-        else if(markerIcon.equals("icon4"))
-            return R.drawable.client_1;
-        else return R.drawable.client_1;
-         }
-*/
+        if(markers.size() > 0)
+        {
+            for (MyMarker myMarker : markers)
+            {
+
+                // Create user marker with custom icon and other options
+                MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude()));
+                markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.currentlocation_icon1));
+
+                Marker currentMarker = map2.addMarker(markerOption);
+
+                mMarkersHashMap.put(currentMarker, myMarker);
 
 
+            }
+        }
+    }
 
-   /* public class MarkerInfoWindowAdapter implements GoogleMap.InfoWindowAdapter
+    private void plotMarkers3(ArrayList<MyMarker> markers)
     {
-        public MarkerInfoWindowAdapter()
+        if(markers.size() > 0)
         {
+            for (MyMarker myMarker : markers)
+            {
+
+                // Create user marker with custom icon and other options
+                MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude()));
+                markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.currentlocation_icon1));
+
+                Marker currentMarker = map3.addMarker(markerOption);
+
+                mMarkersHashMap.put(currentMarker, myMarker);
+
+
+            }
         }
-
-        @Override
-        public View getInfoWindow(Marker marker)
-        {
-            return null;
-        }
-
-        @Override
-        public View getInfoContents(Marker marker)
-        {
-            View v  = getLayoutInflater().inflate(R.layout.infowindow_layout, null);
-
-            MyMarker myMarker = mMarkersHashMap.get(marker);
-
-            ImageView markerIcon = (ImageView) v.findViewById(R.id.marker_icon);
-
-            TextView markerLabel = (TextView)v.findViewById(R.id.marker_label);
-
-            markerIcon.setImageResource(manageMarkerIcon(myMarker.getmIcon()));
-
-            markerLabel.setText(myMarker.getmLabel());
-
-            return v;
-        }
-    }*/
-
-
-
+    }
 
 
 
@@ -457,6 +536,15 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                     map.moveCamera(CameraUpdateFactory.newLatLng(selectedLocation));
                     map.animateCamera(CameraUpdateFactory.zoomTo(15));
 
+
+                    map2.moveCamera(CameraUpdateFactory.newLatLng(selectedLocation));
+                    map2.animateCamera(CameraUpdateFactory.zoomTo(15));
+
+
+                    map3.moveCamera(CameraUpdateFactory.newLatLng(selectedLocation));
+                    map3.animateCamera(CameraUpdateFactory.zoomTo(15));
+
+
                 }
             }catch (Exception e){e.printStackTrace();}
         }
@@ -487,22 +575,9 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event)
 	{
-		Log.e("KEy", "YEs");
-        Intent i = new Intent(this, MainActivity.class);
-        startService(i);
-        finish();
-
-        return super.onKeyDown(keyCode, event);
+		return super.onKeyDown(keyCode, event);
 	}
 
-    private void navigateToLogin() {
-        // Launch the login activity
-
-        Intent intent = new Intent(this, LoginActivity1.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -528,3 +603,4 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
 
 
 }
+

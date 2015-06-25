@@ -17,103 +17,79 @@
         android:text="Site Visit in Progress"/>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent"
-        android:background="@android:color/white"
-        android:orientation="vertical"
-        android:layout_gravity="top"
-        android:weightSum="1">
 
         <LinearLayout
-            android:layout_width="382dp"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
             android:gravity="center"
-            android:weightSum="1"
-            android:layout_marginBottom="5dp"
-            android:orientation="horizontal"
+            android:background="@color/white"
+            android:orientation="vertical"
             >
 
-            <ImageButton
-                android:id="@+id/myphoto"
+
+
+                <ImageView
+                    android:id="@+id/myphoto"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/roundbutton"
+                    android:background="@null"
+                    android:paddingLeft="2dp"
+                    android:paddingTop="5dp"
+                    android:scaleType="centerInside"
+                    android:adjustViewBounds="true"
+                    />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_marginTop="10dp"
+                android:background="@color/gray"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_height="1dp"/>
+
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/broker_plus_1"
-                android:paddingLeft="60dp"
+                android:text="Rajiv Lakhpati"
+                android:id="@+id/bname"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:textSize="22dp"
                 android:paddingTop="5dp"
-                android:scaleType="centerInside"
-                android:adjustViewBounds="true"
-                android:layout_weight=".2"
-                />
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#28b54c" />
 
-            <LinearLayout
-                android:layout_width="301dp"
+
+
+            <View
+                android:layout_width="fill_parent"
+                android:background="@color/gray"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="1dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
+                android:id="@+id/spec"
                 android:gravity="center"
-                android:layout_marginBottom="5dp"
-                android:orientation="vertical"
-                >
+                android:layout_gravity="center"
+                android:textSize="22dp"
+                android:layout_marginTop="10dp"
+                android:paddingTop="5dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#28b54c" />
 
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:orientation="horizontal"
-                    android:paddingTop="5dp"
-
-                    android:weightSum="1">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/bname"
-                        android:layout_gravity="left"
-                        android:text="Rajiv Lakhpati"
-                        android:textSize="22dp"
-                        android:paddingTop="5dp"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="#28b54c" />
-
-
-                </LinearLayout>
-
-
-                <LinearLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
-                    android:orientation="horizontal"
-                    android:paddingTop="5dp"
-
-                    android:weightSum="1">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/spec"
-                        android:layout_gravity="left"
-                        android:textSize="22dp"
-                        android:paddingTop="5dp"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="#28b54c" />
-
-
-                </LinearLayout>
-
-                </LinearLayout>
-
-            </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:background="@android:color/white"
-            android:orientation="vertical"
-            android:layout_gravity="top">
-
+            <View
+                android:layout_width="fill_parent"
+                android:background="@color/gray"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="1dp"/>
 
             <Button
                 android:id="@+id/endvisit"
@@ -128,9 +104,16 @@
 
             </Button>
 
-            </LinearLayout>
+
 
 
         </LinearLayout>
 
-        </LinearLayout><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/layout/during_visit.xml -->
+
+
+
+    </LinearLayout>
+
+
+
+<!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/layout/during_visit.xml -->

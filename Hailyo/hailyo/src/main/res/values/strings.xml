@@ -51,6 +51,9 @@
 
 
     <string name="pbroker">PROPERTY\n  BROKER</string>
+    <string name="hailmode">SEND HAIL</string>
+    <string name="yomode">SEND YO</string>
+
     <string name="abroker">AUCTION\n BROKER</string>
 
     <string name="bbroker">BUILDER\n OFFICE</string>

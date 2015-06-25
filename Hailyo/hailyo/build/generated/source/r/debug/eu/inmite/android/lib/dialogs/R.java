@@ -78,28 +78,28 @@ public final class R {
 		public static final int grid_90 = 0x7f0b0057;
 	}
 	public static final class drawable {
-		public static final int sdl_background_dark = 0x7f0200c8;
-		public static final int sdl_background_light = 0x7f0200c9;
+		public static final int sdl_background_dark = 0x7f0200ce;
+		public static final int sdl_background_light = 0x7f0200cf;
 	}
 	public static final class id {
-		public static final int dialog_button_panel = 0x7f0c009e;
-		public static final int dialog_button_separator = 0x7f0c009f;
-		public static final int dialog_horizontal_separator = 0x7f0c009d;
-		public static final int sdl__button_panel = 0x7f0c009c;
-		public static final int sdl__content = 0x7f0c00aa;
-		public static final int sdl__contentPanel = 0x7f0c00a4;
-		public static final int sdl__custom = 0x7f0c00a1;
-		public static final int sdl__customPanel = 0x7f0c00a0;
-		public static final int sdl__datepicker = 0x7f0c00a2;
-		public static final int sdl__listview = 0x7f0c00a3;
-		public static final int sdl__message = 0x7f0c00a5;
+		public static final int dialog_button_panel = 0x7f0c00a2;
+		public static final int dialog_button_separator = 0x7f0c00a3;
+		public static final int dialog_horizontal_separator = 0x7f0c00a1;
+		public static final int sdl__button_panel = 0x7f0c00a0;
+		public static final int sdl__content = 0x7f0c00ae;
+		public static final int sdl__contentPanel = 0x7f0c00a8;
+		public static final int sdl__custom = 0x7f0c00a5;
+		public static final int sdl__customPanel = 0x7f0c00a4;
+		public static final int sdl__datepicker = 0x7f0c00a6;
+		public static final int sdl__listview = 0x7f0c00a7;
+		public static final int sdl__message = 0x7f0c00a9;
 		public static final int sdl__negative_button = 0x7f0c0008;
 		public static final int sdl__neutral_button = 0x7f0c0009;
 		public static final int sdl__positive_button = 0x7f0c000a;
-		public static final int sdl__progress = 0x7f0c00a7;
-		public static final int sdl__progressPanel = 0x7f0c00a6;
-		public static final int sdl__title = 0x7f0c00a8;
-		public static final int sdl__titleDivider = 0x7f0c00a9;
+		public static final int sdl__progress = 0x7f0c00ab;
+		public static final int sdl__progressPanel = 0x7f0c00aa;
+		public static final int sdl__title = 0x7f0c00ac;
+		public static final int sdl__titleDivider = 0x7f0c00ad;
 	}
 	public static final class layout {
 		public static final int dialog_part_button = 0x7f040024;

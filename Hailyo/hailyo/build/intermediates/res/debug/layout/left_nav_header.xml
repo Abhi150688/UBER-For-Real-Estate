@@ -11,10 +11,13 @@
     android:clickable="true" >
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/smallphoto"
+        android:src="@drawable/roundbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/user_img" />
+        android:scaleType="centerInside"
+        android:adjustViewBounds="true"
+        />
 
     <LinearLayout
         android:layout_width="wrap_content"

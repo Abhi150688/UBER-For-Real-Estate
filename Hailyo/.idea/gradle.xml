@@ -11,7 +11,10 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/hailyo" />
             <option value="$PROJECT_DIR$/horizontalnumberpicker-library" />
+            <option value="$PROJECT_DIR$/radiate_wave" />
+            <option value="$PROJECT_DIR$/radiate_wave_app" />
             <option value="$PROJECT_DIR$/stylishDialogLib" />
+            <option value="$PROJECT_DIR$/wave_radiate" />
           </set>
         </option>
       </GradleProjectSettings>

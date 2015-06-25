@@ -13,7 +13,7 @@
         android:background="@color/blue_sky"
         android:textColor="@color/white"
         android:padding="3dp"
-        android:text="Take your Pick!"/>
+        android:text="Do next?!"/>
 
 
 
@@ -23,16 +23,6 @@
       android:orientation="vertical"
       android:background="@color/white"
       android:paddingTop="10dp">
-
-        <TextView
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:background="@color/black"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:padding="5dp"
-            android:textColor="@color/white"
-            android:text="LIKED MORE THAN ONE PROPERTY"/>
 
             <Button
                 android:layout_width="180dp"
@@ -54,25 +44,14 @@
 
             </LinearLayout>
 
-        <TextView
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:background="@color/black"
-            android:layout_gravity="center"
-            android:layout_marginTop="35dp"
-            android:gravity="center"
-            android:padding="5dp"
-            android:textColor="@color/white"
-            android:text="VIIE ALL ACTIVE DEALS!"/>
-
 
         <Button
-                android:layout_width="180dp"
+                android:layout_width="195dp"
                 android:id="@+id/trans"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="My Transactions"
-                android:layout_marginTop="5dp"
+                android:text="My Dealing Rooms"
+                android:layout_marginTop="15dp"
                 android:layout_marginRight="5dp"
                 android:textSize="20dp"
                 android:inputType="text"/>
@@ -80,23 +59,12 @@
         <LinearLayout
             android:layout_width="325dp"
             android:layout_height="1dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="15dp"
             android:layout_gravity="center"
             android:background="@color/lightslategray">
 
         </LinearLayout>
 
-
-        <TextView
-            android:layout_width="250dp"
-            android:layout_height="wrap_content"
-            android:background="@color/black"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_marginTop="35dp"
-            android:padding="5dp"
-            android:textColor="@color/white"
-            android:text="HAIL AGAIN!"/>
 
 
         <Button
@@ -105,7 +73,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="New Visit"
+                android:text="New Site Visit"
                 android:textSize="20dp"
                 android:layout_marginRight="5dp"
                 android:hint="Enter Name"

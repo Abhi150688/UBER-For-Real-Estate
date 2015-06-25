@@ -3,6 +3,7 @@
 xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:orientation="vertical"
+    android:background="@color/white"
 android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActivity">
 <!--
     <EditText
@@ -16,21 +17,25 @@ android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActi
         android:id="@+id/searchLocation" />
         -->
 
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:layout_marginLeft="12dp"
-    android:layout_marginRight="12dp"
+    android:layout_marginLeft="5dp"
+    android:layout_marginRight="5dp"
     android:layout_marginTop="10dp"
     android:gravity="center"
-    android:background="@drawable/custom_border"
-    android:orientation="horizontal">
+     android:orientation="horizontal">
 
     <ImageView
         android:layout_width="18dp"
         android:layout_height="20dp"
         android:layout_gravity="center"
-        android:layout_marginLeft="8dp"
+        android:layout_marginLeft="5dp"
         android:src="@drawable/search"/>
 
     <EditText
@@ -39,8 +44,8 @@ android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActi
         android:singleLine="true"
         android:layout_marginLeft="5dp"
         android:layout_gravity="center"
-        android:hint="Enter Pickup Location"
-        android:textSize="16dp"
+        android:hint="Enter Site Visit Location"
+        android:textSize="15dp"
         android:background="#ffffff"
         android:inputType="textFilter"
         android:id="@+id/searchLocation" />
@@ -54,9 +59,20 @@ android:paddingBottom="@dimen/activity_vertical_margin" tools:context=".MainActi
         android:clickable="true"
         android:src="@drawable/xmark"/>
 
+
 </LinearLayout>
 
-<ScrollView
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="3dp"
+            android:background="@color/gray"
+            android:layout_marginRight="12dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="3dp"/>
+
+        </LinearLayout>
+
+        <ScrollView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="8dp"

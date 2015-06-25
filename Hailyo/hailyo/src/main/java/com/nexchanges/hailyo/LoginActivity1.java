@@ -8,7 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
-import com.nexchanges.hailyo.ui.SessionRecorder;
+import com.nexchanges.hailyo.model.SessionRecorder;
 import com.parse.FindCallback;
 import com.parse.LogInCallback;
 import com.parse.ParseException;
@@ -281,32 +281,18 @@ public class LoginActivity1 extends Activity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.chat, menu);
+       // getMenuInflater().inflate(R.menu.chat, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.menu_chat) {
-            return true;
-        }
+
         return super.onOptionsItemSelected(item);
 
     }
 
-
-
-    public void logout(){
-        ParseUser.logOut();
-        Intent intent = new Intent(this, LoginActivity.class);
-        startActivity(intent);
-        this.finish();
-    }
 
     @Override
     public void onBackPressed() {

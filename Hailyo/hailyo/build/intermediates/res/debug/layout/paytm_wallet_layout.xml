@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-android:background="@drawable/main_background"
+android:background="@color/white"
 android:orientation="vertical">
 
 <TextView
@@ -12,8 +12,18 @@ android:orientation="vertical">
     android:textAppearance="?android:attr/textAppearanceMedium"
     android:layout_marginTop="20dp"
     android:layout_gravity="center"
-    android:textColor="#0000ff"
-    android:text="Enter the Amount to Pay?"/>
+    android:textColor="@color/black"
+    android:text="Amount to Pay"/>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginLeft="30dp"
+        />
+
 
 <LinearLayout
     android:layout_width="match_parent"
@@ -30,13 +40,11 @@ android:orientation="vertical">
         android:text="Rs. "
         android:id="@+id/textView2" />
 
-    <EditText
+    <TextView
         android:layout_width="220dp"
         android:layout_height="60dp"
-        style="@style/SignInEditText"
         android:gravity="center"
         android:layout_marginLeft="10dp"
-        android:inputType="number"
         android:id="@+id/moneyAmount" />
 
 </LinearLayout>

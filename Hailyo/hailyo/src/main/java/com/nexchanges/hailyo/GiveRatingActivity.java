@@ -1,18 +1,12 @@
 package com.nexchanges.hailyo;
 
 import android.app.Activity;
-import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.RatingBar;
 import android.widget.TextView;
@@ -37,7 +31,7 @@ public class GiveRatingActivity extends Activity implements RatingBar.OnRatingBa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.giverating);
+        setContentView(R.layout.give_rating);
         context = this;
 
         clock = (TextView)findViewById(R.id.clock);
@@ -47,8 +41,6 @@ public class GiveRatingActivity extends Activity implements RatingBar.OnRatingBa
 
         clock.setText(date);
 
-        sendBid = (ImageButton)findViewById(R.id.sendbid);
-
         rating = (RatingBar)findViewById(R.id.ratingBar);
 
     rating.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
@@ -57,26 +49,14 @@ public class GiveRatingActivity extends Activity implements RatingBar.OnRatingBa
             public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
 
 
-                Intent MainActivity =  new Intent(context, MainActivity.class);
-                startActivity(MainActivity);
+                Intent SubmitBidIntent = new Intent (context,NewBidActivity.class);
+                startActivity(SubmitBidIntent);
+                finish();
 
 
             }
         });
 
-
-
-
-            sendBid.setOnClickListener(new View.OnClickListener()
-
-                                       {
-                                           public void onClick(View view) {
-                                               Intent SubmitBidIntent = new Intent (context,NewBid.class);
-                                               startActivity(SubmitBidIntent);
-                                           }
-                                       }
-
-            );
 
         }
 
@@ -84,5 +64,10 @@ public class GiveRatingActivity extends Activity implements RatingBar.OnRatingBa
     @Override
     public void onRatingChanged(RatingBar ratingBar, float rating, boolean fromUser) {
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        //do nothing
     }
 }

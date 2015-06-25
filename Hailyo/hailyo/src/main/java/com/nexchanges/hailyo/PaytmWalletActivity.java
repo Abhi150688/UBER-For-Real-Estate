@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.nexchanges.hailyo.MainActivity;
@@ -36,7 +37,7 @@ public class PaytmWalletActivity extends ActionBarActivity implements View.OnCli
     Context context;
 
     Button payMoney;
-    EditText moneyAmount;
+    TextView moneyAmount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +45,7 @@ public class PaytmWalletActivity extends ActionBarActivity implements View.OnCli
         setContentView(R.layout.paytm_wallet_layout);
         context =  this;
 
-        moneyAmount = (EditText) findViewById(R.id.moneyAmount);
+        moneyAmount = (TextView) findViewById(R.id.moneyAmount);
         payMoney = (Button) findViewById(R.id.payMoney);
         payMoney.setOnClickListener(this);
 
@@ -120,7 +121,7 @@ public class PaytmWalletActivity extends ActionBarActivity implements View.OnCli
         paramMap.put("SUBS_GRACE_DAYS", "1");
         paramMap.put("SUBS_EXPIRY_DATE", endDate);
 
-        /*paramMap.put("REQUEST_TYPE", "DEFAULT");
+        paramMap.put("REQUEST_TYPE", "DEFAULT");
         paramMap.put("ORDER_ID", "42TRIPS000" + randomInt);
         paramMap.put("MID", getResources().getString(R.string.merchant_id));
         paramMap.put("CUST_ID", getResources().getString(R.string.user_name));
@@ -130,7 +131,7 @@ public class PaytmWalletActivity extends ActionBarActivity implements View.OnCli
         paramMap.put("INDUSTRY_TYPE_ID", "Retail");
         paramMap.put("WEBSITE", "Crypsisapp");
         paramMap.put("TXN_AMOUNT", ""+amount);
-        paramMap.put("THEME", "merchant");*/
+        paramMap.put("THEME", "merchant");
 
 
 
@@ -184,12 +185,12 @@ public class PaytmWalletActivity extends ActionBarActivity implements View.OnCli
     }
 
 
-    /*@Override
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_paytm_wallet, menu);
+        //getMenuInflater().inflate(R.menu.menu_paytm_wallet, menu);
         return true;
-    }*/
+    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

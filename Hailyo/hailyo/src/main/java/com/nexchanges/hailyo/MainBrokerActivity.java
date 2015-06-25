@@ -3,6 +3,7 @@ package com.nexchanges.hailyo;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.location.Address;
 import android.location.Location;
@@ -11,7 +12,6 @@ import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -19,10 +19,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
@@ -35,13 +36,11 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.nexchanges.hailyo.custom.MyMarker;
 import com.nexchanges.hailyo.model.SharedPrefs;
-import com.nexchanges.hailyo.services.MyService;
 import com.nexchanges.hailyo.ui.CustomMapFragment;
-import com.nexchanges.hailyo.ui.GetCurrentLocation;
-import com.nexchanges.hailyo.ui.GetPlaceName;
-import com.nexchanges.hailyo.ui.MapWrapperLayout;
-import com.nexchanges.hailyo.ui.SearchActivity;
-import com.parse.ParseUser;
+import com.nexchanges.hailyo.custom.GetCurrentLocation;
+import com.nexchanges.hailyo.custom.GetPlaceName;
+import com.nexchanges.hailyo.custom.MapWrapperLayout;
+import com.nexchanges.hailyo.custom.SearchActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -54,11 +53,9 @@ import java.util.List;
 /**
  * The Activity MainActivity will launched at the start of the app.
  */
-public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnSeekBarChangeListener
+public class MainBrokerActivity extends ActionBarActivity
 {
 
-    SeekBar sb1;
-    /** The drawer layout. */
     private DrawerLayout drawerLayout;
 
     String []listItems;
@@ -67,31 +64,38 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
 
     public static final String TAG = MainActivity.class.getSimpleName();
 
-    /** ListView for left side drawer. */
     private ListView drawerLeft;
 
-    /** ListView for left side drawer. */
     private ListView drawerRight;
 
-    /** The drawer toggle. */
     private ActionBarDrawerToggle drawerToggle;
 
-
-    GoogleMap map;
+    GoogleMap map_req, map_avl,map_hail;
     LinearLayout searchLocation;
     TextView SiteVisitAddressBar, tv1, tv2,tv3,smallname, smallemail;
     ImageButton SetSiteVisitLocation;
 
-    LatLng currentLocation;
+    LatLng currentLocation, curLatLng;
     List<Address> addresses;
 
     LatLng selectedLocation;
     String selectedLocation_Name;
-    String fetchname, fetchemail;
-    ViewFlipper VF;
+    ViewFlipper VF, VF2;
+    String fetchname, fetchemail,fetchphoto;
+    Location curLoc;
 
-    private ArrayList<MyMarker> mMyMarkersArray = new ArrayList<MyMarker>();
-    private HashMap<Marker, MyMarker> mMarkersHashMap;
+    Button Avl, Req, yo, hail;
+    ImageView smallphoto;
+
+    private ArrayList<MyMarker> mMyMarkersArray_Avl = new ArrayList<MyMarker>();
+    private ArrayList<MyMarker> mMyMarkersArray_Hail = new ArrayList<MyMarker>();
+
+    private ArrayList<MyMarker> mMyMarkersArray_Req = new ArrayList<MyMarker>();
+
+    private HashMap<Marker, MyMarker> mMarkersHashMap_Req;
+    private HashMap<Marker, MyMarker> mMarkersHashMap_Avl;
+
+    private HashMap<Marker, MyMarker> mMarkersHashMap_hail;
 
 
 
@@ -102,21 +106,44 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
         context = this;
 
 
-        tv1 = (TextView) findViewById(R.id.textView1);
-        tv2 = (TextView) findViewById(R.id.textView2);
-        tv3 = (TextView) findViewById(R.id.textView3);
+        Avl = (Button)findViewById(R.id.seeavail);
+
+        Req = (Button)findViewById(R.id.seerequire);
+
+        yo = (Button)findViewById(R.id.yomode);
+
+        hail = (Button)findViewById(R.id.hailmode);
+
+        VF = (ViewFlipper) findViewById(R.id.ViewFlipper01);
+        VF2 = (ViewFlipper) findViewById(R.id.ViewFlipper02);
 
         searchLocation = (LinearLayout) findViewById(R.id.searchLocation);
         SiteVisitAddressBar = (TextView) findViewById(R.id.SiteVisitAddressBar);
+
+        //curLoc = map_hail.getMyLocation();
+        //curLatLng = new LatLng(curLoc.getLatitude(), curLoc.getLongitude());
+
 
         SetSiteVisitLocation = (ImageButton) findViewById(R.id.ic_launcher);
         SetSiteVisitLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Intent EnterConfigActivity=new Intent(context, EnterConfigActivity.class);
-                EnterConfigActivity.putExtra("selectedLocation", selectedLocation);
-                startActivity(EnterConfigActivity);
+                if (selectedLocation != null) {
+
+                    Intent EnterConfigActivity = new Intent(context, EnterConfigActivity.class);
+                    EnterConfigActivity.putExtra("selectedLocation", selectedLocation);
+                    startActivity(EnterConfigActivity);
+                }
+                else
+                {
+
+                    Intent EnterConfigActivity = new Intent(context, EnterConfigActivity.class);
+                    EnterConfigActivity.putExtra("selectedLocation", selectedLocation);
+                    startActivity(EnterConfigActivity);
+
+                }
+
             }
         });
 
@@ -130,14 +157,59 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
             }
         });
 
-        sb1 = (SeekBar)findViewById(R.id.seekBar2);
-        sb1.setOnSeekBarChangeListener(this);
-
-        VF = (ViewFlipper) findViewById(R.id.ViewFlipper01);
+        SiteVisitAddressBar = (TextView) findViewById(R.id.SiteVisitAddressBar);
 
 
+        Req.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                VF2.setDisplayedChild(0);
+                Req.setBackgroundColor(Color.parseColor("#33b5e5"));
+                Req.setTextColor(Color.WHITE);
 
-        ParseUser currentUser = ParseUser.getCurrentUser();
+                Avl.setBackgroundColor(Color.WHITE);
+                Avl.setTextColor(Color.BLACK);
+            }
+        });
+
+        Avl.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                VF2.setDisplayedChild(1);
+                Avl.setBackgroundColor(Color.parseColor("#33b5e5"));
+                Avl.setTextColor(Color.WHITE);
+
+                Req.setBackgroundColor(Color.WHITE);
+                Req.setTextColor(Color.BLACK);
+            }
+        });
+
+
+        yo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                VF.setDisplayedChild(0);
+                yo.setBackgroundColor(Color.BLACK);
+                yo.setTextColor(Color.WHITE);
+
+                hail.setBackgroundColor(Color.WHITE);
+                hail.setTextColor(Color.BLACK);
+            }
+        });
+
+        hail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                VF.setDisplayedChild(1);
+                hail.setBackgroundColor(Color.BLACK);
+                hail.setTextColor(Color.WHITE);
+
+                yo.setBackgroundColor(Color.WHITE);
+                yo.setTextColor(Color.BLACK);
+            }
+        });
+
+
 
         //Nav Drawer
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout12);
@@ -172,27 +244,35 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        View header = getLayoutInflater().inflate(R.layout.left_nav_header,
-                null);
-        drawerLeft.addHeaderView(header);
+        //View header = getLayoutInflater().inflate(R.layout.left_nav_header,
+          //      null);
+        //drawerLeft.addHeaderView(header);
 
 
 
         LayoutInflater inflate = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         //  LinearLayout myRoot = new LinearLayout();
         View vi = inflate.inflate(R.layout.left_nav_header,null);
+        drawerLeft.addHeaderView(vi);
 
         smallname =  (TextView)vi.findViewById(R.id.mynamesmall);
 
         smallemail =  (TextView)vi.findViewById(R.id.myemailsmall);
+
+        smallphoto =  (ImageView)vi.findViewById(R.id.smallphoto);
+
 
 
         fetchname = SharedPrefs.getString(this, SharedPrefs.NAME_KEY, "No_Name");
 
         fetchemail = SharedPrefs.getString(this, SharedPrefs.EMAIL_KEY, "No_Email");
 
+        fetchphoto = SharedPrefs.getString(this, SharedPrefs.PHOTO_KEY);
+
+
         smallname.setText(fetchname);
         smallemail.setText(fetchemail);
+        //smallphoto.setImageBitmap(BitmapFactory.decodeFile(fetchphoto));
 
 
 
@@ -214,22 +294,27 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
                     case 2:
                         Intent historyAct = new Intent(context, HistoryActivity.class);
                         startActivity(historyAct);
+                        break;
 
                     case 3:
                         Intent helpAct = new Intent(context, HelpActivity.class);
                         startActivity(helpAct);
+                        break;
 
                     case 4:
                         Intent promotionsAct = new Intent(context, PromotionsActivity.class);
                         startActivity(promotionsAct);
+                        break;
 
                     case 5:
                         Intent aboutAct = new Intent(context, AboutActivity.class);
                         startActivity(aboutAct);
+                        break;
 
                     case 6:
                         Intent settingsAct = new Intent(context, SettingsActivity.class);
                         startActivity(settingsAct);
+                        break;
 
                     default:
                         break;
@@ -240,65 +325,123 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
         });
 
 
-        // Google Map ..
+        // Google Map Req -Yo..
 
 
         // Initialize the HashMap for Markers and MyMarker object
-        mMarkersHashMap = new HashMap<Marker, MyMarker>();
-
-        mMyMarkersArray.add(new MyMarker("Abhishek-3BHK-75K", "icon1", Double.parseDouble("19.116612"), Double.parseDouble("72.910285")));
-        mMyMarkersArray.add(new MyMarker("Client-Sh", "icon2", Double.parseDouble("19.114427"), Double.parseDouble("72.911102")));
-        mMyMarkersArray.add(new MyMarker("Hemant-4BHK-2Lac", "icon3", Double.parseDouble("19.117774"), Double.parseDouble("72.9076828")));
-        mMyMarkersArray.add(new MyMarker("Client-Aj", "icon4", Double.parseDouble("19.1148607"), Double.parseDouble("72.8999415")));
+        mMarkersHashMap_Req = new HashMap<Marker, MyMarker>();
 
 
+        mMyMarkersArray_Req.add(new MyMarker("Abhishek-3BHK-1Lac", "icon1", Double.parseDouble("19.116612"), Double.parseDouble("72.910285")));
+        mMyMarkersArray_Req.add(new MyMarker("Sachin-2BHK-50K", "icon2", Double.parseDouble("19.114427"), Double.parseDouble("72.911102")));
+        mMyMarkersArray_Req.add(new MyMarker("Hemant-4BHK-2Lac", "icon3", Double.parseDouble("19.117774"), Double.parseDouble("72.9076828")));
+        mMyMarkersArray_Req.add(new MyMarker("Shlok-3BHK-1.5Lac", "icon4", Double.parseDouble("19.1148607"), Double.parseDouble("72.8999415")));
 
-        SiteVisitAddressBar = (TextView) findViewById(R.id.SiteVisitAddressBar);
 
+        CustomMapFragment customMapFragment_Req = ((CustomMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapreq));
 
-
-        CustomMapFragment customMapFragment = ((CustomMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
-
-        customMapFragment.getMapAsync(new OnMapReadyCallback() {
+        customMapFragment_Req.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(GoogleMap googleMap) {
-                map = googleMap;
-                map.setMyLocationEnabled(true);
+                map_req = googleMap;
+                map_req.setMyLocationEnabled(true);
 
-                plotMarkers(mMyMarkersArray);
+                plotReqMarkers(mMyMarkersArray_Req);
             }
         });
 
 
-        customMapFragment.setOnDragListener(new MapWrapperLayout.OnDragListener() {
+
+
+// Current Location ..
+
+       // map_req.setMyLocationEnabled(true);
+
+        //end of req yo map
+
+
+        // start of yo-aval map
+
+
+        mMarkersHashMap_Avl = new HashMap<Marker, MyMarker>();
+
+        mMyMarkersArray_Avl.add(new MyMarker("3BHK-1Lac", "icon1", Double.parseDouble("19.116612"), Double.parseDouble("72.910285")));
+        mMyMarkersArray_Avl.add(new MyMarker("2BHK-50K", "icon2", Double.parseDouble("19.114427"), Double.parseDouble("72.911102")));
+        mMyMarkersArray_Avl.add(new MyMarker("4BHK-2Lac", "icon3", Double.parseDouble("19.117774"), Double.parseDouble("72.9076828")));
+
+
+        CustomMapFragment customMapFragment_Avl = ((CustomMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapavl));
+
+        customMapFragment_Avl.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(GoogleMap googleMap) {
+                map_avl = googleMap;
+                map_avl.setMyLocationEnabled(true);
+
+                plotAvlMarkers(mMyMarkersArray_Avl);
+            }
+        });
+
+
+
+
+// Current Location ..
+        //map_avl.setMyLocationEnabled(true);
+
+
+        // end of yo-avl map
+
+
+        //start of hail-map
+
+
+        mMarkersHashMap_hail = new HashMap<Marker, MyMarker>();
+
+
+        mMyMarkersArray_Hail.add(new MyMarker("3BHK-1Lac", "icon1", Double.parseDouble("19.116612"), Double.parseDouble("72.910285")));
+        mMyMarkersArray_Hail.add(new MyMarker("2BHK-50K", "icon2", Double.parseDouble("19.114427"), Double.parseDouble("72.911102")));
+        mMyMarkersArray_Hail.add(new MyMarker("4BHK-2Lac", "icon3", Double.parseDouble("19.117774"), Double.parseDouble("72.9076828")));
+        mMyMarkersArray_Hail.add(new MyMarker("3BHK-1.5Lac", "icon4", Double.parseDouble("19.1148607"), Double.parseDouble("72.8999415")));
+
+
+        CustomMapFragment customMapFragment_Hail = ((CustomMapFragment) getSupportFragmentManager().findFragmentById(R.id.maphail));
+
+        customMapFragment_Hail.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(GoogleMap googleMap) {
+                map_hail = googleMap;
+                map_hail.setMyLocationEnabled(true);
+
+                plotHailMarkers(mMyMarkersArray_Hail);
+            }
+        });
+
+        //drag hail map
+
+        customMapFragment_Hail.setOnDragListener(new MapWrapperLayout.OnDragListener() {
             @Override
             public void onDrag(MotionEvent motionEvent) {
                 if (motionEvent.getAction() == MotionEvent.ACTION_MOVE) {
                     SiteVisitAddressBar.setText("Fetching...");
                 } else {
-                    selectedLocation = map.getCameraPosition().target;
+                    selectedLocation = map_hail.getCameraPosition().target;
                     selectedLocation_Name = "Lat: " + selectedLocation.latitude + ", Lng: " + selectedLocation.longitude;
                     getPlaceName(selectedLocation);
-
-                    System.out.print("Name is " + fetchname);
-                    System.out.print("Email is " + fetchemail);
-
-
                 }
             }
         });
 
+//current location hail map
 
-
-// Current Location ..
+        // Current Location ..
 
         new GetCurrentLocation(context, new GetCurrentLocation.CurrentLocationCallback() {
             @Override
             public void onComplete(Location location) {
                 if (location != null) {
                     currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
-                    map.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
-                    map.animateCamera(CameraUpdateFactory.zoomTo(15));
+                    map_hail.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
+                    map_hail.animateCamera(CameraUpdateFactory.zoomTo(15));
 
                     getPlaceName(currentLocation);
 
@@ -307,10 +450,13 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
             }
         });
 
+        // end of hail map
     }
 
 
-    private void plotMarkers(ArrayList<MyMarker> markers)
+
+
+    private void plotReqMarkers(ArrayList<MyMarker> markers)
     {
         if(markers.size() > 0)
         {
@@ -319,18 +465,60 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
 
                 // Create user marker with custom icon and other options
                 MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude()));
-                markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.currentlocation_icon1));
+                markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.req_icon1));
 
-                Marker currentMarker = map.addMarker(markerOption);
-                mMarkersHashMap.put(currentMarker, myMarker);
+                Marker currentMarker = map_req.addMarker(markerOption);
+                mMarkersHashMap_Req.put(currentMarker, myMarker);
 
-                // map.setInfoWindowAdapter(new MarkerInfoWindowAdapter());
+                map_req.setInfoWindowAdapter(new MarkerInfoWindowAdapter());
             }
         }
     }
 
 
-   /* private int manageMarkerIcon(String markerIcon)
+    private void plotHailMarkers(ArrayList<MyMarker> markers)
+    {
+        if(markers.size() > 0)
+        {
+            for (MyMarker myMarker : markers)
+            {
+
+                // Create user marker with custom icon and other options
+                MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude())).title(myMarker.getmLabel());
+                markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.req_icon1));
+
+                Marker currentMarker = map_hail.addMarker(markerOption);
+                mMarkersHashMap_hail.put(currentMarker, myMarker);
+
+                map_hail.setInfoWindowAdapter(new MarkerInfoWindowAdapter());
+            }
+        }
+    }
+
+
+
+    private void plotAvlMarkers(ArrayList<MyMarker> markers)
+    {
+        if(markers.size() > 0)
+        {
+            for (MyMarker myMarker : markers)
+            {
+
+                // Create user marker with custom icon and other options
+                MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude())).title(myMarker.getmLabel());;
+                markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.req_icon1));
+
+                Marker currentMarker = map_req.addMarker(markerOption);
+                mMarkersHashMap_Avl.put(currentMarker, myMarker);
+
+                map_req.setInfoWindowAdapter(new MarkerInfoWindowAdapter());
+            }
+        }
+    }
+
+
+
+  /* private int manageMarkerIcon(String markerIcon)
     {
         if (markerIcon.equals("icon1"))
             return R.drawable.client_1;
@@ -346,7 +534,7 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
 
 
 
-   /* public class MarkerInfoWindowAdapter implements GoogleMap.InfoWindowAdapter
+   public class MarkerInfoWindowAdapter implements GoogleMap.InfoWindowAdapter
     {
         public MarkerInfoWindowAdapter()
         {
@@ -363,69 +551,23 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
         {
             View v  = getLayoutInflater().inflate(R.layout.infowindow_layout, null);
 
-            MyMarker myMarker = mMarkersHashMap.get(marker);
+            MyMarker myMarker_Req = mMarkersHashMap_Req.get(marker);
+            MyMarker myMarker_Avl = mMarkersHashMap_Avl.get(marker);
 
-            ImageView markerIcon = (ImageView) v.findViewById(R.id.marker_icon);
+
 
             TextView markerLabel = (TextView)v.findViewById(R.id.marker_label);
 
-            markerIcon.setImageResource(manageMarkerIcon(myMarker.getmIcon()));
 
-            markerLabel.setText(myMarker.getmLabel());
+            markerLabel.setText(myMarker_Req.getmLabel());
+            markerLabel.setText(myMarker_Avl.getmLabel());
 
             return v;
         }
-    }*/
-
-
-
-
-
-
-    @Override
-    public void onProgressChanged(SeekBar seekBar, int progress,
-                                  boolean fromTouch) {
-        if (progress == 0) {
-            VF.setDisplayedChild(0);
-            tv1.setTextColor(Color.RED);
-            tv2.setTextColor(Color.BLACK);
-            tv3.setTextColor(Color.BLACK);
-
-        } else if (progress == 50) {
-
-            VF.setDisplayedChild(1);
-            tv1.setTextColor(Color.BLACK);
-            tv2.setTextColor(Color.RED);
-            tv3.setTextColor(Color.BLACK);
-
-        } else if (progress ==100)
-        {VF.setDisplayedChild(2);
-            tv1.setTextColor(Color.BLACK);
-            tv2.setTextColor(Color.BLACK);
-            tv3.setTextColor(Color.RED);}
-
     }
 
 
 
-
-    @Override
-    public void onStartTrackingTouch(SeekBar seekBar) {
-    }
-
-    @Override
-    public void onStopTrackingTouch(SeekBar seekBar) {
-
-        int mProgress = seekBar.getProgress();
-        if(mProgress > 0 & mProgress < 34) {
-            seekBar.setProgress(0);
-        }
-        else if (mProgress >33 & mProgress <68){
-            seekBar.setProgress(50);
-        }
-        else seekBar.setProgress(100);
-
-    }
 
 
 
@@ -443,13 +585,14 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
 
                     SiteVisitAddressBar.setText(selectedLocation_Name);
 
-                    map.moveCamera(CameraUpdateFactory.newLatLng(selectedLocation));
-                    map.animateCamera(CameraUpdateFactory.zoomTo(15));
+                    map_hail.moveCamera(CameraUpdateFactory.newLatLng(selectedLocation));
+                    map_hail.animateCamera(CameraUpdateFactory.zoomTo(15));
 
                 }
             }catch (Exception e){e.printStackTrace();}
         }
     }
+
 
     public void getPlaceName(LatLng location){
         new GetPlaceName(location, new GetPlaceName.GetPlaceNameCallback() {
@@ -470,28 +613,13 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
     }
 
 
-
-
-
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event)
     {
-        Log.e("KEy", "YEs");
-        Intent i = new Intent(this, MainActivity.class);
-        startService(i);
-        finish();
 
         return super.onKeyDown(keyCode, event);
     }
 
-    private void navigateToLogin() {
-        // Launch the login activity
-
-        Intent intent = new Intent(this, LoginActivity1.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        startActivity(intent);
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {

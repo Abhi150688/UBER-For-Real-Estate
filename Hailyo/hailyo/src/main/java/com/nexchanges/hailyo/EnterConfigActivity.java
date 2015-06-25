@@ -4,27 +4,18 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Bundle;
-import android.app.Activity;
 import android.content.Context;
-import android.telephony.SmsManager;
-import android.view.Menu;
-import android.view.MotionEvent;
 import android.view.View;
-import android.widget.AbsListView;
-import android.widget.AbsoluteLayout;
 import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 import com.hrules.horizontalnumberpicker.HorizontalNumberPicker;
 import com.hrules.horizontalnumberpicker.HorizontalNumberPickerListener;
-import com.nexchanges.hailyo.custom.Words;
 import com.nexchanges.hailyo.model.SharedPrefs;
-import com.nexchanges.hailyo.ui.GetPlaceName;
+import com.nexchanges.hailyo.custom.GetPlaceName;
 
 
 /**
@@ -54,9 +45,10 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
     private String message;
     Button seeProp;
     Button showProp;
-    Boolean isOnePressed = true, isSecondPlace = false;
+    Boolean isOnePressed = true, isSecondPlace = false, rent = false, sale = false;
     LatLng j;
     Context context;
+    int max=5, min=1;
 
 
     @Override
@@ -69,6 +61,8 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
         horizontalNumberPicker3.setBackgroundColor(getResources().getColor(android.R.color.white));
         horizontalNumberPicker3.getTextValueView().setTextColor(getResources().getColor(android.R.color.black));
         horizontalNumberPicker3.getTextValueView().setTextSize(22);
+        horizontalNumberPicker3.setMaxValue(max);
+        horizontalNumberPicker3.setMinValue(min);
 
         horizontalNumberPicker3.setHorizontalNumberPickerListener(this);
 
@@ -143,34 +137,35 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
         });
 
 
+        String msg2 = result.getText().toString();
+        String msg3 = configresult.getText().toString();
+
+        if (rent) {
+            message = "RENT-" +msg3 + "-" + msg2;
+        }
+        else
+            message = "OR-" + msg3 + "-" + msg2;
 
         hailBtn = (Button) findViewById(R.id.hail);
 
 
         hailBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                String msg1 = pasloc.getText().toString();
-                String msg2 = result.getText().toString();
-                String msg3 = configresult.getText().toString();
-               // String msg4 = j.toString();
 
-                message = msg1 + " " + msg2 + " " + msg3;
-
-                System.out.println("Message is:" + message);
 
                 SharedPrefs.save(context, SharedPrefs.CURRENT_SPEC, message);
 
 
-                Intent PostYoActivity=new Intent(context, PostYoActivity.class);
+                Intent SearchSplashScreen =new Intent(context, SearchSplashActivity.class);
+
+                //Intent SearchSplashScreen =new Intent(context, splash_mock.class);
                 Bundle extras = new Bundle();
                 extras.putString("Phone", "9967307197");
                 extras.putString("Broker_Name", "Rajiv Lakhpti");
                 extras.putString("Timer", "1");
                 extras.putString("Rating", "3");
-                PostYoActivity.putExtras(extras);
-                startActivity(PostYoActivity);
-
-
+                SearchSplashScreen.putExtras(extras);
+                startActivity(SearchSplashScreen);
 
             }
         });
@@ -206,6 +201,8 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
 
             case R.id.sbBar:
                 seekbar2.setProgress(0);
+                rent = true;
+                sale=false;
             if (progress < 300000) {
                 progress = ((int) Math.round(progress / step_size1)) * step_size1;
                 value = progress;
@@ -222,7 +219,10 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
 
             case R.id.sbSBar:
                 seekbar1.setProgress(0);
-                if (progress < 10000000) {
+                sale=true;
+                rent=false;
+
+                 if (progress < 10000000) {
                     progress = ((int) Math.round(progress / step_Sale1)) * step_Sale1;
                     value = progress;
                     result.setText(" Price:" + value);
@@ -235,6 +235,7 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
                 value = progress;
                 result.setText(" Price:" + value);
                 break;
+
         }
 
 

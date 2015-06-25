@@ -5,9 +5,11 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nexchanges.hailyo.model.SharedPrefs;
@@ -21,6 +23,8 @@ public class DuringVisitActivity extends Activity {
     String spec_code;
     Button endBut;
     Context context;
+    ImageView myphoto;
+    String photo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +35,16 @@ public class DuringVisitActivity extends Activity {
         spec = (TextView)findViewById(R.id.spec);
        spec_code =  SharedPrefs.getString(this, SharedPrefs.CURRENT_SPEC, "No_Name");
 
-        spec.setText("Your Spec Code is: \n" + spec_code);
+        spec.setText("You have hailed for: \n" + spec_code);
 
        endBut = (Button) findViewById(R.id.endvisit);
+
+        myphoto = (ImageView)findViewById(R.id.myphoto);
+
+        photo = SharedPrefs.getString(this, SharedPrefs.PHOTO_KEY);
+
+        myphoto.setImageBitmap(BitmapFactory.decodeFile(photo));
+
 
 
         endBut.setOnClickListener(new View.OnClickListener() {
@@ -66,8 +77,11 @@ public class DuringVisitActivity extends Activity {
         });
 
 
-
-
-
     }
+
+    @Override
+    public void onBackPressed() {
+        //do nothing
+    }
+
 }
