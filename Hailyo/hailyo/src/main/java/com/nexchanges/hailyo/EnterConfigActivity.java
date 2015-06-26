@@ -27,7 +27,6 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
     SeekBar seekbar1, seekbar2;
     int value;
     int bhkval;
-    int endValue;
     TextView result;
     TextView configresult;
 
@@ -45,10 +44,11 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
     private String message;
     Button seeProp;
     Button showProp;
-    Boolean isOnePressed = true, isSecondPlace = false, rent = false, sale = false;
-    LatLng j;
+    Boolean isOnePressed = true, isSecondPlace = false;
+    String choice="LL";
     Context context;
     int max=5, min=1;
+    String fetchloc, msg2,msg3;
 
 
     @Override
@@ -79,21 +79,16 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
 
         pasloc = (TextView)this.findViewById(R.id.tvLoc);
 
+        fetchloc = SharedPrefs.getString(this, SharedPrefs.CURRENT_LOC_KEY);
+
+        pasloc.setText(fetchloc);
+
 
         //set change listener
         seekbar1.setOnSeekBarChangeListener(this);
         seekbar2.setOnSeekBarChangeListener(this);
 
-        Intent locationIntent= getIntent();
-        Bundle b = locationIntent.getExtras();
 
-        if(b!=null)
-        {
-            j =(LatLng) b.get("selectedLocation");
-
-            getPlaceName(j);
-            //pasloc.setText(j);
-        }
 
 
         seeProp = (Button) findViewById(R.id.seeprop);
@@ -137,14 +132,10 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
         });
 
 
-        String msg2 = result.getText().toString();
-        String msg3 = configresult.getText().toString();
+        msg2 = result.getText().toString();
+        msg3 = configresult.getText().toString();
 
-        if (rent) {
-            message = "RENT-" +msg3 + "-" + msg2;
-        }
-        else
-            message = "OR-" + msg3 + "-" + msg2;
+       message = choice + "-" + msg3 + "-" + msg2;
 
         hailBtn = (Button) findViewById(R.id.hail);
 
@@ -172,27 +163,6 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
     }
 
 
-
-
-
-    public void getPlaceName(LatLng location){
-        new GetPlaceName(location, new GetPlaceName.GetPlaceNameCallback() {
-            @Override
-            public void onStart() {
-                pasloc.setText("Fetching Site Visit Location, wait..");
-            }
-
-            @Override
-            public void onComplete(boolean result, LatLng location, String placeName) {
-                if ( result == true ) {
-                    pasloc.setText(placeName);
-                }else{
-                    pasloc.setText("Sorry, No Such Location, Please Try Again..");
-                }
-            }
-        });
-    }
-
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress,
                                   boolean fromUser) {
@@ -201,8 +171,7 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
 
             case R.id.sbBar:
                 seekbar2.setProgress(0);
-                rent = true;
-                sale=false;
+                choice="LL";
             if (progress < 300000) {
                 progress = ((int) Math.round(progress / step_size1)) * step_size1;
                 value = progress;
@@ -219,9 +188,7 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
 
             case R.id.sbSBar:
                 seekbar1.setProgress(0);
-                sale=true;
-                rent=false;
-
+                choice="OR";
                  if (progress < 10000000) {
                     progress = ((int) Math.round(progress / step_Sale1)) * step_Sale1;
                     value = progress;

@@ -24,7 +24,7 @@
                 android:id="@+id/root_view_parent">
 
 
-                <ViewFlipper android:id="@+id/ViewFlipper01"
+                <ViewFlipper android:id="@+id/ViewFlipper10"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content">
 
@@ -33,52 +33,225 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent">
 
-                            <fragment
-                                android:id="@+id/map"
-                                android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
+
+                        <FrameLayout
+                            xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:orientation="vertical"
+                            android:layout_marginTop="1dp"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/root_view">
+
+                            <ViewFlipper android:id="@+id/ViewFlipper01"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content">
+
+
+                                <FrameLayout
+                                    android:orientation="vertical"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent">
+
+                                    <fragment
+                                        android:id="@+id/map"
+                                        android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
+                                        android:layout_width="match_parent"
+                                        tools:context=".MainActivity"
+                                        android:layout_height="454dp"/>
+
+                                    <ImageButton
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/self_marker"
+                                        android:layout_gravity="center"
+                                        android:background="@null"
+                                        android:id="@+id/ic_launcher" />
+
+                                </FrameLayout>
+
+
+                                //inner 2nd frame
+
+                                <FrameLayout
+                                    android:orientation="vertical"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent">
+
+
+
+                                    <fragment
+                                        android:id="@+id/map2"
+                                        android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
+                                        android:layout_width="match_parent"
+                                        tools:context=".MainActivity"
+                                        android:layout_height="454dp"/>
+
+                                    <ImageButton
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/self_marker"
+                                        android:layout_gravity="center"
+                                        android:background="@null"
+                                        android:id="@+id/ic_launcher2" />
+
+                                </FrameLayout>
+
+                                //inner 3rd frame
+
+
+                                <FrameLayout
+                                    android:orientation="vertical"
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent">
+
+
+
+                                    <fragment
+                                        android:id="@+id/map3"
+                                        android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
+                                        android:layout_width="match_parent"
+                                        tools:context=".MainActivity"
+                                        android:layout_height="454dp"/>
+
+                                    <ImageButton
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:src="@drawable/self_marker"
+                                        android:layout_gravity="center"
+                                        android:background="@null"
+                                        android:id="@+id/ic_launcher3" />
+
+                                </FrameLayout>
+                            </ViewFlipper>
+                            //internal view flipper ends
+
+
+
+                            <LinearLayout
                                 android:layout_width="match_parent"
-                                tools:context=".MainActivity"
-                                android:layout_height="454dp"/>
-
-                            <ImageButton
-                                android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:src="@drawable/self_marker"
-                                android:layout_gravity="center"
-                                android:background="@null"
-                                android:id="@+id/ic_launcher" />
-
-                     </FrameLayout>
-
-
-                   //2nd frame
-
-                <FrameLayout
-                    android:orientation="vertical"
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
+                                android:layout_margin="8dp"
+                                android:background="@android:color/white"
+                                android:orientation="vertical"
+                                android:layout_gravity="top"
+                                android:id="@+id/search_bar">
 
 
+                                <TextView
+                                    android:id="@+id/SiteVisitLocation"
+                                    android:layout_width="wrap_content"
+                                    android:layout_gravity="center_horizontal|center"
+                                    android:layout_height="wrap_content"
+                                    android:text="Site Visit Location"
+                                    android:textAppearance="?android:attr/textAppearanceMedium"
+                                    android:textColor="#28b54c" />
 
-                    <fragment
-                        android:id="@+id/map2"
-                        android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
-                        android:layout_width="match_parent"
-                        tools:context=".MainActivity"
-                        android:layout_height="454dp"/>
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="25dp"
+                                    android:layout_marginLeft="5dp"
+                                    android:layout_marginRight="5dp"
+                                    android:gravity="center"
+                                    android:orientation="horizontal"
+                                    android:id="@+id/searchLocation">
 
-                    <ImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/self_marker"
-                        android:layout_gravity="center"
-                        android:background="@null"
-                        android:id="@+id/ic_launcher2" />
 
-</FrameLayout>
+                                    <ImageView
+                                        android:layout_width="18dp"
+                                        android:layout_height="20dp"
+                                        android:src="@drawable/search"/>
 
-                    //3rd frame
 
+
+                                    <TextView
+                                        android:id="@+id/SiteVisitAddressBar"
+                                        android:singleLine="true"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="30dp"
+                                        android:background="@android:color/white"
+                                        android:hint="@string/placeholder"
+                                        android:layout_gravity="center_horizontal|top" />
+
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="73dp"
+                                android:orientation="horizontal"
+                                android:background="@color/white"
+                                android:layout_gravity="center_horizontal|bottom">
+
+
+                                <SeekBar
+                                    android:id="@+id/seekBar2"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="15dp"
+                                    android:layout_marginRight="15dp"
+                                    android:layout_span= "3"
+                                    android:progressDrawable="@android:color/transparent"
+                                    android:thumb="@drawable/seekthumb"
+                                    android:max="100"
+                                    android:indeterminate="false" />
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:background="@color/lightgrey"
+                                android:layout_gravity="center_horizontal|bottom">
+
+                                <TableRow
+                                    android:id="@+id/tableRow1"
+                                    android:layout_width="fill_parent"
+                                    android:orientation="horizontal"
+                                    android:weightSum="1.0"
+                                    android:layout_height="wrap_content" >
+
+                                    <TextView
+                                        android:id="@+id/textView1"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight=".5"
+                                        android:layout_gravity="left"
+                                        android:paddingLeft="5dp"
+                                        android:textColor="@color/red"
+                                        android:text="@string/pbroker" />
+
+                                    <TextView
+                                        android:id="@+id/textView2"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight=".45"
+                                        android:textColor="@color/black"
+                                        android:layout_gravity="center"
+                                        android:text="@string/abroker" />
+
+                                    <TextView
+                                        android:id="@+id/textView3"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight=".5"
+                                        android:textColor="@color/black"
+                                        android:layout_gravity="right"
+                                        android:text="@string/bbroker" />
+
+
+                                </TableRow>
+
+                            </LinearLayout>
+
+
+                        </FrameLayout>
+
+                    </FrameLayout>
+                    //external frame one ends
+
+                    //my deal frame - external frame 2
 
                     <FrameLayout
                         android:orientation="vertical"
@@ -86,145 +259,160 @@
                         android:layout_height="fill_parent">
 
 
+                        <FrameLayout
+                            xmlns:android="http://schemas.android.com/apk/res/android"
+                            android:orientation="vertical"
+                            android:layout_marginTop="1dp"
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent"
+                            android:id="@+id/root_view3">
 
-                            <fragment
-                                android:id="@+id/map3"
-                                android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
+                            <ViewFlipper android:id="@+id/ViewFlipper03"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content">
+
+
+                                <FrameLayout
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent">
+
+                                    <include layout="@layout/fragment_history"
+                                        android:id="@+id/activedeals"/>
+
+                                </FrameLayout>
+
+                                <FrameLayout
+                                    android:layout_width="fill_parent"
+                                    android:layout_height="fill_parent">
+
+
+                                    <include layout="@layout/fragment_history"
+                                        android:id="@+id/alldeals"/>
+
+                                </FrameLayout>
+                            </ViewFlipper>
+
+
+
+
+                            <LinearLayout
                                 android:layout_width="match_parent"
-                                tools:context=".MainActivity"
-                                android:layout_height="454dp"/>
+                                android:layout_height="60dp"
+                                android:orientation="horizontal"
+                                android:background="@color/white"
+                                android:gravity="center"
+                                android:layout_gravity="center_horizontal|bottom">
 
-                            <ImageButton
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:src="@drawable/self_marker"
-                                android:layout_gravity="center"
-                                android:background="@null"
-                                android:id="@+id/ic_launcher3" />
 
+                                <SeekBar
+                                    android:id="@+id/seekBar3"
+                                    android:layout_width="208dp"
+                                    android:layout_gravity="center"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginLeft="15dp"
+                                    android:layout_marginRight="15dp"
+                                    android:layout_span= "2"
+                                    android:progressDrawable="@android:color/transparent"
+                                    android:thumb="@drawable/seekthumb"
+                                    android:max="100" />
+
+                            </LinearLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="20dp"
+                                android:orientation="vertical"
+                                android:background="@color/lightgrey"
+                                android:layout_gravity="center_horizontal|bottom">
+
+                                <TableRow
+                                    android:id="@+id/tableRow2"
+                                    android:layout_width="fill_parent"
+                                    android:orientation="horizontal"
+                                    android:weightSum="1.0"
+                                    android:layout_height="wrap_content" >
+
+                                    <TextView
+                                        android:id="@+id/textView33"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:textSize="15dp"
+                                        android:layout_weight=".5"
+                                        android:layout_gravity="left"
+                                        android:paddingLeft="5dp"
+                                        android:textColor="@color/red"
+                                        android:text="ACTIVE DEALS" />
+
+                                    <TextView
+                                        android:id="@+id/textView4"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="center"
+                                        android:textSize="15dp"
+                                        android:layout_weight=".45"
+                                        android:textColor="@color/black"
+                                        android:layout_gravity="center"
+                                        android:text="ALL DEALS" />
+
+
+
+                                </TableRow>
+
+                            </LinearLayout>
+                            //end buttons
                         </FrameLayout>
 
-                  </ViewFlipper>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:background="@android:color/white"
-                    android:orientation="vertical"
-                    android:layout_gravity="top"
-                    android:id="@+id/search_bar">
+                    </FrameLayout>
 
 
-                    <TextView
-                        android:id="@+id/SiteVisitLocation"
-                        android:layout_width="wrap_content"
-                        android:layout_gravity="center_horizontal|center"
-                        android:layout_height="wrap_content"
-                        android:text="Site Visit Location"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="#28b54c" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginRight="5dp"
-                        android:gravity="center"
-                        android:orientation="horizontal"
-                        android:id="@+id/searchLocation">
+                    //My deal frame ends
 
 
-                        <ImageView
-                            android:layout_width="18dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/search"/>
-
-
-
-                        <TextView
-                            android:id="@+id/SiteVisitAddressBar"
-                            android:singleLine="true"
-                            android:layout_width="match_parent"
-                            android:layout_height="30dp"
-                            android:background="@android:color/white"
-                            android:hint="@string/placeholder"
-                            android:layout_gravity="center_horizontal|top" />
-
-                    </LinearLayout>
-                </LinearLayout>
-
+                </ViewFlipper>
 
             </FrameLayout>
         </LinearLayout>
 
+        //end dynamic frames
+
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
+            android:layout_height="55dp"
+            android:padding="2dp"
             android:orientation="horizontal"
-            android:background="@color/white"
+            android:background="@color/black"
+            android:weightSum="1"
             android:layout_gravity="center_horizontal|bottom">
 
 
-            <SeekBar
-                android:id="@+id/seekBar2"
-                android:layout_width="match_parent"
+
+            <Button
+                android:id="@+id/hailmode"
+                android:background="@color/black"
+                android:textSize="20dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:layout_span= "3"
-                android:progressDrawable="@android:color/transparent"
-                android:thumb="@drawable/seekthumb"
-                android:max="100" />
+                android:textColor="@color/white"
+                android:layout_weight=".5"
+                android:layout_gravity="center"
+                android:text="@string/hailmode" />
 
-        </LinearLayout>
+            <Button
+                android:id="@+id/activedeals"
+                android:background="@color/black"
+                android:layout_marginRight="5dp"
+                android:layout_weight=".5"
+                android:textSize="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_gravity="right"
+                android:text="MY DEALS" />
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:orientation="vertical"
-            android:background="@color/lightgrey"
-            android:layout_gravity="center_horizontal|bottom">
-
-            <TableRow
-                android:id="@+id/tableRow1"
-                android:layout_width="fill_parent"
-                android:orientation="horizontal"
-                android:weightSum="1.0"
-                android:layout_height="wrap_content" >
-
-                <TextView
-                    android:id="@+id/textView1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".5"
-                    android:layout_gravity="left"
-                    android:paddingLeft="5dp"
-                    android:textColor="@color/red"
-                    android:text="@string/pbroker" />
-
-                <TextView
-                    android:id="@+id/textView2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".45"
-                    android:textColor="@color/black"
-                    android:layout_gravity="center"
-                    android:text="@string/abroker" />
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight=".5"
-                    android:textColor="@color/black"
-                    android:layout_gravity="right"
-                    android:text="@string/bbroker" />
-
-
-            </TableRow>
 
         </LinearLayout>
 
@@ -246,6 +434,4 @@
         />
 
 
-</android.support.v4.widget.DrawerLayout>
-
-<!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/layout/activity_main.xml -->
+</android.support.v4.widget.DrawerLayout><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/layout/activity_main.xml -->

@@ -23,6 +23,8 @@ public class SharedPrefs {
     public static String DEPOSIT_KEY = "myphotoKey";
     public static String STARTDATE_KEY = "myphotoKey";
     public static String MY_ROLE_KEY = "myroleKey";
+    public static String CURRENT_LOC_KEY = "location_key";
+
 
 
     //get the SharedPreferences object instance

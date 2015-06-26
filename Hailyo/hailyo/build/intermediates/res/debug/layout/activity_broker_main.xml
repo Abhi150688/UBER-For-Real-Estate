@@ -77,47 +77,74 @@
                 //button - See Availability
 
 
+
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="40dp"
-                    android:padding="2dp"
-                    android:background="@color/lightslategray"
+                    android:layout_height="68dp"
                     android:orientation="horizontal"
-                    android:layout_gravity="center_horizontal|bottom">
+                    android:background="@color/white"
+                    android:gravity="center"
+                    android:layout_gravity="bottom">
 
 
-                    <Button
-                        android:id="@+id/seeavail"
-                        android:layout_marginTop="2dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:background="@color/blue_sky"
-                        android:layout_weight=".6"
-                        android:textSize="20dp"
-                        android:layout_gravity="left"
-                        android:layout_marginRight="5dp"
-                        android:layout_marginLeft="5dp"
-                        android:paddingLeft="5dp"
-                        android:textColor="@color/white"
-                        android:text="VIEW REQ" />
-
-                    <Button
-                        android:id="@+id/seerequire"
-                        android:background="@color/white"
-                        android:layout_marginRight="5dp"
-                        android:textSize="20dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight=".5"
-                        android:textColor="@color/black"
+                    <SeekBar
+                        android:id="@+id/seekBar2"
+                        android:layout_width="208dp"
                         android:layout_gravity="center"
-                        android:text="VIEW AVL" />
 
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_span= "2"
+                        android:progressDrawable="@android:color/transparent"
+                        android:thumb="@drawable/seekthumb"
+                        android:max="100" />
 
                 </LinearLayout>
 
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="21dp"
+                    android:orientation="vertical"
+                    android:background="@color/lightgrey"
+                    android:layout_gravity="center_horizontal|bottom">
+
+                    <TableRow
+                        android:id="@+id/tableRow1"
+                        android:layout_width="fill_parent"
+                        android:orientation="horizontal"
+                        android:weightSum="1.0"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:id="@+id/textView1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textSize="15dp"
+                            android:layout_weight=".5"
+                            android:layout_gravity="left"
+                            android:paddingLeft="5dp"
+                            android:textColor="@color/red"
+                            android:text="OWNERS" />
+
+                        <TextView
+                            android:id="@+id/textView2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:textSize="15dp"
+                            android:layout_weight=".45"
+                            android:textColor="@color/black"
+                            android:layout_gravity="center"
+                            android:text="CLIENTS" />
+
+
+
+                    </TableRow>
+
+                </LinearLayout>
                 //end buttons
             </FrameLayout>
 
@@ -209,6 +236,124 @@
             </FrameLayout>
 //2nd frame ends
 
+            //3rd frame
+
+            <FrameLayout
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+
+                <FrameLayout
+                    xmlns:android="http://schemas.android.com/apk/res/android"
+                    android:orientation="vertical"
+                    android:layout_marginTop="1dp"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:id="@+id/root_view3">
+
+                    <ViewFlipper android:id="@+id/ViewFlipper03"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content">
+
+
+                        <FrameLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent">
+
+                            <include layout="@layout/fragment_history"
+                                android:id="@+id/activedeals"/>
+
+                        </FrameLayout>
+
+                        <FrameLayout
+                            android:layout_width="fill_parent"
+                            android:layout_height="fill_parent">
+
+                            <include layout="@layout/fragment_history"
+                                android:id="@+id/activedeals"/>
+
+                        </FrameLayout>
+                    </ViewFlipper>
+
+                    //button - See Availability
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:orientation="horizontal"
+                        android:background="@color/white"
+                        android:gravity="center"
+                        android:layout_gravity="center_horizontal|bottom">
+
+
+                        <SeekBar
+                            android:id="@+id/seekBar3"
+                            android:layout_width="208dp"
+                            android:layout_gravity="center"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginRight="15dp"
+                            android:layout_span= "2"
+                            android:progressDrawable="@android:color/transparent"
+                            android:thumb="@drawable/seekthumb"
+                            android:max="100" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="20dp"
+                        android:orientation="vertical"
+                        android:background="@color/lightgrey"
+                        android:layout_gravity="center_horizontal|bottom">
+
+                        <TableRow
+                            android:id="@+id/tableRow2"
+                            android:layout_width="fill_parent"
+                            android:orientation="horizontal"
+                            android:weightSum="1.0"
+                            android:layout_height="wrap_content" >
+
+                            <TextView
+                                android:id="@+id/textView3"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:textSize="15dp"
+                                android:layout_weight=".5"
+                                android:layout_gravity="left"
+                                android:paddingLeft="5dp"
+                                android:textColor="@color/red"
+                                android:text="ACTIVE DEALS" />
+
+                            <TextView
+                                android:id="@+id/textView4"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center"
+                                android:textSize="15dp"
+                                android:layout_weight=".45"
+                                android:textColor="@color/black"
+                                android:layout_gravity="center"
+                                android:text="ALL DEALS" />
+
+
+
+                        </TableRow>
+
+                    </LinearLayout>
+                    //end buttons
+                </FrameLayout>
+
+            </FrameLayout>
+
+
+            //3rd frame ends
+
 
         </ViewFlipper>
 
@@ -224,7 +369,8 @@
             android:layout_height="55dp"
             android:padding="2dp"
             android:orientation="horizontal"
-            android:background="@color/lightslategray"
+            android:background="@color/black"
+            android:weightSum="1"
             android:layout_gravity="center_horizontal|bottom">
 
 
@@ -233,28 +379,36 @@
                     android:layout_marginTop="2dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@color/black"
-                    android:layout_weight=".6"
+                    android:background="@color/blue_sky"
                     android:textSize="20dp"
                     android:layout_gravity="left"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginLeft="5dp"
                     android:paddingLeft="5dp"
                     android:textColor="@color/white"
+                    android:layout_weight=".4"
                     android:text="@string/yomode" />
 
                 <Button
                     android:id="@+id/hailmode"
-                    android:background="@color/white"
-                    android:layout_marginRight="5dp"
+                    android:background="@color/black"
                     android:textSize="20dp"
-                    android:layout_marginLeft="10dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight=".5"
-                    android:textColor="@color/black"
+                    android:textColor="@color/white"
+                    android:layout_weight=".4"
                     android:layout_gravity="center"
                     android:text="@string/hailmode" />
+
+                <Button
+                android:id="@+id/deals"
+                android:background="@color/black"
+                android:layout_marginRight="5dp"
+                android:layout_weight=".4"
+                android:textSize="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:layout_gravity="right"
+                android:text="MY DEALS" />
 
 
         </LinearLayout>

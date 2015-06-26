@@ -22,12 +22,14 @@ package com.nexchanges.hailyo;
         import android.telephony.SmsManager;
         import android.util.Log;
         import android.view.KeyEvent;
+        import android.view.LayoutInflater;
         import android.view.MenuItem;
         import android.view.View;
         import android.widget.AdapterView;
         import android.widget.ArrayAdapter;
         import android.widget.Button;
         import android.widget.ImageButton;
+        import android.widget.ImageView;
         import android.widget.ListView;
         import android.widget.RatingBar;
         import android.widget.SeekBar;
@@ -38,6 +40,7 @@ package com.nexchanges.hailyo;
         import com.google.android.gms.maps.GoogleMap;
         import com.google.android.gms.maps.OnMapReadyCallback;
         import com.google.android.gms.maps.model.LatLng;
+        import com.nexchanges.hailyo.model.SharedPrefs;
         import com.nexchanges.hailyo.ui.CustomMapFragment;
         import com.nexchanges.hailyo.custom.GetCurrentLocation;
 
@@ -206,9 +209,28 @@ public class PostYoActivity extends ActionBarActivity
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        View header = getLayoutInflater().inflate(R.layout.left_nav_header,
-                null);
-        drawerLeft.addHeaderView(header);
+        LayoutInflater inflate = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        //  LinearLayout myRoot = new LinearLayout();
+        View vi = inflate.inflate(R.layout.left_nav_header, null);
+        drawerLeft.addHeaderView(vi);
+
+        TextView smallname = (TextView) vi.findViewById(R.id.mynamesmall);
+
+        TextView smallemail = (TextView) vi.findViewById(R.id.myemailsmall);
+
+        ImageView smallphoto = (ImageView) vi.findViewById(R.id.smallphoto);
+
+
+        String fetchname = SharedPrefs.getString(this, SharedPrefs.NAME_KEY, "No_Name");
+
+        String fetchemail = SharedPrefs.getString(this, SharedPrefs.EMAIL_KEY, "No_Email");
+
+        String fetchphoto = SharedPrefs.getString(this, SharedPrefs.PHOTO_KEY);
+
+
+        smallname.setText(fetchname);
+        smallemail.setText(fetchemail);
+        //smallphoto.setImageBitmap(BitmapFactory.decodeFile(fetchphoto));
 
         drawerLeft.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 

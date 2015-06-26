@@ -18,9 +18,9 @@ public final class R {
 		public static final int value = 0x7f01003d;
 	}
 	public static final class id {
-		public static final int button_minus = 0x7f0c00cf;
-		public static final int button_plus = 0x7f0c00d1;
-		public static final int text_value = 0x7f0c00d0;
+		public static final int button_minus = 0x7f0c00d6;
+		public static final int button_plus = 0x7f0c00d8;
+		public static final int text_value = 0x7f0c00d7;
 	}
 	public static final class layout {
 		public static final int horizontal_number_picker = 0x7f04003a;

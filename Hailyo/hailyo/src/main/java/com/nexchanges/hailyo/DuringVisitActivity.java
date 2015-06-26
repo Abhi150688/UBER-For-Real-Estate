@@ -35,7 +35,7 @@ public class DuringVisitActivity extends Activity {
         spec = (TextView)findViewById(R.id.spec);
        spec_code =  SharedPrefs.getString(this, SharedPrefs.CURRENT_SPEC, "No_Name");
 
-        spec.setText("You have hailed for: \n" + spec_code);
+        spec.setText(spec_code);
 
        endBut = (Button) findViewById(R.id.endvisit);
 

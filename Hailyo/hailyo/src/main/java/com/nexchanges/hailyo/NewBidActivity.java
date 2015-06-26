@@ -209,17 +209,63 @@ public class NewBidActivity extends Activity {
         ssubmit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-                if (role.matches("Customer")) {
-                    Intent MainActivity = new Intent(context, MainActivity.class);
-                    startActivity(MainActivity);
-                    finish();
-                }
-                else{
-                    Intent BMainActivity = new Intent(context, MainBrokerActivity.class);
-                    startActivity(BMainActivity);
-                    finish();
+                sendshortEmail();
+                LayoutInflater layoutInflater = LayoutInflater.from(context);
+                View promptView = layoutInflater.inflate(R.layout.action_before_main, null);
 
-                }
+                Button newBid = (Button)promptView.findViewById(R.id.newbid);
+
+                Button newVisit = (Button)promptView.findViewById(R.id.newvisit);
+
+                Button allDeals = (Button)promptView.findViewById(R.id.trans);
+
+
+
+
+                final AlertDialog alertD = new AlertDialog.Builder(context).create();
+
+                newBid.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent RestartNewBid = new Intent(context,NewBidActivity.class);
+                        startActivity(RestartNewBid);
+                        finish();
+
+                    }
+                });
+
+                newVisit.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+
+                        if (role.matches("Customer")) {
+                            Intent MainActivity = new Intent(context, MainActivity.class);
+                            startActivity(MainActivity);
+                            finish();
+                        }
+                        else{
+                            Intent BMainActivity = new Intent(context, MainBrokerActivity.class);
+                            startActivity(BMainActivity);
+                            finish();
+
+                        }
+                    }
+                });
+
+                allDeals.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent SettingsActivity = new Intent(context, SettingsActivity.class);
+                        startActivity(SettingsActivity);
+                        finish();
+                    }
+                });
+
+
+                alertD.setView(promptView);
+                alertD.show();
+
 
             }
         });
