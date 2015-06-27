@@ -1846,6 +1846,23 @@
 		<item name="titleSeparatorColor">@color/theme_yellow</item>
 		<item name="titleTextColor">@color/gray_dk</item>
 	</style>
+    <style name="DigitsLoginTheme" parent="android:Theme.Holo.Light.DarkActionBar">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:textColorPrimary">
+            @android:color/black
+        </item>
+        <item name="android:textColorSecondary">
+            @android:color/darker_gray
+        </item>
+        <item name="android:windowBackground">
+            @android:color/white
+        </item>
+        <item name="android:textColorLink">#ff00ff00</item>
+        <item name="colorAccent">#ff398622</item>
+        <item name="dgts__accentColor">#ff398622</item>
+
+    </style>
     <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.2.0/res/values/values.xml -->
     <eat-comment/>
     <style name="Digits_default" parent="@android:style/Theme.Light">

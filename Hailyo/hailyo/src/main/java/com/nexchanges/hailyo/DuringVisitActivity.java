@@ -33,11 +33,11 @@ public class DuringVisitActivity extends Activity {
         context = this;
 
         spec = (TextView)findViewById(R.id.spec);
-       spec_code =  SharedPrefs.getString(this, SharedPrefs.CURRENT_SPEC, "No_Name");
+        spec_code =  SharedPrefs.getString(this, SharedPrefs.CURRENT_SPEC, "No_Name");
 
         spec.setText(spec_code);
 
-       endBut = (Button) findViewById(R.id.endvisit);
+        endBut = (Button) findViewById(R.id.endvisit);
 
         myphoto = (ImageView)findViewById(R.id.myphoto);
 

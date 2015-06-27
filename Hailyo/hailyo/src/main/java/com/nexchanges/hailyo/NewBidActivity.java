@@ -106,6 +106,7 @@ public class NewBidActivity extends Activity {
                     @Override
                     public void onClick(View v) {
                         Intent SettingsActivity = new Intent(context, SettingsActivity.class);
+                        SharedPrefs.save(context,SharedPrefs.CURRENT_FLIPPER_VIEW,2);
                         startActivity(SettingsActivity);
                         finish();
                     }

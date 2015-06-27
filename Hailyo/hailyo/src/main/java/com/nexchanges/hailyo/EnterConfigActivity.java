@@ -181,17 +181,17 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
             if (progress < 300000) {
                 progress = ((int) Math.round(progress / step_size1)) * step_size1;
                 value = progress;
-                msg2 = value+"";
+                msg2 = progress+"";
                 result.setText(" Rent:" + value);
             } else if (progress > 305000 && progress < 600000) {
                 progress = ((int) Math.round(progress / step_size2)) * step_size2;
                 value = progress;
-                msg2 = value+"";
+                msg2 = progress+"";
                 result.setText(" Rent:" + value);
             } else
                 progress = ((int) Math.round(progress / step_size3)) * step_size3;
             value = progress;
-                msg2 = value+"";
+                msg2 = progress+"";
             result.setText(" Rent:" + value);
                 break;
 
@@ -202,17 +202,17 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
                  if (progress < 10000000) {
                     progress = ((int) Math.round(progress / step_Sale1)) * step_Sale1;
                     value = progress;
-                     msg2 = value+"";
+                     msg2 = progress+"";
                     result.setText(" Price:" + value);
                 } if (progress > 10000000 && progress < 100000000) {
                     progress = ((int) Math.round(progress / step_Sale2)) * step_Sale2;
                     value = progress;
-                msg2 = value+"";
+                msg2 = progress+"";
                     result.setText(" Price:" + value);
                 } else
                     progress = ((int) Math.round(progress / step_Sale3)) * step_Sale3;
                 value = progress;
-                msg2 = value+"";
+                msg2 = progress+"";
                 result.setText(" Price:" + value);
                 break;
 
@@ -234,7 +234,7 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
     public void onHorizontalNumberPickerChanged(HorizontalNumberPicker horizontalNumberPicker, int i) {
        bhkval = i;
        configresult.setText(":" + bhkval + "BHK");
-        msg3 = configresult.getText().toString();
+       msg3 = i+"BHK";
        spec_code.BHK = i+"BHK";
 
     }

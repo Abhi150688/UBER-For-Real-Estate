@@ -108,12 +108,12 @@ public final class R {
 		public static final int common_signin_btn_text_normal_light = 0x7f020066;
 		public static final int common_signin_btn_text_pressed_dark = 0x7f020067;
 		public static final int common_signin_btn_text_pressed_light = 0x7f020068;
-		public static final int ic_plusone_medium_off_client = 0x7f0200a5;
-		public static final int ic_plusone_small_off_client = 0x7f0200a6;
-		public static final int ic_plusone_standard_off_client = 0x7f0200a7;
-		public static final int ic_plusone_tall_off_client = 0x7f0200a8;
-		public static final int powered_by_google_dark = 0x7f0200c5;
-		public static final int powered_by_google_light = 0x7f0200c6;
+		public static final int ic_plusone_medium_off_client = 0x7f0200a6;
+		public static final int ic_plusone_small_off_client = 0x7f0200a7;
+		public static final int ic_plusone_standard_off_client = 0x7f0200a8;
+		public static final int ic_plusone_tall_off_client = 0x7f0200a9;
+		public static final int powered_by_google_dark = 0x7f0200c6;
+		public static final int powered_by_google_light = 0x7f0200c7;
 	}
 	public static final class id {
 		public static final int adjust_height = 0x7f0c001b;
@@ -196,11 +196,11 @@ public final class R {
 		public static final int wallet_buy_button_place_holder = 0x7f0700b7;
 	}
 	public static final class style {
-		public static final int Theme_IAPTheme = 0x7f0f00d3;
-		public static final int WalletFragmentDefaultButtonTextAppearance = 0x7f0f00dc;
-		public static final int WalletFragmentDefaultDetailsHeaderTextAppearance = 0x7f0f00dd;
-		public static final int WalletFragmentDefaultDetailsTextAppearance = 0x7f0f00de;
-		public static final int WalletFragmentDefaultStyle = 0x7f0f00df;
+		public static final int Theme_IAPTheme = 0x7f0f00d4;
+		public static final int WalletFragmentDefaultButtonTextAppearance = 0x7f0f00dd;
+		public static final int WalletFragmentDefaultDetailsHeaderTextAppearance = 0x7f0f00de;
+		public static final int WalletFragmentDefaultDetailsTextAppearance = 0x7f0f00df;
+		public static final int WalletFragmentDefaultStyle = 0x7f0f00e0;
 	}
 	public static final class styleable {
 		public static final int[] AdsAttrs = { 0x7f010027, 0x7f010028, 0x7f010029 };

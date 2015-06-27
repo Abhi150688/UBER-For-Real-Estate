@@ -133,7 +133,7 @@ public class PostYoActivity extends ActionBarActivity
             public void onClick(View v) {
                 Intent ViewDeals = new Intent(context, ViewAllDeals.class);
                 startActivity(ViewDeals);
-                finish();
+//                finish();
             }
         });
 
@@ -143,7 +143,7 @@ public class PostYoActivity extends ActionBarActivity
             public void onClick(View v) {
                 Intent VisitsActivity = new Intent(context, ViewAllVisits.class);
                 startActivity(VisitsActivity);
-                finish();
+                //finish();
             }
         });
 

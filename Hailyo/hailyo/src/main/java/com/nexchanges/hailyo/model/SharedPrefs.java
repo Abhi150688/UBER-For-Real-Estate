@@ -18,6 +18,8 @@ public class SharedPrefs {
     public static String CURRENT_SPEC = "specKey";
 
     public static String PHOTO_KEY = "myphotoKey";
+    public static String MY_MOBILE_KEY = "myphotoKey";
+
     public static String PROPERTY_KEY = "myphotoKey";
     public static String RENT_KEY = "myphotoKey";
     public static String DEPOSIT_KEY = "myphotoKey";

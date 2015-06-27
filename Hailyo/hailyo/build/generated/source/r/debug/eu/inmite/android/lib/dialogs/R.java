@@ -78,8 +78,8 @@ public final class R {
 		public static final int grid_90 = 0x7f0b0057;
 	}
 	public static final class drawable {
-		public static final int sdl_background_dark = 0x7f0200ce;
-		public static final int sdl_background_light = 0x7f0200cf;
+		public static final int sdl_background_dark = 0x7f0200cf;
+		public static final int sdl_background_light = 0x7f0200d0;
 	}
 	public static final class id {
 		public static final int dialog_button_panel = 0x7f0c00a3;
@@ -118,24 +118,24 @@ public final class R {
 	public static final class style {
 		public static final int DialogStyleDark = 0x7f0f006f;
 		public static final int DialogStyleLight = 0x7f0f0070;
-		public static final int SDL = 0x7f0f0087;
-		public static final int SDL_Button = 0x7f0f0088;
-		public static final int SDL_ButtonSeparator = 0x7f0f0089;
-		public static final int SDL_DatePicker = 0x7f0f008a;
-		public static final int SDL_Dialog = 0x7f0f008b;
-		public static final int SDL_Group = 0x7f0f008c;
-		public static final int SDL_Group_ButtonPanel = 0x7f0f008d;
-		public static final int SDL_Group_Content = 0x7f0f008e;
-		public static final int SDL_Group_Horizontal = 0x7f0f008f;
-		public static final int SDL_Group_Horizontal_ButtonPanel = 0x7f0f0090;
-		public static final int SDL_Group_Wrap = 0x7f0f0091;
-		public static final int SDL_HorizontalSeparator = 0x7f0f0092;
-		public static final int SDL_ListView = 0x7f0f0093;
-		public static final int SDL_Progress = 0x7f0f0094;
-		public static final int SDL_TextView = 0x7f0f0095;
-		public static final int SDL_TextView_Message = 0x7f0f0096;
-		public static final int SDL_TextView_Title = 0x7f0f0097;
-		public static final int SDL_TitleSeparator = 0x7f0f0098;
+		public static final int SDL = 0x7f0f0088;
+		public static final int SDL_Button = 0x7f0f0089;
+		public static final int SDL_ButtonSeparator = 0x7f0f008a;
+		public static final int SDL_DatePicker = 0x7f0f008b;
+		public static final int SDL_Dialog = 0x7f0f008c;
+		public static final int SDL_Group = 0x7f0f008d;
+		public static final int SDL_Group_ButtonPanel = 0x7f0f008e;
+		public static final int SDL_Group_Content = 0x7f0f008f;
+		public static final int SDL_Group_Horizontal = 0x7f0f0090;
+		public static final int SDL_Group_Horizontal_ButtonPanel = 0x7f0f0091;
+		public static final int SDL_Group_Wrap = 0x7f0f0092;
+		public static final int SDL_HorizontalSeparator = 0x7f0f0093;
+		public static final int SDL_ListView = 0x7f0f0094;
+		public static final int SDL_Progress = 0x7f0f0095;
+		public static final int SDL_TextView = 0x7f0f0096;
+		public static final int SDL_TextView_Message = 0x7f0f0097;
+		public static final int SDL_TextView_Title = 0x7f0f0098;
+		public static final int SDL_TitleSeparator = 0x7f0f0099;
 	}
 	public static final class styleable {
 		public static final int[] DialogStyle = { 0x7f01002c, 0x7f01002d, 0x7f01002e, 0x7f01002f, 0x7f010030, 0x7f010031, 0x7f010032, 0x7f010033, 0x7f010034 };
