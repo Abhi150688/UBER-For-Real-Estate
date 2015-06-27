@@ -70,6 +70,12 @@
             android:name="com.nexchanges.hailyo.DuringVisitActivity"
             android:screenOrientation="portrait" />
         <activity
+            android:name="com.nexchanges.hailyo.ui.ViewAllDeals"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name="com.nexchanges.hailyo.ui.ViewAllVisits"
+            android:screenOrientation="portrait" />
+        <activity
             android:name="com.nexchanges.hailyo.GiveRatingActivity"
             android:screenOrientation="portrait" />
         <activity
@@ -82,7 +88,7 @@
             android:name="com.nexchanges.hailyo.HelpActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.nexchanges.hailyo.HistoryActivity"
+            android:name="com.nexchanges.hailyo.MySiteVisitHistory"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.nexchanges.hailyo.PromotionsActivity"

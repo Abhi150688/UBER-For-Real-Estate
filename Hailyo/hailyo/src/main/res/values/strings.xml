@@ -2,7 +2,13 @@
 <resources>
 
     <string name="app_name">Hailyo</string>
+    <string name="SiteVisitLocation">Site Visit Location</string>
     <string name="drawer_open">Open navigation drawer</string>
+    <string name="ACTIVEDEALS">ACTIVE DEALS</string>
+    <string name="ALLDEALS">ALL DEALS</string>
+    <string name="MYDEALS">MY DEALS</string>
+    <string name="MYVISITS">MY VISITS</string>
+
     <string name="drawer_close">Close navigation drawer</string>
     <string name="search">Search</string>
 
@@ -42,8 +48,7 @@
 
     <string-array name="listItems">
         <item>PAYMENT</item>
-        <item>HISTORY</item>
-        <item>HELP</item>
+         <item>HELP</item>
         <item>PROMOTIONS</item>
         <item>ABOUT</item>
         <item>SETTINGS</item>
@@ -51,8 +56,8 @@
 
 
     <string name="pbroker">PROPERTY\n  BROKER</string>
-    <string name="hailmode">SEND HAIL</string>
-    <string name="yomode">SEND YO</string>
+    <string name="hailmode">HAIL</string>
+    <string name="yomode">YO</string>
 
     <string name="abroker">AUCTION\n BROKER</string>
 

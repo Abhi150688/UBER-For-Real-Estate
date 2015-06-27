@@ -88,7 +88,8 @@
 
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:background="@color/black"
                 android:textColor="@color/white"
@@ -98,13 +99,14 @@
                 android:paddingTop="2dp"
                 android:paddingBottom="2dp"
                 android:textAllCaps="false"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:layout_marginRight="10dp"
                 android:layout_gravity="center_horizontal"
                 android:id="@+id/seeprop" />
 
             <Button
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
+                android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:background="@color/lightgrey"
                 android:textColor="@color/black"
@@ -115,7 +117,7 @@
                 android:paddingRight="5dp"
                 android:layout_gravity="center_horizontal"
                 android:textAllCaps="false"
-                android:textSize="20sp"
+                android:textSize="15sp"
                 android:id="@+id/showprop" />
 
         </LinearLayout>

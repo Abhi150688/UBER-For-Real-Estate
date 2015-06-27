@@ -43,7 +43,6 @@ public class InitialActivity extends Activity {
         );
 
         role = SharedPrefs.getString(this, SharedPrefs.MY_ROLE_KEY);
-        System.out.print("My role as per SP is" + role);
 
 
 

@@ -1,7 +1,10 @@
-<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/drawer_layout12"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:background="@color/white"
+    android:layout_height="match_parent">
 
     <FrameLayout
         android:id="@+id/content_frame"
@@ -70,7 +73,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@color/white"
-            android:layout_gravity="center_horizontal|bottom">
+            android:layout_gravity="center_horizontal|bottom"
+            android:weightSum="1">
 
             <TextView
                 android:layout_width="fill_parent"
@@ -79,6 +83,8 @@
                 android:gravity="center"
                 android:text="Broker has YO-ed!! Site Visit will start shortly!"
                 android:textSize="15dp"/>
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -108,7 +114,7 @@
 
                 <LinearLayout
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="115dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:gravity="center"
@@ -152,43 +158,41 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:gravity="center"
-                android:weightSum="1"
-                android:layout_marginBottom="5dp"
                 android:orientation="horizontal"
                 >
 
                 <Button
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@color/black"
                     android:textColor="@color/white"
-                    android:text="CALL"
+                    android:text="ALL VISITS"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
                     android:paddingTop="2dp"
                     android:paddingBottom="2dp"
                     android:textAllCaps="false"
                     android:textSize="20sp"
-                    android:layout_weight=".5"
+                    android:layout_weight="1"
                     android:layout_marginRight="10dp"
                     android:layout_gravity="center_horizontal"
-                    android:id="@+id/call" />
+                    android:id="@+id/visits" />
 
                 <Button
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:background="@color/black"
                     android:textColor="@color/white"
-                    android:text="MESSAGE"
+                    android:text="ALL DEALS"
                     android:paddingLeft="5dp"
                     android:paddingTop="2dp"
                     android:paddingBottom="2dp"
                     android:paddingRight="5dp"
-                    android:layout_weight=".5"
+                    android:layout_weight="1"
                     android:layout_gravity="center_horizontal"
                     android:textAllCaps="false"
                     android:textSize="20sp"
-                    android:id="@+id/message" />
+                    android:id="@+id/deals" />
 
             </LinearLayout>
 
@@ -200,16 +204,4 @@
     </FrameLayout>
 
 
-    <ListView
-        android:id="@+id/left_drawer"
-        android:layout_width="260dp"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:background="@color/theme_black"
-        android:choiceMode="singleChoice"
-        android:headerDividersEnabled="true"
-        android:listSelector="@color/theme_yellow"
-        />
-
-
-</android.support.v4.widget.DrawerLayout><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/layout/activity_post_yo.xml -->
+</LinearLayout><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/layout/activity_post_yo.xml -->

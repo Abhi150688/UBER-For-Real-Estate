@@ -10,4 +10,4 @@
         android:text="Your Site Visit History"
         android:id="@+id/textView3"
         android:layout_gravity="center_horizontal" />
-</LinearLayout><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/layout/fragment_history.xml -->
+</LinearLayout><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/layout/mysitevisithistory.xml -->

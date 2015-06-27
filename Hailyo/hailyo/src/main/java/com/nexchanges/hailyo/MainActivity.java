@@ -44,7 +44,6 @@ import com.nexchanges.hailyo.custom.GetCurrentLocation;
 import com.nexchanges.hailyo.custom.GetPlaceName;
 import com.nexchanges.hailyo.custom.MapWrapperLayout;
 import com.nexchanges.hailyo.custom.SearchActivity;
-import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -56,7 +55,7 @@ import java.util.List;
 public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBarChangeListener
 {
 
-    SeekBar sb1,sb3;
+    SeekBar sb1;
 	private DrawerLayout drawerLayout;
     String []listItems;
     Context context;
@@ -70,9 +69,11 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
 	private ActionBarDrawerToggle drawerToggle;
 
 
+
+
     GoogleMap map,map2,map3;
     LinearLayout searchLocation;
-    TextView SiteVisitAddressBar, tv1, tv2,tv3,smallname, smallemail,textview3, textview4;
+    TextView SiteVisitAddressBar, tv1, tv2,tv3,smallname, smallemail;
     ImageButton SetSiteVisitLocation;
 
     LatLng currentLocation;
@@ -82,15 +83,14 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
     Location curLoc;
     String selectedLocation_Name;
     String fetchname, fetchemail,fetchphoto;
-    ViewFlipper VF,VF10,VF3;
+    ViewFlipper VF,VF10;
     ImageView smallphoto;
 
     private ArrayList<MyMarker> mMyMarkersArray = new ArrayList<MyMarker>();
     private HashMap<Marker, MyMarker> mMarkersHashMap;
     private static LayoutInflater inflate =null;
-    Button hail, deals;
-
-
+    Button hail, deals,visits;
+    int flipper_index=0;
 
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -98,36 +98,70 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         setContentView(R.layout.activity_main);
         context = this;
 
+        sb1 = (SeekBar)findViewById(R.id.seekBar2);
+        sb1.setOnSeekBarChangeListener(this);
 
-        Intent i = new Intent(this, MyService.class);
-        startService(i);
+
+
+        VF = (ViewFlipper) findViewById(R.id.ViewFlipper01);
+
 
         tv1 = (TextView) findViewById(R.id.textView1);
         tv2 = (TextView) findViewById(R.id.textView2);
         tv3 = (TextView) findViewById(R.id.textView3);
         hail = (Button)findViewById(R.id.hailmode);
-        deals = (Button)findViewById(R.id.activedeals);
-        textview3 = (TextView) findViewById(R.id.textView33);
+        visits = (Button)findViewById(R.id.activevisits);
 
-        textview4 = (TextView) findViewById(R.id.textView4);
+        deals = (Button)findViewById(R.id.activedeals);
 
 
 
         searchLocation = (LinearLayout) findViewById(R.id.searchLocation);
         SiteVisitAddressBar = (TextView) findViewById(R.id.SiteVisitAddressBar);
-        VF10 = (ViewFlipper) findViewById(R.id.ViewFlipper10);
-        VF3 = (ViewFlipper) findViewById(R.id.ViewFlipper03);
+
 
         SetSiteVisitLocation = (ImageButton) findViewById(R.id.ic_launcher);
+
+
+        VF10 = (ViewFlipper) findViewById(R.id.ViewFlipper10);
+        flipper_index = SharedPrefs.getInt(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 0);
+        VF10.setDisplayedChild(flipper_index);
+
+        switch (VF10.getDisplayedChild()) {
+            case 0:
+                hail.setBackgroundColor(Color.parseColor("#33b5e5"));
+                visits.setBackgroundColor(Color.BLACK);
+                deals.setBackgroundColor(Color.BLACK);
+                break;
+
+            case 1:
+                deals.setBackgroundColor(Color.parseColor("#33b5e5"));
+                visits.setBackgroundColor(Color.BLACK);
+                hail.setBackgroundColor(Color.BLACK);
+                break;
+
+            case 2:
+                visits.setBackgroundColor(Color.parseColor("#33b5e5"));
+                deals.setBackgroundColor(Color.BLACK);
+                hail.setBackgroundColor(Color.BLACK);
+                break;
+
+        }
+
+
+
+
+
+        Intent i = new Intent(this, MyService.class);
+        startService(i);
+
 
         hail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 VF10.setDisplayedChild(0);
                 hail.setBackgroundColor(Color.parseColor("#33b5e5"));
-                ;
-
-
+                visits.setBackgroundColor(Color.BLACK);
                 deals.setBackgroundColor(Color.BLACK);
                  }
         });
@@ -139,10 +173,21 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
             public void onClick(View v) {
                 VF10.setDisplayedChild(1);
                 deals.setBackgroundColor(Color.parseColor("#33b5e5"));
-
+                visits.setBackgroundColor(Color.BLACK);
                  hail.setBackgroundColor(Color.BLACK);
             }
         });
+
+        visits.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                VF10.setDisplayedChild(2);
+                visits.setBackgroundColor(Color.parseColor("#33b5e5"));
+                deals.setBackgroundColor(Color.BLACK);
+                hail.setBackgroundColor(Color.BLACK);
+            }
+        });
+
 
 
         searchLocation.setOnClickListener(new View.OnClickListener() {
@@ -154,14 +199,6 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
             }
         });
 
-        sb1 = (SeekBar)findViewById(R.id.seekBar2);
-        sb1.setOnSeekBarChangeListener(this);
-
-        sb3 = (SeekBar)findViewById(R.id.seekBar3);
-        sb3.setOnSeekBarChangeListener(this);
-
-
-        VF = (ViewFlipper) findViewById(R.id.ViewFlipper01);
 
         SharedPrefs.save(context, SharedPrefs.CURRENT_LOC_KEY,SiteVisitAddressBar.getText().toString());
 
@@ -243,22 +280,18 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                         break;
 
                     case 2:
-                    Intent historyAct = new Intent(context, HistoryActivity.class);
-                    startActivity(historyAct);
-
-                    case 3:
                     Intent helpAct = new Intent(context, HelpActivity.class);
                     startActivity(helpAct);
 
-                    case 4:
+                    case 3:
                     Intent promotionsAct = new Intent(context, PromotionsActivity.class);
                     startActivity(promotionsAct);
 
-                    case 5:
+                    case 4:
                     Intent aboutAct = new Intent(context, AboutActivity.class);
                     startActivity(aboutAct);
 
-                    case 6:
+                    case 5:
                     Intent settingsAct = new Intent(context, SettingsActivity.class);
                     startActivity(settingsAct);
 
@@ -306,6 +339,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
 
                     Intent EnterConfigActivity = new Intent(context, EnterConfigActivity.class);
                     startActivity(EnterConfigActivity);
+                    SharedPrefs.save(context, SharedPrefs.CURRENT_LOC_KEY,SiteVisitAddressBar.getText().toString());
 
             }
         });
@@ -502,8 +536,6 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress,
                                   boolean fromTouch) {
-        switch (seekBar.getId()) {
-            case R.id.seekBar2:
 
                 if (progress == 0) {
                     VF.setDisplayedChild(0);
@@ -524,27 +556,11 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                     tv2.setTextColor(Color.BLACK);
                     tv3.setTextColor(Color.RED);
                 }
-                break;
-
-            case R.id.seekBar3:
-                if (progress == 0) {
-                    VF3.setDisplayedChild(0);
-                    textview3.setTextColor(Color.RED);
-                    textview4.setTextColor(Color.BLACK);
-
-                } else if (progress == 100) {
-
-                    VF3.setDisplayedChild(1);
-                    textview3.setTextColor(Color.BLACK);
-                    textview4.setTextColor(Color.RED);
-
-                }
 
 
-                break;
-        }
+            }
 
-    }
+
 
 
 
@@ -555,29 +571,13 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
 
-        switch (seekBar.getId()) {
-            case R.id.seekBar2:
-
-
                 int mProgress = seekBar.getProgress();
                 if (mProgress > 0 & mProgress < 34) {
                     seekBar.setProgress(0);
                 } else if (mProgress > 33 & mProgress < 68) {
                     seekBar.setProgress(50);
                 } else seekBar.setProgress(100);
-                break;
 
-
-            case R.id.seekBar3:
-                int mProgress3 = seekBar.getProgress();
-                if (mProgress3 > 0 & mProgress3 < 51) {
-                    seekBar.setProgress(0);
-                } else seekBar.setProgress(100);
-
-
-                break;
-
-        }
     }
 
 

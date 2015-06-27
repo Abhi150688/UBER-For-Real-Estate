@@ -81,6 +81,15 @@
             android:screenOrientation="portrait"></activity>
 
         <activity
+            android:name=".ui.ViewAllDeals"
+            android:screenOrientation="portrait"></activity>
+
+        <activity
+            android:name=".ui.ViewAllVisits"
+            android:screenOrientation="portrait"></activity>
+
+
+        <activity
             android:name=".GiveRatingActivity"
             android:screenOrientation="portrait"></activity>
 
@@ -99,7 +108,7 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".HistoryActivity"
+            android:name=".MySiteVisitHistory"
             android:screenOrientation="portrait" />
 
         <activity

@@ -24,8 +24,8 @@ public class SharedPrefs {
     public static String STARTDATE_KEY = "myphotoKey";
     public static String MY_ROLE_KEY = "myroleKey";
     public static String CURRENT_LOC_KEY = "location_key";
-
-
+    public static String CURRENT_FLIPPER_VIEW = "flipper_key";
+    public static String CURRENT_COUNTER_BROKER= "counter_broker_key";
 
     //get the SharedPreferences object instance
     //create SharedPreferences file if not present

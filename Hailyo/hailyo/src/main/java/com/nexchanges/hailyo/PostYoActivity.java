@@ -8,7 +8,6 @@ package com.nexchanges.hailyo;
         import android.content.Context;
         import android.content.Intent;
         import android.content.res.Configuration;
-        import android.graphics.Color;
         import android.location.Location;
         import android.net.Uri;
         import android.os.Bundle;
@@ -43,6 +42,8 @@ package com.nexchanges.hailyo;
         import com.nexchanges.hailyo.model.SharedPrefs;
         import com.nexchanges.hailyo.ui.CustomMapFragment;
         import com.nexchanges.hailyo.custom.GetCurrentLocation;
+        import com.nexchanges.hailyo.ui.ViewAllDeals;
+        import com.nexchanges.hailyo.ui.ViewAllVisits;
 
         import java.util.concurrent.TimeUnit;
 
@@ -53,36 +54,20 @@ public class PostYoActivity extends ActionBarActivity
 {
 
 
-    SeekBar sb1;
-    /** The drawer layout. */
-    private DrawerLayout drawerLayout;
-
-    String []listItems;
-
     Context context;
 
     public static final String TAG = MainActivity.class.getSimpleName();
 
-    /** ListView for left side drawer. */
-    private ListView drawerLeft;
-
-    /** ListView for left side drawer. */
-    private ListView drawerRight;
-
-    /** The drawer toggle. */
-    private ActionBarDrawerToggle drawerToggle;
-
-
-    GoogleMap map;
+     GoogleMap map;
     long ltimer,ltimer1;
 
     LatLng currentLocation;
 
-    Button call, message;
+    Button call, message, allVisits,allDeals;
     ImageButton cancel;
     TextView timerTv, brokerTv;
     RatingBar ratingTv;
-    String phone, brokerName, timer, rating, body,phoneNo;
+    String phone, brokerName, timer, rating, body;
 
 
     @Override
@@ -99,9 +84,13 @@ public class PostYoActivity extends ActionBarActivity
         rating = extras.getString("Rating");
 
 
-           call  = (Button) findViewById(R.id.call);
+           //call  = (Button) findViewById(R.id.call);
 
-           message  = (Button) findViewById(R.id.message);
+        allDeals  = (Button) findViewById(R.id.deals);
+
+        allVisits  = (Button) findViewById(R.id.visits);
+
+        //message  = (Button) findViewById(R.id.message);
 
            cancel  = (ImageButton) findViewById(R.id.cancel);
 
@@ -139,8 +128,28 @@ public class PostYoActivity extends ActionBarActivity
             }
         }.start();
 
+        allDeals.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent ViewDeals = new Intent(context, ViewAllDeals.class);
+                startActivity(ViewDeals);
+                finish();
+            }
+        });
 
-        message.setOnClickListener(new View.OnClickListener() {
+
+        allVisits.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent VisitsActivity = new Intent(context, ViewAllVisits.class);
+                startActivity(VisitsActivity);
+                finish();
+            }
+        });
+
+
+
+       /* message.setOnClickListener(new View.OnClickListener() {
                                        public void onClick(View view) {
 
                                            Intent smsIntent = new Intent(Intent.ACTION_SENDTO);
@@ -151,6 +160,19 @@ public class PostYoActivity extends ActionBarActivity
                                        }
                                    });
 
+
+
+
+        call.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+
+                Uri call = Uri.parse("tel:" + phone);
+                Intent callintent = new Intent(Intent.ACTION_DIAL, call);
+                startActivity(callintent);
+            }
+        });
+
+*/
 
         cancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -163,117 +185,6 @@ public class PostYoActivity extends ActionBarActivity
             }
         });
 
-
-        call.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-
-                Uri call = Uri.parse("tel:" + phone);
-                Intent callintent = new Intent(Intent.ACTION_DIAL, call);
-                startActivity(callintent);
-            }
-        });
-
-
-
-
-
-        //Nav Drawer
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout12);
-        drawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
-                GravityCompat.START);
-
-        listItems = getResources().getStringArray(R.array.listItems);
-        drawerLeft = (ListView) findViewById(R.id.left_drawer);
-
-        drawerLeft.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listItems));
-
-        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
-                R.drawable.home_icon, R.string.drawer_open,
-                R.string.drawer_close) {
-
-            @Override
-            public void onDrawerClosed(View view) {
-
-                super.onDrawerClosed(view);
-            }
-
-            @Override
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-            }
-        };
-
-        drawerLayout.setDrawerListener(drawerToggle);
-        drawerLayout.closeDrawers();
-
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        LayoutInflater inflate = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        //  LinearLayout myRoot = new LinearLayout();
-        View vi = inflate.inflate(R.layout.left_nav_header, null);
-        drawerLeft.addHeaderView(vi);
-
-        TextView smallname = (TextView) vi.findViewById(R.id.mynamesmall);
-
-        TextView smallemail = (TextView) vi.findViewById(R.id.myemailsmall);
-
-        ImageView smallphoto = (ImageView) vi.findViewById(R.id.smallphoto);
-
-
-        String fetchname = SharedPrefs.getString(this, SharedPrefs.NAME_KEY, "No_Name");
-
-        String fetchemail = SharedPrefs.getString(this, SharedPrefs.EMAIL_KEY, "No_Email");
-
-        String fetchphoto = SharedPrefs.getString(this, SharedPrefs.PHOTO_KEY);
-
-
-        smallname.setText(fetchname);
-        smallemail.setText(fetchemail);
-        //smallphoto.setImageBitmap(BitmapFactory.decodeFile(fetchphoto));
-
-        drawerLeft.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                drawerLayout.closeDrawer(drawerLeft);
-
-
-                switch(position){
-
-                    case 1:
-                        Intent selectPaymentAct = new Intent(context, SelectPaymentTypeActivity.class);
-                        startActivity(selectPaymentAct);
-                        break;
-
-                    case 2:
-                        Intent historyAct = new Intent(context, HistoryActivity.class);
-                        startActivity(historyAct);
-
-                    case 3:
-                        Intent helpAct = new Intent(context, HelpActivity.class);
-                        startActivity(helpAct);
-
-                    case 4:
-                        Intent promotionsAct = new Intent(context, PromotionsActivity.class);
-                        startActivity(promotionsAct);
-
-                    case 5:
-                        Intent aboutAct = new Intent(context, AboutActivity.class);
-                        startActivity(aboutAct);
-
-                    case 6:
-                        Intent settingsAct = new Intent(context, SettingsActivity.class);
-                        startActivity(settingsAct);
-
-                    default:
-                        break;
-                }
-
-
-            }
-        });
 
 
         // Google Map ..
@@ -290,10 +201,6 @@ public class PostYoActivity extends ActionBarActivity
 
                  }
         });
-
-
-
-
 
 // Current Location ..
 
@@ -322,25 +229,19 @@ public class PostYoActivity extends ActionBarActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if ( drawerToggle.onOptionsItemSelected(item) ) {
-            return true;
-        }
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        // Sync the toggle state after onRestoreInstanceState has occurred.
-        drawerToggle.syncState();
-    }
+         }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         // Pass any configuration change to the drawer toggls
-        drawerToggle.onConfigurationChanged(newConfig);
-    }
+        }
 
     protected void sendSMSMessage(String phoneNo,String message) {
         Log.i("Send SMS", "");
