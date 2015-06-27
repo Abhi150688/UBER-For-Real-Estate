@@ -159,6 +159,7 @@
     <color name="forestgreen">#228B22</color>
     <color name="fuchsia">#FF00FF</color>
     <color name="gainsboro">#DCDCDC</color>
+    <color name="genre">#666666</color>
     <color name="ghostwhite">#F8F8FF</color>
     <color name="gold">#FFD700</color>
     <color name="goldenrod">#DAA520</color>
@@ -210,6 +211,11 @@
     <color name="link_text_material_light">@color/material_deep_teal_500</color>
     <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/values/color.xml -->
     <eat-comment/>
+    <color name="list_divider">#d9d9d9</color>
+    <color name="list_row_end_color">#ffffff</color>
+    <color name="list_row_hover_end_color">#ebeef0</color>
+    <color name="list_row_hover_start_color">#ebeef0</color>
+    <color name="list_row_start_color">#ffffff</color>
     <color name="magenta">#FF00FF</color>
     <color name="main_background_end">#2C2C2C</color>
     <color name="main_background_start">#292f51</color>
@@ -398,6 +404,7 @@
     <color name="white">#ffffff</color>
     <color name="white_smoke">#F7F7F7</color>
     <color name="whitesmoke">#F5F5F5</color>
+    <color name="year">#888888</color>
     <color name="yellow">#FFFF00</color>
     <color name="yellowgreen">#9ACD32</color>
     <declare-styleable name="ActionBar"><attr name="navigationMode"><enum name="normal" value="0"/><enum name="listMode" value="1"/><enum name="tabMode" value="2"/></attr><attr name="displayOptions"><flag name="none" value="0"/><flag name="useLogo" value="0x1"/><flag name="showHome" value="0x2"/><flag name="homeAsUp" value="0x4"/><flag name="showTitle" value="0x8"/><flag name="showCustom" value="0x10"/><flag name="disableHome" value="0x20"/></attr><attr name="title"/><attr format="string" name="subtitle"/><attr format="reference" name="titleTextStyle"/><attr format="reference" name="subtitleTextStyle"/><attr format="reference" name="icon"/><attr format="reference" name="logo"/><attr format="reference" name="divider"/><attr format="reference" name="background"/><attr format="reference|color" name="backgroundStacked"/><attr format="reference|color" name="backgroundSplit"/><attr format="reference" name="customNavigationLayout"/><attr name="height"/><attr format="reference" name="homeLayout"/><attr format="reference" name="progressBarStyle"/><attr format="reference" name="indeterminateProgressStyle"/><attr format="dimension" name="progressBarPadding"/><attr name="homeAsUpIndicator"/><attr format="dimension" name="itemPadding"/><attr format="boolean" name="hideOnContentScroll"/><attr format="dimension" name="contentInsetStart"/><attr format="dimension" name="contentInsetEnd"/><attr format="dimension" name="contentInsetLeft"/><attr format="dimension" name="contentInsetRight"/><attr format="dimension" name="elevation"/><attr format="reference" name="popupTheme"/></declare-styleable>
@@ -503,6 +510,9 @@
     <item name="dialog_fixed_width_minor" type="dimen">320dp</item>
     <item format="float" name="disabled_alpha_material_dark" type="dimen">0.30</item>
     <item format="float" name="disabled_alpha_material_light" type="dimen">0.26</item>
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/values/dimens.xml -->
+    <eat-comment/>
+    <dimen name="genre">13dip</dimen>
     <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/Hailyo/stylishDialogLib/unspecified/res/values/values.xml -->
     <eat-comment/>
     <dimen name="grid_1">4dp</dimen>
@@ -541,6 +551,8 @@
     <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/values/dimens.xml -->
     <eat-comment/>
     <dimen name="navigation_drawer_width">240dp</dimen>
+    <dimen name="rating">15dip</dimen>
+    <dimen name="title">17dp</dimen>
     <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.3.0/res/values/values.xml -->
     <eat-comment/>
     <dimen name="tw__btn_bar_margin_left">8dp</dimen>
@@ -610,6 +622,9 @@
     <dimen name="tw__tweet_timestamp_padding_left">4dp</dimen>
     <dimen name="tw__tweet_verified_check_padding_left">3dp</dimen>
     <dimen name="tw__tweet_verified_margin_bottom">3dp</dimen>
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/values/dimens.xml -->
+    <eat-comment/>
+    <dimen name="year">12dip</dimen>
     <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/values/color.xml -->
     <eat-comment/>
     <drawable name="theme_black">#393939</drawable>

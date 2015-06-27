@@ -69,35 +69,25 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
 
     private ActionBarDrawerToggle drawerToggle;
 
-    GoogleMap map_req, map_avl, map_hail;
+    GoogleMap map_hail;
     LinearLayout searchLocation;
-    TextView SiteVisitAddressBar, tv1, tv2, tv3, smallname, smallemail, textview1, textview2;
+    TextView SiteVisitAddressBar, smallname, smallemail, textview1, textview2;
     ImageButton SetSiteVisitLocation;
 
-    LatLng currentLocation, curLatLng;
-    List<Address> addresses;
+    LatLng currentLocation;
 
     LatLng selectedLocation;
     String selectedLocation_Name;
-    ViewFlipper VF, VF2,VF3;
+    ViewFlipper VF, VF2;
     String fetchname, fetchemail, fetchphoto;
-    Location curLoc;
 
     Button yo, hail, deals,visits;
     SeekBar avlreq;
     ImageView smallphoto;
 
-    private ArrayList<MyMarker> mMyMarkersArray_Avl = new ArrayList<MyMarker>();
     private ArrayList<MyMarker> mMyMarkersArray_Hail = new ArrayList<MyMarker>();
-
-    private ArrayList<MyMarker> mMyMarkersArray_Req = new ArrayList<MyMarker>();
-
-    private HashMap<Marker, MyMarker> mMarkersHashMap_Req;
-    private HashMap<Marker, MyMarker> mMarkersHashMap_Avl;
-
     private HashMap<Marker, MyMarker> mMarkersHashMap_hail;
     int flipper_index=0;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -157,9 +147,6 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
                 deals.setBackgroundColor(Color.BLACK);break;
         }
 
-        //Avl = (Button)findViewById(R.id.seeavail);
-
-        //Req = (Button)findViewById(R.id.seerequire);
 
         SetSiteVisitLocation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -269,7 +256,6 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         LayoutInflater inflate = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        //  LinearLayout myRoot = new LinearLayout();
         View vi = inflate.inflate(R.layout.left_nav_header, null);
         drawerLeft.addHeaderView(vi);
 
@@ -335,99 +321,6 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
             }
         });
 
-
-        // Google Map Req -Yo..
-
-
-        // Initialize the HashMap for Markers and MyMarker object
-        mMarkersHashMap_Req = new HashMap<Marker, MyMarker>();
-
-
-        mMyMarkersArray_Req.add(new MyMarker("Abhishek-3BHK-1Lac", "icon1", Double.parseDouble("19.116612"), Double.parseDouble("72.910285")));
-        mMyMarkersArray_Req.add(new MyMarker("Sachin-2BHK-50K", "icon2", Double.parseDouble("19.114427"), Double.parseDouble("72.911102")));
-        mMyMarkersArray_Req.add(new MyMarker("Hemant-4BHK-2Lac", "icon3", Double.parseDouble("19.117774"), Double.parseDouble("72.9076828")));
-        mMyMarkersArray_Req.add(new MyMarker("Shlok-3BHK-1.5Lac", "icon4", Double.parseDouble("19.1148607"), Double.parseDouble("72.8999415")));
-
-
-        CustomMapFragment customMapFragment_Req = ((CustomMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapreq));
-
-        customMapFragment_Req.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(GoogleMap googleMap) {
-                map_req = googleMap;
-                map_req.setMyLocationEnabled(true);
-
-                plotReqMarkers(mMyMarkersArray_Req);
-            }
-        });
-
-
-// Current Location ..
-
-
-        new GetCurrentLocation(context, new GetCurrentLocation.CurrentLocationCallback() {
-            @Override
-            public void onComplete(Location location) {
-                if (location != null) {
-                    currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
-                    map_req.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
-                    map_req.animateCamera(CameraUpdateFactory.zoomTo(15));
-
-                    getPlaceName(currentLocation);
-
-
-                }
-            }
-        });
-        //end of req yo map
-
-
-        // start of yo-aval map
-
-
-        mMarkersHashMap_Avl = new HashMap<Marker, MyMarker>();
-
-        mMyMarkersArray_Avl.add(new MyMarker("3BHK-1Lac", "icon1", Double.parseDouble("19.116612"), Double.parseDouble("72.910285")));
-        mMyMarkersArray_Avl.add(new MyMarker("2BHK-50K", "icon2", Double.parseDouble("19.114427"), Double.parseDouble("72.911102")));
-        mMyMarkersArray_Avl.add(new MyMarker("4BHK-2Lac", "icon3", Double.parseDouble("19.117774"), Double.parseDouble("72.9076828")));
-
-
-        CustomMapFragment customMapFragment_Avl = ((CustomMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapavl));
-
-        customMapFragment_Avl.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(GoogleMap googleMap) {
-                map_avl = googleMap;
-                map_avl.setMyLocationEnabled(true);
-
-                plotAvlMarkers(mMyMarkersArray_Avl);
-            }
-        });
-
-
-// Current Location ..
-
-        new GetCurrentLocation(context, new GetCurrentLocation.CurrentLocationCallback() {
-            @Override
-            public void onComplete(Location location) {
-                if (location != null) {
-                    currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
-                    map_avl.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
-                    map_avl.animateCamera(CameraUpdateFactory.zoomTo(15));
-
-                    getPlaceName(currentLocation);
-
-
-                }
-            }
-        });
-
-        // end of yo-avl map
-
-
-        //start of hail-map
-
-
         mMarkersHashMap_hail = new HashMap<Marker, MyMarker>();
 
 
@@ -449,7 +342,6 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
             }
         });
 
-        //drag hail map
 
         customMapFragment_Hail.setOnDragListener(new MapWrapperLayout.OnDragListener() {
             @Override
@@ -463,10 +355,6 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
                 }
             }
         });
-
-//current location hail map
-
-        // Current Location ..
 
         new GetCurrentLocation(context, new GetCurrentLocation.CurrentLocationCallback() {
             @Override
@@ -483,26 +371,7 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
             }
         });
 
-        // end of hail map
     }
-
-
-    private void plotReqMarkers(ArrayList<MyMarker> markers) {
-        if (markers.size() > 0) {
-            for (MyMarker myMarker : markers) {
-
-                // Create user marker with custom icon and other options
-                MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude()));
-                markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.req_icon1));
-
-                Marker currentMarker = map_req.addMarker(markerOption);
-                mMarkersHashMap_Req.put(currentMarker, myMarker);
-
-                map_req.setInfoWindowAdapter(new MarkerInfoWindowAdapter());
-            }
-        }
-    }
-
 
     private void plotHailMarkers(ArrayList<MyMarker> markers) {
         if (markers.size() > 0) {
@@ -520,41 +389,6 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
         }
     }
 
-
-    private void plotAvlMarkers(ArrayList<MyMarker> markers) {
-        if (markers.size() > 0) {
-            for (MyMarker myMarker : markers) {
-
-                // Create user marker with custom icon and other options
-                MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude())).title(myMarker.getmLabel());
-                ;
-                markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.req_icon1));
-
-                Marker currentMarker = map_req.addMarker(markerOption);
-                mMarkersHashMap_Avl.put(currentMarker, myMarker);
-
-                map_req.setInfoWindowAdapter(new MarkerInfoWindowAdapter());
-            }
-        }
-    }
-
-
-
-  /* private int manageMarkerIcon(String markerIcon)
-    {
-        if (markerIcon.equals("icon1"))
-            return R.drawable.client_1;
-        else if(markerIcon.equals("icon2"))
-            return R.drawable.client_1;
-        else if(markerIcon.equals("icon3"))
-            return R.drawable.broker_plus_1;
-        else if(markerIcon.equals("icon4"))
-            return R.drawable.client_1;
-        else return R.drawable.client_1;
-         }
-*/
-
-
     public class MarkerInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
         public MarkerInfoWindowAdapter() {
         }
@@ -568,15 +402,12 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
         public View getInfoContents(Marker marker) {
             View v = getLayoutInflater().inflate(R.layout.infowindow_layout, null);
 
-            MyMarker myMarker_Req = mMarkersHashMap_Req.get(marker);
-            MyMarker myMarker_Avl = mMarkersHashMap_Avl.get(marker);
-
+            MyMarker myMarker_Hail = mMarkersHashMap_hail.get(marker);
 
             TextView markerLabel = (TextView) v.findViewById(R.id.marker_label);
 
 
-            markerLabel.setText(myMarker_Req.getmLabel());
-            markerLabel.setText(myMarker_Avl.getmLabel());
+            markerLabel.setText(myMarker_Hail.getmLabel());
 
             return v;
         }

@@ -41,6 +41,7 @@ android {
 dependencies {
     compile project(':stylishDialogLib')
     compile 'com.android.support:support-v4:21.0.0'
+    compile files ('libs/volley.jar')
     compile 'com.google.android.gms:play-services:+'
     compile files('libs/Pubnub-Android-3.7.2.jar')
     compile 'com.hrules:horizontalnumberpicker:1.0.0'

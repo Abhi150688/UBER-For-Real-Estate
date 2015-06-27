@@ -13,7 +13,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:background="@drawable/main_background">
+            android:background="@color/white">
 
             <FrameLayout
                 xmlns:android="http://schemas.android.com/apk/res/android"
@@ -51,12 +51,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent">
 
-                        <fragment
-                            android:id="@+id/mapreq"
-                            android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
-                            android:layout_width="match_parent"
-                            tools:context=".MainActivity"
-                            android:layout_height="454dp"/>
+                     //List View Availability
 
                 </FrameLayout>
 
@@ -64,12 +59,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent">
 
-                    <fragment
-                        android:id="@+id/mapavl"
-                        android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
-                        android:layout_width="match_parent"
-                        tools:context=".MainActivity"
-                        android:layout_height="454dp"/>
+                   //List View Req
 
                 </FrameLayout>
                 </ViewFlipper>
