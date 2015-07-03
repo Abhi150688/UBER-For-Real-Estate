@@ -1,11 +1,11 @@
 package com.nexchanges.hailyo;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.location.Address;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
@@ -13,6 +13,7 @@ import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -28,6 +29,11 @@ import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
+
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -36,24 +42,48 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.nexchanges.hailyo.custom.MyMarker;
+import com.nexchanges.hailyo.model.DealData;
 import com.nexchanges.hailyo.model.SharedPrefs;
-import com.nexchanges.hailyo.services.MyService;
+import com.nexchanges.hailyo.model.VisitData;
 
+import com.nexchanges.hailyo.ui.CustomListAdapter_Deals;
+import com.nexchanges.hailyo.ui.CustomListAdapter_Visit;
 import com.nexchanges.hailyo.ui.CustomMapFragment;
 import com.nexchanges.hailyo.custom.GetCurrentLocation;
 import com.nexchanges.hailyo.custom.GetPlaceName;
 import com.nexchanges.hailyo.custom.MapWrapperLayout;
 import com.nexchanges.hailyo.custom.SearchActivity;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- * The Activity MainActivity will launched at the start of the app.
- */
 public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBarChangeListener
 {
+
+    //ViewAll Visits
+
+    // Visit json url
+    private static final String url = "http://api.androidhive.info/json/movies.json";
+    private ProgressDialog pDialog;
+    private List<VisitData> visitList = new ArrayList<VisitData>();
+    private ListView listView;
+    private CustomListAdapter_Visit adapter;
+
+
+    //View All Deals
+
+    private static final String urlD = "http://api.androidhive.info/json/movies.json";
+    private ProgressDialog pDialog_Deal;
+    private List<DealData> dealList = new ArrayList<DealData>();
+    private ListView listViewD;
+    private CustomListAdapter_Deals adapterD;
+
+
 
     SeekBar sb1;
 	private DrawerLayout drawerLayout;
@@ -77,13 +107,12 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
     ImageButton SetSiteVisitLocation;
 
     LatLng currentLocation;
-    List<Address> addresses;
 
-    LatLng selectedLocation,curLatLng;
+    LatLng selectedLocation;
     Location curLoc;
     String selectedLocation_Name;
     String fetchname, fetchemail,fetchphoto;
-    ViewFlipper VF,VF10;
+    ViewFlipper VF10;
     ImageView smallphoto;
 
     private ArrayList<MyMarker> mMyMarkersArray = new ArrayList<MyMarker>();
@@ -100,10 +129,6 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
 
         sb1 = (SeekBar)findViewById(R.id.seekBar2);
         sb1.setOnSeekBarChangeListener(this);
-
-
-
-        VF = (ViewFlipper) findViewById(R.id.ViewFlipper01);
 
 
         tv1 = (TextView) findViewById(R.id.textView1);
@@ -129,62 +154,214 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
 
         switch (VF10.getDisplayedChild()) {
             case 0:
-                hail.setBackgroundColor(Color.parseColor("#33b5e5"));
-                visits.setBackgroundColor(Color.BLACK);
-                deals.setBackgroundColor(Color.BLACK);
+                hail.setBackgroundColor(Color.parseColor("#FFA500"));
+                hail.setTextColor(Color.WHITE);
+                visits.setBackgroundResource(R.drawable.button_border);
+                visits.setTextColor(Color.BLACK);
+                deals.setBackgroundResource(R.drawable.button_border);
+                deals.setTextColor(Color.BLACK);
                 break;
 
             case 1:
-                deals.setBackgroundColor(Color.parseColor("#33b5e5"));
-                visits.setBackgroundColor(Color.BLACK);
-                hail.setBackgroundColor(Color.BLACK);
+                visits.setBackgroundColor(Color.parseColor("#FFA500"));
+                deals.setBackgroundResource(R.drawable.button_border);
+                hail.setBackgroundResource(R.drawable.button_border);
+                visits.setTextColor(Color.WHITE);
+                hail.setTextColor(Color.BLACK);
+                deals.setTextColor(Color.BLACK);
                 break;
 
             case 2:
-                visits.setBackgroundColor(Color.parseColor("#33b5e5"));
-                deals.setBackgroundColor(Color.BLACK);
-                hail.setBackgroundColor(Color.BLACK);
+                deals.setBackgroundColor(Color.parseColor("#FFA500"));
+                visits.setBackgroundResource(R.drawable.button_border);
+                hail.setBackgroundResource(R.drawable.button_border);
+                deals.setTextColor(Color.WHITE);
+                hail.setTextColor(Color.BLACK);
+                visits.setTextColor(Color.BLACK);
+
                 break;
 
         }
-
-
-
-
-
-        Intent i = new Intent(this, MyService.class);
-        startService(i);
 
 
         hail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 VF10.setDisplayedChild(0);
-                hail.setBackgroundColor(Color.parseColor("#33b5e5"));
-                visits.setBackgroundColor(Color.BLACK);
-                deals.setBackgroundColor(Color.BLACK);
+                hail.setBackgroundColor(Color.parseColor("#FFA500"));
+                hail.setTextColor(Color.WHITE);
+                visits.setBackgroundResource(R.drawable.button_border);
+                visits.setTextColor(Color.BLACK);
+                deals.setBackgroundResource(R.drawable.button_border);
+                deals.setTextColor(Color.BLACK);
                  }
         });
 
 
 
+        listViewD = (ListView) findViewById(R.id.dealslist);
+        adapterD = new CustomListAdapter_Deals(this, dealList);
+        listViewD.setAdapter(adapterD);
+
+
         deals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 VF10.setDisplayedChild(1);
-                deals.setBackgroundColor(Color.parseColor("#33b5e5"));
-                visits.setBackgroundColor(Color.BLACK);
-                 hail.setBackgroundColor(Color.BLACK);
+
+                deals.setBackgroundColor(Color.parseColor("#FFA500"));
+                deals.setTextColor(Color.WHITE);
+                visits.setBackgroundResource(R.drawable.button_border);
+                visits.setTextColor(Color.BLACK);
+                hail.setBackgroundResource(R.drawable.button_border);
+                hail.setTextColor(Color.BLACK);
+
+
+                //Frame 3 - All Deals - Logic
+
+
+
+                pDialog_Deal = new ProgressDialog(context);
+                // Showing progress dialog before making http request
+                pDialog_Deal.setMessage("Fetching Dealing Room Data..");
+                pDialog_Deal.show();
+
+
+
+                // Creating volley request obj
+                JsonArrayRequest dealReq = new JsonArrayRequest(urlD,
+                        new Response.Listener<JSONArray>() {
+                            @Override
+                            public void onResponse(JSONArray response) {
+                                Log.d(TAG, response.toString());
+                                hidePDialogDeal();
+
+                                // Parsing json
+                                for (int i = 0; i < response.length(); i++) {
+                                    try {
+
+                                        JSONObject obj = response.getJSONObject(i);
+                                        DealData deal = new DealData();
+                                        deal.setUserName(obj.getString("user_name"));
+                                        deal.setThumbnailUrl(obj.getString("image"));
+                                        deal.setOfferDate(obj.getInt("offer_date"));
+                                        deal.setApartmentName(obj.getString("apt_name"));
+                                        deal.setRent(obj.getInt("rent_amt"));
+                                        deal.setDeposit(obj.getInt("deposit_amt"));
+
+
+                                        // adding movie to movies array
+                                        dealList.add(deal);
+
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+
+                                }
+
+                                // notifying list adapter about data changes
+                                // so that it renders the list view with updated data
+                                adapterD.notifyDataSetChanged();
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        VolleyLog.d(TAG, "Error: " + error.getMessage());
+                        hidePDialogDeal();
+
+                    }
+                });
+
+                // Adding request to request queue
+                MyApplication.getInstance().addToRequestQueue(dealReq);
+
+
+
+                // Frame 3 All Deals
             }
         });
+
+        listView = (ListView) findViewById(R.id.visitlist);
+        adapter = new CustomListAdapter_Visit(this, visitList);
+        listView.setAdapter(adapter);
+
 
         visits.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 VF10.setDisplayedChild(2);
-                visits.setBackgroundColor(Color.parseColor("#33b5e5"));
-                deals.setBackgroundColor(Color.BLACK);
-                hail.setBackgroundColor(Color.BLACK);
+                visits.setBackgroundColor(Color.parseColor("#FFA500"));
+                visits.setTextColor(Color.WHITE);
+                hail.setBackgroundResource(R.drawable.button_border);
+                hail.setTextColor(Color.BLACK);
+                deals.setBackgroundResource(R.drawable.button_border);
+                deals.setTextColor(Color.BLACK);
+
+
+                //Frame 2 - All Visits - Logic
+
+                pDialog = new ProgressDialog(context);
+                // Showing progress dialog before making http request
+                pDialog.setMessage("Fetching Site Visit Data..");
+                pDialog.show();
+
+
+
+                // Creating volley request obj
+                JsonArrayRequest visitReq = new JsonArrayRequest(url,
+                        new Response.Listener<JSONArray>() {
+                            @Override
+                            public void onResponse(JSONArray response) {
+                                Log.d(TAG, response.toString());
+                                hidePDialog();
+
+                                // Parsing json
+                                for (int i = 0; i < response.length(); i++) {
+                                    try {
+
+                                        JSONObject obj = response.getJSONObject(i);
+                                        VisitData visit = new VisitData();
+                                        visit.setUserName(obj.getString("user_name"));
+                                        visit.setThumbnailUrl(obj.getString("image"));
+                                        visit.setPropsCount(((Number) obj.get("prop_count"))
+                                                .doubleValue());
+                                        visit.setVisitDate(obj.getInt("visit_date"));
+                                        visit.setLocation(obj.getString("location"));
+                                        visit.setSpecCode(obj.getString("spec_code"));
+                                        visit.setDealingRoom(obj.getString("dealing_room_status"));
+
+                                        // adding movie to movies array
+                                        visitList.add(visit);
+
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+
+                                }
+
+                                // notifying list adapter about data changes
+                                // so that it renders the list view with updated data
+                                adapter.notifyDataSetChanged();
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        VolleyLog.d(TAG, "Error: " + error.getMessage());
+                        hidePDialog();
+
+                    }
+                });
+
+                // Adding request to request queue
+                MyApplication.getInstance().addToRequestQueue(visitReq);
+
+
+
+                // Frame 2 All Visits
+
+
+
             }
         });
 
@@ -282,18 +459,22 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                     case 2:
                     Intent helpAct = new Intent(context, HelpActivity.class);
                     startActivity(helpAct);
+                    break;
 
                     case 3:
                     Intent promotionsAct = new Intent(context, PromotionsActivity.class);
                     startActivity(promotionsAct);
+                        break;
 
                     case 4:
                     Intent aboutAct = new Intent(context, AboutActivity.class);
                     startActivity(aboutAct);
+                        break;
 
                     case 5:
                     Intent settingsAct = new Intent(context, SettingsActivity.class);
                     startActivity(settingsAct);
+                        break;
 
                     default:
                         break;
@@ -303,9 +484,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
             }
         });
 
-
         // Google Map ..
-
 
         // Initialize the HashMap for Markers and MyMarker object
         mMarkersHashMap = new HashMap<Marker, MyMarker>();
@@ -326,12 +505,10 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                                                       map = googleMap;
                                                       map.setMyLocationEnabled(true);
 
-                                                      plotMarkers(mMyMarkersArray);
+
+                                                      //plotMarkers(mMyMarkersArray);
                                                   }
                                               });
-
-        //curLoc = map.getMyLocation();
-        //curLatLng = new LatLng(curLoc.getLatitude(), curLoc.getLongitude());
 
         SetSiteVisitLocation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -345,32 +522,6 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         });
 
 
-
-
-        CustomMapFragment customMapFragment2 = ((CustomMapFragment) getSupportFragmentManager().findFragmentById(R.id.map2));
-
-        customMapFragment2.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(GoogleMap googleMap) {
-                map2 = googleMap;
-                map2.setMyLocationEnabled(true);
-
-                plotMarkers2(mMyMarkersArray);
-            }
-        });
-
-
-        CustomMapFragment customMapFragment3 = ((CustomMapFragment) getSupportFragmentManager().findFragmentById(R.id.map3));
-
-        customMapFragment3.getMapAsync(new OnMapReadyCallback() {
-            @Override
-            public void onMapReady(GoogleMap googleMap) {
-                map3 = googleMap;
-                map3.setMyLocationEnabled(true);
-
-                plotMarkers3(mMyMarkersArray);
-            }
-        });
 
 
 
@@ -387,33 +538,6 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                 }
             });
 
-
-        customMapFragment3.setOnDragListener(new MapWrapperLayout.OnDragListener() {
-            @Override
-            public void onDrag(MotionEvent motionEvent) {
-                if (motionEvent.getAction() == MotionEvent.ACTION_MOVE) {
-                    SiteVisitAddressBar.setText("Fetching...");
-                } else {
-                    selectedLocation = map3.getCameraPosition().target;
-                    selectedLocation_Name = "Lat: " + selectedLocation.latitude + ", Lng: " + selectedLocation.longitude;
-                    getPlaceName(selectedLocation);
-                }
-            }
-        });
-
-
-        customMapFragment2.setOnDragListener(new MapWrapperLayout.OnDragListener() {
-            @Override
-            public void onDrag(MotionEvent motionEvent) {
-                if (motionEvent.getAction() == MotionEvent.ACTION_MOVE) {
-                    SiteVisitAddressBar.setText("Fetching...");
-                } else {
-                    selectedLocation = map2.getCameraPosition().target;
-                    selectedLocation_Name = "Lat: " + selectedLocation.latitude + ", Lng: " + selectedLocation.longitude;
-                    getPlaceName(selectedLocation);
-                }
-            }
-        });
 
 
 
@@ -433,40 +557,6 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                 }
             }
         });
-
-
-        new GetCurrentLocation(context, new GetCurrentLocation.CurrentLocationCallback() {
-            @Override
-            public void onComplete(Location location) {
-                if (location != null) {
-                    currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
-                    map2.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
-                    map2.animateCamera(CameraUpdateFactory.zoomTo(15));
-
-                    getPlaceName(currentLocation);
-
-
-                }
-            }
-        });
-
-
-
-        new GetCurrentLocation(context, new GetCurrentLocation.CurrentLocationCallback() {
-            @Override
-            public void onComplete(Location location) {
-                if (location != null) {
-                    currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
-                    map3.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
-                    map3.animateCamera(CameraUpdateFactory.zoomTo(15));
-
-                    getPlaceName(currentLocation);
-
-
-                }
-            }
-        });
-
 
     }
 
@@ -502,7 +592,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                 MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude()));
                 markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.currentlocation_icon1));
 
-                Marker currentMarker = map2.addMarker(markerOption);
+                Marker currentMarker = map.addMarker(markerOption);
 
                 mMarkersHashMap.put(currentMarker, myMarker);
 
@@ -522,7 +612,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                 MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude()));
                 markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.currentlocation_icon1));
 
-                Marker currentMarker = map3.addMarker(markerOption);
+                Marker currentMarker = map.addMarker(markerOption);
 
                 mMarkersHashMap.put(currentMarker, myMarker);
 
@@ -531,27 +621,30 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         }
     }
 
-
-
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress,
                                   boolean fromTouch) {
 
                 if (progress == 0) {
-                    VF.setDisplayedChild(0);
+                    map.clear();
+                    plotMarkers(mMyMarkersArray);
                     tv1.setTextColor(Color.RED);
                     tv2.setTextColor(Color.BLACK);
                     tv3.setTextColor(Color.BLACK);
 
                 } else if (progress == 50) {
 
-                    VF.setDisplayedChild(1);
+                    map.clear();
+                    plotMarkers2(mMyMarkersArray);
+
                     tv1.setTextColor(Color.BLACK);
                     tv2.setTextColor(Color.RED);
                     tv3.setTextColor(Color.BLACK);
 
                 } else if (progress == 100) {
-                    VF.setDisplayedChild(2);
+                    map.clear();
+                    plotMarkers3(mMyMarkersArray);
+
                     tv1.setTextColor(Color.BLACK);
                     tv2.setTextColor(Color.BLACK);
                     tv3.setTextColor(Color.RED);
@@ -599,13 +692,6 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                     map.moveCamera(CameraUpdateFactory.newLatLng(selectedLocation));
                     map.animateCamera(CameraUpdateFactory.zoomTo(15));
 
-
-                    map2.moveCamera(CameraUpdateFactory.newLatLng(selectedLocation));
-                    map2.animateCamera(CameraUpdateFactory.zoomTo(15));
-
-
-                    map3.moveCamera(CameraUpdateFactory.newLatLng(selectedLocation));
-                    map3.animateCamera(CameraUpdateFactory.zoomTo(15));
 
 
                 }
@@ -663,6 +749,21 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         // Pass any configuration change to the drawer toggls
         drawerToggle.onConfigurationChanged(newConfig);
     }
+
+    private void hidePDialog() {
+        if (pDialog != null) {
+            pDialog.dismiss();
+            pDialog = null;
+        }
+    }
+
+    private void hidePDialogDeal() {
+        if (pDialog_Deal != null) {
+            pDialog_Deal.dismiss();
+            pDialog_Deal = null;
+        }
+    }
+
 
 
 }

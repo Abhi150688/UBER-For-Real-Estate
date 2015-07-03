@@ -21,6 +21,7 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 
+import com.facebook.appevents.AppEventsLogger;
 import com.nexchanges.hailyo.model.SessionRecorder;
 import com.nexchanges.hailyo.model.SharedPrefs;
 import com.twitter.sdk.android.Twitter;
@@ -69,5 +70,22 @@ public class InitialActivity extends Activity {
 
     private void startBrokerActivity() {
         startActivity(new Intent(this, MainBrokerActivity.class));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        // Logs 'install' and 'app activate' App Events.
+        AppEventsLogger.activateApp(this);
+
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        // Logs 'app deactivate' App Event.
+        AppEventsLogger.deactivateApp(this);
     }
 }

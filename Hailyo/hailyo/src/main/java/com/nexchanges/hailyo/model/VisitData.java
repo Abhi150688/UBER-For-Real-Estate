@@ -7,30 +7,51 @@ import java.util.ArrayList;
  */
 public class VisitData {
 
-   private String title, thumbnailUrl;
-    private int year;
-    private double rating;
+   private String user_name, thumbnailUrl,specCode,loc,dealingRoom;
+    private int visitdate;
+    private double prop_count;
     private ArrayList<String> genre;
 
     public VisitData() {
     }
 
-    public VisitData(String name, String thumbnailUrl, int year, double rating,
-                 ArrayList<String> genre) {
-        this.title = name;
+    public VisitData(String name, String thumbnailUrl, int year, double rating,String spec_code, String location, String dealing_room
+                 ) {
+        this.user_name = name;
         this.thumbnailUrl = thumbnailUrl;
-        this.year = year;
-        this.rating = rating;
-        this.genre = genre;
+        this.visitdate = year;
+        this.prop_count = rating;
+        this.specCode=spec_code;
+        this.loc=location;
+        this.dealingRoom = dealing_room;
+
     }
 
-    public String getTitle() {
-        return title;
+    public String getUserName() {
+        return user_name;
     }
 
-    public void setTitle(String name) {
-        this.title = name;
+    public void setUserName(String name) {
+        this.user_name = name;
     }
+
+    public String getDealingRoom() {
+        return dealingRoom;
+    }
+
+    public void setDealingRoom(String dealing_room) {
+        this.dealingRoom = dealing_room;
+    }
+
+
+    public String getSpecCode() {
+        return specCode;
+    }
+
+    public void setSpecCode(String spec_code) {
+        this.specCode = spec_code;
+    }
+
 
     public String getThumbnailUrl() {
         return thumbnailUrl;
@@ -40,28 +61,30 @@ public class VisitData {
         this.thumbnailUrl = thumbnailUrl;
     }
 
-    public int getYear() {
-        return year;
+    public int getVisitDate() {
+        return visitdate;
     }
 
-    public void setYear(int year) {
-        this.year = year;
+    public void setVisitDate(int year) {
+        this.visitdate = year;
     }
 
-    public double getRating() {
-        return rating;
+    public double getPropsCount() {
+        return prop_count;
     }
 
-    public void setRating(double rating) {
-        this.rating = rating;
+    public void setPropsCount(double rating) {
+        this.prop_count = rating;
     }
 
-    public ArrayList<String> getGenre() {
-        return genre;
+
+    public String getLocation() {
+        return loc;
     }
 
-    public void setGenre(ArrayList<String> genre) {
-        this.genre = genre;
+    public void setLocation(String location) {
+        this.loc = location;
     }
+
 
 }

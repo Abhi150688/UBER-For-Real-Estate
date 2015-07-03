@@ -1,16 +1,17 @@
 package com.nexchanges.hailyo;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
-import android.location.Address;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -27,6 +28,10 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.ViewFlipper;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.VolleyLog;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -35,12 +40,22 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.nexchanges.hailyo.custom.MyMarker;
+import com.nexchanges.hailyo.model.DealData;
 import com.nexchanges.hailyo.model.SharedPrefs;
+import com.nexchanges.hailyo.model.VisitData;
+import com.nexchanges.hailyo.model.YoData;
+import com.nexchanges.hailyo.ui.CustomListAdapter_Deals;
+import com.nexchanges.hailyo.ui.CustomListAdapter_Visit;
+import com.nexchanges.hailyo.ui.CustomListAdapter_Yo;
 import com.nexchanges.hailyo.ui.CustomMapFragment;
 import com.nexchanges.hailyo.custom.GetCurrentLocation;
 import com.nexchanges.hailyo.custom.GetPlaceName;
 import com.nexchanges.hailyo.custom.MapWrapperLayout;
 import com.nexchanges.hailyo.custom.SearchActivity;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -55,13 +70,39 @@ import java.util.List;
  */
 public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnSeekBarChangeListener {
 
+    //ViewAll Visits
+
+    private static final String TAG = MainBrokerActivity.class.getSimpleName();
+
+    private static final String url = "http://api.androidhive.info/json/movies.json";
+    private ProgressDialog pDialog;
+    private List<VisitData> visitList = new ArrayList<VisitData>();
+    private ListView listView;
+    private CustomListAdapter_Visit adapter;
+
+
+   //View All Deals
+
+    private static final String urlD = "http://api.androidhive.info/json/movies.json";
+    private ProgressDialog pDialog_Deal;
+    private List<DealData> dealList = new ArrayList<DealData>();
+    private ListView listViewD;
+    private CustomListAdapter_Deals adapterD;
+
+
+    //View Yo Data
+    private static final String urlYo = "http://api.androidhive.info/json/movies.json";
+    private ProgressDialog pDialog_Yo;
+    private List<YoData> yoList = new ArrayList<YoData>();
+    private ListView listViewYo;
+    private CustomListAdapter_Yo adapterYo;
+
+
     private DrawerLayout drawerLayout;
 
     String[] listItems;
 
     Context context;
-
-    public static final String TAG = MainActivity.class.getSimpleName();
 
     private ListView drawerLeft;
 
@@ -78,7 +119,7 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
 
     LatLng selectedLocation;
     String selectedLocation_Name;
-    ViewFlipper VF, VF2;
+    ViewFlipper VF;
     String fetchname, fetchemail, fetchphoto;
 
     Button yo, hail, deals,visits;
@@ -110,11 +151,30 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
         hail = (Button) findViewById(R.id.hailmode);
 
         VF = (ViewFlipper) findViewById(R.id.ViewFlipper01);
-        VF2 = (ViewFlipper) findViewById(R.id.ViewFlipper02);
 
         searchLocation = (LinearLayout) findViewById(R.id.searchLocation);
         SiteVisitAddressBar = (TextView) findViewById(R.id.SiteVisitAddressBar);
         SetSiteVisitLocation = (ImageButton) findViewById(R.id.ic_launcher);
+
+
+        //All Visits Frame 2
+        listView = (ListView) findViewById(R.id.visitlist);
+        adapter = new CustomListAdapter_Visit(this, visitList);
+        listView.setAdapter(adapter);
+        //All Visits - Frame 2
+
+
+        //All Deals Frame 3
+        listViewD = (ListView) findViewById(R.id.dealslist);
+        adapterD = new CustomListAdapter_Deals(this, dealList);
+        listViewD.setAdapter(adapterD);
+        //All Deals - Frame 3
+
+        //Yo Data
+        listViewYo = (ListView) findViewById(R.id.yolist);
+        adapterYo = new CustomListAdapter_Yo(this, yoList);
+        listViewYo.setAdapter(adapterYo);
+        //Yo Data
 
 
 
@@ -123,28 +183,47 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
 
         switch (VF.getDisplayedChild()) {
             case 0:
-                yo.setBackgroundColor(Color.parseColor("#33b5e5"));
-                visits.setBackgroundColor(Color.BLACK);
-                hail.setBackgroundColor(Color.BLACK);
-                deals.setBackgroundColor(Color.BLACK);
+                yo.setBackgroundColor(Color.parseColor("#FFA500"));
+                yo.setTextColor(Color.WHITE);
+                visits.setBackgroundResource(R.drawable.button_border);
+                visits.setTextColor(Color.BLACK);
+                deals.setBackgroundResource(R.drawable.button_border);
+                deals.setTextColor(Color.BLACK);
+                hail.setBackgroundResource(R.drawable.button_border);
+                hail.setTextColor(Color.BLACK);
+                break;
+            case 1:
+                visits.setBackgroundColor(Color.parseColor("#FFA500"));
+                visits.setTextColor(Color.WHITE);
+                yo.setBackgroundResource(R.drawable.button_border);
+                yo.setTextColor(Color.BLACK);
+                deals.setBackgroundResource(R.drawable.button_border);
+                deals.setTextColor(Color.BLACK);
+                hail.setBackgroundResource(R.drawable.button_border);
+                hail.setTextColor(Color.BLACK);
                 break;
 
-            case 1:
-                visits.setBackgroundColor(Color.parseColor("#33b5e5"));
-                deals.setBackgroundColor(Color.BLACK);
-                yo.setBackgroundColor(Color.BLACK);
-                hail.setBackgroundColor(Color.BLACK);break;
-
             case 2:
-                deals.setBackgroundColor(Color.parseColor("#33b5e5"));
-                visits.setBackgroundColor(Color.BLACK);
-                yo.setBackgroundColor(Color.BLACK);
-                hail.setBackgroundColor(Color.BLACK);break;
+                deals.setBackgroundColor(Color.parseColor("#FFA500"));
+                deals.setTextColor(Color.WHITE);
+                visits.setBackgroundResource(R.drawable.button_border);
+                visits.setTextColor(Color.BLACK);
+                yo.setBackgroundResource(R.drawable.button_border);
+                yo.setTextColor(Color.BLACK);
+                hail.setBackgroundResource(R.drawable.button_border);
+                hail.setTextColor(Color.BLACK);
+                break;
+
             case 3:
-                hail.setBackgroundColor(Color.parseColor("#33b5e5"));
-                visits.setBackgroundColor(Color.BLACK);
-                yo.setBackgroundColor(Color.BLACK);
-                deals.setBackgroundColor(Color.BLACK);break;
+                hail.setBackgroundColor(Color.parseColor("#FFA500"));
+                hail.setTextColor(Color.WHITE);
+                visits.setBackgroundResource(R.drawable.button_border);
+                visits.setTextColor(Color.BLACK);
+                deals.setBackgroundResource(R.drawable.button_border);
+                deals.setTextColor(Color.BLACK);
+                yo.setBackgroundResource(R.drawable.button_border);
+                yo.setTextColor(Color.BLACK);
+                break;
         }
 
 
@@ -174,11 +253,68 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
             @Override
             public void onClick(View v) {
                 VF.setDisplayedChild(0);
-                yo.setBackgroundColor(Color.parseColor("#33b5e5"));
 
-                visits.setBackgroundColor(Color.BLACK);
-                hail.setBackgroundColor(Color.BLACK);
-                deals.setBackgroundColor(Color.BLACK);
+                yo.setBackgroundColor(Color.parseColor("#FFA500"));
+                yo.setTextColor(Color.WHITE);
+                visits.setBackgroundResource(R.drawable.button_border);
+                visits.setTextColor(Color.BLACK);
+                hail.setBackgroundResource(R.drawable.button_border);
+                hail.setTextColor(Color.BLACK);
+                deals.setBackgroundResource(R.drawable.button_border);
+                deals.setTextColor(Color.BLACK);
+
+                //Frame 1 - Yo
+
+                JsonArrayRequest yoReq = new JsonArrayRequest(urlYo,
+                        new Response.Listener<JSONArray>() {
+                            @Override
+                            public void onResponse(JSONArray response) {
+                                Log.d(TAG, response.toString());
+
+
+                                // Parsing json
+                                for (int i = 0; i < response.length(); i++) {
+                                    try {
+
+                                        JSONObject obj = response.getJSONObject(i);
+                                        YoData yo = new YoData();
+                                        yo.setUserName(obj.getString("user_name"));
+                                        yo.setThumbnailUrl(obj.getString("image"));
+                                        yo.setSpecCode(obj.getString("spec_code"));
+                                        yo.setVisitCount(obj.getInt("visits_done"));
+                                        yo.setRating(obj.getInt("rating"));
+                                        yo.setUserType(obj.getString("user_type"));
+
+                                        // adding movie to movies array
+                                        yoList.add(yo);
+
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+
+                                }
+
+                                // notifying list adapter about data changes
+                                // so that it renders the list view with updated data
+                                adapterYo.notifyDataSetChanged();
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        VolleyLog.d(TAG, "Error: " + error.getMessage());
+
+
+                    }
+                });
+
+                // Adding request to request queue
+                MyApplication.getInstance().addToRequestQueue(yoReq);
+
+
+
+                // Frame 1 Yo ends
+
+
 
             }
         });
@@ -187,11 +323,16 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
             @Override
             public void onClick(View v) {
                 VF.setDisplayedChild(3);
-                hail.setBackgroundColor(Color.parseColor("#33b5e5"));
-                visits.setBackgroundColor(Color.BLACK);
+                hail.setBackgroundColor(Color.parseColor("#FFA500"));
+                hail.setTextColor(Color.WHITE);
+                visits.setBackgroundResource(R.drawable.button_border);
+                visits.setTextColor(Color.BLACK);
+                yo.setBackgroundResource(R.drawable.button_border);
+                yo.setTextColor(Color.BLACK);
+                deals.setBackgroundResource(R.drawable.button_border);
+                deals.setTextColor(Color.BLACK);
 
-                yo.setBackgroundColor(Color.BLACK);
-                deals.setBackgroundColor(Color.BLACK);
+
             }
         });
 
@@ -199,11 +340,74 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
             @Override
             public void onClick(View v) {
                 VF.setDisplayedChild(2);
-                deals.setBackgroundColor(Color.parseColor("#33b5e5"));
-                visits.setBackgroundColor(Color.BLACK);
+                deals.setBackgroundColor(Color.parseColor("#FFA500"));
+               deals.setTextColor(Color.WHITE);
+                visits.setBackgroundResource(R.drawable.button_border);
+                visits.setTextColor(Color.BLACK);
+                hail.setBackgroundResource(R.drawable.button_border);
+                hail.setTextColor(Color.BLACK);
+                yo.setBackgroundResource(R.drawable.button_border);
+                yo.setTextColor(Color.BLACK);
 
-                yo.setBackgroundColor(Color.BLACK);
-                hail.setBackgroundColor(Color.BLACK);
+                //Frame 3 - All Deals - Logic
+
+                pDialog_Deal = new ProgressDialog(context);
+                // Showing progress dialog before making http request
+                pDialog_Deal.setMessage("Fetching Dealing Room Data..");
+                pDialog_Deal.show();
+
+
+
+                // Creating volley request obj
+                JsonArrayRequest dealReq = new JsonArrayRequest(urlD,
+                        new Response.Listener<JSONArray>() {
+                            @Override
+                            public void onResponse(JSONArray response) {
+                                Log.d(TAG, response.toString());
+                                hidePDialogDeal();
+
+                                // Parsing json
+                                for (int i = 0; i < response.length(); i++) {
+                                    try {
+
+                                        JSONObject obj = response.getJSONObject(i);
+                                        DealData deal = new DealData();
+                                        deal.setUserName(obj.getString("user_name"));
+                                        deal.setThumbnailUrl(obj.getString("image"));
+                                        deal.setOfferDate(obj.getInt("offer_date"));
+                                        deal.setApartmentName(obj.getString("apt_name"));
+                                        deal.setRent(obj.getInt("rent_amt"));
+                                        deal.setDeposit(obj.getInt("deposit_amt"));
+
+
+                                        // adding movie to movies array
+                                        dealList.add(deal);
+
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+
+                                }
+
+                                // notifying list adapter about data changes
+                                // so that it renders the list view with updated data
+                                adapterD.notifyDataSetChanged();
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        VolleyLog.d(TAG, "Error: " + error.getMessage());
+                        hidePDialogDeal();
+
+                    }
+                });
+
+                // Adding request to request queue
+                MyApplication.getInstance().addToRequestQueue(dealReq);
+
+
+
+
             }
         });
 
@@ -212,11 +416,78 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
             @Override
             public void onClick(View v) {
                 VF.setDisplayedChild(1);
-                visits.setBackgroundColor(Color.parseColor("#33b5e5"));
-                deals.setBackgroundColor(Color.BLACK);
+                visits.setBackgroundColor(Color.parseColor("#FFA500"));
+                visits.setTextColor(Color.WHITE);
+                yo.setBackgroundResource(R.drawable.button_border);
+                yo.setTextColor(Color.BLACK);
+                hail.setBackgroundResource(R.drawable.button_border);
+                hail.setTextColor(Color.BLACK);
+                deals.setBackgroundResource(R.drawable.button_border);
+                deals.setTextColor(Color.BLACK);
 
-                yo.setBackgroundColor(Color.BLACK);
-                hail.setBackgroundColor(Color.BLACK);
+                //Frame 2 - All Visits - Logic
+
+                pDialog = new ProgressDialog(context);
+                // Showing progress dialog before making http request
+                pDialog.setMessage("Fetching Site Visit Data..");
+                pDialog.show();
+
+
+
+                // Creating volley request obj
+                JsonArrayRequest visitReq = new JsonArrayRequest(url,
+                        new Response.Listener<JSONArray>() {
+                            @Override
+                            public void onResponse(JSONArray response) {
+                                Log.d(TAG, response.toString());
+                                hidePDialog();
+
+                                // Parsing json
+                                for (int i = 0; i < response.length(); i++) {
+                                    try {
+
+                                        JSONObject obj = response.getJSONObject(i);
+                                        VisitData visit = new VisitData();
+                                        visit.setUserName(obj.getString("user_name"));
+                                        visit.setThumbnailUrl(obj.getString("image"));
+                                        visit.setPropsCount(((Number) obj.get("prop_count"))
+                                                .doubleValue());
+                                        visit.setVisitDate(obj.getInt("visit_date"));
+                                        visit.setLocation(obj.getString("location"));
+                                        visit.setSpecCode(obj.getString("spec_code"));
+                                        visit.setDealingRoom(obj.getString("dealing_room_status"));
+
+                                        // adding movie to movies array
+                                        visitList.add(visit);
+
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
+
+                                }
+
+                                // notifying list adapter about data changes
+                                // so that it renders the list view with updated data
+                                adapter.notifyDataSetChanged();
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        VolleyLog.d(TAG, "Error: " + error.getMessage());
+                        hidePDialog();
+
+                    }
+                });
+
+                // Adding request to request queue
+                MyApplication.getInstance().addToRequestQueue(visitReq);
+
+
+
+                // Frame 2 All Visits
+
+
+
             }
         });
 
@@ -320,6 +591,15 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
 
             }
         });
+
+
+
+
+
+
+
+
+
 
         mMarkersHashMap_hail = new HashMap<Marker, MyMarker>();
 
@@ -492,13 +772,20 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
     public void onProgressChanged(SeekBar seekBar, int progress,
                                   boolean fromTouch) {
                 if (progress == 0) {
-                    VF2.setDisplayedChild(0);
+
+               		String text = "Req";
+							//adapterYo.filter(text);
+                    // VF2.setDisplayedChild(0);
                     textview1.setTextColor(Color.RED);
                     textview2.setTextColor(Color.BLACK);
 
+
                 } else if (progress == 100) {
 
-                    VF2.setDisplayedChild(1);
+                    //VF2.setDisplayedChild(1);
+                    String text = "Avl";
+                    //adapterYo.filter(text);
+
                     textview1.setTextColor(Color.BLACK);
                     textview2.setTextColor(Color.RED);
 
@@ -519,4 +806,30 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
                 } else seekBar.setProgress(100);
 
     }
+
+    //View 2 - Visits Logic - Methods
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        hidePDialog();
+    }
+
+    private void hidePDialog() {
+        if (pDialog != null) {
+            pDialog.dismiss();
+            pDialog = null;
+        }
+    }
+
+    private void hidePDialogDeal() {
+        if (pDialog_Deal != null) {
+            pDialog_Deal.dismiss();
+            pDialog_Deal = null;
+        }
+    }
+
+
+    // End of Visits Methods
 }

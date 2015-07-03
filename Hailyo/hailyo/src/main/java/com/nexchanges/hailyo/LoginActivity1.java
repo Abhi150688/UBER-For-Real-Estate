@@ -51,19 +51,6 @@ public class LoginActivity1 extends Activity {
 
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-        DigitsSession digitsSession = Digits.getSessionManager().getActiveSession();
-        if (digitsSession != null && !digitsSession.isLoggedOutUser()) {
-            Toast.makeText(this, "Login", Toast.LENGTH_LONG).show();
-        } else {
-            //login didn't happen
-            Toast.makeText(this, "Login Cancelled", Toast.LENGTH_LONG).show();
-        }
-
-    }
 
     @Override
     protected void onStop() {

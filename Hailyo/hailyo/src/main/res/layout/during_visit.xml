@@ -12,7 +12,7 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:gravity="center"
         android:padding="5dp"
-        android:background="@color/blue_sky"
+        android:background="@color/orange"
         android:textColor="@color/white"
         android:text="Site Visit in Progress"/>
 

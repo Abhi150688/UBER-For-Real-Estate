@@ -42,8 +42,6 @@ package com.nexchanges.hailyo;
         import com.nexchanges.hailyo.model.SharedPrefs;
         import com.nexchanges.hailyo.ui.CustomMapFragment;
         import com.nexchanges.hailyo.custom.GetCurrentLocation;
-        import com.nexchanges.hailyo.ui.ViewAllDeals;
-        import com.nexchanges.hailyo.ui.ViewAllVisits;
 
         import java.util.concurrent.TimeUnit;
 
@@ -67,7 +65,7 @@ public class PostYoActivity extends ActionBarActivity
     ImageButton cancel;
     TextView timerTv, brokerTv;
     RatingBar ratingTv;
-    String phone, brokerName, timer, rating, body;
+    String phone, brokerName, timer, rating, body,role;
 
 
     @Override
@@ -82,7 +80,7 @@ public class PostYoActivity extends ActionBarActivity
         brokerName = extras.getString("Broker_Name");
         timer = extras.getString("Timer");
         rating = extras.getString("Rating");
-
+        role = SharedPrefs.getString(context, SharedPrefs.MY_ROLE_KEY);
 
            //call  = (Button) findViewById(R.id.call);
 
@@ -128,11 +126,25 @@ public class PostYoActivity extends ActionBarActivity
             }
         }.start();
 
+
+
         allDeals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ViewDeals = new Intent(context, ViewAllDeals.class);
-                startActivity(ViewDeals);
+                if (role.matches("Customer"))
+                {
+                Intent ViewDeals = new Intent(context, MainActivity.class);
+                SharedPrefs.save(context,SharedPrefs.CURRENT_FLIPPER_VIEW,1);
+
+                startActivity(ViewDeals);}
+                else{
+                    Intent BMainActivity = new Intent(context, MainBrokerActivity.class);
+                    SharedPrefs.save(context,SharedPrefs.CURRENT_FLIPPER_VIEW,1);
+                    startActivity(BMainActivity);
+                    finish();
+
+                }
+
 //                finish();
             }
         });
@@ -141,9 +153,17 @@ public class PostYoActivity extends ActionBarActivity
         allVisits.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent VisitsActivity = new Intent(context, ViewAllVisits.class);
-                startActivity(VisitsActivity);
-                //finish();
+                if (role.matches("Customer")) {
+                    Intent ViewDeals = new Intent(context, MainActivity.class);
+                    SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 1);
+
+                    startActivity(ViewDeals);
+                } else {
+                    Intent BMainActivity = new Intent(context, MainBrokerActivity.class);
+                    SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 1);
+                    startActivity(BMainActivity);
+
+                }
             }
         });
 

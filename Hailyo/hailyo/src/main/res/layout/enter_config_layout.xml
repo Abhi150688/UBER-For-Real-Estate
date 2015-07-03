@@ -10,7 +10,7 @@
         android:textSize="25dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:gravity="center"
-        android:background="@color/blue_sky"
+        android:background="@color/orange"
         android:textColor="@color/white"
         android:text="Enter Details"/>
 

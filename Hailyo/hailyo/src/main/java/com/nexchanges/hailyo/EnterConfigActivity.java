@@ -152,6 +152,7 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
                 SharedPrefs.save(context, SharedPrefs.CURRENT_SPEC, message);
 
 
+
                 Intent SearchSplashScreen =new Intent(context, SearchSplashActivity.class);
 
                 //Intent SearchSplashScreen =new Intent(context, splash_mock.class);

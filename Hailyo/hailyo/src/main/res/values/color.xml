@@ -17,6 +17,15 @@
     <color name="gray">#5B5B5B</color>
     <drawable name="trans_draw">#00000000</drawable>
 
+    <color name="feed_bg">#d3d6db</color>
+    <color name="feed_item_bg">#ffffff</color>
+    <color name="feed_item_border">#c2c3c8</color>
+    <color name="link">#0a80d1</color>
+    <color name="timestamp">#a0a3a7</color>
+
+    <color name="facebook_text">#3B5998</color>
+
+
     <color name="genre">#666666</color>
     <color name="year">#888888</color>
     <color name="list_divider">#d9d9d9</color>

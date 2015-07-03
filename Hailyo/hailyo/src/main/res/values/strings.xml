@@ -46,6 +46,10 @@
     <string name="user_password">Paytm@198</string>
     <string name="api_key">AIzaSyDN7Beoz8F2pV5iyfbWCGBj_fOa3mG616c</string>
 
+    <string name="fb_app_id"> 1587256568190457</string>
+
+
+
     <string-array name="listItems">
         <item>PAYMENT</item>
          <item>HELP</item>

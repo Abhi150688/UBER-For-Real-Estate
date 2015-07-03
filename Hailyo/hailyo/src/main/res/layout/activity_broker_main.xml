@@ -42,34 +42,26 @@
                 android:layout_height="fill_parent"
                 android:id="@+id/root_view">
 
-                <ViewFlipper android:id="@+id/ViewFlipper02"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content">
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
 
-                <FrameLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
+                    <ListView
+                        android:id="@+id/yolist"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:divider="@color/list_divider"
+                        android:dividerHeight="1dp"
+                        android:listSelector="@drawable/list_row_selector" />
 
-                     //List View Availability
-
-                </FrameLayout>
-
-                <FrameLayout
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent">
-
-                   //List View Req
-
-                </FrameLayout>
-                </ViewFlipper>
-
-
+                </RelativeLayout>
 
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="68dp"
+                    android:layout_height="63dp"
                     android:orientation="horizontal"
                     android:background="@color/white"
                     android:gravity="center"
@@ -79,7 +71,7 @@
                     <SeekBar
                         android:id="@+id/seekBar2"
                         android:layout_width="208dp"
-                        android:layout_gravity="center"
+                        android:layout_gravity="top"
 
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="15dp"
@@ -94,7 +86,7 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="21dp"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:background="@color/lightgrey"
                     android:layout_gravity="center_horizontal|bottom">
@@ -149,9 +141,21 @@
                 android:layout_height="fill_parent">
 
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
 
-                <include layout="@layout/mysitevisithistory"
-                    android:id="@+id/activesitevisits"/>
+                    <ListView
+                        android:id="@+id/visitlist"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:divider="@color/list_divider"
+                        android:dividerHeight="1dp"
+                        android:listSelector="@drawable/list_row_selector" />
+
+                </RelativeLayout>
+
 
             </FrameLayout>
 
@@ -160,9 +164,20 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    >
 
-                <include layout="@layout/mysitevisithistory"
-                    android:id="@+id/myactivedeals"/>
+                    <ListView
+                        android:id="@+id/dealslist"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:divider="@color/list_divider"
+                        android:dividerHeight="1dp"
+                        android:listSelector="@drawable/list_row_selector" />
+
+                </RelativeLayout>
 
             </FrameLayout>
 
@@ -264,7 +279,7 @@
             android:layout_height="55dp"
             android:padding="2dp"
             android:orientation="horizontal"
-            android:background="@color/black"
+            android:background="@color/white"
             android:layout_gravity="center_horizontal|bottom">
 
 
@@ -273,44 +288,43 @@
                     android:layout_marginTop="2dp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:background="@color/blue_sky"
+                    android:background="@color/orange"
                     android:textSize="15dp"
-                    android:paddingLeft="5dp"
                     android:textColor="@color/white"
                     android:layout_weight="1"
                     android:text="@string/yomode" />
 
             <Button
                 android:id="@+id/activevisits"
-                android:background="@color/black"
+                android:background="@drawable/button_border"
                 android:layout_weight="1"
                 android:textSize="15dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:text="@string/MYVISITS" />
 
             <Button
                 android:id="@+id/activedeals"
-                android:background="@color/black"
+                android:background="@drawable/button_border"
                 android:layout_marginTop="2dp"
                 android:layout_weight="1"
                 android:textSize="15dp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
                 android:text="@string/MYDEALS" />
 
 
             <Button
                     android:id="@+id/hailmode"
-                    android:background="@color/black"
+                    android:background="@drawable/button_border"
                     android:textSize="15dp"
                     android:layout_width="0dp"
                 android:layout_marginTop="2dp"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
+                    android:textColor="@color/black"
                     android:layout_weight="1"
                     android:text="@string/hailmode" />
 
@@ -328,10 +342,10 @@
         android:layout_width="260dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@color/theme_black"
+        android:background="@color/black"
         android:choiceMode="singleChoice"
         android:headerDividersEnabled="true"
-        android:listSelector="@color/theme_yellow"
+        android:listSelector="@color/orange"
         />
 
 

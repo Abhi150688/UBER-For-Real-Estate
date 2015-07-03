@@ -42,67 +42,12 @@
                             android:layout_height="fill_parent"
                             android:id="@+id/root_view">
 
-                            <ViewFlipper android:id="@+id/ViewFlipper01"
-                                android:layout_width="fill_parent"
-                                android:layout_height="wrap_content">
-
-
-                                <FrameLayout
-                                    android:orientation="vertical"
-                                    android:layout_width="fill_parent"
-                                    android:layout_height="fill_parent">
-
-                                    <fragment
-                                        android:id="@+id/map"
-                                        android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
-                                        android:layout_width="match_parent"
-                                        tools:context=".MainActivity"
-                                        android:layout_height="454dp"/>
-
-
-                                </FrameLayout>
-
-
-                                //inner 2nd frame
-
-                                <FrameLayout
-                                    android:orientation="vertical"
-                                    android:layout_width="fill_parent"
-                                    android:layout_height="fill_parent">
-
-
-
-                                    <fragment
-                                        android:id="@+id/map2"
-                                        android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
-                                        android:layout_width="match_parent"
-                                        tools:context=".MainActivity"
-                                        android:layout_height="454dp"/>
-
-
-                                </FrameLayout>
-
-                                //inner 3rd frame
-
-
-                                <FrameLayout
-                                    android:orientation="vertical"
-                                    android:layout_width="fill_parent"
-                                    android:layout_height="fill_parent">
-
-
-
-                                    <fragment
-                                        android:id="@+id/map3"
-                                        android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
-                                        android:layout_width="match_parent"
-                                        tools:context=".MainActivity"
-                                        android:layout_height="454dp"/>
-
-
-                                </FrameLayout>
-                            </ViewFlipper>
-                            //internal view flipper ends
+                            <fragment
+                                android:id="@+id/map"
+                                android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
+                                android:layout_width="match_parent"
+                                tools:context=".MainActivity"
+                                android:layout_height="454dp"/>
 
 
                             <ImageButton
@@ -164,7 +109,7 @@
 
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="73dp"
+                                android:layout_height="92dp"
                                 android:orientation="horizontal"
                                 android:background="@color/white"
                                 android:layout_gravity="center_horizontal|bottom">
@@ -187,7 +132,7 @@
 
                             <LinearLayout
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
+                                android:layout_height="44dp"
                                 android:orientation="vertical"
                                 android:background="@color/lightgrey"
                                 android:layout_gravity="center_horizontal|bottom">
@@ -218,6 +163,7 @@
                                         android:layout_gravity="center"
                                         android:text="@string/abroker" />
 
+
                                     <TextView
                                         android:id="@+id/textView3"
                                         android:layout_width="wrap_content"
@@ -246,9 +192,20 @@
                         android:layout_height="fill_parent">
 
 
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            >
 
-                                    <include layout="@layout/mysitevisithistory"
-                                        android:id="@+id/activesitevisits"/>
+                            <ListView
+                                android:id="@+id/visitlist"
+                                android:layout_width="fill_parent"
+                                android:layout_height="wrap_content"
+                                android:divider="@color/list_divider"
+                                android:dividerHeight="1dp"
+                                android:listSelector="@drawable/list_row_selector" />
+
+                        </RelativeLayout>
 
                     </FrameLayout>
 
@@ -259,10 +216,22 @@
                                     android:layout_height="fill_parent">
 
 
-                                    <include layout="@layout/mysitevisithistory"
-                                        android:id="@+id/myactivedeals"/>
+                                     <RelativeLayout
+                                         android:layout_width="match_parent"
+                                         android:layout_height="match_parent"
+                                         >
 
-                                </FrameLayout>
+                                         <ListView
+                                             android:id="@+id/dealslist"
+                                             android:layout_width="fill_parent"
+                                             android:layout_height="wrap_content"
+                                             android:divider="@color/list_divider"
+                                             android:dividerHeight="1dp"
+                                             android:listSelector="@drawable/list_row_selector" />
+
+                                     </RelativeLayout>
+
+                                 </FrameLayout>
 
 //external frame three ends
 
@@ -284,45 +253,44 @@
             android:layout_height="55dp"
             android:padding="2dp"
             android:orientation="horizontal"
-            android:background="@color/black"
-            android:weightSum="1"
+            android:background="@color/white"
             android:layout_gravity="center_horizontal|bottom">
 
 
 
             <Button
                 android:id="@+id/hailmode"
-                android:background="@color/skyblue"
+                android:background="@color/orange"
                 android:textSize="20dp"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
-                android:layout_weight=".4"
+                android:layout_weight="1"
                 android:layout_gravity="center"
                 android:text="@string/hailmode" />
 
             <Button
                 android:id="@+id/activevisits"
-                android:background="@color/black"
-                android:layout_marginRight="5dp"
-                android:layout_weight=".4"
+                android:background="@drawable/button_border"
+                android:layout_marginRight="0dp"
+                android:layout_weight="1"
                 android:textSize="20dp"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:layout_gravity="right"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
                 android:text="@string/MYVISITS" />
 
             <Button
                 android:id="@+id/activedeals"
-                android:background="@color/black"
-                android:layout_marginRight="5dp"
-                android:layout_weight=".5"
+                android:background="@drawable/button_border"
+                android:layout_marginRight="0dp"
+                android:layout_weight="1"
                 android:textSize="20dp"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:layout_gravity="right"
+                android:textColor="@color/black"
+                android:layout_gravity="center"
                 android:text="@string/MYDEALS" />
 
 
@@ -343,7 +311,7 @@
         android:background="@color/theme_black"
         android:choiceMode="singleChoice"
         android:headerDividersEnabled="true"
-        android:listSelector="@color/theme_yellow"
+        android:listSelector="@color/orange"
         />
 
 
