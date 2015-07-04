@@ -28,6 +28,8 @@ public class EnterConfigActivity extends Activity implements OnSeekBarChangeList
 
     //declare variables
     SeekBar seekbar1, seekbar2;
+
+
     int value;
     int bhkval;
     TextView result;

@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.toolbox.ImageLoader;
@@ -58,7 +59,7 @@ public class CustomListAdapter_Yo extends BaseAdapter {
             inflater = (LayoutInflater) activity
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         if (convertView == null)
-            convertView = inflater.inflate(R.layout.all_visits_row, null);
+            convertView = inflater.inflate(R.layout.all_yo_row, null);
 
         if (imageLoader == null)
             imageLoader = MyApplication.getInstance().getImageLoader();
@@ -69,6 +70,7 @@ public class CustomListAdapter_Yo extends BaseAdapter {
         TextView Spec_Code = (TextView) convertView.findViewById(R.id.speccode);
         TextView Rating = (TextView) convertView.findViewById(R.id.user_rating);
         TextView User_Type = (TextView) convertView.findViewById(R.id.user_type);
+        ImageView Yo = (ImageView) convertView.findViewById(R.id.yo_button);
 
 
 
@@ -79,21 +81,26 @@ public class CustomListAdapter_Yo extends BaseAdapter {
         // thumbnail image
         thumbNail.setImageUrl(m.getThumbnailUrl(), imageLoader);
 
+
+
         // title
         User_Name.setText(m.getUserName());
 
         User_Type.setText(m.getUserType());
+        String User_T = m.getUserType();
 
-        Spec_Code.setText(parse(m.getSpecCode()));
+
+        Spec_Code.setText(m.getSpecCode());
         // rating
-        Rating.setText("Rating: " + String.valueOf(m.getRating()) + "/5");
+        Rating.setText("Rating: " + String.valueOf(m.getRating()));
         // release year
-        Visit_Count.setText("Hails done" + String.valueOf(m.getVisitCount()));
+
+        Visit_Count.setText("Hails done: " + String.valueOf(m.getVisitCount()));
 
         return convertView;
     }
 
-    public String parse (String spec_code)
+   /* public String parse (String spec_code)
     {
       String str = spec_code;
       String parts[]= str.split("-");
@@ -103,7 +110,7 @@ public class CustomListAdapter_Yo extends BaseAdapter {
       String Configura = parts[2];
       sm_spec_code = TransactionType + "-" + Configura + "-" + Budget;
       return sm_spec_code;
-    }
+    }*/
 
     // Filter Class
    /* public void filter(String charText) {

@@ -1,0 +1,6 @@
+<ListView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:choiceMode="singleChoice"
+    android:divider="@android:color/transparent" android:dividerHeight="0dp"
+    android:background="#000000" tools:context="com.nexchanges.hailyo.ui.NavigationDrawerFragment" />
+<!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/layout/fragment_navigation_drawer.xml -->

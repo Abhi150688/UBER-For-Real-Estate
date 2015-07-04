@@ -84,9 +84,9 @@ public class CustomListAdapter_Deals extends BaseAdapter {
 
         Apartment_Name.setText(m.getApartmentName());
 
-        Rent.setText(m.getRent());
+        Rent.setText(Integer.toString(m.getRent()));
 
-        Deposit.setText(m.getDeposit());
+        Deposit.setText(Integer.toString(m.getDeposit()));
 
         Ag_StartDate.setText(m.getStartDate());
 

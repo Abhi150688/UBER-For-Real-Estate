@@ -65,18 +65,18 @@
         <dex dex="/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/pre-dexed/debug/classes-f434aa2af2bbe3b0bcca48cb430e053d309384b4.jar" />
     </item>
     <item
-        jar="/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/libs/pgsdk.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="580331cffd60e7d7c1073be8b50863f346949647">
-        <dex dex="/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/pre-dexed/debug/pgsdk-b80dd538935f8750b636806b66507a5305fe7fc8.jar" />
-    </item>
-    <item
         jar="/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="1ee588ff2c4daf7b97c1cbf922a6c7f027285c2f">
         <dex dex="/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/pre-dexed/debug/classes-f0ea8f9133374134f3fc0b73a686223af0dcd924.jar" />
+    </item>
+    <item
+        jar="/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/libs/pgsdk.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="580331cffd60e7d7c1073be8b50863f346949647">
+        <dex dex="/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/pre-dexed/debug/pgsdk-b80dd538935f8750b636806b66507a5305fe7fc8.jar" />
     </item>
     <item
         jar="/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/7.5.0/classes.jar"
@@ -254,18 +254,18 @@
         <dex dex="/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/pre-dexed/debug/classes-1259c03860c16ec1c1be4c7bd9ed5ee0f014f56b.jar" />
     </item>
     <item
-        jar="/Users/Abhishek/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit/retrofit/1.6.1/efb0a36546aa8857ab8df358b106c1817e03cbee/retrofit-1.6.1.jar"
-        jumboMode="false"
-        revision="21.1.2"
-        sha1="efb0a36546aa8857ab8df358b106c1817e03cbee">
-        <dex dex="/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/pre-dexed/debug/retrofit-1.6.1-21b8e1213c82184249d4622be04fb43cf2beb558.jar" />
-    </item>
-    <item
         jar="/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/classes.jar"
         jumboMode="false"
         revision="21.1.2"
         sha1="770ebddfd293a627dea95938b3f8a7242a1720b9">
         <dex dex="/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/pre-dexed/debug/classes-9bb97957e21ee545bc60e83561b6906ab56476da.jar" />
+    </item>
+    <item
+        jar="/Users/Abhishek/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit/retrofit/1.6.1/efb0a36546aa8857ab8df358b106c1817e03cbee/retrofit-1.6.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="efb0a36546aa8857ab8df358b106c1817e03cbee">
+        <dex dex="/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/pre-dexed/debug/retrofit-1.6.1-21b8e1213c82184249d4622be04fb43cf2beb558.jar" />
     </item>
     <item
         jar="/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/Hailyo/stylishDialogLib/unspecified/classes.jar"

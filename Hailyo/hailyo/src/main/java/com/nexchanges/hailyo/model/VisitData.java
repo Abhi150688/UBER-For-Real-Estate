@@ -8,19 +8,19 @@ import java.util.ArrayList;
 public class VisitData {
 
    private String user_name, thumbnailUrl,specCode,loc,dealingRoom;
-    private int visitdate;
-    private double prop_count;
+    private String visitdate;
+    private int prop_count;
     private ArrayList<String> genre;
 
     public VisitData() {
     }
 
-    public VisitData(String name, String thumbnailUrl, int year, double rating,String spec_code, String location, String dealing_room
+    public VisitData(String name, String thumbnailUrl, String date, int prop_count,String spec_code, String location, String dealing_room
                  ) {
         this.user_name = name;
         this.thumbnailUrl = thumbnailUrl;
-        this.visitdate = year;
-        this.prop_count = rating;
+        this.visitdate = date;
+        this.prop_count = prop_count;
         this.specCode=spec_code;
         this.loc=location;
         this.dealingRoom = dealing_room;
@@ -61,20 +61,20 @@ public class VisitData {
         this.thumbnailUrl = thumbnailUrl;
     }
 
-    public int getVisitDate() {
+    public String getVisitDate() {
         return visitdate;
     }
 
-    public void setVisitDate(int year) {
-        this.visitdate = year;
+    public void setVisitDate(String date) {
+        this.visitdate = date;
     }
 
-    public double getPropsCount() {
+    public int getPropsCount() {
         return prop_count;
     }
 
-    public void setPropsCount(double rating) {
-        this.prop_count = rating;
+    public void setPropsCount(int prop_count) {
+        this.prop_count = prop_count;
     }
 
 

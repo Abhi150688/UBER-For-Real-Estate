@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/thumbnail"
-        android:layout_toRightOf="@+id/user_name"
+        android:layout_toRightOf="@+id/thumbnail"
         android:textSize="@dimen/title"
         android:textStyle="bold" />
 
@@ -48,7 +48,7 @@
         android:textSize="@dimen/genre"
         android:textStyle="bold" />
 
-    <!-- Client Tpe -->
+    <!-- Client Type -->
     <TextView
         android:id="@+id/user_type"
         android:layout_width="wrap_content"
@@ -66,7 +66,7 @@
     <ImageView android:layout_width="wrap_content"
         android:id="@+id/yo_button"
         android:layout_height="wrap_content"
-        android:src="@drawable/arrow"
+        android:src="@drawable/yo_button"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"/>
 
@@ -75,10 +75,8 @@
     <TextView
         android:id="@+id/visit_count"
         android:layout_width="wrap_content"
-        android:gravity="right"
-        android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/user_rating"
-        android:layout_below="@+id/yo_button"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:layout_below="@+id/user_type"
         android:layout_marginEnd="5dp"
         android:layout_height="wrap_content"
         android:textSize="@dimen/genre"

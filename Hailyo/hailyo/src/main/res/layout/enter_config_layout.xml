@@ -245,11 +245,11 @@
 
 
 
-                <SeekBar
+           <SeekBar
                     android:id="@+id/sbBar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:max="1000000"></SeekBar>
+                    android:max="1000000"/>
 
 
         </LinearLayout>
@@ -276,7 +276,7 @@
                 android:id="@+id/sbSBar"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:max="150000000"></SeekBar>
+                android:max="150000000"/>
 
 
         </LinearLayout>

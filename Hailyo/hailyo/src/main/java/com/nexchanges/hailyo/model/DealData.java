@@ -6,18 +6,17 @@ import java.util.ArrayList;
  * Created by AbhishekWork on 03/07/15.
  */
 public class DealData {
-    private String user_name, thumbnailUrl,apartment_Name;
-    private int offer_date, rent_Amount, deposit_Amount,start_Date;
-    private ArrayList<String> genre;
+    private String user_name, thumbnailUrl,apartment_Name,offer_date,start_Date;
+    private int rent_Amount, deposit_Amount;
 
     public DealData() {
     }
 
-    public DealData(String name, String thumbnailUrl, int year, int rent, int deposit, String apartment_name, int Ag_Start_Date
+    public DealData(String name, String thumbnailUrl, String offer_date, int rent, int deposit, String apartment_name, String Ag_Start_Date
                     ) {
         this.user_name = name;
         this.thumbnailUrl = thumbnailUrl;
-        this.offer_date = year;
+        this.offer_date = offer_date;
         this.apartment_Name=apartment_name;
         this.rent_Amount=rent;
         this.deposit_Amount = deposit;
@@ -50,20 +49,20 @@ public class DealData {
         this.thumbnailUrl = thumbnailUrl;
     }
 
-    public int getOfferDate() {
+    public String getOfferDate() {
         return offer_date;
     }
 
-    public void setOfferDate(int year) {
-        this.offer_date = year;
+    public void setOfferDate(String offer_date) {
+        this.offer_date = offer_date;
     }
 
 
-    public int getStartDate() {
+    public String getStartDate() {
         return start_Date;
     }
 
-    public void setStartDate(int Ag_Start_Date) {
+    public void setStartDate(String Ag_Start_Date) {
         this.start_Date = Ag_Start_Date;
     }
 

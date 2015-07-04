@@ -191,6 +191,10 @@
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent">
 
+                        <android.support.v4.widget.SwipeRefreshLayout
+                            android:id="@+id/swipe_refresh_visit"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
 
                         <RelativeLayout
                             android:layout_width="match_parent"
@@ -207,6 +211,9 @@
 
                         </RelativeLayout>
 
+                        </android.support.v4.widget.SwipeRefreshLayout>
+
+
                     </FrameLayout>
 
                 //external frame two ends
@@ -214,6 +221,12 @@
                                  <FrameLayout
                                     android:layout_width="fill_parent"
                                     android:layout_height="fill_parent">
+
+                                     <android.support.v4.widget.SwipeRefreshLayout
+                                         android:id="@+id/swipe_refresh_deal"
+                                         android:layout_width="match_parent"
+                                         android:layout_height="wrap_content">
+
 
 
                                      <RelativeLayout
@@ -230,6 +243,7 @@
                                              android:listSelector="@drawable/list_row_selector" />
 
                                      </RelativeLayout>
+                                     </android.support.v4.widget.SwipeRefreshLayout>
 
                                  </FrameLayout>
 

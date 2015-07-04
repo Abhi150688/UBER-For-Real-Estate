@@ -68,7 +68,8 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
     //ViewAll Visits
 
     // Visit json url
-    private static final String url = "http://api.androidhive.info/json/movies.json";
+   // private static final String url = "http://api.androidhive.info/json/movies.json";
+    private static final String url = "https://api.myjson.com/bins/nk0q";
     private ProgressDialog pDialog;
     private List<VisitData> visitList = new ArrayList<VisitData>();
     private ListView listView;
@@ -77,7 +78,8 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
 
     //View All Deals
 
-    private static final String urlD = "http://api.androidhive.info/json/movies.json";
+    private static final String urlD = "https://api.myjson.com/bins/3r0d6";
+    //private static final String urlD = "http://api.androidhive.info/json/movies.json";
     private ProgressDialog pDialog_Deal;
     private List<DealData> dealList = new ArrayList<DealData>();
     private ListView listViewD;
@@ -245,10 +247,12 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                                         DealData deal = new DealData();
                                         deal.setUserName(obj.getString("user_name"));
                                         deal.setThumbnailUrl(obj.getString("image"));
-                                        deal.setOfferDate(obj.getInt("offer_date"));
+                                        deal.setOfferDate(obj.getString("offer_date"));
                                         deal.setApartmentName(obj.getString("apt_name"));
                                         deal.setRent(obj.getInt("rent_amt"));
                                         deal.setDeposit(obj.getInt("deposit_amt"));
+                                        deal.setStartDate(obj.getString("agr_start_date"));
+
 
 
                                         // adding movie to movies array
@@ -324,9 +328,8 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                                         VisitData visit = new VisitData();
                                         visit.setUserName(obj.getString("user_name"));
                                         visit.setThumbnailUrl(obj.getString("image"));
-                                        visit.setPropsCount(((Number) obj.get("prop_count"))
-                                                .doubleValue());
-                                        visit.setVisitDate(obj.getInt("visit_date"));
+                                        visit.setPropsCount(obj.getInt("prop_count"));
+                                        visit.setVisitDate(obj.getString("visit_date"));
                                         visit.setLocation(obj.getString("location"));
                                         visit.setSpecCode(obj.getString("spec_code"));
                                         visit.setDealingRoom(obj.getString("dealing_room_status"));
