@@ -8,7 +8,7 @@ package me.alexrs.wavedrawable;
 
 public final class R {
 	public static final class drawable {
-		public static final int ic_launcher = 0x7f0200a6;
+		public static final int ic_launcher = 0x7f020095;
 	}
 	public static final class string {
 		public static final int app_name = 0x7f07001e;

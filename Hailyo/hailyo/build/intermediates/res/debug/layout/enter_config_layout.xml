@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:seekarc="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+<LinearLayout
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:weightSum="1">
@@ -91,7 +96,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:background="@color/black"
+                android:background="@color/orange"
                 android:textColor="@color/white"
                 android:text="SEE PROPERTY"
                 android:paddingLeft="9dp"
@@ -108,7 +113,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
-                android:background="@color/lightgrey"
+                android:background="@drawable/button_border"
                 android:textColor="@color/black"
                 android:text="SHOW PROPERTY"
                 android:paddingLeft="5dp"
@@ -196,6 +201,7 @@
         android:layout_margin="5dp"
         android:background="@android:color/white"
         android:orientation="vertical"
+        android:paddingBottom="20dp"
         android:layout_gravity="top"
         android:id="@+id/budget_pricing">
 
@@ -230,53 +236,89 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="49dp"
+            android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="5dp"
             android:gravity="center"
             android:orientation="vertical"
             android:id="@+id/enterpri">
 
-            <include
-                android:id="@+id/tableRow1_ref"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                layout="@layout/price" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+">
+
+                    <FrameLayout
+                        android:id="@+id/seekArcContainer"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" >
+
+                        <com.nexchanges.hailyo.ui.SeekArc
+                            android:id="@+id/seekRent"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="175dp"
+                            android:layout_gravity="center"
+                            android:padding="30dp"
+                            seekarc:arcColor="@color/red"
+                            seekarc:clockwise="true"
+                            seekarc:max="150"
+                            seekarc:progressColor="@color/orange"
+                            seekarc:rotation="180"
+                            seekarc:startAngle="30"
+                            seekarc:sweepAngle="300"
+                            seekarc:thumb="@drawable/custom_seek_arc_control_selector"
+                            seekarc:touchInside="true" />
+
+                        <TextView
+                            android:id="@+id/seekArcProgress_Rent"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="0"
+                            android:textSize="40sp" />
+                    </FrameLayout>
+
+
+                    <FrameLayout
+                        android:id="@+id/seekArcContainer2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1" >
+
+                        <com.nexchanges.hailyo.ui.SeekArc
+                            android:id="@+id/seekSale"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="175dp"
+                            android:layout_gravity="center"
+                            android:padding="30dp"
+                            seekarc:arcColor="@color/red"
+                            seekarc:clockwise="true"
+                            seekarc:max="150"
+                            seekarc:progressColor="@color/orange"
+                            seekarc:rotation="180"
+                            seekarc:startAngle="30"
+                            seekarc:sweepAngle="300"
+                            seekarc:thumb="@drawable/custom_seek_arc_control_selector"
+                            seekarc:touchInside="true" />
+
+                        <TextView
+                            android:id="@+id/seekArcProgress_Sale"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="0"
+                            android:textSize="40sp" />
+                    </FrameLayout>
+
+
+                </LinearLayout>
 
 
 
-           <SeekBar
-                    android:id="@+id/sbBar"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:max="1000000"/>
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="49dp"
-            android:layout_marginLeft="5dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="5dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:id="@+id/enterSalepri">
-
-            <include
-                android:id="@+id/tableRow1_ref"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                layout="@layout/pricesale" />
-
-
-
-            <SeekBar
-                android:id="@+id/sbSBar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:max="150000000"/>
 
 
         </LinearLayout>
@@ -284,9 +326,19 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="5dp"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:paddingBottom="20dp">
+
 
     <Button
-        android:layout_width="350dp"
+        android:layout_width="wrap_content"
+        android:paddingRight="100dp"
+        android:paddingLeft="100dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:background="@color/black"
@@ -296,6 +348,7 @@
         android:textAllCaps="false"
         android:textSize="20sp"
         android:id="@+id/hail" />
+    </LinearLayout>
 
 </LinearLayout>
-<!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/layout/enter_config_layout.xml -->
+</ScrollView><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/layout/enter_config_layout.xml -->

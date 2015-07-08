@@ -48,7 +48,7 @@
         android:textSize="@dimen/genre"
         android:textStyle="bold" />
 
-    <!-- Client Type -->
+    <!-- Client Tpe -->
     <TextView
         android:id="@+id/user_type"
         android:layout_width="wrap_content"
@@ -75,8 +75,9 @@
     <TextView
         android:id="@+id/visit_count"
         android:layout_width="wrap_content"
+        android:gravity="right"
+        android:layout_below="@id/user_type"
         android:layout_toRightOf="@+id/thumbnail"
-        android:layout_below="@+id/user_type"
         android:layout_marginEnd="5dp"
         android:layout_height="wrap_content"
         android:textSize="@dimen/genre"

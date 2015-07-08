@@ -14,24 +14,6 @@
         <item quantity="one">1s</item>
         <item quantity="other">%ds</item>
     </plurals>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.2.0/res/values-ms/values-ms.xml -->
-    <eat-comment/>
-    <string name="com_facebook_image_download_unknown_error">Ralat tidak dijangka ketika memuat turun imej.</string>
-    <string name="com_facebook_internet_permission_error_message">Log masuk WebView memerlukan kebenaran INTERNET</string>
-    <string name="com_facebook_internet_permission_error_title">Ralat AndroidManifest</string>
-    <string name="com_facebook_like_button_liked">Disukai</string>
-    <string name="com_facebook_like_button_not_liked">Suka</string>
-    <string name="com_facebook_loading">Memuatkan...</string>
-    <string name="com_facebook_loginview_cancel_action">Batal</string>
-    <string name="com_facebook_loginview_log_in_button">Log masuk</string>
-    <string name="com_facebook_loginview_log_in_button_long">Log masuk dengan Facebook</string>
-    <string name="com_facebook_loginview_log_out_action">Log keluar</string>
-    <string name="com_facebook_loginview_log_out_button">Log keluar</string>
-    <string name="com_facebook_loginview_logged_in_as">Dilog masuk sebagai: %1$s</string>
-    <string name="com_facebook_loginview_logged_in_using_facebook">Dilog masuk menggunakan Facebook</string>
-    <string name="com_facebook_send_button_text">Hantar</string>
-    <string name="com_facebook_share_button_text">Kongsi</string>
-    <string name="com_facebook_tooltip_default">Baru! Anda yang mengawal - pilih maklumat yang anda ingin kongsi dengan aplikasi.</string>
     <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.2.0/res/values-ms/values.xml -->
     <eat-comment/>
     <string name="dgts__cancel">Batal</string>
@@ -66,9 +48,6 @@
     <string name="dgts__try_again_phone_number">Sila semak nombor anda dan cuba sekali lagi.</string>
     <string name="dgts__try_another_phone">Cuba nombor telefon lain</string>
     <string name="dgts__upload_contacts">Kami menggunaka Digits by Twitter untuk mencari lebih ramai rakan anda yang menggunakan aplikasi ini. Apabila anda mengetik Okay, kami akan memuat naik buku alamat anda ke Digits by Twitter dan membolehkan pengguna lain aplikasi anda menemui anda.</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.2.0/res/values-ms/values-ms.xml -->
-    <eat-comment/>
-    <string name="messenger_send_button_text">Hantar</string>
     <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-ms/values.xml -->
     <eat-comment/>
     <string name="tw__relative_date_format_long">d/M/y</string>

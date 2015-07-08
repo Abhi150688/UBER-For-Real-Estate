@@ -107,9 +107,6 @@ Layanan</u>, <u>Kebijakan Privasi</u>, dan <u>Kebijakan Kuki</u> dari Digits by 
     <string name="dgts__try_again_phone_number">Silakan periksa nomor ponsel Anda dan coba lagi.</string>
     <string name="dgts__try_another_phone">Coba nomor ponsel yang berbeda</string>
     <string name="dgts__upload_contacts">Kami menggunakan Digits by Twitter untuk menemukan lebih banyak teman Anda yang menggunakan aplikasi ini. Bila Anda menyentuh Oke, kami akan mengunggah buku alamat Anda ke Digits by Twitter dan mengaktifkan pengguna aplikasi kami lainnya untuk menemukan Anda.</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.2.0/res/values-in/values-in.xml -->
-    <eat-comment/>
-    <string name="messenger_send_button_text">Kirim</string>
     <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/res/values-in/values.xml -->
     <eat-comment/>
     <string msgid="8327680881775995150" name="mr_media_route_button_content_description">"Transmisi"</string>

@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * Created by AbhishekWork on 03/07/15.
  */
 public class DealData {
-    private String user_name, thumbnailUrl,apartment_Name,offer_date,start_Date;
+    private String user_name, thumbnailUrl,apartment_Name, offer_date, agr_start_date;
     private int rent_Amount, deposit_Amount;
 
     public DealData() {
@@ -20,7 +20,7 @@ public class DealData {
         this.apartment_Name=apartment_name;
         this.rent_Amount=rent;
         this.deposit_Amount = deposit;
-        this.start_Date = Ag_Start_Date;
+        this.agr_start_date = Ag_Start_Date;
 
     }
 
@@ -59,11 +59,11 @@ public class DealData {
 
 
     public String getStartDate() {
-        return start_Date;
+        return agr_start_date;
     }
 
     public void setStartDate(String Ag_Start_Date) {
-        this.start_Date = Ag_Start_Date;
+        this.agr_start_date = Ag_Start_Date;
     }
 
 

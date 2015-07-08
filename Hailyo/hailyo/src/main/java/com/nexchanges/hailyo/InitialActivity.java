@@ -21,7 +21,6 @@ import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
 
-import com.facebook.appevents.AppEventsLogger;
 import com.nexchanges.hailyo.model.SessionRecorder;
 import com.nexchanges.hailyo.model.SharedPrefs;
 import com.twitter.sdk.android.Twitter;
@@ -77,7 +76,6 @@ public class InitialActivity extends Activity {
         super.onResume();
 
         // Logs 'install' and 'app activate' App Events.
-        AppEventsLogger.activateApp(this);
 
     }
 
@@ -86,6 +84,5 @@ public class InitialActivity extends Activity {
         super.onPause();
 
         // Logs 'app deactivate' App Event.
-        AppEventsLogger.deactivateApp(this);
-    }
+       }
 }

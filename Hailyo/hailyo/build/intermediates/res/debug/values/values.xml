@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:ns1="http://schemas.android.com/tools">
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
     <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/values/strings.xml -->
     <eat-comment/>
     <string-array name="listItems">
@@ -100,21 +100,6 @@
     <color name="cadetblue">#5F9EA0</color>
     <color name="chartreuse">#7FFF00</color>
     <color name="chocolate">#D2691E</color>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.2.0/res/values/values.xml -->
-    <eat-comment/>
-    <color name="com_facebook_blue">#3B5998</color>
-    <color name="com_facebook_button_background_color">#415dae</color>
-    <color name="com_facebook_button_background_color_disabled">#bdc1c9</color>
-    <color name="com_facebook_button_background_color_pressed">#2f477a</color>
-    <color name="com_facebook_button_like_background_color_selected">#7c8fc8</color>
-    <color name="com_facebook_button_login_silver_background_color">#f4f6f8</color>
-    <color name="com_facebook_button_login_silver_background_color_pressed">#e9eaf0</color>
-    <color name="com_facebook_button_send_background_color">#0084ff</color>
-    <color name="com_facebook_button_send_background_color_pressed">#006fff</color>
-    <color name="com_facebook_likeboxcountview_border_color">#6a7180</color>
-    <color name="com_facebook_likeboxcountview_text_color">#6a7180</color>
-    <color name="com_facebook_likeview_text_color">#6a7180</color>
-    <color name="com_facebook_share_button_text_color">#FFFFFF</color>
     <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values/common_colors.xml -->
     <eat-comment/>
     <color name="common_action_bar_splitter">#d2d2d2</color>
@@ -306,6 +291,8 @@
     <color name="primary_text_disabled_material_light">#39000000</color>
     <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/values/color.xml -->
     <eat-comment/>
+    <color name="progress_gray">#FFD8D8D8</color>
+    <color name="progress_gray_dark">#FF383838</color>
     <color name="purple">#800080</color>
     <color name="red">#FF0000</color>
     <color name="red_light">#e74c3c</color>
@@ -457,6 +444,8 @@
     <declare-styleable name="PopupWindow"><attr format="boolean" name="overlapAnchor"/><attr name="android:popupBackground"/></declare-styleable>
     <declare-styleable name="PopupWindowBackgroundState"><attr format="boolean" name="state_above_anchor"/></declare-styleable>
     <declare-styleable name="SearchView"><attr format="reference" name="layout"/><attr format="boolean" name="iconifiedByDefault"/><attr name="android:maxWidth"/><attr format="string" name="queryHint"/><attr name="android:imeOptions"/><attr name="android:inputType"/><attr format="reference" name="closeIcon"/><attr format="reference" name="goIcon"/><attr format="reference" name="searchIcon"/><attr format="reference" name="voiceIcon"/><attr format="reference" name="commitIcon"/><attr format="reference" name="suggestionRowLayout"/><attr format="reference" name="queryBackground"/><attr format="reference" name="submitBackground"/><attr name="android:focusable"/></declare-styleable>
+    <declare-styleable name="SeekArc"><attr format="reference" name="thumb"/><attr format="dimension" name="thumbOffset"/><attr format="integer" name="max"/><attr format="dimension" name="progressWidth"/><attr format="dimension" name="arcWidth"/><attr format="integer" name="progress"/><attr format="integer" name="rotation"/><attr format="integer" name="startAngle"/><attr format="integer" name="sweepAngle"/><attr format="color" name="arcColor"/><attr format="color" name="progressColor"/><attr format="boolean" name="roundEdges"/><attr format="boolean" name="touchInside"/><attr format="boolean" name="clockwise"/></declare-styleable>
+    <declare-styleable name="SeekArcTheme"><attr format="reference" name="seekArcStyle"/></declare-styleable>
     <declare-styleable name="Spinner"><attr format="reference" name="prompt"/><attr format="enum" name="spinnerMode"><enum name="dialog" value="0"/><enum name="dropdown" value="1"/></attr><attr name="android:dropDownSelector"/><attr name="android:popupBackground"/><attr name="android:dropDownVerticalOffset"/><attr name="android:dropDownHorizontalOffset"/><attr name="android:dropDownWidth"/><attr format="reference" name="popupPromptView"/><attr name="android:gravity"/><attr format="boolean" name="disableChildrenWhenDisabled"/><attr name="android:background"/></declare-styleable>
     <declare-styleable name="StateButton"><attr format="string" name="finishStateText"/><attr format="string" name="progressStateText"/><attr format="string" name="startStateText"/><attr format="reference" name="dgts__StateButtonStyle"/></declare-styleable>
     <declare-styleable name="StyledDialogs"><attr format="reference" name="sdlDialogStyle"/><attr format="reference" name="sdlTitleTextStyle"/><attr format="reference" name="sdlMessageTextStyle"/></declare-styleable>
@@ -468,9 +457,6 @@
     <declare-styleable name="ViewStubCompat"><attr name="android:layout"/><attr name="android:inflatedId"/><attr name="android:id"/></declare-styleable>
     <declare-styleable name="WalletFragmentOptions"><attr format="enum" name="appTheme"><enum name="holo_dark" value="0"/><enum name="holo_light" value="1"/></attr><attr format="enum" name="environment"><enum name="production" value="1"/><enum name="test" value="3"/><enum name="sandbox" value="0"/><enum name="strict_sandbox" value="2"/></attr><attr format="reference" name="fragmentStyle"/><attr format="enum" name="fragmentMode"><enum name="buyButton" value="1"/><enum name="selectionDetails" value="2"/></attr></declare-styleable>
     <declare-styleable name="WalletFragmentStyle"><attr format="dimension" name="buyButtonHeight"><enum name="match_parent" value="-1"/><enum name="wrap_content" value="-2"/></attr><attr format="dimension" name="buyButtonWidth"><enum name="match_parent" value="-1"/><enum name="wrap_content" value="-2"/></attr><attr format="enum" name="buyButtonText"><enum name="buy_with_google" value="1"/><enum name="buy_now" value="2"/><enum name="book_now" value="3"/><enum name="donate_with_google" value="4"/></attr><attr format="enum" name="buyButtonAppearance"><enum name="classic" value="1"/><enum name="grayscale" value="2"/><enum name="monochrome" value="3"/></attr><attr format="reference" name="maskedWalletDetailsTextAppearance"/><attr format="reference" name="maskedWalletDetailsHeaderTextAppearance"/><attr format="reference|color" name="maskedWalletDetailsBackground"/><attr format="reference" name="maskedWalletDetailsButtonTextAppearance"/><attr format="reference|color" name="maskedWalletDetailsButtonBackground"/><attr format="color" name="maskedWalletDetailsLogoTextColor"/><attr format="enum" name="maskedWalletDetailsLogoImageType"><enum name="classic" value="1"/><enum name="monochrome" value="2"/></attr></declare-styleable>
-    <declare-styleable name="com_facebook_like_view"><attr format="color" name="com_facebook_foreground_color"/><attr format="string" name="com_facebook_object_id"/><attr name="com_facebook_object_type"><enum name="unknown" value="0"/><enum name="open_graph" value="1"/><enum name="page" value="2"/></attr><attr name="com_facebook_style"><enum name="standard" value="0"/><enum name="button" value="1"/><enum name="box_count" value="2"/></attr><attr name="com_facebook_auxiliary_view_position"><enum name="bottom" value="0"/><enum name="inline" value="1"/><enum name="top" value="2"/></attr><attr name="com_facebook_horizontal_alignment"><enum name="center" value="0"/><enum name="left" value="1"/><enum name="right" value="2"/></attr></declare-styleable>
-    <declare-styleable name="com_facebook_login_view"><attr format="boolean" name="com_facebook_confirm_logout"/><attr format="string" name="com_facebook_login_text"/><attr format="string" name="com_facebook_logout_text"/><attr name="com_facebook_tooltip_mode"><enum name="automatic" value="0"/><enum name="display_always" value="1"/><enum name="never_display" value="2"/></attr></declare-styleable>
-    <declare-styleable name="com_facebook_profile_picture_view"><attr name="com_facebook_preset_size"><enum name="small" value="-2"/><enum name="normal" value="-3"/><enum name="large" value="-4"/></attr><attr format="boolean" name="com_facebook_is_cropped"/></declare-styleable>
     <declare-styleable name="tw__AspectRatioImageView"><attr format="float" name="tw__image_aspect_ratio"/><attr format="enum" name="tw__image_dimension_to_adjust"><enum name="height" value="0"/><enum name="width" value="1"/></attr></declare-styleable>
     <declare-styleable name="tw__TweetView"><attr format="string" name="tw__tweet_id"/><attr format="color" name="tw__container_bg_color"/><attr format="color" name="tw__primary_text_color"/><attr format="color" name="tw__action_color"/></declare-styleable>
     <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values/values.xml -->
@@ -521,27 +507,6 @@
     <eat-comment/>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.2.0/res/values/values.xml -->
-    <eat-comment/>
-    <dimen name="com_facebook_likeboxcountview_border_radius">3dp</dimen>
-    <dimen name="com_facebook_likeboxcountview_border_width">1dp</dimen>
-    <dimen name="com_facebook_likeboxcountview_caret_height">3dp</dimen>
-    <dimen name="com_facebook_likeboxcountview_caret_width">6dp</dimen>
-    <dimen name="com_facebook_likeboxcountview_text_padding">6dp</dimen>
-    <dimen name="com_facebook_likeboxcountview_text_size">11.0sp</dimen>
-    <dimen name="com_facebook_likeview_edge_padding">2dp</dimen>
-    <dimen name="com_facebook_likeview_internal_padding">6dp</dimen>
-    <dimen name="com_facebook_likeview_text_size">11.0sp</dimen>
-    <dimen name="com_facebook_profilepictureview_preset_size_large">180dp</dimen>
-    <dimen name="com_facebook_profilepictureview_preset_size_normal">100dp</dimen>
-    <dimen name="com_facebook_profilepictureview_preset_size_small">50dp</dimen>
-    <dimen name="com_facebook_share_button_compound_drawable_padding">12dp</dimen>
-    <dimen name="com_facebook_share_button_padding_bottom">12dp</dimen>
-    <dimen name="com_facebook_share_button_padding_left">12dp</dimen>
-    <dimen name="com_facebook_share_button_padding_right">16dp</dimen>
-    <dimen name="com_facebook_share_button_padding_top">12dp</dimen>
-    <dimen name="com_facebook_share_button_text_size">16.0sp</dimen>
-    <dimen name="com_facebook_tooltip_horizontal_padding">10dp</dimen>
     <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.2.0/res/values/values.xml -->
     <eat-comment/>
     <dimen name="dgts__country_code_margin_bottom">1dp</dimen>
@@ -784,24 +749,6 @@
     <string name="cast_notification_connected_message">Connected to <ns1:g id="name">%1$s</ns1:g></string>
     <string name="cast_notification_connecting_message">Connecting to <ns1:g id="name">%1$s</ns1:g></string>
     <string name="cast_notification_disconnect">Disconnect</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.2.0/res/values/values.xml -->
-    <eat-comment/>
-    <string name="com_facebook_image_download_unknown_error">Unexpected error while downloading an image.</string>
-    <string name="com_facebook_internet_permission_error_message">WebView login requires INTERNET permission</string>
-    <string name="com_facebook_internet_permission_error_title">AndroidManifest Error</string>
-    <string name="com_facebook_like_button_liked">Liked</string>
-    <string name="com_facebook_like_button_not_liked">Like</string>
-    <string name="com_facebook_loading">Loading...</string>
-    <string name="com_facebook_loginview_cancel_action">Cancel</string>
-    <string name="com_facebook_loginview_log_in_button">Log in</string>
-    <string name="com_facebook_loginview_log_in_button_long">Log in with Facebook</string>
-    <string name="com_facebook_loginview_log_out_action">Log out</string>
-    <string name="com_facebook_loginview_log_out_button">Log out</string>
-    <string name="com_facebook_loginview_logged_in_as">Logged in as: %1$s</string>
-    <string name="com_facebook_loginview_logged_in_using_facebook">Logged in using Facebook</string>
-    <string name="com_facebook_send_button_text">Send</string>
-    <string name="com_facebook_share_button_text">Share</string>
-    <string name="com_facebook_tooltip_default">New! You\'re in control - choose what info you want to share with apps.</string>
     <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values/common_strings.xml -->
     <eat-comment/>
     <string name="common_android_wear_notification_needs_update_text"><ns1:g id="app_name">%1$s</ns1:g> requires an update to the Android Wear app.</string>
@@ -918,9 +865,6 @@
     <eat-comment/>
     <string name="merchant_id">Crypsi82771941768698</string>
     <string name="merchant_key"> %6k\u0026fNAj1unwJw4V </string>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.2.0/res/values/values.xml -->
-    <eat-comment/>
-    <string name="messenger_send_button_text">Send</string>
     <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/res/values/values.xml -->
     <eat-comment/>
     <string name="mr_media_route_button_content_description">Cast</string>
@@ -1976,68 +1920,6 @@
         <item name="android:divider">@drawable/bootstrap_divider</item>
         <item name="android:cacheColorHint">@android:color/transparent</item>
     </style>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.2.0/res/values/values.xml -->
-    <eat-comment/>
-    <style name="MessengerButton">
-    <item name="android:clickable">true</item>
-  </style>
-    <style name="MessengerButton.Blue">
-    <item name="android:background">@drawable/messenger_button_blue_bg_selector</item>
-  </style>
-    <style name="MessengerButton.Blue.Large">
-    <item name="android:layout_width">match_parent</item>
-    <item name="android:layout_height">44dp</item>
-    <item name="android:layout_marginLeft">16dp</item>
-    <item name="android:layout_marginRight">16dp</item>
-  </style>
-    <style name="MessengerButton.Blue.Small">
-    <item name="android:layout_width">158dp</item>
-    <item name="android:layout_height">36dp</item>
-  </style>
-    <style name="MessengerButton.White">
-    <item name="android:background">@drawable/messenger_button_white_bg_selector</item>
-  </style>
-    <style name="MessengerButton.White.Large">
-    <item name="android:layout_width">match_parent</item>
-    <item name="android:layout_height">44dp</item>
-    <item name="android:layout_marginLeft">16dp</item>
-    <item name="android:layout_marginRight">16dp</item>
-  </style>
-    <style name="MessengerButton.White.Small">
-    <item name="android:layout_width">158dp</item>
-    <item name="android:layout_height">36dp</item>
-  </style>
-    <style name="MessengerButtonText">
-    <item name="android:layout_width">wrap_content</item>
-    <item name="android:layout_height">wrap_content</item>
-    <item name="android:layout_gravity">center</item>
-    <item name="android:drawablePadding">4dp</item>
-    <item name="android:gravity">center</item>
-    <!--suppress NewApi -->
-    <item name="android:textAllCaps">true</item>
-    <item name="android:textSize">14sp</item>
-    <item name="android:textStyle">bold</item>
-  </style>
-    <style name="MessengerButtonText.Blue">
-    <item name="android:textColor">#ffffff</item>
-  </style>
-    <style name="MessengerButtonText.Blue.Large">
-    <item name="android:drawableLeft">@drawable/messenger_bubble_large_white</item>
-  </style>
-    <style name="MessengerButtonText.Blue.Small">
-    <item name="android:drawableLeft">@drawable/messenger_bubble_small_white</item>
-  </style>
-    <style name="MessengerButtonText.White">
-    <item name="android:textColor">#0084ff</item>
-  </style>
-    <style name="MessengerButtonText.White.Large">
-    <item name="android:drawableLeft">@drawable/messenger_bubble_large_blue</item>
-  </style>
-    <style name="MessengerButtonText.White.Small">
-    <item name="android:drawableLeft">@drawable/messenger_bubble_small_blue</item>
-  </style>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/values/styles.xml -->
-    <eat-comment/>
     <style name="NavMenuButton">
         <item name="android:textColor">#ffddff</item>
         <item name="android:background">@drawable/nav_menu_button_background_selector</item>
@@ -2337,6 +2219,12 @@
 	</style>
     <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/values/styles.xml -->
     <eat-comment/>
+    <style name="SeekArc">
+        <item name="arcColor">@color/progress_gray_dark</item>
+    </style>
+    <style name="SeekArcLight">
+        <item name="arcColor">@color/progress_gray</item>
+    </style>
     <style name="ShadowText">
         <item name="android:shadowDx">1</item>
         <item name="android:shadowDy">1</item>
@@ -2625,39 +2513,6 @@
         <item name="android:contentDescription">@string/mr_media_route_button_content_description</item>
         <item name="externalRouteEnabledDrawable">@drawable/mr_ic_media_route_mono_dark</item>
     </style>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.2.0/res/values/values.xml -->
-    <eat-comment/>
-    <style name="com_facebook_button" parent="@android:style/Widget.Button">
-        <item name="android:background">@drawable/com_facebook_button_background</item>
-        <item name="android:drawablePadding">6dp</item>
-        <item name="android:gravity">center</item>
-        <item name="android:paddingBottom">5dp</item>
-        <item name="android:paddingLeft">8dp</item>
-        <item name="android:paddingRight">8dp</item>
-        <item name="android:paddingTop">5dp</item>
-        <item name="android:textColor">#ffffff</item>
-        <item name="android:textSize">14.0dp</item>
-    </style>
-    <style name="com_facebook_button_like" parent="com_facebook_button">
-        <item name="android:background">@drawable/com_facebook_button_like_background</item>
-    </style>
-    <style name="com_facebook_button_send" parent="com_facebook_button">
-        <item name="android:background">@drawable/com_facebook_button_send_background</item>
-        <item name="android:drawableLeft">@drawable/com_facebook_button_send_icon</item>
-        <item name="android:text">@string/com_facebook_send_button_text</item>
-    </style>
-    <style name="com_facebook_button_share" parent="com_facebook_button">
-        <item name="android:drawableLeft">@drawable/com_facebook_button_icon</item>
-        <item name="android:text">@string/com_facebook_share_button_text</item>
-    </style>
-    <style name="com_facebook_loginview_default_style" parent="com_facebook_button">
-        <item name="android:drawableLeft">@drawable/com_facebook_button_icon</item>
-    </style>
-    <style name="com_facebook_loginview_silver_style" parent="com_facebook_loginview_default_style">
-        <item name="android:background">@drawable/com_facebook_button_login_silver_background</item>
-        <item name="android:drawableLeft">@null</item>
-        <item name="android:textColor">#4b5164</item>
-    </style>
     <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.2.0/res/values/values.xml -->
     <eat-comment/>
     <style name="dgts__ButtonText">
@@ -2689,16 +2544,6 @@
         <item name="android:gravity">center</item>
         <item name="android:paddingBottom">5dp</item>
         <item name="android:textColor">@color/tab_color</item>
-    </style>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.2.0/res/values/values.xml -->
-    <eat-comment/>
-    <style name="tooltip_bubble_text">
-	    <item name="android:textColor">@android:color/white</item>
-	    <item name="android:gravity">left</item>
-	    <item name="android:textSize">12sp</item>
-	    <item name="android:shadowDy">-1</item>
-	    <item name="android:shadowRadius">0.25</item>
-	    <item name="android:shadowColor">#40000000</item>
     </style>
     <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values/values.xml -->
     <eat-comment/>

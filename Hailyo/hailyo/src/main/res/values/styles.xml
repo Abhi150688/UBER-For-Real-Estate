@@ -31,6 +31,14 @@
 
     </style>
 
+    <style name="SeekArc">
+        <item name="arcColor">@color/progress_gray_dark</item>
+    </style>
+
+    <style name="SeekArcLight">
+        <item name="arcColor">@color/progress_gray</item>
+    </style>
+
 
 
     <style name="tab_btn" parent="android:Widget.Holo.Light.TextView">

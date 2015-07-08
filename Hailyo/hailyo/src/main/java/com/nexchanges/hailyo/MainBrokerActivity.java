@@ -18,6 +18,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -75,7 +76,6 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
 
     private static final String TAG = MainBrokerActivity.class.getSimpleName();
 
-    //private static final String url = "http://api.androidhive.info/json/movies.json";
     private static final String url = "https://api.myjson.com/bins/nk0q";
     private ProgressDialog pDialog;
     private List<VisitData> visitList = new ArrayList<VisitData>();
@@ -85,7 +85,6 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
 
    //View All Deals
 
-    //private static final String urlD = "http://api.androidhive.info/json/movies.json";
     private static final String urlD = "https://api.myjson.com/bins/3r0d6";
     private ProgressDialog pDialog_Deal;
     private List<DealData> dealList = new ArrayList<DealData>();
@@ -94,14 +93,11 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
 
 
     //View Yo Data
-   // private static final String urlYo = "http://api.androidhive.info/json/movies.json";
     private static final String urlYo = "https://api.myjson.com/bins/1wke2";
     private ProgressDialog pDialog_Yo;
     private List<YoData> yoList = new ArrayList<YoData>();
     private ListView listViewYo;
     private CustomListAdapter_Yo adapterYo;
-
-    private SwipeRefreshLayout swipeRefreshYo, swipeRefreshVisit,swipeRefreshDeal;
 
 
     private DrawerLayout drawerLayout;
@@ -120,6 +116,7 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
     LinearLayout searchLocation;
     TextView SiteVisitAddressBar, smallname, smallemail, textview1, textview2;
     ImageButton SetSiteVisitLocation;
+    SwipeRefreshLayout yo_refresh, visit_refresh, deal_refresh;
 
     LatLng currentLocation;
 
@@ -141,17 +138,33 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_broker_main);
         context = this;
-
-        swipeRefreshYo = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_yo);
-        swipeRefreshVisit = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_visit);
-        swipeRefreshDeal = (SwipeRefreshLayout) findViewById(R.id.swipe_refresh_deal);
-
-        swipeRefreshYo.setOnRefreshListener(this);
-        swipeRefreshDeal.setOnRefreshListener(this);
-        swipeRefreshVisit.setOnRefreshListener(this);
-
         avlreq = (SeekBar) findViewById(R.id.seekBar2);
         avlreq.setOnSeekBarChangeListener(this);
+
+        yo_refresh = (SwipeRefreshLayout)findViewById(R.id.yo_refresh);
+       visit_refresh = (SwipeRefreshLayout)findViewById(R.id.visit_refresh);
+        deal_refresh = (SwipeRefreshLayout)findViewById(R.id.deal_refresh);
+
+        yo_refresh.setOnRefreshListener(this);
+
+        visit_refresh.setOnRefreshListener(this);
+
+        deal_refresh.setOnRefreshListener(this);
+
+
+        deal_refresh.setColorScheme(
+                R.color.red, R.color.yellow,
+                R.color.green, R.color.blue);
+
+        visit_refresh.setColorScheme(
+                R.color.red, R.color.yellow,
+                R.color.green, R.color.blue);
+
+        yo_refresh.setColorScheme(
+                R.color.red, R.color.yellow,
+                R.color.green, R.color.blue);
+
+
 
         textview1 = (TextView) findViewById(R.id.textView1);
 
@@ -189,7 +202,7 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
         listViewYo = (ListView) findViewById(R.id.yolist);
         adapterYo = new CustomListAdapter_Yo(this, yoList);
         listViewYo.setAdapter(adapterYo);
-         //Yo Data
+        //Yo Data
 
 
 
@@ -206,8 +219,7 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
                 deals.setTextColor(Color.BLACK);
                 hail.setBackgroundResource(R.drawable.button_border);
                 hail.setTextColor(Color.BLACK);
-                fetchYo();
-
+                refreshYo();
                 break;
             case 1:
                 visits.setBackgroundColor(Color.parseColor("#FFA500"));
@@ -218,8 +230,7 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
                 deals.setTextColor(Color.BLACK);
                 hail.setBackgroundResource(R.drawable.button_border);
                 hail.setTextColor(Color.BLACK);
-                fetchVisit();
-
+                refresh_visit();
                 break;
 
             case 2:
@@ -231,7 +242,7 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
                 yo.setTextColor(Color.BLACK);
                 hail.setBackgroundResource(R.drawable.button_border);
                 hail.setTextColor(Color.BLACK);
-                fetchDeal();
+                refresh_deal();
                 break;
 
             case 3:
@@ -257,6 +268,50 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
             }
         });
 
+        listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView absListView, int i) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                if (firstVisibleItem == 0)
+                    visit_refresh.setEnabled(true);
+                else
+                    visit_refresh.setEnabled(false);
+            }
+        });
+
+        listViewD.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView absListView, int i) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                if (firstVisibleItem == 0)
+                    deal_refresh.setEnabled(true);
+                else
+                    deal_refresh.setEnabled(false);
+            }
+        });
+
+        listViewYo.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView absListView, int i) {
+
+            }
+
+            @Override
+            public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+                if (firstVisibleItem == 0)
+                    yo_refresh.setEnabled(true);
+                else
+                    yo_refresh.setEnabled(false);
+            }
+        });
 
         searchLocation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -283,23 +338,9 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
                 deals.setBackgroundResource(R.drawable.button_border);
                 deals.setTextColor(Color.BLACK);
 
-                //Frame 1 - Yo
+                yo_refresh.setRefreshing(true);
+                refreshYo();
 
-               /* pDialog_Yo = new ProgressDialog(context);
-                // Showing progress dialog before making http request
-                pDialog_Yo.setMessage("Fetching New Leads..");
-                pDialog_Yo.show();
-*/
-
-                swipeRefreshYo.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        swipeRefreshYo.setRefreshing(true);
-                        fetchYo();
-
-                    }
-                }
-                );
             }
         });
 
@@ -333,22 +374,10 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
                 yo.setBackgroundResource(R.drawable.button_border);
                 yo.setTextColor(Color.BLACK);
 
-                //Frame 3 - All Deals - Logic
-
-               /* pDialog_Deal = new ProgressDialog(context);
-                // Showing progress dialog before making http request
-                pDialog_Deal.setMessage("Fetching Dealing Room Data..");
-                pDialog_Deal.show();*/
+                deal_refresh.setRefreshing(true);
+                refresh_deal();
 
 
-                swipeRefreshDeal.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        swipeRefreshDeal.setRefreshing(true);
-                        fetchDeal();
- }
-                }
-                );
             }
         });
 
@@ -366,24 +395,13 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
                 deals.setBackgroundResource(R.drawable.button_border);
                 deals.setTextColor(Color.BLACK);
 
-                //Frame 2 - All Visits - Logic
+                visit_refresh.setRefreshing(true);
+                refresh_visit();
 
-                /*pDialog = new ProgressDialog(context);
-                // Showing progress dialog before making http request
-                pDialog.setMessage("Fetching Site Visit Data..");
-                pDialog.show();*/
-
-
-                swipeRefreshVisit.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        swipeRefreshVisit.setRefreshing(true);
-                        fetchVisit();
-  }
-                }
-                );
             }
         });
+
+
 
         //Nav Drawer
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout12);
@@ -484,15 +502,6 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
             }
         });
 
-
-
-
-
-
-
-
-
-
         mMarkersHashMap_hail = new HashMap<Marker, MyMarker>();
 
 
@@ -560,19 +569,6 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
             }
         }
     }
-
-    @Override
-    public void onRefresh() {
-        int child = VF.getDisplayedChild();
-        if (child==0)
-        {fetchYo();}
-        else if (child==1)
-        {
-        fetchVisit();}
-        else if (child==2)
-        {
-        fetchDeal();}
-          }
 
     public class MarkerInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
         public MarkerInfoWindowAdapter() {
@@ -718,7 +714,7 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
     @Override
     public void onDestroy() {
         super.onDestroy();
-        hidePDialog();
+        //hidePDialog();
     }
 
     private void hidePDialog() {
@@ -735,23 +731,17 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
         }
     }
 
-    private void hidePDialogYo() {
-        if (pDialog_Yo != null) {
-            pDialog_Yo.dismiss();
-            pDialog_Yo = null;
-        }
-    }
 
-    private void fetchYo()
+    private void refreshYo()
     {
 
-        swipeRefreshYo.setRefreshing(true);
+        deal_refresh.setRefreshing(true);
         JsonArrayRequest yoReq = new JsonArrayRequest(urlYo,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
                         Log.d(TAG, response.toString());
-                        hidePDialogYo();
+                        yo_refresh.setRefreshing(false);
 
 
                         // Parsing json
@@ -779,37 +769,97 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
                         // notifying list adapter about data changes
                         // so that it renders the list view with updated data
                         adapterYo.notifyDataSetChanged();
-                        swipeRefreshYo.setRefreshing(false);
                     }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        VolleyLog.d(TAG, "Error: " + error.getMessage());
-                        swipeRefreshYo.setRefreshing(false);
-                        hidePDialogYo();
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d(TAG, "Error: " + error.getMessage());
+
+                yo_refresh.setRefreshing(false);
 
 
-                    }
-                });
+            }
+        });
 
         // Adding request to request queue
         MyApplication.getInstance().addToRequestQueue(yoReq);
 
+
     }
 
-
-    private void fetchDeal()
+    public void refresh_visit()
     {
 
-        swipeRefreshDeal.setRefreshing(true);
+
+        visit_refresh.setRefreshing(true);
+
+        // Creating volley request obj
+        JsonArrayRequest visitReq = new JsonArrayRequest(url,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.d(TAG, response.toString());
+
+                        visit_refresh.setRefreshing(false);
+
+                        // Parsing json
+                        for (int i = 0; i < response.length(); i++) {
+                            try {
+
+                                JSONObject obj = response.getJSONObject(i);
+                                VisitData visit = new VisitData();
+                                visit.setUserName(obj.getString("user_name"));
+                                visit.setThumbnailUrl(obj.getString("image"));
+                                visit.setPropsCount(obj.getInt("prop_count"));
+
+                                visit.setVisitDate(obj.getString("visit_date"));
+                                visit.setLocation(obj.getString("location"));
+                                visit.setSpecCode(obj.getString("spec_code"));
+                                visit.setDealingRoom(obj.getString("dealing_room_status"));
+
+                                // adding movie to movies array
+                                visitList.add(visit);
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+
+                        }
+
+                        // notifying list adapter about data changes
+                        // so that it renders the list view with updated data
+                        adapter.notifyDataSetChanged();
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                VolleyLog.d(TAG, "Error: " + error.getMessage());
+
+                visit_refresh.setRefreshing(false);
+
+            }
+        });
+
+        // Adding request to request queue
+        MyApplication.getInstance().addToRequestQueue(visitReq);
+
+
+    }
+
+    public void refresh_deal()
+    {
+
+             deal_refresh.setRefreshing(true);
+
         // Creating volley request obj
         JsonArrayRequest dealReq = new JsonArrayRequest(urlD,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
                         Log.d(TAG, response.toString());
-                        hidePDialogDeal();
+
+                        deal_refresh.setRefreshing(false);
+
 
                         // Parsing json
                         for (int i = 0; i < response.length(); i++) {
@@ -838,81 +888,41 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
                         // notifying list adapter about data changes
                         // so that it renders the list view with updated data
                         adapterD.notifyDataSetChanged();
-                        swipeRefreshDeal.setRefreshing(false);
-
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 VolleyLog.d(TAG, "Error: " + error.getMessage());
-                swipeRefreshDeal.setRefreshing(false);
 
-                hidePDialogDeal();
+                deal_refresh.setRefreshing(false);
+
 
             }
         });
 
         // Adding request to request queue
         MyApplication.getInstance().addToRequestQueue(dealReq);
-    }
-
-    private void fetchVisit()
-    {
-
-
-        swipeRefreshVisit.setRefreshing(true);
-
-        // Creating volley request obj
-        JsonArrayRequest visitReq = new JsonArrayRequest(url,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        Log.d(TAG, response.toString());
-                        hidePDialog();
-
-                        // Parsing json
-                        for (int i = 0; i < response.length(); i++) {
-                            try {
-
-                                JSONObject obj = response.getJSONObject(i);
-                                VisitData visit = new VisitData();
-                                visit.setUserName(obj.getString("user_name"));
-                                visit.setThumbnailUrl(obj.getString("image"));
-                                visit.setPropsCount(obj.getInt("prop_count"));
-                                visit.setVisitDate(obj.getString("visit_date"));
-                                visit.setLocation(obj.getString("location"));
-                                visit.setSpecCode(obj.getString("spec_code"));
-                                visit.setDealingRoom(obj.getString("dealing_room_status"));
-
-                                // adding movie to movies array
-                                visitList.add(visit);
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-
-                        }
-
-                        // notifying list adapter about data changes
-                        // so that it renders the list view with updated data
-                        adapter.notifyDataSetChanged();
-                        swipeRefreshVisit.setRefreshing(false);
-                    }
-                }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                VolleyLog.d(TAG, "Error: " + error.getMessage());
-                swipeRefreshVisit.setRefreshing(false);
-                hidePDialog();
-
-            }
-        });
-
-        // Adding request to request queue
-        MyApplication.getInstance().addToRequestQueue(visitReq);
-
-
 
     }
 
+    @Override
+    public void onRefresh(){
+
+        int index = VF.getDisplayedChild();
+        if(index == 0){
+        yo_refresh.setRefreshing(true);
+        refreshYo();}
+
+        else if (index == 1)
+        {deal_refresh.setRefreshing(true);
+        refresh_deal();}
+
+        else if (index ==2)
+        {
+        visit_refresh.setRefreshing(true);
+        refresh_visit();}
+
+    }
+
+    // End of Visits Methods
 }

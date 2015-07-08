@@ -52,7 +52,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rajiv Lakhpati"
                 android:id="@+id/bname"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
@@ -91,18 +90,57 @@
                 android:layout_marginTop="10dp"
                 android:layout_height="1dp"/>
 
-            <Button
-                android:id="@+id/endvisit"
-                android:padding="10dp"
-                android:text="End Site Visit"
-                android:layout_marginTop="40dp"
-                android:layout_width="170dp"
-                android:layout_height="wrap_content"
-                android:background="@color/black"
-                android:textColor="@color/white"
-                android:layout_gravity="center" >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="55dp"
+                android:layout_marginTop="30dp"
+                android:padding="2dp"
+                android:orientation="horizontal"
+                android:background="@color/white"
+                android:layout_gravity="center_horizontal|bottom">
 
-            </Button>
+
+
+                <Button
+                    android:id="@+id/hailmode"
+                    android:background="@drawable/button_border"
+                    android:layout_marginLeft="5dp"
+                    android:textSize="18dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:text="Make Notes" />
+
+                <Button
+                    android:id="@+id/activevisits"
+                    android:background="@drawable/button_border"
+                    android:layout_marginRight="10dp"
+                    android:layout_weight="1"
+                    android:textSize="18dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center"
+                    android:text="Give Offer" />
+
+                <Button
+                    android:background="@drawable/button_border"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:textSize="18dp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:layout_gravity="center"
+                    android:id="@+id/endvisit"
+                    android:text="End Visit"/>
+
+
+            </LinearLayout>
+
 
 
 

@@ -25,6 +25,9 @@
 
     <color name="facebook_text">#3B5998</color>
 
+    <color name="progress_gray">#FFD8D8D8</color>
+    <color name="progress_gray_dark">#FF383838</color>
+
 
     <color name="genre">#666666</color>
     <color name="year">#888888</color>

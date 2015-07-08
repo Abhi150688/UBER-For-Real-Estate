@@ -32,24 +32,6 @@
     <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Del med"</string>
     <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"Del med %s"</string>
     <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"Skjul"</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.2.0/res/values-da/values-da.xml -->
-    <eat-comment/>
-    <string name="com_facebook_image_download_unknown_error">Der opstod en uventet fejl under download af et billede.</string>
-    <string name="com_facebook_internet_permission_error_message">WebView-login kræver tilladelse til INTERNET</string>
-    <string name="com_facebook_internet_permission_error_title">Fejl i forbindelse med AndroidManifest</string>
-    <string name="com_facebook_like_button_liked">Synes godt om</string>
-    <string name="com_facebook_like_button_not_liked">Synes godt om</string>
-    <string name="com_facebook_loading">Indlæser ...</string>
-    <string name="com_facebook_loginview_cancel_action">Annuller</string>
-    <string name="com_facebook_loginview_log_in_button">Log på</string>
-    <string name="com_facebook_loginview_log_in_button_long">Log på med Facebook</string>
-    <string name="com_facebook_loginview_log_out_action">Log af</string>
-    <string name="com_facebook_loginview_log_out_button">Log af</string>
-    <string name="com_facebook_loginview_logged_in_as">Logget på som: %1$s</string>
-    <string name="com_facebook_loginview_logged_in_using_facebook">Logget på med Facebook</string>
-    <string name="com_facebook_send_button_text">Send</string>
-    <string name="com_facebook_share_button_text">Del</string>
-    <string name="com_facebook_tooltip_default">Nyhed! Du har styringen – vælg de oplysninger, som du vil dele med apps.</string>
     <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-da/common_strings.xml -->
     <eat-comment/>
     <string msgid="6428604800157361567" name="common_android_wear_notification_needs_update_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> kræver en opdatering af appen Android Wear."</string>
@@ -124,9 +106,6 @@
     <string name="dgts__try_again_phone_number">Tjek venligst dit nummer og prøv igen.</string>
     <string name="dgts__try_another_phone">Prøv et andet telefonnummer</string>
     <string name="dgts__upload_contacts">Vi bruger Digits by Twitter til at finde flere af dine venner, der bruger denne app. Når du klikker på OK, uploader vi din adressebot til Digits by Twitter og gør det muligt for andre bruger af vores app at finde dig.</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.facebook.android/facebook-android-sdk/4.2.0/res/values-da/values-da.xml -->
-    <eat-comment/>
-    <string name="messenger_send_button_text">Send</string>
     <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/res/values-da/values.xml -->
     <eat-comment/>
     <string msgid="8327680881775995150" name="mr_media_route_button_content_description">"Cast"</string>

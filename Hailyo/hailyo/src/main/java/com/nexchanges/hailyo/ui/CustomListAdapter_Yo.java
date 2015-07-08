@@ -70,7 +70,7 @@ public class CustomListAdapter_Yo extends BaseAdapter {
         TextView Spec_Code = (TextView) convertView.findViewById(R.id.speccode);
         TextView Rating = (TextView) convertView.findViewById(R.id.user_rating);
         TextView User_Type = (TextView) convertView.findViewById(R.id.user_type);
-        ImageView Yo = (ImageView) convertView.findViewById(R.id.yo_button);
+        ImageView Yo_Button = (ImageView) convertView.findViewById(R.id.yo_button);
 
 
 
@@ -81,36 +81,20 @@ public class CustomListAdapter_Yo extends BaseAdapter {
         // thumbnail image
         thumbNail.setImageUrl(m.getThumbnailUrl(), imageLoader);
 
-
-
         // title
         User_Name.setText(m.getUserName());
 
         User_Type.setText(m.getUserType());
-        String User_T = m.getUserType();
-
 
         Spec_Code.setText(m.getSpecCode());
         // rating
-        Rating.setText("Rating: " + String.valueOf(m.getRating()));
+        Rating.setText("Rating: " + String.valueOf(m.getRating()) + "/5");
         // release year
-
-        Visit_Count.setText("Hails done: " + String.valueOf(m.getVisitCount()));
+        Visit_Count.setText("Hails done" + String.valueOf(m.getVisitCount()));
 
         return convertView;
     }
 
-   /* public String parse (String spec_code)
-    {
-      String str = spec_code;
-      String parts[]= str.split("-");
-      user_type = parts[0];
-      String TransactionType = parts[1];
-      String Budget = parts[3];
-      String Configura = parts[2];
-      sm_spec_code = TransactionType + "-" + Configura + "-" + Budget;
-      return sm_spec_code;
-    }*/
 
     // Filter Class
    /* public void filter(String charText) {

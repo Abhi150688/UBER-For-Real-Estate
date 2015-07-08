@@ -10,17 +10,16 @@ public class VisitData {
    private String user_name, thumbnailUrl,specCode,loc,dealingRoom;
     private String visitdate;
     private int prop_count;
-    private ArrayList<String> genre;
 
     public VisitData() {
     }
 
-    public VisitData(String name, String thumbnailUrl, String date, int prop_count,String spec_code, String location, String dealing_room
+    public VisitData(String name, String thumbnailUrl, String visit_date, int rating,String spec_code, String location, String dealing_room
                  ) {
         this.user_name = name;
         this.thumbnailUrl = thumbnailUrl;
-        this.visitdate = date;
-        this.prop_count = prop_count;
+        this.visitdate = visit_date;
+        this.prop_count = rating;
         this.specCode=spec_code;
         this.loc=location;
         this.dealingRoom = dealing_room;
@@ -65,16 +64,16 @@ public class VisitData {
         return visitdate;
     }
 
-    public void setVisitDate(String date) {
-        this.visitdate = date;
+    public void setVisitDate(String visit_date) {
+        this.visitdate = visit_date;
     }
 
     public int getPropsCount() {
         return prop_count;
     }
 
-    public void setPropsCount(int prop_count) {
-        this.prop_count = prop_count;
+    public void setPropsCount(int rating) {
+        this.prop_count = rating;
     }
 
 
