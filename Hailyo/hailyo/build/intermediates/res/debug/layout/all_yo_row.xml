@@ -3,6 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/list_row_selector"
+    android:descendantFocusability="blocksDescendants"
     android:padding="8dp" >
 
 
@@ -12,6 +13,9 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_alignParentLeft="true"
+        android:focusableInTouchMode="false"
+        android:clickable="false"
+        android:focusable="false"
         android:layout_marginRight="8dp" />
 
 
@@ -23,6 +27,9 @@
         android:layout_alignTop="@+id/thumbnail"
         android:layout_toRightOf="@+id/thumbnail"
         android:textSize="@dimen/title"
+        android:focusableInTouchMode="false"
+        android:clickable="false"
+        android:focusable="false"
         android:textStyle="bold" />
 
     <!-- Client Name -->
@@ -33,6 +40,10 @@
         android:layout_marginRight="5dp"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/thumbnail"
+
+        android:focusableInTouchMode="false"
+        android:clickable="false"
+        android:focusable="false"
         android:textSize="@dimen/title"
         android:textStyle="bold" />
 
@@ -45,6 +56,10 @@
         android:layout_marginRight="5dp"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/thumbnail"
+
+        android:focusableInTouchMode="false"
+        android:clickable="false"
+        android:focusable="false"
         android:textSize="@dimen/genre"
         android:textStyle="bold" />
 
@@ -52,11 +67,15 @@
     <TextView
         android:id="@+id/user_type"
         android:layout_width="wrap_content"
-        android:layout_below="@+id/user_rating"
+        android:layout_below="@+id/visit_count"
         android:layout_marginRight="5dp"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@+id/thumbnail"
+        android:focusableInTouchMode="false"
+        android:clickable="false"
+        android:focusable="false"
         android:textSize="@dimen/genre"
+
         android:visibility="invisible"
         android:textStyle="bold" />
 
@@ -66,8 +85,12 @@
     <ImageView android:layout_width="wrap_content"
         android:id="@+id/yo_button"
         android:layout_height="wrap_content"
-        android:src="@drawable/yo_button"
+        android:src="@drawable/arrow"
         android:layout_alignParentRight="true"
+        android:focusableInTouchMode="false"
+        android:clickable="false"
+        android:focusable="false"
+
         android:layout_centerVertical="true"/>
 
 
@@ -76,10 +99,14 @@
         android:id="@+id/visit_count"
         android:layout_width="wrap_content"
         android:gravity="right"
-        android:layout_below="@id/user_type"
+        android:layout_below="@id/user_rating"
         android:layout_toRightOf="@+id/thumbnail"
+        android:focusableInTouchMode="false"
+        android:clickable="false"
+        android:focusable="false"
         android:layout_marginEnd="5dp"
         android:layout_height="wrap_content"
+
         android:textSize="@dimen/genre"
         android:textStyle="bold" />
 

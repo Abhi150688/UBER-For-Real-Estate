@@ -66,14 +66,14 @@
     <string msgid="411506735369601515" name="common_open_on_phone">"Åbn på telefonen"</string>
     <string msgid="9071884888741449141" name="common_signin_button_text">"Log ind"</string>
     <string msgid="2429381841831957106" name="common_signin_button_text_long">"Log ind med Google"</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.2.0/res/values-da/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.6.0/res/values-da/values.xml -->
     <eat-comment/>
     <string name="dgts__cancel">Annuller</string>
     <string name="dgts__communication_error">Kommunikationsfejl</string>
     <string name="dgts__confirmation_code">Bekræftelseskode</string>
     <string name="dgts__confirmation_edit_hint">Indtast bekræftelseskode</string>
     <string name="dgts__confirmation_error">Ikke i stand til at bekræfte dit telefonnummer</string>
-    <string name="dgts__confirmation_error_alternative">Beklager! Vi har problemer med at sende dig en bekræftelseskode. Prøv at logge ind herunder.</string>
+    <string name="dgts__confirmation_error_alternative">Beklager, vi har problemer med at sende dig en bekræftelseskode.</string>
     <string name="dgts__confirmation_expired">Denne kode er udløbet. Send venligst bekræftelseskode igen.</string>
     <string name="dgts__confirmation_send_text">Send bekræftelseskode</string>
     <string name="dgts__confirmation_sending_text">Sender bekræftelseskode</string>
@@ -81,6 +81,8 @@
     <string name="dgts__confirmation_sms">Bekræftelseskode: %1$s. Indtast denne kode i %2$s</string>
     <string name="dgts__create_account_text">Opret konto</string>
     <string name="dgts__creating_account_text">Opretter konto</string>
+    <string name="dgts__digits_logo_desc">digits-logoikon</string>
+    <string name="dgts__digits_logo_name_desc">digits-logonavn</string>
     <string name="dgts__dismiss">Afvis</string>
     <string name="dgts__find_your_friends">Find dine venner</string>
     <string name="dgts__image_header_description">Billedsidehoved for log ind</string>
@@ -90,6 +92,7 @@
     <string name="dgts__okay">Okay</string>
     <string name="dgts__phone_number_edit_hint">Dit nummer</string>
     <string name="dgts__phone_number_text">Indtast dit telefonnummer</string>
+    <string name="dgts__pin_code_verification_title">Indtast 2-trins-bekræftelseskode</string>
     <string name="dgts__resend">Send igen</string>
     <string name="dgts__resend_confirmation_text">Send bekræftelseskode igen</string>
     <string name="dgts__sign_in">Log ind</string>
@@ -97,15 +100,18 @@
     <string name="dgts__sign_in_twitter">Log ind med Twitter</string>
     <string name="dgts__signing_in">Logger ind</string>
     <string name="dgts__success_desc">Ikonet Fuldført</string>
-    <string name="dgts__terms_text">Når du trykker på \"Send bekræftelseskode herover, sender\
-        <u>Digits by Twitter</u> dig en sms-besked for at bekræfte dit telefonnummer.</string>
-    <string name="dgts__terms_text_create">Ved at trykke på \"Opret konto\" herover accepterer du <u>Vilkår for anvendelse</u>, <u>Privatlivspolitik</u> og <u>Politik vedrørende cookies</u> for Digits by Twitter og at andre brugere af denne app kan finde dit ved hjælp af dit telefonnumer og/eller din e-mail.</string>
-    <string name="dgts__terms_text_create_app">Ved at klikke på \"Opret konto\" herover accepterer du <u>Vilkår for anvendelse</u>, <u>Privatlivspolitik</u> og <u>Politik vedrørende cookies</u> for Digits by Twitter og at andre brugere af %1$s kan finde dig ved hjælp af dit telefonnummer og/eller din e-mail.</string>
+    <string name="dgts__terms_text">Når du trykker på %1$sSend bekræftelseskode%1$s ovenfor, vil Digits by Twitter sende dig en sms-besked for at bekræfte dit telefonnummer. Besked- og data-takster kan blive pålagt.</string>
+    <string name="dgts__terms_text_create">Ved at trykke på %1$sOpret konto%1$s herover accepterer du vilkår for anvendelse, privatlivspolitik og brug af cookies for Digits by Twitter og at andre brugere af denne app kan finde dig ved hjælp af dit telefonnummer og/eller din e-mail.</string>
+    <string name="dgts__terms_text_sign_in">Ved at trykke på %1$sLog in%1$s herover accepterer du vilkår for anvendelse, privatlivspolitik og brug af cookies for Digits by Twitter, og at andre brugere af %1$s kan finde dig ved hjælp af dit telefonnummer og/eller din e-mail.</string>
     <string name="dgts__try_again">Prøv igen</string>
     <string name="dgts__try_again_confirmation">Tjek venligst din kode og prøv igen.</string>
     <string name="dgts__try_again_phone_number">Tjek venligst dit nummer og prøv igen.</string>
     <string name="dgts__try_another_phone">Prøv et andet telefonnummer</string>
-    <string name="dgts__upload_contacts">Vi bruger Digits by Twitter til at finde flere af dine venner, der bruger denne app. Når du klikker på OK, uploader vi din adressebot til Digits by Twitter og gør det muligt for andre bruger af vores app at finde dig.</string>
+    <string name="dgts__upload_contacts">Vi bruger Digits by Twitter til at finde flere af dine venner, der bruger denne app. Når du trykker på OK, uploader vi din adressebog til Digits by Twitter, så vi kan hjælpe dig med at finde brugere af %1$s, du kender, eller hjælpe andre brugere af %1$s med at finde dig.</string>
+    <string name="dgts__verification_code">Bekræftelseskode</string>
+    <string name="dgts_pin_code_terms">Du har tidligere sat en 2-trins-bekræftelseskode på digits.com</string>
+    <string name="dgts_verify">Verificer</string>
+    <string name="dgts_verifying">Verificerer</string>
     <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/res/values-da/values.xml -->
     <eat-comment/>
     <string msgid="8327680881775995150" name="mr_media_route_button_content_description">"Cast"</string>
@@ -118,12 +124,27 @@
     <string msgid="5398645111664294430" name="mr_media_route_controller_stop">"Stop med at caste"</string>
     <string msgid="5441529851481176817" name="mr_system_route_name">"System"</string>
     <string msgid="7498112907524977311" name="mr_user_route_category_name">"Enheder"</string>
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-da/values.xml -->
+    <eat-comment/>
+    <string name="tw__allow_btn_txt">Tillad</string>
     <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-da/values.xml -->
     <eat-comment/>
     <string name="tw__loading_tweet">Indlæser tweet</string>
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-da/values.xml -->
+    <eat-comment/>
+    <string name="tw__login_btn_txt">Log ind med Twitter</string>
+    <string name="tw__not_now_btn_txt">Ikke nu</string>
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-da/values.xml -->
+    <eat-comment/>
     <string name="tw__relative_date_format_long">d/M/y</string>
     <string name="tw__relative_date_format_short">d. MMM</string>
     <string name="tw__share_content_format">Tjek \@%1$s\s tweet: https://twitter.com/%1$s/status/%2$s</string>
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-da/values.xml -->
+    <eat-comment/>
+    <string name="tw__share_email_desc">Få opdateringer og andre informationer fra %1$s, når du giver dem adgang til din e-mail på din Twitter-konto \@%2$s</string>
+    <string name="tw__share_email_title">Del din e-mailadresse</string>
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-da/values.xml -->
+    <eat-comment/>
     <string name="tw__share_subject_format">Tweet fra %1$s (\@%2$s)</string>
     <string name="tw__share_tweet">Del tweet</string>
     <string name="tw__tweet_content_description">%1$s. %2$s. %3$s.</string>

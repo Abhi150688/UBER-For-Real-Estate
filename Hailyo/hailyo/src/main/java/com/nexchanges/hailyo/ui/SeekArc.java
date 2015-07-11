@@ -1,10 +1,9 @@
 package com.nexchanges.hailyo.ui;
 
 /**
- * Created by AbhishekWork on 07/07/15.
+ * Created by AbhishekWork on 10/07/15.
  */
-
-import android.content.Context;
+       import android.content.Context;
         import android.content.res.Resources;
         import android.content.res.TypedArray;
         import android.graphics.Canvas;
@@ -16,7 +15,7 @@ import android.content.Context;
         import android.view.MotionEvent;
         import android.view.View;
 
-import com.nexchanges.hailyo.R;
+       import com.nexchanges.hailyo.R;
 
 /**
  *
@@ -78,7 +77,7 @@ public class SeekArc extends View {
     /**
      * Give the SeekArc rounded edges
      */
-    private boolean mRoundedEdges = true;
+    private boolean mRoundedEdges = false;
 
     /**
      * Enable touch inside the SeekArc
@@ -116,7 +115,7 @@ public class SeekArc extends View {
          * @param progress
          *            The current progress level. This will be in the range
          *            0..max where max was set by
-         *           {@link ProgressArc#setMax(int)}. (The default value for
+         *            {@link //ProgressArc#setMax(int)}. (The default value for
          *            max is 100.)
          * @param fromUser
          *            True if the progress change was initiated by the user.
@@ -374,7 +373,7 @@ public class SeekArc extends View {
     }
 
     private int getProgressForAngle(double angle) {
-        int touchProgress = (int) Math.round(valuePerDegree() * angle);
+       int touchProgress = (int) Math.round(valuePerDegree() * angle);
 
         touchProgress = (touchProgress < 0) ? INVALID_PROGRESS_VALUE
                 : touchProgress;
@@ -384,7 +383,7 @@ public class SeekArc extends View {
     }
 
     private float valuePerDegree() {
-        return (float) mMax / mSweepAngle;
+        return (float) (mMax / mSweepAngle);
     }
 
     private void onProgressRefresh(int progress, boolean fromUser) {
@@ -427,7 +426,7 @@ public class SeekArc extends View {
      * @param l
      *            The seek bar notification listener
      *
-     * //@see SeekArc.OnSeekBarChangeListener
+     * @see //SeekArc.//OnSeekBarChangeListener
      */
     public void setOnSeekArcChangeListener(OnSeekArcChangeListener l) {
         mOnSeekArcChangeListener = l;

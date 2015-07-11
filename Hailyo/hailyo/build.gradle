@@ -55,6 +55,8 @@ dependencies {
     }
     compile 'com.android.support:appcompat-v7:22.0.0'
     compile files('libs/pgsdk.jar')
-    compile 'me.alexrs:wave-drawable:1.0.0'
     compile 'com.squareup.picasso:picasso:2.3.2'
+    compile('com.digits.sdk.android:digits:1.6.0@aar') {
+        transitive = true;
+    }
 }

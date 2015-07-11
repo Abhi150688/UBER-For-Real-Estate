@@ -41,6 +41,8 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.hrules.horizontalnumberpicker.HorizontalNumberPicker;
+import com.hrules.horizontalnumberpicker.HorizontalNumberPickerListener;
 import com.nexchanges.hailyo.custom.MyMarker;
 import com.nexchanges.hailyo.model.DealData;
 import com.nexchanges.hailyo.model.SharedPrefs;
@@ -75,12 +77,15 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
     //ViewAll Visits
 
     private static final String TAG = MainBrokerActivity.class.getSimpleName();
+    int max = 15, min = 5;
+    int timer_val=5;
 
     private static final String url = "https://api.myjson.com/bins/nk0q";
     private ProgressDialog pDialog;
     private List<VisitData> visitList = new ArrayList<VisitData>();
     private ListView listView;
     private CustomListAdapter_Visit adapter;
+    String type_user;
 
 
    //View All Deals
@@ -153,15 +158,15 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
 
 
         deal_refresh.setColorScheme(
-                R.color.red, R.color.yellow,
+                R.color.red, R.color.darkturquoise,
                 R.color.green, R.color.blue);
 
         visit_refresh.setColorScheme(
-                R.color.red, R.color.yellow,
+                R.color.red, R.color.darkturquoise,
                 R.color.green, R.color.blue);
 
         yo_refresh.setColorScheme(
-                R.color.red, R.color.yellow,
+                R.color.red, R.color.darkturquoise,
                 R.color.green, R.color.blue);
 
 
@@ -202,24 +207,26 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
         listViewYo = (ListView) findViewById(R.id.yolist);
         adapterYo = new CustomListAdapter_Yo(this, yoList);
         listViewYo.setAdapter(adapterYo);
+
+
+
         //Yo Data
-
-
 
         flipper_index = SharedPrefs.getInt(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 0);
         VF.setDisplayedChild(flipper_index);
 
         switch (VF.getDisplayedChild()) {
             case 0:
-                yo.setBackgroundColor(Color.parseColor("#FFA500"));
                 yo.setTextColor(Color.WHITE);
+                yo.setBackgroundColor(Color.parseColor("#FFA500"));
+
                 visits.setBackgroundResource(R.drawable.button_border);
                 visits.setTextColor(Color.BLACK);
                 deals.setBackgroundResource(R.drawable.button_border);
                 deals.setTextColor(Color.BLACK);
                 hail.setBackgroundResource(R.drawable.button_border);
                 hail.setTextColor(Color.BLACK);
-                refreshYo();
+                refreshYo("Req");
                 break;
             case 1:
                 visits.setBackgroundColor(Color.parseColor("#FFA500"));
@@ -339,7 +346,7 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
                 deals.setTextColor(Color.BLACK);
 
                 yo_refresh.setRefreshing(true);
-                refreshYo();
+                refreshYo("Req");
 
             }
         });
@@ -674,19 +681,13 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
                                   boolean fromTouch) {
                 if (progress == 0) {
 
-               		String text = "Req";
-							//adapterYo.filter(text);
-                    // VF2.setDisplayedChild(0);
-                    textview1.setTextColor(Color.RED);
+                    refreshYo("Req");
+					textview1.setTextColor(Color.RED);
                     textview2.setTextColor(Color.BLACK);
 
 
                 } else if (progress == 100) {
-
-                    //VF2.setDisplayedChild(1);
-                    String text = "Avl";
-                    //adapterYo.filter(text);
-
+                    refreshYo("Avl");
                     textview1.setTextColor(Color.BLACK);
                     textview2.setTextColor(Color.RED);
 
@@ -732,10 +733,10 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
     }
 
 
-    private void refreshYo()
+    private void refreshYo(final String User_Type)
     {
 
-        deal_refresh.setRefreshing(true);
+        yo_refresh.setRefreshing(true);
         JsonArrayRequest yoReq = new JsonArrayRequest(urlYo,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -749,16 +750,20 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
                             try {
 
                                 JSONObject obj = response.getJSONObject(i);
-                                YoData yo = new YoData();
-                                yo.setUserName(obj.getString("user_name"));
-                                yo.setThumbnailUrl(obj.getString("image"));
-                                yo.setSpecCode(obj.getString("spec_code"));
-                                yo.setVisitCount(obj.getInt("visits_done"));
-                                yo.setRating(obj.getInt("rating"));
-                                yo.setUserType(obj.getString("user_type"));
 
+                                type_user = obj.getString("user_type");
+                                if (type_user.equalsIgnoreCase(User_Type)) {
+                                    YoData yo = new YoData();
+                                    yo.setUserName(obj.getString("user_name"));
+                                    yo.setThumbnailUrl(obj.getString("image"));
+                                    yo.setSpecCode(obj.getString("spec_code"));
+                                    yo.setVisitCount(obj.getInt("visits_done"));
+                                    yo.setRating(obj.getInt("rating"));
+                                    yo.setUserType(obj.getString("user_type"));
+                                    yoList.add(yo);
+                                }
                                 // adding movie to movies array
-                                yoList.add(yo);
+
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -910,8 +915,16 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
 
         int index = VF.getDisplayedChild();
         if(index == 0){
+
         yo_refresh.setRefreshing(true);
-        refreshYo();}
+            if (avlreq.getProgress()==0)
+            {
+        refreshYo("Req");}
+            else if (avlreq.getProgress()==100)
+            {
+                refreshYo("Avl");
+            }
+        }
 
         else if (index == 1)
         {deal_refresh.setRefreshing(true);
@@ -923,6 +936,8 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
         refresh_visit();}
 
     }
+
+
 
     // End of Visits Methods
 }

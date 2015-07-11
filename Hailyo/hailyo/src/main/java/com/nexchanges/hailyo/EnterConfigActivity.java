@@ -5,22 +5,17 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.content.Context;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
 
-import com.google.android.gms.maps.model.LatLng;
 import com.hrules.horizontalnumberpicker.HorizontalNumberPicker;
 import com.hrules.horizontalnumberpicker.HorizontalNumberPickerListener;
 import com.nexchanges.hailyo.custom.ConfigSpecCode;
 import com.nexchanges.hailyo.model.SharedPrefs;
-import com.nexchanges.hailyo.custom.GetPlaceName;
 import com.nexchanges.hailyo.ui.SeekArc;
 
 
@@ -31,14 +26,6 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
 
 
     private SeekArc mSeekArc_Rent, mSeekArc_Sale;
-    private SeekBar mRotation;
-    private SeekBar mStartAngle;
-    private SeekBar mSweepAngle;
-    private SeekBar mArcWidth;
-    private SeekBar mProgressWidth;
-    private CheckBox mRoundedEdges;
-    private CheckBox mTouchInside;
-    private CheckBox mClockwise;
     private TextView mSeekArcProgress_Rent, mSeekArcProgress_Sale;
 
     //declare variables
@@ -91,13 +78,10 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
         horizontalNumberPicker3.setMaxValue(max);
         horizontalNumberPicker3.setMinValue(min);
 
+
+
         horizontalNumberPicker3.setHorizontalNumberPickerListener(this);
 
-
-
-       // seekbar1 = (SeekBar)this.findViewById(R.id.sbBar);
-
-        //seekbar2 = (SeekBar)this.findViewById(R.id.sbSBar);
 
 
         result = (TextView)this.findViewById(R.id.tvResult);
@@ -113,32 +97,15 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
         inflate = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View vi = inflate.inflate(R.layout.left_nav_header,null);
 
-
-        mSeekArc_Rent = (SeekArc) findViewById(R.id.seekRent);
+        mSeekArc_Rent = (SeekArc)findViewById(R.id.seekRent);
 
         mSeekArc_Sale = (SeekArc) findViewById(R.id.seekSale);
+
+
+       // mSeekArc_Sale = (SeekArc) findViewById(R.id.seekSale);
         mSeekArcProgress_Rent = (TextView) findViewById(R.id.seekArcProgress_Rent);
 
         mSeekArcProgress_Sale = (TextView) findViewById(R.id.seekArcProgress_Sale);
-
-        mSeekArc_Rent = (SeekArc)this.findViewById(R.id.seekRent);
-
-        mSeekArc_Sale = (SeekArc)this.findViewById(R.id.seekSale);
-
-//
-        mSeekArc_Rent.setArcWidth(4);
-        mSeekArc_Rent.setProgressWidth(4);
-        mSeekArc_Rent.setRoundedEdges(true);
-        mSeekArc_Rent.setTouchInSide(true);
-        mSeekArc_Rent.setClockwise(true);
-
-        mSeekArc_Sale.setArcWidth(4);
-        mSeekArc_Sale.setProgressWidth(4);
-        mSeekArc_Sale.setRoundedEdges(true);
-        mSeekArc_Sale.setTouchInSide(true);
-        mSeekArc_Sale.setClockwise(true);
-
-//
 
 
         mSeekArc_Rent.setOnSeekArcChangeListener(new SeekArc.OnSeekArcChangeListener() {
@@ -153,22 +120,26 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
             @Override
             public void onProgressChanged(SeekArc seekArc, int progress,
                                           boolean fromUser) {
-                        value = progress;
-                        msg2 = progress+"";
-                       result.setText(" Rent:" + value);
-
-
-                mSeekArcProgress_Rent.setText(String.valueOf(progress));
+                mSeekArcProgress_Rent.setText("Rent: \n" + String.valueOf(progress));
             }
         });
 
+        mSeekArc_Sale.setOnSeekArcChangeListener(new SeekArc.OnSeekArcChangeListener() {
 
+            @Override
+            public void onStopTrackingTouch(SeekArc seekArc) {
+            }
+            @Override
+            public void onStartTrackingTouch(SeekArc seekArc) {
+            }
 
+            @Override
+            public void onProgressChanged(SeekArc seekArc, int progress,
+                                          boolean fromUser) {
+                mSeekArcProgress_Sale.setText("Price: \n" + String.valueOf(progress));
+            }
+        });
 
-
-        //set change listener
-        //seekbar1.setOnSeekBarChangeListener(this);
-        //seekbar2.setOnSeekBarChangeListener(this);
 
 
 
@@ -231,16 +202,19 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
 
 
 
-                Intent SearchSplashScreen =new Intent(context, SearchSplashActivity.class);
+                Intent SearchSplashScreen =new Intent(context, PostYoActivity.class);
 
                 //Intent SearchSplashScreen =new Intent(context, splash_mock.class);
+
+                Intent PostYoAct = new Intent(context, PostYoActivity.class);
                 Bundle extras = new Bundle();
                 extras.putString("Phone", "9967307197");
-                extras.putString("Broker_Name", "Rajiv Lakhpti");
+                extras.putString("Broker_Name", "Rajiv Lakhpati");
                 extras.putString("Timer", "2");
                 extras.putString("Rating", "3");
-                SearchSplashScreen.putExtras(extras);
-                startActivity(SearchSplashScreen);
+                PostYoAct.putExtras(extras);
+                context.startActivity(PostYoAct);
+                finish();
 
             }
         });

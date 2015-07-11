@@ -66,14 +66,14 @@
     <string msgid="411506735369601515" name="common_open_on_phone">"端末で開く"</string>
     <string msgid="9071884888741449141" name="common_signin_button_text">"ログイン"</string>
     <string msgid="2429381841831957106" name="common_signin_button_text_long">"Googleでログイン"</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.2.0/res/values-ja/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.6.0/res/values-ja/values.xml -->
     <eat-comment/>
     <string name="dgts__cancel">キャンセル</string>
     <string name="dgts__communication_error">通信エラー</string>
     <string name="dgts__confirmation_code">認証コード</string>
     <string name="dgts__confirmation_edit_hint">認証コードを入力</string>
     <string name="dgts__confirmation_error">電話番号の認証に失敗しました</string>
-    <string name="dgts__confirmation_error_alternative">認証コードの送信に問題が発生しました。下からログインしてみてください。</string>
+    <string name="dgts__confirmation_error_alternative">認証コードの送信に問題が発生しました。</string>
     <string name="dgts__confirmation_expired">このコードは有効期限切れです。認証コードを再送信してください。</string>
     <string name="dgts__confirmation_send_text">認証コードを送信</string>
     <string name="dgts__confirmation_sending_text">認証コード送信中</string>
@@ -81,6 +81,8 @@
     <string name="dgts__confirmation_sms">認証コード: %1$s。このコードを%2$sに入力</string>
     <string name="dgts__create_account_text">アカウントを作成</string>
     <string name="dgts__creating_account_text">アカウントを作成中</string>
+    <string name="dgts__digits_logo_desc">digitsロゴのアイコン</string>
+    <string name="dgts__digits_logo_name_desc">digitsロゴの名前</string>
     <string name="dgts__dismiss">非表示</string>
     <string name="dgts__find_your_friends">友だちを探す</string>
     <string name="dgts__image_header_description">ログイン用のイメージヘッダー</string>
@@ -90,6 +92,7 @@
     <string name="dgts__okay">OK</string>
     <string name="dgts__phone_number_edit_hint">ご利用の番号</string>
     <string name="dgts__phone_number_text">電話番号を入力してください</string>
+    <string name="dgts__pin_code_verification_title">2段階認証コードを入力</string>
     <string name="dgts__resend">再送信</string>
     <string name="dgts__resend_confirmation_text">認証コードを再送信</string>
     <string name="dgts__sign_in">ログイン</string>
@@ -97,14 +100,18 @@
     <string name="dgts__sign_in_twitter">Twitterにログイン</string>
     <string name="dgts__signing_in">ログイン中</string>
     <string name="dgts__success_desc">プロフィール画像</string>
-    <string name="dgts__terms_text">上の [認証コードを送信] をタップすると、電話番号を認証するためのSMSメッセージが<u>Twitter</u>から送信されます。</string>
-    <string name="dgts__terms_text_create">上の [アカウントを作成] をタップすることで、Twitterの<u>利用規約</u>、<u>プライバシーポリシー</u>、および<u>Cookieポリシー</u>、さらにこのアプリの他のユーザーが電話番号やメールアドレスからあなたを見つけることができることに同意します。</string>
-    <string name="dgts__terms_text_create_app">上の [アカウントを作成] をタップすることで、 Twitterの       <u>利用規約</u>、        <u>プライバシーポリシー</u>、および       <u>Cookieポリシー</u>、さらに%1$sの他のユーザーが電話番号やメールアドレスからあなたを見つけることができることに同意します。</string>
+    <string name="dgts__terms_text">上の%1$s認証コードを送信%1$sをタップすると、電話番号を認証するためのSMSメッセージがDigits by Twitterから送信されます。SMS使用料がかかる場合があります。</string>
+    <string name="dgts__terms_text_create">上の%1$sアカウントを作成%1$sをタップすることで、利用規約、プライバシーポリシー、およびDigits by TwitterのCookieポリシー、さらにこのアプリの他のユーザーが電話番号やメールアドレスからあなたを見つけることができることに同意します。</string>
+    <string name="dgts__terms_text_sign_in">上の%1$sログイン%1$sをタップすることで、新しい利用規約、プライバシーポリシー、およびDigits by TwitterのCookieポリシー、さらに%1$sの他のユーザーが電話番号やメールアドレスからあなたを見つけることができることに同意します。</string>
     <string name="dgts__try_again">やり直してください</string>
     <string name="dgts__try_again_confirmation">コードを確認し、やり直してください。</string>
     <string name="dgts__try_again_phone_number">番号を確認し、やり直してください。</string>
     <string name="dgts__try_another_phone">別の電話番号をお試しください</string>
-    <string name="dgts__upload_contacts">Twitterでは、このアプリを使う友だちをより多く見つけるためにDigits by Twitterを使います。[OK] をタップすると、アドレス帳がDigits by Twitterにアップロードされ、他のユーザーがあなたを見つけられるようになります。</string>
+    <string name="dgts__upload_contacts">Twitterでは、このアプリを使う友だちをより多く見つけるためにDigits by Twitterを使います。OKをタップすると、アドレス帳がDigits by Twitterにアップロードされ、あなたが%1$sのユーザーを見つけやすくなったり、%1$sのユーザーがあなたを見つけやすくなります。</string>
+    <string name="dgts__verification_code">認証コード</string>
+    <string name="dgts_pin_code_terms">2段階認証コードはdigits.comで設定済みです</string>
+    <string name="dgts_verify">認証</string>
+    <string name="dgts_verifying">認証中</string>
     <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/res/values-ja/values.xml -->
     <eat-comment/>
     <string msgid="8327680881775995150" name="mr_media_route_button_content_description">"キャスト"</string>
@@ -117,17 +124,27 @@
     <string msgid="5398645111664294430" name="mr_media_route_controller_stop">"キャストを停止"</string>
     <string msgid="5441529851481176817" name="mr_system_route_name">"システム"</string>
     <string msgid="7498112907524977311" name="mr_user_route_category_name">"端末"</string>
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-ja/values.xml -->
+    <eat-comment/>
+    <string name="tw__allow_btn_txt">許可</string>
     <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-ja/values.xml -->
     <eat-comment/>
     <string name="tw__loading_tweet">ツイートを読込中</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.3.0/res/values-ja/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-ja/values.xml -->
     <eat-comment/>
-    <string name="tw__login_btn_txt">Twitterでログイン</string>
+    <string name="tw__login_btn_txt">Twitterにログイン</string>
+    <string name="tw__not_now_btn_txt">今はしない</string>
     <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-ja/values.xml -->
     <eat-comment/>
     <string name="tw__relative_date_format_long">y/M/d</string>
     <string name="tw__relative_date_format_short">M月d日</string>
     <string name="tw__share_content_format">\@%1$sさんのツイートをチェックしましょう　 https://twitter.com/%1$s/status/%2$s</string>
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-ja/values.xml -->
+    <eat-comment/>
+    <string name="tw__share_email_desc">%1$sからの更新情報を受け取る場合は、ご利用のTwitterアカウント\@%2$sで使用中のメールアドレスでメールの受信を許可してください。</string>
+    <string name="tw__share_email_title">メールアドレスを共有</string>
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-ja/values.xml -->
+    <eat-comment/>
     <string name="tw__share_subject_format">%1$s (\@%2$s)さんからのツイート</string>
     <string name="tw__share_tweet">ツイートを共有</string>
     <string name="tw__tweet_content_description">%1$s、 %2$s、 %3$s。</string>

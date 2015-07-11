@@ -66,21 +66,23 @@
     <string msgid="411506735369601515" name="common_open_on_phone">"Открыть на телефоне"</string>
     <string msgid="9071884888741449141" name="common_signin_button_text">"Войти"</string>
     <string msgid="2429381841831957106" name="common_signin_button_text_long">"Войти в аккаунт Google"</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.2.0/res/values-ru/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.6.0/res/values-ru/values.xml -->
     <eat-comment/>
     <string name="dgts__cancel">Отмена</string>
     <string name="dgts__communication_error">Ошибка связи</string>
     <string name="dgts__confirmation_code">Код подтверждения</string>
     <string name="dgts__confirmation_edit_hint">Введите код подтверждения</string>
     <string name="dgts__confirmation_error">Не удалось подтвердить ваш номер телефона</string>
-    <string name="dgts__confirmation_error_alternative">К сожалению, нам не удалось отправить вам код подтверждения. Попробуйте ввести реквизиты в размещённую ниже форму, чтобы войти.</string>
+    <string name="dgts__confirmation_error_alternative">К сожалению, нам не удалось отправить вам код подтверждения.</string>
     <string name="dgts__confirmation_expired">Срок действия кода истёк. Отправьте код подтверждения ещё раз.</string>
     <string name="dgts__confirmation_send_text">Отправить код подтверждения</string>
     <string name="dgts__confirmation_sending_text">Отправка кода подтверждения</string>
     <string name="dgts__confirmation_sent_text">Код подтверждения отправлен</string>
     <string name="dgts__confirmation_sms">Код подтверждения: %1$s. Введите этот код в %2$s</string>
     <string name="dgts__create_account_text">Создать учётную запись</string>
-    <string name="dgts__creating_account_text">Создание учётной записи</string>
+    <string name="dgts__creating_account_text">Создание учетной записи</string>
+    <string name="dgts__digits_logo_desc">значок логотипа digits</string>
+    <string name="dgts__digits_logo_name_desc">название логотипа digits</string>
     <string name="dgts__dismiss">Отмена</string>
     <string name="dgts__find_your_friends">Найти друзей</string>
     <string name="dgts__image_header_description">Заголовок изображения для входа</string>
@@ -90,6 +92,7 @@
     <string name="dgts__okay">ОК</string>
     <string name="dgts__phone_number_edit_hint">Ваш номер</string>
     <string name="dgts__phone_number_text">Введите свой номер телефона</string>
+    <string name="dgts__pin_code_verification_title">Введите код двухэтапной проверки</string>
     <string name="dgts__resend">Отправить ещё раз</string>
     <string name="dgts__resend_confirmation_text">Отправить код подтверждения ещё раз</string>
     <string name="dgts__sign_in">Войти</string>
@@ -97,14 +100,18 @@
     <string name="dgts__sign_in_twitter">Войти с учётной записью Твиттера</string>
     <string name="dgts__signing_in">Выполняется вход</string>
     <string name="dgts__success_desc">Значок «Готово»</string>
-    <string name="dgts__terms_text">При нажатии расположенной выше кнопки «Отправить код подтверждения» приложение <u>Digits by Twitter</u> отправит вам SMS-сообщение для подтверждения вашего номера телефона.</string>
-    <string name="dgts__terms_text_create">Нажимая расположенную выше кнопку «Создать учётную запись», вы подтверждаете своё согласие с <u>Условиями предоставления услуг</u>, <u>Политикой конфиденциальности</u> и <u>Политикой использования файлов Сookie</u> приложения Digits by Twitter, а также с тем, что другие пользователи данного приложения смогут вас найти по номеру телефона и (или) адресу электронной почты.</string>
-    <string name="dgts__terms_text_create_app">Нажимая расположенную выше кнопку «Создать учётную запись», вы подтверждаете своё согласие с <u>Условиями предоставления услуг</u>, <u>Политикой конфиденциальности</u> и <u>Политикой использования файлов Сookie</u> приложения Digits by Twitter, а также с тем, что другие пользователи %1$s смогут вас найти по номеру телефона и (или) адресу электронной почты.</string>
+    <string name="dgts__terms_text">После нажатия кнопки %1$sОтправить код подтверждения%1$s приложение Digits by Twitter отправит вам SMS-сообщение для подтверждения вашего номера телефона. За текстовые сообщения и передачу данных может взиматься плата.</string>
+    <string name="dgts__terms_text_create">Нажимая кнопку %1$sСоздать учетную запись%1$s, вы подтверждаете свое согласие с Условиями предоставления услуг, Политикой конфиденциальности и Политикой использования файлов Сookie приложения Digits by Twitter, а также с тем, что другие пользователи смогут вас найти по номеру телефона и (или) адресу электронной почты.</string>
+    <string name="dgts__terms_text_sign_in">Нажимая кнопку %1$sВойти%1$s, вы подтверждаете свое согласие с обновленными Условиями предоставления услуг, Политикой конфиденциальности и Политикой использования файлов Сookies приложения Digits by Twitter, а также с тем, что другие пользователи %1$s смогут вас найти по номеру телефона и (или) адресу электронной почты.</string>
     <string name="dgts__try_again">Повторите попытку</string>
     <string name="dgts__try_again_confirmation">Проверьте код и попробуйте ещё раз.</string>
     <string name="dgts__try_again_phone_number">Проверьте свой номер и попробуйте ещё раз.</string>
     <string name="dgts__try_another_phone">Попробуйте ввести другой номер телефона</string>
-    <string name="dgts__upload_contacts">Мы используем Digits by Twitter, чтобы помочь вам найти друзей, которые используют это приложение. Когда вы нажмёте «ОК», мы загрузим вашу адресную книгу в Digits by Twitter и разрешим другим пользователям вас находить.</string>
+    <string name="dgts__upload_contacts">Мы используем Digits by Twitter, чтобы помочь вам найти друзей, которые используют это приложение. После подтверждения мы загрузим вашу адресную книгу в Digits by Twitter. Так мы сможем помочь вам найти пользователей %1$s, которых вы знаете, или поможем другим пользователям %1$s найти вас.</string>
+    <string name="dgts__verification_code">Проверочный код</string>
+    <string name="dgts_pin_code_terms">Вы уже ввели код двухэтапной проверки на сайте digits.com</string>
+    <string name="dgts_verify">Проверить</string>
+    <string name="dgts_verifying">Проверка</string>
     <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/res/values-ru/values.xml -->
     <eat-comment/>
     <string msgid="8327680881775995150" name="mr_media_route_button_content_description">"Транслировать."</string>
@@ -117,17 +124,27 @@
     <string msgid="5398645111664294430" name="mr_media_route_controller_stop">"Остановить трансляцию"</string>
     <string msgid="5441529851481176817" name="mr_system_route_name">"Система"</string>
     <string msgid="7498112907524977311" name="mr_user_route_category_name">"Устройства"</string>
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-ru/values.xml -->
+    <eat-comment/>
+    <string name="tw__allow_btn_txt">Разрешить</string>
     <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-ru/values.xml -->
     <eat-comment/>
     <string name="tw__loading_tweet">Загрузка твита</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.3.0/res/values-ru/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-ru/values.xml -->
     <eat-comment/>
-    <string name="tw__login_btn_txt">Вход с помощью Твиттера</string>
+    <string name="tw__login_btn_txt">Войти с учётной записью Твиттера</string>
+    <string name="tw__not_now_btn_txt">Не сейчас</string>
     <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-ru/values.xml -->
     <eat-comment/>
     <string name="tw__relative_date_format_long">dd.MM.y</string>
     <string name="tw__relative_date_format_short">d MMM</string>
     <string name="tw__share_content_format">Посмотрите твит пользователя \@%1$s: https://twitter.com/%1$s/status/%2$s</string>
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-ru/values.xml -->
+    <eat-comment/>
+    <string name="tw__share_email_desc">Получать обновления и другую информацию от %1$s, если вы позволите им видеть ваш адрес электронной почты в вашем профиле Твиттера \@%2$s</string>
+    <string name="tw__share_email_title">Поделиться своим адресом электронной почты</string>
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-ru/values.xml -->
+    <eat-comment/>
     <string name="tw__share_subject_format">Твит от %1$s (\@%2$s)</string>
     <string name="tw__share_tweet">Поделиться твитом</string>
     <string name="tw__tweet_content_description">%1$s. %2$s. %3$s.</string>

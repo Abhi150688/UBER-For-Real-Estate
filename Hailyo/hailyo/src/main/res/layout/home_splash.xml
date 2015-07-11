@@ -8,13 +8,13 @@
         android:layout_height="fill_parent"
         android:background="@color/white">
 
-
         <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/home_login"
         android:id="@+id/image"
         android:layout_gravity="center_vertical" />
+
 
         <Button
             android:layout_width="wrap_content"

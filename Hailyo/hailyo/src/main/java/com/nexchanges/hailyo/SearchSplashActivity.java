@@ -26,9 +26,8 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import me.alexrs.wavedrawable.WaveDrawable;
-
 public class SearchSplashActivity extends Activity {
+    /*
 
     Context context;
     String phone, brokerName, timer, rating;
@@ -81,5 +80,5 @@ public class SearchSplashActivity extends Activity {
 
     }
 
-
+*/
 }

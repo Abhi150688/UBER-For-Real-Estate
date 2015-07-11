@@ -28,7 +28,8 @@ public class GetAutoPredictions{
         void onComplete(boolean status, String requestedSearchName, JSONArray predictions);
     }
 
-    public GetAutoPredictions(final String searchName, final LatLng nearLocation, final String googleAPIKey, GetAutoPredictionsCallback call_back){
+    public GetAutoPredictions(final String searchName, final LatLng nearLocation, final String googleAPIKey, GetAutoPredictionsCallback call_back)
+    {
 
         callback = call_back;
 
