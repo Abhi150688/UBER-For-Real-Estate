@@ -18,15 +18,14 @@
     </shared>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="INFO" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.nexchanges.hailyo" />
   </component>
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainActivity.java" description="// Current Location .." line="472" />
-    <bookmark url="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/ChooseRoleActivity.java" description="SharedPrefs.save(context, SharedPrefs.NAME_KEY, Sn..." line="272" />
-    <bookmark url="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainBrokerActivity.java" description="private static final String urlD = &quot;https://api.my..." line="85" />
-    <bookmark url="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainBrokerActivity.java" description="private static final String urlD = &quot;https://api.my..." line="84" />
-    <bookmark url="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainBrokerActivity.java" description="private static final String urlD = &quot;https://api.my..." line="81" />
+    <bookmark url="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainActivity.java" description="// Current Location .." line="493" />
+    <bookmark url="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/ChooseRoleActivity.java" description="SharedPrefs.save(context, SharedPrefs.NAME_KEY, Sn..." line="177" />
+    <bookmark url="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainBrokerActivity.java" description="private static final String urlD = &quot;https://api.my..." line="94" />
+    <bookmark url="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainBrokerActivity.java" description="private static final String urlD = &quot;https://api.my..." line="93" />
+    <bookmark url="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainBrokerActivity.java" description="private static final String urlD = &quot;https://api.my..." line="90" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="42f4b4cf-33a1-46a3-8be3-5b3d56fe3440" name="Default" comment="" />
@@ -59,18 +58,53 @@
       <file leaf-file-name="EnterConfigActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/EnterConfigActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3270">
+            <state vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="3660">
               <caret line="22" column="39" selection-start-line="22" selection-start-column="39" selection-end-line="22" selection-end-column="39" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SearchSplashActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/SearchSplashActivity.java">
+      <file leaf-file-name="ChooseRoleActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/ChooseRoleActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="707" max-vertical-offset="1350">
-              <caret line="82" column="2" selection-start-line="82" selection-start-column="2" selection-end-line="82" selection-end-column="2" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="6859" max-vertical-offset="7320">
+              <caret line="476" column="5" selection-start-line="312" selection-start-column="3" selection-end-line="476" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#3938#5562#0" expanded="true" />
+                <element signature="e#5514#5515#0" expanded="true" />
+                <element signature="e#5626#6442#0" expanded="true" />
+                <element signature="e#6427#6428#0" expanded="true" />
+                <element signature="e#6496#6905#0" expanded="true" />
+                <element signature="e#6890#6891#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="MainBrokerActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainBrokerActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="2865" max-vertical-offset="13530">
+              <caret line="542" column="0" selection-start-line="542" selection-start-column="0" selection-end-line="542" selection-end-column="0" />
+              <folding>
+                <element signature="e#15993#16013#0" expanded="true" />
+                <element signature="e#16031#16052#0" expanded="true" />
+                <element signature="e#33495#33658#0" expanded="true" />
+                <element signature="e#33651#33652#0" expanded="true" />
+                <element signature="e#35255#35627#0" expanded="true" />
+                <element signature="e#35612#35613#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SendLocationUpdate.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/custom/SendLocationUpdate.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1101" max-vertical-offset="1575">
+              <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -78,54 +112,38 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="InitialActivity.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/InitialActivity.java">
+      <file leaf-file-name="PlotMyNeighboursHail.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/custom/PlotMyNeighboursHail.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="347" max-vertical-offset="990">
-              <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
-              <folding />
+            <state vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="3075">
+              <caret line="195" column="5" selection-start-line="195" selection-start-column="5" selection-end-line="195" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GetAutoPredictions.java" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/custom/GetAutoPredictions.java">
+      <file leaf-file-name="MainActivity.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4047619" vertical-offset="0" max-vertical-offset="1305">
-              <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
-              <folding />
+            <state vertical-scroll-proportion="1.2992519" vertical-offset="6919" max-vertical-offset="12045">
+              <caret line="596" column="32" selection-start-line="596" selection-start-column="32" selection-end-line="596" selection-end-column="32" />
+              <folding>
+                <element signature="e#28551#28714#0" expanded="true" />
+                <element signature="e#28707#28708#0" expanded="true" />
+                <element signature="e#30286#30658#0" expanded="true" />
+                <element signature="e#30643#30644#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GetCurrentLocation.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/custom/GetCurrentLocation.java">
+      <file leaf-file-name="SharedPrefs.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/model/SharedPrefs.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1365">
-              <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LoginActivity1.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/LoginActivity1.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="660" max-vertical-offset="2640">
-              <caret line="78" column="78" selection-start-line="78" selection-start-column="78" selection-end-line="78" selection-end-column="78" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="home_splash.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/home_splash.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.0" vertical-offset="0" max-vertical-offset="570">
-              <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="1950">
+              <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -134,21 +152,8 @@
       <file leaf-file-name="SeekArc.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/ui/SeekArc.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1575" max-vertical-offset="7305">
+            <state vertical-scroll-proportion="0.0" vertical-offset="1755" max-vertical-offset="7725">
               <caret line="117" column="31" selection-start-line="117" selection-start-column="31" selection-end-line="117" selection-end-column="31" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="enter_config_layout.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/enter_config_layout.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="4515" max-vertical-offset="5445">
-              <caret line="301" column="50" selection-start-line="301" selection-start-column="50" selection-end-line="301" selection-end-column="50" />
               <folding />
             </state>
           </provider>
@@ -768,11 +773,6 @@
                 <option name="description" value="Prepare io.fabric.sdk.android:fabric:1.3.4" />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/hailyo" />
                 <option name="name" value="prepareIoFabricSdkAndroidFabric134Library" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Prepare me.alexrs:wave-drawable:1.0.0" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/hailyo" />
-                <option name="name" value="prepareMeAlexrsWaveDrawable100Library" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/hailyo" />
@@ -2616,7 +2616,6 @@
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.twitter.sdk.android/twitter/1.3.0/e4ec688ff01281b4627a9719e30e73c85594d9f7/twitter-1.3.0.aar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.crashlytics.sdk.android/crashlytics/2.2.3/feebb6cabe648d3d207b25a1c29039789487c459/crashlytics-2.2.3.aar" />
                             <option value="$USER_HOME$/Library/Android/sdk/extras/android/m2repository/com/android/support/appcompat-v7/22.0.0/appcompat-v7-22.0.0.aar" />
-                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/me.alexrs/wave-drawable/1.0.0/b10c814434f69de4eb7ab1bd46d2ac93efcad7ab/wave-drawable-1.0.0.aar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.3.2/d6b7f0093cec6c9faf65dbfd6a6a345d0ed25e27/picasso-2.3.2.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.digits.sdk.android/digits/1.6.0/bc05d9c46791dd1ae9d0bc2bf11bfeed8ce7d28e/digits-1.6.0.aar" />
                             <option value="$USER_HOME$/Library/Android/sdk/extras/google/m2repository/com/google/android/gms/play-services-ads/7.5.0/play-services-ads-7.5.0.aar" />
@@ -3750,13 +3749,7 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/ui/CustomListAdapter.java" />
-        <option value="$PROJECT_DIR$/hailyo/src/main/res/layout/all_deals.xml" />
-        <option value="$PROJECT_DIR$/hailyo/src/main/res/layout/all_visits_row.xml" />
-        <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/ui/CustomListAdapter_Visit.java" />
-        <option value="$PROJECT_DIR$/hailyo/src/main/res/layout/all_deals_row.xml" />
         <option value="$PROJECT_DIR$/hailyo/src/main/res/drawable/button_border.xml" />
-        <option value="$PROJECT_DIR$/hailyo/src/main/res/layout/give_rating.xml" />
         <option value="$PROJECT_DIR$/hailyo/src/main/res/layout/submit_bid_2.xml" />
         <option value="$PROJECT_DIR$/hailyo/src/main/res/layout/action_before_main.xml" />
         <option value="$PROJECT_DIR$/hailyo/src/main/res/layout/fragment_navigation_drawer.xml" />
@@ -3765,13 +3758,11 @@
         <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/Ab.java" />
         <option value="$PROJECT_DIR$/ptr-lib/build.gradle" />
         <option value="$PROJECT_DIR$/hailyo/src/main/res/layout/all_yo_list.xml" />
-        <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/ChooseRoleActivity.java" />
         <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/InitialActivity.java" />
         <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/model/DealData.java" />
         <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/ui/CustomListAdapter_Deals.java" />
         <option value="$PROJECT_DIR$/hailyo/src/main/res/layout/activity_main.xml" />
         <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/model/VisitData.java" />
-        <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainActivity.java" />
         <option value="$PROJECT_DIR$/hailyo/src/main/res/layout/activity_post_yo.xml" />
         <option value="$PROJECT_DIR$/hailyo/src/main/res/layout/during_visit.xml" />
         <option value="$PROJECT_DIR$/hailyo/src/main/res/values/color.xml" />
@@ -3783,7 +3774,6 @@
         <option value="$PROJECT_DIR$/hailyo/src/main/res/layout/seek_control.xml" />
         <option value="$PROJECT_DIR$/hailyo/src/main/res/layout/seekarc.xml" />
         <option value="$PROJECT_DIR$/hailyo/build.gradle" />
-        <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/LoginActivity1.java" />
         <option value="$PROJECT_DIR$/hailyo/src/main/res/layout/numberpickerdemo.xml" />
         <option value="$PROJECT_DIR$/hailyo/src/main/res/layout/yo_no_timer.xml" />
         <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/SuccessfulYo.java" />
@@ -3791,7 +3781,6 @@
         <option value="$PROJECT_DIR$/hailyo/src/main/res/layout/yo_timer.xml" />
         <option value="$PROJECT_DIR$/hailyo/src/main/res/layout/activity_broker_main.xml" />
         <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/ui/CustomListAdapter_Yo.java" />
-        <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainBrokerActivity.java" />
         <option value="$PROJECT_DIR$/hailyo/src/main/res/drawable/seek_arc_control_selector.xml" />
         <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/ui/CircularSeekBar.java" />
         <option value="$PROJECT_DIR$/hailyo/src/main/res/layout/enter_config_layout.xml" />
@@ -3801,11 +3790,21 @@
         <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/SearchSplashActivity.java" />
         <option value="$PROJECT_DIR$/hailyo/src/main/res/layout/home_splash.xml" />
         <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/custom/GetAutoPredictions.java" />
+        <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/custom/Login_Hailyo_Server.java" />
+        <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/LoginActivity1.java" />
+        <option value="$PROJECT_DIR$/hailyo/src/main/res/layout/give_rating.xml" />
+        <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/ChooseRoleActivity.java" />
+        <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/GiveRatingActivity.java" />
+        <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/model/SharedPrefs.java" />
+        <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainBrokerActivity.java" />
+        <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/custom/SendLocationUpdate.java" />
+        <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/custom/PlotMyNeighboursHail.java" />
+        <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainActivity.java" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="83" />
+    <option name="x" value="74" />
     <option name="y" value="23" />
     <option name="width" value="1366" />
     <option name="height" value="812" />
@@ -3836,6 +3835,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="AndroidView" />
       <pane id="ProjectPane">
@@ -3943,10 +3943,6 @@
               <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="wavedrawable" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -4007,6 +4003,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Hailyo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Hailyo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hailyo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -4168,13 +4194,46 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="model" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Hailyo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Hailyo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hailyo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hailyo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="custom" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -4231,6 +4290,7 @@
       <recent name="com.taxi" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.nexchanges.hailyo.custom" />
       <recent name="com.nexchanges.hailyo.ui" />
       <recent name="com.nexchanges.hailyo.model" />
       <recent name="com.nexchanges.hailyo.utils" />
@@ -4420,7 +4480,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="83" y="23" width="1366" height="812" extended-state="0" />
+    <frame x="74" y="23" width="1366" height="812" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
@@ -4429,14 +4489,14 @@
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4001463" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31514084" sideWeight="0.5294562" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36494252" sideWeight="0.5294562" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33526012" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30890805" sideWeight="0.48036253" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3262987" sideWeight="0.49963424" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.03591954" sideWeight="0.4705438" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32614943" sideWeight="0.49963424" order="11" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.36494252" sideWeight="0.4705438" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31896552" sideWeight="0.518598" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25075528" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -4513,75 +4573,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/model/DealData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="375" max-vertical-offset="1080">
-          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/submit_bid.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="7470">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/PostYoActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3630">
-          <caret line="50" column="13" selection-start-line="50" selection-start-column="13" selection-end-line="50" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/all_deals_list.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="561">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.444445" vertical-offset="4179" max-vertical-offset="5025">
-          <caret line="310" column="0" selection-start-line="262" selection-start-column="7" selection-end-line="310" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/during_visit.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1569" max-vertical-offset="2430">
-          <caret line="108" column="50" selection-start-line="108" selection-start-column="50" selection-end-line="108" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/activity_post_yo.xml">
-      <provider selected="true" editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.076923" vertical-offset="2435" max-vertical-offset="3195">
-          <caret line="185" column="51" selection-start-line="185" selection-start-column="51" selection-end-line="185" selection-end-column="51" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/values/attrs.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.56122446" vertical-offset="0" max-vertical-offset="588">
@@ -4610,27 +4601,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="240">
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/seekarc.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.5555556" vertical-offset="0" max-vertical-offset="1305">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.113636" vertical-offset="558" max-vertical-offset="10965">
-          <caret line="123" column="4" selection-start-line="122" selection-start-column="4" selection-end-line="123" selection-end-column="4" />
-          <folding />
-        </state>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.2.0/classes.jar!/com/digits/sdk/android/CountryListLoadTask.class">
@@ -4698,13 +4679,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/GiveRatingActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="885">
-          <caret line="28" column="13" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/drawable-xhdpi/action_bar_bg.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -4744,14 +4718,13 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/choose_role.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.8538012" vertical-offset="2667" max-vertical-offset="3315">
           <caret line="207" column="0" selection-start-line="178" selection-start-column="7" selection-end-line="207" selection-end-column="0" />
-          <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/horizontalnumberpicker-library/src/main/java/com/hrules/horizontalnumberpicker/HorizontalNumberPicker.java">
@@ -4769,51 +4742,39 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/yo_timer.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="1.9365426" vertical-offset="0" max-vertical-offset="2295">
           <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
-          <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/all_yo_row.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1245" max-vertical-offset="1785">
           <caret line="83" column="6" selection-start-line="83" selection-start-column="6" selection-end-line="83" selection-end-column="6" />
-          <folding />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/activity_broker_main.xml">
       <provider editor-type-id="android-designer">
         <state />
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/activity_broker_main.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2265" max-vertical-offset="5640">
           <caret line="130" column="31" selection-start-line="130" selection-start-column="31" selection-end-line="130" selection-end-column="31" />
-          <folding />
         </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/ui/CustomListAdapter_Yo.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="330" max-vertical-offset="3090">
           <caret line="34" column="4" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainBrokerActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="165" max-vertical-offset="14235">
-          <caret line="11" column="46" selection-start-line="11" selection-start-column="46" selection-end-line="11" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4821,7 +4782,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="225">
           <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -4837,6 +4797,74 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="210">
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MyApplication.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2857143" vertical-offset="0" max-vertical-offset="1155">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/drawable-xhdpi/ic_launcher.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/home_splash.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.0" vertical-offset="0" max-vertical-offset="570">
+          <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/enter_config_layout.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="4515" max-vertical-offset="5445">
+          <caret line="301" column="50" selection-start-line="301" selection-start-column="50" selection-end-line="301" selection-end-column="50" />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/LoginActivity1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18115942" vertical-offset="1050" max-vertical-offset="1590">
+          <caret line="111" column="2" selection-start-line="111" selection-start-column="2" selection-end-line="111" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/custom/GetCurrentLocation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26184538" vertical-offset="0" max-vertical-offset="1365">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/custom/GetAutoPredictions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.26184538" vertical-offset="0" max-vertical-offset="1305">
+          <caret line="21" column="32" selection-start-line="21" selection-start-column="32" selection-end-line="21" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/InitialActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.10869565" vertical-offset="120" max-vertical-offset="990">
+          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/SearchSplashActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1350">
+          <caret line="82" column="2" selection-start-line="82" selection-start-column="2" selection-end-line="82" selection-end-column="2" />
           <folding />
         </state>
       </provider>
@@ -4849,49 +4877,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MyApplication.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2857143" vertical-offset="0" max-vertical-offset="1155">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/LoginActivity1.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="660" max-vertical-offset="2640">
-          <caret line="78" column="78" selection-start-line="78" selection-start-column="78" selection-end-line="78" selection-end-column="78" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/drawable-xhdpi/ic_launcher.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/home_splash.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.0" vertical-offset="0" max-vertical-offset="570">
-          <caret line="18" column="7" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/enter_config_layout.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="4515" max-vertical-offset="5445">
-          <caret line="301" column="50" selection-start-line="301" selection-start-column="50" selection-end-line="301" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/ui/SeekArc.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="7095" max-vertical-offset="7515">
@@ -4900,37 +4885,109 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/SearchSplashActivity.java">
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/drawable-xhdpi/thumbsup.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/drawable-xhdpi/thumbsdown.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/GiveRatingActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1350">
-          <caret line="82" column="2" selection-start-line="82" selection-start-column="2" selection-end-line="82" selection-end-column="2" />
+        <state vertical-scroll-proportion="0.32608697" vertical-offset="0" max-vertical-offset="2940">
+          <caret line="48" column="0" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding>
+            <element signature="e#2509#2770#0" expanded="true" />
+            <element signature="e#2759#2760#0" expanded="true" />
+            <element signature="e#2806#3069#0" expanded="true" />
+            <element signature="e#3058#3059#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/give_rating.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="4.612403" vertical-offset="0" max-vertical-offset="2310">
+          <caret line="119" column="43" selection-start-line="119" selection-start-column="43" selection-end-line="119" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/model/SharedPrefs.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="60" max-vertical-offset="1905">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/custom/SendLocationUpdate.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1101" max-vertical-offset="1575">
+          <caret line="99" column="0" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/InitialActivity.java">
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/ChooseRoleActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="990">
-          <caret line="31" column="13" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="13" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="6859" max-vertical-offset="7320">
+          <caret line="476" column="5" selection-start-line="312" selection-start-column="3" selection-end-line="476" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#3938#5562#0" expanded="true" />
+            <element signature="e#5514#5515#0" expanded="true" />
+            <element signature="e#5626#6442#0" expanded="true" />
+            <element signature="e#6427#6428#0" expanded="true" />
+            <element signature="e#6496#6905#0" expanded="true" />
+            <element signature="e#6890#6891#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/custom/GetCurrentLocation.java">
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/custom/PlotMyNeighboursHail.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1365">
-          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="540" max-vertical-offset="3075">
+          <caret line="195" column="5" selection-start-line="195" selection-start-column="5" selection-end-line="195" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/custom/GetAutoPredictions.java">
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainBrokerActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4047619" vertical-offset="0" max-vertical-offset="1305">
-          <caret line="31" column="4" selection-start-line="31" selection-start-column="4" selection-end-line="31" selection-end-column="4" />
-          <folding />
+        <state vertical-scroll-proportion="0.0" vertical-offset="2865" max-vertical-offset="13530">
+          <caret line="542" column="0" selection-start-line="542" selection-start-column="0" selection-end-line="542" selection-end-column="0" />
+          <folding>
+            <element signature="e#15993#16013#0" expanded="true" />
+            <element signature="e#16031#16052#0" expanded="true" />
+            <element signature="e#33495#33658#0" expanded="true" />
+            <element signature="e#33651#33652#0" expanded="true" />
+            <element signature="e#35255#35627#0" expanded="true" />
+            <element signature="e#35612#35613#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.2992519" vertical-offset="6919" max-vertical-offset="12045">
+          <caret line="596" column="32" selection-start-line="596" selection-start-column="32" selection-end-line="596" selection-end-column="32" />
+          <folding>
+            <element signature="e#28551#28714#0" expanded="true" />
+            <element signature="e#28707#28708#0" expanded="true" />
+            <element signature="e#30286#30658#0" expanded="true" />
+            <element signature="e#30643#30644#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

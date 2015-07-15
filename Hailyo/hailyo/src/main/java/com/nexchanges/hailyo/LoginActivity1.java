@@ -81,43 +81,6 @@ public class LoginActivity1 extends Activity {
 
             SessionRecorder.recordSessionActive("Login: digits account active", session);
             // Create a ParseUser object to create a new user
-            final ParseUser user = new ParseUser();
-            user.setUsername(phoneNumber);
-            user.setPassword("Fake Password");
-
-            // First query to check whether a ParseUser with
-            // the given phone number already exists or not
-            ParseQuery<ParseUser> query = ParseUser.getQuery();
-            query.whereEqualTo("username", phoneNumber);
-
-            query.findInBackground(new FindCallback<ParseUser>() {
-                @Override
-                public void done(List<ParseUser> parseUsers, ParseException e) {
-
-                    if (e == null) {
-                        // Successful Query
-
-                        // User already exists ? then login
-                        if (parseUsers.size() > 0) {
-                            loginUser(phoneNumber, "Fake Password");
-                        }
-                        else {
-                            // No user found, so signup
-                            signupUser(user);
-                        }
-                    }
-                    else {
-                        // Shit happened!
-                        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity1.this);
-                        builder.setMessage(e.getMessage())
-                                .setTitle("Oops-ZO!")
-                                .setPositiveButton(android.R.string.ok, null);
-                        AlertDialog dialog = builder.create();
-                        dialog.show();
-                    }
-                }
-            });
-
             navigateToHome(phoneNumber);
 
 
@@ -136,27 +99,6 @@ public class LoginActivity1 extends Activity {
             }
     };
 
-    private void loginUser(final String username, String password) {
-        ParseUser.logInInBackground(username, password, new LogInCallback() {
-            public void done(ParseUser user, ParseException e) {
-                if (user != null) {
-                    // Hooray! The user is logged in.
-                    navigateToHome(username);
-
-                } else {
-                    // Login failed!
-                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity1.this);
-                    builder.setMessage(e.getMessage())
-                            .setTitle("Oops-hol!")
-                            .setPositiveButton(android.R.string.ok, null);
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-                }
-            }
-        });
-    }
-
-
     public void navigateToHome(String phoneNumber) {
         Intent intent = new Intent(LoginActivity1.this, ChooseRoleActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -167,26 +109,6 @@ public class LoginActivity1 extends Activity {
     }
 
 
-    private void signupUser(final ParseUser user) {
-        user.signUpInBackground(new SignUpCallback() {
-            @Override
-            public void done(ParseException e) {
-                if (e == null) {
-                    // Signup successful!
-
-                    navigateToHome(user.getUsername());
-                } else {
-                    // Fail!
-                    AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity1.this);
-                    builder.setMessage(e.getMessage())
-                            .setTitle("Oops-A!")
-                            .setPositiveButton(android.R.string.ok, null);
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-                }
-            }
-        });
-    }
 
     @Override
     public void onBackPressed() {

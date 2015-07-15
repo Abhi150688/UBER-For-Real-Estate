@@ -1,12 +1,18 @@
 package com.nexchanges.hailyo;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.location.Location;
+import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -34,6 +40,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -44,6 +51,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.hrules.horizontalnumberpicker.HorizontalNumberPicker;
 import com.hrules.horizontalnumberpicker.HorizontalNumberPickerListener;
 import com.nexchanges.hailyo.custom.MyMarker;
+import com.nexchanges.hailyo.custom.SendLocationUpdate;
 import com.nexchanges.hailyo.model.DealData;
 import com.nexchanges.hailyo.model.SharedPrefs;
 import com.nexchanges.hailyo.model.VisitData;
@@ -79,12 +87,14 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
     private static final String TAG = MainBrokerActivity.class.getSimpleName();
     int max = 15, min = 5;
     int timer_val=5;
+    SendLocationUpdate sendLocationUpdate = new SendLocationUpdate();
 
     private static final String url = "https://api.myjson.com/bins/nk0q";
     private ProgressDialog pDialog;
     private List<VisitData> visitList = new ArrayList<VisitData>();
     private ListView listView;
     private CustomListAdapter_Visit adapter;
+    LocationManager mLocationManager;
     String type_user;
 
 
@@ -208,7 +218,12 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
         adapterYo = new CustomListAdapter_Yo(this, yoList);
         listViewYo.setAdapter(adapterYo);
 
+        mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
+        if (checkLocationServices()){
+
+            mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,60000,10
+                , (android.location.LocationListener) mLocationListener);}
 
         //Yo Data
 
@@ -937,7 +952,67 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
 
     }
 
+    private final LocationListener mLocationListener = new LocationListener() {
 
+        @Override
+        public void onLocationChanged(final Location location) {
+            findMyLocation(location);
 
+        }
+    };
+
+    public void findMyLocation(final Location location) {
+
+        class TestAsync extends AsyncTask<String, Void, Void> {
+
+            protected Void doInBackground(String... params) {
+
+                double lat = location.getLatitude();
+                double lng = location.getLongitude();
+
+                String Str_Lat = String.valueOf(lat);
+                String Str_Lng = String.valueOf(lng);
+                SharedPrefs.save(context,SharedPrefs.MY_CUR_LAT,Str_Lat);
+                SharedPrefs.save(context,SharedPrefs.MY_CUR_LNG,Str_Lng);
+                String u_id = SharedPrefs.getString(context,SharedPrefs.MY_USER_ID);
+                sendLocationUpdate.sendPostRequest(u_id,Str_Lat,Str_Lng);
+                return null;
+            }
+        }
+        TestAsync TestAsync = new TestAsync();
+        TestAsync.execute();
+    }
     // End of Visits Methods
+
+    private boolean checkLocationServices() {
+
+        if (mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) ||
+                mLocationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+            return true;
+        }
+
+
+        else if (!mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) ||
+                !mLocationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+            // Build the alert dialog
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Location Services Not Active");
+            builder.setMessage("Please enable Location Services and GPS");
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    // Show location settings when the user acknowledges the alert dialog
+                    Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                    startActivity(intent);
+                }
+            });
+            Dialog alertDialog = builder.create();
+            alertDialog.setCanceledOnTouchOutside(false);
+            alertDialog.show();
+        }
+        return true;
+    }
+
+
 }
+
+

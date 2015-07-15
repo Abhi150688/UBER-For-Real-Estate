@@ -17,10 +17,18 @@ public class SharedPrefs {
     public static String EMAIL_KEY = "emailKey";
     public static String CURRENT_SPEC = "specKey";
 
+    public static String MY_CUR_LAT = "currentLat";
+    public static String MY_CUR_LNG = "currentLng";
+
     public static String PHOTO_KEY = "myphotoKey";
     public static String MY_MOBILE_KEY = "myphotoKey";
 
     public static String PROPERTY_KEY = "myphotoKey";
+    public static String MY_USER_ID = "myUserId";
+    public static String MY_CURRENT_BROKER = "myCurrentBroker";
+    public static String MY_CURRENT_HAILYO = "myCurrentHailyo";
+
+
     public static String RENT_KEY = "myphotoKey";
     public static String DEPOSIT_KEY = "myphotoKey";
     public static String STARTDATE_KEY = "myphotoKey";

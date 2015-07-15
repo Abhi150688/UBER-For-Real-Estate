@@ -11,6 +11,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.provider.MediaStore;
@@ -25,12 +26,32 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nexchanges.hailyo.model.SharedPrefs;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicHeader;
+import org.apache.http.message.BasicNameValuePair;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -40,12 +61,15 @@ import java.util.List;
 public class ChooseRoleActivity extends Activity {
 
     //declare variables
-    private String Semail, Sname, Sphoto,C = "Customer",B ="Broker";
+    private String Semail, Sname, user_role, Sphoto,C = "Customer",B ="Broker", my_user_id;
+    String URL = "http://ec2-52-25-136-179.us-west-2.compute.amazonaws.com:9000/1/user/signup";
+    StringEntity se;
     Button clientBut, brokerBut;
 
     Context context;
     EditText name, email;
     ImageButton myphoto;
+    String picturePath, mobile;
     private static final int SELECT_PHOTO = 1;
     TextView edit,fbdata;
     //CallbackManager callbackManager;
@@ -113,83 +137,22 @@ public class ChooseRoleActivity extends Activity {
 
                                                  @Override
                                                  public void onClick(View v) {
-                                                     if(name.getText().toString().trim().equalsIgnoreCase("")) {
-                                                         name.setError("Please enter name");
-                                                         return;
-                                                     }
-
-
-                                                     Semail = email.getText().toString();
-
-                                                     if(email.getText().toString().trim().equalsIgnoreCase("")) {
-                                                         email.setError("Please enter email-id");
-                                                         return;
-                                                     }
-
-                                                     name.addTextChangedListener(new TextWatcher() {
-
-                                                         @Override
-                                                         public void onTextChanged(CharSequence s, int start, int before, int count) {
-                                                             name.setError(null);
-
-                                                         }
-
-                                                         @Override
-                                                         public void beforeTextChanged(CharSequence s, int start, int count,
-                                                                                       int after) {
-                                                             // TODO Auto-generated method stub
-
-                                                         }
-
-                                                         @Override
-                                                         public void afterTextChanged(Editable s) {
-                                                             name.setError(null);
-
-                                                         }
-                                                     });
-
-
-
-                                                     email.addTextChangedListener(new TextWatcher() {
-                                                         @Override
-                                                         public void onTextChanged(CharSequence s, int start, int before, int count) {
-                                                             email.setError(null);
-
-                                                         }
-
-                                                         @Override
-                                                         public void beforeTextChanged(CharSequence s, int start, int count,
-                                                                                       int after) {
-                                                             // TODO Auto-generated method stub
-
-                                                         }
-
-                                                         @Override
-                                                         public void afterTextChanged(Editable s) {
-                                                             email.setError(null);
-
-                                                         }
-                                                     });
-
+                                                     validationCheck();
 
 
                                                      if ((name.getText().toString().length()>0) &&
                                                              ( email.getText().toString().length()>0))
                                                      {
                                                          // TODO Auto-generated method stub
-                                                         clientBut.setBackgroundColor(Color.parseColor("#FFA500"));
-                                                         clientBut.setTextColor(Color.WHITE);
+                                                        // clientBut.setBackgroundColor(Color.parseColor("#FFA500"));
+                                                         //clientBut.setTextColor(Color.WHITE);
                                                          String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
                                                          Sname = name.getText().toString();
                                                          Semail = email.getText().toString();
 
-
-                                                         SharedPrefs.save(context, SharedPrefs.MY_ROLE_KEY, C);
-                                                         SharedPrefs.save(context, SharedPrefs.NAME_KEY, Sname);
-                                                         SharedPrefs.save(context, SharedPrefs.EMAIL_KEY, Semail);
-                                                         Intent MainActivity = new Intent(context, MainActivity.class);
-                                                         startActivity(MainActivity);
-                                                         finish();
+                                                         user_role = "client";
+                                                         mobile = SharedPrefs.getString(context, SharedPrefs.MY_MOBILE_KEY);
+                                                         sendPostRequest(mobile, "+91", Semail,Sname,user_role);
                                                      }
 
 
@@ -206,86 +169,20 @@ public class ChooseRoleActivity extends Activity {
                 @Override
                 public void onClick (View v){
 
-                    if(name.getText().toString().trim().equalsIgnoreCase("")) {
-                        name.setError("Please enter name");
-                        return;
-                    }
-
-
-                    Semail = email.getText().toString();
-
-                    if(email.getText().toString().trim().equalsIgnoreCase("")) {
-                        email.setError("Please enter email-id");
-                        return;
-                    }
-
-                    name.addTextChangedListener(new TextWatcher() {
-
-                        @Override
-                        public void onTextChanged(CharSequence s, int start, int before, int count) {
-                            name.setError(null);
-
-                        }
-
-                        @Override
-                        public void beforeTextChanged(CharSequence s, int start, int count,
-                                                      int after) {
-                            // TODO Auto-generated method stub
-
-                        }
-
-                        @Override
-                        public void afterTextChanged(Editable s) {
-                            name.setError(null);
-
-                        }
-                    });
-
-
-
-                    email.addTextChangedListener(new TextWatcher() {
-                        @Override
-                        public void onTextChanged(CharSequence s, int start, int before, int count) {
-                            email.setError(null);
-
-                        }
-
-                        @Override
-                        public void beforeTextChanged(CharSequence s, int start, int count,
-                                                      int after) {
-                            // TODO Auto-generated method stub
-
-                        }
-
-                        @Override
-                        public void afterTextChanged(Editable s) {
-                            email.setError(null);
-
-                        }
-                    });
-
-
+                 validationCheck();
 
                     if ((name.getText().toString().length()>0) &&
                             ( email.getText().toString().length()>0))
                     {
                         // TODO Auto-generated method stub
-                        brokerBut.setBackgroundColor(Color.parseColor("#FFA500"));
-                        brokerBut.setTextColor(Color.WHITE);
+                       // brokerBut.setBackgroundColor(Color.parseColor("#FFA500"));
+                        //brokerBut.setTextColor(Color.WHITE);
 
 
-                        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
                         Sname = name.getText().toString();
                         Semail = email.getText().toString();
-
-
-                        SharedPrefs.save(context, SharedPrefs.NAME_KEY, Sname);
-                        SharedPrefs.save(context, SharedPrefs.MY_ROLE_KEY, B);
-                        SharedPrefs.save(context, SharedPrefs.EMAIL_KEY, Semail);
-                        // editor.putString(MyPhoto, encodeTobase64(bitphoto));
-                        Intent MainBrokerActivity = new Intent(context, MainBrokerActivity.class);
-                        startActivity(MainBrokerActivity);
-                        finish();
+                        user_role = "broker";
+                        sendPostRequest(mobile, "+91", Semail,Sname,user_role);
                     }
 
             }
@@ -322,7 +219,7 @@ public class ChooseRoleActivity extends Activity {
             SelectedCursor.moveToFirst();
 
             int columnIndex = SelectedCursor.getColumnIndex(FilePathColumn[0]);
-            String picturePath = SelectedCursor.getString(columnIndex);
+            picturePath = SelectedCursor.getString(columnIndex);
             SelectedCursor.close();
 
             myphoto.setImageBitmap(BitmapFactory.decodeFile(picturePath));
@@ -351,6 +248,233 @@ public class ChooseRoleActivity extends Activity {
         } return account;
     }
 
+    private void validationCheck()
+    {
+
+        if(name.getText().toString().trim().equalsIgnoreCase("")) {
+            name.setError("Please enter name");
+            return;
+        }
+
+
+        Semail = email.getText().toString();
+
+        if(email.getText().toString().trim().equalsIgnoreCase("")) {
+            email.setError("Please enter email-id");
+            return;
+        }
+
+        name.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                name.setError(null);
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                name.setError(null);
+
+            }
+        });
+
+
+
+        email.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                email.setError(null);
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                email.setError(null);
+
+            }
+        });
+ }
+
+    private void sendPostRequest(final String mobile, final String code, final String Semail, final String Sname, final String user_role)
+    {
+
+
+        class SendPostReqAsyncTask extends AsyncTask<String, Void,String> {
+
+            @Override
+            protected String doInBackground(String... params) {
+
+                JSONObject jsonObject = new JSONObject();
+                try {
+                    jsonObject.accumulate("mobile_no", mobile);
+                    jsonObject.accumulate("mobile_code", code);
+                    jsonObject.accumulate("email", Semail);
+                    jsonObject.accumulate("name", Sname);
+                    jsonObject.accumulate("user_role", user_role);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+                HttpClient httpClient = new DefaultHttpClient();
+
+                // In a POST request, we don't pass the values in the URL.
+                //Therefore we use only the web page URL as the parameter of the HttpPost argument
+                HttpPost httpPost = new HttpPost(URL);
+
+
+                try {
+                    se = new StringEntity(jsonObject.toString());
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+
+
+               /* // Because we are not passing values over the URL, we should have a mechanism to pass the values that can be
+                //uniquely separate by the other end.
+                //To achieve that we use BasicNameValuePair
+                //Things we need to pass with the POST request
+                BasicNameValuePair mobileBasicNameValuePair = new BasicNameValuePair("parammobile", parammobile);
+                BasicNameValuePair codeBasicNameValuePAir = new BasicNameValuePair("paramcode", paramcode);
+                BasicNameValuePair emailBasicNameValuePAir = new BasicNameValuePair("paramemail", paramemail);
+                BasicNameValuePair nameBasicNameValuePAir = new BasicNameValuePair("paramname", paramname);
+                BasicNameValuePair roleBasicNameValuePAir = new BasicNameValuePair("paramrole", paramrole);
+
+                // We add the content that we want to pass with the POST request to as name-value pairs
+                //Now we put those sending details to an ArrayList with type safe of NameValuePair
+                List<NameValuePair> nameValuePairList = new ArrayList<NameValuePair>();
+                nameValuePairList.add(mobileBasicNameValuePair);
+                nameValuePairList.add(codeBasicNameValuePAir);
+                nameValuePairList.add(emailBasicNameValuePAir);
+                nameValuePairList.add(nameBasicNameValuePAir);
+                nameValuePairList.add(roleBasicNameValuePAir);*/
+
+
+                // UrlEncodedFormEntity is an entity composed of a list of url-encoded pairs.
+                //This is typically useful while sending an HTTP POST request.
+                //UrlEncodedFormEntity urlEncodedFormEntity = new UrlEncodedFormEntity(se);
+
+                // setEntity() hands the entity (here it is urlEncodedFormEntity) to the request.
+                se.setContentType(new BasicHeader("Content-Type", "application/json"));
+
+                httpPost.setEntity(se);
+                httpPost.setHeader("Accept", "application/json");
+                httpPost.setHeader("Content-Type", "application/json");
+
+                try {
+                    // HttpResponse is an interface just like HttpPost.
+                    //Therefore we can't initialize them
+                    HttpResponse httpResponse = httpClient.execute(httpPost);
+
+                    int response = httpResponse.getStatusLine().getStatusCode();
+                    System.out.print("Value of response code is: " + response);
+
+                    if (response == 200 || response == 201)
+                    {
+                        signup_success();
+                    }
+
+                    else
+                    {
+                        System.out.print("LoginFailed Try again");
+                    }
+
+                    // According to the JAVA API, InputStream constructor do nothing.
+                    //So we can't initialize InputStream although it is not an interface
+                    InputStream inputStream = httpResponse.getEntity().getContent();
+
+                    InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+
+                    BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                    StringBuilder stringBuilder = new StringBuilder();
+
+                    String bufferedStrChunk = null;
+
+                    while((bufferedStrChunk = bufferedReader.readLine()) != null){
+                        stringBuilder.append(bufferedStrChunk);
+                    }
+
+                    return stringBuilder.toString();
+
+                } catch (ClientProtocolException cpe) {
+                    System.out.println("First Exception coz of HttpResponese :" + cpe);
+                    cpe.printStackTrace();
+                } catch (IOException ioe) {
+                    System.out.println("Second Exception coz of HttpResponse :" + ioe);
+                    ioe.printStackTrace();
+                }
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(String result) {
+                super.onPostExecute(result);
+
+//parse json response
+
+                try {
+                    JSONObject jsonObject = new JSONObject(result);
+                    for(int i=0; i < jsonObject.length(); i++) {
+
+                        my_user_id = jsonObject.getString("user_id");
+
+
+                    } //
+                   // End Loop
+                SharedPrefs.save(context,SharedPrefs.MY_USER_ID,my_user_id);
+
+                } catch (JSONException e) {
+                    Log.e("JSONException", "Error: " + e.toString());
+                }
+
+            }
+
+
+        }
+
+        SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
+        sendPostReqAsyncTask.execute(mobile,code,Semail,Sname,user_role);
+    }
+
+    void signup_success()
+    {
+        SharedPrefs.save(context, SharedPrefs.MY_ROLE_KEY, user_role);
+        SharedPrefs.save(context, SharedPrefs.NAME_KEY, Sname);
+        SharedPrefs.save(context, SharedPrefs.EMAIL_KEY, Semail);
+
+        if (user_role.equalsIgnoreCase("client"))
+        {
+            Intent NextActivity = new Intent(context, MainActivity.class);
+            startActivity(NextActivity);
+            finish();
+        }
+
+        else if (user_role.equalsIgnoreCase("broker"))
+        {
+            Intent NextActivity = new Intent(context, MainBrokerActivity.class);
+            startActivity(NextActivity);
+            finish();
+        }
+        // editor.putString(MyPhoto, encodeTobase64(bitphoto));
+
+    }
 }
 
 

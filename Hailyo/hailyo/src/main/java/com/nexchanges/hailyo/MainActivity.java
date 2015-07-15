@@ -1,13 +1,21 @@
 package com.nexchanges.hailyo;
 
+import android.app.AlarmManager;
+import android.app.AlertDialog;
+import android.app.Dialog;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.location.Location;
+import android.location.LocationManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.ActionBarDrawerToggle;
 
 import android.support.v4.view.GravityCompat;
@@ -36,6 +44,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -44,6 +53,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.nexchanges.hailyo.custom.MyMarker;
+import com.nexchanges.hailyo.custom.SendLocationUpdate;
 import com.nexchanges.hailyo.model.DealData;
 import com.nexchanges.hailyo.model.SharedPrefs;
 import com.nexchanges.hailyo.model.VisitData;
@@ -76,6 +86,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
     private ListView listView;
     private CustomListAdapter_Visit adapter;
     SwipeRefreshLayout visit_refresh, deal_refresh;
+    SendLocationUpdate sendLocationUpdate = new SendLocationUpdate();
 
 
     //View All Deals
@@ -117,6 +128,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
     String fetchname, fetchemail,fetchphoto;
     ViewFlipper VF10;
     ImageView smallphoto;
+    LocationManager mLocationManager;
 
     private ArrayList<MyMarker> mMyMarkersArray = new ArrayList<MyMarker>();
     private HashMap<Marker, MyMarker> mMarkersHashMap;
@@ -132,6 +144,13 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
 
         sb1 = (SeekBar)findViewById(R.id.seekBar2);
         sb1.setOnSeekBarChangeListener(this);
+
+        mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        if (checkLocationServices()){
+        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,60000,10
+                , (android.location.LocationListener) mLocationListener);}
+
+
 
         visit_refresh = (SwipeRefreshLayout)findViewById(R.id.visit_refresh);
         deal_refresh = (SwipeRefreshLayout)findViewById(R.id.deal_refresh);
@@ -214,6 +233,8 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                 deals.setTextColor(Color.BLACK);
                  }
         });
+
+
 
 
 
@@ -477,6 +498,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
             public void onComplete(Location location) {
                 if (location != null) {
                     currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
+
                     map.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
                     map.animateCamera(CameraUpdateFactory.zoomTo(15));
 
@@ -486,6 +508,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                 }
             }
         });
+
 
     }
 
@@ -824,6 +847,65 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         MyApplication.getInstance().addToRequestQueue(visitReq);
 
 
+    }
+
+    private final LocationListener mLocationListener = new LocationListener() {
+
+        @Override
+        public void onLocationChanged(final Location location) {
+            findMyLocation(location);
+
+        }
+    };
+
+    public void findMyLocation(final Location location) {
+
+        class TestAsync extends AsyncTask<String, Void, Void> {
+
+            protected Void doInBackground(String... params) {
+
+                double lat = location.getLatitude();
+                double lng = location.getLongitude();
+
+                String Str_Lat = String.valueOf(lat);
+                String Str_Lng = String.valueOf(lng);
+                SharedPrefs.save(context,SharedPrefs.MY_CUR_LAT,Str_Lat);
+                SharedPrefs.save(context,SharedPrefs.MY_CUR_LNG,Str_Lng);
+                String u_id = SharedPrefs.getString(context,SharedPrefs.MY_USER_ID);
+                sendLocationUpdate.sendPostRequest(u_id,Str_Lat,Str_Lng);
+                return null;
+            }
+          }
+        TestAsync TestAsync = new TestAsync();
+        TestAsync.execute();
+    }
+
+    private boolean checkLocationServices() {
+
+        if (mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) ||
+                mLocationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+           return true;
+        }
+
+
+           else if (!mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) ||
+                !mLocationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
+            // Build the alert dialog
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Location Services Not Active");
+            builder.setMessage("Please enable Location Services and GPS");
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    // Show location settings when the user acknowledges the alert dialog
+                    Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                    startActivity(intent);
+                }
+            });
+            Dialog alertDialog = builder.create();
+            alertDialog.setCanceledOnTouchOutside(false);
+            alertDialog.show();
+        }
+        return true;
     }
 
 }
