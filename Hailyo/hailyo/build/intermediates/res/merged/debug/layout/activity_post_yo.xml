@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="@color/white"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:id="@+id/content_frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/main_background">
+
+
+            <FrameLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_marginTop="1dp"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:id="@+id/root_view">
+
+                <fragment
+                    android:id="@+id/map"
+                    android:name="com.nexchanges.hailyo.ui.CustomMapFragment"
+                    android:layout_width="match_parent"
+                    android:layout_height="454dp"/>
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/cancel_visit"
+                        android:background="@null"
+                        android:layout_marginBottom="5dp"
+                        android:id="@+id/cancel" />
+
+
+                </RelativeLayout>
+
+
+
+                <TextView
+                    android:id="@+id/timer"
+                    android:layout_width="90dp"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:layout_height="90dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/button_border"
+
+                      />
+
+
+
+
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@color/white"
+            android:layout_gravity="center_horizontal|bottom"
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Broker has YO-ed!! Site Visit will start shortly!"
+                android:textSize="15dp"/>
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
+                android:weightSum="1"
+                android:layout_marginBottom="5dp"
+                android:orientation="horizontal"
+               >
+
+                <ImageButton
+                    android:id="@+id/mybroker"
+                    android:layout_gravity="left|center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:src="@drawable/roundbutton"
+                    android:background="@null"
+                    android:paddingLeft="2dp"
+                    android:paddingTop="5dp"
+                    android:scaleType="centerInside"
+                    android:adjustViewBounds="true"
+                    />
+
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="115dp"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:gravity="center"
+                    android:layout_marginBottom="5dp"
+                    android:orientation="vertical"
+                    >
+
+
+
+                <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:id="@+id/bname"
+                   android:layout_marginTop="10dp"
+                   android:layout_gravity="center_horizontal|center"
+                   android:gravity="center"
+                   android:textSize="20dp"
+                   android:textAppearance="?android:attr/textAppearanceMedium"
+                   android:textColor="#28b54c" />
+
+                    <RatingBar
+                        android:layout_width="wrap_content"
+                         android:layout_height="wrap_content"
+                        android:isIndicator="true"
+                        android:id="@+id/ratingBar"
+                        android:layout_marginTop="5dp"
+                        android:clickable="true"
+                        android:layout_marginBottom="4dp"
+                        android:numStars="5" />
+
+
+
+            </LinearLayout>
+                </LinearLayout>
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                >
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_border"
+                    android:textColor="@color/black"
+                    android:text="ALL VISITS"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:textAllCaps="false"
+                    android:textSize="20sp"
+                    android:layout_weight="1"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/visits" />
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_border"
+                    android:textColor="@color/black"
+                    android:text="ALL DEALS"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:paddingRight="5dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_horizontal"
+                    android:textAllCaps="false"
+                    android:textSize="20sp"
+                    android:id="@+id/deals" />
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+
+    </FrameLayout>
+
+
+</LinearLayout><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/layout/activity_post_yo.xml -->

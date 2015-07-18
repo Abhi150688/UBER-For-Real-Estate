@@ -3,13 +3,17 @@ package com.nexchanges.hailyo;
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -20,6 +24,7 @@ import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Base64;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,6 +33,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.gcm.GoogleCloudMessaging;
+import com.nexchanges.hailyo.custom.RippleBackground;
 import com.nexchanges.hailyo.model.SharedPrefs;
 
 import org.apache.http.HttpResponse;
@@ -43,6 +52,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import com.github.siyamed.shapeimageview.*;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
@@ -59,19 +69,23 @@ import java.util.List;
  * Created by AbhishekWork on 22/06/15.
  */
 public class ChooseRoleActivity extends Activity {
+    final int RQS_GooglePlayServices = 1;
 
     //declare variables
-    private String Semail, Sname, user_role, Sphoto,C = "Customer",B ="Broker", my_user_id;
+    private String Semail, Sname, user_role, Sphoto, C = "Customer", B = "Broker", my_user_id, my_gcm_id;
     String URL = "http://ec2-52-25-136-179.us-west-2.compute.amazonaws.com:9000/1/user/signup";
     StringEntity se;
     Button clientBut, brokerBut;
-
+    Dialog alertD;
     Context context;
     EditText name, email;
-    ImageButton myphoto;
+    ImageView myphoto;
     String picturePath, mobile;
     private static final int SELECT_PHOTO = 1;
-    TextView edit,fbdata;
+    GoogleCloudMessaging gcm;
+    String regid, GCMID;
+    String PROJECT_NUMBER = "250185285941";
+    TextView edit, fbdata;
     //CallbackManager callbackManager;
     //ImageButton fb;
     //LoginManager loginManager;
@@ -82,29 +96,29 @@ public class ChooseRoleActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.choose_role);
+        checkGCMService();
 
-
+        final RippleBackground rippleBackground = (RippleBackground) findViewById(R.id.content);
 
         context = this;
         name = (EditText) findViewById(R.id.etname);
         email = (EditText) findViewById(R.id.etemail);
-       // fbdata = (TextView)findViewById(R.id.fbtext);
+        // fbdata = (TextView)findViewById(R.id.fbtext);
 //        fb = (ImageButton)findViewById(R.id.fb);
 
 
         clientBut = (Button) findViewById(R.id.iamclient);
         brokerBut = (Button) findViewById(R.id.iambroker);
 
-        myphoto = (ImageButton) findViewById(R.id.myphoto);
+        myphoto = (ImageView) findViewById(R.id.myphoto);
 
-        edit = (TextView)findViewById(R.id.edit);
+        edit = (TextView) findViewById(R.id.edit);
 
 
-
-    //    FacebookSdk.sdkInitialize(context);
-  //      callbackManager = CallbackManager.Factory.create();
-  //      FacebookSdk.addLoggingBehavior(LoggingBehavior.REQUESTS);
-    //    loginManager = LoginManager.getInstance();
+        //    FacebookSdk.sdkInitialize(context);
+        //      callbackManager = CallbackManager.Factory.create();
+        //      FacebookSdk.addLoggingBehavior(LoggingBehavior.REQUESTS);
+        //    loginManager = LoginManager.getInstance();
 //        loginManager.setDefaultAudience(DefaultAudience.EVERYONE);
 
 
@@ -130,90 +144,96 @@ public class ChooseRoleActivity extends Activity {
         Sname = name.getText().toString();
 
 
-
         clientBut.setOnClickListener(new View.OnClickListener()
 
-                                             {
+                                     {
 
-                                                 @Override
-                                                 public void onClick(View v) {
-                                                     validationCheck();
-
-
-                                                     if ((name.getText().toString().length()>0) &&
-                                                             ( email.getText().toString().length()>0))
-                                                     {
-                                                         // TODO Auto-generated method stub
-                                                        // clientBut.setBackgroundColor(Color.parseColor("#FFA500"));
-                                                         //clientBut.setTextColor(Color.WHITE);
-                                                         String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-                                                         Sname = name.getText().toString();
-                                                         Semail = email.getText().toString();
-
-                                                         user_role = "client";
-                                                         mobile = SharedPrefs.getString(context, SharedPrefs.MY_MOBILE_KEY);
-                                                         sendPostRequest(mobile, "+91", Semail,Sname,user_role);
-                                                     }
+                                         @Override
+                                         public void onClick(View v) {
+                                             validationCheck();
 
 
-                                                 }
+                                             if ((name.getText().toString().length() > 0) &&
+                                                     (email.getText().toString().length() > 0)) {
+                                                 // TODO Auto-generated method stub
+                                                 clientBut.setBackgroundColor(Color.parseColor("#FFA500"));
+                                                 clientBut.setTextColor(Color.WHITE);
+                                                 brokerBut.setBackgroundColor(Color.LTGRAY);
+                                                 brokerBut.setTextColor(Color.BLACK);
+
+                                                 String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+                                                 Sname = name.getText().toString();
+                                                 Semail = email.getText().toString();
+
+                                                 user_role = "client";
+                                                 mobile = SharedPrefs.getString(context, SharedPrefs.MY_MOBILE_KEY);
+
+                                                 sendPostRequest(mobile, "+91", Semail, Sname, user_role);
+                                                 GCMID = registerGCM();
+                                                 signup_success();
                                              }
 
-                );
+
+                                         }
+                                     }
+
+        );
 
 
-            brokerBut.setOnClickListener(new View.OnClickListener()
+        brokerBut.setOnClickListener(new View.OnClickListener()
 
-            {
+                                     {
 
-                @Override
-                public void onClick (View v){
+                                         @Override
+                                         public void onClick(View v) {
 
-                 validationCheck();
+                                             validationCheck();
 
-                    if ((name.getText().toString().length()>0) &&
-                            ( email.getText().toString().length()>0))
-                    {
-                        // TODO Auto-generated method stub
-                       // brokerBut.setBackgroundColor(Color.parseColor("#FFA500"));
-                        //brokerBut.setTextColor(Color.WHITE);
-
-
-                        Sname = name.getText().toString();
-                        Semail = email.getText().toString();
-                        user_role = "broker";
-                        sendPostRequest(mobile, "+91", Semail,Sname,user_role);
-                    }
-
-            }
-            }
-
-            );
-
-            edit.setOnClickListener(new View.OnClickListener()
-
-            {
-
-                @Override
-                public void onClick (View v){
-                Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
-                photoPickerIntent.setType("image/*");
-                // photoPickerIntent.putExtra("crop", "true");
-                startActivityForResult(photoPickerIntent, SELECT_PHOTO);
+                                             if ((name.getText().toString().length() > 0) &&
+                                                     (email.getText().toString().length() > 0)) {
+                                                 // TODO Auto-generated method stub
+                                                 brokerBut.setBackgroundColor(Color.parseColor("#FFA500"));
+                                                 brokerBut.setTextColor(Color.WHITE);
+                                                 clientBut.setBackgroundColor(Color.LTGRAY);
+                                                 clientBut.setTextColor(Color.BLACK);
 
 
-            }
-            }
+                                                 Sname = name.getText().toString();
+                                                 Semail = email.getText().toString();
+                                                 user_role = "broker";
+                                                 sendPostRequest(mobile, "+91", Semail, Sname, user_role);
+                                                 signup_success();
+                                             }
 
-            );
+                                         }
+                                     }
 
-        }
+        );
+
+        edit.setOnClickListener(new View.OnClickListener()
+
+                                {
+
+                                    @Override
+                                    public void onClick(View v) {
+                                        Intent photoPickerIntent = new Intent(Intent.ACTION_PICK);
+                                        photoPickerIntent.setType("image/*");
+                                        // photoPickerIntent.putExtra("crop", "true");
+                                        startActivityForResult(photoPickerIntent, SELECT_PHOTO);
+
+
+                                    }
+                                }
+
+        );
+
+    }
 
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (requestCode == SELECT_PHOTO && resultCode == RESULT_OK && null!= data) {
+        if (requestCode == SELECT_PHOTO && resultCode == RESULT_OK && null != data) {
 
-                Uri selectedImageUri = data.getData();
-                String[] FilePathColumn = {MediaStore.Images.Media.DATA };
+            Uri selectedImageUri = data.getData();
+            String[] FilePathColumn = {MediaStore.Images.Media.DATA};
 
             Cursor SelectedCursor = getContentResolver().query(selectedImageUri, FilePathColumn, null, null, null);
             SelectedCursor.moveToFirst();
@@ -223,6 +243,7 @@ public class ChooseRoleActivity extends Activity {
             SelectedCursor.close();
 
             myphoto.setImageBitmap(BitmapFactory.decodeFile(picturePath));
+
             SharedPrefs.save(context, SharedPrefs.PHOTO_KEY, picturePath);
 
 
@@ -238,6 +259,7 @@ public class ChooseRoleActivity extends Activity {
             return account.name;
         }
     }
+
     private static Account getAccount(AccountManager accountManager) {
         Account[] accounts = accountManager.getAccountsByType("com.google");
         Account account;
@@ -245,13 +267,13 @@ public class ChooseRoleActivity extends Activity {
             account = accounts[0];
         } else {
             account = null;
-        } return account;
+        }
+        return account;
     }
 
-    private void validationCheck()
-    {
+    private void validationCheck() {
 
-        if(name.getText().toString().trim().equalsIgnoreCase("")) {
+        if (name.getText().toString().trim().equalsIgnoreCase("")) {
             name.setError("Please enter name");
             return;
         }
@@ -259,7 +281,7 @@ public class ChooseRoleActivity extends Activity {
 
         Semail = email.getText().toString();
 
-        if(email.getText().toString().trim().equalsIgnoreCase("")) {
+        if (email.getText().toString().trim().equalsIgnoreCase("")) {
             email.setError("Please enter email-id");
             return;
         }
@@ -287,7 +309,6 @@ public class ChooseRoleActivity extends Activity {
         });
 
 
-
         email.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -308,13 +329,18 @@ public class ChooseRoleActivity extends Activity {
 
             }
         });
- }
+    }
 
-    private void sendPostRequest(final String mobile, final String code, final String Semail, final String Sname, final String user_role)
-    {
+    private void sendPostRequest(final String mobile, final String code, final String Semail, final String Sname, final String user_role) {
 
 
-        class SendPostReqAsyncTask extends AsyncTask<String, Void,String> {
+        class SendPostReqAsyncTask extends AsyncTask<String, Void, String> {
+
+            @Override
+            protected void onPreExecute() {
+                showSplashScreen();
+            }
+
 
             @Override
             protected String doInBackground(String... params) {
@@ -327,14 +353,14 @@ public class ChooseRoleActivity extends Activity {
                     jsonObject.accumulate("name", Sname);
                     jsonObject.accumulate("user_role", user_role);
 
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
 
+
                 HttpClient httpClient = new DefaultHttpClient();
 
-                // In a POST request, we don't pass the values in the URL.
-                //Therefore we use only the web page URL as the parameter of the HttpPost argument
                 HttpPost httpPost = new HttpPost(URL);
 
 
@@ -345,31 +371,6 @@ public class ChooseRoleActivity extends Activity {
                 }
 
 
-               /* // Because we are not passing values over the URL, we should have a mechanism to pass the values that can be
-                //uniquely separate by the other end.
-                //To achieve that we use BasicNameValuePair
-                //Things we need to pass with the POST request
-                BasicNameValuePair mobileBasicNameValuePair = new BasicNameValuePair("parammobile", parammobile);
-                BasicNameValuePair codeBasicNameValuePAir = new BasicNameValuePair("paramcode", paramcode);
-                BasicNameValuePair emailBasicNameValuePAir = new BasicNameValuePair("paramemail", paramemail);
-                BasicNameValuePair nameBasicNameValuePAir = new BasicNameValuePair("paramname", paramname);
-                BasicNameValuePair roleBasicNameValuePAir = new BasicNameValuePair("paramrole", paramrole);
-
-                // We add the content that we want to pass with the POST request to as name-value pairs
-                //Now we put those sending details to an ArrayList with type safe of NameValuePair
-                List<NameValuePair> nameValuePairList = new ArrayList<NameValuePair>();
-                nameValuePairList.add(mobileBasicNameValuePair);
-                nameValuePairList.add(codeBasicNameValuePAir);
-                nameValuePairList.add(emailBasicNameValuePAir);
-                nameValuePairList.add(nameBasicNameValuePAir);
-                nameValuePairList.add(roleBasicNameValuePAir);*/
-
-
-                // UrlEncodedFormEntity is an entity composed of a list of url-encoded pairs.
-                //This is typically useful while sending an HTTP POST request.
-                //UrlEncodedFormEntity urlEncodedFormEntity = new UrlEncodedFormEntity(se);
-
-                // setEntity() hands the entity (here it is urlEncodedFormEntity) to the request.
                 se.setContentType(new BasicHeader("Content-Type", "application/json"));
 
                 httpPost.setEntity(se);
@@ -377,25 +378,17 @@ public class ChooseRoleActivity extends Activity {
                 httpPost.setHeader("Content-Type", "application/json");
 
                 try {
-                    // HttpResponse is an interface just like HttpPost.
-                    //Therefore we can't initialize them
                     HttpResponse httpResponse = httpClient.execute(httpPost);
 
                     int response = httpResponse.getStatusLine().getStatusCode();
                     System.out.print("Value of response code is: " + response);
 
-                    if (response == 200 || response == 201)
-                    {
+                    if (response == 200 || response == 201) {
                         signup_success();
-                    }
-
-                    else
-                    {
+                    } else {
                         System.out.print("LoginFailed Try again");
                     }
 
-                    // According to the JAVA API, InputStream constructor do nothing.
-                    //So we can't initialize InputStream although it is not an interface
                     InputStream inputStream = httpResponse.getEntity().getContent();
 
                     InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
@@ -406,7 +399,7 @@ public class ChooseRoleActivity extends Activity {
 
                     String bufferedStrChunk = null;
 
-                    while((bufferedStrChunk = bufferedReader.readLine()) != null){
+                    while ((bufferedStrChunk = bufferedReader.readLine()) != null) {
                         stringBuilder.append(bufferedStrChunk);
                     }
 
@@ -426,57 +419,143 @@ public class ChooseRoleActivity extends Activity {
             @Override
             protected void onPostExecute(String result) {
                 super.onPostExecute(result);
+                removeSplashScreen();
 
 //parse json response
+                if (result != null) {
 
-                try {
-                    JSONObject jsonObject = new JSONObject(result);
-                    for(int i=0; i < jsonObject.length(); i++) {
+                    try {
+                        JSONObject jsonObject = new JSONObject(result);
+                        for (int i = 0; i < jsonObject.length(); i++) {
 
-                        my_user_id = jsonObject.getString("user_id");
+                            my_user_id = jsonObject.getString("user_id");
 
 
-                    } //
-                   // End Loop
-                SharedPrefs.save(context,SharedPrefs.MY_USER_ID,my_user_id);
+                        } //
+                        // End Loop
+                        SharedPrefs.save(context, SharedPrefs.MY_USER_ID, my_user_id);
 
-                } catch (JSONException e) {
-                    Log.e("JSONException", "Error: " + e.toString());
+                    } catch (JSONException e) {
+                        Log.e("JSONException", "Error: " + e.toString());
+                    }
                 }
-
             }
 
 
         }
 
         SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
-        sendPostReqAsyncTask.execute(mobile,code,Semail,Sname,user_role);
+        sendPostReqAsyncTask.execute(mobile, code, Semail, Sname, user_role);
     }
 
-    void signup_success()
-    {
+    void signup_success() {
         SharedPrefs.save(context, SharedPrefs.MY_ROLE_KEY, user_role);
         SharedPrefs.save(context, SharedPrefs.NAME_KEY, Sname);
         SharedPrefs.save(context, SharedPrefs.EMAIL_KEY, Semail);
+        SharedPrefs.save(context, SharedPrefs.MY_GCM_ID, regid);
 
-        if (user_role.equalsIgnoreCase("client"))
+       /* if(regid.length()==0)
         {
-            Intent NextActivity = new Intent(context, MainActivity.class);
-            startActivity(NextActivity);
-            finish();
-        }
+            registerGCM();
+        }*/
 
-        else if (user_role.equalsIgnoreCase("broker"))
-        {
-            Intent NextActivity = new Intent(context, MainBrokerActivity.class);
-            startActivity(NextActivity);
-            finish();
+       // if (!my_user_id.isEmpty() && !regid.isEmpty())
+
+            if (!my_user_id.isEmpty()){
+
+            switch (user_role) {
+
+                case "client":
+                    Intent NextActivity = new Intent(context, MainActivity.class);
+                    startActivity(NextActivity);
+                    finish();
+                    break;
+                case "broker":
+                    Intent NextBroActivity = new Intent(context, MainBrokerActivity.class);
+                    startActivity(NextBroActivity);
+                    finish();
+                    break;
+            }
+
+           /* if (user_role.equalsIgnoreCase("client")) {
+                Intent NextActivity = new Intent(context, MainActivity.class);
+                startActivity(NextActivity);
+                finish();
+            } else if (user_role.equalsIgnoreCase("broker")) {
+                Intent NextActivity = new Intent(context, MainBrokerActivity.class);
+                startActivity(NextActivity);
+                finish();
+            }*/
+            // editor.putString(MyPhoto, encodeTobase64(bitphoto));
+
         }
-        // editor.putString(MyPhoto, encodeTobase64(bitphoto));
+    }
+
+    protected void showSplashScreen() {
+
+        LayoutInflater layoutInflater = LayoutInflater.from(context);
+        View View = layoutInflater.inflate(R.layout.splashscreen, null);
+
+        final RippleBackground rippleBackground = (RippleBackground) View.findViewById(R.id.content);
+        rippleBackground.startRippleAnimation();
+        alertD = new Dialog(context);
+        alertD.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        alertD.setContentView(View);
+        alertD.setCancelable(false);
+        alertD.show();
+        alertD.getWindow().setLayout(500, 500);
 
     }
+
+    protected void removeSplashScreen() {
+        if (alertD != null) {
+            alertD.dismiss();
+            alertD = null;
+        }
+    }
+
+    private String registerGCM() {
+        new AsyncTask<Void, Void, String>() {
+            @Override
+            protected String doInBackground(Void... params) {
+                String msg = "";
+                try {
+                    if (gcm == null) {
+                        gcm = GoogleCloudMessaging.getInstance(getApplicationContext());
+                    }
+                    regid = gcm.register(PROJECT_NUMBER);
+                    SharedPrefs.save(context, SharedPrefs.MY_GCM_ID, regid);
+                    msg = "Device registered, registration ID=" + regid;
+                    System.out.print("GCM Successfully Registered");
+                    Log.i("GCM", msg);
+
+                } catch (IOException ex) {
+                    msg = "Error :" + ex.getMessage();
+                    System.out.print("Error in GCM Fetch :" + msg);
+
+
+                }
+                return msg;
+            }
+
+        }.execute(null, null, null);
+        return regid;
+    }
+
+    private void checkGCMService() {
+
+        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
+
+        if (resultCode == ConnectionResult.SUCCESS) {
+                  } else {
+            GooglePlayServicesUtil.getErrorDialog(resultCode, this, RQS_GooglePlayServices);
+        }
+
+    }
+
+    @Override
+    protected void onResume()
+    {
+        checkGCMService();
+    }
 }
-
-
-
-

@@ -343,10 +343,10 @@ public class MainBrokerActivity2 extends ActionBarActivity implements SeekBar.On
         mMarkersHashMap_Req = new HashMap<Marker, MyMarker>();
 
 
-        mMyMarkersArray_Req.add(new MyMarker("Abhishek-3BHK-1Lac", "icon1", Double.parseDouble("19.116612"), Double.parseDouble("72.910285")));
-        mMyMarkersArray_Req.add(new MyMarker("Sachin-2BHK-50K", "icon2", Double.parseDouble("19.114427"), Double.parseDouble("72.911102")));
-        mMyMarkersArray_Req.add(new MyMarker("Hemant-4BHK-2Lac", "icon3", Double.parseDouble("19.117774"), Double.parseDouble("72.9076828")));
-        mMyMarkersArray_Req.add(new MyMarker("Shlok-3BHK-1.5Lac", "icon4", Double.parseDouble("19.1148607"), Double.parseDouble("72.8999415")));
+        mMyMarkersArray_Req.add(new MyMarker(Double.parseDouble("19.116612"), Double.parseDouble("72.910285")));
+        mMyMarkersArray_Req.add(new MyMarker(Double.parseDouble("19.114427"), Double.parseDouble("72.911102")));
+        mMyMarkersArray_Req.add(new MyMarker(Double.parseDouble("19.117774"), Double.parseDouble("72.9076828")));
+        mMyMarkersArray_Req.add(new MyMarker(Double.parseDouble("19.1148607"), Double.parseDouble("72.8999415")));
 
 
         CustomMapFragment customMapFragment_Req = ((CustomMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapreq));
@@ -387,9 +387,9 @@ public class MainBrokerActivity2 extends ActionBarActivity implements SeekBar.On
 
         mMarkersHashMap_Avl = new HashMap<Marker, MyMarker>();
 
-        mMyMarkersArray_Avl.add(new MyMarker("3BHK-1Lac", "icon1", Double.parseDouble("19.116612"), Double.parseDouble("72.910285")));
-        mMyMarkersArray_Avl.add(new MyMarker("2BHK-50K", "icon2", Double.parseDouble("19.114427"), Double.parseDouble("72.911102")));
-        mMyMarkersArray_Avl.add(new MyMarker("4BHK-2Lac", "icon3", Double.parseDouble("19.117774"), Double.parseDouble("72.9076828")));
+        mMyMarkersArray_Avl.add(new MyMarker(Double.parseDouble("19.116612"), Double.parseDouble("72.910285")));
+        mMyMarkersArray_Avl.add(new MyMarker(Double.parseDouble("19.114427"), Double.parseDouble("72.911102")));
+        mMyMarkersArray_Avl.add(new MyMarker(Double.parseDouble("19.117774"), Double.parseDouble("72.9076828")));
 
 
         CustomMapFragment customMapFragment_Avl = ((CustomMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapavl));
@@ -431,10 +431,10 @@ public class MainBrokerActivity2 extends ActionBarActivity implements SeekBar.On
         mMarkersHashMap_hail = new HashMap<Marker, MyMarker>();
 
 
-        mMyMarkersArray_Hail.add(new MyMarker("3BHK-1Lac", "icon1", Double.parseDouble("19.116612"), Double.parseDouble("72.910285")));
-        mMyMarkersArray_Hail.add(new MyMarker("2BHK-50K", "icon2", Double.parseDouble("19.114427"), Double.parseDouble("72.911102")));
-        mMyMarkersArray_Hail.add(new MyMarker("4BHK-2Lac", "icon3", Double.parseDouble("19.117774"), Double.parseDouble("72.9076828")));
-        mMyMarkersArray_Hail.add(new MyMarker("3BHK-1.5Lac", "icon4", Double.parseDouble("19.1148607"), Double.parseDouble("72.8999415")));
+        mMyMarkersArray_Hail.add(new MyMarker(Double.parseDouble("19.116612"), Double.parseDouble("72.910285")));
+        mMyMarkersArray_Hail.add(new MyMarker(Double.parseDouble("19.114427"), Double.parseDouble("72.911102")));
+        mMyMarkersArray_Hail.add(new MyMarker(Double.parseDouble("19.117774"), Double.parseDouble("72.9076828")));
+        mMyMarkersArray_Hail.add(new MyMarker(Double.parseDouble("19.1148607"), Double.parseDouble("72.8999415")));
 
 
         CustomMapFragment customMapFragment_Hail = ((CustomMapFragment) getSupportFragmentManager().findFragmentById(R.id.maphail));

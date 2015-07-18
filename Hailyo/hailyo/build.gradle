@@ -8,6 +8,7 @@ buildscript {
     }
 }
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
 apply plugin: 'io.fabric'
 
 repositories {
@@ -54,8 +55,10 @@ dependencies {
         transitive = true;
     }
     compile 'com.android.support:appcompat-v7:22.0.0'
+    compile 'com.github.siyamed:android-shape-imageview:0.9.+@aar'
     compile files('libs/pgsdk.jar')
     compile 'com.squareup.picasso:picasso:2.3.2'
+
     compile('com.digits.sdk.android:digits:1.6.0@aar') {
         transitive = true;
     }

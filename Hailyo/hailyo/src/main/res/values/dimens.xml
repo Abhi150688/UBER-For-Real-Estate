@@ -12,6 +12,8 @@
         <dimen name="rating">15dip</dimen>
         <dimen name="genre">13dip</dimen>
         <dimen name="year">12dip</dimen>
+    <dimen name="rippleStrokeWidth">2dp</dimen>
+    <dimen name="rippleRadius">64dp</dimen>
 
 
 

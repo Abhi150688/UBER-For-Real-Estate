@@ -46,10 +46,10 @@ public class InitialActivity extends Activity {
 
 
 
-        if (activeSession != null && role.matches("Customer")) {
+        if (activeSession != null && role.equalsIgnoreCase("customer")) {
             startCustomerActivity();
         }
-        else if (activeSession != null && role.matches("Broker")) {
+        else if (activeSession != null && role.equalsIgnoreCase("broker")) {
             startBrokerActivity();
         }
         else {

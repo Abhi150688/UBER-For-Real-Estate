@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:gravity="center"
+        android:background="@color/blue_sky"
+        android:textColor="@color/white"
+        android:padding="3dp"
+        android:text="MY BID"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:id="@+id/yourloc"
+        >
+
+
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:gravity="center"
+
+            android:layout_marginTop="5dp"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:orientation="vertical"
+            >
+
+            <TableRow>
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/row1"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:text="Property"
+                    android:textSize="20dp"
+                    android:paddingTop="5dp"
+
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#28b54c" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="left"
+                    android:background="@color/transparent"
+                    android:id="@+id/rowtv1"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="5dp"
+                    android:paddingLeft="10dp"
+                    android:hint="Unit No, Building, Floor">
+
+                    </EditText>
+                <requestFocus/>
+
+            </TableRow>
+
+
+            <TableRow>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/black"
+                    />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/black"
+                    />
+
+            </TableRow>
+
+
+            <TableRow>
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/row2"
+                    android:layout_gravity="center"
+                    android:paddingTop="10dp"
+
+                    android:text="Price-Rent"
+                    android:textSize="20dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#28b54c" />
+
+                <EditText
+                    android:layout_width="fill_parent"
+                    android:id="@+id/rowtv2"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:layout_gravity="left"
+                    android:paddingTop="10dp"
+                    android:hint="Your Rent Bid"
+                    android:paddingLeft="10dp"
+                    android:inputType="number"
+
+                  />
+
+        </TableRow>
+
+            <TableRow>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/black"
+                    />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/black"
+                    />
+
+            </TableRow>
+
+
+
+        <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/row3"
+                    android:layout_gravity="center"
+                    android:text="Price-Deposit"
+                    android:textSize="20dp"
+                    android:paddingTop="10dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                     android:textColor="#28b54c" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:id="@+id/rowtv3"
+                    android:layout_height="wrap_content"
+                    android:hint="Your Deposit Bid"
+                    android:layout_gravity="left"
+                    android:paddingTop="10dp"
+                    android:background="@color/transparent"
+                    android:paddingLeft="10dp"
+                    android:inputType="number"/>
+
+
+        </TableRow>
+
+            <TableRow>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/black"
+                    />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/black"
+                    />
+
+            </TableRow>
+
+
+
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/row4"
+                    android:layout_gravity="center"
+                    android:text="Start Date"
+                    android:textSize="20dp"
+                    android:paddingTop="10dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#28b54c" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:id="@+id/rowtv4"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:hint="Enter Start Date"
+                    android:layout_gravity="left"
+                    />
+
+            </TableRow>
+
+            <TableRow>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/black"
+                    />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/black"
+                    />
+
+            </TableRow>
+
+
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/row5"
+                    android:layout_gravity="center"
+                    android:text="Tenure"
+                    android:textSize="20dp"
+                    android:paddingTop="10dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#28b54c" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:id="@+id/rowtv5"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:hint="Value in months"
+                    android:paddingLeft="10dp"
+                    android:paddingTop="10dp"
+                    android:layout_gravity="left"
+                    android:inputType="number"/>
+
+            </TableRow>
+
+            <TableRow>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/black"
+                    />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/black"
+                    />
+
+            </TableRow>
+
+
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/row6"
+                    android:layout_gravity="center"
+                    android:text="Lock-in"
+                    android:textSize="20dp"
+                    android:paddingTop="10dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#28b54c" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:id="@+id/rowtv6"
+                    android:layout_height="wrap_content"
+                    android:background="@color/transparent"
+                    android:hint="Value in months"
+                    android:paddingLeft="10dp"
+                    android:layout_gravity="left"
+                    android:paddingTop="10dp"
+                    android:inputType="number"/>
+
+            </TableRow>
+
+            <TableRow>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/black"
+                    />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/black"
+                    />
+
+            </TableRow>
+
+
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/row7"
+                    android:layout_gravity="center"
+                    android:text="License Type"
+
+                    android:textSize="20dp"
+                    android:paddingTop="10dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#28b54c" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:id="@+id/rowtv7"
+                    android:layout_height="wrap_content"
+                    android:hint="Individual / Company?"
+                    android:background="@color/transparent"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:layout_gravity="left"
+                    android:inputType="text"
+                    />
+
+            </TableRow>
+
+            <TableRow>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/black"
+                    />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/black"
+                    />
+
+            </TableRow>
+
+
+            <TableRow>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/row8"
+                    android:layout_gravity="center"
+                    android:text="Occupant Name"
+                    android:textSize="20dp"
+                    android:paddingTop="10dp"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#28b54c" />
+
+                <EditText
+                    android:layout_width="wrap_content"
+                    android:id="@+id/rowtv8"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:paddingTop="10dp"
+                    android:paddingLeft="10dp"
+                    android:background="@color/transparent"
+                    android:hint="Enter Name"
+                    android:inputType="text"/>
+
+            </TableRow>
+
+            <TableRow>
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/black"
+                    />
+
+                <View
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginTop="1dp"
+                    android:background="@color/black"
+                    />
+
+            </TableRow>
+
+
+
+        </TableLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_marginTop="20dp"
+            android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/submit"
+                    android:layout_gravity="center"
+                    android:text="SUBMIT"
+                    android:layout_weight=".4"
+                    android:textSize="20dp"
+                    android:layout_marginRight="5dp"
+                    android:inputType="text"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:id="@+id/reset"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="RESET"
+                    android:layout_weight=".4"
+                    android:layout_marginRight="5dp"
+                    android:textSize="20dp"
+                    android:inputType="text"/>
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:id="@+id/cencel"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="CANCEL"
+                    android:textSize="20dp"
+                    android:layout_marginRight="1dp"
+                    android:hint="Enter Name"
+                    android:inputType="text"/>
+
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/layout/submit_bid.xml -->

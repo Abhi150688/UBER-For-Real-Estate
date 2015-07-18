@@ -68,6 +68,10 @@
 
     <string name="title_activity_select_payment_type">Payment Type</string>
     <string name="title_activity_paytm_wallet">Paytm Wallet</string>
+    <string name="gcm_defaultSenderId">250185285941</string>
+
+
+    //GCM based strings
 
 
 </resources>

@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -40,7 +41,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -48,9 +48,8 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.hrules.horizontalnumberpicker.HorizontalNumberPicker;
-import com.hrules.horizontalnumberpicker.HorizontalNumberPickerListener;
 import com.nexchanges.hailyo.custom.MyMarker;
+import com.nexchanges.hailyo.custom.PlotMyNeighboursHail;
 import com.nexchanges.hailyo.custom.SendLocationUpdate;
 import com.nexchanges.hailyo.model.DealData;
 import com.nexchanges.hailyo.model.SharedPrefs;
@@ -83,7 +82,7 @@ import java.util.List;
 public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnSeekBarChangeListener, SwipeRefreshLayout.OnRefreshListener {
 
     //ViewAll Visits
-
+    PlotMyNeighboursHail plotMyNeighboursHail = new PlotMyNeighboursHail();
     private static final String TAG = MainBrokerActivity.class.getSimpleName();
     int max = 15, min = 5;
     int timer_val=5;
@@ -223,7 +222,7 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
         if (checkLocationServices()){
 
             mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,60000,10
-                , (android.location.LocationListener) mLocationListener);}
+                ,mLocationListener);}
 
         //Yo Data
 
@@ -526,13 +525,6 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
 
         mMarkersHashMap_hail = new HashMap<Marker, MyMarker>();
 
-
-        mMyMarkersArray_Hail.add(new MyMarker("3BHK-1Lac", "icon1", Double.parseDouble("19.116612"), Double.parseDouble("72.910285")));
-        mMyMarkersArray_Hail.add(new MyMarker("2BHK-50K", "icon2", Double.parseDouble("19.114427"), Double.parseDouble("72.911102")));
-        mMyMarkersArray_Hail.add(new MyMarker("4BHK-2Lac", "icon3", Double.parseDouble("19.117774"), Double.parseDouble("72.9076828")));
-        mMyMarkersArray_Hail.add(new MyMarker("3BHK-1.5Lac", "icon4", Double.parseDouble("19.1148607"), Double.parseDouble("72.8999415")));
-
-
         CustomMapFragment customMapFragment_Hail = ((CustomMapFragment) getSupportFragmentManager().findFragmentById(R.id.maphail));
 
         customMapFragment_Hail.getMapAsync(new OnMapReadyCallback() {
@@ -541,7 +533,9 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
                 map_hail = googleMap;
                 map_hail.setMyLocationEnabled(true);
 
+                mMyMarkersArray_Hail = plotMyNeighboursHail.markerpos(SharedPrefs.MY_USER_ID,SharedPrefs.MY_CUR_LAT,SharedPrefs.MY_CUR_LNG,"broker");
                 plotHailMarkers(mMyMarkersArray_Hail);
+
             }
         });
 
@@ -583,40 +577,13 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
                 // Create user marker with custom icon and other options
                 MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude())).title(myMarker.getmLabel());
                 markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.req_icon1));
-
+                map_hail.clear();
                 Marker currentMarker = map_hail.addMarker(markerOption);
                 mMarkersHashMap_hail.put(currentMarker, myMarker);
 
-                map_hail.setInfoWindowAdapter(new MarkerInfoWindowAdapter());
-            }
+                  }
         }
     }
-
-    public class MarkerInfoWindowAdapter implements GoogleMap.InfoWindowAdapter {
-        public MarkerInfoWindowAdapter() {
-        }
-
-        @Override
-        public View getInfoWindow(Marker marker) {
-            return null;
-        }
-
-        @Override
-        public View getInfoContents(Marker marker) {
-            View v = getLayoutInflater().inflate(R.layout.infowindow_layout, null);
-
-            MyMarker myMarker_Hail = mMarkersHashMap_hail.get(marker);
-
-            TextView markerLabel = (TextView) v.findViewById(R.id.marker_label);
-
-
-            markerLabel.setText(myMarker_Hail.getmLabel());
-
-            return v;
-        }
-    }
-
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -733,19 +700,6 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
         //hidePDialog();
     }
 
-    private void hidePDialog() {
-        if (pDialog != null) {
-            pDialog.dismiss();
-            pDialog = null;
-        }
-    }
-
-    private void hidePDialogDeal() {
-        if (pDialog_Deal != null) {
-            pDialog_Deal.dismiss();
-            pDialog_Deal = null;
-        }
-    }
 
 
     private void refreshYo(final String User_Type)
@@ -957,6 +911,21 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
         @Override
         public void onLocationChanged(final Location location) {
             findMyLocation(location);
+
+        }
+
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+
+        }
+
+        @Override
+        public void onProviderEnabled(String provider) {
+
+        }
+
+        @Override
+        public void onProviderDisabled(String provider) {
 
         }
     };

@@ -12,12 +12,12 @@ public class MyMarker
     private Double mLatitude;
     private Double mLongitude;
 
-    public MyMarker(String label, String icon, Double latitude, Double longitude)
+    public MyMarker(Double latitude, Double longitude)
     {
-        this.mLabel = label;
+        //this.mLabel = label;
         this.mLatitude = latitude;
         this.mLongitude = longitude;
-        this.mIcon = icon;
+        //this.mIcon = icon;
     }
 
     public String getmLabel()

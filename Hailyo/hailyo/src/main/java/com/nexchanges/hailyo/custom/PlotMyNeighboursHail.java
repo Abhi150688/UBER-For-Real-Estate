@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.google.android.gms.maps.model.Marker;
 import com.nexchanges.hailyo.MainActivity;
 import com.nexchanges.hailyo.MainBrokerActivity;
 import com.nexchanges.hailyo.model.SharedPrefs;
@@ -15,6 +16,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicHeader;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -23,13 +25,39 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * Created by AbhishekWork on 16/07/15.
  */
 public class PlotMyNeighboursHail {
+    String URL = "http://ec2-52-25-136-179.us-west-2.compute.amazonaws.com:9000/1/hailyo/bbox5neigbours";
+    StringEntity se;
+    private ArrayList<MyMarker> mMyMarkersArray = new ArrayList<MyMarker>();
+    private ArrayList<MyMarker> mMyMarkersArray2 = new ArrayList<MyMarker>();
+    private ArrayList<MyMarker> mMyMarkersArray3 = new ArrayList<MyMarker>();
 
-    private void sendPostRequest(final String mobile, final String code, final String Semail, final String Sname, final String user_role)
+
+    private HashMap<Marker, MyMarker> mMarkersHashMap;
+
+   public ArrayList markerpos(String my_user_id, String lat, String lng, String brokerType)
+
+   {
+       System.out.print(my_user_id + "Hurray " +lat + " hurrah again" + lng );
+       mMyMarkersArray = sendPostRequest(my_user_id,lat,lng,brokerType);
+
+       for (int i = 0; i<mMyMarkersArray.size(); i++)
+       {
+           System.out.println("Lat returned by post is " + mMyMarkersArray.get(i).getmLatitude());
+           System.out.println("Long returned by post is" + mMyMarkersArray.get(i).getmLongitude());
+
+       }
+       return mMyMarkersArray;
+
+   }
+
+    private ArrayList sendPostRequest(final String my_user_id, final String lat, final String lng, final String brokerType)
     {
 
 
@@ -40,13 +68,15 @@ public class PlotMyNeighboursHail {
 
                 JSONObject jsonObject = new JSONObject();
                 try {
-                    jsonObject.accumulate("mobile_no", mobile);
-                    jsonObject.accumulate("mobile_code", code);
-                    jsonObject.accumulate("email", Semail);
-                    jsonObject.accumulate("name", Sname);
-                    jsonObject.accumulate("user_role", user_role);
+
+                    System.out.print("We are in JSON Success");
+                    jsonObject.accumulate("user_id", my_user_id);
+                    jsonObject.accumulate("mylat", lat);
+                    jsonObject.accumulate("mylng", lng);
+                    jsonObject.accumulate("broker_type", brokerType);
 
                 } catch (JSONException e) {
+                    System.out.print("We are in JSON Exception");
                     e.printStackTrace();
                 }
 
@@ -59,77 +89,62 @@ public class PlotMyNeighboursHail {
 
                 try {
                     se = new StringEntity(jsonObject.toString());
+
+                    System.out.print("Constructed String Entity is" + se);
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
                 }
 
 
-               /* // Because we are not passing values over the URL, we should have a mechanism to pass the values that can be
-                //uniquely separate by the other end.
-                //To achieve that we use BasicNameValuePair
-                //Things we need to pass with the POST request
-                BasicNameValuePair mobileBasicNameValuePair = new BasicNameValuePair("parammobile", parammobile);
-                BasicNameValuePair codeBasicNameValuePAir = new BasicNameValuePair("paramcode", paramcode);
-                BasicNameValuePair emailBasicNameValuePAir = new BasicNameValuePair("paramemail", paramemail);
-                BasicNameValuePair nameBasicNameValuePAir = new BasicNameValuePair("paramname", paramname);
-                BasicNameValuePair roleBasicNameValuePAir = new BasicNameValuePair("paramrole", paramrole);
-
-                // We add the content that we want to pass with the POST request to as name-value pairs
-                //Now we put those sending details to an ArrayList with type safe of NameValuePair
-                List<NameValuePair> nameValuePairList = new ArrayList<NameValuePair>();
-                nameValuePairList.add(mobileBasicNameValuePair);
-                nameValuePairList.add(codeBasicNameValuePAir);
-                nameValuePairList.add(emailBasicNameValuePAir);
-                nameValuePairList.add(nameBasicNameValuePAir);
-                nameValuePairList.add(roleBasicNameValuePAir);*/
-
-
-                // UrlEncodedFormEntity is an entity composed of a list of url-encoded pairs.
-                //This is typically useful while sending an HTTP POST request.
-                //UrlEncodedFormEntity urlEncodedFormEntity = new UrlEncodedFormEntity(se);
-
-                // setEntity() hands the entity (here it is urlEncodedFormEntity) to the request.
                 se.setContentType(new BasicHeader("Content-Type", "application/json"));
-
                 httpPost.setEntity(se);
                 httpPost.setHeader("Accept", "application/json");
                 httpPost.setHeader("Content-Type", "application/json");
 
                 try {
-                    // HttpResponse is an interface just like HttpPost.
-                    //Therefore we can't initialize them
                     HttpResponse httpResponse = httpClient.execute(httpPost);
 
                     int response = httpResponse.getStatusLine().getStatusCode();
-                    System.out.print("Value of response code is: " + response);
 
                     if (response == 200 || response == 201)
+
                     {
-                        signup_success();
+
+                        System.out.print("Here is the HTTP response" + response);
+                        InputStream inputStream = httpResponse.getEntity().getContent();
+
+                        InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+
+                        BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                        StringBuilder stringBuilder = new StringBuilder();
+
+                        String bufferedStrChunk = null;
+
+                        while((bufferedStrChunk = bufferedReader.readLine()) != null){
+                            stringBuilder.append(bufferedStrChunk);
+                        }
+                        String result = stringBuilder.toString();
+
+                        System.out.print("Final String result of asynch task is " + result);
+
+                        mMyMarkersArray2 = createMarkerHash(result);
+                        for (int i = 0; i<mMyMarkersArray2.size(); i++)
+                        {
+                            System.out.println("Lat returned by array 2 is " + mMyMarkersArray2.get(i).getmLatitude());
+                            System.out.println("Long returned by array2 is" + mMyMarkersArray2.get(i).getmLongitude());
+
+                        }
+
                     }
 
                     else
                     {
-                        System.out.print("LoginFailed Try again");
+                        mMyMarkersArray2 = null;
+
+                        System.out.print("my marker array 2 is null");
                     }
 
-                    // According to the JAVA API, InputStream constructor do nothing.
-                    //So we can't initialize InputStream although it is not an interface
-                    InputStream inputStream = httpResponse.getEntity().getContent();
-
-                    InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
-
-                    BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
-
-                    StringBuilder stringBuilder = new StringBuilder();
-
-                    String bufferedStrChunk = null;
-
-                    while((bufferedStrChunk = bufferedReader.readLine()) != null){
-                        stringBuilder.append(bufferedStrChunk);
-                    }
-
-                    return stringBuilder.toString();
 
                 } catch (ClientProtocolException cpe) {
                     System.out.println("First Exception coz of HttpResponese :" + cpe);
@@ -142,58 +157,50 @@ public class PlotMyNeighboursHail {
                 return null;
             }
 
-            @Override
-            protected void onPostExecute(String result) {
-                super.onPostExecute(result);
-
-//parse json response
-
-                try {
-                    JSONObject jsonObject = new JSONObject(result);
-                    for(int i=0; i < jsonObject.length(); i++) {
-
-                        my_user_id = jsonObject.getString("user_id");
-
-
-                    } //
-                    // End Loop
-                    SharedPrefs.save(context, SharedPrefs.MY_USER_ID, my_user_id);
-
-                } catch (JSONException e) {
-                    Log.e("JSONException", "Error: " + e.toString());
-                }
-
-            }
-
 
         }
 
         SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
-        sendPostReqAsyncTask.execute(mobile,code,Semail,Sname,user_role);
+        sendPostReqAsyncTask.execute(my_user_id, lat, lng, brokerType);
+        return mMyMarkersArray2;
     }
 
-    void signup_success()
-    {
-        SharedPrefs.save(context, SharedPrefs.MY_ROLE_KEY, user_role);
-        SharedPrefs.save(context, SharedPrefs.NAME_KEY, Sname);
-        SharedPrefs.save(context, SharedPrefs.EMAIL_KEY, Semail);
 
-        if (user_role.equalsIgnoreCase("client"))
-        {
-            Intent NextActivity = new Intent(context, MainActivity.class);
-            startActivity(NextActivity);
-            finish();
-        }
+   private ArrayList createMarkerHash(String result)
+   {
 
-        else if (user_role.equalsIgnoreCase("broker"))
-        {
-            Intent NextActivity = new Intent(context, MainBrokerActivity.class);
-            startActivity(NextActivity);
-            finish();
-        }
-        // editor.putString(MyPhoto, encodeTobase64(bitphoto));
+       try {
+           System.out.println("Got successful lat lng response in json file");
 
-    }
+           JSONObject jObject = new JSONObject(result);
+           JSONArray users = jObject.getJSONArray("users");
+           for (int i = 0; i<users.length();i++)
+           {
+               JSONObject val = users.getJSONObject(i);
+               String Lat = val.getString("lat_value");
+               String Lng = val.getString("lng_value");
+               mMarkersHashMap = new HashMap<Marker, MyMarker>();
+               mMyMarkersArray3.add(new MyMarker(Double.parseDouble(Lat), Double.parseDouble(Lng)));
 
+           }
+
+
+       } catch (JSONException e) {
+           e.printStackTrace();
+       }
+
+       System.out.println("Printing data of MyArray 3");
+
+
+       for (int i = 0; i<mMyMarkersArray3.size(); i++)
+       {
+           System.out.println("Lat returned by array 3 is " + mMyMarkersArray3.get(i).getmLatitude());
+           System.out.println("Long returned by array3 is" + mMyMarkersArray3.get(i).getmLongitude());
+
+       }
+
+
+       return mMyMarkersArray3;
+   }
 
 }

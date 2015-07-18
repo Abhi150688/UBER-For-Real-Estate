@@ -1,9 +1,7 @@
 package com.nexchanges.hailyo;
 
-import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.PendingIntent;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -12,6 +10,7 @@ import android.content.res.Configuration;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.location.Location;
+import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -44,7 +43,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -53,6 +51,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.nexchanges.hailyo.custom.MyMarker;
+import com.nexchanges.hailyo.custom.PlotMyNeighboursHail;
 import com.nexchanges.hailyo.custom.SendLocationUpdate;
 import com.nexchanges.hailyo.model.DealData;
 import com.nexchanges.hailyo.model.SharedPrefs;
@@ -77,6 +76,7 @@ import java.util.List;
 public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBarChangeListener, SwipeRefreshLayout.OnRefreshListener
 {
 
+    PlotMyNeighboursHail plotMyNeighboursHail = new PlotMyNeighboursHail();
     //ViewAll Visits
 
     // Visit json url
@@ -145,10 +145,9 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         sb1 = (SeekBar)findViewById(R.id.seekBar2);
         sb1.setOnSeekBarChangeListener(this);
 
-        mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+        mLocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         if (checkLocationServices()){
-        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,60000,10
-                , (android.location.LocationListener) mLocationListener);}
+        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,60000,10, mLocationListener);}
 
 
 
@@ -409,11 +408,6 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         // Initialize the HashMap for Markers and MyMarker object
         mMarkersHashMap = new HashMap<Marker, MyMarker>();
 
-        mMyMarkersArray.add(new MyMarker("3BHK-75K", "icon1", Double.parseDouble("19.116612"), Double.parseDouble("72.910285")));
-        mMyMarkersArray.add(new MyMarker("2BHK-50K", "icon2", Double.parseDouble("19.114427"), Double.parseDouble("72.911102")));
-        mMyMarkersArray.add(new MyMarker("4BHK-2Lac", "icon3", Double.parseDouble("19.117774"), Double.parseDouble("72.9076828")));
-        mMyMarkersArray.add(new MyMarker("4BHK-2.5Lac", "icon4", Double.parseDouble("19.1148607"), Double.parseDouble("72.8999415")));
-
 
 //Map Fragment 1
 
@@ -424,9 +418,6 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                                                   public void onMapReady(GoogleMap googleMap) {
                                                       map = googleMap;
                                                       map.setMyLocationEnabled(true);
-
-
-                                                      //plotMarkers(mMyMarkersArray);
                                                   }
                                               });
 
@@ -513,65 +504,46 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
     }
 
 
-    private void plotMarkers(ArrayList<MyMarker> markers)
+    private void plotMarkers(ArrayList<MyMarker> markers, String type)
     {
         if(markers.size() > 0)
         {
             for (MyMarker myMarker : markers)
             {
 
-                // Create user marker with custom icon and other options
-                MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude()));
-                markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.currentlocation_icon1));
+                if (type.equalsIgnoreCase("broker")) {
+                    MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude()));
+                    markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.currentlocation_icon1));
 
-                Marker currentMarker = map.addMarker(markerOption);
+                    Marker currentMarker = map.addMarker(markerOption);
 
-                mMarkersHashMap.put(currentMarker, myMarker);
+                    mMarkersHashMap.put(currentMarker, myMarker);
+                }
 
+              else if (type.equalsIgnoreCase("auction")) {
+                    MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude()));
+                    markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.currentlocation_icon1));
 
-            }
-        }
-    }
+                    Marker currentMarker = map.addMarker(markerOption);
 
-    private void plotMarkers2(ArrayList<MyMarker> markers)
-    {
-        if(markers.size() > 0)
-        {
-            for (MyMarker myMarker : markers)
-            {
+                    mMarkersHashMap.put(currentMarker, myMarker);
+                }
 
-                // Create user marker with custom icon and other options
-                MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude()));
-                markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.currentlocation_icon1));
+                else
+               {
+                    MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude()));
+                    markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.currentlocation_icon1));
 
-                Marker currentMarker = map.addMarker(markerOption);
+                    Marker currentMarker = map.addMarker(markerOption);
 
-                mMarkersHashMap.put(currentMarker, myMarker);
-
-
-            }
-        }
-    }
-
-    private void plotMarkers3(ArrayList<MyMarker> markers)
-    {
-        if(markers.size() > 0)
-        {
-            for (MyMarker myMarker : markers)
-            {
-
-                // Create user marker with custom icon and other options
-                MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude()));
-                markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.currentlocation_icon1));
-
-                Marker currentMarker = map.addMarker(markerOption);
-
-                mMarkersHashMap.put(currentMarker, myMarker);
-
+                    mMarkersHashMap.put(currentMarker, myMarker);
+                }
 
             }
         }
     }
+
+
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress,
@@ -579,7 +551,8 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
 
                 if (progress == 0) {
                     map.clear();
-                    plotMarkers(mMyMarkersArray);
+                    mMyMarkersArray = plotMyNeighboursHail.markerpos(SharedPrefs.MY_USER_ID,SharedPrefs.MY_CUR_LAT,SharedPrefs.MY_CUR_LNG,"broker");
+                    plotMarkers(mMyMarkersArray,"broker");
                     tv1.setTextColor(Color.RED);
                     tv2.setTextColor(Color.BLACK);
                     tv3.setTextColor(Color.BLACK);
@@ -587,7 +560,9 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                 } else if (progress == 50) {
 
                     map.clear();
-                    plotMarkers2(mMyMarkersArray);
+                    mMyMarkersArray = plotMyNeighboursHail.markerpos(SharedPrefs.MY_USER_ID,SharedPrefs.MY_CUR_LAT,SharedPrefs.MY_CUR_LNG,"auction");
+
+                    plotMarkers(mMyMarkersArray,"auction");
 
                     tv1.setTextColor(Color.BLACK);
                     tv2.setTextColor(Color.RED);
@@ -595,7 +570,9 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
 
                 } else if (progress == 100) {
                     map.clear();
-                    plotMarkers3(mMyMarkersArray);
+                    mMyMarkersArray = plotMyNeighboursHail.markerpos(SharedPrefs.MY_USER_ID,SharedPrefs.MY_CUR_LAT,SharedPrefs.MY_CUR_LNG,"builder");
+                    plotMarkers(mMyMarkersArray,"builder");
+
 
                     tv1.setTextColor(Color.BLACK);
                     tv2.setTextColor(Color.BLACK);
@@ -854,6 +831,21 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         @Override
         public void onLocationChanged(final Location location) {
             findMyLocation(location);
+
+        }
+
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+
+        }
+
+        @Override
+        public void onProviderEnabled(String provider) {
+
+        }
+
+        @Override
+        public void onProviderDisabled(String provider) {
 
         }
     };

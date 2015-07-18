@@ -4,7 +4,7 @@
       <root url="jar://$PROJECT_DIR$/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.6.0/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.6.0/classes.jar!/" />
+      <root url="jar://$PROJECT_DIR$/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.6.0/jars/classes.jar!/" />
       <root url="file://$PROJECT_DIR$/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.6.0/res" />
     </CLASSES>
     <JAVADOC />

@@ -28,6 +28,8 @@ public class SharedPrefs {
     public static String MY_CURRENT_BROKER = "myCurrentBroker";
     public static String MY_CURRENT_HAILYO = "myCurrentHailyo";
 
+    public static String MY_GCM_ID = "myGCMId";
+
 
     public static String RENT_KEY = "myphotoKey";
     public static String DEPOSIT_KEY = "myphotoKey";
