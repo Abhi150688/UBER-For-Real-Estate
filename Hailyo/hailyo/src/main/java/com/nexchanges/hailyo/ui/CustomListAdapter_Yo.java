@@ -41,6 +41,7 @@ public class CustomListAdapter_Yo extends BaseAdapter {
 
     public CustomListAdapter_Yo(Activity activity, List<YoData> yoItems) {
         this.activity = activity;
+        //yoItems.clear();
         this.yoItems = yoItems;
     }
 

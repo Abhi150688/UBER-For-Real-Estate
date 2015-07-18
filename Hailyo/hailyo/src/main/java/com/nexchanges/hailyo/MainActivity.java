@@ -3,9 +3,11 @@ package com.nexchanges.hailyo;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.res.Configuration;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -96,6 +98,9 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
     private List<DealData> dealList = new ArrayList<DealData>();
     private ListView listViewD;
     private CustomListAdapter_Deals adapterD;
+    BroadcastReceiver ReceivefromGCM;
+    IntentFilter Intentfilter;
+
 
 
 
@@ -146,8 +151,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         sb1.setOnSeekBarChangeListener(this);
 
         mLocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        if (checkLocationServices()){
-        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,60000,10, mLocationListener);}
+        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,60000,10, mLocationListener);
 
 
 
@@ -402,6 +406,17 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
 
             }
         });
+
+        Intentfilter = new IntentFilter(GcmMessageHandler.HANDLEGCM);
+        ReceivefromGCM = new BroadcastReceiver(){
+            @Override
+            public void onReceive(Context context, Intent intent)
+            {
+
+            }
+        };
+        registerReceiver(ReceivefromGCM, Intentfilter);
+
 
         // Google Map ..
 
@@ -872,33 +887,28 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         TestAsync.execute();
     }
 
-    private boolean checkLocationServices() {
-
-        if (mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) ||
-                mLocationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
-           return true;
+    @Override
+    protected void onPause() {
+        super.onPause();
+        try {
+            unregisterReceiver(ReceivefromGCM);
+        } catch (IllegalArgumentException e) {
+            if (e.getMessage().contains("Receiver not registered")) {
+                Log.i("TAG","Tried to unregister the reciver when it's not registered");
+            }
+            else
+            {
+                throw e;
+            }
         }
-
-
-           else if (!mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) ||
-                !mLocationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER)) {
-            // Build the alert dialog
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.setTitle("Location Services Not Active");
-            builder.setMessage("Please enable Location Services and GPS");
-            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    // Show location settings when the user acknowledges the alert dialog
-                    Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
-                    startActivity(intent);
-                }
-            });
-            Dialog alertDialog = builder.create();
-            alertDialog.setCanceledOnTouchOutside(false);
-            alertDialog.show();
-        }
-        return true;
     }
+
+    protected void onResume() {
+        super.onResume();
+        registerReceiver(ReceivefromGCM, Intentfilter);
+        //the first parameter is the name of the inner class we created.
+    }
+
 
 }
 

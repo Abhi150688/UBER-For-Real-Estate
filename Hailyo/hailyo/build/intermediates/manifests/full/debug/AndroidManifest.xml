@@ -54,16 +54,22 @@
             android:value="@string/fb_app_id" />
 
         <receiver
-            android:name="com.nexchanges.hailyo.custom.GcmBroadcastReceiver"
+            android:name="com.nexchanges.hailyo.GCMBroadcastReceiver"
+            android:exported="true"
             android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-
-                <category android:name="com.hmkcode.android.gcm" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
             </intent-filter>
         </receiver>
 
-        <service android:name="com.nexchanges.hailyo.custom.GcmMessageHandler" />
+        <service
+            android:name="com.nexchanges.hailyo.GcmMessageHandler"
+            android:exported="false" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+            </intent-filter>
+        </service>
 
         <activity
             android:name="com.nexchanges.hailyo.InitialActivity"

@@ -113,7 +113,7 @@
                             android:layout_gravity="left"
                             android:paddingLeft="5dp"
                             android:textColor="@color/red"
-                            android:text="OWNERS" />
+                            android:text="CLIENTS" />
 
                         <TextView
                             android:id="@+id/textView2"
@@ -124,7 +124,7 @@
                             android:layout_weight=".45"
                             android:textColor="@color/black"
                             android:layout_gravity="center"
-                            android:text="CLIENTS" />
+                            android:text="OWNERS" />
 
 
 

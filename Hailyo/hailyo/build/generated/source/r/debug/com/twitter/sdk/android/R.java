@@ -254,7 +254,7 @@ public final class R {
 		public static final int dgts_pin_code_terms = 0x7f070064;
 		public static final int dgts_verify = 0x7f070065;
 		public static final int dgts_verifying = 0x7f070066;
-		public static final int kit_name = 0x7f07009b;
+		public static final int kit_name = 0x7f07009c;
 		public static final int tw__allow_btn_txt = 0x7f070067;
 		public static final int tw__loading_tweet = 0x7f070068;
 		public static final int tw__login_btn_txt = 0x7f070069;

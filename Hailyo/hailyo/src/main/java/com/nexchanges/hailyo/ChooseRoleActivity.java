@@ -3,32 +3,25 @@ package com.nexchanges.hailyo;
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
-import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,36 +33,26 @@ import com.nexchanges.hailyo.custom.RippleBackground;
 import com.nexchanges.hailyo.model.SharedPrefs;
 
 import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicHeader;
-import org.apache.http.message.BasicNameValuePair;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import com.github.siyamed.shapeimageview.*;
 
 import java.io.BufferedReader;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  * Created by AbhishekWork on 22/06/15.
  */
 public class ChooseRoleActivity extends Activity {
-    final int RQS_GooglePlayServices = 1;
+    final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
 
     //declare variables
     private String Semail, Sname, user_role, Sphoto, C = "Customer", B = "Broker", my_user_id, my_gcm_id;
@@ -86,26 +69,17 @@ public class ChooseRoleActivity extends Activity {
     String regid, GCMID;
     String PROJECT_NUMBER = "250185285941";
     TextView edit, fbdata;
-    //CallbackManager callbackManager;
-    //ImageButton fb;
-    //LoginManager loginManager;
-    //String fbfirstname, fblastname,fbpic;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.choose_role);
         checkGCMService();
-
-        final RippleBackground rippleBackground = (RippleBackground) findViewById(R.id.content);
+        registerGCM();
 
         context = this;
         name = (EditText) findViewById(R.id.etname);
         email = (EditText) findViewById(R.id.etemail);
-        // fbdata = (TextView)findViewById(R.id.fbtext);
-//        fb = (ImageButton)findViewById(R.id.fb);
-
 
         clientBut = (Button) findViewById(R.id.iamclient);
         brokerBut = (Button) findViewById(R.id.iambroker);
@@ -114,28 +88,6 @@ public class ChooseRoleActivity extends Activity {
 
         edit = (TextView) findViewById(R.id.edit);
 
-
-        //    FacebookSdk.sdkInitialize(context);
-        //      callbackManager = CallbackManager.Factory.create();
-        //      FacebookSdk.addLoggingBehavior(LoggingBehavior.REQUESTS);
-        //    loginManager = LoginManager.getInstance();
-//        loginManager.setDefaultAudience(DefaultAudience.EVERYONE);
-
-
-  /*fb.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View v) {
-          fblogn();
-      }
-  });
-
-        fbdata.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                fblogn();
-            }
-        });
-*/
 
 
         String acc_email = getEmail(context);
@@ -168,9 +120,9 @@ public class ChooseRoleActivity extends Activity {
                                                  user_role = "client";
                                                  mobile = SharedPrefs.getString(context, SharedPrefs.MY_MOBILE_KEY);
 
-                                                 sendPostRequest(mobile, "+91", Semail, Sname, user_role);
-                                                 GCMID = registerGCM();
-                                                 signup_success();
+                                                 sendPostRequest(mobile, "+91", Semail, Sname, user_role,regid);
+
+                                                 //signup_success();
                                              }
 
 
@@ -201,8 +153,8 @@ public class ChooseRoleActivity extends Activity {
                                                  Sname = name.getText().toString();
                                                  Semail = email.getText().toString();
                                                  user_role = "broker";
-                                                 sendPostRequest(mobile, "+91", Semail, Sname, user_role);
-                                                 signup_success();
+                                                 sendPostRequest(mobile, "+91", Semail, Sname, user_role,regid);
+                                                 //signup_success();
                                              }
 
                                          }
@@ -331,7 +283,8 @@ public class ChooseRoleActivity extends Activity {
         });
     }
 
-    private void sendPostRequest(final String mobile, final String code, final String Semail, final String Sname, final String user_role) {
+    private void sendPostRequest(final String mobile, final String code, final String Semail, final String Sname, final String user_role, final String regid)
+    {
 
 
         class SendPostReqAsyncTask extends AsyncTask<String, Void, String> {
@@ -352,6 +305,8 @@ public class ChooseRoleActivity extends Activity {
                     jsonObject.accumulate("email", Semail);
                     jsonObject.accumulate("name", Sname);
                     jsonObject.accumulate("user_role", user_role);
+
+                    jsonObject.accumulate("gcm_id", regid);
 
 
                 } catch (JSONException e) {
@@ -384,7 +339,7 @@ public class ChooseRoleActivity extends Activity {
                     System.out.print("Value of response code is: " + response);
 
                     if (response == 200 || response == 201) {
-                        signup_success();
+                       signup_success();
                     } else {
                         System.out.print("LoginFailed Try again");
                     }
@@ -445,7 +400,7 @@ public class ChooseRoleActivity extends Activity {
         }
 
         SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
-        sendPostReqAsyncTask.execute(mobile, code, Semail, Sname, user_role);
+        sendPostReqAsyncTask.execute(mobile, code, Semail, Sname, user_role,regid);
     }
 
     void signup_success() {
@@ -454,14 +409,7 @@ public class ChooseRoleActivity extends Activity {
         SharedPrefs.save(context, SharedPrefs.EMAIL_KEY, Semail);
         SharedPrefs.save(context, SharedPrefs.MY_GCM_ID, regid);
 
-       /* if(regid.length()==0)
-        {
-            registerGCM();
-        }*/
-
-       // if (!my_user_id.isEmpty() && !regid.isEmpty())
-
-            if (!my_user_id.isEmpty()){
+        if (my_user_id != null && !my_user_id.isEmpty()){
 
             switch (user_role) {
 
@@ -476,17 +424,6 @@ public class ChooseRoleActivity extends Activity {
                     finish();
                     break;
             }
-
-           /* if (user_role.equalsIgnoreCase("client")) {
-                Intent NextActivity = new Intent(context, MainActivity.class);
-                startActivity(NextActivity);
-                finish();
-            } else if (user_role.equalsIgnoreCase("broker")) {
-                Intent NextActivity = new Intent(context, MainBrokerActivity.class);
-                startActivity(NextActivity);
-                finish();
-            }*/
-            // editor.putString(MyPhoto, encodeTobase64(bitphoto));
 
         }
     }
@@ -514,48 +451,77 @@ public class ChooseRoleActivity extends Activity {
         }
     }
 
-    private String registerGCM() {
+
+    private boolean checkGCMService() {
+        int resultCode = GooglePlayServicesUtil
+                .isGooglePlayServicesAvailable(this);
+        // When Play services not found in device
+        if (resultCode != ConnectionResult.SUCCESS) {
+            if (GooglePlayServicesUtil.isUserRecoverableError(resultCode)) {
+                // Show Error dialog to install Play services
+                GooglePlayServicesUtil.getErrorDialog(resultCode, this,
+                        PLAY_SERVICES_RESOLUTION_REQUEST).show();
+            } else {
+                Toast.makeText(
+                        getApplicationContext(),
+                        "This device doesn't support Play services, App will not work normally",
+                        Toast.LENGTH_LONG).show();
+                finish();
+            }
+            return false;
+        } /*else {
+            Toast.makeText(
+                    getApplicationContext(),
+                    "This device supports Play services, App will work normally",
+                    Toast.LENGTH_LONG).show();
+        }*/
+        return true;
+    }
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        checkGCMService();
+    }
+
+
+    private void registerGCM()
+    {
         new AsyncTask<Void, Void, String>() {
             @Override
             protected String doInBackground(Void... params) {
                 String msg = "";
                 try {
                     if (gcm == null) {
-                        gcm = GoogleCloudMessaging.getInstance(getApplicationContext());
+                        gcm = GoogleCloudMessaging
+                                .getInstance(context);
                     }
-                    regid = gcm.register(PROJECT_NUMBER);
-                    SharedPrefs.save(context, SharedPrefs.MY_GCM_ID, regid);
-                    msg = "Device registered, registration ID=" + regid;
-                    System.out.print("GCM Successfully Registered");
-                    Log.i("GCM", msg);
+                    regid = gcm
+                            .register(PROJECT_NUMBER);
+                    msg = regid;
 
                 } catch (IOException ex) {
                     msg = "Error :" + ex.getMessage();
-                    System.out.print("Error in GCM Fetch :" + msg);
-
-
                 }
                 return msg;
             }
 
+           /* @Override
+            protected void onPostExecute(String msg) {
+                if (msg!=null) {
+                    SharedPrefs.save(context, SharedPrefs.MY_GCM_ID,regid);
+                    Toast.makeText(
+                            context,
+                            "Registered with GCM Server successfully.\n\n"
+                                   + msg, Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(
+                            context,
+                            "There is a problem with your right now. Please try registering again after some time."
+                                    + msg, Toast.LENGTH_LONG).show();
+                }
+            }*/
         }.execute(null, null, null);
-        return regid;
     }
 
-    private void checkGCMService() {
-
-        int resultCode = GooglePlayServicesUtil.isGooglePlayServicesAvailable(getApplicationContext());
-
-        if (resultCode == ConnectionResult.SUCCESS) {
-                  } else {
-            GooglePlayServicesUtil.getErrorDialog(resultCode, this, RQS_GooglePlayServices);
-        }
-
-    }
-
-    @Override
-    protected void onResume()
-    {
-        checkGCMService();
-    }
 }
