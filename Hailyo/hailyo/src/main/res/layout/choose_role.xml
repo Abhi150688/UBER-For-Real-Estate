@@ -60,7 +60,7 @@
                 android:id="@+id/myphoto"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
-                                app:siBorderWidth="6dp"
+                app:siBorderWidth="6dp"
                 android:src="@drawable/ic_profile_picture"
                 app:siBorderColor="@color/gray"/>
 

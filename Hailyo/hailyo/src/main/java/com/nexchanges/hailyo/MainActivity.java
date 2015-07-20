@@ -151,7 +151,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         sb1.setOnSeekBarChangeListener(this);
 
         mLocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,60000,10, mLocationListener);
+        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60000, 10, mLocationListener);
 
 
 
@@ -177,8 +177,6 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         visit_refresh.setColorScheme(
                 R.color.red, R.color.yellow,
                 R.color.green, R.color.blue);
-
-
 
 
         searchLocation = (LinearLayout) findViewById(R.id.searchLocation);
@@ -566,7 +564,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
 
                 if (progress == 0) {
                     map.clear();
-                    mMyMarkersArray = plotMyNeighboursHail.markerpos(SharedPrefs.MY_USER_ID,SharedPrefs.MY_CUR_LAT,SharedPrefs.MY_CUR_LNG,"broker");
+                    mMyMarkersArray = plotMyNeighboursHail.markerpos(SharedPrefs.MY_USER_ID,SharedPrefs.MY_CUR_LAT,SharedPrefs.MY_CUR_LNG,"broker", SharedPrefs.MY_ROLE_KEY);
                     plotMarkers(mMyMarkersArray,"broker");
                     tv1.setTextColor(Color.RED);
                     tv2.setTextColor(Color.BLACK);
@@ -575,7 +573,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                 } else if (progress == 50) {
 
                     map.clear();
-                    mMyMarkersArray = plotMyNeighboursHail.markerpos(SharedPrefs.MY_USER_ID,SharedPrefs.MY_CUR_LAT,SharedPrefs.MY_CUR_LNG,"auction");
+                    mMyMarkersArray = plotMyNeighboursHail.markerpos(SharedPrefs.MY_USER_ID,SharedPrefs.MY_CUR_LAT,SharedPrefs.MY_CUR_LNG,"auction", SharedPrefs.MY_ROLE_KEY);
 
                     plotMarkers(mMyMarkersArray,"auction");
 
@@ -585,7 +583,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
 
                 } else if (progress == 100) {
                     map.clear();
-                    mMyMarkersArray = plotMyNeighboursHail.markerpos(SharedPrefs.MY_USER_ID,SharedPrefs.MY_CUR_LAT,SharedPrefs.MY_CUR_LNG,"builder");
+                    mMyMarkersArray = plotMyNeighboursHail.markerpos(SharedPrefs.MY_USER_ID,SharedPrefs.MY_CUR_LAT,SharedPrefs.MY_CUR_LNG,"builder",SharedPrefs.MY_ROLE_KEY);
                     plotMarkers(mMyMarkersArray,"builder");
 
 

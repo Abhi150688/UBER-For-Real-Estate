@@ -61,5 +61,6 @@ dependencies {
 
     compile('com.digits.sdk.android:digits:1.6.0@aar') {
         transitive = true;
+
     }
 }

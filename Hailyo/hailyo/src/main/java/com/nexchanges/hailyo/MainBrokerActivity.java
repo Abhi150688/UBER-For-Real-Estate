@@ -155,6 +155,8 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_broker_main);
+
+
         context = this;
         avlreq = (SeekBar) findViewById(R.id.seekBar2);
         avlreq.setOnSeekBarChangeListener(this);
@@ -544,7 +546,7 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
                 map_hail = googleMap;
                 map_hail.setMyLocationEnabled(true);
 
-                mMyMarkersArray_Hail = plotMyNeighboursHail.markerpos(SharedPrefs.MY_USER_ID,SharedPrefs.MY_CUR_LAT,SharedPrefs.MY_CUR_LNG,"broker");
+                mMyMarkersArray_Hail = plotMyNeighboursHail.markerpos(SharedPrefs.MY_USER_ID,SharedPrefs.MY_CUR_LAT,SharedPrefs.MY_CUR_LNG,"broker",SharedPrefs.MY_ROLE_KEY);
                 plotHailMarkers(mMyMarkersArray_Hail);
 
             }

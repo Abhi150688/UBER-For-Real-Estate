@@ -30,9 +30,8 @@ import java.util.HashMap;
 
 /**
  * Created by AbhishekWork on 16/07/15.
- */
-public class PlotMyNeighboursHail {
-    String URL = "http://ec2-52-25-136-179.us-west-2.compute.amazonaws.com:9000/1/hailyo/bbox5neigbours";
+ */public class PlotMyNeighboursHail {
+    String URL = "http://ec2-52-27-37-225.us-west-2.compute.amazonaws.com:9000/1/hailyo/bboxbrokers";
     StringEntity se;
     private ArrayList<MyMarker> mMyMarkersArray = new ArrayList<MyMarker>();
     private ArrayList<MyMarker> mMyMarkersArray2 = new ArrayList<MyMarker>();
@@ -41,23 +40,23 @@ public class PlotMyNeighboursHail {
 
     private HashMap<Marker, MyMarker> mMarkersHashMap;
 
-   public ArrayList markerpos(String my_user_id, String lat, String lng, String brokerType)
+    public ArrayList markerpos(String my_user_id, String lat, String lng, String brokerType, String user_role)
 
-   {
-       System.out.print(my_user_id + "Hurray " +lat + " hurrah again" + lng );
-       mMyMarkersArray = sendPostRequest(my_user_id,lat,lng,brokerType);
+    {
+        System.out.print(my_user_id + "Hurray " +lat + " hurrah again" + lng );
+        mMyMarkersArray = sendPostRequest(my_user_id,lat,lng,brokerType, user_role);
 
-       for (int i = 0; i<mMyMarkersArray.size(); i++)
-       {
-           System.out.println("Lat returned by post is " + mMyMarkersArray.get(i).getmLatitude());
-           System.out.println("Long returned by post is" + mMyMarkersArray.get(i).getmLongitude());
+        for (int i = 0; i<mMyMarkersArray.size(); i++)
+        {
+            System.out.println("Lat returned by post is " + mMyMarkersArray.get(i).getmLatitude());
+            System.out.println("Long returned by post is" + mMyMarkersArray.get(i).getmLongitude());
 
-       }
-       return mMyMarkersArray;
+        }
+        return mMyMarkersArray;
 
-   }
+    }
 
-    private ArrayList sendPostRequest(final String my_user_id, final String lat, final String lng, final String brokerType)
+    private ArrayList sendPostRequest(final String my_user_id, final String lat, final String lng, final String brokerType, final String user_role)
     {
 
 
@@ -71,9 +70,11 @@ public class PlotMyNeighboursHail {
 
                     System.out.print("We are in JSON Success");
                     jsonObject.accumulate("user_id", my_user_id);
-                    jsonObject.accumulate("mylat", lat);
-                    jsonObject.accumulate("mylng", lng);
-                    jsonObject.accumulate("broker_type", brokerType);
+                    jsonObject.accumulate("lat", lat);
+                    jsonObject.accumulate("long", lng);
+                    jsonObject.accumulate("search_for", brokerType);
+                    jsonObject.accumulate("user_role", user_role);
+
 
                 } catch (JSONException e) {
                     System.out.print("We are in JSON Exception");
@@ -166,41 +167,50 @@ public class PlotMyNeighboursHail {
     }
 
 
-   private ArrayList createMarkerHash(String result)
-   {
+    private ArrayList createMarkerHash(String result)
+    {
 
-       try {
-           System.out.println("Got successful lat lng response in json file");
-
-           JSONObject jObject = new JSONObject(result);
-           JSONArray users = jObject.getJSONArray("users");
-           for (int i = 0; i<users.length();i++)
-           {
-               JSONObject val = users.getJSONObject(i);
-               String Lat = val.getString("lat_value");
-               String Lng = val.getString("lng_value");
-               mMarkersHashMap = new HashMap<Marker, MyMarker>();
-               mMyMarkersArray3.add(new MyMarker(Double.parseDouble(Lat), Double.parseDouble(Lng)));
-
-           }
+        try {
+            System.out.println("Got successful lat lng response in json file");
 
 
-       } catch (JSONException e) {
-           e.printStackTrace();
-       }
+            JSONObject jObject = new JSONObject(result);
+            for (int j = 0;j<jObject.length();j++)
+            {
 
-       System.out.println("Printing data of MyArray 3");
+                JSONArray loc = jObject.getJSONArray("loc");
+
+                String Loc = loc.getString(0);
+                String delims = "[,]";
+                String[] tokens = Loc.split(delims);
+                String Lat = tokens[0];
+                String Lng = tokens[1];
+                System.out.print("Lat is" + Lat);
+                System.out.print("Long is" + Lng);
+                mMarkersHashMap = new HashMap<Marker, MyMarker>();
+                mMyMarkersArray3.add(new MyMarker(Double.parseDouble(Lat), Double.parseDouble(Lng)));
+
+            }
 
 
-       for (int i = 0; i<mMyMarkersArray3.size(); i++)
-       {
-           System.out.println("Lat returned by array 3 is " + mMyMarkersArray3.get(i).getmLatitude());
-           System.out.println("Long returned by array3 is" + mMyMarkersArray3.get(i).getmLongitude());
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
 
-       }
+        System.out.println("Printing data of MyArray 3");
 
 
-       return mMyMarkersArray3;
-   }
+        for (int i = 0; i<mMyMarkersArray3.size(); i++)
+        {
+            System.out.println("Lat returned by array 3 is " + mMyMarkersArray3.get(i).getmLatitude());
+            System.out.println("Long returned by array3 is" + mMyMarkersArray3.get(i).getmLongitude());
+
+        }
+
+
+        return mMyMarkersArray3;
+    }
+
+
 
 }

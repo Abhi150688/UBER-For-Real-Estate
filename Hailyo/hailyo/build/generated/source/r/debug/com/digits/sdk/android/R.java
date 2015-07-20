@@ -324,18 +324,18 @@ public final class R {
 		public static final int dialog_fixed_width_minor = 0x7f09000f;
 		public static final int disabled_alpha_material_dark = 0x7f09003f;
 		public static final int disabled_alpha_material_light = 0x7f090040;
-		public static final int tw__btn_bar_margin_left = 0x7f090065;
-		public static final int tw__btn_bar_margin_right = 0x7f090066;
+		public static final int tw__btn_bar_margin_left = 0x7f090070;
+		public static final int tw__btn_bar_margin_right = 0x7f090071;
 		public static final int tw__login_btn_drawable_padding = 0x7f090000;
 		public static final int tw__login_btn_height = 0x7f090001;
 		public static final int tw__login_btn_left_padding = 0x7f090002;
-		public static final int tw__login_btn_radius = 0x7f09007d;
+		public static final int tw__login_btn_radius = 0x7f090088;
 		public static final int tw__login_btn_right_padding = 0x7f090003;
 		public static final int tw__login_btn_text_size = 0x7f090004;
 		public static final int tw__padding_permission_horizontal_container = 0x7f090011;
-		public static final int tw__padding_permission_vertical_container = 0x7f09007e;
-		public static final int tw__permission_description_text_size = 0x7f09007f;
-		public static final int tw__permission_title_text_size = 0x7f090080;
+		public static final int tw__padding_permission_vertical_container = 0x7f090089;
+		public static final int tw__permission_description_text_size = 0x7f09008a;
+		public static final int tw__permission_title_text_size = 0x7f09008b;
 	}
 	public static final class drawable {
 		public static final int abc_btn_check_material = 0x7f020001;
@@ -466,7 +466,7 @@ public final class R {
 		public static final int icon = 0x7f0f004d;
 		public static final int ifRoom = 0x7f0f002b;
 		public static final int image = 0x7f0f004a;
-		public static final int imageView = 0x7f0f0134;
+		public static final int imageView = 0x7f0f0138;
 		public static final int listMode = 0x7f0f0016;
 		public static final int list_item = 0x7f0f004c;
 		public static final int middle = 0x7f0f0023;
@@ -494,11 +494,11 @@ public final class R {
 		public static final int submit_area = 0x7f0f0063;
 		public static final int tabMode = 0x7f0f0018;
 		public static final int title = 0x7f0f004e;
-		public static final int tw__allow_btn = 0x7f0f0137;
-		public static final int tw__not_now_btn = 0x7f0f0136;
-		public static final int tw__share_email_desc = 0x7f0f0135;
-		public static final int tw__spinner = 0x7f0f0133;
-		public static final int tw__web_view = 0x7f0f0132;
+		public static final int tw__allow_btn = 0x7f0f013b;
+		public static final int tw__not_now_btn = 0x7f0f013a;
+		public static final int tw__share_email_desc = 0x7f0f0139;
+		public static final int tw__spinner = 0x7f0f0137;
+		public static final int tw__web_view = 0x7f0f0136;
 		public static final int up = 0x7f0f000c;
 		public static final int useLogo = 0x7f0f001f;
 		public static final int withText = 0x7f0f002d;
@@ -537,9 +537,9 @@ public final class R {
 		public static final int dgts__activity_pin_code = 0x7f040028;
 		public static final int dgts__country_row = 0x7f040029;
 		public static final int dgts__state_button = 0x7f04002a;
-		public static final int support_simple_spinner_dropdown_item = 0x7f040055;
-		public static final int tw__activity_oauth = 0x7f040056;
-		public static final int tw__activity_share_email = 0x7f040057;
+		public static final int support_simple_spinner_dropdown_item = 0x7f040056;
+		public static final int tw__activity_oauth = 0x7f040057;
+		public static final int tw__activity_share_email = 0x7f040058;
 	}
 	public static final class raw {
 		public static final int tw__cacerts = 0x7f060007;

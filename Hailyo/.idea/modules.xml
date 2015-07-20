@@ -6,11 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/hailyo/hailyo.iml" filepath="$PROJECT_DIR$/hailyo/hailyo.iml" />
       <module fileurl="file://$PROJECT_DIR$/horizontalnumberpicker-library/horizontalnumberpicker-library.iml" filepath="$PROJECT_DIR$/horizontalnumberpicker-library/horizontalnumberpicker-library.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />
-      <module fileurl="file://$PROJECT_DIR$/radiate_wave/radiate_wave.iml" filepath="$PROJECT_DIR$/radiate_wave/radiate_wave.iml" />
-      <module fileurl="file://$PROJECT_DIR$/radiate_wave_app/radiate_wave_app.iml" filepath="$PROJECT_DIR$/radiate_wave_app/radiate_wave_app.iml" />
       <module fileurl="file://$PROJECT_DIR$/stylishDialogLib/stylishDialogLib.iml" filepath="$PROJECT_DIR$/stylishDialogLib/stylishDialogLib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/wave_radiate/wave_radiate.iml" filepath="$PROJECT_DIR$/wave_radiate/wave_radiate.iml" />
     </modules>
   </component>
 </project>
-

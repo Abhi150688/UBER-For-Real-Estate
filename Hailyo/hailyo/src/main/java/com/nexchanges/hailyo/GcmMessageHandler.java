@@ -6,11 +6,21 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
+import android.os.PowerManager;
 import android.os.SystemClock;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.ViewConfiguration;
+import android.view.WindowManager;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.gcm.GoogleCloudMessaging;
@@ -24,17 +34,20 @@ import java.io.IOException;
  * Created by AbhishekWork on 18/07/15.
  */
 
-public class GcmMessageHandler extends IntentService  {
+public class GcmMessageHandler extends IntentService {
 
-    public static final int NOTIFICATION_ID = 1;
+    public static int NOTIFICATION_ID = 1;
     private static final String TAG = "GcmIntentService";
     private NotificationManager mNotificationManager;
     NotificationCompat.Builder builder;
-    String mes;
+    String mes, message;
     private Handler handler;
-    PendingIntent contentIntent;
+    PendingIntent brokerIntent, clientIntent;
+    int color = 0xff123456, requestID;
     public static final String HANDLEGCM = "com.nexchanges.hailyo";
-    Context context;
+    private WindowManager windowManager;
+    private ImageView chatHead;
+    WindowManager.LayoutParams params;
 
 
     public GcmMessageHandler() {
@@ -48,6 +61,7 @@ public class GcmMessageHandler extends IntentService  {
         super.onCreate();
         handler = new Handler();
     }
+
     @Override
     protected void onHandleIntent(Intent intent) {
         Bundle extras = intent.getExtras();
@@ -57,7 +71,9 @@ public class GcmMessageHandler extends IntentService  {
         String messageType = gcm.getMessageType(intent);
 
         mes = extras.getString("title");
-        showToast();
+        message = extras.getString("message");
+
+        // showToast();
         Log.i("GCM", "Received : (" + messageType + ")  " + extras.getString("title"));
 
         if (!extras.isEmpty()) {
@@ -75,11 +91,11 @@ public class GcmMessageHandler extends IntentService  {
 
                 sendNotification(extras.toString());
 
-                Log.i(TAG, "Received: " + extras.toString());
+               /* Log.i(TAG, "Received: " + extras.toString());
                 Intent broadcastIntent = new Intent("com.nexchanges.hailyo");
                 broadcastIntent.setAction(HANDLEGCM);
                 broadcastIntent.putExtra("gcm", mes);
-                context.sendBroadcast(broadcastIntent);
+                this.sendBroadcast(broadcastIntent);*/
 
             }
         }
@@ -87,11 +103,10 @@ public class GcmMessageHandler extends IntentService  {
         GCMBroadcastReceiver.completeWakefulIntent(intent);
 
 
-
     }
 
 
-    public void showToast(){
+    public void showToast() {
         handler.post(new Runnable() {
             public void run() {
                 Toast.makeText(getApplicationContext(), mes, Toast.LENGTH_LONG).show();
@@ -103,27 +118,12 @@ public class GcmMessageHandler extends IntentService  {
     private void sendNotification(String msg) {
         mNotificationManager = (NotificationManager)
                 this.getSystemService(Context.NOTIFICATION_SERVICE);
+        requestID = (int) System.currentTimeMillis();
+        brokerIntent = PendingIntent.getActivity(this, requestID,
+                new Intent(this, MainBrokerActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
 
-        if (SharedPrefs.MY_ROLE_KEY.equalsIgnoreCase("broker"))
-        {
-        contentIntent = PendingIntent.getActivity(this, 0,
-                new Intent(this, MainBrokerActivity.class), 0);}
-
-        else if (SharedPrefs.MY_ROLE_KEY.equalsIgnoreCase("client"))
-
-        {contentIntent = PendingIntent.getActivity(this, 0,
-                new Intent(this, MainActivity.class), 0);}
-
-
-        NotificationCompat.Builder mBuilder =
-                new NotificationCompat.Builder(this)
-
-                        .setContentTitle("Hailyo Notification")
-                        .setStyle(new NotificationCompat.BigTextStyle()
-                                .bigText(msg))
-                        .setContentText(msg);
-        mBuilder.setContentIntent(contentIntent);
-
+        clientIntent = PendingIntent.getActivity(this, requestID,
+                new Intent(this, MainActivity.class), PendingIntent.FLAG_UPDATE_CURRENT);
 
 
         int defaults = 0;
@@ -131,14 +131,105 @@ public class GcmMessageHandler extends IntentService  {
         defaults = defaults | Notification.DEFAULT_VIBRATE;
         defaults = defaults | Notification.DEFAULT_SOUND;
 
-        mBuilder.setDefaults(defaults);
-        // Set the content for Notification
-        mBuilder.setContentText("New message from Server");
-        // Set autocancel
-        mBuilder.setAutoCancel(true);
 
-                // Post a notification
+        NotificationCompat.Builder mBuilder =
+                new NotificationCompat.Builder(this)
 
-        mNotificationManager.notify(NOTIFICATION_ID, mBuilder.build());
+                        .setContentTitle(mes)
+
+                        .setSmallIcon(R.drawable.hailyo_mono)
+                        .setDefaults(defaults)
+                        .setTicker("New Hailyo Notification")
+                        .setAutoCancel(true)
+                        .setColor(color)
+                        .setContentTitle(message);
+
+        String role = SharedPrefs.getString(this, SharedPrefs.MY_ROLE_KEY);
+        System.out.print("My role is" + role);
+
+        if (role.equalsIgnoreCase("broker")) {
+            mBuilder.setContentIntent(brokerIntent);
+        } else if (role.equalsIgnoreCase("client")) {
+            mBuilder.setContentIntent(clientIntent);
+        }
+        addView();
+        PowerManager pm = (PowerManager) this.getSystemService(Context.POWER_SERVICE);
+        PowerManager.WakeLock wl = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK | PowerManager.ACQUIRE_CAUSES_WAKEUP, "TAG");
+        wl.acquire(15000);
+
+
+        // Post a notification
+        if (NOTIFICATION_ID > 1073741824) {
+            NOTIFICATION_ID = 0;
+        }
+
+        mNotificationManager.notify(NOTIFICATION_ID++, mBuilder.build());
+    }
+
+    public void addView() {
+        windowManager = (WindowManager) this.getSystemService(Context.WINDOW_SERVICE);
+        chatHead = new ImageView(this);
+        chatHead.setImageResource(R.drawable.centerhailyo);
+
+        params = new WindowManager.LayoutParams(
+                WindowManager.LayoutParams.WRAP_CONTENT,
+                WindowManager.LayoutParams.WRAP_CONTENT,
+                WindowManager.LayoutParams.TYPE_PHONE,
+                WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE,
+                PixelFormat.TRANSLUCENT);
+
+        params.gravity = Gravity.TOP | Gravity.LEFT;
+        params.x = 0;
+        params.y = 100;
+
+        windowManager.addView(chatHead, params);
+
+        try{
+            chatHead.setOnTouchListener(new View.OnTouchListener() {
+                WindowManager.LayoutParams paramsT = params;
+                private int initialX;
+                private int initialY;
+                private float initialTouchX;
+                private float initialTouchY;
+                private long touchStartTime = 0;
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    //remove face bubble on long press
+                    if(System.currentTimeMillis()-touchStartTime> ViewConfiguration.getLongPressTimeout() && initialTouchX== event.getX()){
+                        windowManager.removeView(chatHead);
+                        stopSelf();
+                        return false;
+                    }
+                    switch(event.getAction()){
+                        case MotionEvent.ACTION_DOWN:
+                            touchStartTime = System.currentTimeMillis();
+                            initialX = params.x;
+                            initialY = params.y;
+                            initialTouchX = event.getRawX();
+                            initialTouchY = event.getRawY();
+                            break;
+                        case MotionEvent.ACTION_UP:
+                            break;
+                        case MotionEvent.ACTION_MOVE:
+                            params.x = initialX + (int) (event.getRawX() - initialTouchX);
+                            params.y = initialY + (int) (event.getRawY() - initialTouchY);
+                            windowManager.updateViewLayout(v, params);
+                            break;
+                    }
+                    return false;
+                }
+            });
+
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+
+        }
+    @Override
+    public IBinder onBind(Intent intent) {
+        // TODO Auto-generated method stub
+        return null;
     }
 }
+

@@ -1,2 +1,3 @@
-include ':stylishDialogLib', ':horizontalnumberpicker-library', 'wave_radiate', 'radiate_wave', 'radiate_wave_app', ':library'
+include ':stylishDialogLib', ':horizontalnumberpicker-library', ':library'
 include ':hailyo'
+

@@ -56,7 +56,7 @@ public class ChooseRoleActivity extends Activity {
 
     //declare variables
     private String Semail, Sname, user_role, Sphoto, C = "Customer", B = "Broker", my_user_id, my_gcm_id;
-    String URL = "http://ec2-52-25-136-179.us-west-2.compute.amazonaws.com:9000/1/user/signup";
+    String URL = "http://ec2-52-27-37-225.us-west-2.compute.amazonaws.com:9000/1/user/signup";
     StringEntity se;
     Button clientBut, brokerBut;
     Dialog alertD;
@@ -88,6 +88,7 @@ public class ChooseRoleActivity extends Activity {
 
         edit = (TextView) findViewById(R.id.edit);
 
+        mobile = SharedPrefs.getString(context, SharedPrefs.MY_MOBILE_KEY);
 
 
         String acc_email = getEmail(context);
@@ -118,7 +119,6 @@ public class ChooseRoleActivity extends Activity {
                                                  Semail = email.getText().toString();
 
                                                  user_role = "client";
-                                                 mobile = SharedPrefs.getString(context, SharedPrefs.MY_MOBILE_KEY);
 
                                                  sendPostRequest(mobile, "+91", Semail, Sname, user_role,regid);
 
@@ -409,20 +409,18 @@ public class ChooseRoleActivity extends Activity {
         SharedPrefs.save(context, SharedPrefs.EMAIL_KEY, Semail);
         SharedPrefs.save(context, SharedPrefs.MY_GCM_ID, regid);
 
-        if (my_user_id != null && !my_user_id.isEmpty()){
+        if (my_user_id != null) {
 
-            switch (user_role) {
+            if (user_role.equalsIgnoreCase("client")) {
+                Intent NextActivity = new Intent(context, MainActivity.class);
+                startActivity(NextActivity);
+                finish();
 
-                case "client":
-                    Intent NextActivity = new Intent(context, MainActivity.class);
-                    startActivity(NextActivity);
-                    finish();
-                    break;
-                case "broker":
-                    Intent NextBroActivity = new Intent(context, MainBrokerActivity.class);
-                    startActivity(NextBroActivity);
-                    finish();
-                    break;
+            } else if (user_role.equalsIgnoreCase("broker")) {
+                Intent NextBroActivity = new Intent(context, MainBrokerActivity.class);
+                startActivity(NextBroActivity);
+                finish();
+
             }
 
         }

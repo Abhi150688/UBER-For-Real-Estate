@@ -6,20 +6,17 @@
         <option name="distributionType" value="LOCAL" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="gradleHome" value="$APPLICATION_HOME_DIR$/gradle/gradle-2.2.1" />
+        <option name="gradleJvm" value="1.7" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/hailyo" />
             <option value="$PROJECT_DIR$/horizontalnumberpicker-library" />
             <option value="$PROJECT_DIR$/library" />
-            <option value="$PROJECT_DIR$/radiate_wave" />
-            <option value="$PROJECT_DIR$/radiate_wave_app" />
             <option value="$PROJECT_DIR$/stylishDialogLib" />
-            <option value="$PROJECT_DIR$/wave_radiate" />
           </set>
         </option>
       </GradleProjectSettings>
     </option>
   </component>
 </project>
-

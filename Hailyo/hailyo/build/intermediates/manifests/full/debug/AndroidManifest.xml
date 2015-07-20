@@ -23,6 +23,7 @@
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
     <permission
         android:name="com.nexchanges.hailyo.permission.C2D_MESSAGE"
@@ -60,6 +61,8 @@
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
+                <category android:name="com.nexchanges.hailyo" />
             </intent-filter>
         </receiver>
 
