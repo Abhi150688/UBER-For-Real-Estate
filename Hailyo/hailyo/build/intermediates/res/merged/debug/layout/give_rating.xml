@@ -76,23 +76,115 @@
         </LinearLayout>
 
 
+
         <LinearLayout
-            android:layout_width="387dp"
-            android:layout_height="140dp"
-            android:background="@color/lightslategray"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:gravity="center"
             android:orientation="vertical">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/orange"
+                android:textColor="@color/white"
+                android:gravity="center"
+                android:textSize="20dp"
+                android:layout_marginTop="0dp"
+                android:text="SITE VISIT FEEDBACK"/>
+
 
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
+                android:background="@color/lightgrey"
+                android:text="Number of Properties Visited?"
+                android:padding="5dp"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/black"
+                android:gravity="center"/>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/gray"
+                />
+
+
+
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="3dp"
+                android:layout_marginTop="4dp">
+
+
+
+                <Button
+                    android:layout_width="0dp"
+                    android:id="@+id/value1"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginLeft="3dp"
+                    android:background="@drawable/button_border"
+                    android:layout_weight="1"
+                    android:text="1"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:id="@+id/value2"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_border"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:text="2"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:id="@+id/value3"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_border"
+                    android:layout_marginRight="5dp"
+                    android:layout_weight="1"
+                    android:text="3"/>
+
+                <Button
+                    android:layout_width="0dp"
+                    android:id="@+id/value4"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_border"
+                    android:layout_marginRight="3dp"
+                    android:layout_weight="1"
+                    android:text="4+"/>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/lightgrey"
                 android:text="RATE YOUR SITE VISIT"
                 android:padding="10dp"
                 android:textColor="@color/black"
+                android:layout_marginTop="4dp"
                 android:gravity="center"/>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="1dp"
+                android:layout_marginRight="40dp"
+                android:layout_marginLeft="40dp"
+                android:layout_marginTop="5dp"
+                android:background="@color/gray"
+                />
+
 
             <LinearLayout
                 android:layout_width="wrap_content"

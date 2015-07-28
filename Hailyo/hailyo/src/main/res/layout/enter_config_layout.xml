@@ -132,11 +132,78 @@
 
 
 
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@android:color/white"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:id="@+id/yourintent">
+
+        <TextView
+            android:id="@+id/yourchosenintent"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center_horizontal|center"
+            android:layout_height="wrap_content"
+            android:text="Want to BUY/SELL or Rent? "
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textColor="#28b54c" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:gravity="center"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal"
+            >
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_border"
+            android:textColor="@color/black"
+            android:text="RENT"
+            android:paddingLeft="9dp"
+            android:paddingRight="9dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:textAllCaps="false"
+            android:textSize="15dp"
+            android:layout_marginRight="10dp"
+            android:layout_gravity="center_horizontal"
+            android:id="@+id/rent" />
+
+        <Button
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_border"
+            android:textColor="@color/black"
+            android:text="BUY"
+            android:paddingLeft="5dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:paddingRight="5dp"
+            android:layout_gravity="center_horizontal"
+            android:textAllCaps="false"
+            android:textSize="15dp"
+            android:id="@+id/sell" />
+        </LinearLayout>
+
+</LinearLayout>
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-android:layout_marginRight="5dp"
+        android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
         android:background="@android:color/white"
         android:orientation="vertical"
@@ -153,27 +220,27 @@ android:layout_marginRight="5dp"
             >
 
 
-        <TextView
-            android:id="@+id/textViewconfig"
-            android:layout_width="wrap_content"
-            android:layout_gravity="center_horizontal|center"
-            android:gravity="center"
-            android:layout_height="wrap_content"
-            android:text="Size-BHK"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:textColor="#28b54c" />
+            <TextView
+                android:id="@+id/textViewconfig"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center_horizontal|center"
+                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:text="Size-BHK"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:textColor="#28b54c" />
 
-        <TextView
-            android:id="@+id/tvconfigResult"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceMedium"
-            android:layout_gravity="center_horizontal|center"
-            android:textColor="#28b54c"
-            android:gravity="center_horizontal"
-            />
+            <TextView
+                android:id="@+id/tvconfigResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:layout_gravity="center_horizontal|center"
+                android:textColor="#28b54c"
+                android:gravity="center_horizontal"
+                />
 
-</LinearLayout>
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -191,7 +258,6 @@ android:layout_marginRight="5dp"
                 android:layout_height="wrap_content"
                 />
 
-
         </LinearLayout>
     </LinearLayout>
 
@@ -200,7 +266,6 @@ android:layout_marginRight="5dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
-
         android:background="@android:color/white"
         android:orientation="vertical"
         android:paddingBottom="20dp"
@@ -236,97 +301,106 @@ android:layout_marginRight="5dp"
            />
 </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <include layout="@layout/price"
+            android:layout_width="fill_parent"
+            android:id="@+id/rentpricetext"
+            android:layout_height="wrap_content" />
+
+        <include layout="@layout/pricesale"
+            android:id="@+id/salepricetext"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:id="@+id/enterpri">
+            android:visibility="gone"
+            />
 
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-">
-
-                    <FrameLayout
-                        android:id="@+id/seekArcContainer"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1" >
-
-                        <com.nexchanges.hailyo.ui.SeekArc
-                            android:id="@+id/seekRent"
-
-                            android:layout_width="match_parent"
-                            android:layout_height="175dp"
-                            android:layout_gravity="center"
-                            android:padding="30dp"
-                            seekarc:arcColor="@color/red"
-                            seekarc:clockwise="true"
-                            seekarc:max="500000"
-                            seekarc:progressColor="@color/orange"
-                            seekarc:rotation="180"
-                            seekarc:startAngle="30"
-                            seekarc:sweepAngle="300"
-                            seekarc:thumb="@drawable/custom_seek_arc_control_selector"
-                            seekarc:touchInside="true" />
-
-                        <TextView
-                            android:id="@+id/seekArcProgress_Rent"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="Rent"
-                            android:textSize="20sp" />
-                    </FrameLayout>
+        <SeekBar
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:max="1000000"
+        android:id="@+id/rentbar"
+        android:thumb="@drawable/custom_seek_arc_control_selector"
+        android:background="@color/transparent"/>
 
 
-                    <FrameLayout
-                        android:id="@+id/seekArcContainer2"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1" >
-
-                        <com.nexchanges.hailyo.ui.SeekArc
-                            android:id="@+id/seekSale"
-
-                            android:layout_width="match_parent"
-                            android:layout_height="175dp"
-                            android:layout_gravity="center"
-                            android:padding="30dp"
-                            seekarc:arcColor="@color/red"
-                            seekarc:clockwise="true"
-                            seekarc:max="100000000"
-                            seekarc:progressColor="@color/orange"
-                            seekarc:rotation="180"
-                            seekarc:startAngle="30"
-                            seekarc:sweepAngle="300"
-                            seekarc:thumb="@drawable/custom_seek_arc_control_selector"
-                            seekarc:touchInside="true" />
-
-                        <TextView
-                            android:id="@+id/seekArcProgress_Sale"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:text="Sale"
-                            android:textSize="20sp" />
-                    </FrameLayout>
-
-
-                </LinearLayout>
+    <SeekBar
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:max="100000000"
+        android:id="@+id/salebar"
+        android:visibility="invisible"
+        android:thumb="@drawable/custom_seek_arc_control_selector"
+        android:background="@color/transparent"/>
 
 
 
+    <!--    <FrameLayout
+            android:id="@+id/seekArcContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
+
+            <com.nexchanges.hailyo.customWidget.SeekArc
+                android:id="@+id/seekRent"
+
+                android:layout_width="match_parent"
+                android:layout_height="175dp"
+                android:layout_gravity="center"
+                android:padding="30dp"
+                seekarc:arcColor="@color/red"
+                seekarc:clockwise="true"
+                seekarc:max="500000"
+                seekarc:progressColor="@color/orange"
+                seekarc:rotation="180"
+                seekarc:startAngle="30"
+                seekarc:sweepAngle="300"
+                seekarc:thumb="@drawable/custom_seek_arc_control_selector"
+                seekarc:touchInside="true" />
+
+            <TextView
+                android:id="@+id/seekArcProgress_Rent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Rent"
+                android:textSize="20sp" />
+        </FrameLayout>
 
 
-        </LinearLayout>
+        <FrameLayout
+            android:id="@+id/seekArcContainer2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1" >
 
+            <com.nexchanges.hailyo.customWidget.SeekArc
+                android:id="@+id/seekSale"
 
+                android:layout_width="match_parent"
+                android:layout_height="175dp"
+                android:layout_gravity="center"
+                android:padding="30dp"
+                seekarc:arcColor="@color/red"
+                seekarc:clockwise="true"
+                seekarc:max="100000000"
+                seekarc:progressColor="@color/orange"
+                seekarc:rotation="180"
+                seekarc:startAngle="30"
+                seekarc:sweepAngle="300"
+                seekarc:thumb="@drawable/custom_seek_arc_control_selector"
+                seekarc:touchInside="true" />
+
+            <TextView
+                android:id="@+id/seekArcProgress_Sale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="Sale"
+                android:textSize="20sp" />
+        </FrameLayout>
+        -->
     </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"

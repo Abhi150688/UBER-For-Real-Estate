@@ -55,7 +55,7 @@
             android:value="@string/fb_app_id"/>
 
         <receiver
-            android:name=".GCMBroadcastReceiver"
+            android:name=".gcm.GCMBroadcastReceiver"
             android:exported="true"
             android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
@@ -64,7 +64,7 @@
                 <category android:name="com.nexchanges.hailyo"/>
                </intent-filter>
         </receiver>
-        <service android:name=".GcmMessageHandler"
+        <service android:name=".gcm.GcmMessageHandler"
             android:exported="false" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
@@ -103,7 +103,7 @@
 
 
         <activity
-            android:name=".SearchSplashActivity"
+            android:name=".customAnimation.SearchSplashActivity"
             android:screenOrientation="portrait"></activity>
 
 
@@ -133,23 +133,19 @@
 
 
         <activity
-            android:name=".SelectPaymentTypeActivity"
+            android:name=".paymentGateway.SelectPaymentTypeActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".AboutActivity"
+            android:name=".DrawerClass.AboutActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".HelpActivity"
+            android:name=".DrawerClass.HelpActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".MySiteVisitHistory"
-            android:screenOrientation="portrait" />
-
-        <activity
-            android:name=".PromotionsActivity"
+            android:name=".DrawerClass.ProfileActivity"
             android:screenOrientation="portrait" />
 
         <activity
@@ -158,11 +154,11 @@
 
 
         <activity
-            android:name=".SettingsActivity"
+            android:name=".DrawerClass.SettingsActivity"
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".PaytmWalletActivity"
+            android:name=".paymentGateway.PaytmWalletActivity"
             android:screenOrientation="portrait" />
 
         <activity
@@ -179,12 +175,12 @@
             android:screenOrientation="portrait" />
 
         <activity
-            android:name=".custom.SearchActivity"
+            android:name=".GoogleMapSupport.SearchActivity"
             android:screenOrientation="portrait"/>
 
 
         <activity
-            android:name=".LoginActivity1"
+            android:name=".LoginActivity"
 
             android:label="@string/title_activity_login"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" >

@@ -31,13 +31,16 @@ public class SharedPrefs {
     public static String MY_GCM_ID = "myGCMId";
 
 
-    public static String RENT_KEY = "myphotoKey";
-    public static String DEPOSIT_KEY = "myphotoKey";
-    public static String STARTDATE_KEY = "myphotoKey";
     public static String MY_ROLE_KEY = "myroleKey";
     public static String CURRENT_LOC_KEY = "location_key";
     public static String CURRENT_FLIPPER_VIEW = "flipper_key";
     public static String CURRENT_COUNTER_BROKER= "counter_broker_key";
+    public static String SUCCESSFUL_HAIL= "sucessful_hail_key";
+
+    public static String CURRENT_CUST_TYPE= "current_cust_type";
+    public static String CURRENT_INTENT= "current_intent";
+
+
 
     //get the SharedPreferences object instance
     //create SharedPreferences file if not present

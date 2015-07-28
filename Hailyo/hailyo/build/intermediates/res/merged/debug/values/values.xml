@@ -890,7 +890,6 @@
     <eat-comment/>
     <string name="fb_app_id"> 1587256568190457</string>
     <string name="from">From</string>
-    <string name="gcm_defaultSenderId">250185285941</string>
     <string name="hailmode">HAIL</string>
     <string name="home">Home</string>
     <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values/values.xml -->

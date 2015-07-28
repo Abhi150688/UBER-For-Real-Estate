@@ -15,7 +15,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1" >
 
-        <com.nexchanges.hailyo.ui.SeekArc
+        <com.nexchanges.hailyo.customWidget.SeekArc
             android:id="@+id/seekRent"
 
             android:layout_width="match_parent"
@@ -48,7 +48,7 @@
         android:layout_height="match_parent"
         android:layout_weight="1" >
 
-        <com.nexchanges.hailyo.ui.SeekArc
+        <com.nexchanges.hailyo.customWidget.SeekArc
             android:id="@+id/seekSale"
 
             android:layout_width="match_parent"

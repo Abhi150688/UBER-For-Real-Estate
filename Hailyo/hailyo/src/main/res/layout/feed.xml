@@ -27,7 +27,7 @@
 
 
 
-            <com.nexchanges.hailyo.custom.CircularNetworkImageView
+            <com.nexchanges.hailyo.customWidget.CircularNetworkImageView
                 android:layout_width="@dimen/feed_item_profile_pic"
                 android:layout_height="@dimen/feed_item_profile_pic"
                 android:scaleType="fitCenter"
@@ -38,7 +38,7 @@
                 android:clickable="false"
                 android:focusable="false"
                 android:layout_marginRight="8dp">
-                 </com.nexchanges.hailyo.custom.CircularNetworkImageView>
+                 </com.nexchanges.hailyo.customWidget.CircularNetworkImageView>
 
             <LinearLayout
                 android:layout_width="fill_parent"

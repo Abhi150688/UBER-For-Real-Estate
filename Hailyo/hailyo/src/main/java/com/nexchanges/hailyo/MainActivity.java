@@ -1,11 +1,8 @@
 package com.nexchanges.hailyo;
 
-import android.app.AlertDialog;
-import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
@@ -16,7 +13,6 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.support.v4.app.ActionBarDrawerToggle;
 
 import android.support.v4.view.GravityCompat;
@@ -52,20 +48,26 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.nexchanges.hailyo.custom.MyMarker;
-import com.nexchanges.hailyo.custom.PlotMyNeighboursHail;
-import com.nexchanges.hailyo.custom.SendLocationUpdate;
+import com.nexchanges.hailyo.DrawerClass.AboutActivity;
+import com.nexchanges.hailyo.DrawerClass.HelpActivity;
+import com.nexchanges.hailyo.DrawerClass.ProfileActivity;
+import com.nexchanges.hailyo.customSupportClass.CheckLocationServices;
+import com.nexchanges.hailyo.customSupportClass.MyMarker;
+import com.nexchanges.hailyo.apiSupport.PlotMyNeighboursHail;
+import com.nexchanges.hailyo.apiSupport.SendLocationUpdate;
+import com.nexchanges.hailyo.gcm.GcmMessageHandler;
 import com.nexchanges.hailyo.model.DealData;
 import com.nexchanges.hailyo.model.SharedPrefs;
 import com.nexchanges.hailyo.model.VisitData;
 
-import com.nexchanges.hailyo.ui.CustomListAdapter_Deals;
-import com.nexchanges.hailyo.ui.CustomListAdapter_Visit;
+import com.nexchanges.hailyo.list_adapter.CustomListAdapter_Deals;
+import com.nexchanges.hailyo.list_adapter.CustomListAdapter_Visit;
+import com.nexchanges.hailyo.paymentGateway.SelectPaymentTypeActivity;
 import com.nexchanges.hailyo.ui.CustomMapFragment;
-import com.nexchanges.hailyo.custom.GetCurrentLocation;
-import com.nexchanges.hailyo.custom.GetPlaceName;
-import com.nexchanges.hailyo.custom.MapWrapperLayout;
-import com.nexchanges.hailyo.custom.SearchActivity;
+import com.nexchanges.hailyo.GoogleMapSupport.GetCurrentLocation;
+import com.nexchanges.hailyo.GoogleMapSupport.GetPlaceName;
+import com.nexchanges.hailyo.customSupportClass.MapWrapperLayout;
+import com.nexchanges.hailyo.GoogleMapSupport.SearchActivity;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -79,6 +81,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
 {
 
     PlotMyNeighboursHail plotMyNeighboursHail = new PlotMyNeighboursHail();
+    CheckLocationServices checkLocationServices = new CheckLocationServices();
     //ViewAll Visits
 
     // Visit json url
@@ -87,6 +90,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
     private List<VisitData> visitList = new ArrayList<VisitData>();
     private ListView listView;
     private CustomListAdapter_Visit adapter;
+    Boolean is_transaction=false;
     SwipeRefreshLayout visit_refresh, deal_refresh;
     SendLocationUpdate sendLocationUpdate = new SendLocationUpdate();
 
@@ -146,6 +150,9 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = this;
+        checkLocationServices.checkGpsStatus();
+        is_transaction = SharedPrefs.getBoolean(context,SharedPrefs.SUCCESSFUL_HAIL,false);
+
 
         sb1 = (SeekBar)findViewById(R.id.seekBar2);
         sb1.setOnSeekBarChangeListener(this);
@@ -222,9 +229,19 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         }
 
 
+
+
         hail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if(is_transaction==true)
+                {
+                    Intent PostYoActivity=new Intent(context, PostYoActivity.class);
+                startActivity(PostYoActivity);}
+
+                else{
+
                 VF10.setDisplayedChild(0);
                 hail.setBackgroundColor(Color.parseColor("#FFA500"));
                 hail.setTextColor(Color.WHITE);
@@ -232,7 +249,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                 visits.setTextColor(Color.BLACK);
                 deals.setBackgroundResource(R.drawable.button_border);
                 deals.setTextColor(Color.BLACK);
-                 }
+                 }}
         });
 
 
@@ -383,18 +400,13 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                     break;
 
                     case 3:
-                    Intent promotionsAct = new Intent(context, PromotionsActivity.class);
-                    startActivity(promotionsAct);
+                    Intent profileAct = new Intent(context, ProfileActivity.class);
+                    startActivity(profileAct);
                         break;
 
                     case 4:
                     Intent aboutAct = new Intent(context, AboutActivity.class);
                     startActivity(aboutAct);
-                        break;
-
-                    case 5:
-                    Intent settingsAct = new Intent(context, SettingsActivity.class);
-                    startActivity(settingsAct);
                         break;
 
                     default:
@@ -591,13 +603,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                     tv2.setTextColor(Color.BLACK);
                     tv3.setTextColor(Color.RED);
                 }
-
-
             }
-
-
-
-
 
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {

@@ -7,14 +7,14 @@ android:orientation="vertical"
     android:background="@color/white">
 
 <TextView
-    android:layout_width="wrap_content"
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="20dp"
-    android:layout_marginLeft="45dp"
+    android:background="@color/orange"
+    android:textColor="@color/white"
     android:textSize="25dp"
+    android:gravity="center"
     android:textAlignment="center"
-    android:textColor="@color/black"
-    android:text="Choose Payment Method : "/>
+    android:text="Choose Payment Method"/>
 
     <View
         android:layout_width="fill_parent"
@@ -29,7 +29,7 @@ android:orientation="vertical"
     android:layout_width="250dp"
     android:layout_height="50dp"
     android:layout_marginLeft="70dp"
-    android:background="@drawable/button_background_states"
+    android:background="@drawable/button_border"
     android:layout_marginTop="20dp"
     android:text="PAYTM WALLET"
     android:textSize="25sp"

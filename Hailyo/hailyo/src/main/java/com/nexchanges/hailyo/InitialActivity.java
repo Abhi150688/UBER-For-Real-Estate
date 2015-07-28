@@ -64,7 +64,7 @@ public class InitialActivity extends Activity {
     }
 
     private void startLoginActivity() {
-        startActivity(new Intent(this, LoginActivity1.class));
+        startActivity(new Intent(this, LoginActivity.class));
     }
 
     private void startBrokerActivity() {

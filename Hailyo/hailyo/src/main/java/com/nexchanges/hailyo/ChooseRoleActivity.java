@@ -14,8 +14,8 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.telephony.TelephonyManager;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -29,7 +29,6 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
-import com.nexchanges.hailyo.custom.RippleBackground;
 import com.nexchanges.hailyo.model.SharedPrefs;
 
 import org.apache.http.HttpResponse;
@@ -55,7 +54,7 @@ public class ChooseRoleActivity extends Activity {
     final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
 
     //declare variables
-    private String Semail, Sname, user_role, Sphoto, C = "Customer", B = "Broker", my_user_id, my_gcm_id;
+    private String Semail, Sname, user_role, Sphoto, C = "Customer", B = "Broker", my_user_id, my_gcm_id, num;
     String URL = "http://ec2-52-27-37-225.us-west-2.compute.amazonaws.com:9000/1/user/signup";
     StringEntity se;
     Button clientBut, brokerBut;
@@ -120,9 +119,9 @@ public class ChooseRoleActivity extends Activity {
 
                                                  user_role = "client";
 
-                                                 sendPostRequest(mobile, "+91", Semail, Sname, user_role,regid);
+                                                sendPostRequest(mobile, "+91", Semail, Sname, user_role, regid);
 
-                                                 //signup_success();
+                                                // signup_success();
                                              }
 
 
@@ -400,7 +399,7 @@ public class ChooseRoleActivity extends Activity {
         }
 
         SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
-        sendPostReqAsyncTask.execute(mobile, code, Semail, Sname, user_role,regid);
+        sendPostReqAsyncTask.execute(mobile, code, Semail, Sname, user_role, regid);
     }
 
     void signup_success() {
@@ -409,7 +408,7 @@ public class ChooseRoleActivity extends Activity {
         SharedPrefs.save(context, SharedPrefs.EMAIL_KEY, Semail);
         SharedPrefs.save(context, SharedPrefs.MY_GCM_ID, regid);
 
-        if (my_user_id != null) {
+        //if (my_user_id != null) {
 
             if (user_role.equalsIgnoreCase("client")) {
                 Intent NextActivity = new Intent(context, MainActivity.class);
@@ -424,21 +423,19 @@ public class ChooseRoleActivity extends Activity {
             }
 
         }
-    }
+
 
     protected void showSplashScreen() {
 
         LayoutInflater layoutInflater = LayoutInflater.from(context);
         View View = layoutInflater.inflate(R.layout.splashscreen, null);
 
-        final RippleBackground rippleBackground = (RippleBackground) View.findViewById(R.id.content);
-        rippleBackground.startRippleAnimation();
         alertD = new Dialog(context);
         alertD.getWindow().setBackgroundDrawable(new ColorDrawable(0));
         alertD.setContentView(View);
         alertD.setCancelable(false);
         alertD.show();
-        alertD.getWindow().setLayout(500, 500);
+        alertD.getWindow().setLayout(500, 600);
 
     }
 
@@ -520,6 +517,17 @@ public class ChooseRoleActivity extends Activity {
                 }
             }*/
         }.execute(null, null, null);
+    }
+
+    private String getMyNumber()
+    {
+        TelephonyManager tMgr = (TelephonyManager)this.getSystemService(Context.TELEPHONY_SERVICE);
+        String mPhoneNumber = tMgr.getLine1Number();
+        if (mPhoneNumber.isEmpty())
+            return " ";
+        else
+        num = mPhoneNumber;
+        return num;
     }
 
 }

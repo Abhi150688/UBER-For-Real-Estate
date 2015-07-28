@@ -1,8 +1,8 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.1.2"
+    compileSdkVersion 14
+    buildToolsVersion '22.0.1'
 
     defaultConfig {
         minSdkVersion 21
@@ -11,6 +11,6 @@ android {
 }
 
 dependencies {
-    compile group: 'net.sf.kxml', name: 'kxml2', version:'2.3.0'
+    compile 'net.sf.kxml:kxml2:2.3.0'
 }
 

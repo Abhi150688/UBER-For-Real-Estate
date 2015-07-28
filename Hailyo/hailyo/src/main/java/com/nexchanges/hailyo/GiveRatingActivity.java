@@ -5,6 +5,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -49,9 +50,11 @@ public class GiveRatingActivity extends Activity {
 
     TextView clock;
     Context context;
+    Button but1,but2,but3,but4;
+    int prop_count = 0;
     ImageView happy, sad;
     StringEntity se;
-    String my_id,counter_id,hailyo_id;
+    String my_id,counter_id,hailyo_id,cust_type,role;
     boolean rating;
     String URL = "http://ec2-52-25-136-179.us-west-2.compute.amazonaws.com:9000/1/give/rating";
 
@@ -60,6 +63,13 @@ public class GiveRatingActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.give_rating);
         context = this;
+
+        SharedPrefs.save(context, SharedPrefs.SUCCESSFUL_HAIL, "false");
+
+        cust_type = SharedPrefs.getString(context,SharedPrefs.CURRENT_CUST_TYPE);
+
+        role = SharedPrefs.getString(context,SharedPrefs.MY_ROLE_KEY);
+
 
         clock = (TextView) findViewById(R.id.clock);
 
@@ -74,10 +84,109 @@ public class GiveRatingActivity extends Activity {
 
         sad = (ImageView) findViewById(R.id.sad);
 
+        if (cust_type.equalsIgnoreCase("avl"))
+        {
+            but1.setClickable(false);
+            but2.setClickable(false);
+            but3.setClickable(false);
+            but4.setClickable(false);
+        }
+
+        else if (cust_type.equalsIgnoreCase("req"))
+        {
+            but1.setClickable(true);
+            but2.setClickable(true);
+            but3.setClickable(true);
+            but4.setClickable(true);
+
+
+        }
+
+
+        but1 = (Button) findViewById(R.id.value1);
+
+        but2 = (Button) findViewById(R.id.value2);
+
+        but3 = (Button) findViewById(R.id.value3);
+
+        but4 = (Button) findViewById(R.id.value4);
+
+
         my_id = SharedPrefs.getString(context, SharedPrefs.MY_USER_ID," ");
         counter_id = SharedPrefs.getString(context, SharedPrefs.MY_CURRENT_BROKER," ");
 
         hailyo_id = SharedPrefs.getString(context, SharedPrefs.MY_CURRENT_HAILYO," ");
+
+
+        but1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                prop_count = 1;
+                but1.setBackgroundColor(Color.parseColor("#FFA500"));
+                but1.setTextColor(Color.WHITE);
+                but2.setBackgroundResource(R.drawable.button_border);
+                but2.setTextColor(Color.BLACK);
+                but3.setBackgroundResource(R.drawable.button_border);
+                but3.setTextColor(Color.BLACK);
+                but4.setBackgroundResource(R.drawable.button_border);
+                but4.setTextColor(Color.BLACK);
+            }
+        });
+
+
+        but2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                prop_count = 2;
+                but2.setBackgroundColor(Color.parseColor("#FFA500"));
+                but2.setTextColor(Color.WHITE);
+                but1.setBackgroundResource(R.drawable.button_border);
+                but1.setTextColor(Color.BLACK);
+                but3.setBackgroundResource(R.drawable.button_border);
+                but3.setTextColor(Color.BLACK);
+                but4.setBackgroundResource(R.drawable.button_border);
+                but4.setTextColor(Color.BLACK);
+
+
+            }
+        });
+
+
+        but3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                prop_count = 3;
+                but3.setBackgroundColor(Color.parseColor("#FFA500"));
+                but3.setTextColor(Color.WHITE);
+                but2.setBackgroundResource(R.drawable.button_border);
+                but2.setTextColor(Color.BLACK);
+                but1.setBackgroundResource(R.drawable.button_border);
+                but1.setTextColor(Color.BLACK);
+                but4.setBackgroundResource(R.drawable.button_border);
+                but4.setTextColor(Color.BLACK);
+            }
+        });
+
+
+        but4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                prop_count = 4;
+                but4.setBackgroundColor(Color.parseColor("#FFA500"));
+                but4.setTextColor(Color.WHITE);
+                but2.setBackgroundResource(R.drawable.button_border);
+                but2.setTextColor(Color.BLACK);
+                but3.setBackgroundResource(R.drawable.button_border);
+                but3.setTextColor(Color.BLACK);
+                but1.setBackgroundResource(R.drawable.button_border);
+                but1.setTextColor(Color.BLACK);
+            }
+        });
+
 
 
 
@@ -114,9 +223,27 @@ public class GiveRatingActivity extends Activity {
 
     private void submitrating()
     {
-        Intent NewBidActivity = new Intent(context, NewBidActivity.class);
-        startActivity(NewBidActivity);
-        finish();
+        if (cust_type.equalsIgnoreCase("req"))
+        {
+            Intent NewBidActivity = new Intent(context, NewBidActivity.class);
+            startActivity(NewBidActivity);
+            finish();
+        } else
+        {
+            if (role.equalsIgnoreCase("client"))
+            {    Intent MainActivity = new Intent(context, MainActivity.class);
+                startActivity(MainActivity);
+                finish();
+            }
+            else if (role.equalsIgnoreCase("broker"))
+            {
+                Intent MainBrokerActivity = new Intent(context, MainBrokerActivity.class);
+                startActivity(MainBrokerActivity);
+                finish();
+
+            }
+
+        }
 
     }
 

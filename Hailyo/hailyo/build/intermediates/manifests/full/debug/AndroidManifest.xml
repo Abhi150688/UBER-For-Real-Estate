@@ -55,7 +55,7 @@
             android:value="@string/fb_app_id" />
 
         <receiver
-            android:name="com.nexchanges.hailyo.GCMBroadcastReceiver"
+            android:name="com.nexchanges.hailyo.gcm.GCMBroadcastReceiver"
             android:exported="true"
             android:permission="com.google.android.c2dm.permission.SEND" >
             <intent-filter>
@@ -67,7 +67,7 @@
         </receiver>
 
         <service
-            android:name="com.nexchanges.hailyo.GcmMessageHandler"
+            android:name="com.nexchanges.hailyo.gcm.GcmMessageHandler"
             android:exported="false" >
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
@@ -97,7 +97,7 @@
             android:name="com.nexchanges.hailyo.SuccessfulYo"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.nexchanges.hailyo.SearchSplashActivity"
+            android:name="com.nexchanges.hailyo.customAnimation.SearchSplashActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.nexchanges.hailyo.ChooseRoleActivity"
@@ -115,28 +115,25 @@
             android:name="com.nexchanges.hailyo.GiveRatingActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.nexchanges.hailyo.SelectPaymentTypeActivity"
+            android:name="com.nexchanges.hailyo.paymentGateway.SelectPaymentTypeActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.nexchanges.hailyo.AboutActivity"
+            android:name="com.nexchanges.hailyo.DrawerClass.AboutActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.nexchanges.hailyo.HelpActivity"
+            android:name="com.nexchanges.hailyo.DrawerClass.HelpActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.nexchanges.hailyo.MySiteVisitHistory"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.nexchanges.hailyo.PromotionsActivity"
+            android:name="com.nexchanges.hailyo.DrawerClass.ProfileActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.nexchanges.hailyo.NewBidActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.nexchanges.hailyo.SettingsActivity"
+            android:name="com.nexchanges.hailyo.DrawerClass.SettingsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.nexchanges.hailyo.PaytmWalletActivity"
+            android:name="com.nexchanges.hailyo.paymentGateway.PaytmWalletActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.nexchanges.hailyo.EnterConfigActivity"
@@ -148,10 +145,10 @@
             android:configChanges="keyboardHidden|orientation|keyboard"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.nexchanges.hailyo.custom.SearchActivity"
+            android:name="com.nexchanges.hailyo.GoogleMapSupport.SearchActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.nexchanges.hailyo.LoginActivity1"
+            android:name="com.nexchanges.hailyo.LoginActivity"
             android:label="@string/title_activity_login"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" >
         </activity>

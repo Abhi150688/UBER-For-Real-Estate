@@ -5,33 +5,32 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.SeekBar;
+import android.widget.TableLayout;
 import android.widget.TextView;
 
 import com.hrules.horizontalnumberpicker.HorizontalNumberPicker;
 import com.hrules.horizontalnumberpicker.HorizontalNumberPickerListener;
-import com.nexchanges.hailyo.custom.ConfigSpecCode;
+import com.nexchanges.hailyo.customSupportClass.ConfigSpecCode;
 import com.nexchanges.hailyo.model.SharedPrefs;
-import com.nexchanges.hailyo.ui.SeekArc;
+import com.nexchanges.hailyo.customWidget.SeekArc;
 
 
 /**
  * Created by AbhishekWork on 17/06/15.
  */
-public class EnterConfigActivity extends Activity implements HorizontalNumberPickerListener{
+public class EnterConfigActivity extends Activity implements HorizontalNumberPickerListener, SeekBar.OnSeekBarChangeListener{
 
 
     private SeekArc mSeekArc_Rent, mSeekArc_Sale;
     private TextView mSeekArcProgress_Rent, mSeekArcProgress_Sale;
 
     //declare variables
-    SeekBar seekbar1, seekbar2;
-    int value;
-    int bhkval;
+    SeekBar mSeekbar_Rent, mSeekbar_Sale;
+    int bhkval, value;
     TextView result;
     TextView configresult;
 
@@ -46,16 +45,16 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
 
 
     Button hailBtn;
-    private String message;
-    Button seeProp;
-    Button showProp;
-    Boolean isOnePressed = true, isSecondPlace = false;
+    private String message, role;
+    Button seeProp,showProp, rent, buy;
+    Boolean isOnePressed = true, isSecondPlace = false, rentPressed = true, salePressed = false;
     String choice="LL";
     Context context;
     int max=5, min=1;
-    String fetchloc, msg2,msg3,msg4="Req";
+    String fetchloc, msg1="LL",msg2,msg3,msg4="Req";
     ConfigSpecCode spec_code;
     private static LayoutInflater inflate =null;
+    TableLayout renttab, saletab;
 
 
 
@@ -66,6 +65,8 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
         setContentView(R.layout.enter_config_layout);
         context = this;
         spec_code = new ConfigSpecCode();
+
+        role = SharedPrefs.getString(context,SharedPrefs.MY_ROLE_KEY);
 
 
 
@@ -97,55 +98,24 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
         inflate = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View vi = inflate.inflate(R.layout.left_nav_header,null);
 
-        mSeekArc_Rent = (SeekArc)findViewById(R.id.seekRent);
+       mSeekbar_Rent = (SeekBar)findViewById(R.id.rentbar);
 
-        mSeekArc_Sale = (SeekArc) findViewById(R.id.seekSale);
-
-
-       // mSeekArc_Sale = (SeekArc) findViewById(R.id.seekSale);
-        mSeekArcProgress_Rent = (TextView) findViewById(R.id.seekArcProgress_Rent);
-
-        mSeekArcProgress_Sale = (TextView) findViewById(R.id.seekArcProgress_Sale);
-
-
-        mSeekArc_Rent.setOnSeekArcChangeListener(new SeekArc.OnSeekArcChangeListener() {
-
-            @Override
-            public void onStopTrackingTouch(SeekArc seekArc) {
-            }
-            @Override
-            public void onStartTrackingTouch(SeekArc seekArc) {
-            }
-
-            @Override
-            public void onProgressChanged(SeekArc seekArc, int progress,
-                                          boolean fromUser) {
-                mSeekArcProgress_Rent.setText("Rent: \n" + String.valueOf(progress));
-            }
-        });
-
-        mSeekArc_Sale.setOnSeekArcChangeListener(new SeekArc.OnSeekArcChangeListener() {
-
-            @Override
-            public void onStopTrackingTouch(SeekArc seekArc) {
-            }
-            @Override
-            public void onStartTrackingTouch(SeekArc seekArc) {
-            }
-
-            @Override
-            public void onProgressChanged(SeekArc seekArc, int progress,
-                                          boolean fromUser) {
-                mSeekArcProgress_Sale.setText("Price: \n" + String.valueOf(progress));
-            }
-        });
-
+        mSeekbar_Sale = (SeekBar)findViewById(R.id.salebar);
 
 
 
 
         seeProp = (Button) findViewById(R.id.seeprop);
         showProp = (Button) findViewById(R.id.showprop);
+
+        rent = (Button) findViewById(R.id.rent);
+        buy = (Button) findViewById(R.id.sell);
+
+
+        renttab = (TableLayout) findViewById(R.id.rentpricetext);
+
+        saletab = (TableLayout) findViewById(R.id.salepricetext);
+
 
 
 
@@ -156,6 +126,7 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
                 // TODO Auto-generated method stub
                 isOnePressed = true;
                 msg4="Req";
+                SharedPrefs.save(context,SharedPrefs.CURRENT_CUST_TYPE,"req");
 
                 seeProp.setBackgroundColor(Color.parseColor("#FFA500"));
                 seeProp.setTextColor(Color.WHITE);
@@ -177,6 +148,8 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
                 showProp.setBackgroundColor(Color.parseColor("#FFA500"));
                 showProp.setTextColor(Color.WHITE);
                 msg4 = "Avl";
+                SharedPrefs.save(context,SharedPrefs.CURRENT_CUST_TYPE,"avl");
+
                 isSecondPlace = true;
                 if (isOnePressed) {
                     seeProp.setBackgroundResource(R.drawable.button_border);
@@ -189,7 +162,61 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
 
 
 
-        message = msg4 + "-" + choice + "-" + msg3 + "-" + msg2;
+        rent.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                rentPressed = true;
+                msg1="L/L";
+                SharedPrefs.save(context,SharedPrefs.CURRENT_INTENT,"rent");
+
+
+                rent.setBackgroundColor(Color.parseColor("#FFA500"));
+                rent.setTextColor(Color.WHITE);
+                if (salePressed) {
+                    buy.setBackgroundResource(R.drawable.button_border);
+                    buy.setTextColor(Color.BLACK);
+
+                    salePressed = false;
+
+                }
+
+            }
+        });
+
+
+        buy.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                salePressed = true;
+                msg1 = "OUT";
+                SharedPrefs.save(context,SharedPrefs.CURRENT_INTENT,"out");
+
+                buy.setBackgroundColor(Color.parseColor("#FFA500"));
+                buy.setTextColor(Color.WHITE);
+                if (rentPressed) {
+                    rent.setBackgroundResource(R.drawable.button_border);
+                    rent.setTextColor(Color.BLACK);
+
+                    rentPressed = false;
+
+                }
+
+            }
+        });
+
+
+        if (role.equalsIgnoreCase("broker"))
+        {
+        message = "Plus-" + msg4 + "-" + msg1 + "-" + msg3 + "-" + msg2;}
+
+
+        else if (role.equalsIgnoreCase("client"))
+        {
+            message = "Direct-" + msg4 + "-" + msg1 + "-" + msg3 + "-" + msg2;}
 
         hailBtn = (Button) findViewById(R.id.hail);
 
@@ -229,6 +256,57 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
        configresult.setText(":" + bhkval + "BHK");
        msg3 = i+"BHK";
        spec_code.BHK = i+"BHK";
+
+    }
+
+    @Override
+    public void onProgressChanged(SeekBar seekBar, int progress,
+                                  boolean fromUser) {
+
+        switch (seekBar.getId()) {
+
+            case R.id.rentbar:
+                mSeekArc_Sale.setProgress(0);
+                if (progress < 300000) {
+                    progress = ((int) Math.round(progress / step_size1)) * step_size1;
+                    value = progress;
+                    result.setText(" Rent:" + value);
+                } else if (progress > 305000 && progress < 600000) {
+                    progress = ((int) Math.round(progress / step_size2)) * step_size2;
+                    value = progress;
+                    result.setText(" Rent:" + value);
+                } else
+                    progress = ((int) Math.round(progress / step_size3)) * step_size3;
+                value = progress;
+                result.setText(" Rent:" + value);
+                break;
+
+            case R.id.salebar:
+                mSeekArc_Rent.setProgress(0);
+                if (progress < 10000000) {
+                    progress = ((int) Math.round(progress / step_Sale1)) * step_Sale1;
+                    value = progress;
+                    result.setText(" Price:" + value);
+                } if (progress > 10000000 && progress < 100000000) {
+                progress = ((int) Math.round(progress / step_Sale2)) * step_Sale2;
+                value = progress;
+                result.setText(" Price:" + value);
+            } else
+                progress = ((int) Math.round(progress / step_Sale3)) * step_Sale3;
+                value = progress;
+                result.setText(" Price:" + value);
+                break;
+        }
+
+
+    }
+    @Override
+    public void onStartTrackingTouch(SeekBar seekBar) {
+
+    }
+
+    @Override
+    public void onStopTrackingTouch(SeekBar seekBar) {
 
     }
 }
