@@ -277,7 +277,7 @@ public class GiveRatingActivity extends Activity {
                     e.printStackTrace();
                 }
 
-                   se.setContentType(new BasicHeader("Content-Type", "application/json"));
+                se.setContentType(new BasicHeader("Content-Type", "application/json"));
 
                 httpPost.setEntity(se);
                 httpPost.setHeader("Accept", "application/json");

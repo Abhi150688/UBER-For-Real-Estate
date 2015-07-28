@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values-v21/values.xml -->
+    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values-v21/values.xml -->
     <eat-comment/>
     <style name="Base.TextAppearance.AppCompat" parent="android:TextAppearance.Material"/>
     <style name="Base.TextAppearance.AppCompat.Body1" parent="android:TextAppearance.Material.Body1"/>
@@ -291,12 +291,12 @@
     <style name="Base.Widget.AppCompat.TextView.SpinnerItem" parent="android:Widget.Material.TextView.SpinnerItem"/>
     <style name="Base.Widget.AppCompat.Toolbar.Button.Navigation" parent="android:Widget.Material.Toolbar.Button.Navigation">
     </style>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.6.0/res/values-v21/values.xml -->
+    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.6.0/res/values-v21/values.xml -->
     <eat-comment/>
     <style name="Digits_default" parent="@android:style/Theme.Material.Light">
         <item name="dgts__accentColor">?android:attr/colorAccent</item>
     </style>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values-v21/values.xml -->
+    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values-v21/values.xml -->
     <eat-comment/>
     <style name="Platform.AppCompat" parent="android:Theme.Material">
         <item name="android:windowNoTitle">true</item>

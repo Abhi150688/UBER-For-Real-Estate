@@ -21,8 +21,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
-import com.nexchanges.hailyo.GoogleMapSupport.GetAutoPredictions;
-import com.nexchanges.hailyo.GoogleMapSupport.GetPlaceDetails;
 import com.nexchanges.hailyo.R;
 
 import org.json.JSONArray;

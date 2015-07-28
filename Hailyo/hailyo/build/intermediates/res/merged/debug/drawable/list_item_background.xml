@@ -5,4 +5,4 @@
     <item android:drawable="@color/background_selected" android:state_pressed="true"/>
     <item android:drawable="@android:color/transparent"/>
 
-</selector><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/drawable/list_item_background.xml -->
+</selector><!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/src/main/res/drawable/list_item_background.xml -->

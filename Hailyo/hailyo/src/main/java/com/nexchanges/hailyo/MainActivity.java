@@ -51,6 +51,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.nexchanges.hailyo.DrawerClass.AboutActivity;
 import com.nexchanges.hailyo.DrawerClass.HelpActivity;
 import com.nexchanges.hailyo.DrawerClass.ProfileActivity;
+import com.nexchanges.hailyo.DrawerClass.SettingsActivity;
 import com.nexchanges.hailyo.customSupportClass.CheckLocationServices;
 import com.nexchanges.hailyo.customSupportClass.MyMarker;
 import com.nexchanges.hailyo.apiSupport.PlotMyNeighboursHail;
@@ -109,17 +110,17 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
 
 
     SeekBar sb1;
-	private DrawerLayout drawerLayout;
+    private DrawerLayout drawerLayout;
     String []listItems;
     Context context;
 
     public static final String TAG = MainActivity.class.getSimpleName();
 
-	private ListView drawerLeft;
+    private ListView drawerLeft;
 
-	private ListView drawerRight;
+    private ListView drawerRight;
 
-	private ActionBarDrawerToggle drawerToggle;
+    private ActionBarDrawerToggle drawerToggle;
 
 
 
@@ -146,11 +147,11 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
     int flipper_index=0;
 
     @Override
-	protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = this;
-        checkLocationServices.checkGpsStatus();
+        checkLocationServices.checkGpsStatus(context);
         is_transaction = SharedPrefs.getBoolean(context,SharedPrefs.SUCCESSFUL_HAIL,false);
 
 
@@ -238,18 +239,18 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                 if(is_transaction==true)
                 {
                     Intent PostYoActivity=new Intent(context, PostYoActivity.class);
-                startActivity(PostYoActivity);}
+                    startActivity(PostYoActivity);}
 
                 else{
 
-                VF10.setDisplayedChild(0);
-                hail.setBackgroundColor(Color.parseColor("#FFA500"));
-                hail.setTextColor(Color.WHITE);
-                visits.setBackgroundResource(R.drawable.button_border);
-                visits.setTextColor(Color.BLACK);
-                deals.setBackgroundResource(R.drawable.button_border);
-                deals.setTextColor(Color.BLACK);
-                 }}
+                    VF10.setDisplayedChild(0);
+                    hail.setBackgroundColor(Color.parseColor("#FFA500"));
+                    hail.setTextColor(Color.WHITE);
+                    visits.setBackgroundResource(R.drawable.button_border);
+                    visits.setTextColor(Color.BLACK);
+                    deals.setBackgroundResource(R.drawable.button_border);
+                    deals.setTextColor(Color.BLACK);
+                }}
         });
 
 
@@ -353,13 +354,13 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
 
 
 
-       inflate = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        inflate = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View vi = inflate.inflate(R.layout.left_nav_header,null);
         drawerLeft.addHeaderView(vi);
 
-       smallname =  (TextView)vi.findViewById(R.id.mynamesmall);
+        smallname =  (TextView)vi.findViewById(R.id.mynamesmall);
 
-       smallemail =  (TextView)vi.findViewById(R.id.myemailsmall);
+        smallemail =  (TextView)vi.findViewById(R.id.myemailsmall);
 
         smallphoto = (ImageView)vi.findViewById(R.id.smallphoto);
 
@@ -395,18 +396,18 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                         break;
 
                     case 2:
-                    Intent helpAct = new Intent(context, HelpActivity.class);
-                    startActivity(helpAct);
-                    break;
+                        Intent helpAct = new Intent(context, HelpActivity.class);
+                        startActivity(helpAct);
+                        break;
 
                     case 3:
-                    Intent profileAct = new Intent(context, ProfileActivity.class);
-                    startActivity(profileAct);
+                        Intent profileAct = new Intent(context, ProfileActivity.class);
+                        startActivity(profileAct);
                         break;
 
                     case 4:
-                    Intent aboutAct = new Intent(context, AboutActivity.class);
-                    startActivity(aboutAct);
+                        Intent aboutAct = new Intent(context, AboutActivity.class);
+                        startActivity(aboutAct);
                         break;
 
                     default:
@@ -438,21 +439,21 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
 
         CustomMapFragment customMapFragment = ((CustomMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
 
-                customMapFragment.getMapAsync(new OnMapReadyCallback() {
-                                                  @Override
-                                                  public void onMapReady(GoogleMap googleMap) {
-                                                      map = googleMap;
-                                                      map.setMyLocationEnabled(true);
-                                                  }
-                                              });
+        customMapFragment.getMapAsync(new OnMapReadyCallback() {
+            @Override
+            public void onMapReady(GoogleMap googleMap) {
+                map = googleMap;
+                map.setMyLocationEnabled(true);
+            }
+        });
 
         SetSiteVisitLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                    Intent EnterConfigActivity = new Intent(context, EnterConfigActivity.class);
-                    startActivity(EnterConfigActivity);
-                    SharedPrefs.save(context, SharedPrefs.CURRENT_LOC_KEY,SiteVisitAddressBar.getText().toString());
+                Intent EnterConfigActivity = new Intent(context, EnterConfigActivity.class);
+                startActivity(EnterConfigActivity);
+                SharedPrefs.save(context, SharedPrefs.CURRENT_LOC_KEY,SiteVisitAddressBar.getText().toString());
 
             }
         });
@@ -492,17 +493,17 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
 
 
         customMapFragment.setOnDragListener(new MapWrapperLayout.OnDragListener() {
-                @Override
-                public void onDrag(MotionEvent motionEvent) {
-                    if (motionEvent.getAction() == MotionEvent.ACTION_MOVE) {
-                        SiteVisitAddressBar.setText("Fetching...");
-                    } else {
-                        selectedLocation = map.getCameraPosition().target;
-                        selectedLocation_Name = "Lat: " + selectedLocation.latitude + ", Lng: " + selectedLocation.longitude;
-                        getPlaceName(selectedLocation);
-                    }
+            @Override
+            public void onDrag(MotionEvent motionEvent) {
+                if (motionEvent.getAction() == MotionEvent.ACTION_MOVE) {
+                    SiteVisitAddressBar.setText("Fetching...");
+                } else {
+                    selectedLocation = map.getCameraPosition().target;
+                    selectedLocation_Name = "Lat: " + selectedLocation.latitude + ", Lng: " + selectedLocation.longitude;
+                    getPlaceName(selectedLocation);
                 }
-            });
+            }
+        });
 
 
 
@@ -545,7 +546,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                     mMarkersHashMap.put(currentMarker, myMarker);
                 }
 
-              else if (type.equalsIgnoreCase("auction")) {
+                else if (type.equalsIgnoreCase("auction")) {
                     MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude()));
                     markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.currentlocation_icon1));
 
@@ -555,7 +556,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                 }
 
                 else
-               {
+                {
                     MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude()));
                     markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.currentlocation_icon1));
 
@@ -574,50 +575,50 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
     public void onProgressChanged(SeekBar seekBar, int progress,
                                   boolean fromTouch) {
 
-                if (progress == 0) {
-                    map.clear();
-                    mMyMarkersArray = plotMyNeighboursHail.markerpos(SharedPrefs.MY_USER_ID,SharedPrefs.MY_CUR_LAT,SharedPrefs.MY_CUR_LNG,"broker", SharedPrefs.MY_ROLE_KEY);
-                    plotMarkers(mMyMarkersArray,"broker");
-                    tv1.setTextColor(Color.RED);
-                    tv2.setTextColor(Color.BLACK);
-                    tv3.setTextColor(Color.BLACK);
+        if (progress == 0) {
+            map.clear();
+            mMyMarkersArray = plotMyNeighboursHail.markerpos(SharedPrefs.MY_USER_ID,SharedPrefs.MY_CUR_LAT,SharedPrefs.MY_CUR_LNG,"broker", SharedPrefs.MY_ROLE_KEY);
+            plotMarkers(mMyMarkersArray,"broker");
+            tv1.setTextColor(Color.RED);
+            tv2.setTextColor(Color.BLACK);
+            tv3.setTextColor(Color.BLACK);
 
-                } else if (progress == 50) {
+        } else if (progress == 50) {
 
-                    map.clear();
-                    mMyMarkersArray = plotMyNeighboursHail.markerpos(SharedPrefs.MY_USER_ID,SharedPrefs.MY_CUR_LAT,SharedPrefs.MY_CUR_LNG,"auction", SharedPrefs.MY_ROLE_KEY);
+            map.clear();
+            mMyMarkersArray = plotMyNeighboursHail.markerpos(SharedPrefs.MY_USER_ID,SharedPrefs.MY_CUR_LAT,SharedPrefs.MY_CUR_LNG,"auction", SharedPrefs.MY_ROLE_KEY);
 
-                    plotMarkers(mMyMarkersArray,"auction");
+            plotMarkers(mMyMarkersArray,"auction");
 
-                    tv1.setTextColor(Color.BLACK);
-                    tv2.setTextColor(Color.RED);
-                    tv3.setTextColor(Color.BLACK);
+            tv1.setTextColor(Color.BLACK);
+            tv2.setTextColor(Color.RED);
+            tv3.setTextColor(Color.BLACK);
 
-                } else if (progress == 100) {
-                    map.clear();
-                    mMyMarkersArray = plotMyNeighboursHail.markerpos(SharedPrefs.MY_USER_ID,SharedPrefs.MY_CUR_LAT,SharedPrefs.MY_CUR_LNG,"builder",SharedPrefs.MY_ROLE_KEY);
-                    plotMarkers(mMyMarkersArray,"builder");
+        } else if (progress == 100) {
+            map.clear();
+            mMyMarkersArray = plotMyNeighboursHail.markerpos(SharedPrefs.MY_USER_ID,SharedPrefs.MY_CUR_LAT,SharedPrefs.MY_CUR_LNG,"builder",SharedPrefs.MY_ROLE_KEY);
+            plotMarkers(mMyMarkersArray,"builder");
 
 
-                    tv1.setTextColor(Color.BLACK);
-                    tv2.setTextColor(Color.BLACK);
-                    tv3.setTextColor(Color.RED);
-                }
-            }
+            tv1.setTextColor(Color.BLACK);
+            tv2.setTextColor(Color.BLACK);
+            tv3.setTextColor(Color.RED);
+        }
+    }
 
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
-         }
+    }
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
 
-                int mProgress = seekBar.getProgress();
-                if (mProgress > 0 & mProgress < 34) {
-                    seekBar.setProgress(0);
-                } else if (mProgress > 33 & mProgress < 68) {
-                    seekBar.setProgress(50);
-                } else seekBar.setProgress(100);
+        int mProgress = seekBar.getProgress();
+        if (mProgress > 0 & mProgress < 34) {
+            seekBar.setProgress(0);
+        } else if (mProgress > 33 & mProgress < 68) {
+            seekBar.setProgress(50);
+        } else seekBar.setProgress(100);
 
     }
 
@@ -657,7 +658,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
             @Override
             public void onComplete(boolean result, LatLng location, String placeName) {
                 if ( result == true ) {
-                  SiteVisitAddressBar.setText(placeName);
+                    SiteVisitAddressBar.setText(placeName);
                 }else{
                     SiteVisitAddressBar.setText("Sorry, No Such Location, Please Try Again..");
                 }
@@ -669,11 +670,11 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
 
 
 
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event)
-	{
-		return super.onKeyDown(keyCode, event);
-	}
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event)
+    {
+        return super.onKeyDown(keyCode, event);
+    }
 
 
     @Override
@@ -886,7 +887,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                 sendLocationUpdate.sendPostRequest(u_id,Str_Lat,Str_Lng);
                 return null;
             }
-          }
+        }
         TestAsync TestAsync = new TestAsync();
         TestAsync.execute();
     }

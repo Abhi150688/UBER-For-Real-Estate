@@ -97,13 +97,9 @@
             android:name=".MainBrokerActivity"
             android:screenOrientation="portrait"></activity>
 
-        <activity
-            android:name=".SuccessfulYo"
-            android:screenOrientation="portrait"></activity>
-
 
         <activity
-            android:name=".customAnimation.SearchSplashActivity"
+            android:name=".SearchSplashActivity"
             android:screenOrientation="portrait"></activity>
 
 
@@ -180,7 +176,7 @@
 
 
         <activity
-            android:name=".LoginActivity"
+            android:name=".LoginActivity1"
 
             android:label="@string/title_activity_login"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" >

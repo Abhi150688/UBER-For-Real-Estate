@@ -213,21 +213,21 @@
                     android:layout_height="60dp"
                     android:src="@drawable/thumbsdown"
                     android:layout_marginLeft="15dp"
-                     />
+                    />
 
 
-                </LinearLayout>
+            </LinearLayout>
 
-          <!--  <RatingBar
-                android:layout_width="wrap_content"
+            <!--  <RatingBar
+                  android:layout_width="wrap_content"
 
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                android:id="@+id/ratingBar"
-                android:gravity="center"
-                android:layout_marginTop="10dp"
+                  android:layout_height="wrap_content"
+                  android:background="@color/white"
+                  android:id="@+id/ratingBar"
+                  android:gravity="center"
+                  android:layout_marginTop="10dp"
 
-                />-->
+                  />-->
 
 
 

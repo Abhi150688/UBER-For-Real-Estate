@@ -29,6 +29,7 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
+import com.nexchanges.hailyo.customSupportClass.RippleBackground;
 import com.nexchanges.hailyo.model.SharedPrefs;
 
 import org.apache.http.HttpResponse;
@@ -119,9 +120,9 @@ public class ChooseRoleActivity extends Activity {
 
                                                  user_role = "client";
 
-                                                sendPostRequest(mobile, "+91", Semail, Sname, user_role, regid);
+                                                 sendPostRequest(mobile, "+91", Semail, Sname, user_role, regid);
 
-                                                // signup_success();
+                                                 // signup_success();
                                              }
 
 
@@ -338,7 +339,7 @@ public class ChooseRoleActivity extends Activity {
                     System.out.print("Value of response code is: " + response);
 
                     if (response == 200 || response == 201) {
-                       signup_success();
+                        signup_success();
                     } else {
                         System.out.print("LoginFailed Try again");
                     }
@@ -410,19 +411,19 @@ public class ChooseRoleActivity extends Activity {
 
         //if (my_user_id != null) {
 
-            if (user_role.equalsIgnoreCase("client")) {
-                Intent NextActivity = new Intent(context, MainActivity.class);
-                startActivity(NextActivity);
-                finish();
+        if (user_role.equalsIgnoreCase("client")) {
+            Intent NextActivity = new Intent(context, MainActivity.class);
+            startActivity(NextActivity);
+            finish();
 
-            } else if (user_role.equalsIgnoreCase("broker")) {
-                Intent NextBroActivity = new Intent(context, MainBrokerActivity.class);
-                startActivity(NextBroActivity);
-                finish();
-
-            }
+        } else if (user_role.equalsIgnoreCase("broker")) {
+            Intent NextBroActivity = new Intent(context, MainBrokerActivity.class);
+            startActivity(NextBroActivity);
+            finish();
 
         }
+
+    }
 
 
     protected void showSplashScreen() {
@@ -526,7 +527,7 @@ public class ChooseRoleActivity extends Activity {
         if (mPhoneNumber.isEmpty())
             return " ";
         else
-        num = mPhoneNumber;
+            num = mPhoneNumber;
         return num;
     }
 

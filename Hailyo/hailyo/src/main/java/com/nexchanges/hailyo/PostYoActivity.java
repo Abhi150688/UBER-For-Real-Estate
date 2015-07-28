@@ -5,13 +5,10 @@ package com.nexchanges.hailyo;
  * Created by AbhishekWork on 21/06/15.
  */
 
-        import android.app.AlertDialog;
         import android.content.Context;
-        import android.content.DialogInterface;
         import android.content.Intent;
         import android.content.res.Configuration;
         import android.location.Location;
-        import android.net.Uri;
         import android.os.Bundle;
         import android.os.CountDownTimer;
         import android.os.Vibrator;
@@ -54,7 +51,7 @@ public class PostYoActivity extends ActionBarActivity
 
     LatLng currentLocation;
 
-    Button call, message, allVisits,allDeals,hail;
+    Button call, message, allVisits,allDeals;
     ImageButton cancel;
     TextView timerTv, brokerTv;
     RatingBar ratingTv;
@@ -75,20 +72,21 @@ public class PostYoActivity extends ActionBarActivity
         rating = extras.getString("Rating");
         role = SharedPrefs.getString(context, SharedPrefs.MY_ROLE_KEY);
 
-           call  = (Button) findViewById(R.id.call);
+           //call  = (Button) findViewById(R.id.call);
 
-          message  = (Button) findViewById(R.id.message);
+        allDeals  = (Button) findViewById(R.id.deals);
 
-        hail  = (Button) findViewById(R.id.hailmode);
+        allVisits  = (Button) findViewById(R.id.visits);
 
+        //message  = (Button) findViewById(R.id.message);
 
-        cancel  = (ImageButton) findViewById(R.id.cancel);
+           cancel  = (ImageButton) findViewById(R.id.cancel);
 
            timerTv  = (TextView) findViewById(R.id.timer);
 
            brokerTv  = (TextView) findViewById(R.id.bname);
 
-           ratingTv  = (RatingBar) findViewById(R.id.clientratingBar);
+           ratingTv  = (RatingBar) findViewById(R.id.ratingBar);
 
 
         float ratingVal = Float.parseFloat(rating);
@@ -97,8 +95,6 @@ public class PostYoActivity extends ActionBarActivity
 
         ltimer = Long.parseLong(timer);
         ltimer1 = ltimer*1000*60;
-
-
 
         new CountDownTimer(ltimer1, 1000) {
 
@@ -125,33 +121,45 @@ public class PostYoActivity extends ActionBarActivity
         allDeals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (role.matches("Customer"))
+                {
                 Intent ViewDeals = new Intent(context, MainActivity.class);
-                SharedPrefs.save(context,SharedPrefs.CURRENT_FLIPPER_VIEW,2);
-                SharedPrefs.save(context,SharedPrefs.SUCCESSFUL_HAIL,"true");
-
+                SharedPrefs.save(context,SharedPrefs.CURRENT_FLIPPER_VIEW,1);
 
                 startActivity(ViewDeals);}
+                else{
+                    Intent BMainActivity = new Intent(context, MainBrokerActivity.class);
+                    SharedPrefs.save(context,SharedPrefs.CURRENT_FLIPPER_VIEW,1);
+                    startActivity(BMainActivity);
+                    finish();
+
+                }
 
 //                finish();
-
+            }
         });
 
 
         allVisits.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                if (role.matches("Customer")) {
                     Intent ViewDeals = new Intent(context, MainActivity.class);
                     SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 1);
-                SharedPrefs.save(context,SharedPrefs.SUCCESSFUL_HAIL,"true");
 
+                    startActivity(ViewDeals);
+                } else {
+                    Intent BMainActivity = new Intent(context, MainBrokerActivity.class);
+                    SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 1);
+                    startActivity(BMainActivity);
 
-                startActivity(ViewDeals);
+                }
             }
         });
 
 
 
-       message.setOnClickListener(new View.OnClickListener() {
+       /* message.setOnClickListener(new View.OnClickListener() {
                                        public void onClick(View view) {
 
                                            Intent smsIntent = new Intent(Intent.ACTION_SENDTO);
@@ -174,45 +182,17 @@ public class PostYoActivity extends ActionBarActivity
             }
         });
 
+*/
 
         cancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setTitle(R.string.app_name);
-                builder.setMessage("Do you want to Cancel the Site Visit?");
-                //builder.setIcon(R.drawable.ic_launcher);
-                builder.setPositiveButton("Yes-Cancel Now", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.dismiss();
+                body = "Your site visit Id: ST123453 with Mr. Abhishek has just been cancelled";
 
 
-                        body = "Your site visit Id: ST123453 with Mr. Abhishek has just been cancelled";
-
-                        // ADD A CONFIRMATION DIALOG TO THIS
-
-
-                        sendSMSMessage(phone, body);
-                        SharedPrefs.save(context,SharedPrefs.SUCCESSFUL_HAIL,"false");
-                        if (role.equalsIgnoreCase("customer"))
-                        {Intent MainActivity = new Intent (context, MainActivity.class);
-                            startActivity(MainActivity);}
-                        else if (role.equalsIgnoreCase("broker"))
-                        {
-                            Intent MainBActivity = new Intent (context, MainBrokerActivity.class);
-                            startActivity(MainBActivity);}
-                    }
-                });
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.dismiss();
-                    }
-                });
-                AlertDialog alert = builder.create();
-                alert.show();
-
-
-                 }
+                sendSMSMessage(phone, body);
+                Intent MainActivity = new Intent (context, MainActivity.class);
+                startActivity(MainActivity);
+            }
         });
 
 

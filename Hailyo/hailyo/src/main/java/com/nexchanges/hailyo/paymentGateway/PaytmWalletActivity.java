@@ -36,15 +36,8 @@ public class PaytmWalletActivity extends ActionBarActivity implements View.OnCli
 
     Context context;
 
-    Button payMoney, pay200,pay500,pay1000;
-    EditText moneyAmount;
-    PaytmPGService paytmPGService;
-    String mobile;
-
-    Map<String, String> paramMap;
-    TextView paytmMobile;
-    int moneyVal=0;
-
+    Button payMoney;
+    TextView moneyAmount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,49 +45,9 @@ public class PaytmWalletActivity extends ActionBarActivity implements View.OnCli
         setContentView(R.layout.paytm_wallet_layout);
         context =  this;
 
-        paytmPGService =  PaytmPGService.getStagingService();
-
-        paramMap = new HashMap<String, String>();
-
-
-        moneyAmount = (EditText) findViewById(R.id.moneyAmount);
+        moneyAmount = (TextView) findViewById(R.id.moneyAmount);
         payMoney = (Button) findViewById(R.id.payMoney);
         payMoney.setOnClickListener(this);
-
-        pay200 = (Button) findViewById(R.id.pay200);
-        pay500 = (Button) findViewById(R.id.pay500);
-        pay1000 = (Button) findViewById(R.id.pay1000);
-
-        paytmMobile = (TextView) findViewById(R.id.paytmMobile);
-
-
-        pay200.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                moneyVal+=200;
-                moneyAmount.setText(moneyVal);
-
-
-            }
-        });
-
-        pay500.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                moneyVal+=500;
-
-                moneyAmount.setText(moneyVal);
-
-            }
-        });
-
-        pay1000.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                moneyVal+=1000;
-                moneyAmount.setText(moneyVal);
-            }
-        });
 
 
     }
@@ -108,22 +61,14 @@ public class PaytmWalletActivity extends ActionBarActivity implements View.OnCli
                 amount = Integer.parseInt(moneyAmount.getText().toString());
             }catch (Exception e){  amount =0;  }
 
-            if ( amount > 199 ){
+            if ( amount > 0 ){
                 proceedToPayment(amount);
             }
             else{
-                Toast.makeText(this, "Minimum amount is Rs. 200", Toast.LENGTH_LONG).show();;
+                Toast.makeText(this, "Please Enter Amount above 0", Toast.LENGTH_LONG).show();;
             }
 
         }
-
-        try {
-            paramMap.get("MOBILE_NO");
-        }catch (Exception e)
-        {
-
-        }
-
 
     }
 
@@ -132,9 +77,9 @@ public class PaytmWalletActivity extends ActionBarActivity implements View.OnCli
         Random randomGenerator = new Random();
         int randomInt = randomGenerator.nextInt(1000);
 
-        paytmPGService =  PaytmPGService.getStagingService();
+        PaytmPGService paytmPGService =  PaytmPGService.getStagingService();
 
-        paramMap = new HashMap<String, String>();
+        Map<String, String> paramMap = new HashMap<String, String>();
 
        /* paramMap.put("REQUEST_TYPE", "RENEW_SUBSCRIPTION");
         paramMap.put("ORDER_ID", "42TRIPS000" + randomInt);

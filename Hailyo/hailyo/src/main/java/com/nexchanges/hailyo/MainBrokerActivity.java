@@ -83,8 +83,7 @@ import java.util.List;
 
 /**
  * The Activity MainActivity will launched at the start of the app.
- */
-public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnSeekBarChangeListener, SwipeRefreshLayout.OnRefreshListener {
+ */public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnSeekBarChangeListener, SwipeRefreshLayout.OnRefreshListener {
 
     //ViewAll Visits
     PlotMyNeighboursHail plotMyNeighboursHail = new PlotMyNeighboursHail();
@@ -105,7 +104,7 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
     BroadcastReceiver ReceivefromGCM;
 
 
-   //View All Deals
+    //View All Deals
 
     private static final String urlD = "https://api.myjson.com/bins/3r0d6";
     private ProgressDialog pDialog_Deal;
@@ -160,18 +159,18 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_broker_main);
+        context = this;
 
 
         is_transaction = SharedPrefs.getBoolean(context,SharedPrefs.SUCCESSFUL_HAIL,false);
-        checkLocationServices.checkGpsStatus();
+        checkLocationServices.checkGpsStatus(context);
 
 
-        context = this;
         avlreq = (SeekBar) findViewById(R.id.seekBar2);
         avlreq.setOnSeekBarChangeListener(this);
 
         yo_refresh = (SwipeRefreshLayout)findViewById(R.id.yo_refresh);
-       visit_refresh = (SwipeRefreshLayout)findViewById(R.id.visit_refresh);
+        visit_refresh = (SwipeRefreshLayout)findViewById(R.id.visit_refresh);
         deal_refresh = (SwipeRefreshLayout)findViewById(R.id.deal_refresh);
 
         yo_refresh.setOnRefreshListener(this);
@@ -235,7 +234,7 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
 
         mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
-            mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,60000,10
+        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,60000,10
                 ,mLocationListener);
 
         //Yo Data
@@ -368,22 +367,22 @@ public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnS
                     Intent PostYoActivityBroker=new Intent(context, PostYoActivity_Broker.class);
                     startActivity(PostYoActivityBroker);}
 
-else{
-                VF.setDisplayedChild(0);
+                else{
+                    VF.setDisplayedChild(0);
 
-                yo.setBackgroundColor(Color.parseColor("#FFA500"));
-                yo.setTextColor(Color.WHITE);
-                visits.setBackgroundResource(R.drawable.button_border);
-                visits.setTextColor(Color.BLACK);
-                hail.setBackgroundResource(R.drawable.button_border);
-                hail.setTextColor(Color.BLACK);
-                deals.setBackgroundResource(R.drawable.button_border);
-                deals.setTextColor(Color.BLACK);
+                    yo.setBackgroundColor(Color.parseColor("#FFA500"));
+                    yo.setTextColor(Color.WHITE);
+                    visits.setBackgroundResource(R.drawable.button_border);
+                    visits.setTextColor(Color.BLACK);
+                    hail.setBackgroundResource(R.drawable.button_border);
+                    hail.setTextColor(Color.BLACK);
+                    deals.setBackgroundResource(R.drawable.button_border);
+                    deals.setTextColor(Color.BLACK);
 
-                yo_refresh.setRefreshing(true);
-                refreshYo("Req");
+                    yo_refresh.setRefreshing(true);
+                    refreshYo("Req");
 
-            }}
+                }}
         });
 
         hail.setOnClickListener(new View.OnClickListener() {
@@ -417,7 +416,7 @@ else{
             public void onClick(View v) {
                 VF.setDisplayedChild(2);
                 deals.setBackgroundColor(Color.parseColor("#FFA500"));
-               deals.setTextColor(Color.WHITE);
+                deals.setTextColor(Color.WHITE);
                 visits.setBackgroundResource(R.drawable.button_border);
                 visits.setTextColor(Color.BLACK);
                 hail.setBackgroundResource(R.drawable.button_border);
@@ -616,7 +615,7 @@ else{
                 Marker currentMarker = map_hail.addMarker(markerOption);
                 mMarkersHashMap_hail.put(currentMarker, myMarker);
 
-                  }
+            }
         }
     }
 
@@ -697,21 +696,21 @@ else{
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress,
                                   boolean fromTouch) {
-                if (progress == 0) {
+        if (progress == 0) {
 
-                    refreshYo("Req");
-					textview1.setTextColor(Color.RED);
-                    textview2.setTextColor(Color.BLACK);
+            refreshYo("Req");
+            textview1.setTextColor(Color.RED);
+            textview2.setTextColor(Color.BLACK);
 
 
-                } else if (progress == 100) {
-                    refreshYo("Avl");
-                    textview1.setTextColor(Color.BLACK);
-                    textview2.setTextColor(Color.RED);
-
-                }
+        } else if (progress == 100) {
+            refreshYo("Avl");
+            textview1.setTextColor(Color.BLACK);
+            textview2.setTextColor(Color.RED);
 
         }
+
+    }
 
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
@@ -720,10 +719,10 @@ else{
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
 
-                int mProgress = seekBar.getProgress();
-                if (mProgress > 0 & mProgress < 51) {
-                    seekBar.setProgress(0);
-                } else seekBar.setProgress(100);
+        int mProgress = seekBar.getProgress();
+        if (mProgress > 0 & mProgress < 51) {
+            seekBar.setProgress(0);
+        } else seekBar.setProgress(100);
 
     }
 
@@ -768,7 +767,7 @@ else{
                                     yo.setRating(obj.getInt("rating"));
                                     yo.setUserType(obj.getString("user_type"));
                                     yoList.add(yo);
-                                     }
+                                }
                                 // adding movie to movies array
 
 
@@ -779,7 +778,7 @@ else{
                         }
 
                         // notifying list adapter about data changes
-                         // so that it renders the list view with updated data
+                        // so that it renders the list view with updated data
                         adapterYo.notifyDataSetChanged();
                     }
                 }, new Response.ErrorListener() {
@@ -861,7 +860,7 @@ else{
     public void refresh_deal()
     {
 
-             deal_refresh.setRefreshing(true);
+        deal_refresh.setRefreshing(true);
 
         // Creating volley request obj
         JsonArrayRequest dealReq = new JsonArrayRequest(urlD,
@@ -923,10 +922,10 @@ else{
         int index = VF.getDisplayedChild();
         if(index == 0){
 
-        yo_refresh.setRefreshing(true);
+            yo_refresh.setRefreshing(true);
             if (avlreq.getProgress()==0)
             {
-        refreshYo("Req");}
+                refreshYo("Req");}
             else if (avlreq.getProgress()==100)
             {
                 refreshYo("Avl");
@@ -935,12 +934,12 @@ else{
 
         else if (index == 1)
         {deal_refresh.setRefreshing(true);
-        refresh_deal();}
+            refresh_deal();}
 
         else if (index ==2)
         {
-        visit_refresh.setRefreshing(true);
-        refresh_visit();}
+            visit_refresh.setRefreshing(true);
+            refresh_visit();}
 
     }
 

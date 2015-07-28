@@ -19,6 +19,7 @@
 
 
             <FrameLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
                 android:orientation="vertical"
                 android:layout_marginTop="1dp"
                 android:layout_width="fill_parent"
@@ -32,44 +33,21 @@
                     android:layout_height="454dp"/>
 
                 <RelativeLayout
-                    android:layout_width="fill_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="10dp"
                     android:layout_gravity="center_horizontal"
                     android:layout_height="wrap_content">
 
-                    <LinearLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/linear"
-                        android:background="@color/orange"
-                        android:layout_gravity="center_horizontal"
-                        >
-
-                        <TextView
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:textAlignment="center"
-                            android:textColor="@color/white"
-                            android:layout_margin="5dp"
-                            android:textAllCaps="true"
-                            android:gravity="center"
-                            android:text="Your Broker will arrive shortly"></TextView>
-                    </LinearLayout>
-
-
                     <ImageButton
-                        android:layout_width="90dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/cancel_visit"
-                        android:layout_centerInParent="true"
                         android:background="@null"
-                        android:layout_below="@id/linear"
-                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="5dp"
                         android:id="@+id/cancel" />
 
 
                 </RelativeLayout>
-
-
 
 
 
@@ -96,22 +74,28 @@
             android:orientation="vertical"
             android:background="@color/white"
             android:layout_gravity="center_horizontal|bottom"
-        >
+            android:weightSum="1">
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Broker has YO-ed!! Site Visit will start shortly!"
+                android:textSize="15dp"/>
+
+
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="90dp"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:gravity="center"
+                android:weightSum="1"
                 android:layout_marginBottom="5dp"
                 android:orientation="horizontal"
                >
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
 
                 <ImageButton
                     android:id="@+id/mybroker"
@@ -122,29 +106,15 @@
                     android:src="@drawable/roundbutton"
                     android:background="@null"
                     android:paddingLeft="2dp"
-                    android:layout_marginTop="5dp"
+                    android:paddingTop="5dp"
                     android:scaleType="centerInside"
                     android:adjustViewBounds="true"
                     />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/bname"
-                        android:layout_marginTop="10dp"
-                        android:layout_gravity="center_horizontal|center"
-                        android:gravity="center"
-                        android:textSize="20dp"
-                        android:textAppearance="?android:attr/textAppearanceMedium"
-                        android:textColor="#28b54c" />
-
-
-                </LinearLayout>
-
 
                 <LinearLayout
                     android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="115dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:gravity="center"
@@ -153,54 +123,31 @@
                     >
 
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="5dp">
 
-                        <Button
-                            android:id="@+id/call"
-                            android:background="@drawable/button_border"
-                            android:textSize="12dp"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/black"
-                            android:layout_weight="1"
-                            android:layout_marginRight="5dp"
-                            android:layout_gravity="center"
-                            android:text="Call"
-                            />
-
-                        <Button
-                            android:id="@+id/message"
-                            android:background="@drawable/button_border"
-                            android:layout_marginRight="0dp"
-                            android:layout_weight="1"
-                            android:textSize="12dp"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/black"
-                            android:layout_gravity="center"
-                            android:text="Message" />
-
-
-                    </LinearLayout>
-
-
+                <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:id="@+id/bname"
+                   android:layout_marginTop="10dp"
+                   android:layout_gravity="center_horizontal|center"
+                   android:gravity="center"
+                   android:textSize="20dp"
+                   android:textAppearance="?android:attr/textAppearanceMedium"
+                   android:textColor="#28b54c" />
 
                     <RatingBar
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:clickable="false"
-                        android:gravity="bottom"
-                        android:id="@id/clientratingBar"
-                        />
+                         android:layout_height="wrap_content"
+                        android:isIndicator="true"
+                        android:id="@+id/ratingBar"
+                        android:layout_marginTop="5dp"
+                        android:clickable="true"
+                        android:layout_marginBottom="4dp"
+                        android:numStars="5" />
 
 
 
-
-
-                </LinearLayout>
+            </LinearLayout>
                 </LinearLayout>
 
 
@@ -208,53 +155,48 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="2dp"
+                android:layout_height="60dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:gravity="center"
                 android:orientation="horizontal"
-                android:background="@color/white"
-                android:layout_gravity="center_horizontal|bottom">
-
-
+                >
 
                 <Button
-                    android:id="@+id/hailmode"
-                    android:background="@drawable/button_border"
-                    android:textSize="20dp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/button_border"
                     android:textColor="@color/black"
+                    android:text="ALL VISITS"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:textAllCaps="false"
+                    android:textSize="20sp"
                     android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:text="@string/hailmode"
-                    android:clickable="false"/>
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:id="@+id/visits" />
 
                 <Button
-                    android:id="@+id/activevisits"
-                    android:background="@drawable/button_border"
-                    android:layout_marginRight="0dp"
-                    android:layout_weight="1"
-                    android:textSize="20dp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:layout_gravity="center"
-                    android:text="@string/MYVISITS" />
-
-                <Button
-                    android:id="@+id/activedeals"
                     android:background="@drawable/button_border"
-                    android:layout_marginRight="0dp"
-                    android:layout_weight="1"
-                    android:textSize="20dp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
                     android:textColor="@color/black"
-                    android:layout_gravity="center"
-                    android:text="@string/MYDEALS" />
-
-
+                    android:text="ALL DEALS"
+                    android:paddingLeft="5dp"
+                    android:paddingTop="2dp"
+                    android:paddingBottom="2dp"
+                    android:paddingRight="5dp"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_horizontal"
+                    android:textAllCaps="false"
+                    android:textSize="20sp"
+                    android:id="@+id/deals" />
 
             </LinearLayout>
+
 
 
         </LinearLayout>

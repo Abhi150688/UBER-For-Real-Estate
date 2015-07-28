@@ -98,7 +98,7 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
         inflate = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View vi = inflate.inflate(R.layout.left_nav_header,null);
 
-       mSeekbar_Rent = (SeekBar)findViewById(R.id.rentbar);
+        mSeekbar_Rent = (SeekBar)findViewById(R.id.rentbar);
 
         mSeekbar_Sale = (SeekBar)findViewById(R.id.salebar);
 
@@ -211,7 +211,7 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
 
         if (role.equalsIgnoreCase("broker"))
         {
-        message = "Plus-" + msg4 + "-" + msg1 + "-" + msg3 + "-" + msg2;}
+            message = "Plus-" + msg4 + "-" + msg1 + "-" + msg3 + "-" + msg2;}
 
 
         else if (role.equalsIgnoreCase("client"))
@@ -252,10 +252,10 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
 
     @Override
     public void onHorizontalNumberPickerChanged(HorizontalNumberPicker horizontalNumberPicker, int i) {
-       bhkval = i;
-       configresult.setText(":" + bhkval + "BHK");
-       msg3 = i+"BHK";
-       spec_code.BHK = i+"BHK";
+        bhkval = i;
+        configresult.setText(":" + bhkval + "BHK");
+        msg3 = i+"BHK";
+        spec_code.BHK = i+"BHK";
 
     }
 

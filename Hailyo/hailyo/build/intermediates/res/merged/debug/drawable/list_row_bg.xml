@@ -5,4 +5,4 @@
         android:startColor="@color/list_row_start_color"
         android:endColor="@color/list_row_end_color"
         android:angle="270" />
-</shape><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/drawable/list_row_bg.xml -->
+</shape><!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/src/main/res/drawable/list_row_bg.xml -->

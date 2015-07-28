@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<View xmlns:android="http://schemas.android.com/apk/res/android"
+	style="@style/SDL.ButtonSeparator"
+	android:id="@+id/dialog_button_separator" />
+
+<!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/stylishDialogLib/src/main/res/layout/dialog_part_button_separator.xml --><!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/stylishDialogLib/build/intermediates/bundles/debug/res/layout/dialog_part_button_separator.xml -->

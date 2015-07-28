@@ -224,7 +224,7 @@ public class GcmMessageHandler extends IntentService {
             e.printStackTrace();
         }
 
-        }
+    }
     @Override
     public IBinder onBind(Intent intent) {
         // TODO Auto-generated method stub

@@ -29,4 +29,4 @@
     <item android:drawable="@drawable/tw__login_btn_disabled"
           android:state_enabled="false"/>
     <item android:drawable="@drawable/tw__login_btn_default"/>
-</selector><!-- From: file:/Users/android/workspace/jenkins/workspace/fabric-android-deploy-to-staging/sdk/twitter/twitter-core/src/main/res/drawable/tw__login_btn.xml --><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/drawable/tw__login_btn.xml -->
+</selector><!-- From: file:/Users/android/workspace/jenkins/workspace/fabric-android-deploy-to-staging/sdk/twitter/twitter-core/src/main/res/drawable/tw__login_btn.xml --><!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/drawable/tw__login_btn.xml -->

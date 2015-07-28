@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.6.0/res/values-bn/values.xml -->
+    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.6.0/res/values-bn/values.xml -->
     <eat-comment/>
     <string name="dgts__cancel">বাতিল করুন</string>
     <string name="dgts__communication_error">যোগাযোগ ত্রুটি</string>
@@ -47,7 +47,7 @@
     <string name="dgts_pin_code_terms">আপনি পূর্বে digits.com -এ একটি 2-পদক্ষেপ যাচাইকরণ কোড সেট করেছেন</string>
     <string name="dgts_verify">যাচাই করুন</string>
     <string name="dgts_verifying">যাচাই হচ্ছে</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-bn/values.xml -->
+    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-bn/values.xml -->
     <eat-comment/>
     <string name="tw__allow_btn_txt">অনুমতি দিন</string>
     <string name="tw__login_btn_txt">টুইটার দিয়ে লগ ইন করুন</string>

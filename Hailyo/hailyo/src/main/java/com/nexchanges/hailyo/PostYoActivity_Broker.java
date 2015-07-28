@@ -41,7 +41,7 @@ import java.util.concurrent.TimeUnit;
 public class PostYoActivity_Broker extends ActionBarActivity
 {
 
-
+/*
 
     Context context;
 
@@ -105,15 +105,15 @@ public class PostYoActivity_Broker extends ActionBarActivity
         new CountDownTimer(ltimer1, 1000) {
 
             public void onTick(long millisUntilFinished) {
-                timerTv.setText(""+String.format("%d min",
-                        TimeUnit.MILLISECONDS.toMinutes( millisUntilFinished)-
+                timerTv.setText(""+ String.format("%d min",
+                        TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) -
                                 TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
 
             }
 
             public void onFinish() {
                 timerTv.setText(brokerName + " should have arrived!");
-                Intent DuringVisitActivity=new Intent(context, DuringVisitActivity.class);
+                Intent DuringVisitActivity=new Intent(context, com.nexchanges.hailyo.DuringVisitActivity.class);
                 startActivity(DuringVisitActivity);
                 finish();
                 Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -128,8 +128,8 @@ public class PostYoActivity_Broker extends ActionBarActivity
             @Override
             public void onClick(View v) {
                     Intent BMainActivity = new Intent(context, MainBrokerActivity.class);
-                    SharedPrefs.save(context,SharedPrefs.CURRENT_FLIPPER_VIEW,2);
-                    SharedPrefs.save(context,SharedPrefs.SUCCESSFUL_HAIL,"true");
+                    SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 2);
+                    SharedPrefs.save(context, SharedPrefs.SUCCESSFUL_HAIL, "true");
                     startActivity(BMainActivity);
 
 //                finish();
@@ -143,7 +143,7 @@ public class PostYoActivity_Broker extends ActionBarActivity
 
                     Intent BMainActivity = new Intent(context, MainBrokerActivity.class);
                     SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 1);
-                    SharedPrefs.save(context,SharedPrefs.SUCCESSFUL_HAIL,"true");
+                    SharedPrefs.save(context, SharedPrefs.SUCCESSFUL_HAIL, "true");
 
                 startActivity(BMainActivity);
 
@@ -184,11 +184,11 @@ public class PostYoActivity_Broker extends ActionBarActivity
 
                 sendSMSMessage(phone, body);
                 if (role.equalsIgnoreCase("customer"))
-                {Intent MainActivity = new Intent (context, MainActivity.class);
+                {Intent MainActivity = new Intent(context, com.nexchanges.hailyo.MainActivity.class);
                     startActivity(MainActivity);}
                 else if (role.equalsIgnoreCase("broker"))
                 {
-                    Intent MainBActivity = new Intent (context, MainBrokerActivity.class);
+                    Intent MainBActivity = new Intent(context, MainBrokerActivity.class);
                     startActivity(MainBActivity);}
             }
         });
@@ -271,6 +271,6 @@ public class PostYoActivity_Broker extends ActionBarActivity
     public void onBackPressed() {
         //do nothing
     }
-
+*/
 }
 

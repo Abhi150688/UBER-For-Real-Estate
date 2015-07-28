@@ -3,4 +3,4 @@
     <item android:state_pressed="true" android:color="@color/theme_yellow"></item>
     <item android:state_enabled="false" android:color="@color/theme_yellow"></item>
     <item android:color="@color/gray_dk"></item>
-</selector><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/color/tab_color.xml -->
+</selector><!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/src/main/res/color/tab_color.xml -->

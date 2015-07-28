@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-th/values.xml -->
+    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-th/values.xml -->
     <eat-comment/>
     <plurals name="tw__time_hours">
         <item quantity="one">1ชม.</item>
@@ -14,7 +14,7 @@
         <item quantity="one">1วิ</item>
         <item quantity="other">%dวิ</item>
     </plurals>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values-th/values.xml -->
+    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values-th/values.xml -->
     <eat-comment/>
     <string msgid="4600421777120114993" name="abc_action_bar_home_description">"นำทางไปหน้าแรก"</string>
     <string msgid="1397052879051804371" name="abc_action_bar_home_description_format">"%1$s, %2$s"</string>
@@ -32,7 +32,7 @@
     <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"แชร์กับ"</string>
     <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"แชร์กับ %s"</string>
     <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"ยุบ"</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml -->
+    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-th/common_strings.xml -->
     <eat-comment/>
     <string msgid="6428604800157361567" name="common_android_wear_notification_needs_update_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> ต้องการให้อัปเดตแอป Android Wear"</string>
     <string msgid="2453027084525739603" name="common_android_wear_update_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> จะไม่ทำงานจนกว่าคุณจะอัปเดตแอป Android Wear"</string>
@@ -66,7 +66,7 @@
     <string msgid="411506735369601515" name="common_open_on_phone">"เปิดบนโทรศัพท์"</string>
     <string msgid="9071884888741449141" name="common_signin_button_text">"ลงชื่อใช้"</string>
     <string msgid="2429381841831957106" name="common_signin_button_text_long">"ลงชื่อเข้าใช้ด้วย Google"</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.6.0/res/values-th/values.xml -->
+    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.6.0/res/values-th/values.xml -->
     <eat-comment/>
     <string name="dgts__cancel">ยกเลิก</string>
     <string name="dgts__communication_error">ข้อผิดพลาดการสื่อสาร</string>
@@ -112,7 +112,7 @@
     <string name="dgts_pin_code_terms">คุณได้ตั้งรหัสยืนยัน 2 ชั้นไว้ก่อนหน้านี้บน digits.com</string>
     <string name="dgts_verify">ยืนยัน</string>
     <string name="dgts_verifying">กำลังยืนยัน</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/res/values-th/values.xml -->
+    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/res/values-th/values.xml -->
     <eat-comment/>
     <string msgid="8327680881775995150" name="mr_media_route_button_content_description">"ส่ง"</string>
     <string msgid="7553005460920830010" name="mr_media_route_chooser_searching">"กำลังค้นหาอุปกรณ์…"</string>
@@ -124,26 +124,26 @@
     <string msgid="5398645111664294430" name="mr_media_route_controller_stop">"หยุดการส่ง"</string>
     <string msgid="5441529851481176817" name="mr_system_route_name">"ระบบ"</string>
     <string msgid="7498112907524977311" name="mr_user_route_category_name">"อุปกรณ์"</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-th/values.xml -->
+    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-th/values.xml -->
     <eat-comment/>
     <string name="tw__allow_btn_txt">อนุญาต</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-th/values.xml -->
+    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-th/values.xml -->
     <eat-comment/>
     <string name="tw__loading_tweet">กำลังโหลดทวีต</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-th/values.xml -->
+    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-th/values.xml -->
     <eat-comment/>
     <string name="tw__login_btn_txt">เข้าสู่ระบบด้วยทวิตเตอร์</string>
     <string name="tw__not_now_btn_txt">ไม่ใช่ตอนนี้</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-th/values.xml -->
+    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-th/values.xml -->
     <eat-comment/>
     <string name="tw__relative_date_format_long">d/M/y</string>
     <string name="tw__relative_date_format_short">d MMM</string>
     <string name="tw__share_content_format">ดูทวีตของ \@%1$s: Tweet: https://twitter.com/%1$s/status/%2$s</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-th/values.xml -->
+    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-th/values.xml -->
     <eat-comment/>
     <string name="tw__share_email_desc">รับการอัพเดทและข้อมูลอื่นๆ ได้จาก %1$s เมื่อคุณให้สิทธิ์ในการเข้าถึงอีเมลของคุณบนบัญชีทวิตเตอร์ \@%2$s</string>
     <string name="tw__share_email_title">แชร์ที่อยู่อีเมลของคุณ</string>
-    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-th/values.xml -->
+    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-th/values.xml -->
     <eat-comment/>
     <string name="tw__share_subject_format">ทวีตจาก %1$s (\@%2$s)</string>
     <string name="tw__share_tweet">แบ่งปันทวีต</string>

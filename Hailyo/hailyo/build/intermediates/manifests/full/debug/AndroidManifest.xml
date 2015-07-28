@@ -94,10 +94,7 @@
             android:name="com.nexchanges.hailyo.MainBrokerActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.nexchanges.hailyo.SuccessfulYo"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.nexchanges.hailyo.customAnimation.SearchSplashActivity"
+            android:name="com.nexchanges.hailyo.SearchSplashActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.nexchanges.hailyo.ChooseRoleActivity"
@@ -148,7 +145,7 @@
             android:name="com.nexchanges.hailyo.GoogleMapSupport.SearchActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.nexchanges.hailyo.LoginActivity"
+            android:name="com.nexchanges.hailyo.LoginActivity1"
             android:label="@string/title_activity_login"
             android:windowSoftInputMode="adjustResize|stateAlwaysHidden" >
         </activity>
