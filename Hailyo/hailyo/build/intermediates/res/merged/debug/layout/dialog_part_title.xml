@@ -13,4 +13,4 @@
 		android:id="@+id/sdl__content"
 		style="@style/SDL.Group"/>
 </LinearLayout>
-<!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/stylishDialogLib/src/main/res/layout/dialog_part_title.xml --><!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/Hailyo/stylishDialogLib/unspecified/res/layout/dialog_part_title.xml -->
+<!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/stylishDialogLib/src/main/res/layout/dialog_part_title.xml --><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/Hailyo/stylishDialogLib/unspecified/res/layout/dialog_part_title.xml -->

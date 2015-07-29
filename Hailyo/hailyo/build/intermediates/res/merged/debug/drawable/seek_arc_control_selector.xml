@@ -7,4 +7,4 @@
         <item android:drawable="@drawable/scrubber_control_focused_holo" android:state_selected="true"/>
         <item android:drawable="@drawable/scrubber_control_normal_holo"/>
 
-</selector><!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/src/main/res/drawable/seek_arc_control_selector.xml -->
+</selector><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/drawable/seek_arc_control_selector.xml -->

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-ms/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-ms/values.xml -->
     <eat-comment/>
     <plurals name="tw__time_hours">
         <item quantity="one">1j</item>
@@ -14,7 +14,7 @@
         <item quantity="one">1s</item>
         <item quantity="other">%ds</item>
     </plurals>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.6.0/res/values-ms/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.6.0/res/values-ms/values.xml -->
     <eat-comment/>
     <string name="dgts__cancel">Batal</string>
     <string name="dgts__communication_error">Ralat Komunikasi</string>
@@ -60,16 +60,16 @@
     <string name="dgts_pin_code_terms">Anda telah setkan kod pengesahan 2 langkah sebelum ini di digits.com</string>
     <string name="dgts_verify">Sahkan</string>
     <string name="dgts_verifying">Mengesahkan</string>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-ms/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-ms/values.xml -->
     <eat-comment/>
     <string name="tw__allow_btn_txt">Benarkan</string>
     <string name="tw__login_btn_txt">Log masuk dengan Twitter</string>
     <string name="tw__not_now_btn_txt">Bukan sekarang</string>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-ms/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-ms/values.xml -->
     <eat-comment/>
     <string name="tw__relative_date_format_long">d/M/y</string>
     <string name="tw__relative_date_format_short">d MMM</string>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-ms/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-ms/values.xml -->
     <eat-comment/>
     <string name="tw__share_email_desc">Dapatkan kemas kini dan maklumat lain daripada %1$s apabila anda memberikan mereka akses kepada e-mel anda pada akaun Twitter anda \@%2$s</string>
     <string name="tw__share_email_title">Kongsi alamat e-mel anda</string>

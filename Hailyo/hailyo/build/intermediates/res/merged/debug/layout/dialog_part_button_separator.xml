@@ -4,4 +4,4 @@
 	style="@style/SDL.ButtonSeparator"
 	android:id="@+id/dialog_button_separator" />
 
-<!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/stylishDialogLib/src/main/res/layout/dialog_part_button_separator.xml --><!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/Hailyo/stylishDialogLib/unspecified/res/layout/dialog_part_button_separator.xml -->
+<!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/stylishDialogLib/src/main/res/layout/dialog_part_button_separator.xml --><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/Hailyo/stylishDialogLib/unspecified/res/layout/dialog_part_button_separator.xml -->

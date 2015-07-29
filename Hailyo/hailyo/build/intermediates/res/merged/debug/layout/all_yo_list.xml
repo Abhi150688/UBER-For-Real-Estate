@@ -12,4 +12,4 @@
         android:dividerHeight="25dp"
         android:listSelector="@drawable/list_row_selector" />
 
-</RelativeLayout><!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/src/main/res/layout/all_yo_list.xml -->
+</RelativeLayout><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/layout/all_yo_list.xml -->

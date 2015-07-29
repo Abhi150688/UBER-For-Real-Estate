@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-en-rXX/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-en-rXX/values.xml -->
     <eat-comment/>
     <plurals name="tw__time_hours">
         <item quantity="one">[1h]</item>
@@ -14,7 +14,7 @@
         <item quantity="one">[1s]</item>
         <item quantity="other">[%ds]</item>
     </plurals>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.6.0/res/values-en-rXX/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.6.0/res/values-en-rXX/values.xml -->
     <eat-comment/>
     <string name="dgts__cancel">[Cåäncéêl]</string>
     <string name="dgts__communication_error">[Cöømmünïícåätïíöøn Erröør]</string>
@@ -62,27 +62,27 @@
     <string name="dgts_pin_code_terms">[Yöøü håävéê préêvïíöøüsly séêt åä 2-stéêp véêrïífïícåätïíöøn cöødéê öøn dïígïíts.cöøm]</string>
     <string name="dgts_verify">[Véêrïífy]</string>
     <string name="dgts_verifying">[Véêrïífyïíng]</string>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-en-rXX/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-en-rXX/values.xml -->
     <eat-comment/>
     <string name="tw__allow_btn_txt">[Allöøw]</string>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-en-rXX/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-en-rXX/values.xml -->
     <eat-comment/>
     <string name="tw__loading_tweet">[Löøåädïíng Twéêéêt]</string>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-en-rXX/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-en-rXX/values.xml -->
     <eat-comment/>
     <string name="tw__login_btn_txt">[Löøg ïín wïíth Twïíttéêr]</string>
     <string name="tw__not_now_btn_txt">[Nöøt nöøw]</string>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-en-rXX/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-en-rXX/values.xml -->
     <eat-comment/>
     <string name="tw__relative_date_format_long">[MM/dd/yy]</string>
     <string name="tw__relative_date_format_short">[MMM dd]</string>
     <string name="tw__share_content_format">[Chéêck öøüt \@%1$s\'s Twéêéêt: https://twïíttéêr.cöøm/%1$s/ståätüs/%2$s]</string>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-en-rXX/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-en-rXX/values.xml -->
     <eat-comment/>
     <string name="tw__share_email_desc">[Géêt üpdåätéês åänd öøthéêr ïínföørmåätïíöøn fröøm %1$s whéên yöøü åällöøw\
         théêm åäccéêss töø yöøür éêmåäïíl öøn yöøür Twïíttéêr åäccöøünt \@%2$s]</string>
     <string name="tw__share_email_title">[Shåäréê yöøür éêmåäïíl åäddréêss]</string>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-en-rXX/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-en-rXX/values.xml -->
     <eat-comment/>
     <string name="tw__share_subject_format">[Twéêéêt fröøm %1$s (\@%2$s)]</string>
     <string name="tw__share_tweet">[Shåäréê Twéêéêt]</string>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-en-rSS/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-en-rSS/values.xml -->
     <eat-comment/>
     <plurals name="tw__time_hours">
         <item quantity="one">[[59358]] 1h</item>
@@ -14,7 +14,7 @@
         <item quantity="one">[[59354]] 1s</item>
         <item quantity="other">[[59355]] %ds</item>
     </plurals>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.6.0/res/values-en-rSS/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.6.0/res/values-en-rSS/values.xml -->
     <eat-comment/>
     <string name="dgts__cancel">[[59330]] Cancel</string>
     <string name="dgts__communication_error">[[59338]] Communication Error</string>
@@ -62,27 +62,27 @@
     <string name="dgts_pin_code_terms">[[94015]] You have previously set a 2-step verification code on digits.com</string>
     <string name="dgts_verify">[[94014]] Verify</string>
     <string name="dgts_verifying">[[94016]] Verifying</string>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-en-rSS/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-en-rSS/values.xml -->
     <eat-comment/>
     <string name="tw__allow_btn_txt">[[94023]] Allow</string>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-en-rSS/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-en-rSS/values.xml -->
     <eat-comment/>
     <string name="tw__loading_tweet">[[60974]] Loading Tweet</string>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-en-rSS/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-en-rSS/values.xml -->
     <eat-comment/>
     <string name="tw__login_btn_txt">[[94020]] Log in with Twitter</string>
     <string name="tw__not_now_btn_txt">[[94024]] Not now</string>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-en-rSS/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-en-rSS/values.xml -->
     <eat-comment/>
     <string name="tw__relative_date_format_long">[[59353]] MM/dd/yy</string>
     <string name="tw__relative_date_format_short">[[59352]] MMM dd</string>
     <string name="tw__share_content_format">[[60977]] Check out \@%1$s\'s Tweet: https://twitter.com/%1$s/status/%2$s</string>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-en-rSS/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-en-rSS/values.xml -->
     <eat-comment/>
     <string name="tw__share_email_desc">[[94022]] Get updates and other information from %1$s when you allow\
         them access to your email on your Twitter account \@%2$s</string>
     <string name="tw__share_email_title">[[94021]] Share your email address</string>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-en-rSS/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-en-rSS/values.xml -->
     <eat-comment/>
     <string name="tw__share_subject_format">[[60978]] Tweet from %1$s (\@%2$s)</string>
     <string name="tw__share_tweet">[[60976]] Share Tweet</string>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/stylishDialogLib/build/intermediates/bundles/debug/res/values-v11/values-v11.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/stylishDialogLib/build/intermediates/bundles/debug/res/values-v11/values-v11.xml -->
     <eat-comment/>
     <style name="SDL.Progress" parent="@android:style/Widget.Holo.ProgressBar">
 		<item name="android:layout_width">wrap_content</item>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-de/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-de/values.xml -->
     <eat-comment/>
     <plurals name="tw__time_hours">
         <item quantity="one">1 Std.</item>
@@ -14,7 +14,7 @@
         <item quantity="one">1 Sek.</item>
         <item quantity="other">%d Sek.</item>
     </plurals>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values-de/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.android.support/appcompat-v7/22.0.0/res/values-de/values.xml -->
     <eat-comment/>
     <string msgid="4600421777120114993" name="abc_action_bar_home_description">"Zur Startseite"</string>
     <string msgid="1397052879051804371" name="abc_action_bar_home_description_format">"%1$s: %2$s"</string>
@@ -32,7 +32,7 @@
     <string msgid="3421042268587513524" name="abc_shareactionprovider_share_with">"Freigeben für"</string>
     <string msgid="7165123711973476752" name="abc_shareactionprovider_share_with_application">"Freigeben für %s"</string>
     <string msgid="1603543279005712093" name="abc_toolbar_collapse_description">"Minimieren"</string>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-de/common_strings.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/7.5.0/res/values-de/common_strings.xml -->
     <eat-comment/>
     <string msgid="6428604800157361567" name="common_android_wear_notification_needs_update_text">"Für <ns1:g id="APP_NAME">%1$s</ns1:g> ist eine Aktualisierung der Android Wear App erforderlich."</string>
     <string msgid="2453027084525739603" name="common_android_wear_update_text">"<ns1:g id="APP_NAME">%1$s</ns1:g> funktioniert erst nach der Aktualisierung der Android Wear App."</string>
@@ -66,7 +66,7 @@
     <string msgid="411506735369601515" name="common_open_on_phone">"Auf Telefon öffnen"</string>
     <string msgid="9071884888741449141" name="common_signin_button_text">"Anmelden"</string>
     <string msgid="2429381841831957106" name="common_signin_button_text_long">"Über Google anmelden"</string>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.6.0/res/values-de/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.6.0/res/values-de/values.xml -->
     <eat-comment/>
     <string name="dgts__cancel">Abbrechen</string>
     <string name="dgts__communication_error">Kommunikationsfehler</string>
@@ -112,7 +112,7 @@
     <string name="dgts_pin_code_terms">Du hast zuvor einen 2-Schritte-Verifizierungscode auf digits.com eingestellt</string>
     <string name="dgts_verify">Verifizieren</string>
     <string name="dgts_verifying">Wird verifiziert</string>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/res/values-de/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/22.0.0/res/values-de/values.xml -->
     <eat-comment/>
     <string msgid="8327680881775995150" name="mr_media_route_button_content_description">"Übertragen"</string>
     <string msgid="7553005460920830010" name="mr_media_route_chooser_searching">"Geräte werden gesucht…"</string>
@@ -124,26 +124,26 @@
     <string msgid="5398645111664294430" name="mr_media_route_controller_stop">"Übertragung stoppen"</string>
     <string msgid="5441529851481176817" name="mr_system_route_name">"System"</string>
     <string msgid="7498112907524977311" name="mr_user_route_category_name">"Geräte"</string>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-de/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-de/values.xml -->
     <eat-comment/>
     <string name="tw__allow_btn_txt">Erlauben</string>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-de/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-de/values.xml -->
     <eat-comment/>
     <string name="tw__loading_tweet">Tweet wird geladen</string>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-de/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-de/values.xml -->
     <eat-comment/>
     <string name="tw__login_btn_txt">Mit Twitter anmelden</string>
     <string name="tw__not_now_btn_txt">Nicht jetzt</string>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-de/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-de/values.xml -->
     <eat-comment/>
     <string name="tw__relative_date_format_long">d.M.y</string>
     <string name="tw__relative_date_format_short">d. MMM</string>
     <string name="tw__share_content_format">Sieh Dir den Tweet von \@%1$s an: https://twitter.com/%1$s/status/%2$s</string>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-de/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/twitter-core/1.4.0/res/values-de/values.xml -->
     <eat-comment/>
     <string name="tw__share_email_desc">Erhalte Updates und andere Informationen von %1$s, indem Du diesem Nutzer Zugriff auf die E-Mail Deines Twitter Accounts gewährst \@%2$s</string>
     <string name="tw__share_email_title">Teile Deine E-Mail Adresse</string>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-de/values.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.twitter.sdk.android/tweet-ui/1.0.5/res/values-de/values.xml -->
     <eat-comment/>
     <string name="tw__share_subject_format">Tweet von %1$s (\@%2$s)</string>
     <string name="tw__share_tweet">Tweet teilen</string>

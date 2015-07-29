@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/stylishDialogLib/src/main/res/values/sdl__colors.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/stylishDialogLib/src/main/res/values/sdl__colors.xml -->
     <eat-comment/>
     <color name="sdl_bright_foreground_disabled_holo_dark">#ff4c4c4c</color>
     <color name="sdl_bright_foreground_disabled_holo_light">#ffb2b2b2</color>
@@ -24,7 +24,7 @@
     <color name="sdl_title_text_light">#33B5E5</color>
     <declare-styleable name="DialogStyle"><attr format="reference" name="dialogBackground"/><attr format="color|reference" name="titleTextColor"/><attr format="color|reference" name="titleSeparatorColor"/><attr format="color|reference" name="messageTextColor"/><attr format="color|reference" name="buttonTextColor"/><attr format="color|reference" name="buttonSeparatorColor"/><attr format="color|reference" name="buttonBackgroundColorNormal"/><attr format="color|reference" name="buttonBackgroundColorPressed"/><attr format="color|reference" name="buttonBackgroundColorFocused"/></declare-styleable>
     <declare-styleable name="StyledDialogs"><attr format="reference" name="sdlDialogStyle"/><attr format="reference" name="sdlTitleTextStyle"/><attr format="reference" name="sdlMessageTextStyle"/></declare-styleable>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/stylishDialogLib/src/main/res/values/sdl__dimens.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/stylishDialogLib/src/main/res/values/sdl__dimens.xml -->
     <eat-comment/>
     <dimen name="grid_1">4dp</dimen>
     <dimen name="grid_10">40dp</dimen>
@@ -56,15 +56,15 @@
     <dimen name="grid_8">32dp</dimen>
     <dimen name="grid_9">36dp</dimen>
     <dimen name="grid_90">360dp</dimen>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/stylishDialogLib/src/main/res/values/sdl__ids.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/stylishDialogLib/src/main/res/values/sdl__ids.xml -->
     <eat-comment/>
     <item name="sdl__negative_button" type="id"/>
     <item name="sdl__neutral_button" type="id"/>
     <item name="sdl__positive_button" type="id"/>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/stylishDialogLib/src/main/res/values/sdl__strings.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/stylishDialogLib/src/main/res/values/sdl__strings.xml -->
     <eat-comment/>
     <string name="dialog_close">Close</string>
-    <!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/stylishDialogLib/src/main/res/values/sdl__theme.xml -->
+    <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/stylishDialogLib/src/main/res/values/sdl__theme.xml -->
     <eat-comment/>
     <style name="DialogStyleDark">
 		<item name="dialogBackground">@drawable/sdl_background_dark</item>

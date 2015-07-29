@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/white">
 
-<TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="20dp"
-    android:layout_marginLeft="45dp"
-    android:textSize="25dp"
-    android:textAlignment="center"
-    android:textColor="@color/black"
-    android:text="Choose Payment Method : "/>
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/orange"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:text="Choose Payment Method"/>
 
     <View
         android:layout_width="fill_parent"
@@ -25,14 +25,14 @@ android:orientation="vertical"
         android:layout_marginLeft="30dp"
         />
 
-<Button
-    android:layout_width="250dp"
-    android:layout_height="50dp"
-    android:layout_marginLeft="70dp"
-    android:background="@drawable/button_background_states"
-    android:layout_marginTop="20dp"
-    android:text="PAYTM WALLET"
-    android:textSize="25sp"
-    android:id="@+id/usePaytm" />
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="70dp"
+        android:background="@drawable/button_border"
+        android:layout_marginTop="20dp"
+        android:text="PAYTM WALLET"
+        android:textSize="25sp"
+        android:id="@+id/usePaytm" />
 
 </LinearLayout>

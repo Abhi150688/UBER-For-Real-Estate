@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -36,8 +38,16 @@ public class PaytmWalletActivity extends ActionBarActivity implements View.OnCli
 
     Context context;
 
-    Button payMoney;
-    TextView moneyAmount;
+    Button payMoney, pay200,pay500,pay1000;
+    EditText moneyAmount;
+    PaytmPGService paytmPGService;
+    String mobile;
+
+    Map<String, String> paramMap;
+    TextView paytmMobile;
+    int moneyVal=0;
+    String moneyV;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +55,77 @@ public class PaytmWalletActivity extends ActionBarActivity implements View.OnCli
         setContentView(R.layout.paytm_wallet_layout);
         context =  this;
 
-        moneyAmount = (TextView) findViewById(R.id.moneyAmount);
+        paytmPGService =  PaytmPGService.getStagingService();
+
+        paramMap = new HashMap<String, String>();
+
+
+        moneyAmount = (EditText) findViewById(R.id.moneyAmount);
         payMoney = (Button) findViewById(R.id.payMoney);
         payMoney.setOnClickListener(this);
+
+        pay200 = (Button) findViewById(R.id.pay200);
+        pay500 = (Button) findViewById(R.id.pay500);
+        pay1000 = (Button) findViewById(R.id.pay1000);
+
+        paytmMobile = (TextView) findViewById(R.id.paytmMobile);
+
+        moneyAmount.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+               moneyV = moneyAmount.getText().toString();
+
+
+                if (moneyV.isEmpty())
+                    moneyVal = 0;
+                else
+                moneyVal = Integer.parseInt(moneyV);
+
+            }
+        });
+
+        pay200.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moneyVal = moneyVal +200;
+                moneyV = Integer.toString(moneyVal);
+
+                moneyAmount.setText(moneyV);
+
+
+            }
+        });
+
+        pay500.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moneyVal = moneyVal +500;
+                moneyV = Integer.toString(moneyVal);
+
+                moneyAmount.setText(moneyV);
+
+            }
+        });
+
+        pay1000.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moneyVal = moneyVal +1000;
+                moneyV = Integer.toString(moneyVal);
+
+                moneyAmount.setText(moneyV);
+            }
+        });
 
 
     }
@@ -61,14 +139,22 @@ public class PaytmWalletActivity extends ActionBarActivity implements View.OnCli
                 amount = Integer.parseInt(moneyAmount.getText().toString());
             }catch (Exception e){  amount =0;  }
 
-            if ( amount > 0 ){
+            if ( amount > 199 ){
                 proceedToPayment(amount);
             }
             else{
-                Toast.makeText(this, "Please Enter Amount above 0", Toast.LENGTH_LONG).show();;
+                Toast.makeText(this, "Minimum amount is Rs. 200", Toast.LENGTH_LONG).show();;
             }
 
         }
+
+        try {
+            paramMap.get("MOBILE_NO");
+        }catch (Exception e)
+        {
+
+        }
+
 
     }
 
@@ -77,9 +163,9 @@ public class PaytmWalletActivity extends ActionBarActivity implements View.OnCli
         Random randomGenerator = new Random();
         int randomInt = randomGenerator.nextInt(1000);
 
-        PaytmPGService paytmPGService =  PaytmPGService.getStagingService();
+        paytmPGService =  PaytmPGService.getStagingService();
 
-        Map<String, String> paramMap = new HashMap<String, String>();
+        paramMap = new HashMap<String, String>();
 
        /* paramMap.put("REQUEST_TYPE", "RENEW_SUBSCRIPTION");
         paramMap.put("ORDER_ID", "42TRIPS000" + randomInt);

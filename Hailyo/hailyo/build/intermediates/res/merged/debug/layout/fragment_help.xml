@@ -10,4 +10,4 @@
         android:text="Click here for Help!"
         android:id="@+id/textView2"
         android:layout_gravity="center_horizontal" />
-</LinearLayout><!-- From: file:/Users/Abhishek/Desktop/hailyo-master%204/Hailyo/hailyo/src/main/res/layout/fragment_help.xml -->
+</LinearLayout><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/layout/fragment_help.xml -->
