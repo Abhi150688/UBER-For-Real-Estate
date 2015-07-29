@@ -14,6 +14,8 @@ public class SharedPrefs {
 
     //here you can centralize all your shared prefs keys
     public static String NAME_KEY = "nameKey";
+    public static String LAST_ACTIVITY_KEY = "lastActivityKey";
+
     public static String EMAIL_KEY = "emailKey";
     public static String CURRENT_SPEC = "specKey";
 

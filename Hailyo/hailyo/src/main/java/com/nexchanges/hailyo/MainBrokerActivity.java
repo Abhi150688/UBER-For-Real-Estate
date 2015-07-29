@@ -33,6 +33,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.android.volley.Response;
@@ -92,7 +93,7 @@ import java.util.List;
     int max = 15, min = 5;
     int timer_val=5;
     SendLocationUpdate sendLocationUpdate = new SendLocationUpdate();
-    Boolean is_transaction=false;
+    Boolean is_transaction=false, location_read = false;
 
     private static final String url = "https://api.myjson.com/bins/nk0q";
     private ProgressDialog pDialog;
@@ -162,7 +163,7 @@ import java.util.List;
         context = this;
 
 
-        is_transaction = SharedPrefs.getBoolean(context,SharedPrefs.SUCCESSFUL_HAIL,false);
+        //is_transaction = SharedPrefs.getBoolean(context,SharedPrefs.SUCCESSFUL_HAIL);
         checkLocationServices.checkGpsStatus(context);
 
 
@@ -295,10 +296,15 @@ import java.util.List;
         SetSiteVisitLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPrefs.save(context, SharedPrefs.CURRENT_LOC_KEY, SiteVisitAddressBar.getText().toString());
-                Intent EnterConfigActivity = new Intent(context, EnterConfigActivity.class);
-                startActivity(EnterConfigActivity);
-
+              //  SharedPrefs.save(context, SharedPrefs.CURRENT_LOC_KEY, SiteVisitAddressBar.getText().toString());
+                if (location_read==true) {
+                    Intent EnterConfigActivity = new Intent(context, EnterConfigActivity.class);
+                    startActivity(EnterConfigActivity);
+                }
+                else {
+                    Toast.makeText(getApplicationContext(), "Your Location is not available \n Please try again!",
+                            Toast.LENGTH_LONG).show();
+                }
             }
         });
 
@@ -649,14 +655,19 @@ import java.util.List;
             @Override
             public void onStart() {
                 SiteVisitAddressBar.setText("Fetching Site Visit Location, wait..");
+                location_read=false;
             }
 
             @Override
             public void onComplete(boolean result, LatLng location, String placeName) {
                 if (result == true) {
                     SiteVisitAddressBar.setText(placeName);
+                    SharedPrefs.save(context, SharedPrefs.CURRENT_LOC_KEY, SiteVisitAddressBar.getText().toString());
+                    location_read=true;
+
                 } else {
                     SiteVisitAddressBar.setText("Sorry, No Such Location, Please Try Again..");
+                    location_read=false;
                 }
             }
         });

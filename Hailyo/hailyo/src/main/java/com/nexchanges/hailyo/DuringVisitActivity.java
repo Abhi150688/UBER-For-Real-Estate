@@ -61,6 +61,7 @@ public class DuringVisitActivity extends Activity {
 
                         Intent GiveRatingActivity=new Intent(context, GiveRatingActivity.class);
                         context.startActivity(GiveRatingActivity);
+                        finish();
 
                     }
                 });

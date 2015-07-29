@@ -35,6 +35,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.android.volley.Response;
@@ -91,7 +92,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
     private List<VisitData> visitList = new ArrayList<VisitData>();
     private ListView listView;
     private CustomListAdapter_Visit adapter;
-    Boolean is_transaction=false;
+    Boolean is_transaction=false, location_read=false;
     SwipeRefreshLayout visit_refresh, deal_refresh;
     SendLocationUpdate sendLocationUpdate = new SendLocationUpdate();
 
@@ -152,7 +153,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         setContentView(R.layout.activity_main);
         context = this;
         checkLocationServices.checkGpsStatus(context);
-        is_transaction = SharedPrefs.getBoolean(context,SharedPrefs.SUCCESSFUL_HAIL,false);
+        //is_transaction = SharedPrefs.getBoolean(context,SharedPrefs.SUCCESSFUL_HAIL);
 
 
         sb1 = (SeekBar)findViewById(R.id.seekBar2);
@@ -451,9 +452,16 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
             @Override
             public void onClick(View v) {
 
-                Intent EnterConfigActivity = new Intent(context, EnterConfigActivity.class);
-                startActivity(EnterConfigActivity);
-                SharedPrefs.save(context, SharedPrefs.CURRENT_LOC_KEY,SiteVisitAddressBar.getText().toString());
+                if (location_read==true) {
+
+                    Intent EnterConfigActivity = new Intent(context, EnterConfigActivity.class);
+                      startActivity(EnterConfigActivity);}
+                else {
+                    Toast.makeText(getApplicationContext(), "Your Location is not available \n Please try again!",
+                            Toast.LENGTH_LONG).show();
+
+                }
+                //SharedPrefs.save(context, SharedPrefs.CURRENT_LOC_KEY,SiteVisitAddressBar.getText().toString());
 
             }
         });
@@ -653,14 +661,22 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
             @Override
             public void onStart() {
                 SiteVisitAddressBar.setText("Fetching Site Visit Location, wait..");
+                location_read=false;
+
             }
 
             @Override
             public void onComplete(boolean result, LatLng location, String placeName) {
                 if ( result == true ) {
                     SiteVisitAddressBar.setText(placeName);
+                    SharedPrefs.save(context, SharedPrefs.CURRENT_LOC_KEY, SiteVisitAddressBar.getText().toString());
+
+                    location_read=true;
+
                 }else{
                     SiteVisitAddressBar.setText("Sorry, No Such Location, Please Try Again..");
+                    location_read=false;
+
                 }
             }
         });

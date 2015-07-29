@@ -82,27 +82,6 @@ public class GiveRatingActivity extends Activity {
 
         happy = (ImageView) findViewById(R.id.happy);
 
-        sad = (ImageView) findViewById(R.id.sad);
-
-        if (cust_type.equalsIgnoreCase("avl"))
-        {
-            but1.setClickable(false);
-            but2.setClickable(false);
-            but3.setClickable(false);
-            but4.setClickable(false);
-        }
-
-        else if (cust_type.equalsIgnoreCase("req"))
-        {
-            but1.setClickable(true);
-            but2.setClickable(true);
-            but3.setClickable(true);
-            but4.setClickable(true);
-
-
-        }
-
-
         but1 = (Button) findViewById(R.id.value1);
 
         but2 = (Button) findViewById(R.id.value2);
@@ -110,6 +89,29 @@ public class GiveRatingActivity extends Activity {
         but3 = (Button) findViewById(R.id.value3);
 
         but4 = (Button) findViewById(R.id.value4);
+
+
+        sad = (ImageView) findViewById(R.id.sad);
+
+        if (cust_type.equalsIgnoreCase("avl"))
+        {
+            but1.setEnabled(false);
+            but2.setEnabled(false);
+            but3.setEnabled(false);
+            but4.setEnabled(false);
+        }
+
+        else if (cust_type.equalsIgnoreCase("req"))
+        {
+            but1.setEnabled(true);
+            but2.setEnabled(true);
+            but3.setEnabled(true);
+            but4.setEnabled(true);
+
+
+        }
+
+
 
 
         my_id = SharedPrefs.getString(context, SharedPrefs.MY_USER_ID," ");
@@ -197,6 +199,7 @@ public class GiveRatingActivity extends Activity {
                 rating = true;
                 String rating1 = "" + 1;
                 sendPostRequest(my_id, counter_id, hailyo_id,rating1);
+                submitrating();
 
             }
         });
@@ -209,6 +212,7 @@ public class GiveRatingActivity extends Activity {
                 rating = false;
                 String rating1 = " " + 0;
                 sendPostRequest(my_id, counter_id, hailyo_id,rating1);
+                submitrating();
 
             }
         });
@@ -231,13 +235,16 @@ public class GiveRatingActivity extends Activity {
         } else
         {
             if (role.equalsIgnoreCase("client"))
-            {    Intent MainActivity = new Intent(context, MainActivity.class);
+            {   Intent MainActivity = new Intent(context, MainActivity.class);
+                SharedPrefs.save(context,SharedPrefs.CURRENT_FLIPPER_VIEW,0);
                 startActivity(MainActivity);
                 finish();
             }
             else if (role.equalsIgnoreCase("broker"))
             {
                 Intent MainBrokerActivity = new Intent(context, MainBrokerActivity.class);
+                SharedPrefs.save(context,SharedPrefs.CURRENT_FLIPPER_VIEW,0);
+
                 startActivity(MainBrokerActivity);
                 finish();
 

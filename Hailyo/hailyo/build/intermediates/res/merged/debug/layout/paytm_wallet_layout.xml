@@ -101,7 +101,8 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_marginTop="25dp"
-        android:layout_marginLeft="18dp">
+        android:layout_marginLeft="18dp"
+        android:layout_marginBottom="10dp">
 
         <TextView
             android:layout_width="wrap_content"
@@ -117,7 +118,6 @@
             android:layout_height="60dp"
             android:gravity="center"
             android:layout_marginLeft="10dp"
-            android:layout_marginBottom="10dp"
             android:id="@+id/moneyAmount"
             android:inputType="number"/>
 
