@@ -248,6 +248,11 @@ public class NewBidActivity extends Activity {
         //do nothing
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SharedPrefs.save(context, SharedPrefs.LAST_ACTIVITY_KEY, getClass().getName());
 
+    }
 
 }

@@ -97,12 +97,6 @@
 
 
         <activity
-            android:name=".SearchSplashActivity"
-            android:screenOrientation="portrait"></activity>
-
-
-
-        <activity
             android:name=".ChooseRoleActivity"
             android:screenOrientation="portrait"></activity>
 
@@ -112,12 +106,9 @@
             android:screenOrientation="portrait"></activity>
 
         <activity
-            android:name=".ui.ViewAllDeals"
+            android:name=".PostYoActivity_Broker"
             android:screenOrientation="portrait"></activity>
 
-        <activity
-            android:name=".ui.ViewAllVisits"
-            android:screenOrientation="portrait"></activity>
 
 
         <activity

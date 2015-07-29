@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.support.v7.app.*;
 
 import com.nexchanges.hailyo.R;
+import com.nexchanges.hailyo.model.SharedPrefs;
 import com.nexchanges.hailyo.paymentGateway.PaytmWalletActivity;
 
 
@@ -79,6 +80,14 @@ public class SelectPaymentTypeActivity extends ActionBarActivity implements View
 
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+        SharedPrefs.save(context, SharedPrefs.LAST_ACTIVITY_KEY, getClass().getName());
+    }
+
 
 
 }

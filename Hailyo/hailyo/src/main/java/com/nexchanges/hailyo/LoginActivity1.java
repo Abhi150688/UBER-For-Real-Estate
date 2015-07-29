@@ -114,6 +114,14 @@ public class LoginActivity1 extends Activity {
     public void onBackPressed() {
         //do nothing
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SharedPrefs.save(context, SharedPrefs.LAST_ACTIVITY_KEY, getClass().getName());
+        // Logs 'app deactivate' App Event.
+    }
+
 }
 
 

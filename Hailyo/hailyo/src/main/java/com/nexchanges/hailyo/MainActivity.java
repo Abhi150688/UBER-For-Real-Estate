@@ -911,6 +911,8 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
     @Override
     protected void onPause() {
         super.onPause();
+        SharedPrefs.save(context, SharedPrefs.LAST_ACTIVITY_KEY, getClass().getName());
+
         try {
             unregisterReceiver(ReceivefromGCM);
         } catch (IllegalArgumentException e) {
@@ -929,7 +931,6 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         registerReceiver(ReceivefromGCM, Intentfilter);
         //the first parameter is the name of the inner class we created.
     }
-
 
 }
 

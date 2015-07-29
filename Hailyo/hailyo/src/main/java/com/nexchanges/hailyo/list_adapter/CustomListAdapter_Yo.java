@@ -36,8 +36,9 @@ public class CustomListAdapter_Yo extends BaseAdapter {
     private ArrayList<YoData> arraylist;
     ImageLoader imageLoader = MyApplication.getInstance().getImageLoader();
     String U_type;
+    String rate;
     YoData m;
-    int timer_val;
+    String timer_val;
 
     public CustomListAdapter_Yo(Activity activity, List<YoData> yoItems) {
         this.activity = activity;
@@ -134,7 +135,7 @@ public class CustomListAdapter_Yo extends BaseAdapter {
                 min10.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        timer_val=10;
+                        timer_val=10+"";
                         timerval.setText(timer_val + " mins");
                         min10.setTextColor(Color.WHITE);
                         min10.setBackgroundColor(Color.parseColor("#FFA500"));
@@ -148,7 +149,7 @@ public class CustomListAdapter_Yo extends BaseAdapter {
                 min15.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        timer_val=15;
+                        timer_val=15+"";
                         timerval.setText(timer_val + " mins");
                         min15.setTextColor(Color.WHITE);
                         min15.setBackgroundColor(Color.parseColor("#FFA500"));
@@ -164,11 +165,14 @@ public class CustomListAdapter_Yo extends BaseAdapter {
                     @Override
                     public void onClick(View v) {
 
-
+                        rate = "3.5";
                         Intent AfterYoBroker = new Intent(activity, PostYoActivity_Broker.class);
                         Bundle extras = new Bundle();
-                        extras.putInt("timer", timer_val);
+                        extras.putString("timer", timer_val);
                         extras.putString("spec", spec);
+                        extras.putString("rating",rate);
+                        extras.putString("phone","9967307197");
+                        extras.putString("broker_Name","Abhishek");
                         extras.putString("user_type", U_type);
                         AfterYoBroker.putExtras(extras);
                         activity.startActivity(AfterYoBroker);
@@ -184,24 +188,7 @@ public class CustomListAdapter_Yo extends BaseAdapter {
 
         });
 
-
         return convertView;
     }
-
-
-
-    // Filter Class
-   /* public void filter(String charText) {
-        yoItems.clear();
-            for (YoData yo_D : arraylist) {
-                if (yo_D.getUserType().toLowerCase()
-                        .contains(charText)) {
-                    yoItems.add(yo_D);
-                }
-            }
-
-        notifyDataSetChanged();
-    }*/
-
 
 }

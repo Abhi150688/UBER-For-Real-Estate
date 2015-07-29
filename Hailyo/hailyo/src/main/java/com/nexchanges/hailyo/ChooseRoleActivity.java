@@ -531,4 +531,11 @@ public class ChooseRoleActivity extends Activity {
         return num;
     }
 
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+        SharedPrefs.save(context,SharedPrefs.LAST_ACTIVITY_KEY,getClass().getName());
+    }
+
 }

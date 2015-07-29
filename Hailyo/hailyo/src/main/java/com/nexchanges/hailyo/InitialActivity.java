@@ -1,5 +1,6 @@
 package com.nexchanges.hailyo;
 
+import android.content.Context;
 import android.os.Bundle;
 
 /**
@@ -32,10 +33,22 @@ import com.twitter.sdk.android.core.Session;
 public class InitialActivity extends Activity {
 
     String role;
+    Context context;
+    Class<?> pauseActivityClass = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        context = this;
+
+        try{
+        pauseActivityClass = Class.forName(SharedPrefs.getString(context,SharedPrefs.LAST_ACTIVITY_KEY));}
+        catch (ClassNotFoundException ex)
+        {
+            pauseActivityClass = InitialActivity.class;
+        }
+
 
         final Session activeSession = SessionRecorder.recordInitialSessionState(
                 Twitter.getSessionManager().getActiveSession(),
@@ -44,9 +57,12 @@ public class InitialActivity extends Activity {
 
         role = SharedPrefs.getString(this, SharedPrefs.MY_ROLE_KEY);
 
+        if(!pauseActivityClass.getSimpleName().equalsIgnoreCase(InitialActivity.class.getSimpleName()))
+        {
+            startLastPausedActivity();
+        }
 
-
-        if (activeSession != null && role.equalsIgnoreCase("customer")) {
+        else if (activeSession != null && role.equalsIgnoreCase("customer")) {
             startCustomerActivity();
         }
         else if (activeSession != null && role.equalsIgnoreCase("broker")) {
@@ -65,24 +81,23 @@ public class InitialActivity extends Activity {
 
     private void startLoginActivity() {
         startActivity(new Intent(this, LoginActivity1.class));
+        finish();
     }
 
     private void startBrokerActivity() {
         startActivity(new Intent(this, MainBrokerActivity.class));
+        finish();
+    }
+
+    private void startLastPausedActivity()
+    {
+        startActivity(new Intent(this, pauseActivityClass));
+        finish();
+
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
-        // Logs 'install' and 'app activate' App Events.
-
     }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-        // Logs 'app deactivate' App Event.
-       }
 }

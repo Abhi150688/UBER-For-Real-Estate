@@ -1004,6 +1004,8 @@ import java.util.List;
     @Override
     protected void onPause() {
         super.onPause();
+        SharedPrefs.save(context, SharedPrefs.LAST_ACTIVITY_KEY, getClass().getName());
+
         try {
             unregisterReceiver(ReceivefromGCM);
         } catch (IllegalArgumentException e) {

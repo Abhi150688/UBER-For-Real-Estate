@@ -133,6 +133,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:id="@+id/loanquest"
+            android:visibility="invisible"
             >
 
             <LinearLayout

@@ -94,19 +94,13 @@
             android:name="com.nexchanges.hailyo.MainBrokerActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.nexchanges.hailyo.SearchSplashActivity"
-            android:screenOrientation="portrait" />
-        <activity
             android:name="com.nexchanges.hailyo.ChooseRoleActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.nexchanges.hailyo.DuringVisitActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.nexchanges.hailyo.ui.ViewAllDeals"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.nexchanges.hailyo.ui.ViewAllVisits"
+            android:name="com.nexchanges.hailyo.PostYoActivity_Broker"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.nexchanges.hailyo.GiveRatingActivity"

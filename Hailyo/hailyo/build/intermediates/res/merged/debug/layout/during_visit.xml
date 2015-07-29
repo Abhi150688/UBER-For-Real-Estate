@@ -115,18 +115,6 @@
                     android:text="Make Notes" />
 
                 <Button
-                    android:id="@+id/activevisits"
-                    android:background="@drawable/button_border"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:textSize="18dp"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:layout_gravity="center"
-                    android:text="Give Offer" />
-
-                <Button
                     android:background="@drawable/button_border"
                     android:layout_marginRight="5dp"
                     android:layout_weight="1"

@@ -5,35 +5,38 @@ package com.nexchanges.hailyo;
  * Created by AbhishekWork on 21/06/15.
  */
 
-        import android.content.Context;
-        import android.content.Intent;
-        import android.content.res.Configuration;
-        import android.location.Location;
-        import android.os.Bundle;
-        import android.os.CountDownTimer;
-        import android.os.Vibrator;
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.res.Configuration;
+import android.location.Location;
+import android.net.Uri;
+import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Vibrator;
 
-        import android.support.v7.app.ActionBarActivity;
-        import android.telephony.SmsManager;
-        import android.util.Log;
-        import android.view.KeyEvent;
-        import android.view.MenuItem;
-        import android.view.View;
-        import android.widget.Button;
-        import android.widget.ImageButton;
-        import android.widget.RatingBar;
-        import android.widget.TextView;
-        import android.widget.Toast;
+import android.support.v7.app.ActionBarActivity;
+import android.telephony.SmsManager;
+import android.util.Log;
+import android.view.KeyEvent;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.RatingBar;
+import android.widget.TextView;
+import android.widget.Toast;
 
-        import com.google.android.gms.maps.CameraUpdateFactory;
-        import com.google.android.gms.maps.GoogleMap;
-        import com.google.android.gms.maps.OnMapReadyCallback;
-        import com.google.android.gms.maps.model.LatLng;
-        import com.nexchanges.hailyo.model.SharedPrefs;
-        import com.nexchanges.hailyo.ui.CustomMapFragment;
-        import com.nexchanges.hailyo.GoogleMapSupport.GetCurrentLocation;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.nexchanges.hailyo.model.SharedPrefs;
+import com.nexchanges.hailyo.ui.CustomMapFragment;
+import com.nexchanges.hailyo.GoogleMapSupport.GetCurrentLocation;
 
-        import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeUnit;
 
 /**
  * The Activity MainActivity will launched at the start of the app.
@@ -46,12 +49,12 @@ public class PostYoActivity extends ActionBarActivity
 
     public static final String TAG = MainActivity.class.getSimpleName();
 
-     GoogleMap map;
+    GoogleMap map;
     long ltimer,ltimer1;
 
     LatLng currentLocation;
 
-    Button call, message, allVisits,allDeals;
+    Button call, message, allVisits,allDeals,hail;
     ImageButton cancel;
     TextView timerTv, brokerTv;
     RatingBar ratingTv;
@@ -72,21 +75,20 @@ public class PostYoActivity extends ActionBarActivity
         rating = extras.getString("Rating");
         role = SharedPrefs.getString(context, SharedPrefs.MY_ROLE_KEY);
 
-           //call  = (Button) findViewById(R.id.call);
+        call  = (Button) findViewById(R.id.call);
 
-        allDeals  = (Button) findViewById(R.id.deals);
+        message  = (Button) findViewById(R.id.message);
 
-        allVisits  = (Button) findViewById(R.id.visits);
+        hail  = (Button) findViewById(R.id.hailmode);
 
-        //message  = (Button) findViewById(R.id.message);
 
-           cancel  = (ImageButton) findViewById(R.id.cancel);
+        cancel  = (ImageButton) findViewById(R.id.cancel);
 
-           timerTv  = (TextView) findViewById(R.id.timer);
+        timerTv  = (TextView) findViewById(R.id.timer);
 
-           brokerTv  = (TextView) findViewById(R.id.bname);
+        brokerTv  = (TextView) findViewById(R.id.bname);
 
-           ratingTv  = (RatingBar) findViewById(R.id.ratingBar);
+        ratingTv  = (RatingBar) findViewById(R.id.ratingBar);
 
 
         float ratingVal = Float.parseFloat(rating);
@@ -96,12 +98,19 @@ public class PostYoActivity extends ActionBarActivity
         ltimer = Long.parseLong(timer);
         ltimer1 = ltimer*1000*60;
 
+
+        allDeals = (Button) findViewById(R.id.activedeals);
+
+        allVisits = (Button) findViewById(R.id.activevisits);
+
+
+
         new CountDownTimer(ltimer1, 1000) {
 
             public void onTick(long millisUntilFinished) {
                 timerTv.setText(""+String.format("%d min",
                         TimeUnit.MILLISECONDS.toMinutes( millisUntilFinished)-
-                           TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
+                                TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
 
             }
 
@@ -121,54 +130,42 @@ public class PostYoActivity extends ActionBarActivity
         allDeals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (role.matches("Customer"))
-                {
                 Intent ViewDeals = new Intent(context, MainActivity.class);
-                SharedPrefs.save(context,SharedPrefs.CURRENT_FLIPPER_VIEW,1);
+                SharedPrefs.save(context,SharedPrefs.CURRENT_FLIPPER_VIEW,2);
+                SharedPrefs.savePref(context,SharedPrefs.SUCCESSFUL_HAIL,true);
+
 
                 startActivity(ViewDeals);}
-                else{
-                    Intent BMainActivity = new Intent(context, MainBrokerActivity.class);
-                    SharedPrefs.save(context,SharedPrefs.CURRENT_FLIPPER_VIEW,1);
-                    startActivity(BMainActivity);
-                    finish();
-
-                }
 
 //                finish();
-            }
+
         });
 
 
         allVisits.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (role.matches("Customer")) {
-                    Intent ViewDeals = new Intent(context, MainActivity.class);
-                    SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 1);
+                Intent ViewDeals = new Intent(context, MainActivity.class);
+                SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 1);
+                SharedPrefs.savePref(context,SharedPrefs.SUCCESSFUL_HAIL,true);
 
-                    startActivity(ViewDeals);
-                } else {
-                    Intent BMainActivity = new Intent(context, MainBrokerActivity.class);
-                    SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 1);
-                    startActivity(BMainActivity);
 
-                }
+                startActivity(ViewDeals);
             }
         });
 
 
 
-       /* message.setOnClickListener(new View.OnClickListener() {
-                                       public void onClick(View view) {
+        message.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
 
-                                           Intent smsIntent = new Intent(Intent.ACTION_SENDTO);
-                                           smsIntent.addCategory(Intent.CATEGORY_DEFAULT);
-                                           smsIntent.setType("vnd.android-dir/mms-sms");
-                                           smsIntent.setData(Uri.parse("sms:" + phone));
-                                           startActivity(smsIntent);
-                                       }
-                                   });
+                Intent smsIntent = new Intent(Intent.ACTION_SENDTO);
+                smsIntent.addCategory(Intent.CATEGORY_DEFAULT);
+                smsIntent.setType("vnd.android-dir/mms-sms");
+                smsIntent.setData(Uri.parse("sms:" + phone));
+                startActivity(smsIntent);
+            }
+        });
 
 
 
@@ -182,16 +179,44 @@ public class PostYoActivity extends ActionBarActivity
             }
         });
 
-*/
 
         cancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                body = "Your site visit Id: ST123453 with Mr. Abhishek has just been cancelled";
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle(R.string.app_name);
+                builder.setMessage("Do you want to Cancel the Site Visit?");
+                //builder.setIcon(R.drawable.ic_launcher);
+                builder.setPositiveButton("Yes-Cancel Now", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
 
 
-                sendSMSMessage(phone, body);
-                Intent MainActivity = new Intent (context, MainActivity.class);
-                startActivity(MainActivity);
+                        body = "Your site visit Id: ST123453 with Mr. Abhishek has just been cancelled";
+
+                        // ADD A CONFIRMATION DIALOG TO THIS
+
+
+                        sendSMSMessage(phone, body);
+                        SharedPrefs.savePref(context,SharedPrefs.SUCCESSFUL_HAIL,false);
+                        if (role.equalsIgnoreCase("customer"))
+                        {Intent MainActivity = new Intent (context, MainActivity.class);
+                            startActivity(MainActivity);}
+                        else if (role.equalsIgnoreCase("broker"))
+                        {
+                            Intent MainBActivity = new Intent (context, MainBrokerActivity.class);
+                            startActivity(MainBActivity);}
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.dismiss();
+                    }
+                });
+                AlertDialog alert = builder.create();
+                alert.show();
+
+
             }
         });
 
@@ -209,7 +234,7 @@ public class PostYoActivity extends ActionBarActivity
                 map = googleMap;
                 map.setMyLocationEnabled(true);
 
-                 }
+            }
         });
 
 // Current Location ..
@@ -222,7 +247,7 @@ public class PostYoActivity extends ActionBarActivity
                     map.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
                     map.animateCamera(CameraUpdateFactory.zoomTo(15));
 
-                              }
+                }
             }
         });
 
@@ -245,13 +270,13 @@ public class PostYoActivity extends ActionBarActivity
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-         }
+    }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         // Pass any configuration change to the drawer toggls
-        }
+    }
 
     protected void sendSMSMessage(String phoneNo,String message) {
         Log.i("Send SMS", "");
@@ -274,5 +299,12 @@ public class PostYoActivity extends ActionBarActivity
         //do nothing
     }
 
-}
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SharedPrefs.save(context, SharedPrefs.LAST_ACTIVITY_KEY, getClass().getName());
 
+    }
+
+
+}

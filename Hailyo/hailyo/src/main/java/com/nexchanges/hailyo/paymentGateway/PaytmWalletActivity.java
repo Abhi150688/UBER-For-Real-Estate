@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.nexchanges.hailyo.MainActivity;
 import com.nexchanges.hailyo.R;
+import com.nexchanges.hailyo.model.SharedPrefs;
 import com.paytm.pgsdk.PaytmClientCertificate;
 import com.paytm.pgsdk.PaytmMerchant;
 import com.paytm.pgsdk.PaytmOrder;
@@ -281,6 +282,13 @@ public class PaytmWalletActivity extends ActionBarActivity implements View.OnCli
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+        SharedPrefs.save(context,SharedPrefs.LAST_ACTIVITY_KEY,getClass().getName());
     }
 
 

@@ -18,12 +18,12 @@ public final class R {
 		public static final int value = 0x7f010041;
 	}
 	public static final class id {
-		public static final int button_minus = 0x7f0f00fb;
-		public static final int button_plus = 0x7f0f00fd;
-		public static final int text_value = 0x7f0f00fc;
+		public static final int button_minus = 0x7f0f00fc;
+		public static final int button_plus = 0x7f0f00fe;
+		public static final int text_value = 0x7f0f00fd;
 	}
 	public static final class layout {
-		public static final int horizontal_number_picker = 0x7f040042;
+		public static final int horizontal_number_picker = 0x7f040043;
 	}
 	public static final class styleable {
 		public static final int[] HorizontalNumberPicker = { 0x7f010041, 0x7f010042, 0x7f010043, 0x7f010044, 0x7f010045, 0x7f010046, 0x7f010047, 0x7f010048 };

@@ -82,35 +82,35 @@ public final class R {
 		public static final int sdl_background_light = 0x7f0200e1;
 	}
 	public static final class id {
-		public static final int dialog_button_panel = 0x7f0f00c0;
-		public static final int dialog_button_separator = 0x7f0f00c1;
-		public static final int dialog_horizontal_separator = 0x7f0f00bf;
-		public static final int sdl__button_panel = 0x7f0f00be;
-		public static final int sdl__content = 0x7f0f00cc;
-		public static final int sdl__contentPanel = 0x7f0f00c6;
-		public static final int sdl__custom = 0x7f0f00c3;
-		public static final int sdl__customPanel = 0x7f0f00c2;
-		public static final int sdl__datepicker = 0x7f0f00c4;
-		public static final int sdl__listview = 0x7f0f00c5;
-		public static final int sdl__message = 0x7f0f00c7;
+		public static final int dialog_button_panel = 0x7f0f00c1;
+		public static final int dialog_button_separator = 0x7f0f00c2;
+		public static final int dialog_horizontal_separator = 0x7f0f00c0;
+		public static final int sdl__button_panel = 0x7f0f00bf;
+		public static final int sdl__content = 0x7f0f00cd;
+		public static final int sdl__contentPanel = 0x7f0f00c7;
+		public static final int sdl__custom = 0x7f0f00c4;
+		public static final int sdl__customPanel = 0x7f0f00c3;
+		public static final int sdl__datepicker = 0x7f0f00c5;
+		public static final int sdl__listview = 0x7f0f00c6;
+		public static final int sdl__message = 0x7f0f00c8;
 		public static final int sdl__negative_button = 0x7f0f0008;
 		public static final int sdl__neutral_button = 0x7f0f0009;
 		public static final int sdl__positive_button = 0x7f0f000a;
-		public static final int sdl__progress = 0x7f0f00c9;
-		public static final int sdl__progressPanel = 0x7f0f00c8;
-		public static final int sdl__title = 0x7f0f00ca;
-		public static final int sdl__titleDivider = 0x7f0f00cb;
+		public static final int sdl__progress = 0x7f0f00ca;
+		public static final int sdl__progressPanel = 0x7f0f00c9;
+		public static final int sdl__title = 0x7f0f00cb;
+		public static final int sdl__titleDivider = 0x7f0f00cc;
 	}
 	public static final class layout {
-		public static final int dialog_part_button = 0x7f04002b;
-		public static final int dialog_part_button_panel = 0x7f04002c;
-		public static final int dialog_part_button_separator = 0x7f04002d;
-		public static final int dialog_part_custom = 0x7f04002e;
-		public static final int dialog_part_datepicker = 0x7f04002f;
-		public static final int dialog_part_list = 0x7f040030;
-		public static final int dialog_part_message = 0x7f040031;
-		public static final int dialog_part_progress = 0x7f040032;
-		public static final int dialog_part_title = 0x7f040033;
+		public static final int dialog_part_button = 0x7f04002c;
+		public static final int dialog_part_button_panel = 0x7f04002d;
+		public static final int dialog_part_button_separator = 0x7f04002e;
+		public static final int dialog_part_custom = 0x7f04002f;
+		public static final int dialog_part_datepicker = 0x7f040030;
+		public static final int dialog_part_list = 0x7f040031;
+		public static final int dialog_part_message = 0x7f040032;
+		public static final int dialog_part_progress = 0x7f040033;
+		public static final int dialog_part_title = 0x7f040034;
 	}
 	public static final class string {
 		public static final int dialog_close = 0x7f070090;

@@ -41,11 +41,11 @@ import java.util.concurrent.TimeUnit;
 public class PostYoActivity_Broker extends ActionBarActivity
 {
 
-/*
+
 
     Context context;
 
-    public static final String TAG = MainActivity.class.getSimpleName();
+    public static final String TAG = PostYoActivity_Broker.class.getSimpleName();
 
     GoogleMap map;
     long ltimer,ltimer1;
@@ -56,22 +56,25 @@ public class PostYoActivity_Broker extends ActionBarActivity
     Button call, message, allVisits,allDeals,hail,yo;
     ImageButton cancel;
     TextView timerTv, brokerTv;
-    RatingBar ratingTv;
+    RatingBar brokerRating, ratingTv1;
     String phone, brokerName, timer, rating, body,role;
+    float ratingVal;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_post_yo);
+        setContentView(R.layout.activity_post_yo_broker);
         context = this;
 
         Intent PostYoIntent = getIntent();
         Bundle extras = PostYoIntent.getExtras();
-        phone = extras.getString("Phone");
-        brokerName = extras.getString("Broker_Name");
-        timer = extras.getString("Timer");
-        rating = extras.getString("Rating");
+        phone = extras.getString("phone");
+        brokerName = extras.getString("broker_Name");
+        timer = extras.getString("timer");
+        rating = extras.getString("rating");
+        Log.i(TAG,"Phone fetched from intent " + phone);
+
         role = SharedPrefs.getString(context, SharedPrefs.MY_ROLE_KEY);
 
         call  = (Button) findViewById(R.id.call);
@@ -90,30 +93,39 @@ public class PostYoActivity_Broker extends ActionBarActivity
 
         brokerTv  = (TextView) findViewById(R.id.bname);
 
-        ratingTv  = (RatingBar) findViewById(R.id.brokerratingBar);
+      //  ratingTv1  = (RatingBar) findViewById(R.id.brokerratingBar);
+
+        brokerRating  = (RatingBar) findViewById(R.id.ratingBar);
 
 
-        float ratingVal = Float.parseFloat(rating);
-        ratingTv.setRating(ratingVal);
+        ratingVal = Float.parseFloat(rating);
+        Log.i(TAG,"String value of rating is " + rating);
+        Log.i(TAG, "Float value of rating is " + ratingVal);
+
+        brokerRating.setRating(Float.parseFloat(rating));
         brokerTv.setText(brokerName);
 
         ltimer = Long.parseLong(timer);
         ltimer1 = ltimer*1000*60;
+
+        allDeals = (Button) findViewById(R.id.activedeals);
+
+        allVisits = (Button) findViewById(R.id.activevisits);
 
 
 
         new CountDownTimer(ltimer1, 1000) {
 
             public void onTick(long millisUntilFinished) {
-                timerTv.setText(""+ String.format("%d min",
-                        TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished) -
+                timerTv.setText(""+String.format("%d min",
+                        TimeUnit.MILLISECONDS.toMinutes( millisUntilFinished)-
                                 TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished))));
 
             }
 
             public void onFinish() {
                 timerTv.setText(brokerName + " should have arrived!");
-                Intent DuringVisitActivity=new Intent(context, com.nexchanges.hailyo.DuringVisitActivity.class);
+                Intent DuringVisitActivity=new Intent(context, DuringVisitActivity.class);
                 startActivity(DuringVisitActivity);
                 finish();
                 Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
@@ -127,10 +139,10 @@ public class PostYoActivity_Broker extends ActionBarActivity
         allDeals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    Intent BMainActivity = new Intent(context, MainBrokerActivity.class);
-                    SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 2);
-                    SharedPrefs.save(context, SharedPrefs.SUCCESSFUL_HAIL, "true");
-                    startActivity(BMainActivity);
+                Intent BMainActivity = new Intent(context, MainBrokerActivity.class);
+                SharedPrefs.save(context,SharedPrefs.CURRENT_FLIPPER_VIEW,2);
+                SharedPrefs.savePref(context, SharedPrefs.SUCCESSFUL_HAIL, true);
+                startActivity(BMainActivity);
 
 //                finish();
             }
@@ -141,9 +153,9 @@ public class PostYoActivity_Broker extends ActionBarActivity
             @Override
             public void onClick(View v) {
 
-                    Intent BMainActivity = new Intent(context, MainBrokerActivity.class);
-                    SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 1);
-                    SharedPrefs.save(context, SharedPrefs.SUCCESSFUL_HAIL, "true");
+                Intent BMainActivity = new Intent(context, MainBrokerActivity.class);
+                SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 1);
+                SharedPrefs.savePref(context, SharedPrefs.SUCCESSFUL_HAIL, true);
 
                 startActivity(BMainActivity);
 
@@ -183,12 +195,14 @@ public class PostYoActivity_Broker extends ActionBarActivity
 
 
                 sendSMSMessage(phone, body);
+                SharedPrefs.savePref(context, SharedPrefs.SUCCESSFUL_HAIL, false);
+
                 if (role.equalsIgnoreCase("customer"))
-                {Intent MainActivity = new Intent(context, com.nexchanges.hailyo.MainActivity.class);
+                {Intent MainActivity = new Intent (context, MainActivity.class);
                     startActivity(MainActivity);}
                 else if (role.equalsIgnoreCase("broker"))
                 {
-                    Intent MainBActivity = new Intent(context, MainBrokerActivity.class);
+                    Intent MainBActivity = new Intent (context, MainBrokerActivity.class);
                     startActivity(MainBActivity);}
             }
         });
@@ -271,6 +285,13 @@ public class PostYoActivity_Broker extends ActionBarActivity
     public void onBackPressed() {
         //do nothing
     }
-*/
-}
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SharedPrefs.save(context, SharedPrefs.LAST_ACTIVITY_KEY, getClass().getName());
+
+    }
+
+
+}

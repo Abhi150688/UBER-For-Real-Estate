@@ -398,6 +398,13 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
 
         return message1;
     }
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+        SharedPrefs.save(context, SharedPrefs.LAST_ACTIVITY_KEY, getClass().getName());
+    }
+
 }
 
 

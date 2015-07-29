@@ -360,4 +360,12 @@ public class GiveRatingActivity extends Activity {
         sendPostReqAsyncTask.execute(my_id, counter_id, hailyo_id, rating);
     }
 
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+        SharedPrefs.save(context, SharedPrefs.LAST_ACTIVITY_KEY, getClass().getName());
+    }
+
+
 }
