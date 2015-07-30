@@ -900,7 +900,9 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                 SharedPrefs.save(context,SharedPrefs.MY_CUR_LAT,Str_Lat);
                 SharedPrefs.save(context,SharedPrefs.MY_CUR_LNG,Str_Lng);
                 String u_id = SharedPrefs.getString(context,SharedPrefs.MY_USER_ID);
-                sendLocationUpdate.sendPostRequest(u_id,Str_Lat,Str_Lng);
+
+                String u_role = SharedPrefs.getString(context,SharedPrefs.MY_ROLE_KEY);
+                sendLocationUpdate.sendPostRequest(u_id,Str_Lat,Str_Lng,u_role);
                 return null;
             }
         }

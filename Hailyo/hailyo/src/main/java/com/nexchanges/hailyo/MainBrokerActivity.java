@@ -163,7 +163,7 @@ import java.util.List;
         context = this;
 
 
-        is_transaction = SharedPrefs.getString(context,SharedPrefs.SUCCESSFUL_HAIL);
+        is_transaction = SharedPrefs.getString(context, SharedPrefs.SUCCESSFUL_HAIL);
         checkLocationServices.checkGpsStatus(context);
 
 
@@ -235,8 +235,12 @@ import java.util.List;
 
         mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
-        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,60000,10
+        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,10
                 ,mLocationListener);
+
+        mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,0,10
+                ,mLocationListener);
+
 
         //Yo Data
 
@@ -987,12 +991,17 @@ import java.util.List;
                 double lat = location.getLatitude();
                 double lng = location.getLongitude();
 
-                String Str_Lat = String.valueOf(lat);
                 String Str_Lng = String.valueOf(lng);
+                String Str_Lat = String.valueOf(lat);
+                Log.i(TAG,"Value of Lat is"  + Str_Lat);
+                Log.i(TAG,"Value of Long is"  + Str_Lng);
+
                 SharedPrefs.save(context,SharedPrefs.MY_CUR_LAT,Str_Lat);
                 SharedPrefs.save(context,SharedPrefs.MY_CUR_LNG,Str_Lng);
                 String u_id = SharedPrefs.getString(context,SharedPrefs.MY_USER_ID);
-                sendLocationUpdate.sendPostRequest(u_id,Str_Lat,Str_Lng);
+                String u_role = SharedPrefs.getString(context,SharedPrefs.MY_ROLE_KEY);
+
+                sendLocationUpdate.sendPostRequest(u_id,Str_Lat,Str_Lng,u_role );
                 return null;
             }
         }

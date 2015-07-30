@@ -20,11 +20,11 @@ import java.io.UnsupportedEncodingException;
  */
 public class SendLocationUpdate {
 
-    String URL = "http://ec2-52-25-136-179.us-west-2.compute.amazonaws.com:9000/1/user/gps";
+    String URL = "http://ec2-52-27-37-225.us-west-2.compute.amazonaws.com:9000/1/user/gps";
     StringEntity se;
 
 
-    public void sendPostRequest(final String user_id, final String new_lat, final String new_long) {
+    public void sendPostRequest(final String user_id, final String new_lat, final String new_long, final String user_role) {
 
 
         class SendPostReqAsyncTask extends AsyncTask<String, Void, Void> {
@@ -35,8 +35,10 @@ public class SendLocationUpdate {
                 JSONObject jsonObject = new JSONObject();
                 try {
                     jsonObject.accumulate("user_id", user_id);
-                    jsonObject.accumulate("new_lat", new_lat);
-                    jsonObject.accumulate("new_long", new_long);
+                    jsonObject.accumulate("long", new_lat);
+                    jsonObject.accumulate("lat", new_long);
+                    jsonObject.accumulate("user_role", user_role);
+
 
 
 

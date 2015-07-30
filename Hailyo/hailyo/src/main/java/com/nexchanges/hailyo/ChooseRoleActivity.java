@@ -69,6 +69,8 @@ public class ChooseRoleActivity extends Activity {
     String regid, GCMID;
     String PROJECT_NUMBER = "250185285941";
     TextView edit, fbdata;
+    Boolean success = false;
+    String subphone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,7 +124,7 @@ public class ChooseRoleActivity extends Activity {
 
                                                  sendPostRequest(mobile, "+91", Semail, Sname, user_role, regid);
 
-                                                 signup_success();
+                                                 //signup_success();
                                              }
 
 
@@ -153,8 +155,8 @@ public class ChooseRoleActivity extends Activity {
                                                  Sname = name.getText().toString();
                                                  Semail = email.getText().toString();
                                                  user_role = "broker";
-                                                 sendPostRequest(mobile, "+91", Semail, Sname, user_role,regid);
-                                                 signup_success();
+                                                 sendPostRequest(mobile, "+91", Semail, Sname, user_role, regid);
+                                                // signup_success();
                                              }
 
                                          }
@@ -286,6 +288,7 @@ public class ChooseRoleActivity extends Activity {
     private void sendPostRequest(final String mobile, final String code, final String Semail, final String Sname, final String user_role, final String regid)
     {
 
+        subphone = mobile.substring(3);
 
         class SendPostReqAsyncTask extends AsyncTask<String, Void, String> {
 
@@ -300,7 +303,7 @@ public class ChooseRoleActivity extends Activity {
 
                 JSONObject jsonObject = new JSONObject();
                 try {
-                    jsonObject.accumulate("mobile_no", mobile);
+                    jsonObject.accumulate("mobile_no", subphone);
                     jsonObject.accumulate("mobile_code", code);
                     jsonObject.accumulate("email", Semail);
                     jsonObject.accumulate("name", Sname);
@@ -339,9 +342,10 @@ public class ChooseRoleActivity extends Activity {
                     System.out.print("Value of response code is: " + response);
 
                     if (response == 200 || response == 201) {
-                        signup_success();
+                        success = true;
                     } else {
                         System.out.print("LoginFailed Try again");
+                        success = false;
                     }
 
                     InputStream inputStream = httpResponse.getEntity().getContent();
@@ -380,16 +384,19 @@ public class ChooseRoleActivity extends Activity {
                 if (result != null) {
 
                     try {
-                        JSONObject jsonObject = new JSONObject(result);
-                        for (int i = 0; i < jsonObject.length(); i++) {
+                        JSONObject jObject = new JSONObject(result);
+                        JSONObject responseDataObject = jObject.getJSONObject("responseData");
+                        my_user_id = responseDataObject.getString("user_id");
 
-                            my_user_id = jsonObject.getString("user_id");
+                        if (success==true)
+                        signup_success();
+                        else {Toast.makeText(
+                                getApplicationContext(),
+                                "Signup failed, Please try again",
+                                Toast.LENGTH_LONG).show();
 
 
-                        } //
-                        // End Loop
-                        SharedPrefs.save(context, SharedPrefs.MY_USER_ID, my_user_id);
-
+                        }
                     } catch (JSONException e) {
                         Log.e("JSONException", "Error: " + e.toString());
                     }
@@ -408,6 +415,8 @@ public class ChooseRoleActivity extends Activity {
         SharedPrefs.save(context, SharedPrefs.NAME_KEY, Sname);
         SharedPrefs.save(context, SharedPrefs.EMAIL_KEY, Semail);
         SharedPrefs.save(context, SharedPrefs.MY_GCM_ID, regid);
+        SharedPrefs.save(context, SharedPrefs.MY_USER_ID, my_user_id);
+
 
         //if (my_user_id != null) {
 
@@ -535,7 +544,7 @@ public class ChooseRoleActivity extends Activity {
     protected void onPause()
     {
         super.onPause();
-        SharedPrefs.save(context,SharedPrefs.LAST_ACTIVITY_KEY,getClass().getName());
+        SharedPrefs.save(context, SharedPrefs.LAST_ACTIVITY_KEY, getClass().getName());
     }
 
 }
