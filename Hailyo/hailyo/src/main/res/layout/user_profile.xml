@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:gravity="center"
+        android:padding="5dp"
+        android:background="@color/orange"
+        android:textColor="@color/white"
+        android:text="My Profile"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+
+        android:layout_height="fill_parent"
+        android:background="@android:color/white"
+        android:layout_margin="3dp"
+        android:orientation="vertical"
+        android:layout_gravity="top"
+       >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_border"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:gravity="left"
+            android:layout_marginBottom="5dp"
+            android:orientation="horizontal"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+
+                <com.github.siyamed.shapeimageview.CircularImageView
+                    android:id="@+id/myphoto"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    app:siBorderWidth="6dp"
+                    android:src="@drawable/ic_profile_picture"
+                    app:siBorderColor="@color/gray"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:id="@+id/edit"
+                    android:textColor="@color/blue"
+                    android:textSize="15dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_height="wrap_content"
+                    android:text="edit"
+                    android:layout_gravity="center"
+                    android:clickable="true"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center_horizontal">
+
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_marginTop="17dp"
+                android:background="@drawable/button_border"
+                android:padding="5dp"
+                android:id="@+id/myname"
+                android:layout_height="40dp"
+                android:layout_marginLeft="20dp"
+                android:paddingLeft="10dp"
+                />
+
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:background="@drawable/button_border"
+                    android:layout_marginTop="1dp"
+                    android:padding="5dp"
+                    android:id="@+id/myemail"
+                    android:layout_height="40dp"
+                    android:layout_marginLeft="20dp"
+                    android:paddingLeft="10dp"
+                   />
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+            android:text="ACCOUNT"
+            android:layout_marginLeft="5dp"
+            android:textSize="20dp"/>
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="3dp"
+            android:background="@color/gray">
+
+        </View>
+
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_gravity="left"
+            android:background="@drawable/button_border"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:id="@+id/mymobile"
+            android:layout_height="40dp"
+              />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_gravity="left"
+            android:background="@drawable/button_border"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:id="@+id/myrole"
+            android:layout_height="40dp"
+           />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_gravity="left"
+            android:background="@drawable/button_border"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:id="@+id/myregion"
+            android:layout_height="wrap_content"
+            android:height="40dp"
+           />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="198dp"
+                android:layout_height="55dp"
+                android:layout_gravity="center_horizontal|bottom"
+                android:layout_marginBottom="30dp"
+                android:id="@+id/bottomImage"
+                android:src="@drawable/hailyologo"/>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</LinearLayout>

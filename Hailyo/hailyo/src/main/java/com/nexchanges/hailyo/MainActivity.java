@@ -52,7 +52,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.nexchanges.hailyo.DrawerClass.AboutActivity;
 import com.nexchanges.hailyo.DrawerClass.HelpActivity;
 import com.nexchanges.hailyo.DrawerClass.ProfileActivity;
-import com.nexchanges.hailyo.DrawerClass.SettingsActivity;
 import com.nexchanges.hailyo.customSupportClass.CheckLocationServices;
 import com.nexchanges.hailyo.customSupportClass.MyMarker;
 import com.nexchanges.hailyo.apiSupport.PlotMyNeighboursHail;
@@ -64,7 +63,7 @@ import com.nexchanges.hailyo.model.VisitData;
 
 import com.nexchanges.hailyo.list_adapter.CustomListAdapter_Deals;
 import com.nexchanges.hailyo.list_adapter.CustomListAdapter_Visit;
-import com.nexchanges.hailyo.paymentGateway.SelectPaymentTypeActivity;
+import com.nexchanges.hailyo.DrawerClass.SelectPaymentTypeActivity;
 import com.nexchanges.hailyo.ui.CustomMapFragment;
 import com.nexchanges.hailyo.GoogleMapSupport.GetCurrentLocation;
 import com.nexchanges.hailyo.GoogleMapSupport.GetPlaceName;
@@ -314,14 +313,14 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         searchLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent searchActivity=new Intent(context, SearchActivity.class);
+                Intent searchActivity = new Intent(context, SearchActivity.class);
                 searchActivity.putExtra("nearLocation", currentLocation);
                 startActivityForResult(searchActivity, 1);
             }
         });
 
 
-        SharedPrefs.save(context, SharedPrefs.CURRENT_LOC_KEY,SiteVisitAddressBar.getText().toString());
+        SharedPrefs.save(context, SharedPrefs.CURRENT_LOC_KEY, SiteVisitAddressBar.getText().toString());
 
 
         //Nav Drawer
@@ -381,6 +380,9 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         smallname.setText(fetchname);
 
         smallemail.setText(fetchemail);
+        smallemail.setTextColor(Color.BLACK);
+        smallname.setTextColor(Color.BLACK);
+
 
         smallphoto.setImageBitmap(BitmapFactory.decodeFile(fetchphoto));
 
@@ -401,13 +403,13 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                         break;
 
                     case 2:
-                        Intent helpAct = new Intent(context, HelpActivity.class);
-                        startActivity(helpAct);
+                        Intent profileAct = new Intent(context, ProfileActivity.class);
+                        startActivity(profileAct);
                         break;
 
                     case 3:
-                        Intent profileAct = new Intent(context, ProfileActivity.class);
-                        startActivity(profileAct);
+                        Intent helpAct = new Intent(context, HelpActivity.class);
+                        startActivity(helpAct);
                         break;
 
                     case 4:

@@ -320,7 +320,7 @@
         android:layout_width="260dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="@color/theme_black"
+        android:background="@color/white"
         android:choiceMode="singleChoice"
         android:headerDividersEnabled="true"
         android:listSelector="@color/orange"

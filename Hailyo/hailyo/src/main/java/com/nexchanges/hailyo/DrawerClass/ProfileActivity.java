@@ -16,7 +16,7 @@ public class ProfileActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_promotions);
+        setContentView(R.layout.user_profile);
 
     }
 

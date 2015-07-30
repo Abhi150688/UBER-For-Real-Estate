@@ -62,7 +62,7 @@ import com.nexchanges.hailyo.model.YoData;
 import com.nexchanges.hailyo.list_adapter.CustomListAdapter_Deals;
 import com.nexchanges.hailyo.list_adapter.CustomListAdapter_Visit;
 import com.nexchanges.hailyo.list_adapter.CustomListAdapter_Yo;
-import com.nexchanges.hailyo.paymentGateway.SelectPaymentTypeActivity;
+import com.nexchanges.hailyo.DrawerClass.SelectPaymentTypeActivity;
 import com.nexchanges.hailyo.ui.CustomMapFragment;
 import com.nexchanges.hailyo.GoogleMapSupport.GetCurrentLocation;
 import com.nexchanges.hailyo.GoogleMapSupport.GetPlaceName;
@@ -530,6 +530,9 @@ import java.util.List;
 
         smallname.setText(fetchname);
         smallemail.setText(fetchemail);
+        smallemail.setTextColor(Color.BLACK);
+        smallname.setTextColor(Color.BLACK);
+
         //smallphoto.setImageBitmap(BitmapFactory.decodeFile(fetchphoto));
 
 
@@ -549,13 +552,13 @@ import java.util.List;
                         break;
 
                     case 2:
-                        Intent helpAct = new Intent(context, HelpActivity.class);
-                        startActivity(helpAct);
+                        Intent profileAct = new Intent(context, ProfileActivity.class);
+                        startActivity(profileAct);
                         break;
 
                     case 3:
-                        Intent profileAct = new Intent(context, ProfileActivity.class);
-                        startActivity(profileAct);
+                        Intent helpAct = new Intent(context, HelpActivity.class);
+                        startActivity(helpAct);
                         break;
 
                     case 4:

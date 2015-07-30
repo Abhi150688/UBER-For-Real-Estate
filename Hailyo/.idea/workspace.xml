@@ -10,19 +10,77 @@
   </component>
   <component name="AndroidLogFilters">
     <option name="TOOL_WINDOW_LOG_LEVEL" value="ERROR" />
-    <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="Show only selected application" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d336bf7e-9a07-4c1f-b7fd-5c4e6672c929" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Parse_1_9_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/Pubnub_Android_3_7_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/android_shape_imageview_0_9_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/answers_1_1_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/appcompat_v7_22_0_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/beta_1_1_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/bolts_android_1_2_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/crashlytics_2_2_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/digits_1_6_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/fabric_1_3_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/gson_2_2_4.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/horizontalnumberpicker_1_0_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/junit_4_10.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/kxml2_2_3_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/mediarouter_v7_22_0_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/pgsdk.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/picasso_2_3_2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_7_5_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_ads_7_5_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_analytics_7_5_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_appindexing_7_5_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_appinvite_7_5_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_appstate_7_5_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_base_7_5_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_cast_7_5_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_drive_7_5_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_fitness_7_5_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_games_7_5_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_gcm_7_5_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_identity_7_5_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_location_7_5_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_maps_7_5_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_nearby_7_5_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_panorama_7_5_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_plus_7_5_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_safetynet_7_5_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_wallet_7_5_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/play_services_wearable_7_5_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/retrofit_1_6_1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_annotations_20_0_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_annotations_22_0_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_20_0_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/support_v4_22_0_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/tweet_composer_0_7_3.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/tweet_ui_1_0_5.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/twitter_1_3_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/twitter_core_1_4_0.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/libraries/volley.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/res/merged/debug/layout/action_before_main.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/res/merged/debug/layout/activity_login1.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/res/merged/debug/layout/fragment_about.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/DrawerClass/SettingsActivity.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hailyo/src/main/res/layout/action_before_main.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hailyo/src/main/res/layout/fragment_main2.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hailyo/src/main/res/layout/fragment_payment.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hailyo/src/main/res/layout/fragment_promotions.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hailyo/src/main/res/layout/fragment_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/hailyo/src/main/res/layout/mysitevisithistory.xml" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/paymentGateway/SelectPaymentTypeActivity.java" afterPath="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/DrawerClass/SelectPaymentTypeActivity.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/hailyo/src/main/res/layout/activity_login1.xml" afterPath="$PROJECT_DIR$/hailyo/src/main/res/layout/activity_login.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/hailyo/src/main/res/layout/fragment_about.xml" afterPath="$PROJECT_DIR$/hailyo/src/main/res/layout/about_hailyo.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/hailyo/src/main/res/layout/fragment_profile.xml" afterPath="$PROJECT_DIR$/hailyo/src/main/res/layout/user_profile.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/ChooseRoleActivity$1.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/ChooseRoleActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/ChooseRoleActivity$1SendPostReqAsyncTask.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/ChooseRoleActivity$1SendPostReqAsyncTask.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/ChooseRoleActivity$2.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/ChooseRoleActivity$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/ChooseRoleActivity$3.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/ChooseRoleActivity$3.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/ChooseRoleActivity$4.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/ChooseRoleActivity$4.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/ChooseRoleActivity$5.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/ChooseRoleActivity$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/ChooseRoleActivity$6.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/ChooseRoleActivity$6.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/ChooseRoleActivity.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/ChooseRoleActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity$1.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity$1.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity$10.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity$10.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity$11.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity$11.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity$12.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity$12.class" />
@@ -34,18 +92,11 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity$18.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity$18.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity$19.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity$19.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity$1TestAsync.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity$1TestAsync.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity$2.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity$2.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity$3.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity$4.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity$5.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity$5.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity$6.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity$6.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity$7.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity$7.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity$8.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity$8.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity$9.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity$9.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$1.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$10.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$10.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$11.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$11.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$12.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$12.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$13.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$13.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$14.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$14.class" />
@@ -55,36 +106,50 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$18.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$18.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$19.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$19.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$1TestAsync.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$1TestAsync.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$2.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$2.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$20.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$20.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$21.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$21.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$22.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$22.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$23.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$23.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$3.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$3.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$4.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$4.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$5.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$5.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$6.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$6.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$7.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$7.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$8.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$8.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$9.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity$9.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/MainBrokerActivity.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/apiSupport/PlotMyNeighboursHail$1SendPostReqAsyncTask.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/apiSupport/PlotMyNeighboursHail$1SendPostReqAsyncTask.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/apiSupport/PlotMyNeighboursHail.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/apiSupport/PlotMyNeighboursHail.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/apiSupport/SendLocationUpdate$1SendPostReqAsyncTask.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/apiSupport/SendLocationUpdate$1SendPostReqAsyncTask.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/apiSupport/SendLocationUpdate.class" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/classes/debug/com/nexchanges/hailyo/apiSupport/SendLocationUpdate.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/cache.properties.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/dex/debug/classes.dex" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/dex/debug/classes.dex" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileHashes.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/fileSnapshots.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build/intermediates/gradle_project_sync_data.bin" afterPath="$PROJECT_DIR$/build/intermediates/gradle_project_sync_data.bin" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/outputs/apk/hailyo-debug-unaligned.apk" afterPath="$PROJECT_DIR$/hailyo/build/outputs/apk/hailyo-debug-unaligned.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/outputs/apk/hailyo-debug.apk" afterPath="$PROJECT_DIR$/hailyo/build/outputs/apk/hailyo-debug.apk" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/res/resources-debug.ap_" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/res/resources-debug.ap_" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/2.2.1/taskArtifacts/taskArtifacts.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/DrawerClass/AboutActivity.java" afterPath="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/DrawerClass/AboutActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/manifests/full/debug/AndroidManifest.xml" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/manifests/full/debug/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/hailyo/src/main/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/ChooseRoleActivity.java" afterPath="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/ChooseRoleActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainActivity.java" afterPath="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainBrokerActivity.java" afterPath="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainBrokerActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/apiSupport/PlotMyNeighboursHail.java" afterPath="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/apiSupport/PlotMyNeighboursHail.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/apiSupport/SendLocationUpdate.java" afterPath="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/apiSupport/SendLocationUpdate.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/DrawerClass/ProfileActivity.java" afterPath="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/DrawerClass/ProfileActivity.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/generated/source/r/debug/android/support/v7/appcompat/R.java" afterPath="$PROJECT_DIR$/hailyo/build/generated/source/r/debug/android/support/v7/appcompat/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/generated/source/r/debug/android/support/v7/mediarouter/R.java" afterPath="$PROJECT_DIR$/hailyo/build/generated/source/r/debug/android/support/v7/mediarouter/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/generated/source/r/debug/com/digits/sdk/android/R.java" afterPath="$PROJECT_DIR$/hailyo/build/generated/source/r/debug/com/digits/sdk/android/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/generated/source/r/debug/com/hrules/horizontalnumberpicker/R.java" afterPath="$PROJECT_DIR$/hailyo/build/generated/source/r/debug/com/hrules/horizontalnumberpicker/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/generated/source/r/debug/com/nexchanges/hailyo/R.java" afterPath="$PROJECT_DIR$/hailyo/build/generated/source/r/debug/com/nexchanges/hailyo/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/generated/source/r/debug/com/twitter/sdk/android/R.java" afterPath="$PROJECT_DIR$/hailyo/build/generated/source/r/debug/com/twitter/sdk/android/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/generated/source/r/debug/com/twitter/sdk/android/core/R.java" afterPath="$PROJECT_DIR$/hailyo/build/generated/source/r/debug/com/twitter/sdk/android/core/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/generated/source/r/debug/com/twitter/sdk/android/tweetcomposer/R.java" afterPath="$PROJECT_DIR$/hailyo/build/generated/source/r/debug/com/twitter/sdk/android/tweetcomposer/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/generated/source/r/debug/com/twitter/sdk/android/tweetui/R.java" afterPath="$PROJECT_DIR$/hailyo/build/generated/source/r/debug/com/twitter/sdk/android/tweetui/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/generated/source/r/debug/eu/inmite/android/lib/dialogs/R.java" afterPath="$PROJECT_DIR$/hailyo/build/generated/source/r/debug/eu/inmite/android/lib/dialogs/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/symbols/debug/R.txt" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/symbols/debug/R.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/res/merged/debug/layout/activity_broker_main.xml" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/res/merged/debug/layout/activity_broker_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/src/main/res/layout/activity_broker_main.xml" afterPath="$PROJECT_DIR$/hailyo/src/main/res/layout/activity_broker_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/res/merged/debug/layout/activity_main.xml" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/res/merged/debug/layout/activity_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/hailyo/src/main/res/layout/activity_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build.gradle" afterPath="$PROJECT_DIR$/hailyo/build.gradle" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/res/merged/debug/values/com_crashlytics_build_id.xml" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/res/merged/debug/values/com_crashlytics_build_id.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/assets/debug/crashlytics-build.properties" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/assets/debug/crashlytics-build.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/hailyo.iml" afterPath="$PROJECT_DIR$/hailyo/hailyo.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/outputs/logs/manifest-merger-debug-report.txt" afterPath="$PROJECT_DIR$/hailyo/build/outputs/logs/manifest-merger-debug-report.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hailyo/build/intermediates/incremental/mergeResourcesdebug/merger.xml" afterPath="$PROJECT_DIR$/hailyo/build/intermediates/incremental/mergeResourcesdebug/merger.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Hailyo.iws" />
@@ -106,119 +171,63 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="DuringVisitActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/DuringVisitActivity.java">
+      <file leaf-file-name="ProfileActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/DrawerClass/ProfileActivity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="87" column="23" selection-start-line="87" selection-start-column="23" selection-end-line="87" selection-end-column="23" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MainActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.1111112">
-              <caret line="540" column="0" selection-start-line="540" selection-start-column="0" selection-end-line="540" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ChooseRoleActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/ChooseRoleActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="88" column="26" selection-start-line="88" selection-start-column="26" selection-end-line="88" selection-end-column="26" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#3964#5644#0" expanded="true" />
-                <element signature="e#5643#5644#0" expanded="true" />
-                <element signature="e#5696#7273#0" expanded="true" />
-                <element signature="e#7272#7273#0" expanded="true" />
-                <element signature="e#7319#7928#0" expanded="true" />
-                <element signature="e#7927#7928#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AndroidManifest.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hailyo/src/main/AndroidManifest.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="69" column="18" selection-start-line="69" selection-start-column="18" selection-end-line="69" selection-end-column="18" />
+              <caret line="18" column="44" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainBrokerActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainBrokerActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-13.888889">
-              <caret line="621" column="21" selection-start-line="621" selection-start-column="17" selection-end-line="621" selection-end-column="21" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#11324#11981#0" expanded="true" />
-                <element signature="e#11980#11981#0" expanded="true" />
-                <element signature="e#13621#13953#0" expanded="true" />
-                <element signature="e#13952#13953#0" expanded="true" />
-                <element signature="e#13989#15012#0" expanded="true" />
-                <element signature="e#15011#15012#0" expanded="true" />
-                <element signature="e#15048#16173#0" expanded="true" />
-                <element signature="e#16172#16173#0" expanded="true" />
-                <element signature="e#16210#16926#0" expanded="true" />
-                <element signature="e#16925#16926#0" expanded="true" />
-                <element signature="e#16965#17682#0" expanded="true" />
-                <element signature="e#17681#17682#0" expanded="true" />
-                <element signature="e#18537#18557#0" expanded="true" />
-                <element signature="e#18575#18596#0" expanded="true" />
-                <element signature="e#19959#21118#0" expanded="true" />
-                <element signature="e#21117#21118#0" expanded="true" />
-                <element signature="e#21364#21756#0" expanded="true" />
-                <element signature="e#21755#21756#0" expanded="true" />
-                <element signature="e#21810#22384#0" expanded="true" />
-                <element signature="e#22383#22384#0" expanded="true" />
-                <element signature="e#22428#22956#0" expanded="true" />
-                <element signature="e#22955#22956#0" expanded="true" />
-                <element signature="e#27466#29224#0" expanded="true" />
-                <element signature="e#29223#29224#0" expanded="true" />
-                <element signature="e#29226#29481#0" expanded="true" />
-                <element signature="e#29480#29481#0" expanded="true" />
-                <element signature="e#29800#31436#0" expanded="true" />
-                <element signature="e#31435#31436#0" expanded="true" />
-                <element signature="e#31438#31695#0" expanded="true" />
-                <element signature="e#31694#31695#0" expanded="true" />
-                <element signature="e#32014#33627#0" expanded="true" />
-                <element signature="e#33626#33627#0" expanded="true" />
-                <element signature="e#33629#33886#0" expanded="true" />
-                <element signature="e#33885#33886#0" expanded="true" />
-              </folding>
-            </state>
+      <file leaf-file-name="user_profile.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/user_profile.xml">
+          <provider editor-type-id="android-designer">
+            <state />
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PlotMyNeighboursHail.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/apiSupport/PlotMyNeighboursHail.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.5555556">
-              <caret line="61" column="63" selection-start-line="61" selection-start-column="63" selection-end-line="61" selection-end-column="63" />
+            <state vertical-scroll-proportion="0.75884247">
+              <caret line="157" column="39" selection-start-line="157" selection-start-column="39" selection-end-line="157" selection-end-column="39" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PostYoActivity.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/PostYoActivity.java">
-          <provider selected="true" editor-type-id="text-editor">
+      <file leaf-file-name="splash_search.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/splash_search.xml">
+          <provider selected="true" editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="20" column="20" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="splashscreen.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/splashscreen.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.2413793">
+              <caret line="14" column="0" selection-start-line="7" selection-start-column="3" selection-end-line="14" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="choose_role.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/choose_role.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.7586207">
+              <caret line="15" column="42" selection-start-line="0" selection-start-column="0" selection-end-line="224" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -3243,7 +3252,7 @@
     </option>
     <option name="modificationStamps">
       <map>
-        <entry key="$PROJECT_DIR$" value="8628465821000" />
+        <entry key="$PROJECT_DIR$" value="8628678776000" />
       </map>
     </option>
     <option name="projectBuildClasspath">
@@ -3478,6 +3487,7 @@
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.siyamed/android-shape-imageview/0.9.2/89f2441b5abfcd531f74a670ebd960a0caa48489/android-shape-imageview-0.9.2.aar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.3.2/d6b7f0093cec6c9faf65dbfd6a6a345d0ed25e27/picasso-2.3.2.jar" />
                             <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.digits.sdk.android/digits/1.6.0/bc05d9c46791dd1ae9d0bc2bf11bfeed8ce7d28e/digits-1.6.0.aar" />
+                            <option value="$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/5.1.1/b3652dfd65ca0bcf18790ff1a1f7624af4cb2bb8/butterknife-5.1.1.jar" />
                             <option value="$USER_HOME$/Library/Android/sdk/extras/google/m2repository/com/google/android/gms/play-services-ads/7.5.0/play-services-ads-7.5.0.aar" />
                             <option value="$USER_HOME$/Library/Android/sdk/extras/google/m2repository/com/google/android/gms/play-services-analytics/7.5.0/play-services-analytics-7.5.0.aar" />
                             <option value="$USER_HOME$/Library/Android/sdk/extras/google/m2repository/com/google/android/gms/play-services-appindexing/7.5.0/play-services-appindexing-7.5.0.aar" />
@@ -4008,11 +4018,17 @@
         <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/NewBidActivity.java" />
         <option value="$PROJECT_DIR$/hailyo/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/customSupportClass/sendMyLocationPeriodically.java" />
-        <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/ChooseRoleActivity.java" />
-        <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainBrokerActivity.java" />
-        <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainActivity.java" />
         <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/apiSupport/PlotMyNeighboursHail.java" />
         <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/apiSupport/SendLocationUpdate.java" />
+        <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/ChooseRoleActivity.java" />
+        <option value="$PROJECT_DIR$/hailyo/src/main/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/hailyo/src/main/res/layout/activity_broker_main.xml" />
+        <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainActivity.java" />
+        <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainBrokerActivity.java" />
+        <option value="$PROJECT_DIR$/hailyo/src/main/res/layout/about_hailyo.xml" />
+        <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/DrawerClass/AboutActivity.java" />
+        <option value="$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/DrawerClass/ProfileActivity.java" />
+        <option value="$PROJECT_DIR$/hailyo/src/main/res/layout/user_profile.xml" />
       </list>
     </option>
   </component>
@@ -4142,7 +4158,7 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="paymentGateway" />
+              <option name="myItemId" value="DrawerClass" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -4154,98 +4170,6 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="hailyo" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hailyo" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="model" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hailyo" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hailyo" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hailyo" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="gcm" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hailyo" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hailyo" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hailyo" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="customSupportClass" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hailyo" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hailyo" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hailyo" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="apiSupport" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Hailyo" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hailyo" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="manifests" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidManifestsGroupNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -4267,13 +4191,15 @@
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
-    <property name="settings.editor.selected.configurable" value="gradle.compiler" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
     <property name="recentsLimit" value="5" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_SERIALS" value="TA094014HR" />
     <property name="ANDROID_EXTENDED_DEVICE_CHOOSER_AVD" value="Nexus_4_API_22" />
     <property name="OverrideImplement.combined" value="true" />
     <property name="OverrideImplement.overriding.sorted" value="false" />
+    <property name="android.project.structure.last.selected" value="hailyo" />
+    <property name="android.project.structure.proportion" value="0.15" />
   </component>
   <component name="RunManager" selected="Android Application.hailyo">
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
@@ -4487,14 +4413,16 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19713831" sideWeight="0.5181269" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290938" sideWeight="0.48489425" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290938" sideWeight="0.49697885" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3290938" sideWeight="0.4879154" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32253313" sideWeight="0.47280967" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.03240059" sideWeight="0.47280967" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32253313" sideWeight="0.5271903" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21223564" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298969" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -4505,8 +4433,6 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -4525,74 +4451,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/settings.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/horizontalnumberpicker-library/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/payment_type_layout.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24657534">
-          <caret line="6" column="12" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/library/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hailyo/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.7073171">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/create_add_paytm.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.26027396">
-          <caret line="45" column="38" selection-start-line="45" selection-start-column="38" selection-end-line="45" selection-end-column="38" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/submit_bid_2_rent.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.24657534">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/paytm_wallet_layout.xml">
       <provider editor-type-id="android-designer">
         <state />
@@ -4600,28 +4458,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.46575344">
           <caret line="118" column="22" selection-start-line="118" selection-start-column="22" selection-end-line="118" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/activity_main.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="25.689655">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/activity_broker_main.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.275862">
-          <caret line="131" column="0" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -4695,21 +4531,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/action_before_main.xml">
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.75">
-          <caret line="75" column="0" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/stylishDialogLib/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="20" column="46" selection-start-line="20" selection-start-column="46" selection-end-line="20" selection-end-column="46" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -4788,13 +4614,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/paymentGateway/SelectPaymentTypeActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="87" column="9" selection-start-line="87" selection-start-column="9" selection-end-line="87" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/submit_bid_sale.xml">
       <provider editor-type-id="android-designer">
         <state />
@@ -4818,6 +4637,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5416667">
           <caret line="16" column="58" selection-start-line="16" selection-start-column="58" selection-end-line="16" selection-end-column="58" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -4856,9 +4676,9 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="432" column="11" selection-start-line="432" selection-start-column="11" selection-end-line="432" selection-end-column="11" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#7983#9865#0" expanded="true" />
-            <element signature="e#9864#9865#0" expanded="true" />
+            <element signature="imports" expanded="false" />
+            <element signature="e#7983#9865#0" expanded="false" />
+            <element signature="e#9864#9865#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -4895,7 +4715,26 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="20" column="20" selection-start-line="20" selection-start-column="20" selection-end-line="20" selection-end-column="20" />
-          <folding />
+          <folding>
+            <element signature="e#3831#4240#0" expanded="false" />
+            <element signature="e#4239#4240#0" expanded="false" />
+            <element signature="e#4282#4676#0" expanded="false" />
+            <element signature="e#4675#4676#0" expanded="false" />
+            <element signature="e#4717#5114#0" expanded="false" />
+            <element signature="e#5113#5114#0" expanded="false" />
+            <element signature="e#5153#5422#0" expanded="false" />
+            <element signature="e#5421#5422#0" expanded="false" />
+            <element signature="e#5461#7198#0" expanded="false" />
+            <element signature="e#5865#6840#0" expanded="false" />
+            <element signature="e#6839#6840#0" expanded="false" />
+            <element signature="e#6891#7086#0" expanded="false" />
+            <element signature="e#7085#7086#0" expanded="false" />
+            <element signature="e#7197#7198#0" expanded="false" />
+            <element signature="e#7460#7672#0" expanded="false" />
+            <element signature="e#7671#7672#0" expanded="false" />
+            <element signature="e#7740#8205#0" expanded="false" />
+            <element signature="e#8204#8205#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -4923,38 +4762,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/ChooseRoleActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="88" column="26" selection-start-line="88" selection-start-column="26" selection-end-line="88" selection-end-column="26" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3964#5644#0" expanded="true" />
-            <element signature="e#5643#5644#0" expanded="true" />
-            <element signature="e#5696#7273#0" expanded="true" />
-            <element signature="e#7272#7273#0" expanded="true" />
-            <element signature="e#7319#7928#0" expanded="true" />
-            <element signature="e#7927#7928#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/DuringVisitActivity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="87" column="23" selection-start-line="87" selection-start-column="23" selection-end-line="87" selection-end-column="23" />
           <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.1111112">
-          <caret line="540" column="0" selection-start-line="540" selection-start-column="0" selection-end-line="540" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="imports" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -4967,54 +4780,215 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainBrokerActivity.java">
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/apiSupport/PlotMyNeighboursHail.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-13.888889">
-          <caret line="621" column="21" selection-start-line="621" selection-start-column="17" selection-end-line="621" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="78" column="0" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/ChooseRoleActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="103" column="17" selection-start-line="103" selection-start-column="17" selection-end-line="103" selection-end-column="17" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#11324#11981#0" expanded="true" />
-            <element signature="e#11980#11981#0" expanded="true" />
-            <element signature="e#13621#13953#0" expanded="true" />
-            <element signature="e#13952#13953#0" expanded="true" />
-            <element signature="e#13989#15012#0" expanded="true" />
-            <element signature="e#15011#15012#0" expanded="true" />
-            <element signature="e#15048#16173#0" expanded="true" />
-            <element signature="e#16172#16173#0" expanded="true" />
-            <element signature="e#16210#16926#0" expanded="true" />
-            <element signature="e#16925#16926#0" expanded="true" />
-            <element signature="e#16965#17682#0" expanded="true" />
-            <element signature="e#17681#17682#0" expanded="true" />
-            <element signature="e#18537#18557#0" expanded="true" />
-            <element signature="e#18575#18596#0" expanded="true" />
-            <element signature="e#19959#21118#0" expanded="true" />
-            <element signature="e#21117#21118#0" expanded="true" />
-            <element signature="e#21364#21756#0" expanded="true" />
-            <element signature="e#21755#21756#0" expanded="true" />
-            <element signature="e#21810#22384#0" expanded="true" />
-            <element signature="e#22383#22384#0" expanded="true" />
-            <element signature="e#22428#22956#0" expanded="true" />
-            <element signature="e#22955#22956#0" expanded="true" />
-            <element signature="e#27466#29224#0" expanded="true" />
-            <element signature="e#29223#29224#0" expanded="true" />
-            <element signature="e#29226#29481#0" expanded="true" />
-            <element signature="e#29480#29481#0" expanded="true" />
-            <element signature="e#29800#31436#0" expanded="true" />
-            <element signature="e#31435#31436#0" expanded="true" />
-            <element signature="e#31438#31695#0" expanded="true" />
-            <element signature="e#31694#31695#0" expanded="true" />
-            <element signature="e#32014#33627#0" expanded="true" />
-            <element signature="e#33626#33627#0" expanded="true" />
-            <element signature="e#33629#33886#0" expanded="true" />
-            <element signature="e#33885#33886#0" expanded="true" />
+            <element signature="e#4068#5750#0" expanded="false" />
+            <element signature="e#5749#5750#0" expanded="false" />
+            <element signature="e#5802#7381#0" expanded="false" />
+            <element signature="e#7380#7381#0" expanded="false" />
+            <element signature="e#7427#8036#0" expanded="false" />
+            <element signature="e#8035#8036#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/apiSupport/PlotMyNeighboursHail.java">
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.5555556">
-          <caret line="61" column="63" selection-start-line="61" selection-start-column="63" selection-end-line="61" selection-end-column="63" />
+        <state vertical-scroll-proportion="26.24">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/DrawerClass/SelectPaymentTypeActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.74654377">
+          <caret line="87" column="9" selection-start-line="87" selection-start-column="9" selection-end-line="87" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/yo_timer.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/DrawerClass/HelpActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.16129032">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/DrawerClass/AboutActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.66346157">
+          <caret line="58" column="48" selection-start-line="58" selection-start-column="48" selection-end-line="58" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#835#1142#0" expanded="false" />
+            <element signature="e#1141#1142#0" expanded="false" />
+            <element signature="e#835#1142#0" expanded="false" />
+            <element signature="e#1141#1142#0" expanded="false" />
+            <element signature="e#1693#1999#0" expanded="false" />
+            <element signature="e#1998#1999#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/about_hailyo.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.2652733">
+          <caret line="11" column="1" selection-start-line="11" selection-start-column="1" selection-end-line="11" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainBrokerActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4562212">
+          <caret line="565" column="28" selection-start-line="565" selection-start-column="28" selection-end-line="565" selection-end-column="28" />
+          <folding>
+            <element signature="e#11321#11978#0" expanded="false" />
+            <element signature="e#11977#11978#0" expanded="false" />
+            <element signature="e#13618#13950#0" expanded="false" />
+            <element signature="e#13949#13950#0" expanded="false" />
+            <element signature="e#13986#15009#0" expanded="false" />
+            <element signature="e#15008#15009#0" expanded="false" />
+            <element signature="e#15045#16170#0" expanded="false" />
+            <element signature="e#16169#16170#0" expanded="false" />
+            <element signature="e#16207#16923#0" expanded="false" />
+            <element signature="e#16922#16923#0" expanded="false" />
+            <element signature="e#16962#17679#0" expanded="false" />
+            <element signature="e#17678#17679#0" expanded="false" />
+            <element signature="e#18534#18554#0" expanded="false" />
+            <element signature="e#18572#18593#0" expanded="false" />
+            <element signature="e#20048#21207#0" expanded="false" />
+            <element signature="e#21206#21207#0" expanded="false" />
+            <element signature="e#21453#21845#0" expanded="false" />
+            <element signature="e#21844#21845#0" expanded="false" />
+            <element signature="e#21899#22473#0" expanded="false" />
+            <element signature="e#22472#22473#0" expanded="false" />
+            <element signature="e#22517#23045#0" expanded="false" />
+            <element signature="e#23044#23045#0" expanded="false" />
+            <element signature="e#29889#31525#0" expanded="false" />
+            <element signature="e#31524#31525#0" expanded="false" />
+            <element signature="e#31527#31784#0" expanded="false" />
+            <element signature="e#31783#31784#0" expanded="false" />
+            <element signature="e#32103#33716#0" expanded="false" />
+            <element signature="e#33715#33716#0" expanded="false" />
+            <element signature="e#33718#33975#0" expanded="false" />
+            <element signature="e#33974#33975#0" expanded="false" />
+            <element signature="e#32103#33716#0" expanded="false" />
+            <element signature="e#33715#33716#0" expanded="false" />
+            <element signature="e#33718#33975#0" expanded="false" />
+            <element signature="e#33974#33975#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/activity_broker_main.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6864952">
+          <caret line="363" column="40" selection-start-line="363" selection-start-column="40" selection-end-line="363" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/activity_main.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.80707395">
+          <caret line="327" column="0" selection-start-line="327" selection-start-column="0" selection-end-line="327" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.50691247">
+          <caret line="418" column="0" selection-start-line="399" selection-start-column="20" selection-end-line="418" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#12080#12100#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/java/com/nexchanges/hailyo/DrawerClass/ProfileActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="18" column="44" selection-start-line="18" selection-start-column="44" selection-end-line="18" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/splash_search.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/splashscreen.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.2413793">
+          <caret line="14" column="0" selection-start-line="7" selection-start-column="3" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/choose_role.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.7586207">
+          <caret line="15" column="42" selection-start-line="0" selection-start-column="0" selection-end-line="224" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hailyo/src/main/res/layout/user_profile.xml">
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.75884247">
+          <caret line="157" column="39" selection-start-line="157" selection-start-column="39" selection-end-line="157" selection-end-column="39" />
           <folding />
         </state>
       </provider>

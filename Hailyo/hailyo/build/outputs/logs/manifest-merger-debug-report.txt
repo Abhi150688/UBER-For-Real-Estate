@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:2:1-183:12
+ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:2:1-179:12
 	xmlns:tools
 		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:3:5-51
 	xmlns:android
@@ -260,7 +260,7 @@ MERGED from [com.google.android.gms:play-services-maps:7.5.0] /Users/Abhishek/Dr
 	android:glEsVersion
 		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:35:9-41
 application
-ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:39:5-181:24
+ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:39:5-177:24
 MERGED from [com.android.support:support-v4:22.0.0] /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-v4:22.0.0] /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.gms:play-services:7.5.0] /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services/7.5.0/AndroidManifest.xml:19:5-20
@@ -521,12 +521,12 @@ ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/
 		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:116:13-49
 	android:name
 		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:115:13-47
-activity#com.nexchanges.hailyo.paymentGateway.SelectPaymentTypeActivity
+activity#com.nexchanges.hailyo.DrawerClass.SelectPaymentTypeActivity
 ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:120:9-122:52
 	android:screenOrientation
 		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:122:13-49
 	android:name
-		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:121:13-69
+		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:121:13-66
 activity#com.nexchanges.hailyo.DrawerClass.AboutActivity
 ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:124:9-126:52
 	android:screenOrientation
@@ -551,60 +551,54 @@ ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/
 		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:138:13-49
 	android:name
 		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:137:13-43
-activity#com.nexchanges.hailyo.DrawerClass.SettingsActivity
+activity#com.nexchanges.hailyo.paymentGateway.PaytmWalletActivity
 ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:141:9-143:52
 	android:screenOrientation
 		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:143:13-49
 	android:name
-		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:142:13-57
-activity#com.nexchanges.hailyo.paymentGateway.PaytmWalletActivity
-ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:145:9-147:52
+		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:142:13-63
+activity#com.nexchanges.hailyo.EnterConfigActivity
+ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:145:9-150:15
+	android:windowSoftInputMode
+		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:148:13-73
 	android:screenOrientation
 		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:147:13-49
-	android:name
-		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:146:13-63
-activity#com.nexchanges.hailyo.EnterConfigActivity
-ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:149:9-154:15
-	android:windowSoftInputMode
-		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:152:13-73
-	android:screenOrientation
-		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:151:13-49
 	android:configChanges
-		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:153:13-72
+		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:149:13-72
 	android:name
-		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:150:13-48
+		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:146:13-48
 activity#com.paytm.pgsdk.PaytmPGActivity
-ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:157:9-160:52
+ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:153:9-156:52
+	android:screenOrientation
+		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:156:13-49
+	android:configChanges
+		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:155:13-72
+	android:name
+		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:154:13-59
+activity#com.nexchanges.hailyo.GoogleMapSupport.SearchActivity
+ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:158:9-160:51
 	android:screenOrientation
 		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:160:13-49
-	android:configChanges
-		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:159:13-72
 	android:name
-		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:158:13-59
-activity#com.nexchanges.hailyo.GoogleMapSupport.SearchActivity
-ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:162:9-164:51
-	android:screenOrientation
-		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:164:13-49
-	android:name
-		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:163:13-60
+		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:159:13-60
 activity#com.nexchanges.hailyo.LoginActivity1
-ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:167:9-172:20
+ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:163:9-168:20
 	android:windowSoftInputMode
-		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:171:13-73
+		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:167:13-73
 	android:label
-		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:170:13-57
+		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:166:13-57
 	android:name
-		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:168:13-43
+		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:164:13-43
 service#com.nexchanges.hailyo.services.MyService
-ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:174:9-175:19
+ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:170:9-171:19
 	android:name
-		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:174:18-52
+		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:170:18-52
 meta-data#io.fabric.ApiKey
-ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:178:9-180:72
+ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:174:9-176:72
 	android:name
-		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:179:13-44
+		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:175:13-44
 	android:value
-		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:180:13-69
+		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:176:13-69
 activity#com.google.android.gms.ads.AdActivity
 ADDED from [com.google.android.gms:play-services-ads:7.5.0] /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/7.5.0/AndroidManifest.xml:26:9-29:64
 	android:configChanges

@@ -106,7 +106,7 @@
             android:name="com.nexchanges.hailyo.GiveRatingActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.nexchanges.hailyo.paymentGateway.SelectPaymentTypeActivity"
+            android:name="com.nexchanges.hailyo.DrawerClass.SelectPaymentTypeActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.nexchanges.hailyo.DrawerClass.AboutActivity"
@@ -119,9 +119,6 @@
             android:screenOrientation="portrait" />
         <activity
             android:name="com.nexchanges.hailyo.NewBidActivity"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.nexchanges.hailyo.DrawerClass.SettingsActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.nexchanges.hailyo.paymentGateway.PaytmWalletActivity"

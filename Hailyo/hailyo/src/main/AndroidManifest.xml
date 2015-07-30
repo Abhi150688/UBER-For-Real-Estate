@@ -118,7 +118,7 @@
 
 
         <activity
-            android:name=".paymentGateway.SelectPaymentTypeActivity"
+            android:name=".DrawerClass.SelectPaymentTypeActivity"
             android:screenOrientation="portrait" />
 
         <activity
@@ -137,10 +137,6 @@
             android:name=".NewBidActivity"
             android:screenOrientation="portrait" />
 
-
-        <activity
-            android:name=".DrawerClass.SettingsActivity"
-            android:screenOrientation="portrait" />
 
         <activity
             android:name=".paymentGateway.PaytmWalletActivity"

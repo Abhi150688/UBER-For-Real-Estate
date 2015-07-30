@@ -75,7 +75,7 @@ public class ChooseRoleActivity extends Activity {
     String PROJECT_NUMBER = "250185285941";
     TextView edit, fbdata;
     Boolean success = false;
-    String subphone;
+    String subphone="";
     LocationManager mLocationManager;
     SendLocationUpdate sendLocationUpdate;
     LocationResult locationResult;
@@ -101,6 +101,8 @@ public class ChooseRoleActivity extends Activity {
         edit = (TextView) findViewById(R.id.edit);
 
         mobile = SharedPrefs.getString(context, SharedPrefs.MY_MOBILE_KEY);
+        subphone = mobile.substring(3);
+        Log.i(TAG,"value of phone 10 digit is " + subphone);
 
 
         String acc_email = getEmail(context);
@@ -139,7 +141,7 @@ public class ChooseRoleActivity extends Activity {
                                                  user_role = "client";
 
                                                  if (!Str_Lat.isEmpty() && !Str_Lng.isEmpty())
-                                                 sendPostRequest(mobile, "+91", Semail, Sname, user_role, regid,Str_Lng,Str_Lat);
+                                                 sendPostRequest(subphone, "+91", Semail, Sname, user_role, regid,Str_Lng,Str_Lat);
 
                                                  //signup_success();
                                              }
@@ -174,7 +176,7 @@ public class ChooseRoleActivity extends Activity {
                                                  user_role = "broker";
 
                                                  if (!Str_Lat.isEmpty() && !Str_Lng.isEmpty())
-                                                     sendPostRequest(mobile, "+91", Semail, Sname, user_role, regid, Str_Lng, Str_Lat);
+                                                     sendPostRequest(subphone, "+91", Semail, Sname, user_role, regid, Str_Lng, Str_Lat);
                                                 // signup_success();
                                              }
 
@@ -306,8 +308,6 @@ public class ChooseRoleActivity extends Activity {
 
     private void sendPostRequest(final String mobile, final String code, final String Semail, final String Sname, final String user_role, final String regid, final String lon, final String lat)
     {
-
-        subphone = mobile.substring(3);
 
         class SendPostReqAsyncTask extends AsyncTask<String, Void, String> {
 
