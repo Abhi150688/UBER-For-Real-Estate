@@ -18,6 +18,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ViewFlipper;
 
 import com.nexchanges.hailyo.model.SharedPrefs;
@@ -51,11 +52,11 @@ public class GiveRatingActivity extends Activity {
     TextView clock;
     Context context;
     Button but1,but2,but3,but4;
-    int prop_count = 0;
+    int prop_count = 0, val_check;
     ImageView happy, sad;
     StringEntity se;
     String my_id,counter_id,hailyo_id,cust_type,role;
-    boolean rating;
+    boolean rating, prop_count_pressed = false;
     String URL = "http://ec2-52-25-136-179.us-west-2.compute.amazonaws.com:9000/1/give/rating";
 
     @Override
@@ -125,6 +126,7 @@ public class GiveRatingActivity extends Activity {
             public void onClick(View v) {
 
                 prop_count = 1;
+                prop_count_pressed = true;
                 but1.setBackgroundColor(Color.parseColor("#FFA500"));
                 but1.setTextColor(Color.WHITE);
                 but2.setBackgroundResource(R.drawable.button_border);
@@ -142,6 +144,7 @@ public class GiveRatingActivity extends Activity {
             public void onClick(View v) {
 
                 prop_count = 2;
+                prop_count_pressed = true;
                 but2.setBackgroundColor(Color.parseColor("#FFA500"));
                 but2.setTextColor(Color.WHITE);
                 but1.setBackgroundResource(R.drawable.button_border);
@@ -161,6 +164,7 @@ public class GiveRatingActivity extends Activity {
             public void onClick(View v) {
 
                 prop_count = 3;
+                prop_count_pressed = true;
                 but3.setBackgroundColor(Color.parseColor("#FFA500"));
                 but3.setTextColor(Color.WHITE);
                 but2.setBackgroundResource(R.drawable.button_border);
@@ -178,6 +182,7 @@ public class GiveRatingActivity extends Activity {
             public void onClick(View v) {
 
                 prop_count = 4;
+                prop_count_pressed = true;
                 but4.setBackgroundColor(Color.parseColor("#FFA500"));
                 but4.setTextColor(Color.WHITE);
                 but2.setBackgroundResource(R.drawable.button_border);
@@ -197,10 +202,16 @@ public class GiveRatingActivity extends Activity {
             public void onClick(View v) {
 
                 rating = true;
+                int val_recvd = validation();
+                if (val_recvd==0)
+                {
                 String rating1 = "" + 1;
                 sendPostRequest(my_id, counter_id, hailyo_id,rating1);
-                submitrating();
-
+                submitrating();}
+                else Toast.makeText(
+                        getApplicationContext(),
+                        "Please select number of proerties visited",
+                        Toast.LENGTH_LONG).show();
             }
         });
 
@@ -210,10 +221,16 @@ public class GiveRatingActivity extends Activity {
             public void onClick(View v) {
 
                 rating = false;
-                String rating1 = " " + 0;
+                int val_recvd = validation();
+                if (val_recvd==0)
+                {
+                    String rating1 = " " + 0;
                 sendPostRequest(my_id, counter_id, hailyo_id,rating1);
-                submitrating();
-
+                submitrating();}
+                else Toast.makeText(
+                        getApplicationContext(),
+                        "Please select number of proerties visited",
+                        Toast.LENGTH_LONG).show();
             }
         });
 
@@ -367,5 +384,15 @@ public class GiveRatingActivity extends Activity {
         SharedPrefs.save(context, SharedPrefs.LAST_ACTIVITY_KEY, getClass().getName());
     }
 
+private int validation()
+{
+    val_check = 1;
+    if (cust_type.equalsIgnoreCase("avl"))
+        val_check = 0;
+    if (cust_type.equalsIgnoreCase("req") && prop_count_pressed ==true)
+        val_check=0;
+
+    return val_check;
+}
 
 }

@@ -122,7 +122,7 @@ public class ChooseRoleActivity extends Activity {
 
                                                  sendPostRequest(mobile, "+91", Semail, Sname, user_role, regid);
 
-                                                 // signup_success();
+                                                 signup_success();
                                              }
 
 
@@ -154,7 +154,7 @@ public class ChooseRoleActivity extends Activity {
                                                  Semail = email.getText().toString();
                                                  user_role = "broker";
                                                  sendPostRequest(mobile, "+91", Semail, Sname, user_role,regid);
-                                                 //signup_success();
+                                                 signup_success();
                                              }
 
                                          }

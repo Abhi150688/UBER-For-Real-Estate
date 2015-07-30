@@ -85,7 +85,7 @@ public class SelectPaymentTypeActivity extends ActionBarActivity implements View
     protected void onPause()
     {
         super.onPause();
-        SharedPrefs.save(context, SharedPrefs.LAST_ACTIVITY_KEY, getClass().getName());
+       // SharedPrefs.save(context, SharedPrefs.LAST_ACTIVITY_KEY, getClass().getName());
     }
 
 

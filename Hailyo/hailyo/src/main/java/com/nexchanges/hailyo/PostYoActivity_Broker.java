@@ -141,7 +141,7 @@ public class PostYoActivity_Broker extends ActionBarActivity
             public void onClick(View v) {
                 Intent BMainActivity = new Intent(context, MainBrokerActivity.class);
                 SharedPrefs.save(context,SharedPrefs.CURRENT_FLIPPER_VIEW,2);
-                SharedPrefs.savePref(context, SharedPrefs.SUCCESSFUL_HAIL, true);
+                SharedPrefs.save(context, SharedPrefs.SUCCESSFUL_HAIL, "true");
                 startActivity(BMainActivity);
 
 //                finish();
@@ -155,7 +155,7 @@ public class PostYoActivity_Broker extends ActionBarActivity
 
                 Intent BMainActivity = new Intent(context, MainBrokerActivity.class);
                 SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 1);
-                SharedPrefs.savePref(context, SharedPrefs.SUCCESSFUL_HAIL, true);
+                SharedPrefs.save(context, SharedPrefs.SUCCESSFUL_HAIL, "true");
 
                 startActivity(BMainActivity);
 
@@ -183,7 +183,7 @@ public class PostYoActivity_Broker extends ActionBarActivity
             public void onClick(View view) {
 
                 Uri call = Uri.parse("tel:" + phone);
-                Intent callintent = new Intent(Intent.ACTION_DIAL, call);
+                Intent callintent = new Intent(Intent.ACTION_CALL, call);
                 startActivity(callintent);
             }
         });
@@ -195,7 +195,7 @@ public class PostYoActivity_Broker extends ActionBarActivity
 
 
                 sendSMSMessage(phone, body);
-                SharedPrefs.savePref(context, SharedPrefs.SUCCESSFUL_HAIL, false);
+                SharedPrefs.save(context, SharedPrefs.SUCCESSFUL_HAIL, "false");
 
                 if (role.equalsIgnoreCase("customer"))
                 {Intent MainActivity = new Intent (context, MainActivity.class);

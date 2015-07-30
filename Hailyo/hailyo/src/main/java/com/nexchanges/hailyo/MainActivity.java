@@ -92,7 +92,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
     private List<VisitData> visitList = new ArrayList<VisitData>();
     private ListView listView;
     private CustomListAdapter_Visit adapter;
-    Boolean is_transaction=false, location_read=false;
+    Boolean location_read=false;
     SwipeRefreshLayout visit_refresh, deal_refresh;
     SendLocationUpdate sendLocationUpdate = new SendLocationUpdate();
 
@@ -135,7 +135,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
 
     LatLng selectedLocation;
     Location curLoc;
-    String selectedLocation_Name;
+    String selectedLocation_Name,is_transaction;
     String fetchname, fetchemail,fetchphoto;
     ViewFlipper VF10;
     ImageView smallphoto;
@@ -153,7 +153,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         setContentView(R.layout.activity_main);
         context = this;
         checkLocationServices.checkGpsStatus(context);
-        //is_transaction = SharedPrefs.getBoolean(context,SharedPrefs.SUCCESSFUL_HAIL);
+        is_transaction = SharedPrefs.getString(context, SharedPrefs.SUCCESSFUL_HAIL);
 
 
         sb1 = (SeekBar)findViewById(R.id.seekBar2);
@@ -237,7 +237,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
             @Override
             public void onClick(View v) {
 
-                if(is_transaction==true)
+                if(is_transaction.equalsIgnoreCase("true"))
                 {
                     Intent PostYoActivity=new Intent(context, PostYoActivity.class);
                     startActivity(PostYoActivity);}

@@ -93,7 +93,7 @@ import java.util.List;
     int max = 15, min = 5;
     int timer_val=5;
     SendLocationUpdate sendLocationUpdate = new SendLocationUpdate();
-    Boolean is_transaction=false, location_read = false;
+    Boolean location_read = false;
 
     private static final String url = "https://api.myjson.com/bins/nk0q";
     private ProgressDialog pDialog;
@@ -101,7 +101,7 @@ import java.util.List;
     private ListView listView;
     private CustomListAdapter_Visit adapter;
     LocationManager mLocationManager;
-    String type_user;
+    String type_user,is_transaction;
     BroadcastReceiver ReceivefromGCM;
 
 
@@ -163,7 +163,7 @@ import java.util.List;
         context = this;
 
 
-        //is_transaction = SharedPrefs.getBoolean(context,SharedPrefs.SUCCESSFUL_HAIL);
+        is_transaction = SharedPrefs.getString(context,SharedPrefs.SUCCESSFUL_HAIL);
         checkLocationServices.checkGpsStatus(context);
 
 
@@ -368,7 +368,7 @@ import java.util.List;
             @Override
             public void onClick(View v) {
 
-                if(is_transaction==true)
+                if(is_transaction.equalsIgnoreCase("true"))
                 {
                     Intent PostYoActivityBroker=new Intent(context, PostYoActivity_Broker.class);
                     startActivity(PostYoActivityBroker);}
@@ -396,7 +396,7 @@ import java.util.List;
             @Override
             public void onClick(View v) {
 
-                if(is_transaction==true)
+                if(is_transaction.equalsIgnoreCase("true"))
                 {
                     Intent PostYoActivityBroker=new Intent(context, PostYoActivity_Broker.class);
                     startActivity(PostYoActivityBroker);}

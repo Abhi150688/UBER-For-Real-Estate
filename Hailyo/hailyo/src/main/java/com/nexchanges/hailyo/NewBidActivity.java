@@ -3,6 +3,7 @@ package com.nexchanges.hailyo;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -45,7 +46,7 @@ public class NewBidActivity extends Activity {
 
         intent = SharedPrefs.getString(context, SharedPrefs.CURRENT_INTENT);
 
-       // success_hail = SharedPrefs.getBoolean(context, SharedPrefs.SUCCESSFUL_HAIL);
+        // success_hail = SharedPrefs.getBoolean(context, SharedPrefs.SUCCESSFUL_HAIL);
 
         int layoutId=0;
         if(intent.equalsIgnoreCase("rent")) {
@@ -122,40 +123,60 @@ public class NewBidActivity extends Activity {
             public void onClick(View v) {
 
                 if (intent.equalsIgnoreCase("rent"))
+                {
+                    validationCheck_rent();
                     sendshortEmail();
-                else sendSaleEmail();
+                }
+                else {sendSaleEmail();
+                    validationCheck_sale();
+                }
 
-                LayoutInflater layoutInflater = LayoutInflater.from(context);
-                View promptView = layoutInflater.inflate(R.layout.action_before_main, null);
-
-                Button newBid = (Button)promptView.findViewById(R.id.newbid);
-
-
-                final AlertDialog alertD = new AlertDialog.Builder(context).create();
-
-                newBid.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle(R.string.app_name);
+                builder.setMessage("Congratulations, your bid was submitted successfully!\n\n Do you wish to submit another bid?");
+                //builder.setIcon(R.drawable.ic_launcher);
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
 
                         if (role.equalsIgnoreCase("client")) {
-                            Intent GiveNewBid = new Intent(context,MainActivity.class);
-                            SharedPrefs.save(context,SharedPrefs.CURRENT_FLIPPER_VIEW,1);
+                            Intent GiveNewBid = new Intent(context, MainActivity.class);
+                            SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 1);
                             startActivity(GiveNewBid);
                             finish();
 
                         } else {
                             Intent BGiveNewBid = new Intent(context, MainBrokerActivity.class);
-                            SharedPrefs.save(context,SharedPrefs.CURRENT_FLIPPER_VIEW,1);
+                            SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 1);
                             startActivity(BGiveNewBid);
                             finish();
                         }
 
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        if (role.equalsIgnoreCase("client")) {
+                            Intent BacktoHomeClient = new Intent(context, MainActivity.class);
+                            SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 0);
+                            startActivity(BacktoHomeClient);
+                            finish();
+
+                        } else {
+                            Intent BacktoHomeBroker = new Intent(context, MainBrokerActivity.class);
+                            SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 0);
+                            startActivity(BacktoHomeBroker);
+                            finish();
+                        }
 
                     }
                 });
 
-                alertD.setView(promptView);
-                alertD.show();
+                AlertDialog alert = builder.create();
+                alert.show();
+
+
+
 
             }
         });
@@ -166,7 +187,6 @@ public class NewBidActivity extends Activity {
             public void onClick(View v) {
 
                /* if (SharedPrefs.getBoolean(context,SharedPrefs.SUCCESSFUL_HAIL)==true) {
-
                     if (role.equalsIgnoreCase("client")) {
                         Intent CHailProgress  = new Intent(context, PostYoActivity.class);
                         startActivity(CHailProgress);
@@ -175,27 +195,26 @@ public class NewBidActivity extends Activity {
                         Intent BHailProgress = new Intent(context, PostYoActivity_Broker.class);
                         startActivity(BHailProgress);
                         finish();
-
                     }
                 }
                 else
                 {*/
-                    if (role.equalsIgnoreCase("client")) {
-                        Intent MainActivity = new Intent(context, MainActivity.class);
-                        SharedPrefs.save(context,SharedPrefs.CURRENT_FLIPPER_VIEW,0);
+                if (role.equalsIgnoreCase("client")) {
+                    Intent MainActivity = new Intent(context, MainActivity.class);
+                    SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 0);
 
-                        startActivity(MainActivity);
-                        finish();
-                    } else {
-                        Intent BMainActivity = new Intent(context, MainBrokerActivity.class);
-                        SharedPrefs.save(context,SharedPrefs.CURRENT_FLIPPER_VIEW,0);
+                    startActivity(MainActivity);
+                    finish();
+                } else {
+                    Intent BMainActivity = new Intent(context, MainBrokerActivity.class);
+                    SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 0);
 
-                        startActivity(BMainActivity);
-                        finish();
+                    startActivity(BMainActivity);
+                    finish();
 
-                    }
+                }
 
-               // }
+                // }
             }
         });
 
@@ -203,9 +222,7 @@ public class NewBidActivity extends Activity {
     }
 
 
-
-    public void sendshortEmail()
-    {
+    public void sendshortEmail() {
         String sub = srowtv1.getText().toString();
         String subject = "Offer for: " + sub;
 
@@ -253,6 +270,141 @@ public class NewBidActivity extends Activity {
         super.onPause();
         SharedPrefs.save(context, SharedPrefs.LAST_ACTIVITY_KEY, getClass().getName());
 
+    }
+
+    private void validationCheck_rent() {
+
+
+        if (srowtv1.getText().toString().trim().equalsIgnoreCase("")) {
+            srowtv1.setError("Please enter property name");
+            return;
+        }
+
+
+        if (srowtv2.getText().toString().trim().equalsIgnoreCase("")) {
+            srowtv2.setError("Please enter rent offer");
+            return;
+        }
+
+        if (srowtv3.getText().toString().trim().equalsIgnoreCase("")) {
+            srowtv3.setError("Please enter deposit amount");
+            return;
+        }
+
+
+        srowtv1.addTextChangedListener(new TextWatcher() {
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                srowtv1.setError(null);
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                srowtv1.setError(null);
+
+            }
+        });
+
+
+        srowtv2.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                srowtv2.setError(null);
+
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count,
+                                          int after) {
+                // TODO Auto-generated method stub
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                srowtv2.setError(null);
+
+            }
+        });
+
+        srowtv3.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                srowtv3.setError(null);
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                srowtv3.setError(null);
+
+            }
+        });
+
+    }
+
+
+
+    private void validationCheck_sale() {
+
+        if (srowtv1_Sale.getText().toString().trim().equalsIgnoreCase("")) {
+            srowtv1_Sale.setError("Please enter property name");
+            return;
+        }
+
+
+        if (srowtv2_Sale.getText().toString().trim().equalsIgnoreCase("")) {
+            srowtv2_Sale.setError("Please enter Price Offer");
+            return;
+        }
+
+        srowtv1_Sale.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                srowtv1_Sale.setError(null);
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                srowtv1_Sale.setError(null);
+            }
+        });
+
+        srowtv2_Sale.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                srowtv2_Sale.setError(null);
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                srowtv2_Sale.setError(null);
+            }
+        });
     }
 
 }

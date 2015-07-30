@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.content.Context;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.TableLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.hrules.horizontalnumberpicker.HorizontalNumberPicker;
 import com.hrules.horizontalnumberpicker.HorizontalNumberPickerListener;
@@ -53,11 +56,14 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
     Boolean isOnePressed = true, isSecondPlace = false, rentPressed = true, salePressed = false;
     String choice="LL";
     Context context;
-    int max=5, min=1;
+    int max=5, min=0,val_check;
     String fetchloc, msg1,msg2,msg3,msg4,message1,str1="seeshow",str2="buyrent",str3="bhk",str4="price";
     ConfigSpecCode spec_code;
     private static LayoutInflater inflate =null;
     TableLayout renttab, saletab;
+    Boolean is_see_show_pressed = false, is_buy_sell_pressed = false;
+
+    HorizontalNumberPicker horizontalNumberPicker3;
 
 
 
@@ -72,7 +78,7 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
         role = SharedPrefs.getString(context, SharedPrefs.MY_ROLE_KEY);
 
 
-        HorizontalNumberPicker horizontalNumberPicker3 = (HorizontalNumberPicker) findViewById(R.id.horizontal_number_picker3);
+        horizontalNumberPicker3 = (HorizontalNumberPicker) findViewById(R.id.horizontal_number_picker3);
         horizontalNumberPicker3.setBackgroundColor(getResources().getColor(android.R.color.white));
         horizontalNumberPicker3.getTextValueView().setTextColor(getResources().getColor(android.R.color.black));
         horizontalNumberPicker3.getTextValueView().setTextSize(22);
@@ -122,6 +128,7 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 isOnePressed = true;
+                is_see_show_pressed = true;
                 msg1 = "Req";
                 updateSpecCode(str1,msg1);
                 SharedPrefs.save(context, SharedPrefs.CURRENT_CUST_TYPE, "req");
@@ -144,6 +151,7 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 showProp.setBackgroundColor(Color.parseColor("#FFA500"));
+                is_see_show_pressed=true;
                 showProp.setTextColor(Color.WHITE);
                 msg1 = "Avl";
                 updateSpecCode(str1,msg1);
@@ -166,6 +174,7 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 rentPressed = true;
+                is_buy_sell_pressed = true;
                 msg2 = "L/L";
                 updateSpecCode(str2,msg2);
                 result.setText("");
@@ -199,6 +208,7 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
             public void onClick(View v) {
                 // TODO Auto-generated method stub
                 salePressed = true;
+                is_buy_sell_pressed = true;
                 msg2 = "OUT";
                 updateSpecCode(str2,msg2);
                 result.setText("");
@@ -226,39 +236,48 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
         });
 
 
-
-
-
-
-
-
-
         hailBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
 
-                String mesFinal = updateSpecCode("he","he");
 
-                if (role.equalsIgnoreCase("broker"))
+                String mesFinal = updateSpecCode("he", "he");
+                int pass = validationCheck();
+
+                if (pass == 0)
+
                 {
-                    message = "Plus-" + mesFinal;
-                }
+                    if (role.equalsIgnoreCase("broker")) {
+                        message = "Plus-" + mesFinal;
+                        Intent PostYoActBroker = new Intent(context, PostYoActivity_Broker.class);
+                        Bundle extrasB = new Bundle();
+                        extrasB.putString("phone", "9967307197");
+                        extrasB.putString("broker_Name", "Rajiv Lakhpati");
+                        extrasB.putString("timer", "1");
+                        extrasB.putString("rating", "3");
 
+                        PostYoActBroker.putExtras(extrasB);
+                        context.startActivity(PostYoActBroker);
+                        finish();
 
-                else if (role.equalsIgnoreCase("client"))
-                {
-                    message = "Direct-" + mesFinal ;
-                }
+                    } else if (role.equalsIgnoreCase("client")) {
+                        message = "Direct-" + mesFinal;
+                        Intent PostYoAct = new Intent(context, PostYoActivity.class);
+                        Bundle extras = new Bundle();
+                        extras.putString("phone", "9967307197");
+                        extras.putString("broker_Name", "Rajiv Lakhpati");
+                        extras.putString("timer", "1");
+                        extras.putString("rating", "3");
+
+                        PostYoAct.putExtras(extras);
+                        context.startActivity(PostYoAct);
+                        finish();
+
+                    }
                 SharedPrefs.save(context, SharedPrefs.CURRENT_SPEC, message);
+            }//
 
-                Intent PostYoAct = new Intent(context, PostYoActivity.class);
-                Bundle extras = new Bundle();
-                extras.putString("Phone", "9967307197");
-                extras.putString("Broker_Name", "Rajiv Lakhpati");
-                extras.putString("Timer", "1");
-                extras.putString("Rating", "3");
-                PostYoAct.putExtras(extras);
-                context.startActivity(PostYoAct);
-                finish();
+                else Toast.makeText(getApplicationContext(), "Please enter all fields before clicking Hail",
+                        Toast.LENGTH_LONG).show();
 
             }
         });
@@ -402,8 +421,40 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
     protected void onPause()
     {
         super.onPause();
-        SharedPrefs.save(context, SharedPrefs.LAST_ACTIVITY_KEY, getClass().getName());
+       // SharedPrefs.save(context, SharedPrefs.LAST_ACTIVITY_KEY, getClass().getName());
     }
+
+    private int validationCheck() {
+
+
+         val_check = 0;
+
+        if (is_see_show_pressed == false) {
+            Toast.makeText(getApplicationContext(), "Chose your profile \n Owner or Seeker?",
+                    Toast.LENGTH_LONG).show();
+            val_check = 1;
+        }
+        if (is_buy_sell_pressed == false) {
+            Toast.makeText(getApplicationContext(), "Please select your intent \n Do you want to Buy/Sell or Rent?",
+                    Toast.LENGTH_LONG).show();
+            val_check = 1;
+        }
+
+        if (horizontalNumberPicker3.getValue() == 0) {
+            Toast.makeText(getApplicationContext(), "Please select a valid configuration BHK",
+                    Toast.LENGTH_LONG).show();
+            val_check = 1;
+        }
+
+        if (mSeekbar_Rent.getProgress() == 0 && mSeekbar_Sale.getProgress() == 0) {
+            Toast.makeText(getApplicationContext(), "Please enter a valid price",
+                    Toast.LENGTH_LONG).show();
+            val_check = 1;
+        }
+
+        return val_check;
+    }
+
 
 }
 

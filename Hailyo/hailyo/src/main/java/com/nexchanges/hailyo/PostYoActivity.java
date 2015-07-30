@@ -69,10 +69,10 @@ public class PostYoActivity extends ActionBarActivity
 
         Intent PostYoIntent = getIntent();
         Bundle extras = PostYoIntent.getExtras();
-        phone = extras.getString("Phone");
-        brokerName = extras.getString("Broker_Name");
-        timer = extras.getString("Timer");
-        rating = extras.getString("Rating");
+        phone = extras.getString("phone");
+        brokerName = extras.getString("broker_Name");
+        timer = extras.getString("timer");
+        rating = extras.getString("rating");
         role = SharedPrefs.getString(context, SharedPrefs.MY_ROLE_KEY);
 
         call  = (Button) findViewById(R.id.call);
@@ -132,7 +132,7 @@ public class PostYoActivity extends ActionBarActivity
             public void onClick(View v) {
                 Intent ViewDeals = new Intent(context, MainActivity.class);
                 SharedPrefs.save(context,SharedPrefs.CURRENT_FLIPPER_VIEW,2);
-                SharedPrefs.savePref(context,SharedPrefs.SUCCESSFUL_HAIL,true);
+                SharedPrefs.save(context,SharedPrefs.SUCCESSFUL_HAIL,"true");
 
 
                 startActivity(ViewDeals);}
@@ -147,7 +147,7 @@ public class PostYoActivity extends ActionBarActivity
             public void onClick(View v) {
                 Intent ViewDeals = new Intent(context, MainActivity.class);
                 SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 1);
-                SharedPrefs.savePref(context,SharedPrefs.SUCCESSFUL_HAIL,true);
+                SharedPrefs.save(context,SharedPrefs.SUCCESSFUL_HAIL,"true");
 
 
                 startActivity(ViewDeals);
@@ -174,7 +174,7 @@ public class PostYoActivity extends ActionBarActivity
             public void onClick(View view) {
 
                 Uri call = Uri.parse("tel:" + phone);
-                Intent callintent = new Intent(Intent.ACTION_DIAL, call);
+                Intent callintent = new Intent(Intent.ACTION_CALL, call);
                 startActivity(callintent);
             }
         });
@@ -194,18 +194,17 @@ public class PostYoActivity extends ActionBarActivity
 
                         body = "Your site visit Id: ST123453 with Mr. Abhishek has just been cancelled";
 
-                        // ADD A CONFIRMATION DIALOG TO THIS
-
-
                         sendSMSMessage(phone, body);
-                        SharedPrefs.savePref(context,SharedPrefs.SUCCESSFUL_HAIL,false);
+                        SharedPrefs.save(context,SharedPrefs.SUCCESSFUL_HAIL,"false");
                         if (role.equalsIgnoreCase("customer"))
                         {Intent MainActivity = new Intent (context, MainActivity.class);
-                            startActivity(MainActivity);}
+                            startActivity(MainActivity);
+                            finish();}
                         else if (role.equalsIgnoreCase("broker"))
                         {
                             Intent MainBActivity = new Intent (context, MainBrokerActivity.class);
-                            startActivity(MainBActivity);}
+                            startActivity(MainBActivity);
+                        finish();}
                     }
                 });
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
