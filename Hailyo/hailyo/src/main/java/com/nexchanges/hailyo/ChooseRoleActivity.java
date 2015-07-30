@@ -10,6 +10,9 @@ import android.database.Cursor;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -29,7 +32,8 @@ import android.widget.Toast;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
-import com.nexchanges.hailyo.customSupportClass.RippleBackground;
+import com.google.android.gms.location.LocationResult;
+import com.nexchanges.hailyo.apiSupport.SendLocationUpdate;
 import com.nexchanges.hailyo.model.SharedPrefs;
 
 import org.apache.http.HttpResponse;
@@ -56,6 +60,7 @@ public class ChooseRoleActivity extends Activity {
 
     //declare variables
     private String Semail, Sname, user_role, Sphoto, C = "Customer", B = "Broker", my_user_id, my_gcm_id, num;
+    private static final String TAG = ChooseRoleActivity.class.getSimpleName();
     String URL = "http://ec2-52-27-37-225.us-west-2.compute.amazonaws.com:9000/1/user/signup";
     StringEntity se;
     Button clientBut, brokerBut;
@@ -71,6 +76,11 @@ public class ChooseRoleActivity extends Activity {
     TextView edit, fbdata;
     Boolean success = false;
     String subphone;
+    LocationManager mLocationManager;
+    SendLocationUpdate sendLocationUpdate;
+    LocationResult locationResult;
+    String Str_Lng="",Str_Lat="";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -98,6 +108,12 @@ public class ChooseRoleActivity extends Activity {
 
         Sname = name.getText().toString();
 
+        mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+
+        mLocationManager.requestSingleUpdate(LocationManager.GPS_PROVIDER, mLocationListener, null);
+
+        mLocationManager.requestSingleUpdate(LocationManager.NETWORK_PROVIDER, mLocationListener, null);
+
 
         clientBut.setOnClickListener(new View.OnClickListener()
 
@@ -122,7 +138,8 @@ public class ChooseRoleActivity extends Activity {
 
                                                  user_role = "client";
 
-                                                 sendPostRequest(mobile, "+91", Semail, Sname, user_role, regid);
+                                                 if (!Str_Lat.isEmpty() && !Str_Lng.isEmpty())
+                                                 sendPostRequest(mobile, "+91", Semail, Sname, user_role, regid,Str_Lng,Str_Lat);
 
                                                  //signup_success();
                                              }
@@ -155,7 +172,9 @@ public class ChooseRoleActivity extends Activity {
                                                  Sname = name.getText().toString();
                                                  Semail = email.getText().toString();
                                                  user_role = "broker";
-                                                 sendPostRequest(mobile, "+91", Semail, Sname, user_role, regid);
+
+                                                 if (!Str_Lat.isEmpty() && !Str_Lng.isEmpty())
+                                                     sendPostRequest(mobile, "+91", Semail, Sname, user_role, regid, Str_Lng, Str_Lat);
                                                 // signup_success();
                                              }
 
@@ -285,7 +304,7 @@ public class ChooseRoleActivity extends Activity {
         });
     }
 
-    private void sendPostRequest(final String mobile, final String code, final String Semail, final String Sname, final String user_role, final String regid)
+    private void sendPostRequest(final String mobile, final String code, final String Semail, final String Sname, final String user_role, final String regid, final String lon, final String lat)
     {
 
         subphone = mobile.substring(3);
@@ -308,6 +327,8 @@ public class ChooseRoleActivity extends Activity {
                     jsonObject.accumulate("email", Semail);
                     jsonObject.accumulate("name", Sname);
                     jsonObject.accumulate("user_role", user_role);
+                    jsonObject.accumulate("long", lon);
+                    jsonObject.accumulate("lat", lat);
 
                     jsonObject.accumulate("gcm_id", regid);
 
@@ -545,6 +566,52 @@ public class ChooseRoleActivity extends Activity {
     {
         super.onPause();
         SharedPrefs.save(context, SharedPrefs.LAST_ACTIVITY_KEY, getClass().getName());
+
     }
 
+    private final LocationListener mLocationListener = new LocationListener() {
+
+        @Override
+        public void onLocationChanged(final Location location) {
+            findMyLocation(location);
+
+        }
+
+        @Override
+        public void onStatusChanged(String provider, int status, Bundle extras) {
+
+        }
+
+        @Override
+        public void onProviderEnabled(String provider) {
+
+        }
+
+        @Override
+        public void onProviderDisabled(String provider) {
+
+        }
+    };
+
+    public void findMyLocation(final Location location) {
+
+        class TestAsync extends AsyncTask<String, Void, Void> {
+
+            protected Void doInBackground(String... params) {
+
+                double lat = location.getLatitude();
+                double lng = location.getLongitude();
+
+                Str_Lng = String.valueOf(lng);
+                Str_Lat = String.valueOf(lat);
+
+                Log.i(TAG,"Value of Lat is"  + Str_Lat);
+                Log.i(TAG,"Value of Long is"  + Str_Lng);
+
+                return null;
+            }
+        }
+        TestAsync TestAsync = new TestAsync();
+        TestAsync.execute();
+    }
 }

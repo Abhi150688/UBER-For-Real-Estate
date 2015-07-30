@@ -42,12 +42,12 @@ import java.util.HashMap;
         System.out.print(my_user_id + "Hurray " +lat + " hurrah again" + lng );
         mMyMarkersArray = sendPostRequest(my_user_id,lat,lng,brokerType, user_role);
 
-        for (int i = 0; i<mMyMarkersArray.size(); i++)
+      /*  for (int i = 0; i<mMyMarkersArray.size(); i++)
         {
             System.out.println("Lat returned by post is " + mMyMarkersArray.get(i).getmLatitude());
             System.out.println("Long returned by post is" + mMyMarkersArray.get(i).getmLongitude());
 
-        }
+        }*/
         return mMyMarkersArray;
 
     }
@@ -126,13 +126,13 @@ import java.util.HashMap;
                         System.out.print("Final String result of asynch task is " + result);
 
                         mMyMarkersArray2 = createMarkerHash(result);
-                        for (int i = 0; i<mMyMarkersArray2.size(); i++)
+                      /*  for (int i = 0; i<mMyMarkersArray2.size(); i++)
                         {
                             System.out.println("Lat returned by array 2 is " + mMyMarkersArray2.get(i).getmLatitude());
                             System.out.println("Long returned by array2 is" + mMyMarkersArray2.get(i).getmLongitude());
 
                         }
-
+*/
                     }
 
                     else
@@ -171,20 +171,19 @@ import java.util.HashMap;
 
 
             JSONObject jObject = new JSONObject(result);
-            for (int j = 0;j<jObject.length();j++)
+            JSONArray user__list = jObject.getJSONArray("users");
+
+            for (int j = 0;j<user__list.length();j++)
             {
 
-                JSONArray loc = jObject.getJSONArray("loc");
+                JSONObject attri = user__list.getJSONObject(j);
+                String lat = attri.getString("lat");
+                String lng = attri.getString("long");
 
-                String Loc = loc.getString(0);
-                String delims = "[,]";
-                String[] tokens = Loc.split(delims);
-                String Lat = tokens[0];
-                String Lng = tokens[1];
-                System.out.print("Lat is" + Lat);
-                System.out.print("Long is" + Lng);
+                System.out.print("Lat is" + lat);
+                System.out.print("Long is" + lng);
                 mMarkersHashMap = new HashMap<Marker, MyMarker>();
-                mMyMarkersArray3.add(new MyMarker(Double.parseDouble(Lat), Double.parseDouble(Lng)));
+                mMyMarkersArray3.add(new MyMarker(Double.parseDouble(lat), Double.parseDouble(lng)));
 
             }
 
@@ -196,12 +195,12 @@ import java.util.HashMap;
         System.out.println("Printing data of MyArray 3");
 
 
-        for (int i = 0; i<mMyMarkersArray3.size(); i++)
+       /* for (int i = 0; i<mMyMarkersArray3.size(); i++)
         {
             System.out.println("Lat returned by array 3 is " + mMyMarkersArray3.get(i).getmLatitude());
             System.out.println("Long returned by array3 is" + mMyMarkersArray3.get(i).getmLongitude());
 
-        }
+        }*/
 
 
         return mMyMarkersArray3;

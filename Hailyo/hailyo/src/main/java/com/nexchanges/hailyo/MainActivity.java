@@ -135,7 +135,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
 
     LatLng selectedLocation;
     Location curLoc;
-    String selectedLocation_Name,is_transaction;
+    String selectedLocation_Name,is_transaction, my_role,my_user_id, Str_Lat,Str_Lng;
     String fetchname, fetchemail,fetchphoto;
     ViewFlipper VF10;
     ImageView smallphoto;
@@ -154,6 +154,10 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         context = this;
         checkLocationServices.checkGpsStatus(context);
         is_transaction = SharedPrefs.getString(context, SharedPrefs.SUCCESSFUL_HAIL);
+
+        my_role = SharedPrefs.getString(context,SharedPrefs.MY_ROLE_KEY);
+        my_user_id = SharedPrefs.getString(context,SharedPrefs.MY_USER_ID);
+
 
 
         sb1 = (SeekBar)findViewById(R.id.seekBar2);
@@ -538,43 +542,38 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
     }
 
 
-    private void plotMarkers(ArrayList<MyMarker> markers, String type)
-    {
-        if(markers.size() > 0)
+    private void plotMarkers(ArrayList<MyMarker> markers, String type) {
+        if (markers != null)
         {
-            for (MyMarker myMarker : markers)
-            {
+            if (markers.size() > 0) {
+                for (MyMarker myMarker : markers) {
 
-                if (type.equalsIgnoreCase("broker")) {
-                    MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude()));
-                    markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.currentlocation_icon1));
+                    if (type.equalsIgnoreCase("broker")) {
+                        MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude()));
+                        markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.currentlocation_icon1));
 
-                    Marker currentMarker = map.addMarker(markerOption);
+                        Marker currentMarker = map.addMarker(markerOption);
 
-                    mMarkersHashMap.put(currentMarker, myMarker);
+                        mMarkersHashMap.put(currentMarker, myMarker);
+                    } else if (type.equalsIgnoreCase("auction")) {
+                        MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude()));
+                        markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.currentlocation_icon1));
+
+                        Marker currentMarker = map.addMarker(markerOption);
+
+                        mMarkersHashMap.put(currentMarker, myMarker);
+                    } else {
+                        MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude()));
+                        markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.currentlocation_icon1));
+
+                        Marker currentMarker = map.addMarker(markerOption);
+
+                        mMarkersHashMap.put(currentMarker, myMarker);
+                    }
+
                 }
-
-                else if (type.equalsIgnoreCase("auction")) {
-                    MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude()));
-                    markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.currentlocation_icon1));
-
-                    Marker currentMarker = map.addMarker(markerOption);
-
-                    mMarkersHashMap.put(currentMarker, myMarker);
-                }
-
-                else
-                {
-                    MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude()));
-                    markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.currentlocation_icon1));
-
-                    Marker currentMarker = map.addMarker(markerOption);
-
-                    mMarkersHashMap.put(currentMarker, myMarker);
-                }
-
             }
-        }
+    }
     }
 
 
@@ -585,7 +584,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
 
         if (progress == 0) {
             map.clear();
-            mMyMarkersArray = plotMyNeighboursHail.markerpos(SharedPrefs.MY_USER_ID,SharedPrefs.MY_CUR_LAT,SharedPrefs.MY_CUR_LNG,"broker", SharedPrefs.MY_ROLE_KEY);
+            mMyMarkersArray = plotMyNeighboursHail.markerpos(my_user_id,Str_Lng,Str_Lat,"broker", my_role);
             plotMarkers(mMyMarkersArray,"broker");
             tv1.setTextColor(Color.RED);
             tv2.setTextColor(Color.BLACK);
@@ -594,7 +593,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         } else if (progress == 50) {
 
             map.clear();
-            mMyMarkersArray = plotMyNeighboursHail.markerpos(SharedPrefs.MY_USER_ID,SharedPrefs.MY_CUR_LAT,SharedPrefs.MY_CUR_LNG,"auction", SharedPrefs.MY_ROLE_KEY);
+            mMyMarkersArray = plotMyNeighboursHail.markerpos(my_user_id,Str_Lng,Str_Lat,"auction", my_role);
 
             plotMarkers(mMyMarkersArray,"auction");
 
@@ -604,7 +603,7 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
 
         } else if (progress == 100) {
             map.clear();
-            mMyMarkersArray = plotMyNeighboursHail.markerpos(SharedPrefs.MY_USER_ID,SharedPrefs.MY_CUR_LAT,SharedPrefs.MY_CUR_LNG,"builder",SharedPrefs.MY_ROLE_KEY);
+            mMyMarkersArray = plotMyNeighboursHail.markerpos(my_user_id,Str_Lng,Str_Lat,"builder",my_role);
             plotMarkers(mMyMarkersArray,"builder");
 
 
@@ -895,14 +894,11 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
                 double lat = location.getLatitude();
                 double lng = location.getLongitude();
 
-                String Str_Lat = String.valueOf(lat);
-                String Str_Lng = String.valueOf(lng);
+               Str_Lat = String.valueOf(lat);
+               Str_Lng = String.valueOf(lng);
                 SharedPrefs.save(context,SharedPrefs.MY_CUR_LAT,Str_Lat);
                 SharedPrefs.save(context,SharedPrefs.MY_CUR_LNG,Str_Lng);
-                String u_id = SharedPrefs.getString(context,SharedPrefs.MY_USER_ID);
-
-                String u_role = SharedPrefs.getString(context,SharedPrefs.MY_ROLE_KEY);
-                sendLocationUpdate.sendPostRequest(u_id,Str_Lat,Str_Lng,u_role);
+                sendLocationUpdate.sendPostRequest(my_user_id,Str_Lat,Str_Lng,my_role);
                 return null;
             }
         }

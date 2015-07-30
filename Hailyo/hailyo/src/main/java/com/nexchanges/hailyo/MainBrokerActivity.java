@@ -50,7 +50,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.nexchanges.hailyo.DrawerClass.AboutActivity;
 import com.nexchanges.hailyo.DrawerClass.HelpActivity;
 import com.nexchanges.hailyo.DrawerClass.ProfileActivity;
-import com.nexchanges.hailyo.DrawerClass.SettingsActivity;
 import com.nexchanges.hailyo.customSupportClass.CheckLocationServices;
 import com.nexchanges.hailyo.customSupportClass.MyMarker;
 import com.nexchanges.hailyo.apiSupport.PlotMyNeighboursHail;
@@ -101,7 +100,7 @@ import java.util.List;
     private ListView listView;
     private CustomListAdapter_Visit adapter;
     LocationManager mLocationManager;
-    String type_user,is_transaction;
+    String type_user,is_transaction,Str_Lng,Str_Lat;
     BroadcastReceiver ReceivefromGCM;
 
 
@@ -143,7 +142,7 @@ import java.util.List;
     LatLng currentLocation;
 
     LatLng selectedLocation;
-    String selectedLocation_Name;
+    String selectedLocation_Name, my_user_id,my_role;
     ViewFlipper VF;
     String fetchname, fetchemail, fetchphoto;
 
@@ -162,6 +161,8 @@ import java.util.List;
         setContentView(R.layout.activity_broker_main);
         context = this;
 
+        my_role = SharedPrefs.getString(context,SharedPrefs.MY_ROLE_KEY);
+        my_user_id = SharedPrefs.getString(context,SharedPrefs.MY_USER_ID);
 
         is_transaction = SharedPrefs.getString(context, SharedPrefs.SUCCESSFUL_HAIL);
         checkLocationServices.checkGpsStatus(context);
@@ -179,8 +180,6 @@ import java.util.List;
         visit_refresh.setOnRefreshListener(this);
 
         deal_refresh.setOnRefreshListener(this);
-
-
         deal_refresh.setColorScheme(
                 R.color.red, R.color.darkturquoise,
                 R.color.green, R.color.blue);
@@ -235,10 +234,10 @@ import java.util.List;
 
         mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
-        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0,10
+        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,60000,10
                 ,mLocationListener);
 
-        mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,0,10
+        mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,60000,10
                 ,mLocationListener);
 
 
@@ -293,6 +292,9 @@ import java.util.List;
                 deals.setTextColor(Color.BLACK);
                 yo.setBackgroundResource(R.drawable.button_border);
                 yo.setTextColor(Color.BLACK);
+                mMyMarkersArray_Hail = plotMyNeighboursHail.markerpos(my_user_id,Str_Lng,Str_Lat,"broker",my_role);
+                plotHailMarkers(mMyMarkersArray_Hail);
+
                 break;
         }
 
@@ -416,6 +418,9 @@ import java.util.List;
                     yo.setTextColor(Color.BLACK);
                     deals.setBackgroundResource(R.drawable.button_border);
                     deals.setTextColor(Color.BLACK);
+                    mMyMarkersArray_Hail = plotMyNeighboursHail.markerpos(my_user_id,Str_Lng,Str_Lat,"broker",my_role);
+                  plotHailMarkers(mMyMarkersArray_Hail);
+
 
                 }
             }
@@ -577,8 +582,8 @@ import java.util.List;
                 map_hail = googleMap;
                 map_hail.setMyLocationEnabled(true);
 
-                mMyMarkersArray_Hail = plotMyNeighboursHail.markerpos(SharedPrefs.MY_USER_ID,SharedPrefs.MY_CUR_LAT,SharedPrefs.MY_CUR_LNG,"broker",SharedPrefs.MY_ROLE_KEY);
-                plotHailMarkers(mMyMarkersArray_Hail);
+                mMyMarkersArray_Hail = plotMyNeighboursHail.markerpos(my_user_id,Str_Lng,Str_Lat,"broker",my_role);
+              plotHailMarkers(mMyMarkersArray_Hail);
 
             }
         });
@@ -615,6 +620,9 @@ import java.util.List;
     }
 
     private void plotHailMarkers(ArrayList<MyMarker> markers) {
+        if (markers!=null)
+            {
+
         if (markers.size() > 0) {
             for (MyMarker myMarker : markers) {
 
@@ -626,6 +634,7 @@ import java.util.List;
                 mMarkersHashMap_hail.put(currentMarker, myMarker);
 
             }
+        }
         }
     }
 
@@ -958,7 +967,7 @@ import java.util.List;
 
     }
 
-    private final LocationListener mLocationListener = new LocationListener() {
+   private final LocationListener mLocationListener = new LocationListener() {
 
         @Override
         public void onLocationChanged(final Location location) {
@@ -991,17 +1000,15 @@ import java.util.List;
                 double lat = location.getLatitude();
                 double lng = location.getLongitude();
 
-                String Str_Lng = String.valueOf(lng);
-                String Str_Lat = String.valueOf(lat);
+                Str_Lng = String.valueOf(lng);
+                Str_Lat = String.valueOf(lat);
                 Log.i(TAG,"Value of Lat is"  + Str_Lat);
                 Log.i(TAG,"Value of Long is"  + Str_Lng);
 
                 SharedPrefs.save(context,SharedPrefs.MY_CUR_LAT,Str_Lat);
                 SharedPrefs.save(context,SharedPrefs.MY_CUR_LNG,Str_Lng);
-                String u_id = SharedPrefs.getString(context,SharedPrefs.MY_USER_ID);
-                String u_role = SharedPrefs.getString(context,SharedPrefs.MY_ROLE_KEY);
 
-                sendLocationUpdate.sendPostRequest(u_id,Str_Lat,Str_Lng,u_role );
+                sendLocationUpdate.sendPostRequest(my_user_id,Str_Lat,Str_Lng,my_role );
                 return null;
             }
         }
