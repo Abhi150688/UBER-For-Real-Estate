@@ -177,13 +177,30 @@ import java.util.HashMap;
             {
 
                 JSONObject attri = user__list.getJSONObject(j);
-                String lat = attri.getString("lat");
-                String lng = attri.getString("long");
+                JSONArray loc = attri.getJSONArray("loc");
+
+                String lng = loc.getString(0);
+                String lat = loc.getString(1);
 
                 System.out.print("Lat is" + lat);
                 System.out.print("Long is" + lng);
                 mMarkersHashMap = new HashMap<Marker, MyMarker>();
                 mMyMarkersArray3.add(new MyMarker(Double.parseDouble(lat), Double.parseDouble(lng)));
+
+
+/*
+                String Loc = loc.getString(0);
+                String delims = "[,]";
+                String[] tokens = Loc.split(delims);
+                String Lat = tokens[0];
+                String Lng = tokens[1];
+                System.out.print("Lat is" + Lat);
+                System.out.print("Long is" + Lng);
+                mMarkersHashMap = new HashMap<Marker, MyMarker>();
+                mMyMarkersArray3.add(new MyMarker(Double.parseDouble(Lat), Double.parseDouble(Lng)));
+*/
+
+
 
             }
 

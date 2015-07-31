@@ -428,7 +428,7 @@ public class ChooseRoleActivity extends Activity {
         }
 
         SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
-        sendPostReqAsyncTask.execute(mobile, code, Semail, Sname, user_role, regid);
+        sendPostReqAsyncTask.execute(mobile, code, Semail, Sname, user_role, regid,lon,lat);
     }
 
     void signup_success() {
