@@ -397,19 +397,19 @@ public final class R {
 		public static final int dgts__logo_name = 0x7f02007d;
 		public static final int dgts__spinner_dark = 0x7f02007e;
 		public static final int dgts__spinner_light = 0x7f02007f;
-		public static final int progress_dark = 0x7f0200d3;
-		public static final int progress_light = 0x7f0200d5;
-		public static final int tw__ic_logo_default = 0x7f0200ef;
-		public static final int tw__login_btn = 0x7f0200f4;
-		public static final int tw__login_btn_default = 0x7f0200f5;
-		public static final int tw__login_btn_default_light = 0x7f0200f6;
-		public static final int tw__login_btn_disabled = 0x7f0200f7;
-		public static final int tw__login_btn_light = 0x7f0200f8;
-		public static final int tw__login_btn_pressed = 0x7f0200f9;
-		public static final int tw__login_btn_pressed_light = 0x7f0200fa;
-		public static final int tw__login_btn_text_color_light = 0x7f0200fb;
-		public static final int tw__share_email_header = 0x7f0200fc;
-		public static final int tw__transparent = 0x7f0200fd;
+		public static final int progress_dark = 0x7f0200d2;
+		public static final int progress_light = 0x7f0200d4;
+		public static final int tw__ic_logo_default = 0x7f0200ee;
+		public static final int tw__login_btn = 0x7f0200f3;
+		public static final int tw__login_btn_default = 0x7f0200f4;
+		public static final int tw__login_btn_default_light = 0x7f0200f5;
+		public static final int tw__login_btn_disabled = 0x7f0200f6;
+		public static final int tw__login_btn_light = 0x7f0200f7;
+		public static final int tw__login_btn_pressed = 0x7f0200f8;
+		public static final int tw__login_btn_pressed_light = 0x7f0200f9;
+		public static final int tw__login_btn_text_color_light = 0x7f0200fa;
+		public static final int tw__share_email_header = 0x7f0200fb;
+		public static final int tw__transparent = 0x7f0200fc;
 	}
 	public static final class id {
 		public static final int action_bar = 0x7f0f0058;
@@ -537,9 +537,9 @@ public final class R {
 		public static final int dgts__activity_pin_code = 0x7f040029;
 		public static final int dgts__country_row = 0x7f04002a;
 		public static final int dgts__state_button = 0x7f04002b;
-		public static final int support_simple_spinner_dropdown_item = 0x7f040050;
-		public static final int tw__activity_oauth = 0x7f040051;
-		public static final int tw__activity_share_email = 0x7f040052;
+		public static final int support_simple_spinner_dropdown_item = 0x7f040051;
+		public static final int tw__activity_oauth = 0x7f040052;
+		public static final int tw__activity_share_email = 0x7f040053;
 	}
 	public static final class raw {
 		public static final int tw__cacerts = 0x7f060007;

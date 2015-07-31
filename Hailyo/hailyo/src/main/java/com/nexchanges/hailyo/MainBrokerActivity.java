@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
+import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
@@ -56,7 +57,9 @@ import com.nexchanges.hailyo.customSupportClass.MyMarker;
 import com.nexchanges.hailyo.apiSupport.PlotMyNeighboursHail;
 import com.nexchanges.hailyo.apiSupport.SendLocationUpdate;
 import com.nexchanges.hailyo.gcm.GcmMessageHandler;
+import com.nexchanges.hailyo.list_adapter.NavDrawerListAdapter;
 import com.nexchanges.hailyo.model.DealData;
+import com.nexchanges.hailyo.model.NavDrawerItem;
 import com.nexchanges.hailyo.model.SharedPrefs;
 import com.nexchanges.hailyo.model.VisitData;
 import com.nexchanges.hailyo.model.YoData;
@@ -86,17 +89,13 @@ import java.util.List;
  * The Activity MainActivity will launched at the start of the app.
  */public class MainBrokerActivity extends FragmentActivity implements SeekBar.OnSeekBarChangeListener, SwipeRefreshLayout.OnRefreshListener {
 
-    //ViewAll Visits
     PlotMyNeighboursHail plotMyNeighboursHail = new PlotMyNeighboursHail();
     CheckLocationServices checkLocationServices = new CheckLocationServices();
     private static final String TAG = MainBrokerActivity.class.getSimpleName();
-    int max = 15, min = 5;
-    int timer_val=5;
     SendLocationUpdate sendLocationUpdate = new SendLocationUpdate();
     Boolean location_read = false;
 
     private static final String url = "https://api.myjson.com/bins/nk0q";
-    private ProgressDialog pDialog;
     private List<VisitData> visitList = new ArrayList<VisitData>();
     private ListView listView;
     private CustomListAdapter_Visit adapter;
@@ -104,34 +103,23 @@ import java.util.List;
     String type_user,is_transaction,Str_Lng,Str_Lat;
     BroadcastReceiver ReceivefromGCM;
 
-
-    //View All Deals
-
     private static final String urlD = "https://api.myjson.com/bins/3r0d6";
     private ProgressDialog pDialog_Deal;
     private List<DealData> dealList = new ArrayList<DealData>();
     private ListView listViewD;
     private CustomListAdapter_Deals adapterD;
 
-
-    //View Yo Data
     private static final String urlYo = "https://api.myjson.com/bins/1wke2";
     private ProgressDialog pDialog_Yo;
     private List<YoData> yoList = new ArrayList<YoData>();
     private ListView listViewYo;
     private CustomListAdapter_Yo adapterYo;
 
-
     private DrawerLayout drawerLayout;
 
     String[] listItems;
-
     Context context;
-
     private ListView drawerLeft;
-
-    private ListView drawerRight;
-
     private ActionBarDrawerToggle drawerToggle;
 
     GoogleMap map_hail;
@@ -140,13 +128,10 @@ import java.util.List;
     ImageButton SetSiteVisitLocation;
     SwipeRefreshLayout yo_refresh, visit_refresh, deal_refresh;
 
-    LatLng currentLocation;
-
-    LatLng selectedLocation;
+    LatLng currentLocation, selectedLocation;
     String selectedLocation_Name, my_user_id,my_role;
     ViewFlipper VF;
     String fetchname, fetchemail, fetchphoto;
-
     Button yo, hail, deals,visits;
     SeekBar avlreq;
     ImageView smallphoto;
@@ -155,6 +140,14 @@ import java.util.List;
     private ArrayList<MyMarker> mMyMarkersArray_Hail = new ArrayList<MyMarker>();
     private HashMap<Marker, MyMarker> mMarkersHashMap_hail;
     int flipper_index=0;
+
+    private String[] navMenuTitles;
+    private TypedArray navMenuIcons;
+
+    private ArrayList<NavDrawerItem> navDrawerItems;
+    private NavDrawerListAdapter navadapter;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -168,10 +161,8 @@ import java.util.List;
         is_transaction = SharedPrefs.getString(context, SharedPrefs.SUCCESSFUL_HAIL);
         checkLocationServices.checkGpsStatus(context);
 
-
         avlreq = (SeekBar) findViewById(R.id.seekBar2);
         avlreq.setOnSeekBarChangeListener(this);
-
         yo_refresh = (SwipeRefreshLayout)findViewById(R.id.yo_refresh);
         visit_refresh = (SwipeRefreshLayout)findViewById(R.id.visit_refresh);
         deal_refresh = (SwipeRefreshLayout)findViewById(R.id.deal_refresh);
@@ -213,14 +204,11 @@ import java.util.List;
         SiteVisitAddressBar = (TextView) findViewById(R.id.SiteVisitAddressBar);
         SetSiteVisitLocation = (ImageButton) findViewById(R.id.ic_launcher);
 
-
-
         //All Visits Frame 2
         listView = (ListView) findViewById(R.id.visitlist);
         adapter = new CustomListAdapter_Visit(this, visitList);
         listView.setAdapter(adapter);
         //All Visits - Frame 2
-
 
         //All Deals Frame 3
         listViewD = (ListView) findViewById(R.id.dealslist);
@@ -240,7 +228,6 @@ import java.util.List;
 
         mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,60000,10
                 ,mLocationListener);
-
 
         //Yo Data
 
@@ -374,12 +361,10 @@ import java.util.List;
             @Override
             public void onClick(View v) {
 
-                if(is_transaction.equalsIgnoreCase("true"))
-                {
-                    Intent PostYoActivityBroker=new Intent(context, PostYoActivity_Broker.class);
-                    startActivity(PostYoActivityBroker);}
-
-                else{
+                if (is_transaction.equalsIgnoreCase("true")) {
+                    Intent PostYoActivityBroker = new Intent(context, PostYoActivity_Broker.class);
+                    startActivity(PostYoActivityBroker);
+                } else {
                     VF.setDisplayedChild(0);
 
                     yo.setBackgroundColor(Color.parseColor("#FFA500"));
@@ -394,7 +379,8 @@ import java.util.List;
                     yo_refresh.setRefreshing(true);
                     refreshYo("Req");
 
-                }}
+                }
+            }
         });
 
         hail.setOnClickListener(new View.OnClickListener() {
@@ -478,14 +464,31 @@ import java.util.List;
 
 
         //Nav Drawer
+
+        // listItems = getResources().getStringArray(R.array.listItems);
+        navMenuTitles = getResources().getStringArray(R.array.listItems);
+        navMenuIcons = getResources()
+                .obtainTypedArray(R.array.nav_drawer_icons);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout12);
         drawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
                 GravityCompat.START);
 
-        listItems = getResources().getStringArray(R.array.listItems);
         drawerLeft = (ListView) findViewById(R.id.left_drawer);
 
-        drawerLeft.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listItems));
+        navDrawerItems = new ArrayList<NavDrawerItem>();
+
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
+
+        navMenuIcons.recycle();
+
+        navadapter = new NavDrawerListAdapter(getApplicationContext(),
+                navDrawerItems);
+       drawerLeft.setAdapter(navadapter);
+
+        //  drawerLeft.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listItems));
 
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
                 R.drawable.home_icon, R.string.drawer_open,
@@ -509,9 +512,6 @@ import java.util.List;
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
-
-        // getSupportActionBar().setHomeButtonEnabled(true);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         LayoutInflater inflate = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View vi = inflate.inflate(R.layout.left_nav_header, null);

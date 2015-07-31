@@ -31,17 +31,17 @@ public final class R {
 		public static final int tw__permission_title_text_size = 0x7f09008b;
 	}
 	public static final class drawable {
-		public static final int tw__ic_logo_default = 0x7f0200ef;
-		public static final int tw__login_btn = 0x7f0200f4;
-		public static final int tw__login_btn_default = 0x7f0200f5;
-		public static final int tw__login_btn_default_light = 0x7f0200f6;
-		public static final int tw__login_btn_disabled = 0x7f0200f7;
-		public static final int tw__login_btn_light = 0x7f0200f8;
-		public static final int tw__login_btn_pressed = 0x7f0200f9;
-		public static final int tw__login_btn_pressed_light = 0x7f0200fa;
-		public static final int tw__login_btn_text_color_light = 0x7f0200fb;
-		public static final int tw__share_email_header = 0x7f0200fc;
-		public static final int tw__transparent = 0x7f0200fd;
+		public static final int tw__ic_logo_default = 0x7f0200ee;
+		public static final int tw__login_btn = 0x7f0200f3;
+		public static final int tw__login_btn_default = 0x7f0200f4;
+		public static final int tw__login_btn_default_light = 0x7f0200f5;
+		public static final int tw__login_btn_disabled = 0x7f0200f6;
+		public static final int tw__login_btn_light = 0x7f0200f7;
+		public static final int tw__login_btn_pressed = 0x7f0200f8;
+		public static final int tw__login_btn_pressed_light = 0x7f0200f9;
+		public static final int tw__login_btn_text_color_light = 0x7f0200fa;
+		public static final int tw__share_email_header = 0x7f0200fb;
+		public static final int tw__transparent = 0x7f0200fc;
 	}
 	public static final class id {
 		public static final int imageView = 0x7f0f0147;
@@ -52,8 +52,8 @@ public final class R {
 		public static final int tw__web_view = 0x7f0f0145;
 	}
 	public static final class layout {
-		public static final int tw__activity_oauth = 0x7f040051;
-		public static final int tw__activity_share_email = 0x7f040052;
+		public static final int tw__activity_oauth = 0x7f040052;
+		public static final int tw__activity_share_email = 0x7f040053;
 	}
 	public static final class raw {
 		public static final int tw__cacerts = 0x7f060007;

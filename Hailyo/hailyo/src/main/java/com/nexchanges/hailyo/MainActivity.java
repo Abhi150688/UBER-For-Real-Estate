@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
+import android.content.res.TypedArray;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.location.Location;
@@ -60,7 +61,9 @@ import com.nexchanges.hailyo.customSupportClass.MyMarker;
 import com.nexchanges.hailyo.apiSupport.PlotMyNeighboursHail;
 import com.nexchanges.hailyo.apiSupport.SendLocationUpdate;
 import com.nexchanges.hailyo.gcm.GcmMessageHandler;
+import com.nexchanges.hailyo.list_adapter.NavDrawerListAdapter;
 import com.nexchanges.hailyo.model.DealData;
+import com.nexchanges.hailyo.model.NavDrawerItem;
 import com.nexchanges.hailyo.model.SharedPrefs;
 import com.nexchanges.hailyo.model.VisitData;
 
@@ -86,9 +89,7 @@ public class MainActivity extends FragmentActivity implements SeekBar.OnSeekBarC
 
     PlotMyNeighboursHail plotMyNeighboursHail = new PlotMyNeighboursHail();
     CheckLocationServices checkLocationServices = new CheckLocationServices();
-    //ViewAll Visits
 
-    // Visit json url
     private static final String url = "https://api.myjson.com/bins/nk0q";
     private ProgressDialog pDialog;
     private List<VisitData> visitList = new ArrayList<VisitData>();
@@ -99,8 +100,6 @@ public class MainActivity extends FragmentActivity implements SeekBar.OnSeekBarC
     SendLocationUpdate sendLocationUpdate = new SendLocationUpdate();
 
 
-    //View All Deals
-
     private static final String urlD = "https://api.myjson.com/bins/3r0d6";
     private ProgressDialog pDialog_Deal;
     private List<DealData> dealList = new ArrayList<DealData>();
@@ -108,9 +107,6 @@ public class MainActivity extends FragmentActivity implements SeekBar.OnSeekBarC
     private CustomListAdapter_Deals adapterD;
     BroadcastReceiver ReceivefromGCM;
     IntentFilter Intentfilter;
-
-
-
 
     SeekBar sb1;
     private DrawerLayout drawerLayout;
@@ -121,24 +117,15 @@ public class MainActivity extends FragmentActivity implements SeekBar.OnSeekBarC
 
     private ListView drawerLeft;
 
-    private ListView drawerRight;
-
     private ActionBarDrawerToggle drawerToggle;
 
-
-
-
-    GoogleMap map,map2,map3;
+    GoogleMap map;
     LinearLayout searchLocation;
     TextView SiteVisitAddressBar, tv1, tv2,tv3,smallname, smallemail;
     ImageButton SetSiteVisitLocation;
-
     LatLng currentLocation;
-
     LatLng selectedLocation;
-    Location curLoc;
-    String selectedLocation_Name,is_transaction, my_role,my_user_id, Str_Lat,Str_Lng;
-    String fetchname, fetchemail,fetchphoto;
+    String selectedLocation_Name,is_transaction, my_role,my_user_id, Str_Lat,Str_Lng, fetchname, fetchemail,fetchphoto;
     ViewFlipper VF10;
     ImageView smallphoto;
     LocationManager mLocationManager;
@@ -149,6 +136,12 @@ public class MainActivity extends FragmentActivity implements SeekBar.OnSeekBarC
     Button hail, deals,visits;
     int flipper_index=0;
 
+    private String[] navMenuTitles;
+    private TypedArray navMenuIcons;
+
+    private ArrayList<NavDrawerItem> navDrawerItems;
+    private NavDrawerListAdapter navadapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -156,23 +149,17 @@ public class MainActivity extends FragmentActivity implements SeekBar.OnSeekBarC
         context = this;
         checkLocationServices.checkGpsStatus(context);
         is_transaction = SharedPrefs.getString(context, SharedPrefs.SUCCESSFUL_HAIL);
-
         my_role = SharedPrefs.getString(context,SharedPrefs.MY_ROLE_KEY);
         my_user_id = SharedPrefs.getString(context,SharedPrefs.MY_USER_ID);
 
-
-
-        sb1 = (SeekBar)findViewById(R.id.seekBar2);
+        sb1 = (SeekBar) findViewById(R.id.seekBar2);
         sb1.setOnSeekBarChangeListener(this);
 
         mLocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60000, 10, mLocationListener);
 
-
-
         visit_refresh = (SwipeRefreshLayout)findViewById(R.id.visit_refresh);
         deal_refresh = (SwipeRefreshLayout)findViewById(R.id.deal_refresh);
-
 
         tv1 = (TextView) findViewById(R.id.textView1);
         tv2 = (TextView) findViewById(R.id.textView2);
@@ -193,14 +180,9 @@ public class MainActivity extends FragmentActivity implements SeekBar.OnSeekBarC
                 R.color.red, R.color.yellow,
                 R.color.green, R.color.blue);
 
-
         searchLocation = (LinearLayout) findViewById(R.id.searchLocation);
         SiteVisitAddressBar = (TextView) findViewById(R.id.SiteVisitAddressBar);
-
-
         SetSiteVisitLocation = (ImageButton) findViewById(R.id.ic_launcher);
-
-
         VF10 = (ViewFlipper) findViewById(R.id.ViewFlipper10);
         flipper_index = SharedPrefs.getInt(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 0);
         VF10.setDisplayedChild(flipper_index);
@@ -231,13 +213,8 @@ public class MainActivity extends FragmentActivity implements SeekBar.OnSeekBarC
                 deals.setTextColor(Color.WHITE);
                 hail.setTextColor(Color.BLACK);
                 visits.setTextColor(Color.BLACK);
-
                 break;
-
         }
-
-
-
 
         hail.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -260,14 +237,9 @@ public class MainActivity extends FragmentActivity implements SeekBar.OnSeekBarC
                 }}
         });
 
-
-
-
-
         listViewD = (ListView) findViewById(R.id.dealslist);
         adapterD = new CustomListAdapter_Deals(this, dealList);
         listViewD.setAdapter(adapterD);
-
 
         deals.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -292,7 +264,6 @@ public class MainActivity extends FragmentActivity implements SeekBar.OnSeekBarC
         adapter = new CustomListAdapter_Visit(this, visitList);
         listView.setAdapter(adapter);
 
-
         visits.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -306,12 +277,8 @@ public class MainActivity extends FragmentActivity implements SeekBar.OnSeekBarC
 
                 visit_refresh.setRefreshing(true);
                 refresh_visit();
-
-
             }
         });
-
-
 
         searchLocation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -325,16 +292,32 @@ public class MainActivity extends FragmentActivity implements SeekBar.OnSeekBarC
 
         SharedPrefs.save(context, SharedPrefs.CURRENT_LOC_KEY, SiteVisitAddressBar.getText().toString());
 
-
         //Nav Drawer
+
+       // listItems = getResources().getStringArray(R.array.listItems);
+        navMenuTitles = getResources().getStringArray(R.array.listItems);
+        navMenuIcons = getResources()
+                .obtainTypedArray(R.array.nav_drawer_icons);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout12);
         drawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
                 GravityCompat.START);
 
-        listItems = getResources().getStringArray(R.array.listItems);
         drawerLeft = (ListView) findViewById(R.id.left_drawer);
 
-        drawerLeft.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listItems));
+        navDrawerItems = new ArrayList<NavDrawerItem>();
+
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
+        navDrawerItems.add(new NavDrawerItem(navMenuTitles[3], navMenuIcons.getResourceId(3, -1)));
+
+        navMenuIcons.recycle();
+
+        navadapter = new NavDrawerListAdapter(getApplicationContext(),
+                navDrawerItems);
+        drawerLeft.setAdapter(navadapter);
+
+      //  drawerLeft.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listItems));
 
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
                 R.drawable.home_icon, R.string.drawer_open,
@@ -344,11 +327,12 @@ public class MainActivity extends FragmentActivity implements SeekBar.OnSeekBarC
             public void onDrawerClosed(View view) {
 
                 super.onDrawerClosed(view);
+                invalidateOptionsMenu();
             }
 
             @Override
             public void onDrawerOpened(View drawerView) {
-
+                invalidateOptionsMenu();
                 super.onDrawerOpened(drawerView);
             }
         };
@@ -358,10 +342,6 @@ public class MainActivity extends FragmentActivity implements SeekBar.OnSeekBarC
 
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
-        //getSupportActionBar().setHomeButtonEnabled(true);
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
 
         inflate = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View vi = inflate.inflate(R.layout.left_nav_header,null);

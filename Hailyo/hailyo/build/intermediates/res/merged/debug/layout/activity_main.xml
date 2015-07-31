@@ -323,7 +323,7 @@
         android:background="@color/white"
         android:choiceMode="singleChoice"
         android:headerDividersEnabled="true"
-        android:listSelector="@color/orange"
+        android:listSelector="@drawable/list_drawer_selector"
         />
 
 

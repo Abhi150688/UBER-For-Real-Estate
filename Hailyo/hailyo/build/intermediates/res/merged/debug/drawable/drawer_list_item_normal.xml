@@ -1,0 +1,7 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <gradient
+        android:startColor="@color/list_row_start_color"
+        android:endColor="@color/list_row_end_color"
+        android:angle="90" />
+</shape><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/drawable/drawer_list_item_normal.xml -->

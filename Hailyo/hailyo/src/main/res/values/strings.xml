@@ -56,6 +56,13 @@
         <item>ABOUT</item>
         </string-array>
 
+    <array name="nav_drawer_icons">
+        <item>@drawable/ic_card</item>
+        <item>@drawable/ic_profile</item>
+        <item>@drawable/ic_help</item>
+        <item>@drawable/centerhailyo</item>
+         </array>
+
 
     <string name="pbroker">PROPERTY\n  BROKER</string>
     <string name="hailmode">HAIL</string>

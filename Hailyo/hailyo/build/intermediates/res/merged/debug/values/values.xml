@@ -8,6 +8,12 @@
         <item>HELP</item>
         <item>ABOUT</item>
         </string-array>
+    <array name="nav_drawer_icons">
+        <item>@drawable/ic_card</item>
+        <item>@drawable/ic_profile</item>
+        <item>@drawable/ic_help</item>
+        <item>@drawable/centerhailyo</item>
+         </array>
     <!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/build/intermediates/exploded-aar/com.digits.sdk.android/digits/1.6.0/res/values/values.xml -->
     <eat-comment/>
     <attr format="reference|color" name="dgts__accentColor"/>
