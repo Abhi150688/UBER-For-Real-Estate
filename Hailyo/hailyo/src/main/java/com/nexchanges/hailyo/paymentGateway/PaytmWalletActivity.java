@@ -1,5 +1,6 @@
 package com.nexchanges.hailyo.paymentGateway;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.ActionBarActivity;
@@ -35,7 +36,7 @@ import java.util.Random;
  * Created by Abhishek on 07/05/15.
  */
 
-public class PaytmWalletActivity extends ActionBarActivity implements View.OnClickListener {
+public class PaytmWalletActivity extends Activity implements View.OnClickListener {
 
     Context context;
 

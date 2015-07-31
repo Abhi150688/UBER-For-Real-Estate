@@ -71,7 +71,7 @@ public class NewBidActivity extends Activity {
         loan_sanc = (RadioButton) findViewById(R.id.sanc);
         loan_not_sanc = (RadioButton) findViewById(R.id.notSanc);
 
-        srowtv3_Sale.addTextChangedListener(new TextWatcher() {
+        /*srowtv3_Sale.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -109,7 +109,7 @@ public class NewBidActivity extends Activity {
 
             }
         });
-
+*/
 
 
         bidbrokername = (TextView)findViewById(R.id.bname);

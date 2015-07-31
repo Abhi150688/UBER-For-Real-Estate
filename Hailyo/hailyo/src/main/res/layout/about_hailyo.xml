@@ -4,6 +4,18 @@
     android:layout_height="match_parent"
     android:background="@color/white">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:gravity="center"
+        android:padding="5dp"
+        android:background="@color/orange"
+        android:textColor="@color/white"
+        android:text="About Hailyo"/>
+
+
     <Button
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"

@@ -13,6 +13,7 @@ import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -83,7 +84,7 @@ import java.util.List;
 
 /**
  * The Activity MainActivity will launched at the start of the app.
- */public class MainBrokerActivity extends ActionBarActivity implements SeekBar.OnSeekBarChangeListener, SwipeRefreshLayout.OnRefreshListener {
+ */public class MainBrokerActivity extends FragmentActivity implements SeekBar.OnSeekBarChangeListener, SwipeRefreshLayout.OnRefreshListener {
 
     //ViewAll Visits
     PlotMyNeighboursHail plotMyNeighboursHail = new PlotMyNeighboursHail();
@@ -302,12 +303,11 @@ import java.util.List;
         SetSiteVisitLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              //  SharedPrefs.save(context, SharedPrefs.CURRENT_LOC_KEY, SiteVisitAddressBar.getText().toString());
-                if (location_read==true) {
+                //  SharedPrefs.save(context, SharedPrefs.CURRENT_LOC_KEY, SiteVisitAddressBar.getText().toString());
+                if (location_read == true) {
                     Intent EnterConfigActivity = new Intent(context, EnterConfigActivity.class);
                     startActivity(EnterConfigActivity);
-                }
-                else {
+                } else {
                     Toast.makeText(getApplicationContext(), "Your Location is not available \n Please try again!",
                             Toast.LENGTH_LONG).show();
                 }
@@ -507,8 +507,11 @@ import java.util.List;
         drawerLayout.setDrawerListener(drawerToggle);
         drawerLayout.closeDrawers();
 
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setHomeButtonEnabled(true);
+
+        // getSupportActionBar().setHomeButtonEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         LayoutInflater inflate = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View vi = inflate.inflate(R.layout.left_nav_header, null);

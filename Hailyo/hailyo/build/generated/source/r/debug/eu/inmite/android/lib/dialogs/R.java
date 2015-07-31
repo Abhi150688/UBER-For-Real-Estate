@@ -116,26 +116,26 @@ public final class R {
 		public static final int dialog_close = 0x7f070090;
 	}
 	public static final class style {
-		public static final int DialogStyleDark = 0x7f0a008e;
-		public static final int DialogStyleLight = 0x7f0a008f;
-		public static final int SDL = 0x7f0a0096;
-		public static final int SDL_Button = 0x7f0a0097;
-		public static final int SDL_ButtonSeparator = 0x7f0a0098;
-		public static final int SDL_DatePicker = 0x7f0a0099;
-		public static final int SDL_Dialog = 0x7f0a009a;
-		public static final int SDL_Group = 0x7f0a009b;
-		public static final int SDL_Group_ButtonPanel = 0x7f0a009c;
-		public static final int SDL_Group_Content = 0x7f0a009d;
-		public static final int SDL_Group_Horizontal = 0x7f0a009e;
-		public static final int SDL_Group_Horizontal_ButtonPanel = 0x7f0a009f;
-		public static final int SDL_Group_Wrap = 0x7f0a00a0;
-		public static final int SDL_HorizontalSeparator = 0x7f0a00a1;
-		public static final int SDL_ListView = 0x7f0a00a2;
+		public static final int DialogStyleDark = 0x7f0a008f;
+		public static final int DialogStyleLight = 0x7f0a0090;
+		public static final int SDL = 0x7f0a0098;
+		public static final int SDL_Button = 0x7f0a0099;
+		public static final int SDL_ButtonSeparator = 0x7f0a009a;
+		public static final int SDL_DatePicker = 0x7f0a009b;
+		public static final int SDL_Dialog = 0x7f0a009c;
+		public static final int SDL_Group = 0x7f0a009d;
+		public static final int SDL_Group_ButtonPanel = 0x7f0a009e;
+		public static final int SDL_Group_Content = 0x7f0a009f;
+		public static final int SDL_Group_Horizontal = 0x7f0a00a0;
+		public static final int SDL_Group_Horizontal_ButtonPanel = 0x7f0a00a1;
+		public static final int SDL_Group_Wrap = 0x7f0a00a2;
+		public static final int SDL_HorizontalSeparator = 0x7f0a00a3;
+		public static final int SDL_ListView = 0x7f0a00a4;
 		public static final int SDL_Progress = 0x7f0a0019;
-		public static final int SDL_TextView = 0x7f0a00a3;
-		public static final int SDL_TextView_Message = 0x7f0a00a4;
-		public static final int SDL_TextView_Title = 0x7f0a00a5;
-		public static final int SDL_TitleSeparator = 0x7f0a00a6;
+		public static final int SDL_TextView = 0x7f0a00a5;
+		public static final int SDL_TextView_Message = 0x7f0a00a6;
+		public static final int SDL_TextView_Title = 0x7f0a00a7;
+		public static final int SDL_TitleSeparator = 0x7f0a00a8;
 	}
 	public static final class styleable {
 		public static final int[] DialogStyle = { 0x7f010030, 0x7f010031, 0x7f010032, 0x7f010033, 0x7f010034, 0x7f010035, 0x7f010036, 0x7f010037, 0x7f010038 };

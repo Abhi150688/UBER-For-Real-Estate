@@ -1,5 +1,6 @@
 package com.nexchanges.hailyo.DrawerClass;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -18,7 +19,7 @@ import com.nexchanges.hailyo.paymentGateway.PaytmWalletActivity;
 /**
  * Created by Abhishek on 07/05/15.
  */
-public class SelectPaymentTypeActivity extends ActionBarActivity implements View.OnClickListener{
+public class SelectPaymentTypeActivity extends Activity implements View.OnClickListener{
 
     Context context;
     Button usePaytm;

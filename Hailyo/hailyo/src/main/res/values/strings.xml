@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Hailyo</string>
+    <string name="app_name">"  "Hail Yo</string>
     <string name="SiteVisitLocation">Site Visit Location</string>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="ACTIVEDEALS">ACTIVE DEALS</string>
@@ -51,11 +51,10 @@
 
     <string-array name="listItems">
         <item>PAYMENT</item>
-         <item>HELP</item>
-        <item>PROMOTIONS</item>
+         <item>PROFILE</item>
+        <item>HELP</item>
         <item>ABOUT</item>
-        <item>SETTINGS</item>
-    </string-array>
+        </string-array>
 
 
     <string name="pbroker">PROPERTY\n  BROKER</string>

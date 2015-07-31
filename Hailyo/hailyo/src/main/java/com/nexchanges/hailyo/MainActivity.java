@@ -1,5 +1,7 @@
 package com.nexchanges.hailyo;
 
+import android.app.Activity;
+import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -15,6 +17,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
 
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -78,7 +81,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBarChangeListener, SwipeRefreshLayout.OnRefreshListener
+public class MainActivity extends FragmentActivity implements SeekBar.OnSeekBarChangeListener, SwipeRefreshLayout.OnRefreshListener
 {
 
     PlotMyNeighboursHail plotMyNeighboursHail = new PlotMyNeighboursHail();
@@ -353,8 +356,10 @@ public class MainActivity extends ActionBarActivity implements SeekBar.OnSeekBar
         drawerLayout.setDrawerListener(drawerToggle);
         drawerLayout.closeDrawers();
 
-        getSupportActionBar().setHomeButtonEnabled(true);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setDisplayHomeAsUpEnabled(true);
+        getActionBar().setHomeButtonEnabled(true);
+        //getSupportActionBar().setHomeButtonEnabled(true);
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
 

@@ -5,6 +5,7 @@ package com.nexchanges.hailyo;
  * Created by AbhishekWork on 21/06/15.
  */
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -16,6 +17,7 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Vibrator;
 
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.ActionBarActivity;
 import android.telephony.SmsManager;
 import android.util.Log;
@@ -41,7 +43,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * The Activity MainActivity will launched at the start of the app.
  */
-public class PostYoActivity extends ActionBarActivity
+public class PostYoActivity extends FragmentActivity
 {
 
 
