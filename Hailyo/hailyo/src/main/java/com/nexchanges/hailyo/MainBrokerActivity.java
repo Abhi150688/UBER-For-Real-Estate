@@ -228,8 +228,9 @@ import java.util.List;
 
                 YoData yo_item = (YoData) parent.getItemAtPosition(position);
                 final String spec = yo_item.getSpecCode();
+                final String U_tp = yo_item.getUserType();
                 YoPopup yoPopup = new YoPopup();
-                yoPopup.inflateYo(context,spec);
+                yoPopup.inflateYo(context,spec,U_tp);
 
             }
         });

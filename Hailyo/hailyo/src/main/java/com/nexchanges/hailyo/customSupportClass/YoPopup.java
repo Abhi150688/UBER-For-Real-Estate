@@ -24,7 +24,7 @@ public class YoPopup {
     int timer_int;
     Context myContext;
 
-    public void inflateYo(final Context context, final String spec) {
+    public void inflateYo(final Context context, final String spec, String U_tp) {
 
 
                 this.myContext = context;
@@ -36,10 +36,15 @@ public class YoPopup {
 
                 final AlertDialog alertD = new AlertDialog.Builder(myContext).create();
 
-                ImageView SendYo = (ImageView) promptView.findViewById(R.id.sendYo);
+                Button SendYo = (Button) promptView.findViewById(R.id.sendYo);
                 TextView spec1 = (TextView) promptView.findViewById(R.id.tvspec);
+                String spec_fin;
+                if (U_tp.equalsIgnoreCase("broker"))
+                    spec_fin = "Plus-"+spec;
+                else
+                spec_fin = "Direct-"+spec;
+                spec1.setText(spec_fin);
 
-                spec1.setText(spec);
 
                 final TextView timerval = (TextView) promptView.findViewById(R.id.tvtimerValue);
 

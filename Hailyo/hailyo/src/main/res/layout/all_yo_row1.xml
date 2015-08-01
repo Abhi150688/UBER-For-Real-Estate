@@ -52,14 +52,14 @@ android:background="@drawable/background_card">
         android:layout_gravity="center"
         android:gravity="center">
 
-        <!-- Client Rating -->
+        <!-- User Type  -->
         <TextView
-            android:id="@+id/user_rating"
+            android:id="@+id/user_type"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_gravity="center"
             android:gravity="center"
-            android:layout_marginLeft="3dp"
+            android:layout_marginLeft="0.5dp"
             android:layout_height="wrap_content"
             android:focusableInTouchMode="false"
             android:clickable="false"
@@ -69,7 +69,7 @@ android:background="@drawable/background_card">
 
         <View
             android:layout_width="30dp"
-            android:layout_height="1dp"
+            android:layout_height="2dp"
             android:rotation="90"
             android:background="@color/gray" />
 
@@ -81,7 +81,7 @@ android:background="@drawable/background_card">
             android:layout_gravity="center"
             android:gravity="center"
             android:layout_weight="1"
-            android:layout_marginRight="3dp"
+            android:layout_marginRight="2dp"
             android:focusableInTouchMode="false"
             android:clickable="false"
             android:focusable="false"
@@ -101,7 +101,7 @@ android:background="@drawable/background_card">
     android:layout_marginRight="5dp"
     android:id="@+id/yo_button"
     android:layout_marginBottom="5dp"
-    android:layout_height="wrap_content"
+    android:layout_height="29dp"
     android:background="@color/black"
     android:focusableInTouchMode="false"
     android:text="CONNECT"
