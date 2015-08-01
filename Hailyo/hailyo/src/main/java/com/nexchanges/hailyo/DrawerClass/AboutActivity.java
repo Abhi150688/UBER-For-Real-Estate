@@ -10,9 +10,6 @@ import android.widget.Button;
 
 import com.nexchanges.hailyo.R;
 
-import butterknife.ButterKnife;
-import butterknife.InjectView;
-
 /**
  * Created by Abhishek on 08/05/15.
  */

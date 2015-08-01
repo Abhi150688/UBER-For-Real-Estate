@@ -50,6 +50,7 @@ public class PostYoActivity_Broker extends FragmentActivity
 
     GoogleMap map;
     long ltimer,ltimer1;
+    int timer_int;
     boolean is_transaction;
 
     LatLng currentLocation;
@@ -72,7 +73,7 @@ public class PostYoActivity_Broker extends FragmentActivity
         Bundle extras = PostYoIntent.getExtras();
         phone = extras.getString("phone");
         brokerName = extras.getString("broker_Name");
-        timer = extras.getString("timer");
+        timer_int = extras.getInt("timer");
         rating = extras.getString("rating");
         Log.i(TAG,"Phone fetched from intent " + phone);
 
@@ -106,8 +107,8 @@ public class PostYoActivity_Broker extends FragmentActivity
         brokerRating.setRating(Float.parseFloat(rating));
         brokerTv.setText(brokerName);
 
-        ltimer = Long.parseLong(timer);
-        ltimer1 = ltimer*1000*60;
+
+        ltimer1 = timer_int*1000*60;
 
         allDeals = (Button) findViewById(R.id.activedeals);
 

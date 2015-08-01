@@ -7,8 +7,7 @@
     android:padding="8dp" >
 
 
-    <!-- Thumbnail Image -->
-    <com.android.volley.toolbox.NetworkImageView
+    <com.nexchanges.hailyo.customWidget.CircularNetworkImageView
         android:id="@+id/thumbnail"
         android:layout_width="80dp"
         android:layout_height="80dp"
@@ -17,7 +16,6 @@
         android:clickable="false"
         android:focusable="false"
         android:layout_marginRight="8dp" />
-
 
     <!--Spec Code -->
     <TextView

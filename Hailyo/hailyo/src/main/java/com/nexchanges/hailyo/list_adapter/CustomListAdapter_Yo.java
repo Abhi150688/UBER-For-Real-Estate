@@ -56,30 +56,52 @@ public class CustomListAdapter_Yo extends BaseAdapter {
         return yoItems.get(location);
     }
 
+
     @Override
     public long getItemId(int position) {
         return position;
     }
 
+    public static class Holder {
+      TextView U_Name;
+        TextView V_Cnt;
+        TextView Spec;
+        TextView U_Rate;
+        NetworkImageView image;
+
+
+    }
+
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
+
+        final Holder holder = new Holder();
 
         if (inflater == null)
             inflater = (LayoutInflater) activity
                     .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        if (convertView == null)
-            convertView = inflater.inflate(R.layout.all_yo_row, null);
+
+            convertView = inflater.inflate(R.layout.all_yo_row1, null);
 
         if (imageLoader == null)
             imageLoader = MyApplication.getInstance().getImageLoader();
-        NetworkImageView thumbNail = (NetworkImageView) convertView
+
+
+        holder.U_Name = (TextView) convertView.findViewById(R.id.user_name);
+        holder.V_Cnt = (TextView) convertView.findViewById(R.id.visit_count);;
+        holder.Spec = (TextView) convertView.findViewById(R.id.speccode);
+        holder.U_Rate = (TextView) convertView.findViewById(R.id.user_rating);
+        holder.image = (NetworkImageView) convertView.findViewById(R.id.thumbnail);
+
+
+        /*NetworkImageView thumbNail = (NetworkImageView) convertView
                 .findViewById(R.id.thumbnail);
         TextView User_Name = (TextView) convertView.findViewById(R.id.user_name);
         TextView Visit_Count = (TextView) convertView.findViewById(R.id.visit_count);
         TextView Spec_Code = (TextView) convertView.findViewById(R.id.speccode);
         TextView Rating = (TextView) convertView.findViewById(R.id.user_rating);
-        final TextView User_Type = (TextView) convertView.findViewById(R.id.user_type);
-
+        //final TextView User_Type = (TextView) convertView.findViewById(R.id.user_type);
+*/
 
 
 
@@ -87,23 +109,24 @@ public class CustomListAdapter_Yo extends BaseAdapter {
         m = yoItems.get(position);
 
         // thumbnail image
-        thumbNail.setImageUrl(m.getThumbnailUrl(), imageLoader);
+        holder.image.setImageUrl(m.getThumbnailUrl(), imageLoader);
 
         // title
-        User_Name.setText(m.getUserName());
+        holder.U_Name.setText(m.getUserName());
 
-        User_Type.setText(m.getUserType());
+       // User_Type.setText(m.getUserType());
 
         U_type = m.getUserType();
 
-        Spec_Code.setText(m.getSpecCode());
+        holder.Spec.setText(m.getSpecCode());
         // rating
-        Rating.setText("Rating: " + String.valueOf(m.getRating()) + "/5");
+        holder.U_Rate.setText("RATING: \n"  + String.valueOf(m.getRating()) + "/5");
         // release year
-        Visit_Count.setText("Hails done" + String.valueOf(m.getVisitCount()));
+        holder.V_Cnt.setText("HAILS \n" + String.valueOf(m.getVisitCount()));
 
 
 
+/*
 
         convertView.setOnClickListener(new View.OnClickListener() {
 
@@ -186,7 +209,7 @@ public class CustomListAdapter_Yo extends BaseAdapter {
 
             }
 
-        });
+        }); */
 
         return convertView;
     }

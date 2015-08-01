@@ -100,6 +100,7 @@ public class MainActivity extends FragmentActivity implements SeekBar.OnSeekBarC
     SendLocationUpdate sendLocationUpdate = new SendLocationUpdate();
 
 
+
     private static final String urlD = "https://api.myjson.com/bins/3r0d6";
     private ProgressDialog pDialog_Deal;
     private List<DealData> dealList = new ArrayList<DealData>();
@@ -465,10 +466,14 @@ public class MainActivity extends FragmentActivity implements SeekBar.OnSeekBarC
 
             @Override
             public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                if (firstVisibleItem == 0)
-                    visit_refresh.setEnabled(true);
-                else
-                    visit_refresh.setEnabled(false);
+                if(listView != null && listView.getChildCount() > 0)
+                {
+
+                    if ((firstVisibleItem ==0) && (listView.getChildAt(0).getTop()==0))
+                        visit_refresh.setEnabled(true);
+                    else
+                        visit_refresh.setEnabled(false);
+                }
             }
         });
 
@@ -480,10 +485,14 @@ public class MainActivity extends FragmentActivity implements SeekBar.OnSeekBarC
 
             @Override
             public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                if (firstVisibleItem == 0)
-                    deal_refresh.setEnabled(true);
-                else
-                    deal_refresh.setEnabled(false);
+                if(listViewD != null && listViewD.getChildCount() > 0)
+                {
+
+                    if ((firstVisibleItem ==0) && (listView.getChildAt(0).getTop()==0))
+                        deal_refresh.setEnabled(true);
+                    else
+                        deal_refresh.setEnabled(false);
+                }
             }
         });
 

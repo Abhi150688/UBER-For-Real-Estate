@@ -29,6 +29,7 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -42,6 +43,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.NetworkImageView;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -56,6 +58,7 @@ import com.nexchanges.hailyo.customSupportClass.CheckLocationServices;
 import com.nexchanges.hailyo.customSupportClass.MyMarker;
 import com.nexchanges.hailyo.apiSupport.PlotMyNeighboursHail;
 import com.nexchanges.hailyo.apiSupport.SendLocationUpdate;
+import com.nexchanges.hailyo.customSupportClass.YoPopup;
 import com.nexchanges.hailyo.gcm.GcmMessageHandler;
 import com.nexchanges.hailyo.list_adapter.NavDrawerListAdapter;
 import com.nexchanges.hailyo.model.DealData;
@@ -112,7 +115,8 @@ import java.util.List;
     private static final String urlYo = "https://api.myjson.com/bins/1wke2";
     private ProgressDialog pDialog_Yo;
     private List<YoData> yoList = new ArrayList<YoData>();
-    private ListView listViewYo;
+    //private ListView listViewYo;
+    private GridView mGridView;
     private CustomListAdapter_Yo adapterYo;
 
     private DrawerLayout drawerLayout;
@@ -208,18 +212,30 @@ import java.util.List;
         listView = (ListView) findViewById(R.id.visitlist);
         adapter = new CustomListAdapter_Visit(this, visitList);
         listView.setAdapter(adapter);
-        //All Visits - Frame 2
 
-        //All Deals Frame 3
         listViewD = (ListView) findViewById(R.id.dealslist);
         adapterD = new CustomListAdapter_Deals(this, dealList);
         listViewD.setAdapter(adapterD);
-        //All Deals - Frame 3
 
-        //Yo Data
-        listViewYo = (ListView) findViewById(R.id.yolist);
+        mGridView = (GridView) findViewById(R.id.yo_grid);
+
         adapterYo = new CustomListAdapter_Yo(this, yoList);
-        listViewYo.setAdapter(adapterYo);
+        mGridView.setAdapter(adapterYo);
+
+        mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                YoData yo_item = (YoData) parent.getItemAtPosition(position);
+                final String spec = yo_item.getSpecCode();
+                YoPopup yoPopup = new YoPopup();
+                yoPopup.inflateYo(context,spec);
+
+            }
+        });
+
+
+
 
         mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
@@ -309,10 +325,14 @@ import java.util.List;
 
             @Override
             public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                if (firstVisibleItem == 0)
-                    visit_refresh.setEnabled(true);
-                else
-                    visit_refresh.setEnabled(false);
+                if(listView != null && listView.getChildCount() > 0)
+                {
+
+                    if ((firstVisibleItem ==0) && (listView.getChildAt(0).getTop()==0))
+                        visit_refresh.setEnabled(true);
+                    else
+                        visit_refresh.setEnabled(false);
+                }
             }
         });
 
@@ -324,14 +344,19 @@ import java.util.List;
 
             @Override
             public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                if (firstVisibleItem == 0)
+                if(listViewD != null && listViewD.getChildCount() > 0)
+                {
+
+                if ((firstVisibleItem ==0) && (listViewD.getChildAt(0).getTop()==0))
                     deal_refresh.setEnabled(true);
-                else
+                    else
                     deal_refresh.setEnabled(false);
             }
+         }
+
         });
 
-        listViewYo.setOnScrollListener(new AbsListView.OnScrollListener() {
+        mGridView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(AbsListView absListView, int i) {
 
@@ -339,10 +364,14 @@ import java.util.List;
 
             @Override
             public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                if (firstVisibleItem == 0)
-                    yo_refresh.setEnabled(true);
-                else
-                    yo_refresh.setEnabled(false);
+                if(mGridView != null && mGridView.getChildCount() > 0)
+                {
+
+                    if ((firstVisibleItem ==0) && (mGridView.getChildAt(0).getTop()==0))
+                        yo_refresh.setEnabled(true);
+                    else
+                        yo_refresh.setEnabled(false);
+                }
             }
         });
 
