@@ -4,83 +4,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <RelativeLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.07">
 
-        android:layout_marginLeft="@dimen/feed_item_margin"
-        android:layout_marginRight="@dimen/feed_item_margin"
-        android:layout_marginTop="@dimen/feed_item_margin"
-        android:orientation="vertical"
-        android:paddingBottom="@dimen/feed_item_padding_top_bottom"
-        android:paddingTop="@dimen/feed_item_padding_top_bottom" >
 
-        <LinearLayout
-            android:layout_width="fill_parent"
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="63dp"
+        android:background="@color/black">
+
+
+    </LinearLayout>
+
+        <com.nexchanges.hailyo.customWidget.CircularNetworkImageView
+            android:layout_width="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="5dp"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="@color/black"
-            android:paddingLeft="@dimen/feed_item_padding_left_right"
-            android:paddingRight="@dimen/feed_item_padding_left_right" >
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_profile_picture"
+            android:id="@+id/thumbnail"
+            android:layout_alignParentLeft="true"
+            android:focusableInTouchMode="false"
+            android:clickable="false"
+            android:focusable="false"
+            android:layout_marginRight="8dp"
+            android:layout_gravity="left|center_vertical">
 
-
-
-            <com.nexchanges.hailyo.customWidget.CircularNetworkImageView
-                android:layout_width="@dimen/feed_item_profile_pic"
-                android:layout_height="@dimen/feed_item_profile_pic"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_profile_picture"
-                android:id="@+id/thumbnail"
-                android:layout_alignParentLeft="true"
-                android:focusableInTouchMode="false"
-                android:clickable="false"
-                android:focusable="false"
-                android:layout_marginRight="8dp">
-                 </com.nexchanges.hailyo.customWidget.CircularNetworkImageView>
-
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingLeft="@dimen/feed_item_profile_info_padd" >
-
-                <TextView
-                    android:id="@+id/name"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="@dimen/feed_item_profile_name"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/timestamp"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/timestamp"
-                    android:textSize="@dimen/feed_item_timestamp" />
-            </LinearLayout>
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/txtStatusMsg"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:paddingBottom="5dp"
-            android:paddingLeft="@dimen/feed_item_status_pad_left_right"
-            android:paddingRight="@dimen/feed_item_status_pad_left_right"
-            android:paddingTop="@dimen/feed_item_status_pad_top" />
-
-        <TextView
-            android:id="@+id/txtUrl"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:linksClickable="true"
-            android:paddingBottom="10dp"
-            android:paddingLeft="@dimen/feed_item_status_pad_left_right"
-            android:paddingRight="@dimen/feed_item_status_pad_left_right"
-            android:textColorLink="@color/link" />
+            </com.nexchanges.hailyo.customWidget.CircularNetworkImageView>
 
     </RelativeLayout>
+
 
 </LinearLayout>

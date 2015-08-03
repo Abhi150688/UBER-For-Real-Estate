@@ -18,7 +18,6 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -27,14 +26,12 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
@@ -43,7 +40,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.NetworkImageView;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -90,13 +86,13 @@ import java.util.List;
 
 /**
  * The Activity MainActivity will launched at the start of the app.
- */public class MainBrokerActivity extends FragmentActivity implements SeekBar.OnSeekBarChangeListener, SwipeRefreshLayout.OnRefreshListener {
+ */public class MainBrokerActivity extends FragmentActivity implements SwipeRefreshLayout.OnRefreshListener {
 
     PlotMyNeighboursHail plotMyNeighboursHail = new PlotMyNeighboursHail();
     CheckLocationServices checkLocationServices = new CheckLocationServices();
     private static final String TAG = MainBrokerActivity.class.getSimpleName();
     SendLocationUpdate sendLocationUpdate = new SendLocationUpdate();
-    Boolean location_read = false;
+    Boolean location_read = false, avail_press = false, req_press = true;
 
     private static final String url = "https://api.myjson.com/bins/nk0q";
     private List<VisitData> visitList = new ArrayList<VisitData>();
@@ -136,8 +132,7 @@ import java.util.List;
     String selectedLocation_Name, my_user_id,my_role;
     ViewFlipper VF;
     String fetchname, fetchemail, fetchphoto;
-    Button yo, hail, deals,visits;
-    SeekBar avlreq;
+    Button yo, hail, deals,visits,availability, requirement;
     ImageView smallphoto;
     IntentFilter Intentfilter;
 
@@ -165,8 +160,6 @@ import java.util.List;
         is_transaction = SharedPrefs.getString(context, SharedPrefs.SUCCESSFUL_HAIL);
         checkLocationServices.checkGpsStatus(context);
 
-        avlreq = (SeekBar) findViewById(R.id.seekBar2);
-        avlreq.setOnSeekBarChangeListener(this);
         yo_refresh = (SwipeRefreshLayout)findViewById(R.id.yo_refresh);
         visit_refresh = (SwipeRefreshLayout)findViewById(R.id.visit_refresh);
         deal_refresh = (SwipeRefreshLayout)findViewById(R.id.deal_refresh);
@@ -198,11 +191,15 @@ import java.util.List;
 
         visits = (Button) findViewById(R.id.activevisits);
 
+        availability = (Button) findViewById(R.id.availability);
+        requirement = (Button) findViewById(R.id.requirement);
+
+
         deals = (Button) findViewById(R.id.activedeals);
 
         hail = (Button) findViewById(R.id.hailmode);
 
-        VF = (ViewFlipper) findViewById(R.id.ViewFlipper01);
+        VF = (ViewFlipper) findViewById(R.id.ViewFlipper10);
 
         searchLocation = (LinearLayout) findViewById(R.id.searchLocation);
         SiteVisitAddressBar = (TextView) findViewById(R.id.SiteVisitAddressBar);
@@ -326,10 +323,9 @@ import java.util.List;
 
             @Override
             public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                if(listView != null && listView.getChildCount() > 0)
-                {
+                if (listView != null && listView.getChildCount() > 0) {
 
-                    if ((firstVisibleItem ==0) && (listView.getChildAt(0).getTop()==0))
+                    if ((firstVisibleItem == 0) && (listView.getChildAt(0).getTop() == 0))
                         visit_refresh.setEnabled(true);
                     else
                         visit_refresh.setEnabled(false);
@@ -482,6 +478,37 @@ import java.util.List;
             }
         });
 
+
+        requirement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
+                refreshYo("Req");
+                req_press = true;
+                avail_press=false;
+                requirement.setBackgroundColor(Color.BLACK);
+                requirement.setTextColor(Color.WHITE);
+                availability.setBackgroundColor(Color.WHITE);
+                availability.setTextColor(Color.BLACK);
+            }
+        });
+
+        availability.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                refreshYo("Avl");
+                avail_press = true;
+                req_press = false;
+                availability.setBackgroundColor(Color.BLACK);
+                availability.setTextColor(Color.WHITE);
+                requirement.setBackgroundColor(Color.WHITE);
+                requirement.setTextColor(Color.BLACK);
+            }
+        });
+
+
         Intentfilter = new IntentFilter(GcmMessageHandler.HANDLEGCM);
         ReceivefromGCM = new BroadcastReceiver(){
             @Override
@@ -610,7 +637,7 @@ import java.util.List;
 
         mMarkersHashMap_hail = new HashMap<Marker, MyMarker>();
 
-        CustomMapFragment customMapFragment_Hail = ((CustomMapFragment) getSupportFragmentManager().findFragmentById(R.id.maphail));
+        CustomMapFragment customMapFragment_Hail = ((CustomMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
 
         customMapFragment_Hail.getMapAsync(new OnMapReadyCallback() {
             @Override
@@ -751,43 +778,6 @@ import java.util.List;
         // Pass any configuration change to the drawer toggls
         drawerToggle.onConfigurationChanged(newConfig);
     }
-
-
-    @Override
-    public void onProgressChanged(SeekBar seekBar, int progress,
-                                  boolean fromTouch) {
-        if (progress == 0) {
-
-            refreshYo("Req");
-            textview1.setTextColor(Color.RED);
-            textview2.setTextColor(Color.BLACK);
-
-
-        } else if (progress == 100) {
-            refreshYo("Avl");
-            textview1.setTextColor(Color.BLACK);
-            textview2.setTextColor(Color.RED);
-
-        }
-
-    }
-
-    @Override
-    public void onStartTrackingTouch(SeekBar seekBar) {
-    }
-
-    @Override
-    public void onStopTrackingTouch(SeekBar seekBar) {
-
-        int mProgress = seekBar.getProgress();
-        if (mProgress > 0 & mProgress < 51) {
-            seekBar.setProgress(0);
-        } else seekBar.setProgress(100);
-
-    }
-
-    //View 2 - Visits Logic - Methods
-
 
     @Override
     public void onDestroy() {
@@ -983,10 +973,10 @@ import java.util.List;
         if(index == 0){
 
             yo_refresh.setRefreshing(true);
-            if (avlreq.getProgress()==0)
+            if (req_press==true)
             {
                 refreshYo("Req");}
-            else if (avlreq.getProgress()==100)
+            else if (avail_press==true)
             {
                 refreshYo("Avl");
             }
@@ -1076,7 +1066,6 @@ import java.util.List;
         registerReceiver(ReceivefromGCM, Intentfilter);
         //the first parameter is the name of the inner class we created.
     }
-
 }
 
 

@@ -112,8 +112,8 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
         seeProp = (Button) findViewById(R.id.seeprop);
         showProp = (Button) findViewById(R.id.showprop);
 
-        rent = (Button) findViewById(R.id.rent);
-        buy = (Button) findViewById(R.id.sell);
+       // rent = (Button) findViewById(R.id.rent);
+      //  buy = (Button) findViewById(R.id.sell);
 
 
         renttab = (TableLayout) findViewById(R.id.rentpricetext);
@@ -168,7 +168,7 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
         });
 
 
-        rent.setOnClickListener(new View.OnClickListener() {
+        /*rent.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -233,7 +233,7 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
                 }
 
             }
-        });
+        });*/
 
 
         hailBtn.setOnClickListener(new View.OnClickListener() {

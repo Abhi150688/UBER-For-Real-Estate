@@ -1,7 +1,5 @@
 package com.nexchanges.hailyo;
 
-import android.app.Activity;
-import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -22,7 +20,6 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -31,13 +28,11 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
@@ -84,7 +79,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class MainActivity extends FragmentActivity implements SeekBar.OnSeekBarChangeListener, SwipeRefreshLayout.OnRefreshListener
+public class MainActivity extends FragmentActivity implements SwipeRefreshLayout.OnRefreshListener
 {
 
     PlotMyNeighboursHail plotMyNeighboursHail = new PlotMyNeighboursHail();
@@ -109,7 +104,6 @@ public class MainActivity extends FragmentActivity implements SeekBar.OnSeekBarC
     BroadcastReceiver ReceivefromGCM;
     IntentFilter Intentfilter;
 
-    SeekBar sb1;
     private DrawerLayout drawerLayout;
     String []listItems;
     Context context;
@@ -134,7 +128,7 @@ public class MainActivity extends FragmentActivity implements SeekBar.OnSeekBarC
     private ArrayList<MyMarker> mMyMarkersArray = new ArrayList<MyMarker>();
     private HashMap<Marker, MyMarker> mMarkersHashMap;
     private static LayoutInflater inflate =null;
-    Button hail, deals,visits;
+    Button hail, deals,visits,broker,auction,builder;
     int flipper_index=0;
 
     private String[] navMenuTitles;
@@ -153,9 +147,6 @@ public class MainActivity extends FragmentActivity implements SeekBar.OnSeekBarC
         my_role = SharedPrefs.getString(context,SharedPrefs.MY_ROLE_KEY);
         my_user_id = SharedPrefs.getString(context,SharedPrefs.MY_USER_ID);
 
-        sb1 = (SeekBar) findViewById(R.id.seekBar2);
-        sb1.setOnSeekBarChangeListener(this);
-
         mLocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
         mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60000, 10, mLocationListener);
 
@@ -167,6 +158,12 @@ public class MainActivity extends FragmentActivity implements SeekBar.OnSeekBarC
         tv3 = (TextView) findViewById(R.id.textView3);
         hail = (Button)findViewById(R.id.hailmode);
         visits = (Button)findViewById(R.id.activevisits);
+
+        broker = (Button)findViewById(R.id.broker_ret);
+
+        auction = (Button)findViewById(R.id.auctionbroker);
+        builder = (Button)findViewById(R.id.builderbroker);
+
 
         deals = (Button)findViewById(R.id.activedeals);
         visit_refresh.setOnRefreshListener(this);
@@ -184,7 +181,7 @@ public class MainActivity extends FragmentActivity implements SeekBar.OnSeekBarC
         searchLocation = (LinearLayout) findViewById(R.id.searchLocation);
         SiteVisitAddressBar = (TextView) findViewById(R.id.SiteVisitAddressBar);
         SetSiteVisitLocation = (ImageButton) findViewById(R.id.ic_launcher);
-        VF10 = (ViewFlipper) findViewById(R.id.ViewFlipper10);
+        VF10 = (ViewFlipper) findViewById(R.id.vf_client);
         flipper_index = SharedPrefs.getInt(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 0);
         VF10.setDisplayedChild(flipper_index);
 
@@ -237,6 +234,56 @@ public class MainActivity extends FragmentActivity implements SeekBar.OnSeekBarC
                     deals.setTextColor(Color.BLACK);
                 }}
         });
+
+        broker.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                map.clear();
+                mMyMarkersArray = plotMyNeighboursHail.markerpos(my_user_id, Str_Lng, Str_Lat, "broker", my_role);
+                plotMarkers(mMyMarkersArray, "broker");
+                broker.setBackgroundColor(Color.BLACK);
+                broker.setTextColor(Color.WHITE);
+                builder.setBackgroundColor(Color.WHITE);
+                builder.setTextColor(Color.BLACK);
+                auction.setBackgroundColor(Color.WHITE);;
+                auction.setTextColor(Color.BLACK);
+        }
+        });
+
+        builder.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                map.clear();
+                mMyMarkersArray = plotMyNeighboursHail.markerpos(my_user_id, Str_Lng, Str_Lat, "builder", my_role);
+                plotMarkers(mMyMarkersArray, "builder");
+                builder.setBackgroundColor(Color.BLACK);
+                builder.setTextColor(Color.WHITE);
+                broker.setBackgroundColor(Color.WHITE);
+                broker.setTextColor(Color.BLACK);
+                auction.setBackgroundColor(Color.WHITE);;
+                auction.setTextColor(Color.BLACK);
+
+            }
+        });
+
+        auction.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                map.clear();
+                mMyMarkersArray = plotMyNeighboursHail.markerpos(my_user_id, Str_Lng, Str_Lat, "auction", my_role);
+                plotMarkers(mMyMarkersArray, "auction");
+                auction.setBackgroundColor(Color.BLACK);
+                auction.setTextColor(Color.WHITE);
+                builder.setBackgroundColor(Color.WHITE);
+                builder.setTextColor(Color.BLACK);
+                broker.setBackgroundColor(Color.WHITE);;
+                broker.setTextColor(Color.BLACK);
+
+            }
+        });
+
 
         listViewD = (ListView) findViewById(R.id.dealslist);
         adapterD = new CustomListAdapter_Deals(this, dealList);
@@ -295,7 +342,6 @@ public class MainActivity extends FragmentActivity implements SeekBar.OnSeekBarC
 
         //Nav Drawer
 
-       // listItems = getResources().getStringArray(R.array.listItems);
         navMenuTitles = getResources().getStringArray(R.array.listItems);
         navMenuIcons = getResources()
                 .obtainTypedArray(R.array.nav_drawer_icons);
@@ -317,8 +363,6 @@ public class MainActivity extends FragmentActivity implements SeekBar.OnSeekBarC
         navadapter = new NavDrawerListAdapter(getApplicationContext(),
                 navDrawerItems);
         drawerLeft.setAdapter(navadapter);
-
-      //  drawerLeft.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listItems));
 
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
                 R.drawable.home_icon, R.string.drawer_open,
@@ -573,57 +617,6 @@ public class MainActivity extends FragmentActivity implements SeekBar.OnSeekBarC
     }
 
 
-
-    @Override
-    public void onProgressChanged(SeekBar seekBar, int progress,
-                                  boolean fromTouch) {
-
-        if (progress == 0) {
-            map.clear();
-            mMyMarkersArray = plotMyNeighboursHail.markerpos(my_user_id,Str_Lng,Str_Lat,"broker", my_role);
-            plotMarkers(mMyMarkersArray,"broker");
-            tv1.setTextColor(Color.RED);
-            tv2.setTextColor(Color.BLACK);
-            tv3.setTextColor(Color.BLACK);
-
-        } else if (progress == 50) {
-
-            map.clear();
-            mMyMarkersArray = plotMyNeighboursHail.markerpos(my_user_id,Str_Lng,Str_Lat,"auction", my_role);
-
-            plotMarkers(mMyMarkersArray,"auction");
-
-            tv1.setTextColor(Color.BLACK);
-            tv2.setTextColor(Color.RED);
-            tv3.setTextColor(Color.BLACK);
-
-        } else if (progress == 100) {
-            map.clear();
-            mMyMarkersArray = plotMyNeighboursHail.markerpos(my_user_id,Str_Lng,Str_Lat,"builder",my_role);
-            plotMarkers(mMyMarkersArray,"builder");
-
-
-            tv1.setTextColor(Color.BLACK);
-            tv2.setTextColor(Color.BLACK);
-            tv3.setTextColor(Color.RED);
-        }
-    }
-
-    @Override
-    public void onStartTrackingTouch(SeekBar seekBar) {
-    }
-
-    @Override
-    public void onStopTrackingTouch(SeekBar seekBar) {
-
-        int mProgress = seekBar.getProgress();
-        if (mProgress > 0 & mProgress < 34) {
-            seekBar.setProgress(0);
-        } else if (mProgress > 33 & mProgress < 68) {
-            seekBar.setProgress(50);
-        } else seekBar.setProgress(100);
-
-    }
 
 
 
