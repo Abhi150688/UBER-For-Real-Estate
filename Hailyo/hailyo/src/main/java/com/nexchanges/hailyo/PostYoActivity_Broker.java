@@ -198,23 +198,10 @@ public class PostYoActivity_Broker extends FragmentActivity
 
                 sendSMSMessage(phone, body);
                 SharedPrefs.save(context, SharedPrefs.SUCCESSFUL_HAIL, "false");
-
-                if (role.equalsIgnoreCase("customer"))
-                {Intent MainActivity = new Intent (context, MainActivity.class);
-                    startActivity(MainActivity);}
-                else if (role.equalsIgnoreCase("broker"))
-                {
                     Intent MainBActivity = new Intent (context, MainBrokerActivity.class);
-                    startActivity(MainBActivity);}
+                    startActivity(MainBActivity);
             }
         });
-
-
-
-        // Google Map ..
-
-
-        // Initialize the HashMap for Markers and MyMarker object
 
         CustomMapFragment customMapFragment = ((CustomMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
         customMapFragment.getMapAsync(new OnMapReadyCallback() {
@@ -294,6 +281,4 @@ public class PostYoActivity_Broker extends FragmentActivity
         SharedPrefs.save(context, SharedPrefs.LAST_ACTIVITY_KEY, getClass().getName());
 
     }
-
-
 }

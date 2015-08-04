@@ -3,10 +3,10 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:seekarc="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical" android:layout_width="fill_parent"
     android:background="@color/gray"
-    android:layout_height="match_parent"
-    android:weightSum="1">
+    android:layout_height="fill_parent"
+    >
 
     <TextView
         android:layout_width="match_parent"
@@ -19,12 +19,10 @@
         android:text="Enter Details"/>
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="5dp"
-
         android:background="@android:color/white"
         android:orientation="vertical"
         android:layout_gravity="top"
@@ -66,9 +64,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:layout_marginBottom="5dp"
         android:background="@android:color/white"
         android:orientation="vertical"
         android:gravity="center_horizontal"
@@ -133,130 +131,114 @@
 
 
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        >
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
+        android:layout_marginRight="5dp"
         android:layout_marginLeft="5dp"
-        android:background="@android:color/white"
-        android:orientation="vertical"
-        android:id="@+id/nm_bhk">
-
-                <TextView
-                    android:id="@+id/yourpurpose"
-                    android:layout_width="wrap_content"
-                    android:layout_gravity="center_horizontal|center"
-                    android:layout_height="wrap_content"
-                    android:text="INTENT"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:textColor="#28b54c" />
-
-    <LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
-
-                <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="RENT"
-            android:id="@+id/checkRENT"
-            android:layout_gravity="center_horizontal" />
-
-            <CheckBox
-                android:layout_width="wrap_content"
-
-                android:layout_height="wrap_content"
-                android:text="SALE"
-                android:id="@+id/checkSALE"
-                android:layout_gravity="center_horizontal" />
-
-</LinearLayout>
-    </LinearLayout>
+        android:layout_marginBottom="5dp"
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:id="@+id/outerhori">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="1"
+            android:layout_height="match_parent"
             android:layout_marginBottom="5dp"
-            android:layout_marginLeft="5dp"
-
-            android:layout_height="fill_parent"
-            android:orientation="vertical"
             android:background="@android:color/white"
-             android:gravity="center"
-            >
+            android:orientation="vertical"
+            android:id="@+id/nm_bhk">
 
-<LinearLayout
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:layout_gravity="center"
-    android:gravity="center">
             <TextView
-                android:id="@+id/textViewconfig"
+                android:id="@+id/yourpurpose"
                 android:layout_width="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:gravity="center_horizontal"
+                android:layout_gravity="center_horizontal|center"
                 android:layout_height="wrap_content"
-                android:text="SIZE"
+                android:text="INTENT"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:textColor="#28b54c" />
 
-            <TextView
-                android:id="@+id/tvconfigResult"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="2dp"
-                android:textAppearance="?android:attr/textAppearanceMedium"
-                android:layout_gravity="center_horizontal"
-                android:textColor="#28b54c"
-                android:gravity="center_horizontal"
-                />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_gravity="center"
+                android:layout_marginTop="6dp"
+                android:gravity="center">
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="RENT"
+                    android:id="@+id/checkRENT"
+                    android:layout_gravity="center_horizontal" />
+
+                <CheckBox
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SALE"
+                    android:id="@+id/checkSALE"
+                    android:layout_gravity="center_horizontal" />
+
+            </LinearLayout>
 
         </LinearLayout>
-
 
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_horizontal|center_vertical"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:orientation="horizontal"
-            android:id="@+id/enterconfig">
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="2dp"
+            android:background="@android:color/white">
+
+                <TextView
+                    android:id="@+id/textViewconfig"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SIZE"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#28b54c" />
+
+            <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:layout_gravity="center_horizontal|center_vertical"
+               android:gravity="center">
+
+               <com.hrules.horizontalnumberpicker.HorizontalNumberPicker
+                   android:id="@+id/horizontal_number_picker3"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   />
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="2.25dp"
+                   android:text="BHK"
+                   android:textSize="16.5dp"
+                   />
 
 
-            <com.hrules.horizontalnumberpicker.HorizontalNumberPicker
-                android:id="@+id/horizontal_number_picker3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="BHK"
-                android:textSize="17dp"
-                android:layout_marginLeft="2dp"/>
+           </LinearLayout>
 
-        </LinearLayout>
-    </LinearLayout>
+            </LinearLayout>
 
-
-
-    </LinearLayout>
-
+            </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         android:background="@android:color/white"
         android:orientation="vertical"
-        android:paddingBottom="20dp"
         android:layout_gravity="top"
         android:id="@+id/budget_pricing">
 
@@ -269,7 +251,6 @@
             android:gravity="center"
             >
 
-
             <TextView
                 android:id="@+id/tvResult1"
                 android:layout_width="wrap_content"
@@ -277,7 +258,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_gravity="center_horizontal|center"
                 android:textColor="#28b54c"
-                android:text="Budget"></TextView>
+                android:text="Budget"/>
 
             <TextView
                 android:id="@+id/tvResult"
@@ -351,5 +332,7 @@
             android:id="@+id/hail" />
     </LinearLayout>
 
-</LinearLayout>
-<!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/layout/enter_config_layout.xml -->
+
+
+
+</LinearLayout><!-- From: file:/Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/res/layout/enter_config_layout.xml -->

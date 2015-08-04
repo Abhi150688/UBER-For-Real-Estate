@@ -15,7 +15,7 @@
         android:textColor="@color/black"
         android:textStyle="bold"
         android:textSize="15dp"
-        android:text="25 Lac" />
+        android:text="0 Lac" />
 
     <TextView
         android:id="@+id/textView2"

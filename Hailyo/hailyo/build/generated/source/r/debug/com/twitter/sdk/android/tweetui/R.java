@@ -116,23 +116,23 @@ public final class R {
 	}
 	public static final class id {
 		public static final int height = 0x7f0f0043;
-		public static final int imageView = 0x7f0f0148;
-		public static final int tw__allow_btn = 0x7f0f014b;
-		public static final int tw__author_attribution = 0x7f0f0156;
-		public static final int tw__not_now_btn = 0x7f0f014a;
-		public static final int tw__share_email_desc = 0x7f0f0149;
-		public static final int tw__spinner = 0x7f0f0147;
-		public static final int tw__tweet_author_avatar = 0x7f0f014e;
-		public static final int tw__tweet_author_full_name = 0x7f0f014f;
-		public static final int tw__tweet_author_screen_name = 0x7f0f0152;
-		public static final int tw__tweet_author_verified = 0x7f0f0150;
-		public static final int tw__tweet_media = 0x7f0f014d;
-		public static final int tw__tweet_share = 0x7f0f0155;
-		public static final int tw__tweet_text = 0x7f0f0154;
-		public static final int tw__tweet_timestamp = 0x7f0f0153;
-		public static final int tw__tweet_view = 0x7f0f014c;
-		public static final int tw__twitter_logo = 0x7f0f0151;
-		public static final int tw__web_view = 0x7f0f0146;
+		public static final int imageView = 0x7f0f0147;
+		public static final int tw__allow_btn = 0x7f0f014a;
+		public static final int tw__author_attribution = 0x7f0f0155;
+		public static final int tw__not_now_btn = 0x7f0f0149;
+		public static final int tw__share_email_desc = 0x7f0f0148;
+		public static final int tw__spinner = 0x7f0f0146;
+		public static final int tw__tweet_author_avatar = 0x7f0f014d;
+		public static final int tw__tweet_author_full_name = 0x7f0f014e;
+		public static final int tw__tweet_author_screen_name = 0x7f0f0151;
+		public static final int tw__tweet_author_verified = 0x7f0f014f;
+		public static final int tw__tweet_media = 0x7f0f014c;
+		public static final int tw__tweet_share = 0x7f0f0154;
+		public static final int tw__tweet_text = 0x7f0f0153;
+		public static final int tw__tweet_timestamp = 0x7f0f0152;
+		public static final int tw__tweet_view = 0x7f0f014b;
+		public static final int tw__twitter_logo = 0x7f0f0150;
+		public static final int tw__web_view = 0x7f0f0145;
 		public static final int width = 0x7f0f0044;
 	}
 	public static final class layout {

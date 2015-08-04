@@ -117,7 +117,7 @@ public class PostYoActivity extends FragmentActivity
             }
 
             public void onFinish() {
-                timerTv.setText(brokerName + " should have arrived!");
+                timerTv.setText(brokerName + "has arrived!");
                 Intent DuringVisitActivity=new Intent(context, DuringVisitActivity.class);
                 startActivity(DuringVisitActivity);
                 finish();
@@ -127,19 +127,15 @@ public class PostYoActivity extends FragmentActivity
             }
         }.start();
 
-
-
         allDeals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ViewDeals = new Intent(context, MainActivity.class);
                 SharedPrefs.save(context,SharedPrefs.CURRENT_FLIPPER_VIEW,2);
-                SharedPrefs.save(context,SharedPrefs.SUCCESSFUL_HAIL,"true");
+                SharedPrefs.save(context, SharedPrefs.SUCCESSFUL_HAIL,"true");
+                Intent ViewDeals = new Intent(context, MainActivity.class);
+                    startActivity(ViewDeals);
 
-
-                startActivity(ViewDeals);}
-
-//                finish();
+                           }
 
         });
 
@@ -147,12 +143,10 @@ public class PostYoActivity extends FragmentActivity
         allVisits.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent ViewDeals = new Intent(context, MainActivity.class);
                 SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 1);
                 SharedPrefs.save(context,SharedPrefs.SUCCESSFUL_HAIL,"true");
-
-
-                startActivity(ViewDeals);
+                    Intent BViewDeals = new Intent(context, MainBrokerActivity.class);
+                    startActivity(BViewDeals);
             }
         });
 
@@ -198,16 +192,10 @@ public class PostYoActivity extends FragmentActivity
 
                         sendSMSMessage(phone, body);
                         SharedPrefs.save(context,SharedPrefs.SUCCESSFUL_HAIL,"false");
-                        if (role.equalsIgnoreCase("customer"))
-                        {Intent MainActivity = new Intent (context, MainActivity.class);
+                        Intent MainActivity = new Intent (context, MainActivity.class);
                             startActivity(MainActivity);
-                            finish();}
-                        else if (role.equalsIgnoreCase("broker"))
-                        {
-                            Intent MainBActivity = new Intent (context, MainBrokerActivity.class);
-                            startActivity(MainBActivity);
-                        finish();}
-                    }
+                            finish();
+                        }
                 });
                 builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -220,11 +208,6 @@ public class PostYoActivity extends FragmentActivity
 
             }
         });
-
-
-
-        // Google Map ..
-
 
         // Initialize the HashMap for Markers and MyMarker object
 
@@ -306,6 +289,5 @@ public class PostYoActivity extends FragmentActivity
         SharedPrefs.save(context, SharedPrefs.LAST_ACTIVITY_KEY, getClass().getName());
 
     }
-
 
 }
