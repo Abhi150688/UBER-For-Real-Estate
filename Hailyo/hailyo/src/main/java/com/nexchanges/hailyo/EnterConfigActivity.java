@@ -1,8 +1,12 @@
 package com.nexchanges.hailyo;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.content.Context;
 import android.support.v7.internal.widget.TintCheckBox;
@@ -23,6 +27,22 @@ import com.nexchanges.hailyo.customSupportClass.ConfigSpecCode;
 import com.nexchanges.hailyo.model.SharedPrefs;
 import com.nexchanges.hailyo.customWidget.SeekArc;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicHeader;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
+
 
 /**
  * Created by AbhishekWork on 17/06/15.
@@ -32,12 +52,15 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
 
     //declare variables
     SeekBar mSeekbar_Rent, mSeekbar_Sale;
+    Boolean success;
+    String URL = "http://ec2-52-27-37-225.us-west-2.compute.amazonaws.com:9000/1/hailyo/hail";
+
     int bhkval, value;
+    Dialog alertD;
+    StringEntity se;
     public static final String TAG = EnterConfigActivity.class.getSimpleName();
 
     TextView result;
-    TextView configresult;
-
     TextView pasloc;
     final int step_size1 = 5000;
     final int step_size2 = 50000;
@@ -49,12 +72,12 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
 
 
     Button hailBtn;
-    private String message, role;
+    private String message, role, user_id, lng,lat;
     Button seeProp,showProp;
     Boolean isOnePressed = true, isSecondPlace = false, rentSelected = true, saleSelected = false;
     Context context;
     int max=5, min=0,val_check;
-    String fetchloc, msg1,msg2,msg3,msg4,message1,str1="seeshow",str2="buyrent",str3="bhk",str4="price";
+    String fetchloc, msg1,msg2,msg3,msg4,message1,str1="seeshow",str2="buyrent",str3="bhk",str4="price",mesFinal;
     ConfigSpecCode spec_code;
     private static LayoutInflater inflate =null;
     TableLayout renttab, saletab;
@@ -74,6 +97,11 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
         spec_code = new ConfigSpecCode();
 
         role = SharedPrefs.getString(context, SharedPrefs.MY_ROLE_KEY);
+        user_id = SharedPrefs.getString(context, SharedPrefs.MY_USER_ID);
+
+
+        lng = SharedPrefs.getString(context, SharedPrefs.MY_POINTER_LNG);
+        lat = SharedPrefs.getString(context, SharedPrefs.MY_POINTER_LAT);
 
 
         horizontalNumberPicker3 = (HorizontalNumberPicker) findViewById(R.id.horizontal_number_picker3);
@@ -209,41 +237,12 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
 
 
 
-                String mesFinal = updateSpecCode("he", "he");
+                mesFinal = updateSpecCode("he", "he");
                 int pass = validationCheck();
 
-
                 if (pass == 0) {
-                    SharedPrefs.save(context, SharedPrefs.CURRENT_SPEC, message);
-
-                    if (role.equalsIgnoreCase("broker")) {
-                        message = "Plus-" + mesFinal;
-                        Intent PostYoActB = new Intent(context, PostYoActivity_Broker.class);
-                        Bundle extrasB = new Bundle();
-                        extrasB.putString("phone", "9967307197");
-                        extrasB.putString("broker_Name", "Rajiv Lakhpati");
-                        extrasB.putString("timer", "1");
-                        extrasB.putString("rating", "3");
-
-                        PostYoActB.putExtras(extrasB);
-                        context.startActivity(PostYoActB);
-                        finish();
-
-
-                    }
-                    else {
-                        message = "Direct-" + mesFinal;
-                        Intent PostYoAct = new Intent(context, PostYoActivity.class);
-                        Bundle extrasB = new Bundle();
-                        extrasB.putString("phone", "9967307197");
-                        extrasB.putString("broker_Name", "Rajiv Lakhpati");
-                        extrasB.putString("timer", "1");
-                        extrasB.putString("rating", "3");
-
-                        PostYoAct.putExtras(extrasB);
-                        context.startActivity(PostYoAct);
-                        finish();
-                    }
+                    sendPostRequest(user_id, role, lng, lat, mesFinal);
+                    successfulHail();
 
                     }
 
@@ -265,37 +264,58 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress,
                                   boolean fromUser) {
+        int x,y;
+        double y1;
+        int minxr = 0, maxxr=1000000;
+        int minxs=0,maxxs=150000000;
+
 
         switch (seekBar.getId()) {
 
             case R.id.rentbar:
                 mSeekbar_Sale.setProgress(0);
+
                  if (progress < 300000) {
+                    x=progress;
+                    y1=Math.exp(Math.log(minxr)+(x-minxr)*(Math.log(maxxr) - Math.log(minxr))/(maxxr-minxr));
+                     y=(int)y1;
+
                     progress = ((int) Math.round(progress / step_size1)) * step_size1;
                     value = progress;
                   //   int prog = mSeekbar_Rent.getProgress();
                      msg4 = Integer.toString(value);
                      updateSpecCode(str4,msg4);
+                     mSeekbar_Rent.setProgress(y);
 
                      result.setText(" Rent:" + value);
                 } else if (progress > 305000 && progress < 600000) {
-                    progress = ((int) Math.round(progress / step_size2)) * step_size2;
+                     x=progress;
+                     y1=Math.exp(Math.log(minxr)+(x-minxr)*(Math.log(maxxr) - Math.log(minxr))/(maxxr-minxr));
+                     y=(int)y1;
+
+                     progress = ((int) Math.round(progress / step_size2)) * step_size2;
                     value = progress;
                     // int prog = mSeekbar_Rent.getProgress();
                      msg4 = Integer.toString(value);
                      updateSpecCode(str4,msg4);
-
+                     mSeekbar_Rent.setProgress(y);
 
                      result.setText(" Rent:" + value);
 
-                } else
-                    progress = ((int) Math.round(progress / step_size3)) * step_size3;
+                } else{
+                     x=progress;
+                     y1=Math.exp(Math.log(minxr)+(x-minxr)*(Math.log(maxxr) - Math.log(minxr))/(maxxr-minxr));
+                     y=(int)y1;
+
+                     progress = ((int) Math.round(progress / step_size3)) * step_size3;
                 value = progress;
                // int prog = mSeekbar_Rent.getProgress();
                 msg4 = Integer.toString(value);
                 updateSpecCode(str4,msg4);
 
                 result.setText(" Rent:" + value);
+                     mSeekbar_Rent.setProgress(y);
+                 }
                 break;
 
             case R.id.salebar:
@@ -382,7 +402,7 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
 
         Log.i(TAG,"VALUE OF MSG1 IS: " + msg1);
         Log.i(TAG,"VALUE OF MSG2 IS: " + msg2);
-        Log.i(TAG,"VALUE OF MSG3 IS: " + msg3);
+        Log.i(TAG, "VALUE OF MSG3 IS: " + msg3);
         Log.i(TAG,"VALUE OF MSG4 IS: " + msg4);
 
         return message1;
@@ -424,6 +444,186 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
 
         return val_check;
     }
+
+    private void sendPostRequest(final String U_id, final String U_role, final String U_Lat, final String U_Lng, final String spec)
+    {
+
+        class SendPostReqAsyncTask extends AsyncTask<String, Void, String> {
+
+            @Override
+            protected void onPreExecute() {
+                showSplashScreen();
+            }
+
+
+            @Override
+            protected String doInBackground(String... params) {
+
+                JSONObject jsonObject = new JSONObject();
+                try {
+                    jsonObject.accumulate("user_id", U_id);
+                    jsonObject.accumulate("user_role", U_role);
+                    jsonObject.accumulate("spec_code", spec);
+                    jsonObject.accumulate("long", U_Lng);
+                    jsonObject.accumulate("lat", U_Lat);
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+                HttpClient httpClient = new DefaultHttpClient();
+
+                HttpPost httpPost = new HttpPost(URL);
+
+
+                try {
+                    se = new StringEntity(jsonObject.toString());
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+
+
+                se.setContentType(new BasicHeader("Content-Type", "application/json"));
+
+                httpPost.setEntity(se);
+                httpPost.setHeader("Accept", "application/json");
+                httpPost.setHeader("Content-Type", "application/json");
+
+                try {
+                    HttpResponse httpResponse = httpClient.execute(httpPost);
+
+                    int response = httpResponse.getStatusLine().getStatusCode();
+                    System.out.print("Value of response code is: " + response);
+
+                    if (response == 200 || response == 201) {
+                        success = true;
+                    } else {
+                        System.out.print("LoginFailed Try again");
+                        success = false;
+                    }
+
+                    InputStream inputStream = httpResponse.getEntity().getContent();
+
+                    InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+
+                    BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                    StringBuilder stringBuilder = new StringBuilder();
+
+                    String bufferedStrChunk = null;
+
+                    while ((bufferedStrChunk = bufferedReader.readLine()) != null) {
+                        stringBuilder.append(bufferedStrChunk);
+                    }
+
+                    return stringBuilder.toString();
+
+                } catch (ClientProtocolException cpe) {
+                    System.out.println("First Exception coz of HttpResponese :" + cpe);
+                    cpe.printStackTrace();
+                } catch (IOException ioe) {
+                    System.out.println("Second Exception coz of HttpResponse :" + ioe);
+                    ioe.printStackTrace();
+                }
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(String result) {
+                super.onPostExecute(result);
+                removeSplashScreen();
+
+//parse json response
+               /* if (result != null) {
+
+                    try {
+                        JSONObject jObject = new JSONObject(result);
+                        JSONObject responseDataObject = jObject.getJSONObject("responseData");
+                        my_user_id = responseDataObject.getString("user_id");
+
+                        if (success==true)
+                            signup_success();
+                        else {Toast.makeText(
+                                getApplicationContext(),
+                                "Signup failed, Please try again",
+                                Toast.LENGTH_LONG).show();
+
+
+                        }
+                    } catch (JSONException e) {
+                        Log.e("JSONException", "Error: " + e.toString());
+                    }
+                }*/
+            }
+
+
+        }
+
+        SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
+        sendPostReqAsyncTask.execute(U_id, U_role, U_Lat, U_Lng, spec);
+    }
+
+
+    protected void showSplashScreen() {
+
+        LayoutInflater layoutInflater = LayoutInflater.from(context);
+        View View = layoutInflater.inflate(R.layout.splashscreen, null);
+
+        alertD = new Dialog(context);
+        alertD.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        alertD.setContentView(View);
+        alertD.setCancelable(false);
+        alertD.show();
+        alertD.getWindow().setLayout(500, 600);
+
+    }
+
+    protected void removeSplashScreen() {
+        if (alertD != null) {
+            alertD.dismiss();
+            alertD = null;
+        }
+    }
+
+private void successfulHail()
+{
+
+    SharedPrefs.save(context, SharedPrefs.CURRENT_SPEC, message);
+
+    if (role.equalsIgnoreCase("broker")) {
+        message = "Plus-" + mesFinal;
+        Intent PostYoActB = new Intent(context, PostYoActivity_Broker.class);
+        Bundle extrasB = new Bundle();
+        extrasB.putString("phone", "9967307197");
+        extrasB.putString("broker_Name", "Rajiv Lakhpati");
+        extrasB.putString("timer", "1");
+        extrasB.putString("rating", "3");
+
+        PostYoActB.putExtras(extrasB);
+        context.startActivity(PostYoActB);
+        finish();
+
+
+    }
+    else {
+        message = "Direct-" + mesFinal;
+        Intent PostYoAct = new Intent(context, PostYoActivity.class);
+        Bundle extrasB = new Bundle();
+        extrasB.putString("phone", "9967307197");
+        extrasB.putString("broker_Name", "Rajiv Lakhpati");
+        extrasB.putString("timer", "1");
+        extrasB.putString("rating", "3");
+
+        PostYoAct.putExtras(extrasB);
+        context.startActivity(PostYoAct);
+        finish();
+    }
+}
+
+
 }
 
 

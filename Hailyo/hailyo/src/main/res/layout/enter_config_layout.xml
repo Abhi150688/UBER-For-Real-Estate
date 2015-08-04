@@ -288,8 +288,9 @@
             android:layout_height="wrap_content"
             android:max="1000000"
             android:id="@+id/rentbar"
-            android:thumb="@drawable/custom_seek_arc_control_selector"
-            android:background="@color/transparent"/>
+            android:thumb="@drawable/seekthumb_tur"
+            android:background="@color/transparent"
+            android:layout_marginBottom="5dp"/>
 
 
         <SeekBar
@@ -298,8 +299,9 @@
             android:max="100000000"
             android:id="@+id/salebar"
             android:visibility="invisible"
-            android:thumb="@drawable/custom_seek_arc_control_selector"
-            android:background="@color/transparent"/>
+            android:thumb="@drawable/seekthumb_tur"
+            android:background="@color/transparent"
+            android:layout_marginBottom="5dp"/>
 
     </LinearLayout>
 

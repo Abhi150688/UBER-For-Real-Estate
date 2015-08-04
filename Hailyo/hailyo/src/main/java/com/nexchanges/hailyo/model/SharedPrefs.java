@@ -21,6 +21,8 @@ public class SharedPrefs {
 
     public static String MY_CUR_LAT = "currentLat";
     public static String MY_CUR_LNG = "currentLng";
+    public static String MY_POINTER_LAT = "pointerLat";
+    public static String MY_POINTER_LNG = "pointerLng";
 
     public static String PHOTO_KEY = "myphotoKey";
     public static String MY_MOBILE_KEY = "myphotoKey";

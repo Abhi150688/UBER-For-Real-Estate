@@ -101,6 +101,9 @@ import java.util.List;
     LocationManager mLocationManager;
     String type_user,is_transaction,Str_Lng,Str_Lat;
     BroadcastReceiver ReceivefromGCM;
+    double p_lat, p_lng;
+    LatLng ll;
+
 
     private static final String urlD = "https://api.myjson.com/bins/3r0d6";
     private ProgressDialog pDialog_Deal;
@@ -131,7 +134,7 @@ import java.util.List;
     LatLng currentLocation, selectedLocation;
     String selectedLocation_Name, my_user_id,my_role;
     ViewFlipper VF;
-    String fetchname, fetchemail, fetchphoto;
+    String fetchname, fetchemail, fetchphoto,pointer_lat, pointer_lng;
     Button yo, hail, deals,visits,availability, requirement;
     ImageView smallphoto;
     IntentFilter Intentfilter;
@@ -656,8 +659,10 @@ import java.util.List;
             @Override
             public void onDrag(MotionEvent motionEvent) {
                 if (motionEvent.getAction() == MotionEvent.ACTION_MOVE) {
+
                     SiteVisitAddressBar.setText("Fetching...");
                 } else {
+                    getPointerLatLnt();
                     selectedLocation = map_hail.getCameraPosition().target;
                     selectedLocation_Name = "Lat: " + selectedLocation.latitude + ", Lng: " + selectedLocation.longitude;
                     getPlaceName(selectedLocation);
@@ -1025,6 +1030,7 @@ import java.util.List;
 
                 double lat = location.getLatitude();
                 double lng = location.getLongitude();
+                getPointerLatLnt();
 
                 Str_Lng = String.valueOf(lng);
                 Str_Lat = String.valueOf(lat);
@@ -1066,6 +1072,18 @@ import java.util.List;
         registerReceiver(ReceivefromGCM, Intentfilter);
         //the first parameter is the name of the inner class we created.
     }
+
+    private void getPointerLatLnt()
+    {
+        ll = map_hail.getCameraPosition().target;
+        p_lat = ll.latitude;
+        p_lng = ll.longitude;
+        pointer_lat = Double.toString(p_lat);
+        pointer_lng = Double.toString(p_lng);
+        SharedPrefs.save(context, SharedPrefs.MY_POINTER_LAT, pointer_lat);
+        SharedPrefs.save(context, SharedPrefs.MY_POINTER_LNG, pointer_lng);
+    }
+
 }
 
 

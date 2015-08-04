@@ -84,6 +84,8 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
 
     PlotMyNeighboursHail plotMyNeighboursHail = new PlotMyNeighboursHail();
     CheckLocationServices checkLocationServices = new CheckLocationServices();
+    double p_lat, p_lng;
+    LatLng ll;
 
     private static final String url = "https://api.myjson.com/bins/nk0q";
     private ProgressDialog pDialog;
@@ -120,7 +122,7 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
     ImageButton SetSiteVisitLocation;
     LatLng currentLocation;
     LatLng selectedLocation;
-    String selectedLocation_Name,is_transaction, my_role,my_user_id, Str_Lat,Str_Lng, fetchname, fetchemail,fetchphoto;
+    String selectedLocation_Name,is_transaction, my_role,my_user_id, Str_Lat,Str_Lng, fetchname, fetchemail,fetchphoto,pointer_lat, pointer_lng;
     ViewFlipper VF10;
     ImageView smallphoto;
     LocationManager mLocationManager;
@@ -548,8 +550,10 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
             @Override
             public void onDrag(MotionEvent motionEvent) {
                 if (motionEvent.getAction() == MotionEvent.ACTION_MOVE) {
+
                     SiteVisitAddressBar.setText("Fetching...");
                 } else {
+                    getPointerLatLnt();
                     selectedLocation = map.getCameraPosition().target;
                     selectedLocation_Name = "Lat: " + selectedLocation.latitude + ", Lng: " + selectedLocation.longitude;
                     getPlaceName(selectedLocation);
@@ -669,9 +673,6 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
             }
         });
     }
-
-
-
 
 
     @Override
@@ -882,12 +883,14 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
 
                 double lat = location.getLatitude();
                 double lng = location.getLongitude();
+                getPointerLatLnt();
 
                Str_Lat = String.valueOf(lat);
                Str_Lng = String.valueOf(lng);
-                SharedPrefs.save(context,SharedPrefs.MY_CUR_LAT,Str_Lat);
-                SharedPrefs.save(context,SharedPrefs.MY_CUR_LNG,Str_Lng);
-                sendLocationUpdate.sendPostRequest(my_user_id,Str_Lat,Str_Lng,my_role);
+               SharedPrefs.save(context,SharedPrefs.MY_CUR_LAT,Str_Lat);
+               SharedPrefs.save(context,SharedPrefs.MY_CUR_LNG,Str_Lng);
+
+               sendLocationUpdate.sendPostRequest(my_user_id,Str_Lat,Str_Lng,my_role);
                 return null;
             }
         }
@@ -917,6 +920,17 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
         super.onResume();
         registerReceiver(ReceivefromGCM, Intentfilter);
         //the first parameter is the name of the inner class we created.
+    }
+
+   private void getPointerLatLnt()
+    {
+        ll = map.getCameraPosition().target;
+        p_lat = ll.latitude;
+        p_lng = ll.longitude;
+        pointer_lat = Double.toString(p_lat);
+        pointer_lng = Double.toString(p_lng);
+        SharedPrefs.save(context,SharedPrefs.MY_POINTER_LAT,pointer_lat);
+        SharedPrefs.save(context,SharedPrefs.MY_POINTER_LNG,pointer_lng);
     }
 
 }

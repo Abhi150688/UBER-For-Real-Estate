@@ -42,14 +42,12 @@ import java.util.concurrent.TimeUnit;
 public class PostYoActivity_Broker extends FragmentActivity
 {
 
-
-
     Context context;
 
     public static final String TAG = PostYoActivity_Broker.class.getSimpleName();
 
     GoogleMap map;
-    long ltimer,ltimer1;
+    long ltimer1;
     int timer_int;
     boolean is_transaction;
 
@@ -58,8 +56,8 @@ public class PostYoActivity_Broker extends FragmentActivity
     Button call, message, allVisits,allDeals,hail,yo;
     ImageButton cancel;
     TextView timerTv, brokerTv;
-    RatingBar brokerRating, ratingTv1;
-    String phone, brokerName, timer, rating, body,role;
+    RatingBar brokerRating;
+    String phone, brokerName,rating, body,role;
     float ratingVal;
 
 
@@ -264,7 +262,7 @@ public class PostYoActivity_Broker extends FragmentActivity
         }
 
         catch (Exception e) {
-            Toast.makeText(getApplicationContext(), "SMS faild, please try again.", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "SMS failed, please try again.", Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
 

@@ -95,24 +95,24 @@ public final class R {
 		public static final int tw__tweet_verified_margin_bottom = 0x7f0900a6;
 	}
 	public static final class drawable {
-		public static final int tw__bg_tweet = 0x7f0200ed;
-		public static final int tw__bg_tweet_compact = 0x7f0200ee;
-		public static final int tw__ic_logo_blue = 0x7f0200ef;
-		public static final int tw__ic_logo_default = 0x7f0200f0;
-		public static final int tw__ic_logo_white = 0x7f0200f1;
-		public static final int tw__ic_tweet_photo_error_dark = 0x7f0200f2;
-		public static final int tw__ic_tweet_photo_error_light = 0x7f0200f3;
-		public static final int tw__ic_tweet_verified = 0x7f0200f4;
-		public static final int tw__login_btn = 0x7f0200f5;
-		public static final int tw__login_btn_default = 0x7f0200f6;
-		public static final int tw__login_btn_default_light = 0x7f0200f7;
-		public static final int tw__login_btn_disabled = 0x7f0200f8;
-		public static final int tw__login_btn_light = 0x7f0200f9;
-		public static final int tw__login_btn_pressed = 0x7f0200fa;
-		public static final int tw__login_btn_pressed_light = 0x7f0200fb;
-		public static final int tw__login_btn_text_color_light = 0x7f0200fc;
-		public static final int tw__share_email_header = 0x7f0200fd;
-		public static final int tw__transparent = 0x7f0200fe;
+		public static final int tw__bg_tweet = 0x7f0200ee;
+		public static final int tw__bg_tweet_compact = 0x7f0200ef;
+		public static final int tw__ic_logo_blue = 0x7f0200f0;
+		public static final int tw__ic_logo_default = 0x7f0200f1;
+		public static final int tw__ic_logo_white = 0x7f0200f2;
+		public static final int tw__ic_tweet_photo_error_dark = 0x7f0200f3;
+		public static final int tw__ic_tweet_photo_error_light = 0x7f0200f4;
+		public static final int tw__ic_tweet_verified = 0x7f0200f5;
+		public static final int tw__login_btn = 0x7f0200f6;
+		public static final int tw__login_btn_default = 0x7f0200f7;
+		public static final int tw__login_btn_default_light = 0x7f0200f8;
+		public static final int tw__login_btn_disabled = 0x7f0200f9;
+		public static final int tw__login_btn_light = 0x7f0200fa;
+		public static final int tw__login_btn_pressed = 0x7f0200fb;
+		public static final int tw__login_btn_pressed_light = 0x7f0200fc;
+		public static final int tw__login_btn_text_color_light = 0x7f0200fd;
+		public static final int tw__share_email_header = 0x7f0200fe;
+		public static final int tw__transparent = 0x7f0200ff;
 	}
 	public static final class id {
 		public static final int height = 0x7f0f0043;

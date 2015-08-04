@@ -4,6 +4,7 @@ package com.nexchanges.hailyo.GoogleMapSupport;
  * Created by Abhishek on 08/05/15.
  */
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -27,7 +28,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 
-public class SearchActivity extends ActionBarActivity {
+public class SearchActivity extends Activity {
 
     Context context;
     EditText searchLocation;
