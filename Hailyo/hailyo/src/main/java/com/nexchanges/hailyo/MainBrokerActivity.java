@@ -143,7 +143,7 @@ import java.util.List;
 
     private ArrayList<MyMarker> mMyMarkersArray_Hail = new ArrayList<MyMarker>();
     private HashMap<Marker, MyMarker> mMarkersHashMap_hail;
-    int flipper_index=0;
+    int flipper_index=0, yo_cal_counter=0;
 
     private String[] navMenuTitles;
     private TypedArray navMenuIcons;
@@ -530,6 +530,13 @@ import java.util.List;
 
         //Nav Drawer
 
+        LayoutInflater inflate = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View vi = inflate.inflate(R.layout.left_nav_header, null);
+        drawerLeft = (ListView) findViewById(R.id.left_drawer);
+
+        drawerLeft.addHeaderView(vi);
+
+
         // listItems = getResources().getStringArray(R.array.listItems);
         navMenuTitles = getResources().getStringArray(R.array.listItems);
         navMenuIcons = getResources()
@@ -538,7 +545,6 @@ import java.util.List;
         drawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
                 GravityCompat.START);
 
-        drawerLeft = (ListView) findViewById(R.id.left_drawer);
 
         navDrawerItems = new ArrayList<NavDrawerItem>();
 
@@ -578,9 +584,6 @@ import java.util.List;
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
 
-        LayoutInflater inflate = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View vi = inflate.inflate(R.layout.left_nav_header, null);
-        drawerLeft.addHeaderView(vi);
 
         smallname = (TextView) vi.findViewById(R.id.mynamesmall);
 
@@ -1109,6 +1112,7 @@ import java.util.List;
 
     public void sendYo()
     {
+        yo_cal_counter++;
         successfulYo.sendPostRequest(my_user_id, my_role, Str_Lng, Str_Lat, "true", context);
 
     }

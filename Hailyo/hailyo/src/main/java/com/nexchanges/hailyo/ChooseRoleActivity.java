@@ -86,7 +86,16 @@ public class ChooseRoleActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.choose_role);
-        checkGCMService();
+        Boolean service = checkGPlayService();
+        if (service==false)
+        {
+            Toast.makeText(
+                    getApplicationContext(),
+                    "Google Play Services are not working, Please update and try again",
+                    Toast.LENGTH_LONG).show();
+
+        }
+
         registerGCM();
 
         context = this;
@@ -506,7 +515,7 @@ public class ChooseRoleActivity extends Activity {
     }
 
 
-    private boolean checkGCMService() {
+    private boolean checkGPlayService() {
         int resultCode = GooglePlayServicesUtil
                 .isGooglePlayServicesAvailable(this);
         // When Play services not found in device
@@ -535,7 +544,7 @@ public class ChooseRoleActivity extends Activity {
     protected void onResume()
     {
         super.onResume();
-        checkGCMService();
+        checkGPlayService();
     }
 
 

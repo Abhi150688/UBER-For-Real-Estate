@@ -66,6 +66,7 @@ public class YoPopup {
                 min15 = (Button) promptView.findViewById(R.id.mins15);
 
                 alertD = new AlertDialog.Builder(myContext).create();
+                alertD.setCanceledOnTouchOutside(true);
 
                 SendYo = (Button) promptView.findViewById(R.id.sendYo);
                 TextView spec1 = (TextView) promptView.findViewById(R.id.tvspec);
@@ -125,7 +126,7 @@ public class YoPopup {
 
                     }
                 });
-
+                alertD.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 alertD.setView(promptView);
                 alertD.show();
 

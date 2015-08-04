@@ -253,9 +253,10 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
                 broker.setTextColor(Color.WHITE);
                 builder.setBackgroundColor(Color.WHITE);
                 builder.setTextColor(Color.BLACK);
-                auction.setBackgroundColor(Color.WHITE);;
+                auction.setBackgroundColor(Color.WHITE);
+                ;
                 auction.setTextColor(Color.BLACK);
-        }
+            }
         });
 
         builder.setOnClickListener(new View.OnClickListener() {
@@ -349,6 +350,12 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
         SharedPrefs.save(context, SharedPrefs.CURRENT_LOC_KEY, SiteVisitAddressBar.getText().toString());
 
         //Nav Drawer
+        inflate = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View vi = inflate.inflate(R.layout.left_nav_header,null);
+        drawerLeft = (ListView) findViewById(R.id.left_drawer);
+
+        drawerLeft.addHeaderView(vi);
+
 
         navMenuTitles = getResources().getStringArray(R.array.listItems);
         navMenuIcons = getResources()
@@ -357,7 +364,6 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
         drawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
                 GravityCompat.START);
 
-        drawerLeft = (ListView) findViewById(R.id.left_drawer);
 
         navDrawerItems = new ArrayList<NavDrawerItem>();
 
@@ -396,9 +402,6 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
 
-        inflate = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View vi = inflate.inflate(R.layout.left_nav_header,null);
-        drawerLeft.addHeaderView(vi);
 
         smallname =  (TextView)vi.findViewById(R.id.mynamesmall);
 
