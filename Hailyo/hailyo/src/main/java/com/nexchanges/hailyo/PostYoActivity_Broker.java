@@ -63,16 +63,15 @@ import java.util.concurrent.TimeUnit;
  */
 public class PostYoActivity_Broker extends FragmentActivity
 {
-
+    boolean success=false;
+    String URL = "http://ec2-52-27-37-225.us-west-2.compute.amazonaws.com:9000/1/hailyo/cancel";
+    StringEntity se;
     Context context;
     public static final String TAG = PostYoActivity_Broker.class.getSimpleName();
     GoogleMap map;
     long ltimer1;
     int timer_int;
-    boolean is_transaction;
-
     LatLng currentLocation;
-
     Button call, message, allVisits,allDeals,hail,yo;
     ImageButton cancel;
     TextView timerTv, brokerTv;
@@ -304,6 +303,123 @@ public class PostYoActivity_Broker extends FragmentActivity
         super.onPause();
         SharedPrefs.save(context, SharedPrefs.LAST_ACTIVITY_KEY, getClass().getName());
 
+    }
+
+    public void sendPostRequest(final String U_id, final String status,final String state)
+    {
+
+        class SendPostReqAsyncTask extends AsyncTask<String, Void, String> {
+
+            @Override
+            protected void onPreExecute() {
+
+            }
+
+
+            @Override
+            protected String doInBackground(String... params) {
+
+                JSONObject jsonObject = new JSONObject();
+                try {
+                    jsonObject.accumulate("user_id", U_id);
+                    jsonObject.accumulate("hail_status", status);
+                    jsonObject.accumulate("user_state", state);
+
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+                HttpClient httpClient = new DefaultHttpClient();
+
+                HttpPost httpPost = new HttpPost(URL);
+
+
+                try {
+                    se = new StringEntity(jsonObject.toString());
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+
+
+                se.setContentType(new BasicHeader("Content-Type", "application/json"));
+
+                httpPost.setEntity(se);
+                httpPost.setHeader("Accept", "application/json");
+                httpPost.setHeader("Content-Type", "application/json");
+
+                try {
+                    HttpResponse httpResponse = httpClient.execute(httpPost);
+
+                    int response = httpResponse.getStatusLine().getStatusCode();
+                    System.out.print("Value of response code is: " + response);
+
+                    if (response == 200 || response == 201) {
+                        success = true;
+                    } else {
+                        System.out.print("Yo Failed, Please try again");
+                        success = false;
+                    }
+
+                    InputStream inputStream = httpResponse.getEntity().getContent();
+
+                    InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+
+                    BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                    StringBuilder stringBuilder = new StringBuilder();
+
+                    String bufferedStrChunk = null;
+
+                    while ((bufferedStrChunk = bufferedReader.readLine()) != null) {
+                        stringBuilder.append(bufferedStrChunk);
+                    }
+
+                    return stringBuilder.toString();
+
+                } catch (ClientProtocolException cpe) {
+                    System.out.println("First Exception coz of HttpResponese :" + cpe);
+                    cpe.printStackTrace();
+                } catch (IOException ioe) {
+                    System.out.println("Second Exception coz of HttpResponse :" + ioe);
+                    ioe.printStackTrace();
+                }
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(String result) {
+                super.onPostExecute(result);
+                if (success == false) {
+                    Toast.makeText(
+                            getApplicationContext(),
+                            "Visit could not be cancelled, Please press cancel button again!",
+                            Toast.LENGTH_LONG).show();
+                } else
+                {
+                    Toast.makeText(
+                            getApplicationContext(),
+                            "Visit has been successfully cancelled! You can choose to Hail again!",
+                            Toast.LENGTH_LONG).show();
+
+                    cancelledYo();
+                }
+            }
+
+
+        }
+
+        SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
+        sendPostReqAsyncTask.execute(U_id, status, state);
+    }
+
+    private void cancelledYo()
+    {
+        SharedPrefs.save(context, SharedPrefs.SUCCESSFUL_HAIL, "false");
+        Intent MainBActivity = new Intent (context, MainBrokerActivity.class);
+        startActivity(MainBActivity);
     }
 
 }

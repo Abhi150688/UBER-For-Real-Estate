@@ -39,7 +39,7 @@ import java.io.UnsupportedEncodingException;
 public class SuccessfulYo {
     Dialog alertD;
     StringEntity se;
-    boolean is_transaction,success;
+    boolean is_transaction,success=false;
     String URL = "http://ec2-52-27-37-225.us-west-2.compute.amazonaws.com:9000/1/yo/accept";
     public Context myContext;
     String timer_str;

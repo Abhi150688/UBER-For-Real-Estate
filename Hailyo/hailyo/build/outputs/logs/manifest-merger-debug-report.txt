@@ -581,14 +581,14 @@ ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/
 		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:160:13-49
 	android:name
 		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:159:13-60
-activity#com.nexchanges.hailyo.LoginActivity1
+activity#com.nexchanges.hailyo.LoginActivity
 ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:163:9-168:20
 	android:windowSoftInputMode
 		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:167:13-73
 	android:label
 		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:166:13-57
 	android:name
-		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:164:13-43
+		ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:164:13-42
 service#com.nexchanges.hailyo.services.MyService
 ADDED from /Users/Abhishek/Dropbox/Hailyo-Android/hailyo/Hailyo/hailyo/src/main/AndroidManifest.xml:170:9-171:19
 	android:name

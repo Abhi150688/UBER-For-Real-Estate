@@ -19,25 +19,6 @@
         android:text="My Profile"/>
 
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center">
-
-        <ImageView
-            android:layout_width="198dp"
-            android:layout_height="55dp"
-            android:layout_gravity="center_horizontal|bottom"
-            android:layout_marginBottom="30dp"
-            android:id="@+id/bottomImage"
-            android:src="@drawable/hailyologo"/>
-
-
-    </LinearLayout>
-
-
 
 
     <LinearLayout
@@ -172,11 +153,12 @@
             android:layout_width="fill_parent"
             android:layout_marginTop="20dp"
             android:layout_marginLeft="10dp"
+            android:textColor="@color/white"
             android:layout_marginRight="10dp"
             android:layout_height="wrap_content"
             android:id="@+id/save"
-            android:text="save"
-            android:background="@drawable/button_border"
+            android:text="SAVE"
+            android:background="@color/turquoise"
             />
 
 

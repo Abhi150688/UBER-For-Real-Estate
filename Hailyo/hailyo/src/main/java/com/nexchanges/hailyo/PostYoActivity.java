@@ -13,6 +13,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.location.Location;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Vibrator;
@@ -38,6 +39,22 @@ import com.nexchanges.hailyo.model.SharedPrefs;
 import com.nexchanges.hailyo.ui.CustomMapFragment;
 import com.nexchanges.hailyo.GoogleMapSupport.GetCurrentLocation;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicHeader;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -46,16 +63,14 @@ import java.util.concurrent.TimeUnit;
 public class PostYoActivity extends FragmentActivity
 {
 
-
+    boolean success=false;
+    String URL = "http://ec2-52-27-37-225.us-west-2.compute.amazonaws.com:9000/1/hailyo/cancel";
+    StringEntity se;
     Context context;
-
     public static final String TAG = MainActivity.class.getSimpleName();
-
     GoogleMap map;
     long ltimer,ltimer1;
-
     LatLng currentLocation;
-
     Button call, message, allVisits,allDeals,hail;
     ImageButton cancel;
     TextView timerTv, brokerTv;
@@ -289,5 +304,121 @@ public class PostYoActivity extends FragmentActivity
         SharedPrefs.save(context, SharedPrefs.LAST_ACTIVITY_KEY, getClass().getName());
 
     }
+
+    public void sendPostRequest(final String U_id, final String status,final String state)
+    {
+
+        class SendPostReqAsyncTask extends AsyncTask<String, Void, String> {
+
+            @Override
+            protected void onPreExecute() {
+
+            }
+
+
+            @Override
+            protected String doInBackground(String... params) {
+
+                JSONObject jsonObject = new JSONObject();
+                try {
+                    jsonObject.accumulate("user_id", U_id);
+                    jsonObject.accumulate("hail_status", status);
+                    jsonObject.accumulate("user_state", state);
+
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+
+
+                HttpClient httpClient = new DefaultHttpClient();
+
+                HttpPost httpPost = new HttpPost(URL);
+
+
+                try {
+                    se = new StringEntity(jsonObject.toString());
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+
+
+                se.setContentType(new BasicHeader("Content-Type", "application/json"));
+
+                httpPost.setEntity(se);
+                httpPost.setHeader("Accept", "application/json");
+                httpPost.setHeader("Content-Type", "application/json");
+
+                try {
+                    HttpResponse httpResponse = httpClient.execute(httpPost);
+
+                    int response = httpResponse.getStatusLine().getStatusCode();
+                    System.out.print("Value of response code is: " + response);
+
+                    if (response == 200 || response == 201) {
+                        success = true;
+                    } else {
+                        System.out.print("Yo Failed, Please try again");
+                        success = false;
+                    }
+
+                    InputStream inputStream = httpResponse.getEntity().getContent();
+
+                    InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
+
+                    BufferedReader bufferedReader = new BufferedReader(inputStreamReader);
+
+                    StringBuilder stringBuilder = new StringBuilder();
+
+                    String bufferedStrChunk = null;
+
+                    while ((bufferedStrChunk = bufferedReader.readLine()) != null) {
+                        stringBuilder.append(bufferedStrChunk);
+                    }
+
+                    return stringBuilder.toString();
+
+                } catch (ClientProtocolException cpe) {
+                    System.out.println("First Exception coz of HttpResponese :" + cpe);
+                    cpe.printStackTrace();
+                } catch (IOException ioe) {
+                    System.out.println("Second Exception coz of HttpResponse :" + ioe);
+                    ioe.printStackTrace();
+                }
+
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(String result) {
+                super.onPostExecute(result);
+                if (success == false) {
+                    Toast.makeText(
+                            getApplicationContext(),
+                            "Visit could not be cancelled, Please press cancel button again!",
+                            Toast.LENGTH_LONG).show();
+                } else
+                {
+                    Toast.makeText(
+                            getApplicationContext(),
+                            "Visit has been successfully cancelled! You can choose to Hail again!",
+                            Toast.LENGTH_LONG).show();
+
+                            cancelledYo();
+                }
+            }
+
+
+        }
+
+        SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
+        sendPostReqAsyncTask.execute(U_id, status, state);
+    }
+
+    private void cancelledYo() {
+        SharedPrefs.save(context, SharedPrefs.SUCCESSFUL_HAIL, "false");
+        Intent MainActivity = new Intent(context, MainActivity.class);
+        startActivity(MainActivity);
+    }
+
 
 }
