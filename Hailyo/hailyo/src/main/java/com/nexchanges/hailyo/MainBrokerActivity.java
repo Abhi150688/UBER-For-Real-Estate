@@ -50,6 +50,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.nexchanges.hailyo.DrawerClass.AboutActivity;
 import com.nexchanges.hailyo.DrawerClass.HelpActivity;
 import com.nexchanges.hailyo.DrawerClass.ProfileActivity;
+import com.nexchanges.hailyo.apiSupport.SuccessfulYo;
 import com.nexchanges.hailyo.customSupportClass.CheckLocationServices;
 import com.nexchanges.hailyo.customSupportClass.MyMarker;
 import com.nexchanges.hailyo.apiSupport.PlotMyNeighboursHail;
@@ -90,6 +91,7 @@ import java.util.List;
 
     PlotMyNeighboursHail plotMyNeighboursHail = new PlotMyNeighboursHail();
     CheckLocationServices checkLocationServices = new CheckLocationServices();
+    SuccessfulYo successfulYo;
     private static final String TAG = MainBrokerActivity.class.getSimpleName();
     SendLocationUpdate sendLocationUpdate = new SendLocationUpdate();
     Boolean location_read = false, avail_press = false, req_press = true;
@@ -101,7 +103,7 @@ import java.util.List;
     LocationManager mLocationManager;
     String type_user,is_transaction,Str_Lng,Str_Lat;
     BroadcastReceiver ReceivefromGCM;
-    double p_lat, p_lng;
+    double p_lat, p_lng,lat, lng;
     LatLng ll;
 
 
@@ -128,7 +130,7 @@ import java.util.List;
     GoogleMap map_hail;
     LinearLayout searchLocation;
     TextView SiteVisitAddressBar, smallname, smallemail, textview1, textview2;
-    ImageButton SetSiteVisitLocation;
+    ImageButton SetSiteVisitLocation,mapmyloc;
     SwipeRefreshLayout yo_refresh, visit_refresh, deal_refresh;
 
     LatLng currentLocation, selectedLocation;
@@ -156,6 +158,7 @@ import java.util.List;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_broker_main);
         context = this;
+        successfulYo = new SuccessfulYo();
 
         my_role = SharedPrefs.getString(context,SharedPrefs.MY_ROLE_KEY);
         my_user_id = SharedPrefs.getString(context,SharedPrefs.MY_USER_ID);
@@ -199,6 +202,8 @@ import java.util.List;
 
 
         deals = (Button) findViewById(R.id.activedeals);
+
+        mapmyloc = (ImageButton) findViewById(R.id.mapmylocation);
 
         hail = (Button) findViewById(R.id.hailmode);
 
@@ -591,6 +596,7 @@ import java.util.List;
         fetchphoto = SharedPrefs.getString(this, SharedPrefs.PHOTO_KEY);
 
 
+
         smallname.setText(fetchname);
         smallemail.setText(fetchemail);
         smallemail.setTextColor(Color.BLACK);
@@ -647,9 +653,26 @@ import java.util.List;
             public void onMapReady(GoogleMap googleMap) {
                 map_hail = googleMap;
                 map_hail.setMyLocationEnabled(true);
-
+                map_hail.getUiSettings().setMyLocationButtonEnabled(false);
                 mMyMarkersArray_Hail = plotMyNeighboursHail.markerpos(my_user_id,Str_Lng,Str_Lat,"broker",my_role);
               plotHailMarkers(mMyMarkersArray_Hail);
+
+            }
+        });
+
+
+        mapmyloc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LatLng mylocation;
+               // Double lati = Double.parseDouble(Str_Lat);
+               // Double longi = Double.parseDouble(Str_Lng);
+                mylocation = new LatLng(lat,lng);
+                map_hail.setMyLocationEnabled(true);
+                map_hail.moveCamera(CameraUpdateFactory.newLatLng(mylocation));
+                map_hail.animateCamera(CameraUpdateFactory.zoomTo(15));
+
+
 
             }
         });
@@ -1028,9 +1051,9 @@ import java.util.List;
 
             protected Void doInBackground(String... params) {
 
-                double lat = location.getLatitude();
-                double lng = location.getLongitude();
-                getPointerLatLnt();
+                lat = location.getLatitude();
+                lng = location.getLongitude();
+                //getPointerLatLnt();
 
                 Str_Lng = String.valueOf(lng);
                 Str_Lat = String.valueOf(lat);
@@ -1083,6 +1106,13 @@ import java.util.List;
         SharedPrefs.save(context, SharedPrefs.MY_POINTER_LAT, pointer_lat);
         SharedPrefs.save(context, SharedPrefs.MY_POINTER_LNG, pointer_lng);
     }
+
+    public void sendYo()
+    {
+        successfulYo.sendPostRequest(my_user_id, my_role, Str_Lng, Str_Lat, "true", context);
+
+    }
+
 
 }
 

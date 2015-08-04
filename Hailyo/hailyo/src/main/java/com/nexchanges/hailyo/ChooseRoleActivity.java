@@ -75,7 +75,7 @@ public class ChooseRoleActivity extends Activity {
     String PROJECT_NUMBER = "250185285941";
     TextView edit, fbdata;
     Boolean success = false;
-    String subphone="";
+    String subphone=null;
     LocationManager mLocationManager;
     SendLocationUpdate sendLocationUpdate;
     LocationResult locationResult;
@@ -101,6 +101,7 @@ public class ChooseRoleActivity extends Activity {
         edit = (TextView) findViewById(R.id.edit);
 
         mobile = SharedPrefs.getString(context, SharedPrefs.MY_MOBILE_KEY);
+        subphone = null;
         subphone = mobile.substring(3);
         Log.i(TAG,"value of phone 10 digit is " + subphone);
 
@@ -124,6 +125,9 @@ public class ChooseRoleActivity extends Activity {
                                          @Override
                                          public void onClick(View v) {
                                              validationCheck();
+                                             Log.i(TAG, "Validation success");
+                                             Log.i(TAG,"Client button clicked");
+
 
 
                                              if ((name.getText().toString().length() > 0) &&
@@ -141,7 +145,8 @@ public class ChooseRoleActivity extends Activity {
                                                  user_role = "client";
 
                                                  if (!Str_Lat.isEmpty() && !Str_Lng.isEmpty())
-                                                 sendPostRequest(subphone, "+91", Semail, Sname, user_role, regid,Str_Lng,Str_Lat);
+                                                 sendPostRequest(subphone, "+91", Semail, Sname, user_role, regid, Str_Lng, Str_Lat);
+                                                 Log.i(TAG,"Sending post request");
 
                                                  //signup_success();
                                              }
@@ -161,6 +166,9 @@ public class ChooseRoleActivity extends Activity {
                                          public void onClick(View v) {
 
                                              validationCheck();
+                                             Log.i(TAG, "Validation success");
+                                             Log.i(TAG, "Broker button clicked");
+
 
                                              if ((name.getText().toString().length() > 0) &&
                                                      (email.getText().toString().length() > 0)) {
@@ -177,6 +185,7 @@ public class ChooseRoleActivity extends Activity {
 
                                                  if (!Str_Lat.isEmpty() && !Str_Lng.isEmpty())
                                                      sendPostRequest(subphone, "+91", Semail, Sname, user_role, regid, Str_Lng, Str_Lat);
+                                                 Log.i(TAG,"Senidng post request broker");
                                                 // signup_success();
                                              }
 
@@ -313,7 +322,7 @@ public class ChooseRoleActivity extends Activity {
 
             @Override
             protected void onPreExecute() {
-                showSplashScreen();
+             //   showSplashScreen();
             }
 
 
@@ -322,6 +331,8 @@ public class ChooseRoleActivity extends Activity {
 
                 JSONObject jsonObject = new JSONObject();
                 try {
+                    Log.i(TAG, "Senidng JSON");
+
                     jsonObject.accumulate("mobile_no", subphone);
                     jsonObject.accumulate("mobile_code", code);
                     jsonObject.accumulate("email", Semail);
@@ -361,11 +372,17 @@ public class ChooseRoleActivity extends Activity {
 
                     int response = httpResponse.getStatusLine().getStatusCode();
                     System.out.print("Value of response code is: " + response);
+                    Log.i(TAG, "Response received, value is" + response);
+
 
                     if (response == 200 || response == 201) {
                         success = true;
+                        Log.i(TAG, "Successful Response");
+
                     } else {
                         System.out.print("LoginFailed Try again");
+                        Log.i(TAG, "Failure response");
+
                         success = false;
                     }
 
@@ -386,10 +403,10 @@ public class ChooseRoleActivity extends Activity {
                     return stringBuilder.toString();
 
                 } catch (ClientProtocolException cpe) {
-                    System.out.println("First Exception coz of HttpResponese :" + cpe);
+                    Log.i(TAG,"First Exception coz of HttpResponese :" + cpe);
                     cpe.printStackTrace();
                 } catch (IOException ioe) {
-                    System.out.println("Second Exception coz of HttpResponse :" + ioe);
+                    Log.i(TAG,"Second Exception coz of HttpResponse :" + ioe);
                     ioe.printStackTrace();
                 }
 
@@ -399,19 +416,27 @@ public class ChooseRoleActivity extends Activity {
             @Override
             protected void onPostExecute(String result) {
                 super.onPostExecute(result);
-                removeSplashScreen();
+                //removeSplashScreen();
 
 //parse json response
                 if (result != null) {
 
                     try {
+                        Log.i(TAG, "Parsing JSON response value is" + result);
+
                         JSONObject jObject = new JSONObject(result);
                         JSONObject responseDataObject = jObject.getJSONObject("responseData");
                         my_user_id = responseDataObject.getString("user_id");
 
                         if (success==true)
-                        signup_success();
-                        else {Toast.makeText(
+                        {
+                            Log.i(TAG, "Entered JSON response success");
+
+                            signup_success();}
+                        else {
+                            Log.i(TAG, "JSON Response failure");
+
+                            Toast.makeText(
                                 getApplicationContext(),
                                 "Signup failed, Please try again",
                                 Toast.LENGTH_LONG).show();
@@ -442,11 +467,14 @@ public class ChooseRoleActivity extends Activity {
         //if (my_user_id != null) {
 
         if (user_role.equalsIgnoreCase("client")) {
+            Log.i(TAG, "Starting Client activity");
+
             Intent NextActivity = new Intent(context, MainActivity.class);
             startActivity(NextActivity);
             finish();
 
         } else if (user_role.equalsIgnoreCase("broker")) {
+            Log.i(TAG, "Starting Broker activity");
             Intent NextBroActivity = new Intent(context, MainBrokerActivity.class);
             startActivity(NextBroActivity);
             finish();

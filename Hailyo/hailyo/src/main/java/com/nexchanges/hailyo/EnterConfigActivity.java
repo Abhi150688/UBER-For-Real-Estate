@@ -1,7 +1,6 @@
 package com.nexchanges.hailyo;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.Color;
@@ -9,13 +8,11 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.content.Context;
-import android.support.v7.internal.widget.TintCheckBox;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.SeekBar;
 import android.widget.TableLayout;
 import android.widget.TextView;
@@ -25,7 +22,6 @@ import com.hrules.horizontalnumberpicker.HorizontalNumberPicker;
 import com.hrules.horizontalnumberpicker.HorizontalNumberPickerListener;
 import com.nexchanges.hailyo.customSupportClass.ConfigSpecCode;
 import com.nexchanges.hailyo.model.SharedPrefs;
-import com.nexchanges.hailyo.customWidget.SeekArc;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
@@ -34,6 +30,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicHeader;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -53,7 +50,7 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
     //declare variables
     SeekBar mSeekbar_Rent, mSeekbar_Sale;
     Boolean success;
-    String URL = "http://ec2-52-27-37-225.us-west-2.compute.amazonaws.com:9000/1/hailyo/hail";
+    String URL = "http://ec2-52-27-37-225.us-west-2.compute.amazonaws.com:9000/1/lets/hail";
 
     int bhkval, value;
     Dialog alertD;
@@ -242,7 +239,7 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
 
                 if (pass == 0) {
                     sendPostRequest(user_id, role, lng, lat, mesFinal);
-                    successfulHail();
+                  //  successfulHail();
 
                     }
 
@@ -276,45 +273,32 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
                 mSeekbar_Sale.setProgress(0);
 
                  if (progress < 300000) {
-                    x=progress;
-                    y1=Math.exp(Math.log(minxr)+(x-minxr)*(Math.log(maxxr) - Math.log(minxr))/(maxxr-minxr));
-                     y=(int)y1;
+                   // x=progress;
+                   // y1=Math.exp(Math.log(minxr)+(x-minxr)*(Math.log(maxxr) - Math.log(minxr))/(maxxr-minxr));
+                    // y=(int)y1;
 
                     progress = ((int) Math.round(progress / step_size1)) * step_size1;
                     value = progress;
-                  //   int prog = mSeekbar_Rent.getProgress();
                      msg4 = Integer.toString(value);
-                     updateSpecCode(str4,msg4);
-                     mSeekbar_Rent.setProgress(y);
+                     updateSpecCode(str4, msg4);
 
                      result.setText(" Rent:" + value);
                 } else if (progress > 305000 && progress < 600000) {
-                     x=progress;
-                     y1=Math.exp(Math.log(minxr)+(x-minxr)*(Math.log(maxxr) - Math.log(minxr))/(maxxr-minxr));
-                     y=(int)y1;
 
                      progress = ((int) Math.round(progress / step_size2)) * step_size2;
                     value = progress;
-                    // int prog = mSeekbar_Rent.getProgress();
                      msg4 = Integer.toString(value);
-                     updateSpecCode(str4,msg4);
-                     mSeekbar_Rent.setProgress(y);
+                     updateSpecCode(str4, msg4);
 
                      result.setText(" Rent:" + value);
 
                 } else{
-                     x=progress;
-                     y1=Math.exp(Math.log(minxr)+(x-minxr)*(Math.log(maxxr) - Math.log(minxr))/(maxxr-minxr));
-                     y=(int)y1;
-
                      progress = ((int) Math.round(progress / step_size3)) * step_size3;
                 value = progress;
-               // int prog = mSeekbar_Rent.getProgress();
                 msg4 = Integer.toString(value);
-                updateSpecCode(str4,msg4);
+                updateSpecCode(str4, msg4);
 
                 result.setText(" Rent:" + value);
-                     mSeekbar_Rent.setProgress(y);
                  }
                 break;
 
@@ -324,7 +308,6 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
                 if (progress < 10000000) {
                     progress = ((int) Math.round(progress / step_Sale1)) * step_Sale1;
                     value = progress;
-                    //int prog1 = mSeekbar_Sale.getProgress();
                     msg4 = Integer.toString(value);
                     updateSpecCode(str4,msg4);
 
@@ -332,7 +315,6 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
                  } if (progress > 10000000 && progress < 100000000) {
                 progress = ((int) Math.round(progress / step_Sale2)) * step_Sale2;
                 value = progress;
-                //int prog1 = mSeekbar_Sale.getProgress();
                 msg4 = Integer.toString(value);
                 updateSpecCode(str4,msg4);
 
@@ -340,7 +322,6 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
                  } else
                 progress = ((int) Math.round(progress / step_Sale3)) * step_Sale3;
                 value = progress;
-               // int prog1 = mSeekbar_Sale.getProgress();
                 msg4 = Integer.toString(value);
                 updateSpecCode(str4,msg4);
 
@@ -500,7 +481,7 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
                     if (response == 200 || response == 201) {
                         success = true;
                     } else {
-                        System.out.print("LoginFailed Try again");
+                        System.out.print("Hail Failed, Try again later");
                         success = false;
                     }
 
@@ -535,28 +516,46 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
             protected void onPostExecute(String result) {
                 super.onPostExecute(result);
                 removeSplashScreen();
-
-//parse json response
-               /* if (result != null) {
+                if (success == false) {
+                    Toast.makeText(
+                            getApplicationContext(),
+                            "Hail Timed Out, No Service Provder responded \n Please try again!",
+                            Toast.LENGTH_LONG).show();
+                } else
+                {
+                    if (result != null) {
 
                     try {
                         JSONObject jObject = new JSONObject(result);
-                        JSONObject responseDataObject = jObject.getJSONObject("responseData");
-                        my_user_id = responseDataObject.getString("user_id");
+                        String tim_val = jObject.getString("time_to_meet");
+                        String yoed = jObject.getString("yo_resp");
+                        String bname = jObject.getString("name");
+                        String mobile = jObject.getString("mobile_no");
 
-                        if (success==true)
-                            signup_success();
-                        else {Toast.makeText(
-                                getApplicationContext(),
-                                "Signup failed, Please try again",
-                                Toast.LENGTH_LONG).show();
+                        JSONArray rating = jObject.getJSONArray("rating");
+                        String br_wow = rating.getString(0);
+                        String br_not_wow = rating.getString(1);
+
+                        String cl_wow = rating.getString(2);
+                        String cl_not_wow = rating.getString(3);
+
+
+                        if (yoed.equalsIgnoreCase("true"))
+                            successfulHail(mobile, bname, tim_val, br_wow, br_not_wow);
+                        else {
+                            Toast.makeText(
+                                    getApplicationContext(),
+                                    "No Response for given Hail. \n Try changing requirement specs and Hailing again!",
+                                    Toast.LENGTH_LONG).show();
 
 
                         }
                     } catch (JSONException e) {
                         Log.e("JSONException", "Error: " + e.toString());
                     }
-                }*/
+
+                }
+            }
             }
 
 
@@ -588,7 +587,7 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
         }
     }
 
-private void successfulHail()
+private void successfulHail(String mob, String nam, String valT,String wow, String not_wow)
 {
 
     SharedPrefs.save(context, SharedPrefs.CURRENT_SPEC, message);
@@ -597,10 +596,11 @@ private void successfulHail()
         message = "Plus-" + mesFinal;
         Intent PostYoActB = new Intent(context, PostYoActivity_Broker.class);
         Bundle extrasB = new Bundle();
-        extrasB.putString("phone", "9967307197");
-        extrasB.putString("broker_Name", "Rajiv Lakhpati");
-        extrasB.putString("timer", "1");
-        extrasB.putString("rating", "3");
+        extrasB.putString("phone", mob);
+        extrasB.putString("broker_Name", nam);
+        extrasB.putString("timer", valT);
+        extrasB.putString("rating_wow",wow);
+        extrasB.putString("rating_not_wow",not_wow);
 
         PostYoActB.putExtras(extrasB);
         context.startActivity(PostYoActB);
@@ -612,20 +612,15 @@ private void successfulHail()
         message = "Direct-" + mesFinal;
         Intent PostYoAct = new Intent(context, PostYoActivity.class);
         Bundle extrasB = new Bundle();
-        extrasB.putString("phone", "9967307197");
-        extrasB.putString("broker_Name", "Rajiv Lakhpati");
-        extrasB.putString("timer", "1");
-        extrasB.putString("rating", "3");
+        extrasB.putString("phone", mob);
+        extrasB.putString("broker_Name", nam);
+        extrasB.putString("timer", valT);
+        extrasB.putString("rating_wow",wow);
+        extrasB.putString("rating_not_wow",not_wow);
 
         PostYoAct.putExtras(extrasB);
         context.startActivity(PostYoAct);
         finish();
     }
 }
-
-
 }
-
-
-
-

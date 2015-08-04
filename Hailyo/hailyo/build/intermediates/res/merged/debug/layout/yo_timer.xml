@@ -142,6 +142,7 @@
             android:textAllCaps="false"
             android:textSize="30sp"
             android:text="YO"
+            android:visibility="invisible"
             android:textColor="@color/white"
             android:id="@+id/sendYo" />
     </LinearLayout>

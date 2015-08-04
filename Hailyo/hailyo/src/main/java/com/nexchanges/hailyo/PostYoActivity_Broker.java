@@ -5,11 +5,16 @@ package com.nexchanges.hailyo;
  * Created by AbhishekWork on 21/06/15.
  */
 
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
 import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Vibrator;
@@ -18,6 +23,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.telephony.SmsManager;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -34,6 +40,22 @@ import com.nexchanges.hailyo.GoogleMapSupport.GetCurrentLocation;
 import com.nexchanges.hailyo.model.SharedPrefs;
 import com.nexchanges.hailyo.ui.CustomMapFragment;
 
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.message.BasicHeader;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -43,9 +65,7 @@ public class PostYoActivity_Broker extends FragmentActivity
 {
 
     Context context;
-
     public static final String TAG = PostYoActivity_Broker.class.getSimpleName();
-
     GoogleMap map;
     long ltimer1;
     int timer_int;
@@ -57,8 +77,9 @@ public class PostYoActivity_Broker extends FragmentActivity
     ImageButton cancel;
     TextView timerTv, brokerTv;
     RatingBar brokerRating;
-    String phone, brokerName,rating, body,role;
+    String phone, brokerName,rating, body,role,user_id,lng,lat,yoed = "true";
     float ratingVal;
+
 
 
     @Override
@@ -66,6 +87,13 @@ public class PostYoActivity_Broker extends FragmentActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post_yo_broker);
         context = this;
+
+        user_id = SharedPrefs.getString(context, SharedPrefs.MY_USER_ID);
+
+
+        lng = SharedPrefs.getString(context, SharedPrefs.MY_CUR_LNG);
+        lat = SharedPrefs.getString(context, SharedPrefs.MY_CUR_LAT);
+
 
         Intent PostYoIntent = getIntent();
         Bundle extras = PostYoIntent.getExtras();
@@ -92,8 +120,6 @@ public class PostYoActivity_Broker extends FragmentActivity
         timerTv  = (TextView) findViewById(R.id.timer);
 
         brokerTv  = (TextView) findViewById(R.id.bname);
-
-      //  ratingTv1  = (RatingBar) findViewById(R.id.brokerratingBar);
 
         brokerRating  = (RatingBar) findViewById(R.id.ratingBar);
 
@@ -279,4 +305,5 @@ public class PostYoActivity_Broker extends FragmentActivity
         SharedPrefs.save(context, SharedPrefs.LAST_ACTIVITY_KEY, getClass().getName());
 
     }
+
 }

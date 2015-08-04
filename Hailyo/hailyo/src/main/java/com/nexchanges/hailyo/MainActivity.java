@@ -84,7 +84,7 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
 
     PlotMyNeighboursHail plotMyNeighboursHail = new PlotMyNeighboursHail();
     CheckLocationServices checkLocationServices = new CheckLocationServices();
-    double p_lat, p_lng;
+    double p_lat, p_lng,lat,lng;
     LatLng ll;
 
     private static final String url = "https://api.myjson.com/bins/nk0q";
@@ -119,7 +119,7 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
     GoogleMap map;
     LinearLayout searchLocation;
     TextView SiteVisitAddressBar, tv1, tv2,tv3,smallname, smallemail;
-    ImageButton SetSiteVisitLocation;
+    ImageButton SetSiteVisitLocation,mapmyloc;
     LatLng currentLocation;
     LatLng selectedLocation;
     String selectedLocation_Name,is_transaction, my_role,my_user_id, Str_Lat,Str_Lng, fetchname, fetchemail,fetchphoto,pointer_lat, pointer_lng;
@@ -150,7 +150,11 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
         my_user_id = SharedPrefs.getString(context,SharedPrefs.MY_USER_ID);
 
         mLocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60000, 10, mLocationListener);
+        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 6000, 10, mLocationListener);
+
+        mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,60000,10
+                ,mLocationListener);
+
 
         visit_refresh = (SwipeRefreshLayout)findViewById(R.id.visit_refresh);
         deal_refresh = (SwipeRefreshLayout)findViewById(R.id.deal_refresh);
@@ -160,6 +164,8 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
         tv3 = (TextView) findViewById(R.id.textView3);
         hail = (Button)findViewById(R.id.hailmode);
         visits = (Button)findViewById(R.id.activevisits);
+
+        mapmyloc= (ImageButton)findViewById(R.id.mapmylocation);
 
         broker = (Button)findViewById(R.id.broker_ret);
 
@@ -490,11 +496,11 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
             @Override
             public void onClick(View v) {
 
-                if (location_read==true) {
+                if (location_read == true) {
 
                     Intent EnterConfigActivity = new Intent(context, EnterConfigActivity.class);
-                      startActivity(EnterConfigActivity);}
-                else {
+                    startActivity(EnterConfigActivity);
+                } else {
                     Toast.makeText(getApplicationContext(), "Your Location is not available \n Please try again!",
                             Toast.LENGTH_LONG).show();
 
@@ -512,10 +518,9 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
 
             @Override
             public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                if(listView != null && listView.getChildCount() > 0)
-                {
+                if (listView != null && listView.getChildCount() > 0) {
 
-                    if ((firstVisibleItem ==0) && (listView.getChildAt(0).getTop()==0))
+                    if ((firstVisibleItem == 0) && (listView.getChildAt(0).getTop() == 0))
                         visit_refresh.setEnabled(true);
                     else
                         visit_refresh.setEnabled(false);
@@ -534,7 +539,7 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
                 if(listViewD != null && listViewD.getChildCount() > 0)
                 {
 
-                    if ((firstVisibleItem ==0) && (listView.getChildAt(0).getTop()==0))
+                    if ((firstVisibleItem ==0) && (listViewD.getChildAt(0).getTop()==0))
                         deal_refresh.setEnabled(true);
                     else
                         deal_refresh.setEnabled(false);
@@ -553,7 +558,11 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
 
                     SiteVisitAddressBar.setText("Fetching...");
                 } else {
+                    Log.i(TAG,"Map has been dragged, call function");
                     getPointerLatLnt();
+                    Log.i(TAG, "New Pointer Location now, Lat is" + pointer_lat);
+                    Log.i(TAG, "New Pointer Location now, Lng is" + pointer_lng);
+
                     selectedLocation = map.getCameraPosition().target;
                     selectedLocation_Name = "Lat: " + selectedLocation.latitude + ", Lng: " + selectedLocation.longitude;
                     getPlaceName(selectedLocation);
@@ -561,6 +570,20 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
             }
         });
 
+
+        mapmyloc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LatLng mylocation;
+                mylocation = new LatLng(lat, lng);
+                map.setMyLocationEnabled(true);
+                map.moveCamera(CameraUpdateFactory.newLatLng(mylocation));
+                map.animateCamera(CameraUpdateFactory.zoomTo(15));
+
+
+
+            }
+        });
 
 
 
@@ -881,9 +904,9 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
 
             protected Void doInBackground(String... params) {
 
-                double lat = location.getLatitude();
-                double lng = location.getLongitude();
-                getPointerLatLnt();
+                lat = location.getLatitude();
+                lng = location.getLongitude();
+               // getPointerLatLnt();
 
                Str_Lat = String.valueOf(lat);
                Str_Lng = String.valueOf(lng);
@@ -924,6 +947,7 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
 
    private void getPointerLatLnt()
     {
+        Log.i(TAG,"getPointerLatLng has been called");
         ll = map.getCameraPosition().target;
         p_lat = ll.latitude;
         p_lng = ll.longitude;
