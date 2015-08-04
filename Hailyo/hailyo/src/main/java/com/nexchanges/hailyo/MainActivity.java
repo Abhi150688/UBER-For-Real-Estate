@@ -241,7 +241,7 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
             @Override
             public void onClick(View v) {
                 map.clear();
-                mMyMarkersArray = plotMyNeighboursHail.markerpos(my_user_id, Str_Lng, Str_Lat, "broker", my_role);
+                mMyMarkersArray = plotMyNeighboursHail.markerpos(my_user_id, pointer_lng, pointer_lat, "broker", my_role);
                 plotMarkers(mMyMarkersArray, "broker");
                 broker.setBackgroundColor(Color.BLACK);
                 broker.setTextColor(Color.WHITE);
@@ -257,7 +257,7 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
             public void onClick(View v) {
 
                 map.clear();
-                mMyMarkersArray = plotMyNeighboursHail.markerpos(my_user_id, Str_Lng, Str_Lat, "builder", my_role);
+                mMyMarkersArray = plotMyNeighboursHail.markerpos(my_user_id, pointer_lng, pointer_lat, "builder", my_role);
                 plotMarkers(mMyMarkersArray, "builder");
                 builder.setBackgroundColor(Color.BLACK);
                 builder.setTextColor(Color.WHITE);
@@ -274,7 +274,7 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
             public void onClick(View v) {
 
                 map.clear();
-                mMyMarkersArray = plotMyNeighboursHail.markerpos(my_user_id, Str_Lng, Str_Lat, "auction", my_role);
+                mMyMarkersArray = plotMyNeighboursHail.markerpos(my_user_id, pointer_lng, pointer_lat, "auction", my_role);
                 plotMarkers(mMyMarkersArray, "auction");
                 auction.setBackgroundColor(Color.BLACK);
                 auction.setTextColor(Color.WHITE);
