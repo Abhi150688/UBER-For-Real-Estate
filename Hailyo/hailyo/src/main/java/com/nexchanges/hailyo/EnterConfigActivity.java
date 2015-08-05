@@ -71,7 +71,7 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
     Button hailBtn;
     private String message, role, user_id, lng,lat;
     Button seeProp,showProp;
-    Boolean isOnePressed = true, isSecondPlace = false, rentSelected = true, saleSelected = false;
+    Boolean isOnePressed, isSecondPlace, rentSelected, saleSelected;
     Context context;
     int max=5, min=0,val_check;
     String fetchloc, msg1,msg2,msg3,msg4,message1,str1="seeshow",str2="buyrent",str3="bhk",str4="price",mesFinal;
@@ -145,7 +145,6 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                isOnePressed = true;
                 is_see_show_pressed = true;
                 msg1 = "Req";
                 updateSpecCode(str1,msg1);
@@ -153,13 +152,8 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
 
                 seeProp.setBackgroundColor(Color.parseColor("#FFA500"));
                 seeProp.setTextColor(Color.WHITE);
-                if (isSecondPlace) {
                     showProp.setBackgroundResource(R.drawable.button_border);
                     showProp.setTextColor(Color.BLACK);
-
-                    isSecondPlace = false;
-
-                }
 
             }
         });
@@ -175,12 +169,8 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
                 updateSpecCode(str1, msg1);
                 SharedPrefs.save(context, SharedPrefs.CURRENT_CUST_TYPE, "avl");
 
-                isSecondPlace = true;
-                if (isOnePressed) {
                     seeProp.setBackgroundResource(R.drawable.button_border);
                     seeProp.setTextColor(Color.BLACK);
-                    isOnePressed = false;
-                }
 
             }
         });
@@ -188,9 +178,10 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
         rent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                rentSelected = true;
+                rentSelected=true;
+                saleSelected=false;
+                is_buy_sell_pressed = true;
                 sale.setChecked(false);
-                saleSelected = false;
                 msg2 = "L/L";
                 updateSpecCode(str2, msg2);
                 result.setText("");
@@ -209,9 +200,10 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
         sale.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                saleSelected = true;
-                rent.setChecked(false);
+                saleSelected=true;
                 rentSelected = false;
+                is_buy_sell_pressed = true;
+                rent.setChecked(false);
                 msg2 = "OUT";
                 updateSpecCode(str2, msg2);
                 result.setText("");
@@ -261,10 +253,6 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress,
                                   boolean fromUser) {
-        int x,y;
-        double y1;
-        int minxr = 0, maxxr=1000000;
-        int minxs=0,maxxs=150000000;
 
 
         switch (seekBar.getId()) {
@@ -344,15 +332,15 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
     private String updateSpecCode(String where, String value)
 
     {
-        message1 = msg1 + "-" + msg2 + "-" + msg3 + "-" + msg4;
+      //  message1 = msg1 + "-" + msg2 + "-" + msg3 + "-" + msg4;
 
-        if (rentSelected == true) {
-            int prog = mSeekbar_Rent.getProgress();
-            msg4 = Integer.toString(prog);
-        } else{
-            int prog1 = mSeekbar_Sale.getProgress();
-            msg4 = Integer.toString(prog1);
-        }
+        //if (rentSelected == true) {
+          //  int prog = mSeekbar_Rent.getProgress();
+            //msg4 = Integer.toString(prog);
+        //} else{
+          //  int prog1 = mSeekbar_Sale.getProgress();
+            //msg4 = Integer.toString(prog1);
+        //}
 
         if (where.equalsIgnoreCase("seeshow")) {
             msg1 = value;
@@ -405,23 +393,23 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
                     Toast.LENGTH_LONG).show();
             val_check = 1;
         }
-        if (is_buy_sell_pressed == false) {
+        else if (is_buy_sell_pressed == false) {
             Toast.makeText(getApplicationContext(), "Please select your intent \n Do you want to Buy/Sell or Rent?",
                     Toast.LENGTH_LONG).show();
             val_check = 1;
         }
 
-        if (horizontalNumberPicker3.getValue() == 0) {
+       else if (horizontalNumberPicker3.getValue() == 0) {
             Toast.makeText(getApplicationContext(), "Please select a valid configuration BHK",
                     Toast.LENGTH_LONG).show();
             val_check = 1;
         }
 
-        if (mSeekbar_Rent.getProgress() == 0 && mSeekbar_Sale.getProgress() == 0) {
+        else if (mSeekbar_Rent.getProgress() == 0 && mSeekbar_Sale.getProgress() == 0) {
             Toast.makeText(getApplicationContext(), "Please enter a valid price",
                     Toast.LENGTH_LONG).show();
             val_check = 1;
-        }
+             }
 
         return val_check;
     }

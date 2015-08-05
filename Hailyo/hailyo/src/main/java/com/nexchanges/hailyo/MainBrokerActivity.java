@@ -245,10 +245,10 @@ import java.util.List;
 
         mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
-        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,60000,10
+        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,600000,10
                 ,mLocationListener);
 
-        mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,60000,10
+        mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,600000,10
                 ,mLocationListener);
 
         //Yo Data
@@ -302,8 +302,8 @@ import java.util.List;
                 deals.setTextColor(Color.BLACK);
                 yo.setBackgroundResource(R.drawable.button_border);
                 yo.setTextColor(Color.BLACK);
-                mMyMarkersArray_Hail = plotMyNeighboursHail.markerpos(my_user_id,Str_Lng,Str_Lat,"broker",my_role);
-                plotHailMarkers(mMyMarkersArray_Hail);
+                plotMyNeighboursHail.markerpos(my_user_id, Str_Lng, Str_Lat, "broker", my_role, map_hail);
+                //plotHailMarkers(mMyMarkersArray_Hail);
 
                 break;
         }
@@ -438,8 +438,8 @@ import java.util.List;
                     yo.setTextColor(Color.BLACK);
                     deals.setBackgroundResource(R.drawable.button_border);
                     deals.setTextColor(Color.BLACK);
-                    mMyMarkersArray_Hail = plotMyNeighboursHail.markerpos(my_user_id,Str_Lng,Str_Lat,"broker",my_role);
-                  plotHailMarkers(mMyMarkersArray_Hail);
+                    plotMyNeighboursHail.markerpos(my_user_id,Str_Lng,Str_Lat,"broker",my_role, map_hail);
+                    //plotHailMarkers(mMyMarkersArray_Hail);
 
 
                 }
@@ -657,8 +657,8 @@ import java.util.List;
                 map_hail = googleMap;
                 map_hail.setMyLocationEnabled(true);
                 map_hail.getUiSettings().setMyLocationButtonEnabled(false);
-                mMyMarkersArray_Hail = plotMyNeighboursHail.markerpos(my_user_id,Str_Lng,Str_Lat,"broker",my_role);
-              plotHailMarkers(mMyMarkersArray_Hail);
+                plotMyNeighboursHail.markerpos(my_user_id,Str_Lng,Str_Lat,"broker",my_role, map_hail);
+             // plotHailMarkers(mMyMarkersArray_Hail);
 
             }
         });
@@ -673,6 +673,7 @@ import java.util.List;
                 mylocation = new LatLng(lat,lng);
                 map_hail.setMyLocationEnabled(true);
                 map_hail.moveCamera(CameraUpdateFactory.newLatLng(mylocation));
+
                 map_hail.animateCamera(CameraUpdateFactory.zoomTo(15));
 
 
@@ -692,6 +693,9 @@ import java.util.List;
                     selectedLocation = map_hail.getCameraPosition().target;
                     selectedLocation_Name = "Lat: " + selectedLocation.latitude + ", Lng: " + selectedLocation.longitude;
                     getPlaceName(selectedLocation);
+                     plotMyNeighboursHail.markerpos(my_user_id,pointer_lng,pointer_lat,"broker",my_role, map_hail);
+                    //plotHailMarkers(mMyMarkersArray_Hail);
+
                 }
             }
         });
@@ -713,24 +717,6 @@ import java.util.List;
 
     }
 
-    private void plotHailMarkers(ArrayList<MyMarker> markers) {
-        if (markers!=null)
-            {
-
-        if (markers.size() > 0) {
-            for (MyMarker myMarker : markers) {
-
-                // Create user marker with custom icon and other options
-                MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude())).title(myMarker.getmLabel());
-                markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.req_icon1));
-                map_hail.clear();
-                Marker currentMarker = map_hail.addMarker(markerOption);
-                mMarkersHashMap_hail.put(currentMarker, myMarker);
-
-            }
-        }
-        }
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {

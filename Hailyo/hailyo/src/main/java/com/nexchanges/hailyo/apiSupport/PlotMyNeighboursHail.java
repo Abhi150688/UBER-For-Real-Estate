@@ -1,8 +1,17 @@
 package com.nexchanges.hailyo.apiSupport;
 
 import android.os.AsyncTask;
+import android.util.Log;
+import android.widget.Toast;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
+import com.nexchanges.hailyo.MainActivity;
+import com.nexchanges.hailyo.MainBrokerActivity;
+import com.nexchanges.hailyo.R;
 import com.nexchanges.hailyo.customSupportClass.MyMarker;
 
 import org.apache.http.HttpResponse;
@@ -30,30 +39,24 @@ import java.util.HashMap;
     String URL = "http://ec2-52-27-37-225.us-west-2.compute.amazonaws.com:9000/1/hailyo/bboxbrokers";
     StringEntity se;
     private ArrayList<MyMarker> mMyMarkersArray = new ArrayList<MyMarker>();
-    private ArrayList<MyMarker> mMyMarkersArray2 = new ArrayList<MyMarker>();
-    private ArrayList<MyMarker> mMyMarkersArray3 = new ArrayList<MyMarker>();
+    private static final String TAG = PlotMyNeighboursHail.class.getSimpleName();
 
 
     private HashMap<Marker, MyMarker> mMarkersHashMap;
 
-    public ArrayList markerpos(String my_user_id, String lat, String lng, String brokerType, String user_role)
+    public void markerpos(String my_user_id, String lat, String lng, String brokerType, String user_role, GoogleMap map)
 
     {
-        System.out.print(my_user_id + "Hurray " +lat + " hurrah again" + lng );
-        mMyMarkersArray = sendPostRequest(my_user_id,lat,lng,brokerType, user_role);
 
-      /*  for (int i = 0; i<mMyMarkersArray.size(); i++)
-        {
-            System.out.println("Lat returned by post is " + mMyMarkersArray.get(i).getmLatitude());
-            System.out.println("Long returned by post is" + mMyMarkersArray.get(i).getmLongitude());
-
-        }*/
-        return mMyMarkersArray;
+        Log.i(TAG, "Lat is " + lat + " Lng is" + lng);
+        sendPostRequest(my_user_id,lat,lng,brokerType, user_role, map);
 
     }
 
-    private ArrayList sendPostRequest(final String my_user_id, final String lat, final String lng, final String brokerType, final String user_role)
+    private void sendPostRequest(final String my_user_id, final String lat, final String lng, final String brokerType, final String user_role, final GoogleMap map)
     {
+
+        Log.i(TAG, "BBOX post called");
 
 
         class SendPostReqAsyncTask extends AsyncTask<String, Void,String> {
@@ -63,6 +66,8 @@ import java.util.HashMap;
 
                 JSONObject jsonObject = new JSONObject();
                 try {
+
+                    Log.i(TAG, "Packaging & sending JSON");
 
                     System.out.print("We are in JSON Success");
                     jsonObject.accumulate("user_id", my_user_id);
@@ -78,9 +83,6 @@ import java.util.HashMap;
                 }
 
                 HttpClient httpClient = new DefaultHttpClient();
-
-                // In a POST request, we don't pass the values in the URL.
-                //Therefore we use only the web page URL as the parameter of the HttpPost argument
                 HttpPost httpPost = new HttpPost(URL);
 
 
@@ -107,7 +109,7 @@ import java.util.HashMap;
 
                     {
 
-                        System.out.print("Here is the HTTP response" + response);
+                        Log.i(TAG,"Here is the HTTP response" + response);
                         InputStream inputStream = httpResponse.getEntity().getContent();
 
                         InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
@@ -122,36 +124,39 @@ import java.util.HashMap;
                             stringBuilder.append(bufferedStrChunk);
                         }
                         String result = stringBuilder.toString();
+                        Log.i(TAG,"Final String result of asynch task is " + result);
 
-                        System.out.print("Final String result of asynch task is " + result);
+                        return result;
 
-                        mMyMarkersArray2 = createMarkerHash(result);
-                      /*  for (int i = 0; i<mMyMarkersArray2.size(); i++)
-                        {
-                            System.out.println("Lat returned by array 2 is " + mMyMarkersArray2.get(i).getmLatitude());
-                            System.out.println("Long returned by array2 is" + mMyMarkersArray2.get(i).getmLongitude());
 
-                        }
-*/
+                        //mMyMarkersArray2 = createMarkerHash(result);
+
                     }
 
                     else
                     {
-                        mMyMarkersArray2 = null;
 
-                        System.out.print("my marker array 2 is null");
+                        Log.i(TAG,"my marker array 2 is null");
                     }
 
 
                 } catch (ClientProtocolException cpe) {
-                    System.out.println("First Exception coz of HttpResponese :" + cpe);
+                    Log.i(TAG,"First Exception coz of HttpResponese :" + cpe);
                     cpe.printStackTrace();
                 } catch (IOException ioe) {
-                    System.out.println("Second Exception coz of HttpResponse :" + ioe);
+                    Log.i(TAG, "Second Exception coz of HttpResponse :" + ioe);
                     ioe.printStackTrace();
                 }
 
                 return null;
+            }
+
+            @Override
+            protected void onPostExecute(String result) {
+                super.onPostExecute(result);
+
+                createMarkerHash(result,user_role,brokerType, map);
+
             }
 
 
@@ -159,31 +164,55 @@ import java.util.HashMap;
 
         SendPostReqAsyncTask sendPostReqAsyncTask = new SendPostReqAsyncTask();
         sendPostReqAsyncTask.execute(my_user_id, lat, lng, brokerType);
-        return mMyMarkersArray2;
     }
 
 
-    private ArrayList createMarkerHash(String result)
+    private void createMarkerHash(String result, String role, String type, GoogleMap map1)
     {
 
         try {
-            System.out.println("Got successful lat lng response in json file");
+            Log.i(TAG, "Got successful lat lng response from server in json file");
+
+            if(result!=null)
+            {
+            JSONArray jArray = new JSONArray(result);
+            for (int i = 0; i < jArray.length(); i++) {
+
+                JSONObject jsonObject = jArray.getJSONObject(i);
+                JSONArray jloc = jsonObject.getJSONArray("loc");
+                String lng = jloc.getString(0);
+                String lat = jloc.getString(1);
+
+                Log.i(TAG, "Lat exctracted,value is" + lat);
+                Log.i(TAG, "Lng exctracted,value is" + lng);
+                mMarkersHashMap = new HashMap<Marker, MyMarker>();
+                mMyMarkersArray = null;
+                mMyMarkersArray.add(new MyMarker(Double.parseDouble(lat), Double.parseDouble(lng)));
+
+                if (role.equalsIgnoreCase("broker"))
+                    plotBMarkers(mMyMarkersArray, map1);
+                else
+                    plotCMarkers(mMyMarkersArray, type, map1);
 
 
-            JSONObject jObject = new JSONObject(result);
+            }
+        }
+
+
+
+         /*   JSONObject jObject = new JSONObject(result);
             JSONArray user__list = jObject.getJSONArray("users");
 
             for (int j = 0;j<user__list.length();j++)
             {
 
+                Log.i(TAG,"Parsing latng object inside response");
                 JSONObject attri = user__list.getJSONObject(j);
                 JSONArray loc = attri.getJSONArray("loc");
 
-                String lng = loc.getString(0);
-                String lat = loc.getString(1);
+//                String lng = loc.getString(0);
+  //              String lat = loc.getString(1);
 
-                System.out.print("Lat is" + lat);
-                System.out.print("Long is" + lng);
                 mMarkersHashMap = new HashMap<Marker, MyMarker>();
                 mMyMarkersArray3.add(new MyMarker(Double.parseDouble(lat), Double.parseDouble(lng)));
 
@@ -198,30 +227,86 @@ import java.util.HashMap;
                 System.out.print("Long is" + Lng);
                 mMarkersHashMap = new HashMap<Marker, MyMarker>();
                 mMyMarkersArray3.add(new MyMarker(Double.parseDouble(Lat), Double.parseDouble(Lng)));
-*/
 
 
 
-            }
+
+            }*/
 
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        System.out.println("Printing data of MyArray 3");
-
-
-       /* for (int i = 0; i<mMyMarkersArray3.size(); i++)
-        {
-            System.out.println("Lat returned by array 3 is " + mMyMarkersArray3.get(i).getmLatitude());
-            System.out.println("Long returned by array3 is" + mMyMarkersArray3.get(i).getmLongitude());
-
-        }*/
-
-
-        return mMyMarkersArray3;
+        Log.i(TAG, "Printing data of MyArray 3");
     }
+
+
+    private void plotCMarkers(ArrayList<MyMarker> markers, String type, GoogleMap map2) {
+        if (markers != null)
+        {
+            Log.i(TAG,"Entered client markers, marker is not null");
+            Log.i(TAG,"marker size is" + markers.size());
+
+            if (markers.size() > 0) {
+
+                for (MyMarker myMarker : markers) {
+                    Log.i(TAG,"Entered for loop for plotting markers");
+
+
+                    if (type.equalsIgnoreCase("broker")) {
+                        Log.i(TAG,"type is broker");
+                        MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude()));
+                        Log.i(TAG,"assigned lat lon");
+
+                        markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.currentlocation_icon1));
+                        Log.i(TAG, "gave icon");
+
+                        Marker currentMarker = map2.addMarker(markerOption);
+                        Log.i(TAG,"added to map");
+
+                        mMarkersHashMap.put(currentMarker, myMarker);
+                        Log.i(TAG, "print on map now");
+
+                    } else if (type.equalsIgnoreCase("auction")) {
+                        Log.i(TAG,"type is auction");
+                        MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude()));
+                        markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.currentlocation_icon1));
+                        Marker currentMarker = map2.addMarker(markerOption);
+                        mMarkersHashMap.put(currentMarker, myMarker);
+                    } else {
+                        Log.i(TAG,"type is builder");
+                        MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude()));
+                        markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.currentlocation_icon1));
+                        Marker currentMarker = map2.addMarker(markerOption);
+                        mMarkersHashMap.put(currentMarker, myMarker);
+                    }
+
+                }
+            }
+        }
+    }
+
+
+    private void plotBMarkers(ArrayList<MyMarker> markers, GoogleMap map2) {
+        if (markers!=null)
+        {
+
+            if (markers.size() > 0) {
+                for (MyMarker myMarker : markers) {
+
+                    // Create user marker with custom icon and other options
+                    MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude())).title(myMarker.getmLabel());
+                    markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.req_icon1));
+                    map2.clear();
+                    Marker currentMarker = map2.addMarker(markerOption);
+                    mMarkersHashMap.put(currentMarker, myMarker);
+
+                }
+            }
+        }
+    }
+
 
 
 

@@ -92,7 +92,7 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
     private List<VisitData> visitList = new ArrayList<VisitData>();
     private ListView listView;
     private CustomListAdapter_Visit adapter;
-    Boolean location_read=false;
+    Boolean location_read=false, broker_press = true, auction_press = false,builder_press = false;
     SwipeRefreshLayout visit_refresh, deal_refresh;
     SendLocationUpdate sendLocationUpdate = new SendLocationUpdate();
 
@@ -122,7 +122,7 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
     ImageButton SetSiteVisitLocation,mapmyloc;
     LatLng currentLocation;
     LatLng selectedLocation;
-    String selectedLocation_Name,is_transaction, my_role,my_user_id, Str_Lat,Str_Lng, fetchname, fetchemail,fetchphoto,pointer_lat, pointer_lng;
+    String selectedLocation_Name,is_transaction, my_role,my_user_id, which_type="broker",Str_Lat,Str_Lng, fetchname, fetchemail,fetchphoto,pointer_lat, pointer_lng;
     ViewFlipper VF10;
     ImageView smallphoto;
     LocationManager mLocationManager;
@@ -150,9 +150,9 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
         my_user_id = SharedPrefs.getString(context,SharedPrefs.MY_USER_ID);
 
         mLocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 6000, 10, mLocationListener);
+        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 600000, 10, mLocationListener);
 
-        mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,60000,10
+        mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,600000,10
                 ,mLocationListener);
 
 
@@ -247,8 +247,10 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
             @Override
             public void onClick(View v) {
                 map.clear();
-                mMyMarkersArray = plotMyNeighboursHail.markerpos(my_user_id, pointer_lng, pointer_lat, "broker", my_role);
-                plotMarkers(mMyMarkersArray, "broker");
+                which_type="broker";
+                plotMyNeighboursHail.markerpos(my_user_id, pointer_lng, pointer_lat, which_type, my_role, map);
+               // plotMarkers(mMyMarkersArray, which_type);
+
                 broker.setBackgroundColor(Color.BLACK);
                 broker.setTextColor(Color.WHITE);
                 builder.setBackgroundColor(Color.WHITE);
@@ -264,8 +266,10 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
             public void onClick(View v) {
 
                 map.clear();
-                mMyMarkersArray = plotMyNeighboursHail.markerpos(my_user_id, pointer_lng, pointer_lat, "builder", my_role);
-                plotMarkers(mMyMarkersArray, "builder");
+                which_type="builder";
+                 plotMyNeighboursHail.markerpos(my_user_id, pointer_lng, pointer_lat, which_type, my_role, map);
+               // plotMarkers(mMyMarkersArray, which_type);
+
                 builder.setBackgroundColor(Color.BLACK);
                 builder.setTextColor(Color.WHITE);
                 broker.setBackgroundColor(Color.WHITE);
@@ -279,11 +283,11 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
         auction.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                which_type="auction";
                 map.clear();
-                mMyMarkersArray = plotMyNeighboursHail.markerpos(my_user_id, pointer_lng, pointer_lat, "auction", my_role);
-                plotMarkers(mMyMarkersArray, "auction");
-                auction.setBackgroundColor(Color.BLACK);
+                plotMyNeighboursHail.markerpos(my_user_id, pointer_lng, pointer_lat, which_type, my_role, map);
+                //plotMarkers(mMyMarkersArray, which_type);
+                 auction.setBackgroundColor(Color.BLACK);
                 auction.setTextColor(Color.WHITE);
                 builder.setBackgroundColor(Color.WHITE);
                 builder.setTextColor(Color.BLACK);
@@ -561,17 +565,18 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
 
                     SiteVisitAddressBar.setText("Fetching...");
                 } else {
-                    Log.i(TAG,"Map has been dragged, call function");
                     getPointerLatLnt();
-                    Log.i(TAG, "New Pointer Location now, Lat is" + pointer_lat);
-                    Log.i(TAG, "New Pointer Location now, Lng is" + pointer_lng);
-
                     selectedLocation = map.getCameraPosition().target;
                     selectedLocation_Name = "Lat: " + selectedLocation.latitude + ", Lng: " + selectedLocation.longitude;
                     getPlaceName(selectedLocation);
+                    plotMyNeighboursHail.markerpos(my_user_id, pointer_lng, pointer_lat, which_type, my_role, map);
+                    //plotMarkers(mMyMarkersArray, which_type);
+
                 }
             }
         });
+
+
 
 
         mapmyloc.setOnClickListener(new View.OnClickListener() {
@@ -610,44 +615,6 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
 
 
     }
-
-
-    private void plotMarkers(ArrayList<MyMarker> markers, String type) {
-        if (markers != null)
-        {
-            if (markers.size() > 0) {
-                for (MyMarker myMarker : markers) {
-
-                    if (type.equalsIgnoreCase("broker")) {
-                        MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude()));
-                        markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.currentlocation_icon1));
-
-                        Marker currentMarker = map.addMarker(markerOption);
-
-                        mMarkersHashMap.put(currentMarker, myMarker);
-                    } else if (type.equalsIgnoreCase("auction")) {
-                        MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude()));
-                        markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.currentlocation_icon1));
-
-                        Marker currentMarker = map.addMarker(markerOption);
-
-                        mMarkersHashMap.put(currentMarker, myMarker);
-                    } else {
-                        MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude()));
-                        markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.currentlocation_icon1));
-
-                        Marker currentMarker = map.addMarker(markerOption);
-
-                        mMarkersHashMap.put(currentMarker, myMarker);
-                    }
-
-                }
-            }
-    }
-    }
-
-
-
 
 
     @Override
