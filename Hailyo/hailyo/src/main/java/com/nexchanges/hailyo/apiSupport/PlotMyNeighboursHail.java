@@ -172,6 +172,8 @@ import java.util.HashMap;
 
         try {
             Log.i(TAG, "Got successful lat lng response from server in json file");
+            mMyMarkersArray.clear();
+
 
             if(result!=null)
             {
@@ -180,13 +182,12 @@ import java.util.HashMap;
 
                 JSONObject jsonObject = jArray.getJSONObject(i);
                 JSONArray jloc = jsonObject.getJSONArray("loc");
-                String lng = jloc.getString(0);
-                String lat = jloc.getString(1);
+                String lng = jloc.getString(1);
+                String lat = jloc.getString(0);
 
                 Log.i(TAG, "Lat exctracted,value is" + lat);
                 Log.i(TAG, "Lng exctracted,value is" + lng);
                 mMarkersHashMap = new HashMap<Marker, MyMarker>();
-                mMyMarkersArray = null;
                 mMyMarkersArray.add(new MyMarker(Double.parseDouble(lat), Double.parseDouble(lng)));
 
                 if (role.equalsIgnoreCase("broker"))
@@ -297,7 +298,7 @@ import java.util.HashMap;
 
                     // Create user marker with custom icon and other options
                     MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude())).title(myMarker.getmLabel());
-                    markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.req_icon1));
+                    markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.currentlocation_icon1));
                     map2.clear();
                     Marker currentMarker = map2.addMarker(markerOption);
                     mMarkersHashMap.put(currentMarker, myMarker);

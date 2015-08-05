@@ -249,7 +249,6 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
                 map.clear();
                 which_type="broker";
                 plotMyNeighboursHail.markerpos(my_user_id, pointer_lng, pointer_lat, which_type, my_role, map);
-               // plotMarkers(mMyMarkersArray, which_type);
 
                 broker.setBackgroundColor(Color.BLACK);
                 broker.setTextColor(Color.WHITE);
@@ -267,8 +266,7 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
 
                 map.clear();
                 which_type="builder";
-                 plotMyNeighboursHail.markerpos(my_user_id, pointer_lng, pointer_lat, which_type, my_role, map);
-               // plotMarkers(mMyMarkersArray, which_type);
+                plotMyNeighboursHail.markerpos(my_user_id, pointer_lng, pointer_lat, which_type, my_role, map);
 
                 builder.setBackgroundColor(Color.BLACK);
                 builder.setTextColor(Color.WHITE);
@@ -286,7 +284,6 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
                 which_type="auction";
                 map.clear();
                 plotMyNeighboursHail.markerpos(my_user_id, pointer_lng, pointer_lat, which_type, my_role, map);
-                //plotMarkers(mMyMarkersArray, which_type);
                  auction.setBackgroundColor(Color.BLACK);
                 auction.setTextColor(Color.WHITE);
                 builder.setBackgroundColor(Color.WHITE);
@@ -496,6 +493,8 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
             public void onMapReady(GoogleMap googleMap) {
                 map = googleMap;
                 map.setMyLocationEnabled(true);
+                plotMyNeighboursHail.markerpos(my_user_id, pointer_lng, pointer_lat, which_type, my_role, map);
+
             }
         });
 
@@ -570,7 +569,6 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
                     selectedLocation_Name = "Lat: " + selectedLocation.latitude + ", Lng: " + selectedLocation.longitude;
                     getPlaceName(selectedLocation);
                     plotMyNeighboursHail.markerpos(my_user_id, pointer_lng, pointer_lat, which_type, my_role, map);
-                    //plotMarkers(mMyMarkersArray, which_type);
 
                 }
             }

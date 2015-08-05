@@ -303,7 +303,6 @@ import java.util.List;
                 yo.setBackgroundResource(R.drawable.button_border);
                 yo.setTextColor(Color.BLACK);
                 plotMyNeighboursHail.markerpos(my_user_id, Str_Lng, Str_Lat, "broker", my_role, map_hail);
-                //plotHailMarkers(mMyMarkersArray_Hail);
 
                 break;
         }
@@ -439,7 +438,6 @@ import java.util.List;
                     deals.setBackgroundResource(R.drawable.button_border);
                     deals.setTextColor(Color.BLACK);
                     plotMyNeighboursHail.markerpos(my_user_id,Str_Lng,Str_Lat,"broker",my_role, map_hail);
-                    //plotHailMarkers(mMyMarkersArray_Hail);
 
 
                 }
@@ -658,7 +656,6 @@ import java.util.List;
                 map_hail.setMyLocationEnabled(true);
                 map_hail.getUiSettings().setMyLocationButtonEnabled(false);
                 plotMyNeighboursHail.markerpos(my_user_id,Str_Lng,Str_Lat,"broker",my_role, map_hail);
-             // plotHailMarkers(mMyMarkersArray_Hail);
 
             }
         });
@@ -694,7 +691,6 @@ import java.util.List;
                     selectedLocation_Name = "Lat: " + selectedLocation.latitude + ", Lng: " + selectedLocation.longitude;
                     getPlaceName(selectedLocation);
                      plotMyNeighboursHail.markerpos(my_user_id,pointer_lng,pointer_lat,"broker",my_role, map_hail);
-                    //plotHailMarkers(mMyMarkersArray_Hail);
 
                 }
             }
