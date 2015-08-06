@@ -106,7 +106,6 @@ import java.util.List;
     double p_lat, p_lng,lat, lng;
     LatLng ll;
 
-
     private static final String urlD = "https://api.myjson.com/bins/3r0d6";
     private ProgressDialog pDialog_Deal;
     private List<DealData> dealList = new ArrayList<DealData>();
@@ -116,7 +115,6 @@ import java.util.List;
     private static final String urlYo = "https://api.myjson.com/bins/1wke2";
     private ProgressDialog pDialog_Yo;
     private List<YoData> yoList = new ArrayList<YoData>();
-    //private ListView listViewYo;
     private GridView mGridView;
     private CustomListAdapter_Yo adapterYo;
 
@@ -140,9 +138,6 @@ import java.util.List;
     Button yo, hail, deals,visits,availability, requirement;
     ImageView smallphoto;
     IntentFilter Intentfilter;
-
-    private ArrayList<MyMarker> mMyMarkersArray_Hail = new ArrayList<MyMarker>();
-    private HashMap<Marker, MyMarker> mMarkersHashMap_hail;
     int flipper_index=0, yo_cal_counter=0;
 
     private String[] navMenuTitles;
@@ -162,19 +157,15 @@ import java.util.List;
 
         my_role = SharedPrefs.getString(context,SharedPrefs.MY_ROLE_KEY);
         my_user_id = SharedPrefs.getString(context,SharedPrefs.MY_USER_ID);
-
         is_transaction = SharedPrefs.getString(context, SharedPrefs.SUCCESSFUL_HAIL);
         checkLocationServices.checkGpsStatus(context);
-
         yo_refresh = (SwipeRefreshLayout)findViewById(R.id.yo_refresh);
         visit_refresh = (SwipeRefreshLayout)findViewById(R.id.visit_refresh);
         deal_refresh = (SwipeRefreshLayout)findViewById(R.id.deal_refresh);
-
         yo_refresh.setOnRefreshListener(this);
-
         visit_refresh.setOnRefreshListener(this);
-
         deal_refresh.setOnRefreshListener(this);
+
         deal_refresh.setColorScheme(
                 R.color.red, R.color.darkturquoise,
                 R.color.green, R.color.blue);
@@ -187,28 +178,16 @@ import java.util.List;
                 R.color.red, R.color.darkturquoise,
                 R.color.green, R.color.blue);
 
-
-
         textview1 = (TextView) findViewById(R.id.textView1);
-
         textview2 = (TextView) findViewById(R.id.textView2);
-
         yo = (Button) findViewById(R.id.yomode);
-
         visits = (Button) findViewById(R.id.activevisits);
-
         availability = (Button) findViewById(R.id.availability);
         requirement = (Button) findViewById(R.id.requirement);
-
-
         deals = (Button) findViewById(R.id.activedeals);
-
         mapmyloc = (ImageButton) findViewById(R.id.mapmylocation);
-
         hail = (Button) findViewById(R.id.hailmode);
-
         VF = (ViewFlipper) findViewById(R.id.ViewFlipper10);
-
         searchLocation = (LinearLayout) findViewById(R.id.searchLocation);
         SiteVisitAddressBar = (TextView) findViewById(R.id.SiteVisitAddressBar);
         SetSiteVisitLocation = (ImageButton) findViewById(R.id.ic_launcher);
@@ -217,16 +196,12 @@ import java.util.List;
         listView = (ListView) findViewById(R.id.visitlist);
         adapter = new CustomListAdapter_Visit(this, visitList);
         listView.setAdapter(adapter);
-
         listViewD = (ListView) findViewById(R.id.dealslist);
         adapterD = new CustomListAdapter_Deals(this, dealList);
         listViewD.setAdapter(adapterD);
-
         mGridView = (GridView) findViewById(R.id.yo_grid);
-
         adapterYo = new CustomListAdapter_Yo(this, yoList);
         mGridView.setAdapter(adapterYo);
-
         mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -236,12 +211,8 @@ import java.util.List;
                 final String U_tp = yo_item.getUserType();
                 YoPopup yoPopup = new YoPopup();
                 yoPopup.inflateYo(context,spec,U_tp);
-
             }
         });
-
-
-
 
         mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
@@ -260,7 +231,6 @@ import java.util.List;
             case 0:
                 yo.setTextColor(Color.WHITE);
                 yo.setBackgroundColor(Color.parseColor("#FFA500"));
-
                 visits.setBackgroundResource(R.drawable.button_border);
                 visits.setTextColor(Color.BLACK);
                 deals.setBackgroundResource(R.drawable.button_border);
@@ -345,7 +315,6 @@ import java.util.List;
             public void onScrollStateChanged(AbsListView absListView, int i) {
 
             }
-
             @Override
             public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
                 if(listViewD != null && listViewD.getChildCount() > 0)
@@ -365,7 +334,6 @@ import java.util.List;
             public void onScrollStateChanged(AbsListView absListView, int i) {
 
             }
-
             @Override
             public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
                 if(mGridView != null && mGridView.getChildCount() > 0)
@@ -388,8 +356,6 @@ import java.util.List;
             }
         });
 
-
-
         yo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -408,10 +374,8 @@ import java.util.List;
                     hail.setTextColor(Color.BLACK);
                     deals.setBackgroundResource(R.drawable.button_border);
                     deals.setTextColor(Color.BLACK);
-
                     yo_refresh.setRefreshing(true);
                     refreshYo("Req");
-
                 }
             }
         });
@@ -427,7 +391,6 @@ import java.util.List;
                     startActivity(PostYoActivityBroker);}
 
                 else {
-
                     VF.setDisplayedChild(3);
                     hail.setBackgroundColor(Color.parseColor("#FFA500"));
                     hail.setTextColor(Color.WHITE);
@@ -438,8 +401,6 @@ import java.util.List;
                     deals.setBackgroundResource(R.drawable.button_border);
                     deals.setTextColor(Color.BLACK);
                     plotMyNeighboursHail.markerpos(my_user_id,Str_Lng,Str_Lat,"broker",my_role, map_hail);
-
-
                 }
             }
         });
@@ -456,11 +417,8 @@ import java.util.List;
                 hail.setTextColor(Color.BLACK);
                 yo.setBackgroundResource(R.drawable.button_border);
                 yo.setTextColor(Color.BLACK);
-
                 deal_refresh.setRefreshing(true);
                 refresh_deal();
-
-
             }
         });
 
@@ -477,19 +435,14 @@ import java.util.List;
                 hail.setTextColor(Color.BLACK);
                 deals.setBackgroundResource(R.drawable.button_border);
                 deals.setTextColor(Color.BLACK);
-
                 visit_refresh.setRefreshing(true);
                 refresh_visit();
-
             }
         });
-
 
         requirement.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 refreshYo("Req");
                 req_press = true;
                 avail_press=false;
@@ -503,7 +456,6 @@ import java.util.List;
         availability.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 refreshYo("Avl");
                 avail_press = true;
                 req_press = false;
@@ -531,11 +483,7 @@ import java.util.List;
         LayoutInflater inflate = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View vi = inflate.inflate(R.layout.left_nav_header, null);
         drawerLeft = (ListView) findViewById(R.id.left_drawer);
-
         drawerLeft.addHeaderView(vi);
-
-
-        // listItems = getResources().getStringArray(R.array.listItems);
         navMenuTitles = getResources().getStringArray(R.array.listItems);
         navMenuIcons = getResources()
                 .obtainTypedArray(R.array.nav_drawer_icons);
@@ -543,9 +491,7 @@ import java.util.List;
         drawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
                 GravityCompat.START);
 
-
         navDrawerItems = new ArrayList<NavDrawerItem>();
-
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
@@ -556,8 +502,6 @@ import java.util.List;
         navadapter = new NavDrawerListAdapter(getApplicationContext(),
                 navDrawerItems);
        drawerLeft.setAdapter(navadapter);
-
-        //  drawerLeft.setAdapter(new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listItems));
 
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
                 R.drawable.home_icon, R.string.drawer_open,
@@ -582,29 +526,17 @@ import java.util.List;
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
 
-
         smallname = (TextView) vi.findViewById(R.id.mynamesmall);
-
         smallemail = (TextView) vi.findViewById(R.id.myemailsmall);
-
         smallphoto = (ImageView) vi.findViewById(R.id.smallphoto);
-
-
         fetchname = SharedPrefs.getString(this, SharedPrefs.NAME_KEY, "No_Name");
-
         fetchemail = SharedPrefs.getString(this, SharedPrefs.EMAIL_KEY, "No_Email");
-
         fetchphoto = SharedPrefs.getString(this, SharedPrefs.PHOTO_KEY);
-
-
-
         smallname.setText(fetchname);
         smallemail.setText(fetchemail);
         smallemail.setTextColor(Color.BLACK);
         smallname.setTextColor(Color.BLACK);
-
         //smallphoto.setImageBitmap(BitmapFactory.decodeFile(fetchphoto));
-
 
         drawerLeft.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -636,16 +568,12 @@ import java.util.List;
                         startActivity(aboutAct);
                         break;
 
-
                     default:
                         break;
                 }
-
-
             }
         });
 
-        mMarkersHashMap_hail = new HashMap<Marker, MyMarker>();
 
         CustomMapFragment customMapFragment_Hail = ((CustomMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
 
@@ -656,25 +584,17 @@ import java.util.List;
                 map_hail.setMyLocationEnabled(true);
                 map_hail.getUiSettings().setMyLocationButtonEnabled(false);
                 plotMyNeighboursHail.markerpos(my_user_id,Str_Lng,Str_Lat,"broker",my_role, map_hail);
-
             }
         });
-
 
         mapmyloc.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 LatLng mylocation;
-               // Double lati = Double.parseDouble(Str_Lat);
-               // Double longi = Double.parseDouble(Str_Lng);
                 mylocation = new LatLng(lat,lng);
                 map_hail.setMyLocationEnabled(true);
                 map_hail.moveCamera(CameraUpdateFactory.newLatLng(mylocation));
-
-                map_hail.animateCamera(CameraUpdateFactory.zoomTo(15));
-
-
-
+                map_hail.animateCamera(CameraUpdateFactory.zoomTo(16));
             }
         });
 
@@ -691,7 +611,6 @@ import java.util.List;
                     selectedLocation_Name = "Lat: " + selectedLocation.latitude + ", Lng: " + selectedLocation.longitude;
                     getPlaceName(selectedLocation);
                      plotMyNeighboursHail.markerpos(my_user_id,pointer_lng,pointer_lat,"broker",my_role, map_hail);
-
                 }
             }
         });
@@ -702,11 +621,8 @@ import java.util.List;
                 if (location != null) {
                     currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
                     map_hail.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
-                    map_hail.animateCamera(CameraUpdateFactory.zoomTo(15));
-
+                    map_hail.animateCamera(CameraUpdateFactory.zoomTo(16));
                     getPlaceName(currentLocation);
-
-
                 }
             }
         });
@@ -725,12 +641,9 @@ import java.util.List;
                 if (placeLatLng != null && placeName != null) {
                     selectedLocation = placeLatLng;
                     selectedLocation_Name = placeName;
-
                     SiteVisitAddressBar.setText(selectedLocation_Name);
-
                     map_hail.moveCamera(CameraUpdateFactory.newLatLng(selectedLocation));
-                    map_hail.animateCamera(CameraUpdateFactory.zoomTo(15));
-
+                    map_hail.animateCamera(CameraUpdateFactory.zoomTo(16));
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -746,14 +659,12 @@ import java.util.List;
                 SiteVisitAddressBar.setText("Fetching Site Visit Location, wait..");
                 location_read=false;
             }
-
             @Override
             public void onComplete(boolean result, LatLng location, String placeName) {
                 if (result == true) {
                     SiteVisitAddressBar.setText(placeName);
                     SharedPrefs.save(context, SharedPrefs.CURRENT_LOC_KEY, SiteVisitAddressBar.getText().toString());
                     location_read=true;
-
                 } else {
                     SiteVisitAddressBar.setText("Sorry, No Such Location, Please Try Again..");
                     location_read=false;
@@ -762,10 +673,8 @@ import java.util.List;
         });
     }
 
-
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-
         return super.onKeyDown(keyCode, event);
     }
 
@@ -781,24 +690,19 @@ import java.util.List;
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        // Sync the toggle state after onRestoreInstanceState has occurred.
         drawerToggle.syncState();
     }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        // Pass any configuration change to the drawer toggls
         drawerToggle.onConfigurationChanged(newConfig);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        //hidePDialog();
     }
-
-
 
     private void refreshYo(final String User_Type)
     {
@@ -812,9 +716,6 @@ import java.util.List;
                         yo_refresh.setRefreshing(false);
                         yoList.clear();
 
-
-
-                        // Parsing json
                         for (int i = 0; i < response.length(); i++) {
                             try {
 
@@ -831,17 +732,12 @@ import java.util.List;
                                     yo.setUserType(obj.getString("user_type"));
                                     yoList.add(yo);
                                 }
-                                // adding movie to movies array
-
-
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
 
                         }
 
-                        // notifying list adapter about data changes
-                        // so that it renders the list view with updated data
                         adapterYo.notifyDataSetChanged();
                     }
                 }, new Response.ErrorListener() {
@@ -850,24 +746,17 @@ import java.util.List;
                 VolleyLog.d(TAG, "Error: " + error.getMessage());
 
                 yo_refresh.setRefreshing(false);
-
-
-            }
+     }
         });
 
         // Adding request to request queue
         MyApplication.getInstance().addToRequestQueue(yoReq);
-
-
     }
 
     public void refresh_visit()
     {
-
-
         visit_refresh.setRefreshing(true);
 
-        // Creating volley request obj
         JsonArrayRequest visitReq = new JsonArrayRequest(url,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -875,8 +764,6 @@ import java.util.List;
                         Log.d(TAG, response.toString());
 
                         visit_refresh.setRefreshing(false);
-
-                        // Parsing json
                         for (int i = 0; i < response.length(); i++) {
                             try {
 
@@ -885,13 +772,10 @@ import java.util.List;
                                 visit.setUserName(obj.getString("user_name"));
                                 visit.setThumbnailUrl(obj.getString("image"));
                                 visit.setPropsCount(obj.getInt("prop_count"));
-
                                 visit.setVisitDate(obj.getString("visit_date"));
                                 visit.setLocation(obj.getString("location"));
                                 visit.setSpecCode(obj.getString("spec_code"));
                                 visit.setDealingRoom(obj.getString("dealing_room_status"));
-
-                                // adding movie to movies array
                                 visitList.add(visit);
 
                             } catch (JSONException e) {
@@ -900,42 +784,30 @@ import java.util.List;
 
                         }
 
-                        // notifying list adapter about data changes
-                        // so that it renders the list view with updated data
                         adapter.notifyDataSetChanged();
                     }
                 }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 VolleyLog.d(TAG, "Error: " + error.getMessage());
-
                 visit_refresh.setRefreshing(false);
-
             }
         });
 
         // Adding request to request queue
         MyApplication.getInstance().addToRequestQueue(visitReq);
-
-
     }
 
     public void refresh_deal()
     {
-
         deal_refresh.setRefreshing(true);
-
-        // Creating volley request obj
         JsonArrayRequest dealReq = new JsonArrayRequest(urlD,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
                         Log.d(TAG, response.toString());
-
                         deal_refresh.setRefreshing(false);
 
-
-                        // Parsing json
                         for (int i = 0; i < response.length(); i++) {
                             try {
 
@@ -948,9 +820,6 @@ import java.util.List;
                                 deal.setRent(obj.getInt("rent_amt"));
                                 deal.setDeposit(obj.getInt("deposit_amt"));
                                 deal.setStartDate(obj.getString("agr_start_date"));
-
-
-                                // adding movie to movies array
                                 dealList.add(deal);
 
                             } catch (JSONException e) {
@@ -958,9 +827,6 @@ import java.util.List;
                             }
 
                         }
-
-                        // notifying list adapter about data changes
-                        // so that it renders the list view with updated data
                         adapterD.notifyDataSetChanged();
                     }
                 }, new Response.ErrorListener() {
@@ -969,14 +835,11 @@ import java.util.List;
                 VolleyLog.d(TAG, "Error: " + error.getMessage());
 
                 deal_refresh.setRefreshing(false);
-
-
             }
         });
 
         // Adding request to request queue
         MyApplication.getInstance().addToRequestQueue(dealReq);
-
     }
 
     @Override
@@ -984,7 +847,6 @@ import java.util.List;
 
         int index = VF.getDisplayedChild();
         if(index == 0){
-
             yo_refresh.setRefreshing(true);
             if (req_press==true)
             {
@@ -1003,7 +865,6 @@ import java.util.List;
         {
             visit_refresh.setRefreshing(true);
             refresh_visit();}
-
     }
 
    private final LocationListener mLocationListener = new LocationListener() {
@@ -1011,22 +872,15 @@ import java.util.List;
         @Override
         public void onLocationChanged(final Location location) {
             findMyLocation(location);
-
         }
-
         @Override
         public void onStatusChanged(String provider, int status, Bundle extras) {
-
         }
-
         @Override
         public void onProviderEnabled(String provider) {
-
         }
-
         @Override
         public void onProviderDisabled(String provider) {
-
         }
     };
 
@@ -1038,16 +892,12 @@ import java.util.List;
 
                 lat = location.getLatitude();
                 lng = location.getLongitude();
-                //getPointerLatLnt();
-
                 Str_Lng = String.valueOf(lng);
                 Str_Lat = String.valueOf(lat);
                 Log.i(TAG,"Value of Lat is"  + Str_Lat);
                 Log.i(TAG,"Value of Long is"  + Str_Lng);
-
                 SharedPrefs.save(context,SharedPrefs.MY_CUR_LAT,Str_Lat);
                 SharedPrefs.save(context,SharedPrefs.MY_CUR_LNG,Str_Lng);
-
                 sendLocationUpdate.sendPostRequest(my_user_id,Str_Lat,Str_Lng,my_role );
                 return null;
             }
@@ -1078,8 +928,7 @@ import java.util.List;
     protected void onResume() {
         super.onResume();
         registerReceiver(ReceivefromGCM, Intentfilter);
-        //the first parameter is the name of the inner class we created.
-    }
+      }
 
     private void getPointerLatLnt()
     {
@@ -1096,10 +945,5 @@ import java.util.List;
     {
         yo_cal_counter++;
         successfulYo.sendPostRequest(my_user_id, my_role, Str_Lng, Str_Lat, "true", context);
-
     }
-
-
 }
-
-

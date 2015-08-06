@@ -15,7 +15,6 @@ import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.ActionBarDrawerToggle;
-
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -36,7 +35,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ViewFlipper;
-
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.VolleyLog;
@@ -51,6 +49,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.nexchanges.hailyo.DrawerClass.AboutActivity;
 import com.nexchanges.hailyo.DrawerClass.HelpActivity;
 import com.nexchanges.hailyo.DrawerClass.ProfileActivity;
+import com.nexchanges.hailyo.GoogleMapSupport.ConnectOnMaps;
 import com.nexchanges.hailyo.customSupportClass.CheckLocationServices;
 import com.nexchanges.hailyo.customSupportClass.MyMarker;
 import com.nexchanges.hailyo.apiSupport.PlotMyNeighboursHail;
@@ -127,8 +126,6 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
     ImageView smallphoto;
     LocationManager mLocationManager;
 
-    private ArrayList<MyMarker> mMyMarkersArray = new ArrayList<MyMarker>();
-    private HashMap<Marker, MyMarker> mMarkersHashMap;
     private static LayoutInflater inflate =null;
     Button hail, deals,visits,broker,auction,builder;
     int flipper_index=0;
@@ -155,24 +152,17 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
         mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,600000,10
                 ,mLocationListener);
 
-
         visit_refresh = (SwipeRefreshLayout)findViewById(R.id.visit_refresh);
         deal_refresh = (SwipeRefreshLayout)findViewById(R.id.deal_refresh);
-
         tv1 = (TextView) findViewById(R.id.textView1);
         tv2 = (TextView) findViewById(R.id.textView2);
         tv3 = (TextView) findViewById(R.id.textView3);
         hail = (Button)findViewById(R.id.hailmode);
         visits = (Button)findViewById(R.id.activevisits);
-
         mapmyloc= (ImageButton)findViewById(R.id.mapmylocation);
-
         broker = (Button)findViewById(R.id.broker_ret);
-
         auction = (Button)findViewById(R.id.auctionbroker);
         builder = (Button)findViewById(R.id.builderbroker);
-
-
         deals = (Button)findViewById(R.id.activedeals);
         visit_refresh.setOnRefreshListener(this);
 
@@ -232,7 +222,6 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
                     startActivity(PostYoActivity);}
 
                 else{
-
                     VF10.setDisplayedChild(0);
                     hail.setBackgroundColor(Color.parseColor("#FFA500"));
                     hail.setTextColor(Color.WHITE);
@@ -249,13 +238,11 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
                 map.clear();
                 which_type="broker";
                 plotMyNeighboursHail.markerpos(my_user_id, pointer_lng, pointer_lat, which_type, my_role, map);
-
                 broker.setBackgroundColor(Color.BLACK);
                 broker.setTextColor(Color.WHITE);
                 builder.setBackgroundColor(Color.WHITE);
                 builder.setTextColor(Color.BLACK);
                 auction.setBackgroundColor(Color.WHITE);
-                ;
                 auction.setTextColor(Color.BLACK);
             }
         });
@@ -263,11 +250,9 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
         builder.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 map.clear();
                 which_type="builder";
                 plotMyNeighboursHail.markerpos(my_user_id, pointer_lng, pointer_lat, which_type, my_role, map);
-
                 builder.setBackgroundColor(Color.BLACK);
                 builder.setTextColor(Color.WHITE);
                 broker.setBackgroundColor(Color.WHITE);
@@ -290,7 +275,6 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
                 builder.setTextColor(Color.BLACK);
                 broker.setBackgroundColor(Color.WHITE);;
                 broker.setTextColor(Color.BLACK);
-
             }
         });
 
@@ -302,9 +286,7 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
         deals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 VF10.setDisplayedChild(1);
-
                 deals.setBackgroundColor(Color.parseColor("#FFA500"));
                 deals.setTextColor(Color.WHITE);
                 visits.setBackgroundResource(R.drawable.button_border);
@@ -332,7 +314,6 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
                 hail.setTextColor(Color.BLACK);
                 deals.setBackgroundResource(R.drawable.button_border);
                 deals.setTextColor(Color.BLACK);
-
                 visit_refresh.setRefreshing(true);
                 refresh_visit();
             }
@@ -347,16 +328,13 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
             }
         });
 
-
         SharedPrefs.save(context, SharedPrefs.CURRENT_LOC_KEY, SiteVisitAddressBar.getText().toString());
 
         //Nav Drawer
         inflate = (LayoutInflater)getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View vi = inflate.inflate(R.layout.left_nav_header,null);
         drawerLeft = (ListView) findViewById(R.id.left_drawer);
-
         drawerLeft.addHeaderView(vi);
-
 
         navMenuTitles = getResources().getStringArray(R.array.listItems);
         navMenuIcons = getResources()
@@ -365,9 +343,7 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
         drawerLayout.setDrawerShadow(R.drawable.drawer_shadow,
                 GravityCompat.START);
 
-
         navDrawerItems = new ArrayList<NavDrawerItem>();
-
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons.getResourceId(0, -1)));
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons.getResourceId(1, -1)));
         navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons.getResourceId(2, -1)));
@@ -403,29 +379,16 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
         getActionBar().setDisplayHomeAsUpEnabled(true);
         getActionBar().setHomeButtonEnabled(true);
 
-
         smallname =  (TextView)vi.findViewById(R.id.mynamesmall);
-
         smallemail =  (TextView)vi.findViewById(R.id.myemailsmall);
-
         smallphoto = (ImageView)vi.findViewById(R.id.smallphoto);
-
-
         fetchname = SharedPrefs.getString(this, SharedPrefs.NAME_KEY, "No_Name");
-
         fetchemail = SharedPrefs.getString(this, SharedPrefs.EMAIL_KEY, "No_Email");
-
         fetchphoto = SharedPrefs.getString(this, SharedPrefs.PHOTO_KEY);
-
-
-
         smallname.setText(fetchname);
-
         smallemail.setText(fetchemail);
         smallemail.setTextColor(Color.BLACK);
         smallname.setTextColor(Color.BLACK);
-
-
         smallphoto.setImageBitmap(BitmapFactory.decodeFile(fetchphoto));
 
 
@@ -436,34 +399,26 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
 
                 drawerLayout.closeDrawer(drawerLeft);
 
-
                 switch(position){
-
                     case 1:
                         Intent selectPaymentAct = new Intent(context, SelectPaymentTypeActivity.class);
                         startActivity(selectPaymentAct);
                         break;
-
                     case 2:
                         Intent profileAct = new Intent(context, ProfileActivity.class);
                         startActivity(profileAct);
                         break;
-
                     case 3:
                         Intent helpAct = new Intent(context, HelpActivity.class);
                         startActivity(helpAct);
                         break;
-
                     case 4:
                         Intent aboutAct = new Intent(context, AboutActivity.class);
                         startActivity(aboutAct);
                         break;
-
                     default:
                         break;
                 }
-
-
             }
         });
 
@@ -476,15 +431,6 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
             }
         };
         registerReceiver(ReceivefromGCM, Intentfilter);
-
-
-        // Google Map ..
-
-        // Initialize the HashMap for Markers and MyMarker object
-        mMarkersHashMap = new HashMap<Marker, MyMarker>();
-
-
-//Map Fragment 1
 
         CustomMapFragment customMapFragment = ((CustomMapFragment) getSupportFragmentManager().findFragmentById(R.id.map));
 
@@ -509,10 +455,7 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
                 } else {
                     Toast.makeText(getApplicationContext(), "Your Location is not available \n Please try again!",
                             Toast.LENGTH_LONG).show();
-
                 }
-                //SharedPrefs.save(context, SharedPrefs.CURRENT_LOC_KEY,SiteVisitAddressBar.getText().toString());
-
             }
         });
 
@@ -553,10 +496,6 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
             }
         });
 
-
-
-
-
         customMapFragment.setOnDragListener(new MapWrapperLayout.OnDragListener() {
             @Override
             public void onDrag(MotionEvent motionEvent) {
@@ -569,13 +508,26 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
                     selectedLocation_Name = "Lat: " + selectedLocation.latitude + ", Lng: " + selectedLocation.longitude;
                     getPlaceName(selectedLocation);
                     plotMyNeighboursHail.markerpos(my_user_id, pointer_lng, pointer_lat, which_type, my_role, map);
+                    ConnectOnMaps connectOnMaps = new ConnectOnMaps();
+                    LatLng point1 = new LatLng(p_lat,p_lng);
+                    LatLng point = new LatLng(lat,lng);
+                    Log.i(TAG,"Calling Connect map from MainActivity");
+
+                    ArrayList<String> A2 = new ArrayList<String>();
+
+                    A2 = connectOnMaps.connectonMap(map,point, point1);
+                    Log.i(TAG,"Control back in Main Activity from Connect Maps");
+                    if (A2.size()!=0)
+                    {
+                    String dist = A2.get(0);
+                    String dura = A2.get(1);
+                    Log.i(TAG,"Distance in Main Activity is" + dist );
+                    Log.i(TAG,"Duration in Main Activity is" + dura );}
+
 
                 }
             }
         });
-
-
-
 
         mapmyloc.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -584,16 +536,11 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
                 mylocation = new LatLng(lat, lng);
                 map.setMyLocationEnabled(true);
                 map.moveCamera(CameraUpdateFactory.newLatLng(mylocation));
-                map.animateCamera(CameraUpdateFactory.zoomTo(15));
-
-
+                map.animateCamera(CameraUpdateFactory.zoomTo(16));
 
             }
         });
 
-
-
-// Current Location ..
 
         new GetCurrentLocation(context, new GetCurrentLocation.CurrentLocationCallback() {
             @Override
@@ -602,16 +549,11 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
                     currentLocation = new LatLng(location.getLatitude(), location.getLongitude());
 
                     map.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
-                    map.animateCamera(CameraUpdateFactory.zoomTo(15));
-
+                    map.animateCamera(CameraUpdateFactory.zoomTo(16));
                     getPlaceName(currentLocation);
-
-
                 }
             }
         });
-
-
     }
 
 
@@ -630,7 +572,7 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
                     SiteVisitAddressBar.setText(selectedLocation_Name);
 
                     map.moveCamera(CameraUpdateFactory.newLatLng(selectedLocation));
-                    map.animateCamera(CameraUpdateFactory.zoomTo(15));
+                    map.animateCamera(CameraUpdateFactory.zoomTo(16));
 
 
 
@@ -684,14 +626,12 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        // Sync the toggle state after onRestoreInstanceState has occurred.
         drawerToggle.syncState();
     }
 
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        // Pass any configuration change to the drawer toggls
         drawerToggle.onConfigurationChanged(newConfig);
     }
 
@@ -730,7 +670,6 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
 
         deal_refresh.setRefreshing(true);
 
-        // Creating volley request obj
         JsonArrayRequest dealReq = new JsonArrayRequest(urlD,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -739,8 +678,6 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
 
                         deal_refresh.setRefreshing(false);
 
-
-                        // Parsing json
                         for (int i = 0; i < response.length(); i++) {
                             try {
 
@@ -753,8 +690,6 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
                                 deal.setRent(obj.getInt("rent_amt"));
                                 deal.setDeposit(obj.getInt("deposit_amt"));
 
-
-                                // adding movie to movies array
                                 dealList.add(deal);
 
                             } catch (JSONException e) {
@@ -763,8 +698,6 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
 
                         }
 
-                        // notifying list adapter about data changes
-                        // so that it renders the list view with updated data
                         adapterD.notifyDataSetChanged();
                     }
                 }, new Response.ErrorListener() {
@@ -785,8 +718,6 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
 
     public void refresh_visit()
     {
-
-
         visit_refresh.setRefreshing(true);
 
         // Creating volley request obj
@@ -795,10 +726,7 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
                     @Override
                     public void onResponse(JSONArray response) {
                         Log.d(TAG, response.toString());
-
                         visit_refresh.setRefreshing(false);
-
-                        // Parsing json
                         for (int i = 0; i < response.length(); i++) {
                             try {
 
@@ -813,7 +741,6 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
                                 visit.setSpecCode(obj.getString("spec_code"));
                                 visit.setDealingRoom(obj.getString("dealing_room_status"));
 
-                                // adding movie to movies array
                                 visitList.add(visit);
 
                             } catch (JSONException e) {
@@ -822,8 +749,6 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
 
                         }
 
-                        // notifying list adapter about data changes
-                        // so that it renders the list view with updated data
                         adapter.notifyDataSetChanged();
                     }
                 }, new Response.ErrorListener() {
@@ -847,7 +772,6 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
         @Override
         public void onLocationChanged(final Location location) {
             findMyLocation(location);
-
         }
 
         @Override
@@ -910,7 +834,6 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
     protected void onResume() {
         super.onResume();
         registerReceiver(ReceivefromGCM, Intentfilter);
-        //the first parameter is the name of the inner class we created.
     }
 
    private void getPointerLatLnt()
@@ -925,5 +848,5 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
         SharedPrefs.save(context,SharedPrefs.MY_POINTER_LNG,pointer_lng);
     }
 
-}
 
+}

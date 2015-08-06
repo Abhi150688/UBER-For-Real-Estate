@@ -48,7 +48,7 @@ import java.util.HashMap;
 
     {
 
-        Log.i(TAG, "Lat is " + lat + " Lng is" + lng);
+        //Log.i(TAG, "Lat is " + lat + " Lng is" + lng);
         sendPostRequest(my_user_id,lat,lng,brokerType, user_role, map);
 
     }
@@ -56,7 +56,7 @@ import java.util.HashMap;
     private void sendPostRequest(final String my_user_id, final String lat, final String lng, final String brokerType, final String user_role, final GoogleMap map)
     {
 
-        Log.i(TAG, "BBOX post called");
+        //Log.i(TAG, "BBOX post called");
 
 
         class SendPostReqAsyncTask extends AsyncTask<String, Void,String> {
@@ -67,7 +67,7 @@ import java.util.HashMap;
                 JSONObject jsonObject = new JSONObject();
                 try {
 
-                    Log.i(TAG, "Packaging & sending JSON");
+                    //Log.i(TAG, "Packaging & sending JSON");
 
                     System.out.print("We are in JSON Success");
                     jsonObject.accumulate("user_id", my_user_id);
@@ -109,7 +109,7 @@ import java.util.HashMap;
 
                     {
 
-                        Log.i(TAG,"Here is the HTTP response" + response);
+                      //  Log.i(TAG,"Here is the HTTP response" + response);
                         InputStream inputStream = httpResponse.getEntity().getContent();
 
                         InputStreamReader inputStreamReader = new InputStreamReader(inputStream);
@@ -124,7 +124,7 @@ import java.util.HashMap;
                             stringBuilder.append(bufferedStrChunk);
                         }
                         String result = stringBuilder.toString();
-                        Log.i(TAG,"Final String result of asynch task is " + result);
+                      //  Log.i(TAG,"Final String result of asynch task is " + result);
 
                         return result;
 
@@ -171,7 +171,7 @@ import java.util.HashMap;
     {
 
         try {
-            Log.i(TAG, "Got successful lat lng response from server in json file");
+            //Log.i(TAG, "Got successful lat lng response from server in json file");
             mMyMarkersArray.clear();
 
 
@@ -185,8 +185,8 @@ import java.util.HashMap;
                 String lng = jloc.getString(1);
                 String lat = jloc.getString(0);
 
-                Log.i(TAG, "Lat exctracted,value is" + lat);
-                Log.i(TAG, "Lng exctracted,value is" + lng);
+                //Log.i(TAG, "Lat exctracted,value is" + lat);
+               // Log.i(TAG, "Lng exctracted,value is" + lng);
                 mMarkersHashMap = new HashMap<Marker, MyMarker>();
                 mMyMarkersArray.add(new MyMarker(Double.parseDouble(lat), Double.parseDouble(lng)));
 
@@ -239,44 +239,37 @@ import java.util.HashMap;
             e.printStackTrace();
         }
 
-        Log.i(TAG, "Printing data of MyArray 3");
+        //Log.i(TAG, "Printing data of MyArray 3");
     }
 
 
     private void plotCMarkers(ArrayList<MyMarker> markers, String type, GoogleMap map2) {
         if (markers != null)
         {
-            Log.i(TAG,"Entered client markers, marker is not null");
-            Log.i(TAG,"marker size is" + markers.size());
+           // Log.i(TAG,"Entered client markers, marker is not null");
+           // Log.i(TAG,"marker size is" + markers.size());
 
             if (markers.size() > 0) {
 
                 for (MyMarker myMarker : markers) {
-                    Log.i(TAG,"Entered for loop for plotting markers");
+                  //  Log.i(TAG,"Entered for loop for plotting markers");
 
 
                     if (type.equalsIgnoreCase("broker")) {
-                        Log.i(TAG,"type is broker");
                         MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude()));
-                        Log.i(TAG,"assigned lat lon");
 
                         markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.currentlocation_icon1));
-                        Log.i(TAG, "gave icon");
 
                         Marker currentMarker = map2.addMarker(markerOption);
-                        Log.i(TAG,"added to map");
 
                         mMarkersHashMap.put(currentMarker, myMarker);
-                        Log.i(TAG, "print on map now");
 
                     } else if (type.equalsIgnoreCase("auction")) {
-                        Log.i(TAG,"type is auction");
                         MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude()));
                         markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.currentlocation_icon1));
                         Marker currentMarker = map2.addMarker(markerOption);
                         mMarkersHashMap.put(currentMarker, myMarker);
                     } else {
-                        Log.i(TAG,"type is builder");
                         MarkerOptions markerOption = new MarkerOptions().position(new LatLng(myMarker.getmLatitude(), myMarker.getmLongitude()));
                         markerOption.icon(BitmapDescriptorFactory.fromResource(R.drawable.currentlocation_icon1));
                         Marker currentMarker = map2.addMarker(markerOption);

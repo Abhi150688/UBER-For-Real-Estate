@@ -179,6 +179,7 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
             @Override
             public void onClick(View v) {
                 rentSelected=true;
+
                 saleSelected=false;
                 is_buy_sell_pressed = true;
                 sale.setChecked(false);
