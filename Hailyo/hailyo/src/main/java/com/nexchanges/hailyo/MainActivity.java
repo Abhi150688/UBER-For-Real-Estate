@@ -1,5 +1,6 @@
 package com.nexchanges.hailyo;
 
+import android.app.ActivityManager;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -51,6 +52,7 @@ import com.nexchanges.hailyo.customSupportClass.CheckLocationServices;
 import com.nexchanges.hailyo.apiSupport.PlotMyNeighboursHail;
 import com.nexchanges.hailyo.apiSupport.SendLocationUpdate;
 import com.nexchanges.hailyo.gcm.GcmMessageHandler;
+import com.nexchanges.hailyo.gcm.LocationServices;
 import com.nexchanges.hailyo.list_adapter.NavDrawerListAdapter;
 import com.nexchanges.hailyo.model.DealData;
 import com.nexchanges.hailyo.model.NavDrawerItem;
@@ -142,9 +144,9 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
         my_user_id = SharedPrefs.getString(context,SharedPrefs.MY_USER_ID);
 
         mLocationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
-        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 600000, 10, mLocationListener);
+        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60000, 150, mLocationListener);
 
-        mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,600000,10
+        mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,60000,150
                 ,mLocationListener);
 
         visit_refresh = (SwipeRefreshLayout)findViewById(R.id.visit_refresh);
@@ -160,6 +162,8 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
         builder = (Button)findViewById(R.id.builderbroker);
         deals = (Button)findViewById(R.id.activedeals);
         visit_refresh.setOnRefreshListener(this);
+        isMyServiceRunning(LocationServices.class);
+
 
         deal_refresh.setOnRefreshListener(this);
 
@@ -838,8 +842,19 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
         p_lng = ll.longitude;
         pointer_lat = Double.toString(p_lat);
         pointer_lng = Double.toString(p_lng);
-        SharedPrefs.save(context,SharedPrefs.MY_POINTER_LAT,pointer_lat);
-        SharedPrefs.save(context,SharedPrefs.MY_POINTER_LNG,pointer_lng);
+        SharedPrefs.save(context, SharedPrefs.MY_POINTER_LAT, pointer_lat);
+        SharedPrefs.save(context, SharedPrefs.MY_POINTER_LNG, pointer_lng);
+    }
+    private void isMyServiceRunning(Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                Log.i(TAG,"Service Running");
+            }
+        }
+        Intent mServiceIntent = new Intent(this, LocationServices.class);
+        startService(mServiceIntent);
+
     }
 
 

@@ -3,6 +3,7 @@ package com.nexchanges.hailyo;
 import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.Activity;
+import android.app.ActivityManager;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -34,6 +35,7 @@ import com.google.android.gms.common.GooglePlayServicesUtil;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.android.gms.location.LocationResult;
 import com.nexchanges.hailyo.apiSupport.SendLocationUpdate;
+import com.nexchanges.hailyo.gcm.LocationServices;
 import com.nexchanges.hailyo.model.SharedPrefs;
 
 import org.apache.http.HttpResponse;
@@ -98,6 +100,7 @@ public class ChooseRoleActivity extends Activity {
         }
 
         registerGCM();
+
 
         context = this;
         shortPhone = SharedPrefs.getString(context, SharedPrefs.MY_SHORTMOBILE_KEY);
@@ -348,7 +351,7 @@ public class ChooseRoleActivity extends Activity {
 
                 JSONObject jsonObject = new JSONObject();
                 try {
-                    Log.i(TAG, "Senidng JSON");
+                    Log.i(TAG, "Sending JSON");
 
                     jsonObject.accumulate("mobile_no", subphone);
                     jsonObject.accumulate("mobile_code", code);
@@ -479,7 +482,7 @@ public class ChooseRoleActivity extends Activity {
         SharedPrefs.save(context, SharedPrefs.EMAIL_KEY, Semail);
         SharedPrefs.save(context, SharedPrefs.MY_GCM_ID, regid);
         SharedPrefs.save(context, SharedPrefs.MY_USER_ID, my_user_id);
-
+        isMyServiceRunning(LocationServices.class);
 
         //if (my_user_id != null) {
 
@@ -659,4 +662,18 @@ public class ChooseRoleActivity extends Activity {
         TestAsync TestAsync = new TestAsync();
         TestAsync.execute();
     }
+
+    private void isMyServiceRunning(Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+        Log.i(TAG,"Service Running");
+            }
+        }
+        Intent mServiceIntent = new Intent(this, LocationServices.class);
+        startService(mServiceIntent);
+
+    }
+
+
 }

@@ -69,6 +69,10 @@
             </intent-filter>
         </service>
 
+        <service
+            android:enabled="true"
+            android:name=".gcm.LocationServices" >
+        </service>
 
         <activity
             android:name=".InitialActivity"

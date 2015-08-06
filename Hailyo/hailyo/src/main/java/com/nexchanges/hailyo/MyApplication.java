@@ -1,6 +1,7 @@
 package com.nexchanges.hailyo;
 
 import android.app.Application;
+import android.content.Context;
 import android.text.TextUtils;
 
 import com.crashlytics.android.Crashlytics;
@@ -22,6 +23,7 @@ public class MyApplication extends Application {
     public static final String TAG = MyApplication.class.getSimpleName();
 
     private RequestQueue mRequestQueue;
+    static Context context;
     private ImageLoader mImageLoader;
 
     private static MyApplication mInstance;
@@ -78,6 +80,11 @@ public class MyApplication extends Application {
         if (mRequestQueue != null) {
             mRequestQueue.cancelAll(tag);
         }
+    }
+
+    public  static Context getAppContext()
+    {
+        return MyApplication.context;
     }
 
 

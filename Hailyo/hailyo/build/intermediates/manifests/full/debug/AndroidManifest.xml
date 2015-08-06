@@ -73,6 +73,10 @@
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
             </intent-filter>
         </service>
+        <service
+            android:name="com.nexchanges.hailyo.gcm.LocationServices"
+            android:enabled="true" >
+        </service>
 
         <activity
             android:name="com.nexchanges.hailyo.InitialActivity"

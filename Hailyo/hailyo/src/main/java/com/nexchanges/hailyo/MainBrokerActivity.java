@@ -1,5 +1,6 @@
 package com.nexchanges.hailyo;
 
+import android.app.ActivityManager;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -57,6 +58,7 @@ import com.nexchanges.hailyo.apiSupport.PlotMyNeighboursHail;
 import com.nexchanges.hailyo.apiSupport.SendLocationUpdate;
 import com.nexchanges.hailyo.customSupportClass.YoPopup;
 import com.nexchanges.hailyo.gcm.GcmMessageHandler;
+import com.nexchanges.hailyo.gcm.LocationServices;
 import com.nexchanges.hailyo.list_adapter.NavDrawerListAdapter;
 import com.nexchanges.hailyo.model.DealData;
 import com.nexchanges.hailyo.model.NavDrawerItem;
@@ -202,6 +204,8 @@ import java.util.List;
         mGridView = (GridView) findViewById(R.id.yo_grid);
         adapterYo = new CustomListAdapter_Yo(this, yoList);
         mGridView.setAdapter(adapterYo);
+        isMyServiceRunning(LocationServices.class);
+
         mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -216,10 +220,10 @@ import java.util.List;
 
         mLocationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
-        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,600000,10
+        mLocationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,60000,150
                 ,mLocationListener);
 
-        mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,600000,10
+        mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,60000,150
                 ,mLocationListener);
 
         //Yo Data
@@ -946,4 +950,16 @@ import java.util.List;
         yo_cal_counter++;
         successfulYo.sendPostRequest(my_user_id, my_role, Str_Lng, Str_Lat, "true", context);
     }
+    private void isMyServiceRunning(Class<?> serviceClass) {
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+        for (ActivityManager.RunningServiceInfo service : manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (serviceClass.getName().equals(service.service.getClassName())) {
+                Log.i(TAG,"Service Running");
+            }
+        }
+        Intent mServiceIntent = new Intent(this, LocationServices.class);
+        startService(mServiceIntent);
+
+    }
+
 }
