@@ -1,9 +1,13 @@
 package com.nexchanges.hailyo;
 
+import android.accounts.Account;
+import android.accounts.AccountManager;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
@@ -26,7 +30,10 @@ public class LoginActivity extends Activity {
 
 
     Button enter;
+    private static final String TAG = InitialActivity.class.getSimpleName();
+
     Context context;
+    String finnum, pnum, provideDigitsNumber;
 
 
     @Override
@@ -35,11 +42,21 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.home_splash);
         context=this;
 
+        provideDigitsNumber = getMyNumber();
+
         enter = (Button) findViewById(R.id.enterbut);
         enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Digits.authenticate(authCallback, R.style.DigitsLoginTheme);
+                Log.i(TAG, "Final value obtained is " + provideDigitsNumber);
+
+                if (provideDigitsNumber.isEmpty())
+                {
+                    Log.i(TAG, "inside empty! ");
+
+                    Digits.authenticate(authCallback, R.style.DigitsLoginTheme);}
+                else
+                    Digits.authenticate(authCallback, provideDigitsNumber);
             }
         });
 
@@ -105,6 +122,54 @@ public class LoginActivity extends Activity {
         super.onPause();
         SharedPrefs.save(context, SharedPrefs.LAST_ACTIVITY_KEY, getClass().getName());
         // Logs 'app deactivate' App Event.
+    }
+
+    private String getMyNumber()
+    {
+        finnum = "";
+        TelephonyManager tm = (TelephonyManager)context.getSystemService(TELEPHONY_SERVICE);
+        String mPhoneNumber = tm.getLine1Number();
+        if (!mPhoneNumber.isEmpty())
+        {
+            finnum = mPhoneNumber;
+         }
+        else {
+            String pn;
+            pn = getNumberfromApp();
+            finnum = pn;
+             }
+        return finnum ;
+    }
+
+    private String getNumberfromApp()
+    {
+        AccountManager am = AccountManager.get(this);
+        Account[] accounts = am.getAccounts();
+
+        pnum = " ";
+        for (Account ac : accounts) {
+            String acname = ac.name;
+            String actype = ac.type;
+            // Take your time to look at all available accounts
+            System.out.println("Accounts : " + acname + ", " + actype);
+            if (actype.equalsIgnoreCase("com.viber.voip.account") || acname.startsWith("91") || acname.startsWith("+91")|| actype.equalsIgnoreCase("com.facebook.auth.login"))
+            {   String namAcc = ac.name;
+                Log.i(TAG, "Account name is " + namAcc);
+                if (namAcc.startsWith("+")) {
+                    String subNameAcc = namAcc.substring(3);
+                    Log.i(TAG, "SubString Account name is " + namAcc);
+                    Boolean ab = android.text.TextUtils.isDigitsOnly(subNameAcc);
+                    Log.i(TAG, "Boolean value of ab is " + ab);
+
+                    if (ab)
+                        pnum = subNameAcc;
+                }
+                else pnum = "";
+            }
+        }
+        Log.i(TAG, "Final value returned is " + pnum);
+
+        return pnum;
     }
 
 }

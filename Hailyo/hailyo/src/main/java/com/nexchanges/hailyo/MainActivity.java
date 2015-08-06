@@ -162,8 +162,6 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
         builder = (Button)findViewById(R.id.builderbroker);
         deals = (Button)findViewById(R.id.activedeals);
         visit_refresh.setOnRefreshListener(this);
-        isMyServiceRunning(LocationServices.class);
-
 
         deal_refresh.setOnRefreshListener(this);
 
@@ -815,6 +813,7 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
     protected void onPause() {
         super.onPause();
         SharedPrefs.save(context, SharedPrefs.LAST_ACTIVITY_KEY, getClass().getName());
+        isMyServiceRunning(LocationServices.class);
 
         try {
             unregisterReceiver(ReceivefromGCM);
@@ -832,6 +831,9 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
     protected void onResume() {
         super.onResume();
         registerReceiver(ReceivefromGCM, Intentfilter);
+        Intent i = new Intent(context,LocationServices.class);
+        stopService(i);
+
     }
 
    private void getPointerLatLnt()

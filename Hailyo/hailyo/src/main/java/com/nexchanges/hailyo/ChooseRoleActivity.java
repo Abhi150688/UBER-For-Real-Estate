@@ -15,6 +15,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
+import android.nfc.Tag;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -81,8 +82,7 @@ public class ChooseRoleActivity extends Activity {
     LocationManager mLocationManager;
     SendLocationUpdate sendLocationUpdate;
     LocationResult locationResult;
-    String Str_Lng="",Str_Lat="",shortPhone;
-    int startIndex=0,endIndex=14;
+    String Str_Lng="",Str_Lat="",shortPhone,pnum;
 
 
 
@@ -115,6 +115,8 @@ public class ChooseRoleActivity extends Activity {
         edit = (TextView) findViewById(R.id.edit);
 
         mobile = SharedPrefs.getString(context, SharedPrefs.MY_MOBILE_KEY);
+
+        getMyNumber();
 
         if (shortPhone.isEmpty())
         {
@@ -556,6 +558,8 @@ public class ChooseRoleActivity extends Activity {
     {
         super.onResume();
         checkGPlayService();
+        Intent i = new Intent(context,LocationServices.class);
+        startService(i);
     }
 
 
@@ -598,22 +602,14 @@ public class ChooseRoleActivity extends Activity {
         }.execute(null, null, null);
     }
 
-    private String getMyNumber()
-    {
-        TelephonyManager tMgr = (TelephonyManager)this.getSystemService(Context.TELEPHONY_SERVICE);
-        String mPhoneNumber = tMgr.getLine1Number();
-        if (mPhoneNumber.isEmpty())
-            return " ";
-        else
-            num = mPhoneNumber;
-        return num;
-    }
 
     @Override
     protected void onPause()
     {
         super.onPause();
         SharedPrefs.save(context, SharedPrefs.LAST_ACTIVITY_KEY, getClass().getName());
+        Intent i = new Intent(context,LocationServices.class);
+        stopService(i);
 
     }
 
@@ -675,5 +671,44 @@ public class ChooseRoleActivity extends Activity {
 
     }
 
+    private void getMyNumber()
+    {
+        TelephonyManager tm = (TelephonyManager)context.getSystemService(TELEPHONY_SERVICE);
+        String mPhoneNumber = tm.getLine1Number();
+        Log.i(TAG,"phone number inside method is" + mPhoneNumber);
+        if (mPhoneNumber.isEmpty())
+        { Log.i(TAG,"phone number inside first if is empty");}
+        String pn;
+        Log.i(TAG,"Calling the other method now");
+        pn = getNumberfromApp();
+        Log.i(TAG, "value returned by other method is" + pn);
+
+    }
+
+    private String getNumberfromApp()
+   {
+       Log.i(TAG,"Tring other sources");
+       AccountManager am = AccountManager.get(this);
+       Account[] accounts = am.getAccounts();
+
+       pnum = " ";
+       for (Account ac : accounts) {
+           String acname = ac.name;
+           String actype = ac.type;
+           // Take your time to look at all available accounts
+           System.out.println("Accounts : " + acname + ", " + actype);
+           if (actype.equalsIgnoreCase("com.whatsapp") || actype.equalsIgnoreCase("com.viber.voip.account") || acname.startsWith("91") || acname.startsWith("+91"))
+           pnum = ac.name;
+
+           else if (actype.equalsIgnoreCase("com.facebook.auth.login"))
+           {
+
+               Boolean ab = android.text.TextUtils.isDigitsOnly(ac.name);
+               if (ab)
+                   pnum =ac.name;
+           }
+       }
+       return pnum;
+   }
 
 }

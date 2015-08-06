@@ -204,7 +204,6 @@ import java.util.List;
         mGridView = (GridView) findViewById(R.id.yo_grid);
         adapterYo = new CustomListAdapter_Yo(this, yoList);
         mGridView.setAdapter(adapterYo);
-        isMyServiceRunning(LocationServices.class);
 
         mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -915,6 +914,7 @@ import java.util.List;
     protected void onPause() {
         super.onPause();
         SharedPrefs.save(context, SharedPrefs.LAST_ACTIVITY_KEY, getClass().getName());
+        isMyServiceRunning(LocationServices.class);
 
         try {
             unregisterReceiver(ReceivefromGCM);
@@ -932,7 +932,10 @@ import java.util.List;
     protected void onResume() {
         super.onResume();
         registerReceiver(ReceivefromGCM, Intentfilter);
-      }
+        Intent i = new Intent(context,LocationServices.class);
+        stopService(i);
+
+    }
 
     private void getPointerLatLnt()
     {
