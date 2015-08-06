@@ -25,7 +25,12 @@ public class SharedPrefs {
     public static String MY_POINTER_LNG = "pointerLng";
 
     public static String PHOTO_KEY = "myphotoKey";
-    public static String MY_MOBILE_KEY = "myphotoKey";
+    public static String MY_MOBILE_KEY = "mymobilekey";
+
+    public static String MY_COUNTER_DISTANCE = "myCounterDistance";
+    public static String MY_COUNTER_DURATION = "myCounterDuration";
+
+    public static String MY_SHORTMOBILE_KEY = "myshortmobilekey";
 
     public static String PROPERTY_KEY = "myphotoKey";
     public static String MY_USER_ID = "myUserId";

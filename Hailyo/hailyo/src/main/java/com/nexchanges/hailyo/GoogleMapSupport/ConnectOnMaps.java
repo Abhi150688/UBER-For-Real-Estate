@@ -1,14 +1,14 @@
 package com.nexchanges.hailyo.GoogleMapSupport;
 
-import android.graphics.Color;
-import android.nfc.Tag;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.util.Log;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.PolylineOptions;
+import com.nexchanges.hailyo.model.SharedPrefs;
+
 import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,6 +27,7 @@ public class ConnectOnMaps {
 
     String url;
     GoogleMap maps, maps2;
+    Context con1, con2;
 
     ArrayList<LatLng> markerPoints;
     ArrayList<String> A1 = new ArrayList<String>();
@@ -37,7 +38,7 @@ public class ConnectOnMaps {
     private static final String TAG = ConnectOnMaps.class.getSimpleName();
 
 
-    public ArrayList connectonMap(final GoogleMap map, LatLng point, LatLng point1) {
+    public ArrayList connectonMap(final GoogleMap map, LatLng point, LatLng point1, Context context) {
         Log.i(TAG,"Entered Connect Maps");
         markerPoints = new ArrayList<LatLng>();
 
@@ -70,12 +71,10 @@ public class ConnectOnMaps {
             String url = getDirectionsUrl(origin, dest);
             Log.i(TAG, "url for getting directions is as below" + url);
 
-            MyTaskParams params = new MyTaskParams(url,map);
+            final MyTaskParams params = new MyTaskParams(url,map, context);
 
             DownloadTask downloadTask = new DownloadTask();
             downloadTask.execute(params);
-
-
         }
 
         return A3;
@@ -155,6 +154,8 @@ public class ConnectOnMaps {
                 String data = "";
                 url = params[0].Url;
                 maps = params[0].map;
+                con1 = params[0].context;
+
 
                 try {
                     // Fetching the data from web service
@@ -173,7 +174,7 @@ public class ConnectOnMaps {
                 super.onPostExecute(result);
 
                 Log.i(TAG, "Calling parse task method");
-                MyTaskParams2 params2 = new MyTaskParams2(result,maps);
+                MyTaskParams2 params2 = new MyTaskParams2(result,maps, con1);
 
                 ParserTask parserTask = new ParserTask();
                 parserTask.execute(params2);
@@ -195,6 +196,8 @@ public class ConnectOnMaps {
 
             String result = jsonData[0].Url;
             maps2 = jsonData[0].map;
+            con2 = jsonData[0].context;
+
 
             try {
                 jObject = new JSONObject(result);
@@ -249,48 +252,48 @@ public class ConnectOnMaps {
                     Log.i(TAG,"Adding points on map");
                     points.add(position);
                 }
-
                 // Adding all the points in the route to LineOptions
                // lineOptions.addAll(points);
                // lineOptions.width(2);
                // lineOptions.color(Color.RED);
                 Log.i(TAG, "Done plotting on map with red line");
             }
-
-
-
             // Drawing polyline in the Google Map for the i-th route
            // maps2.addPolyline(lineOptions);
             A1.add(distance);
             A1.add(duration);
+            SharedPrefs.save(con2,SharedPrefs.MY_COUNTER_DISTANCE,distance);
+            SharedPrefs.save(con2,SharedPrefs.MY_COUNTER_DURATION,duration);
+
             Log.i(TAG, "Calculated Distance is" + distance);
             Log.i(TAG, "Calculated duration is" + duration);
 
         }
     }
-    //    return A1;
-
 
     private static class MyTaskParams{
         String Url;
         GoogleMap map;
+        Context context;
 
-        MyTaskParams(String Url, GoogleMap map)
+        MyTaskParams(String Url, GoogleMap map, Context context)
         {
             this.Url = Url;
             this.map = map;
+            this.context = context;
         }
 
     }
 
-    private static class MyTaskParams2{
+    private static class MyTaskParams2 {
         String Url;
         GoogleMap map;
+        Context context;
 
-        MyTaskParams2(String Url, GoogleMap map)
-        {
+        MyTaskParams2(String Url, GoogleMap map, Context context) {
             this.Url = Url;
             this.map = map;
+            this.context = context;
         }
 
     }

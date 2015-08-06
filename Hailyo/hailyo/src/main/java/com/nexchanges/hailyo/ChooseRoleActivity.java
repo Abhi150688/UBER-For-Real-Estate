@@ -79,7 +79,9 @@ public class ChooseRoleActivity extends Activity {
     LocationManager mLocationManager;
     SendLocationUpdate sendLocationUpdate;
     LocationResult locationResult;
-    String Str_Lng="",Str_Lat="";
+    String Str_Lng="",Str_Lat="",shortPhone;
+    int startIndex=0,endIndex=14;
+
 
 
     @Override
@@ -87,8 +89,7 @@ public class ChooseRoleActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.choose_role);
         Boolean service = checkGPlayService();
-        if (service==false)
-        {
+        if (service == false) {
             Toast.makeText(
                     getApplicationContext(),
                     "Google Play Services are not working, Please update and try again",
@@ -99,6 +100,7 @@ public class ChooseRoleActivity extends Activity {
         registerGCM();
 
         context = this;
+        shortPhone = SharedPrefs.getString(context, SharedPrefs.MY_SHORTMOBILE_KEY);
         name = (EditText) findViewById(R.id.etname);
         email = (EditText) findViewById(R.id.etemail);
 
@@ -110,8 +112,14 @@ public class ChooseRoleActivity extends Activity {
         edit = (TextView) findViewById(R.id.edit);
 
         mobile = SharedPrefs.getString(context, SharedPrefs.MY_MOBILE_KEY);
-        subphone = null;
+
+        if (shortPhone.isEmpty())
+        {
+
         subphone = mobile.substring(3);
+        SharedPrefs.save(context, SharedPrefs.MY_SHORTMOBILE_KEY, subphone);
+    }
+        // subphone = mobile.substring(3);
         Log.i(TAG,"value of phone 10 digit is " + subphone);
 
 

@@ -42,16 +42,12 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.nexchanges.hailyo.DrawerClass.AboutActivity;
 import com.nexchanges.hailyo.DrawerClass.HelpActivity;
 import com.nexchanges.hailyo.DrawerClass.ProfileActivity;
 import com.nexchanges.hailyo.GoogleMapSupport.ConnectOnMaps;
 import com.nexchanges.hailyo.customSupportClass.CheckLocationServices;
-import com.nexchanges.hailyo.customSupportClass.MyMarker;
 import com.nexchanges.hailyo.apiSupport.PlotMyNeighboursHail;
 import com.nexchanges.hailyo.apiSupport.SendLocationUpdate;
 import com.nexchanges.hailyo.gcm.GcmMessageHandler;
@@ -75,7 +71,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends FragmentActivity implements SwipeRefreshLayout.OnRefreshListener
@@ -236,7 +231,7 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
             @Override
             public void onClick(View v) {
                 map.clear();
-                which_type="broker";
+                which_type = "broker";
                 plotMyNeighboursHail.markerpos(my_user_id, pointer_lng, pointer_lat, which_type, my_role, map);
                 broker.setBackgroundColor(Color.BLACK);
                 broker.setTextColor(Color.WHITE);
@@ -399,7 +394,7 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
 
                 drawerLayout.closeDrawer(drawerLeft);
 
-                switch(position){
+                switch (position) {
                     case 1:
                         Intent selectPaymentAct = new Intent(context, SelectPaymentTypeActivity.class);
                         startActivity(selectPaymentAct);
@@ -485,10 +480,9 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
 
             @Override
             public void onScroll(AbsListView absListView, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-                if(listViewD != null && listViewD.getChildCount() > 0)
-                {
+                if (listViewD != null && listViewD.getChildCount() > 0) {
 
-                    if ((firstVisibleItem ==0) && (listViewD.getChildAt(0).getTop()==0))
+                    if ((firstVisibleItem == 0) && (listViewD.getChildAt(0).getTop() == 0))
                         deal_refresh.setEnabled(true);
                     else
                         deal_refresh.setEnabled(false);
@@ -509,20 +503,20 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
                     getPlaceName(selectedLocation);
                     plotMyNeighboursHail.markerpos(my_user_id, pointer_lng, pointer_lat, which_type, my_role, map);
                     ConnectOnMaps connectOnMaps = new ConnectOnMaps();
-                    LatLng point1 = new LatLng(p_lat,p_lng);
-                    LatLng point = new LatLng(lat,lng);
-                    Log.i(TAG,"Calling Connect map from MainActivity");
+                    LatLng point1 = new LatLng(p_lat, p_lng);
+                    LatLng point = new LatLng(lat, lng);
+                    Log.i(TAG, "Calling Connect map from MainActivity");
 
                     ArrayList<String> A2 = new ArrayList<String>();
 
-                    A2 = connectOnMaps.connectonMap(map,point, point1);
-                    Log.i(TAG,"Control back in Main Activity from Connect Maps");
-                    if (A2.size()!=0)
-                    {
-                    String dist = A2.get(0);
-                    String dura = A2.get(1);
-                    Log.i(TAG,"Distance in Main Activity is" + dist );
-                    Log.i(TAG,"Duration in Main Activity is" + dura );}
+                    A2 = connectOnMaps.connectonMap(map, point, point1, context);
+                    Log.i(TAG, "Control back in Main Activity from Connect Maps");
+
+                    String dist = SharedPrefs.getString(context,SharedPrefs.MY_COUNTER_DISTANCE);
+                    String dura = SharedPrefs.getString(context,SharedPrefs.MY_COUNTER_DURATION);
+
+                    Log.i(TAG, "Distance in Main Activity is" + dist);
+                    Log.i(TAG, "Duration in Main Activity is" + dura);
 
 
                 }
