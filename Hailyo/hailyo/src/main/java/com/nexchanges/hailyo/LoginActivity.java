@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.digits.sdk.android.AuthCallback;
 import com.digits.sdk.android.DigitsException;
 import com.digits.sdk.android.DigitsSession;
+import com.digits.sdk.android.*;
 
 
 /**
@@ -31,7 +32,8 @@ public class LoginActivity extends Activity {
 
     Button enter;
     private static final String TAG = InitialActivity.class.getSimpleName();
-
+    String namAcc, subNameAcc;
+    Boolean ab;
     Context context;
     String finnum, pnum, provideDigitsNumber;
 
@@ -57,7 +59,7 @@ public class LoginActivity extends Activity {
                     Digits.authenticate(authCallback, R.style.DigitsLoginTheme);}
                 else
                     Digits.authenticate(authCallback, provideDigitsNumber);
-            }
+               }
         });
 
 
@@ -152,20 +154,32 @@ public class LoginActivity extends Activity {
             String actype = ac.type;
             // Take your time to look at all available accounts
             System.out.println("Accounts : " + acname + ", " + actype);
-            if (actype.equalsIgnoreCase("com.viber.voip.account") || acname.startsWith("91") || acname.startsWith("+91")|| actype.equalsIgnoreCase("com.facebook.auth.login"))
+            if (actype.equalsIgnoreCase("com.viber.voip.account") || actype.equalsIgnoreCase("com.facebook.auth.login"))
             {   String namAcc = ac.name;
-                Log.i(TAG, "Account name is " + namAcc);
+
                 if (namAcc.startsWith("+")) {
-                    String subNameAcc = namAcc.substring(3);
-                    Log.i(TAG, "SubString Account name is " + namAcc);
-                    Boolean ab = android.text.TextUtils.isDigitsOnly(subNameAcc);
+                    subNameAcc = namAcc.substring(3);
+                    ab = android.text.TextUtils.isDigitsOnly(subNameAcc);
                     Log.i(TAG, "Boolean value of ab is " + ab);
 
                     if (ab)
                         pnum = subNameAcc;
                 }
-                else pnum = "";
+
+                else if (android.text.TextUtils.isDigitsOnly(ac.name))
+                {
+                    pnum = ac.name;
+                }
+
+                else
+                pnum = "";
             }
+
+            else if (acname.startsWith("91"))
+            {
+                pnum = ac.name;
+            }
+            else pnum = "";
         }
         Log.i(TAG, "Final value returned is " + pnum);
 
@@ -173,7 +187,6 @@ public class LoginActivity extends Activity {
     }
 
 }
-
 
 
 
