@@ -8,10 +8,19 @@
          https://developer.android.com/design/patterns/navigation-drawer.html -->
     <dimen name="navigation_drawer_width">240dp</dimen>
 
-        <dimen name="title">17dp</dimen>
+        <dimen name="title">20dp</dimen>
         <dimen name="rating">15dip</dimen>
         <dimen name="genre">13dip</dimen>
         <dimen name="year">12dip</dimen>
+
+    <dimen name="user_name">20dp</dimen>
+    <dimen name="spec_code">17dip</dimen>
+    <dimen name="prop_count">15dip</dimen>
+    <dimen name="location">13dip</dimen>
+    <dimen name="status">12dip</dimen>
+    <dimen name="date">11dip</dimen>
+
+
     <dimen name="rippleStrokeWidth">2dp</dimen>
     <dimen name="rippleRadius">64dp</dimen>
 

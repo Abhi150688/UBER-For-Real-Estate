@@ -235,7 +235,7 @@
         <Button
             android:id="@+id/hailmode"
             android:background="@color/orange"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
@@ -244,10 +244,10 @@
 
         <Button
             android:id="@+id/activevisits"
-            android:background="@drawable/button_border"
+            android:background="@color/white"
             android:layout_marginRight="0dp"
             android:layout_weight="1"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@color/black"
@@ -255,10 +255,10 @@
 
         <Button
             android:id="@+id/activedeals"
-            android:background="@drawable/button_border"
+            android:background="@color/white"
             android:layout_marginRight="0dp"
             android:layout_weight="1"
-            android:textSize="20dp"
+            android:textSize="15dp"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:textColor="@color/black"

@@ -44,26 +44,20 @@ public class LoginActivity extends Activity {
         setContentView(R.layout.home_splash);
         context=this;
 
-        provideDigitsNumber = getMyNumber();
+//        provideDigitsNumber = "+91" + getMyNumber();
 
         enter = (Button) findViewById(R.id.enterbut);
         enter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.i(TAG, "Final value obtained is " + provideDigitsNumber);
+  //              Log.i(TAG, "Final value obtained is " + provideDigitsNumber);
 
-                if (provideDigitsNumber.isEmpty())
-                {
-                    Log.i(TAG, "inside empty! ");
+                //if (provideDigitsNumber.isEmpty())
+                    Digits.authenticate(authCallback, R.style.DigitsLoginTheme);
+                //else Digits.authenticate(authCallback, provideDigitsNumber);
 
-                    Digits.authenticate(authCallback, R.style.DigitsLoginTheme);}
-                else
-                    Digits.authenticate(authCallback, provideDigitsNumber);
                }
         });
-
-
-
     }
 
 
@@ -154,21 +148,21 @@ public class LoginActivity extends Activity {
             String actype = ac.type;
             // Take your time to look at all available accounts
             System.out.println("Accounts : " + acname + ", " + actype);
-            if (actype.equalsIgnoreCase("com.viber.voip.account") || actype.equalsIgnoreCase("com.facebook.auth.login"))
+            if (actype.equalsIgnoreCase("com.viber.voip.account"))
             {   String namAcc = ac.name;
 
-                if (namAcc.startsWith("+")) {
+                if (android.text.TextUtils.isDigitsOnly(ac.name))
+                {
+                    pnum = ac.name;
+                }
+
+                else if (namAcc.startsWith("+")) {
                     subNameAcc = namAcc.substring(3);
                     ab = android.text.TextUtils.isDigitsOnly(subNameAcc);
                     Log.i(TAG, "Boolean value of ab is " + ab);
 
                     if (ab)
                         pnum = subNameAcc;
-                }
-
-                else if (android.text.TextUtils.isDigitsOnly(ac.name))
-                {
-                    pnum = ac.name;
                 }
 
                 else

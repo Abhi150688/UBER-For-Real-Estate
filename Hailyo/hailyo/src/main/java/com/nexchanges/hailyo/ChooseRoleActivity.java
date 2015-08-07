@@ -62,7 +62,7 @@ public class ChooseRoleActivity extends Activity {
     final int PLAY_SERVICES_RESOLUTION_REQUEST = 9000;
 
     //declare variables
-    private String Semail, Sname, user_role, Sphoto, C = "Customer", B = "Broker", my_user_id, my_gcm_id, num;
+    private String Semail, Sname, user_role, server_pic,Sphoto, C = "Customer", B = "Broker", my_user_id, my_gcm_id, num;
     private static final String TAG = ChooseRoleActivity.class.getSimpleName();
     String URL = "http://ec2-52-27-37-225.us-west-2.compute.amazonaws.com:9000/1/user/signup";
     StringEntity se;
@@ -165,10 +165,10 @@ public class ChooseRoleActivity extends Activity {
                                                  user_role = "client";
 
                                                  if (!Str_Lat.isEmpty() && !Str_Lng.isEmpty())
-                                                 sendPostRequest(subphone, "+91", Semail, Sname, user_role, regid, Str_Lng, Str_Lat);
-                                                 Log.i(TAG,"Sending post request");
+                                               sendPostRequest(subphone, "+91", Semail, Sname, user_role, regid, Str_Lng, Str_Lat,picturePath);
+                                                 Log.i(TAG, "Sending post request");
 
-                                                 //signup_success();
+                                                 signup_success();
                                              }
 
 
@@ -204,9 +204,9 @@ public class ChooseRoleActivity extends Activity {
                                                  user_role = "broker";
 
                                                  if (!Str_Lat.isEmpty() && !Str_Lng.isEmpty())
-                                                     sendPostRequest(subphone, "+91", Semail, Sname, user_role, regid, Str_Lng, Str_Lat);
-                                                 Log.i(TAG,"Senidng post request broker");
-                                                // signup_success();
+                                                sendPostRequest(subphone, "+91", Semail, Sname, user_role, regid, Str_Lng, Str_Lat,picturePath);
+                                                 Log.i(TAG, "Senidng post request broker");
+                                                signup_success();
                                              }
 
                                          }
@@ -335,7 +335,7 @@ public class ChooseRoleActivity extends Activity {
         });
     }
 
-    private void sendPostRequest(final String mobile, final String code, final String Semail, final String Sname, final String user_role, final String regid, final String lon, final String lat)
+    private void sendPostRequest(final String mobile, final String code, final String Semail, final String Sname, final String user_role, final String regid, final String lon, final String lat, final String photo)
     {
 
         class SendPostReqAsyncTask extends AsyncTask<String, Void, String> {
@@ -360,6 +360,8 @@ public class ChooseRoleActivity extends Activity {
                     jsonObject.accumulate("user_role", user_role);
                     jsonObject.accumulate("long", lon);
                     jsonObject.accumulate("lat", lat);
+                    jsonObject.accumulate("my_photo", photo);
+
 
                     jsonObject.accumulate("gcm_id", regid);
 
@@ -447,6 +449,7 @@ public class ChooseRoleActivity extends Activity {
                         JSONObject jObject = new JSONObject(result);
                         JSONObject responseDataObject = jObject.getJSONObject("responseData");
                         my_user_id = responseDataObject.getString("user_id");
+                        server_pic = responseDataObject.getString("my_photo");
 
                         if (success==true)
                         {
@@ -482,6 +485,8 @@ public class ChooseRoleActivity extends Activity {
         SharedPrefs.save(context, SharedPrefs.EMAIL_KEY, Semail);
         SharedPrefs.save(context, SharedPrefs.MY_GCM_ID, regid);
         SharedPrefs.save(context, SharedPrefs.MY_USER_ID, my_user_id);
+        SharedPrefs.save(context, SharedPrefs.SERVER_PHOTO_KEY, server_pic);
+
         isMyServiceRunning(LocationServices.class);
 
         //if (my_user_id != null) {

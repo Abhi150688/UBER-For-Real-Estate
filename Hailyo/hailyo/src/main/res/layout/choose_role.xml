@@ -42,20 +42,6 @@
             android:orientation="vertical"
             android:layout_height="wrap_content">
 
-       <!-- <ImageButton
-            android:id="@+id/myphoto"
-            android:layout_gravity="left"
-            android:layout_marginLeft="5dp"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@drawable/roundbutton"
-            android:background="@null"
-            android:paddingLeft="2dp"
-            android:paddingTop="5dp"
-            android:scaleType="centerInside"
-            android:adjustViewBounds="true"
-            /> -->
-
             <com.github.siyamed.shapeimageview.CircularImageView
                 android:id="@+id/myphoto"
                 android:layout_width="120dp"
@@ -187,6 +173,7 @@
 
         <Button
         android:id="@+id/iamclient"
+        android:background="@color/white"
         android:padding="10dp"
         android:layout_marginTop="10dp"
         android:text="CUSTOMER"
@@ -195,20 +182,18 @@
         android:layout_marginRight="5dp"
         android:textColor="@color/black"
         android:layout_weight="0.3"
-        android:background="@drawable/button_border"
-         >
+         />
 
-        </Button>
 
 
 
     <Button
         android:id="@+id/iambroker"
+        android:background="@color/white"
         android:text="BROKER"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="10dp"
-        android:background="@drawable/button_border"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="10dp"
         android:layout_weight=".4"

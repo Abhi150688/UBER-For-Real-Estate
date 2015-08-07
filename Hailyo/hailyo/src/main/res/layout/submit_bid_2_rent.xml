@@ -28,17 +28,13 @@
 
             android:text="Broker: "/>
 
-        <Spinner
-            android:id="@+id/broker_spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
 
-        <!--<TextView
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/bname"
             android:layout_marginLeft="8dp"/>
-            -->
+
 
     </LinearLayout>
 
@@ -165,7 +161,6 @@
             android:layout_gravity="center"
             android:layout_marginLeft="10dp"
             android:text="SUBMIT"
-            android:background="@drawable/button_border"
             android:layout_weight=".4"
             android:textSize="20dp"
             android:layout_marginRight="5dp"
@@ -175,7 +170,6 @@
             android:layout_width="wrap_content"
             android:id="@+id/scancel"
             android:layout_height="wrap_content"
-            android:background="@drawable/button_border"
             android:layout_gravity="center"
             android:text="LATER"
             android:layout_weight=".4"

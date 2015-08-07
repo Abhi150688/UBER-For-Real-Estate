@@ -5,6 +5,7 @@ import android.content.Context;
 import android.text.TextUtils;
 
 import com.crashlytics.android.Crashlytics;
+import com.digits.sdk.android.Digits;
 import com.nexchanges.hailyo.utils.LruBitmapCache;
 import com.parse.Parse;
 import com.twitter.sdk.android.Twitter;
@@ -37,11 +38,8 @@ public class MyApplication extends Application {
     public void onCreate() {
         super.onCreate();
         TwitterAuthConfig authConfig = new TwitterAuthConfig(TWITTER_KEY, TWITTER_SECRET);
-        Fabric.with(this, new Twitter(authConfig), new Crashlytics());
+        Fabric.with(this, new Twitter(authConfig), new Crashlytics(), new Digits());
         mInstance=this;
-
-        Parse.enableLocalDatastore(this);
-        Parse.initialize(this, "oH91zJa39ixjVYKNPHl4vpKRdW27NwEFrzSF8j2o", "jaLWrQ34xPUwYc0iUZuXdONI8ZwGCCnyh1fbdwyY");
 
     }
     public static synchronized MyApplication getInstance() {

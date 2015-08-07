@@ -6,8 +6,8 @@
     <string name="drawer_open">Open navigation drawer</string>
     <string name="ACTIVEDEALS">ACTIVE DEALS</string>
     <string name="ALLDEALS">ALL DEALS</string>
-    <string name="MYDEALS">MY DEALS</string>
-    <string name="MYVISITS">MY VISITS</string>
+    <string name="MYDEALS">DEALS</string>
+    <string name="MYVISITS">VISITS</string>
     <string name="drawer_close">Close navigation drawer</string>
     <string name="search">Search</string>
 

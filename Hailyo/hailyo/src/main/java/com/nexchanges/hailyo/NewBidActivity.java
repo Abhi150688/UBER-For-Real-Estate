@@ -18,6 +18,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.nexchanges.hailyo.customSupportClass.ShowToastMessage;
 import com.nexchanges.hailyo.model.SharedPrefs;
 
 /**
@@ -28,12 +29,12 @@ public class NewBidActivity extends Activity {
     Context context;
     TextView bidbrokername;
     EditText srowtv1,srowtv2,srowtv3,srowtv4,srowtv1_Sale, srowtv2_Sale,srowtv3_Sale;
-    String role, intent,sanc_status;
+    String text_to_display,role, intent,sanc_status;
     Button submit, later;
     LinearLayout loanquest;
     RadioButton loan_sanc,loan_not_sanc;
     RadioGroup group_Loan;
-    Boolean success_hail;
+    ShowToastMessage showToastMessage = new ShowToastMessage();
 
 
 
@@ -45,6 +46,8 @@ public class NewBidActivity extends Activity {
         role = SharedPrefs.getString(context, SharedPrefs.MY_ROLE_KEY);
 
         intent = SharedPrefs.getString(context, SharedPrefs.CURRENT_INTENT);
+
+        String br_name = SharedPrefs.getString(context,SharedPrefs.MY_CURRENT_BROKER);
 
         // success_hail = SharedPrefs.getBoolean(context, SharedPrefs.SUCCESSFUL_HAIL);
 
@@ -113,6 +116,7 @@ public class NewBidActivity extends Activity {
 
 
         bidbrokername = (TextView)findViewById(R.id.bname);
+        bidbrokername.setText(br_name);
 
 
         submit = (Button) findViewById(R.id.ssubmit);
@@ -142,12 +146,17 @@ public class NewBidActivity extends Activity {
                             Intent GiveNewBid = new Intent(context, MainActivity.class);
                             SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 1);
                             startActivity(GiveNewBid);
+                            text_to_display = "Select a Visit / Broker to give an offer to";
+                            showToastMessage.displayToast(context,text_to_display);
+
                             finish();
 
                         } else {
                             Intent BGiveNewBid = new Intent(context, MainBrokerActivity.class);
                             SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 1);
                             startActivity(BGiveNewBid);
+                            text_to_display = "Select a Visit / Broker to give an offer to";
+                            showToastMessage.displayToast(context,text_to_display);
                             finish();
                         }
 

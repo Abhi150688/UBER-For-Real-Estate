@@ -184,16 +184,16 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
             case 0:
                 hail.setBackgroundColor(Color.parseColor("#FFA500"));
                 hail.setTextColor(Color.WHITE);
-                visits.setBackgroundResource(R.drawable.button_border);
+                visits.setBackgroundColor(Color.WHITE);
                 visits.setTextColor(Color.BLACK);
-                deals.setBackgroundResource(R.drawable.button_border);
+                deals.setBackgroundColor(Color.WHITE);
                 deals.setTextColor(Color.BLACK);
                 break;
 
             case 1:
                 visits.setBackgroundColor(Color.parseColor("#FFA500"));
-                deals.setBackgroundResource(R.drawable.button_border);
-                hail.setBackgroundResource(R.drawable.button_border);
+                deals.setBackgroundColor(Color.WHITE);
+                hail.setBackgroundColor(Color.WHITE);
                 visits.setTextColor(Color.WHITE);
                 hail.setTextColor(Color.BLACK);
                 deals.setTextColor(Color.BLACK);
@@ -201,8 +201,8 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
 
             case 2:
                 deals.setBackgroundColor(Color.parseColor("#FFA500"));
-                visits.setBackgroundResource(R.drawable.button_border);
-                hail.setBackgroundResource(R.drawable.button_border);
+                visits.setBackgroundColor(Color.WHITE);
+                hail.setBackgroundColor(Color.WHITE);
                 deals.setTextColor(Color.WHITE);
                 hail.setTextColor(Color.BLACK);
                 visits.setTextColor(Color.BLACK);
@@ -222,9 +222,9 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
                     VF10.setDisplayedChild(0);
                     hail.setBackgroundColor(Color.parseColor("#FFA500"));
                     hail.setTextColor(Color.WHITE);
-                    visits.setBackgroundResource(R.drawable.button_border);
+                    visits.setBackgroundColor(Color.WHITE);
                     visits.setTextColor(Color.BLACK);
-                    deals.setBackgroundResource(R.drawable.button_border);
+                    deals.setBackgroundColor(Color.WHITE);
                     deals.setTextColor(Color.BLACK);
                 }}
         });
@@ -286,9 +286,9 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
                 VF10.setDisplayedChild(1);
                 deals.setBackgroundColor(Color.parseColor("#FFA500"));
                 deals.setTextColor(Color.WHITE);
-                visits.setBackgroundResource(R.drawable.button_border);
+                visits.setBackgroundColor(Color.WHITE);
                 visits.setTextColor(Color.BLACK);
-                hail.setBackgroundResource(R.drawable.button_border);
+                hail.setBackgroundColor(Color.WHITE);
                 hail.setTextColor(Color.BLACK);
 
                 deal_refresh.setRefreshing(true);
@@ -307,9 +307,9 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
                 VF10.setDisplayedChild(2);
                 visits.setBackgroundColor(Color.parseColor("#FFA500"));
                 visits.setTextColor(Color.WHITE);
-                hail.setBackgroundResource(R.drawable.button_border);
+                hail.setBackgroundColor(Color.WHITE);
                 hail.setTextColor(Color.BLACK);
-                deals.setBackgroundResource(R.drawable.button_border);
+                deals.setBackgroundColor(Color.WHITE);
                 deals.setTextColor(Color.BLACK);
                 visit_refresh.setRefreshing(true);
                 refresh_visit();
