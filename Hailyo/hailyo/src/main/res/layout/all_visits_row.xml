@@ -9,10 +9,12 @@
     <!-- Thumbnail Image -->
     <com.nexchanges.hailyo.customWidget.CircularNetworkImageView
         android:id="@+id/thumbnail"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
+        android:layout_width="105dp"
+
+        android:layout_height="105dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginRight="8dp" />
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="4dp"/>
 
     <!-- Client Name -->
     <TextView
@@ -39,6 +41,15 @@
         android:layout_toRightOf="@+id/thumbnail"
         android:textSize="@dimen/spec_code"
         android:textStyle="bold" />
+
+    <ImageView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignTop="@+id/speccode"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/bid_button"/>
+
 
 
     <!-- Properties Visited -->
@@ -84,16 +95,11 @@
         android:id="@+id/visitdate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:textColor="@color/lightgrey"
         android:textSize="@dimen/date" />
 
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignTop="@+id/speccode"
-        android:layout_toRightOf="@+id/prop_count"
-        android:src="@drawable/bid_button"/>
 
 </RelativeLayout>

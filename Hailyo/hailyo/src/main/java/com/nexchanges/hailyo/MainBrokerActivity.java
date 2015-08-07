@@ -205,6 +205,8 @@ import java.util.List;
         mGridView = (GridView) findViewById(R.id.yo_grid);
         adapterYo = new CustomListAdapter_Yo(this, yoList);
         mGridView.setAdapter(adapterYo);
+        SharedPrefs.save(context, SharedPrefs.LAST_ACTIVITY_KEY, getClass().getName());
+
 
         mGridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -824,6 +826,11 @@ import java.util.List;
                                 deal.setRent(obj.getInt("rent_amt"));
                                 deal.setDeposit(obj.getInt("deposit_amt"));
                                 deal.setStartDate(obj.getString("agr_start_date"));
+                                deal.setDealType(obj.getString("deal_type"));
+                                deal.setOfferPrice(obj.getInt("offer_price"));
+                                deal.setLoanCom(obj.getInt("loan_comp"));
+                                deal.setLoanStatus(obj.getString("loan_status"));
+
                                 dealList.add(deal);
 
                             } catch (JSONException e) {

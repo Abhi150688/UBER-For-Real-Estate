@@ -9,76 +9,135 @@
     <!-- Thumbnail Image -->
     <com.nexchanges.hailyo.customWidget.CircularNetworkImageView
         android:id="@+id/thumbnail"
-        android:layout_width="80dp"
-        android:layout_height="80dp"
+        android:layout_width="105dp"
+        android:layout_height="105dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginRight="8dp" />
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="4dp"/>
 
     <!-- Apartment Name -->
+
     <TextView
         android:id="@+id/apartment_name"
+
+        android:textColor="@color/white"
+        android:background="@color/black"
+        android:paddingLeft="6dp"
+        android:paddingRight="6dp"
+        android:layout_marginTop="2dip"
         android:layout_width="wrap_content"
-        android:layout_marginRight="5dp"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/thumbnail"
         android:layout_toRightOf="@+id/thumbnail"
         android:textSize="@dimen/title"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        />
+
 
     <!--User Name -->
+
     <TextView
         android:id="@+id/user_name"
         android:layout_width="wrap_content"
+        android:layout_marginTop="2dip"
         android:layout_marginRight="5dp"
         android:layout_height="wrap_content"
         android:layout_below="@+id/apartment_name"
         android:layout_toRightOf="@+id/thumbnail"
-        android:textSize="@dimen/rating"
+        android:textSize="@dimen/spec_code"
         android:textStyle="bold" />
 
+    <TableLayout
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/user_name"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:layout_height="wrap_content">
+    <TableRow>
     <!-- Rent -->
     <TextView
-        android:id="@+id/rent_amount"
-        android:layout_width="fill_parent"
+        android:id="@+id/rent_amountv"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/user_name"
-        android:layout_marginTop="1dip"
+        android:textColor="@color/turquoise"
+        android:layout_marginTop="5dip"
         android:layout_toRightOf="@+id/thumbnail"
         android:textSize="@dimen/rating" />
 
+    <TextView
+        android:id="@+id/rent_amount"
+        android:layout_marginLeft="25dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/turquoise"
+        android:layout_below="@id/user_name"
+        android:layout_marginTop="5dip"
+        android:layout_toRightOf="@+id/rent_amountv"
+        android:textSize="@dimen/rating" />
+    </TableRow>
+
+        <TableRow>
     //Deposit
     <TextView
-        android:id="@+id/deposit_amount"
-        android:layout_width="fill_parent"
+        android:id="@+id/deposit_amountv"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/rent_amount"
-        android:layout_marginTop="1dip"
+        android:layout_marginTop="2.7dip"
         android:layout_toRightOf="@+id/thumbnail"
-        android:textSize="@dimen/rating" />
+        android:textSize="@dimen/rating"
+        android:textColor="@color/turquoise"/>
 
+
+    <TextView
+        android:id="@+id/deposit_amount"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_height="wrap_content"
+        android:textColor="@color/turquoise"
+        android:layout_below="@id/rent_amountv"
+        android:layout_marginTop="2.7dip"
+        android:layout_toRightOf="@+id/deposit_amountv"
+        android:textSize="@dimen/rating" />
+        </TableRow>
 
     <!-- Agreement start date  -->
 
+        <TableRow>
     <TextView
-        android:id="@+id/agr_start_date"
-        android:layout_width="fill_parent"
+        android:id="@+id/agr_start_datev"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/deposit_amount"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="2.7dip"
         android:layout_toRightOf="@+id/thumbnail"
-        android:textColor="@color/genre"
-        android:textSize="@dimen/genre" />
+        android:textColor="@color/turquoise"
+        android:textSize="@dimen/rating" />
 
+    <TextView
+        android:id="@+id/agr_start_date"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:textColor="@color/turquoise"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/deposit_amount"
+        android:layout_marginTop="2.7dip"
+        android:layout_toRightOf="@+id/agr_start_datev"
+        android:textSize="@dimen/rating" />
+
+        </TableRow>
+    </TableLayout>
 
 
     <!-- Offer Last Updated Date -->
+
     <TextView
         android:id="@+id/offer_up_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:textColor="@color/year"
-        android:textSize="@dimen/year" />
-
+        android:layout_alignParentLeft="true"
+        android:textColor="@color/lightgrey"
+        android:textSize="@dimen/date"/>
 </RelativeLayout>

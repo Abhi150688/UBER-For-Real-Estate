@@ -6,6 +6,7 @@ package com.nexchanges.hailyo.list_adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,15 +17,19 @@ import android.widget.TextView;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.NetworkImageView;
 import com.nexchanges.hailyo.MyApplication;
+import com.nexchanges.hailyo.NewBidActivity;
 import com.nexchanges.hailyo.R;
 import com.nexchanges.hailyo.model.DealData;
+import com.nexchanges.hailyo.model.SharedPrefs;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class CustomListAdapter_Deals extends BaseAdapter {
     private Activity activity;
     private LayoutInflater inflater;
     private List<DealData> dealItems;
+    String deal_type;
     ImageLoader imageLoader = MyApplication.getInstance().getImageLoader();
 
     public CustomListAdapter_Deals(Activity activity, List<DealData> dealItems) {
@@ -68,31 +73,86 @@ public class CustomListAdapter_Deals extends BaseAdapter {
         TextView Deposit = (TextView) convertView.findViewById(R.id.deposit_amount);
 
         TextView Ag_StartDate = (TextView) convertView.findViewById(R.id.agr_start_date);
+        TextView RentOrPriceV = (TextView) convertView.findViewById(R.id.rent_amountv);
 
+        TextView DepositORLoanPerV = (TextView) convertView.findViewById(R.id.deposit_amountv);
 
-
-
+        TextView StartDateOrLoanSanctionedV = (TextView) convertView.findViewById(R.id.agr_start_datev);
 
         // getting movie data for the row
-        DealData m = dealItems.get(position);
+        final DealData m = dealItems.get(position);
 
-        // thumbnail image
+
         thumbNail.setImageUrl(m.getThumbnailUrl(), imageLoader);
-
-        // title
         User_Name.setText(m.getUserName());
-
         Apartment_Name.setText(m.getApartmentName());
-
-        Rent.setText("Rent: " + m.getRent());
-
-        Deposit.setText("Deposit: " + m.getDeposit());
-
-        Ag_StartDate.setText("Start Date: " + m.getStartDate());
-
-
-        // release year
         Offer_Up_Date.setText(String.valueOf(m.getOfferDate()));
+
+
+        deal_type = m.getDealType();
+
+        if (deal_type.equalsIgnoreCase("rent"))
+
+        {
+            RentOrPriceV.setText("RENT:");
+            Rent.setText(Integer.toString(m.getRent()));
+
+            DepositORLoanPerV.setText("DEPOSIT: ");
+            Deposit.setText(Integer.toString(m.getDeposit()));
+
+            StartDateOrLoanSanctionedV.setText("START DATE: ");
+            Ag_StartDate.setText(m.getStartDate());
+
+        }
+
+        else {
+
+            RentOrPriceV.setText("PRICE:");
+            Rent.setText(Integer.toString(m.getOfferPrice()));
+
+            DepositORLoanPerV.setText("LOAN %: ");
+            Deposit.setText(Integer.toString(m.getLoanCom()));
+
+            StartDateOrLoanSanctionedV.setText("LOAN STATUS: ");
+            Ag_StartDate.setText(m.getLoanStatus());
+
+        }
+
+        convertView.setOnClickListener(new View.OnClickListener() {
+
+
+            @Override
+            public void onClick(View arg0) {
+                SharedPrefs.save(activity,SharedPrefs.UPDATE_DEAL,"true");
+                SharedPrefs.save(activity, SharedPrefs.MY_CURRENT_BROKER, m.getUserName());
+
+                if (deal_type.equalsIgnoreCase("rent")) {
+
+                    SharedPrefs.save(activity, SharedPrefs.CURRENT_INTENT, "rent");
+                    Intent newBid = new Intent(activity, NewBidActivity.class);
+                    newBid.putExtra("rent",m.getRent());
+                    newBid.putExtra("deposit",m.getDeposit());
+                    newBid.putExtra("apt_name",m.getApartmentName());
+                    newBid.putExtra("start_date",m.getStartDate());
+                    activity.startActivity(newBid);
+
+                }
+
+
+                else{
+                    SharedPrefs.save(activity, SharedPrefs.CURRENT_INTENT, "out");
+                    Intent newSaleBid = new Intent(activity, NewBidActivity.class);
+
+                    newSaleBid.putExtra("price",m.getOfferPrice());
+                    newSaleBid.putExtra("loan_com",m.getLoanCom());
+                    newSaleBid.putExtra("apt_name",m.getApartmentName());
+                    newSaleBid.putExtra("loan_status", m.getLoanStatus());
+                    activity.startActivity(newSaleBid);
+                }
+
+            }
+
+        });
 
         return convertView;
     }

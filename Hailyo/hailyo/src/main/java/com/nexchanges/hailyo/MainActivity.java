@@ -150,6 +150,8 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
                 ,mLocationListener);
 
         visit_refresh = (SwipeRefreshLayout)findViewById(R.id.visit_refresh);
+        SharedPrefs.save(context, SharedPrefs.LAST_ACTIVITY_KEY, getClass().getName());
+
         deal_refresh = (SwipeRefreshLayout)findViewById(R.id.deal_refresh);
         tv1 = (TextView) findViewById(R.id.textView1);
         tv2 = (TextView) findViewById(R.id.textView2);
@@ -283,7 +285,7 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
         deals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                VF10.setDisplayedChild(1);
+                VF10.setDisplayedChild(2);
                 deals.setBackgroundColor(Color.parseColor("#FFA500"));
                 deals.setTextColor(Color.WHITE);
                 visits.setBackgroundColor(Color.WHITE);
@@ -304,7 +306,7 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
         visits.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                VF10.setDisplayedChild(2);
+                VF10.setDisplayedChild(1);
                 visits.setBackgroundColor(Color.parseColor("#FFA500"));
                 visits.setTextColor(Color.WHITE);
                 hail.setBackgroundColor(Color.WHITE);
@@ -685,6 +687,13 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
                                 deal.setApartmentName(obj.getString("apt_name"));
                                 deal.setRent(obj.getInt("rent_amt"));
                                 deal.setDeposit(obj.getInt("deposit_amt"));
+                                deal.setDealType(obj.getString("deal_type"));
+                                deal.setOfferPrice(obj.getInt("offer_price"));
+                                deal.setLoanCom(obj.getInt("loan_comp"));
+                                deal.setLoanStatus(obj.getString("loan_status"));
+
+
+
 
                                 dealList.add(deal);
 

@@ -29,12 +29,13 @@ public class NewBidActivity extends Activity {
     Context context;
     TextView bidbrokername;
     EditText srowtv1,srowtv2,srowtv3,srowtv4,srowtv1_Sale, srowtv2_Sale,srowtv3_Sale;
-    String text_to_display,role, intent,sanc_status;
+    String text_to_display,role, intent,sanc_status,update_deal;
     Button submit, later;
     LinearLayout loanquest;
     RadioButton loan_sanc,loan_not_sanc;
     RadioGroup group_Loan;
     ShowToastMessage showToastMessage = new ShowToastMessage();
+
 
 
 
@@ -46,6 +47,9 @@ public class NewBidActivity extends Activity {
         role = SharedPrefs.getString(context, SharedPrefs.MY_ROLE_KEY);
 
         intent = SharedPrefs.getString(context, SharedPrefs.CURRENT_INTENT);
+
+       update_deal = SharedPrefs.getString(context, SharedPrefs.UPDATE_DEAL);
+
 
         String br_name = SharedPrefs.getString(context,SharedPrefs.MY_CURRENT_BROKER);
 
@@ -122,6 +126,12 @@ public class NewBidActivity extends Activity {
         submit = (Button) findViewById(R.id.ssubmit);
         later = (Button) findViewById(R.id.scancel);
 
+       if (update_deal.equalsIgnoreCase("true"))
+       {
+           
+
+       }
+
 
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -195,38 +205,10 @@ public class NewBidActivity extends Activity {
         later.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 
-               /* if (SharedPrefs.getBoolean(context,SharedPrefs.SUCCESSFUL_HAIL)==true) {
-                    if (role.equalsIgnoreCase("client")) {
-                        Intent CHailProgress  = new Intent(context, PostYoActivity.class);
-                        startActivity(CHailProgress);
-                        finish();
-                    } else {
-                        Intent BHailProgress = new Intent(context, PostYoActivity_Broker.class);
-                        startActivity(BHailProgress);
-                        finish();
-                    }
-                }
-                else
-                {*/
-                if (role.equalsIgnoreCase("client")) {
-                    Intent MainActivity = new Intent(context, MainActivity.class);
-                    SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 0);
+                chooseGotoScreen();
 
-                    startActivity(MainActivity);
-                    finish();
-                } else {
-                    Intent BMainActivity = new Intent(context, MainBrokerActivity.class);
-                    SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 0);
-
-                    startActivity(BMainActivity);
-                    finish();
-
-                }
-
-                // }
-            }
+                       }
         });
-
 
     }
 
@@ -271,7 +253,7 @@ public class NewBidActivity extends Activity {
 
     @Override
     public void onBackPressed() {
-        //do nothing
+        chooseGotoScreen();
     }
 
     @Override
@@ -414,6 +396,24 @@ public class NewBidActivity extends Activity {
                 srowtv2_Sale.setError(null);
             }
         });
+    }
+
+   private void chooseGotoScreen()
+    {
+        if (role.equalsIgnoreCase("client")) {
+            Intent MainActivity = new Intent(context, MainActivity.class);
+            SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 0);
+
+            startActivity(MainActivity);
+            finish();
+        } else {
+            Intent BMainActivity = new Intent(context, MainBrokerActivity.class);
+            SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 0);
+
+            startActivity(BMainActivity);
+            finish();
+
+        }
     }
 
 }
