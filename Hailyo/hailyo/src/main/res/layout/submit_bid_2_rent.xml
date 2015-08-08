@@ -129,7 +129,6 @@
             android:id="@+id/srowtv4_r"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-
             android:background="@color/transparent"
             android:paddingLeft="10dp"
             android:paddingTop="10dp"
@@ -156,6 +155,7 @@
 
         <Button
             android:layout_width="wrap_content"
+            android:background="@color/white"
             android:layout_height="wrap_content"
             android:id="@+id/ssubmit"
             android:layout_gravity="center"
@@ -168,6 +168,7 @@
 
         <Button
             android:layout_width="wrap_content"
+            android:background="@color/white"
             android:id="@+id/scancel"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

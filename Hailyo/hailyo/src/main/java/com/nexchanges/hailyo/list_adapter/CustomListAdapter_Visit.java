@@ -118,6 +118,7 @@ public class CustomListAdapter_Visit extends BaseAdapter {
                 SharedPrefs.save(activity, SharedPrefs.MY_CURRENT_BROKER, br_name);
                 SharedPrefs.save(activity, SharedPrefs.CURRENT_FLIPPER_VIEW, 1);
 
+                SharedPrefs.save(activity,SharedPrefs.START_DEAL,"true");
 
                 Intent newBid = new Intent(activity, NewBidActivity.class);
                 activity.startActivity(newBid);

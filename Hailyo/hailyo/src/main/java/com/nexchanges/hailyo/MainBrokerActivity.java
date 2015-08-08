@@ -1,9 +1,12 @@
 package com.nexchanges.hailyo;
 
 import android.app.ActivityManager;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.res.Configuration;
@@ -15,6 +18,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
@@ -228,6 +232,9 @@ import java.util.List;
         mLocationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,60000,150
                 ,mLocationListener);
 
+            enableLocationDialog();
+
+
         //Yo Data
 
         flipper_index = SharedPrefs.getInt(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 0);
@@ -390,6 +397,7 @@ import java.util.List;
 
             @Override
             public void onClick(View v) {
+                enableLocationDialog();
 
                 if(is_transaction.equalsIgnoreCase("true"))
                 {
@@ -971,6 +979,28 @@ import java.util.List;
         Intent mServiceIntent = new Intent(this, LocationServices.class);
         startService(mServiceIntent);
 
+    }
+
+    private void enableLocationDialog()
+    {
+        if(!mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) ||
+                !mLocationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER))
+        {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Location Services Not Active");
+        builder.setMessage("Please enable Location Services and GPS");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // Show location settings when the user acknowledges the alert dialog
+                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                startActivity(intent);
+            }
+        });
+        Dialog alertDialog = builder.create();
+        alertDialog.setCanceledOnTouchOutside(false);
+        alertDialog.show();
+
+    } else return;
     }
 
 }

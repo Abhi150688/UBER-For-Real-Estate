@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/cv"
+    >
+
+<RelativeLayout
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/list_row_selector"
-    android:padding="8dp" >
-
+    android:padding="6dp" >
 
     <!-- Thumbnail Image -->
     <com.nexchanges.hailyo.customWidget.CircularNetworkImageView
         android:id="@+id/thumbnail"
-        android:layout_width="115dp"
-        android:layout_height="115dp"
+        android:layout_width="105dp"
+        android:layout_height="105dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginRight="15dp"
+        android:layout_marginRight="5dp"
         android:layout_marginBottom="4dp"/>
 
     <!-- Apartment Name -->
@@ -59,21 +63,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/turquoise"
-        android:layout_below="@id/user_name"
         android:layout_marginTop="5dip"
-        android:layout_toRightOf="@+id/thumbnail"
         android:textSize="@dimen/rating" />
 
     <TextView
         android:id="@+id/rent_amount"
-        android:layout_marginLeft="25dp"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:background="@color/turquoise"
-        android:layout_below="@id/user_name"
         android:layout_marginTop="5dip"
-        android:layout_toRightOf="@+id/rent_amountv"
         android:textSize="@dimen/rating" />
     </TableRow>
 
@@ -83,9 +85,7 @@
         android:id="@+id/deposit_amountv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/rent_amount"
         android:layout_marginTop="2.7dip"
-        android:layout_toRightOf="@+id/thumbnail"
         android:textSize="@dimen/rating"
         android:textColor="@color/turquoise"/>
 
@@ -93,13 +93,13 @@
     <TextView
         android:id="@+id/deposit_amount"
         android:layout_width="wrap_content"
-        android:layout_marginLeft="25dp"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:gravity="center"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
         android:background="@color/turquoise"
-        android:layout_below="@id/rent_amountv"
         android:layout_marginTop="2.7dip"
-        android:layout_toRightOf="@+id/deposit_amountv"
         android:textSize="@dimen/rating" />
         </TableRow>
 
@@ -110,22 +110,20 @@
         android:id="@+id/agr_start_datev"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/deposit_amount"
         android:layout_marginTop="2.7dip"
-        android:layout_toRightOf="@+id/thumbnail"
         android:textColor="@color/turquoise"
         android:textSize="@dimen/rating" />
 
     <TextView
         android:id="@+id/agr_start_date"
         android:layout_width="wrap_content"
-        android:layout_marginLeft="25dp"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:gravity="center"
         android:textColor="@color/white"
         android:background="@color/turquoise"
         android:layout_height="wrap_content"
-        android:layout_below="@id/deposit_amount"
         android:layout_marginTop="2.7dip"
-        android:layout_toRightOf="@+id/agr_start_datev"
         android:textSize="@dimen/rating" />
 
         </TableRow>
@@ -138,9 +136,12 @@
         android:id="@+id/offer_up_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="18dp"
+        android:layout_below="@+id/thumbnail"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:textColor="@color/lightgrey"
         android:textSize="@dimen/date"/>
+
 </RelativeLayout>
+    </android.support.v7.widget.CardView>

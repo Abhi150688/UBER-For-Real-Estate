@@ -9,18 +9,18 @@ package com.github.siyamed.shapeimageview;
 public final class R {
 	public static final class attr {
 		public static final int siArrowPosition = 0x7f01000b;
-		public static final int siBorderAlpha = 0x7f01008b;
-		public static final int siBorderColor = 0x7f010089;
+		public static final int siBorderAlpha = 0x7f010096;
+		public static final int siBorderColor = 0x7f010094;
 		public static final int siBorderType = 0x7f01000c;
-		public static final int siBorderWidth = 0x7f01008a;
-		public static final int siForeground = 0x7f01008c;
-		public static final int siRadius = 0x7f01008d;
-		public static final int siShape = 0x7f01008f;
-		public static final int siSquare = 0x7f010088;
+		public static final int siBorderWidth = 0x7f010095;
+		public static final int siForeground = 0x7f010097;
+		public static final int siRadius = 0x7f010098;
+		public static final int siShape = 0x7f01009a;
+		public static final int siSquare = 0x7f010093;
 		public static final int siStrokeCap = 0x7f01000d;
 		public static final int siStrokeJoin = 0x7f01000e;
-		public static final int siStrokeMiter = 0x7f010090;
-		public static final int siTriangleHeight = 0x7f01008e;
+		public static final int siStrokeMiter = 0x7f01009b;
+		public static final int siTriangleHeight = 0x7f010099;
 	}
 	public static final class id {
 		public static final int bevel = 0x7f0f0014;
@@ -42,7 +42,7 @@ public final class R {
 		public static final int imgview_star = 0x7f060006;
 	}
 	public static final class styleable {
-		public static final int[] ShaderImageView = { 0x7f01000b, 0x7f01000c, 0x7f01000d, 0x7f01000e, 0x7f010088, 0x7f010089, 0x7f01008a, 0x7f01008b, 0x7f01008c, 0x7f01008d, 0x7f01008e, 0x7f01008f, 0x7f010090 };
+		public static final int[] ShaderImageView = { 0x7f01000b, 0x7f01000c, 0x7f01000d, 0x7f01000e, 0x7f010093, 0x7f010094, 0x7f010095, 0x7f010096, 0x7f010097, 0x7f010098, 0x7f010099, 0x7f01009a, 0x7f01009b };
 		public static final int ShaderImageView_siArrowPosition = 0;
 		public static final int ShaderImageView_siBorderAlpha = 7;
 		public static final int ShaderImageView_siBorderColor = 5;

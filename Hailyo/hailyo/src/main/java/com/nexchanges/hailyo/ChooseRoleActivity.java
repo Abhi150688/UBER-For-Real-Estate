@@ -4,8 +4,10 @@ import android.accounts.Account;
 import android.accounts.AccountManager;
 import android.app.Activity;
 import android.app.ActivityManager;
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.BitmapFactory;
@@ -19,6 +21,7 @@ import android.nfc.Tag;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.provider.Settings;
 import android.telephony.TelephonyManager;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -143,6 +146,12 @@ public class ChooseRoleActivity extends Activity {
 
         mLocationManager.requestSingleUpdate(LocationManager.NETWORK_PROVIDER, mLocationListener, null);
 
+        if(!mLocationManager.isProviderEnabled(LocationManager.GPS_PROVIDER) ||
+                !mLocationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER))
+
+          enableLocationDialog();
+
+
 
         clientBut.setOnClickListener(new View.OnClickListener() {
                                          @Override
@@ -173,12 +182,18 @@ public class ChooseRoleActivity extends Activity {
                     Sname = name.getText().toString();
                     Semail = email.getText().toString();
 
+                    Log.i(TAG, "Sending post request");
 
                     if (!Str_Lat.isEmpty() && !Str_Lng.isEmpty())
                         sendPostRequest(subphone, "+91", Semail, Sname, user_role, regid, Str_Lng, Str_Lat, picturePath);
-                    Log.i(TAG, "Sending post request");
+                    else
 
-                    //  signup_success();
+                        Toast.makeText(
+                                getApplicationContext(),
+                                "Please enable location services",
+                                Toast.LENGTH_LONG).show();
+
+                    //signup_success();
                 }
 
             }
@@ -193,7 +208,7 @@ public class ChooseRoleActivity extends Activity {
                                          public void onClick(View v) {
 
                                              Log.i(TAG, "Broker button clicked");
-                                             user_role = "BROKER";
+                                             user_role = "broker";
 
                                              clientBut.setChecked(false);
                                              brokerBut.setChecked(true);
@@ -337,7 +352,7 @@ public class ChooseRoleActivity extends Activity {
             @Override
             public void afterTextChanged(Editable s) {
                 //email.setError(null);
-                isEmailValid(Semail);
+                //isEmailValid(Semail);
 
             }
         });
@@ -696,4 +711,21 @@ public class ChooseRoleActivity extends Activity {
         }
     }
 
+    private void enableLocationDialog()
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Location Services Not Active");
+        builder.setMessage("Please enable Location Services and GPS");
+        builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // Show location settings when the user acknowledges the alert dialog
+                Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+                startActivity(intent);
+            }
+        });
+        Dialog alertDialog = builder.create();
+        alertDialog.setCanceledOnTouchOutside(false);
+        alertDialog.show();
+
+    }
 }

@@ -186,7 +186,6 @@ public class NewBidActivity extends Activity {
                             startActivity(GiveNewBid);
                             text_to_display = "Select a Visit / Broker to give an offer to";
                             showToastMessage.displayToast(context,text_to_display);
-
                             finish();
 
                         } else {
@@ -426,17 +425,55 @@ public class NewBidActivity extends Activity {
    private void chooseGotoScreen()
     {
         if (role.equalsIgnoreCase("client")) {
-            Intent MainActivity = new Intent(context, MainActivity.class);
-            SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 0);
 
-            startActivity(MainActivity);
-            finish();
+            if(SharedPrefs.getString(context,SharedPrefs.UPDATE_DEAL).equalsIgnoreCase("true"))
+            {
+                Intent MainActivity = new Intent(context, MainActivity.class);
+                SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 2);
+                startActivity(MainActivity);
+                finish();
+
+            }
+            else if (SharedPrefs.getString(context,SharedPrefs.START_DEAL).equalsIgnoreCase("true"))
+            {
+                Intent MainActivity1 = new Intent(context, MainActivity.class);
+                SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 1);
+                startActivity(MainActivity1);
+                finish();
+            }
+
+            else {
+                Intent MainActivity2 = new Intent(context, MainActivity.class);
+                SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 0);
+                startActivity(MainActivity2);
+                finish();
+            }
+
+
         } else {
-            Intent BMainActivity = new Intent(context, MainBrokerActivity.class);
-            SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 0);
 
-            startActivity(BMainActivity);
-            finish();
+            if(SharedPrefs.getString(context,SharedPrefs.UPDATE_DEAL).equalsIgnoreCase("true"))
+            {
+                Intent MainBActivity = new Intent(context, MainBrokerActivity.class);
+                SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 2);
+                startActivity(MainBActivity);
+                finish();
+
+            }
+            else if (SharedPrefs.getString(context,SharedPrefs.START_DEAL).equalsIgnoreCase("true"))
+            {
+                Intent MainBActivity1 = new Intent(context, MainBrokerActivity.class);
+                SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 1);
+                startActivity(MainBActivity1);
+                finish();
+            }
+
+            else {
+                Intent MainBActivity2 = new Intent(context, MainBrokerActivity.class);
+                SharedPrefs.save(context, SharedPrefs.CURRENT_FLIPPER_VIEW, 0);
+                startActivity(MainBActivity2);
+                finish();
+            }
 
         }
     }

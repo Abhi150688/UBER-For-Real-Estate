@@ -26,7 +26,7 @@ public class ShowToastMessage {
 
         // Toast...
         Toast toast = new Toast(context);
-        toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+        toast.setGravity(Gravity.FILL_HORIZONTAL, 0, 0);
         toast.setDuration(Toast.LENGTH_LONG);
         toast.setView(layout);
         toast.show();

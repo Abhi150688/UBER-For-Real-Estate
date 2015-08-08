@@ -185,6 +185,7 @@
 
         <Button
             android:layout_width="wrap_content"
+            android:background="@color/white"
             android:layout_height="wrap_content"
             android:id="@+id/ssubmit"
             android:layout_gravity="center"
@@ -197,6 +198,7 @@
 
         <Button
             android:layout_width="wrap_content"
+            android:background="@color/white"
             android:id="@+id/scancel"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

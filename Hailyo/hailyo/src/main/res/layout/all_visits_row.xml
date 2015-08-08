@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/cv">
+
+<RelativeLayout
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/list_row_selector"
@@ -17,7 +22,7 @@
         android:layout_width="105dp"
         android:layout_height="105dp"
         android:layout_alignParentLeft="true"
-        android:layout_marginRight="15dp"
+        android:layout_marginRight="8dp"
         android:layout_marginBottom="4dp"/>
 
     <!-- Client Name -->
@@ -67,7 +72,6 @@
         android:layout_toRightOf="@+id/thumbnail"
         android:textSize="@dimen/prop_count" />
 
-
     <!-- Location -->
     <TextView
         android:id="@+id/location"
@@ -78,7 +82,6 @@
         android:layout_toRightOf="@+id/thumbnail"
         android:textColor="@color/lightgrey"
         android:textSize="@dimen/location" />
-
 
     <!-- Active Dealing Room - Yes or no -->
 
@@ -92,24 +95,25 @@
         android:textColor="@color/lightgrey"
         android:textSize="@dimen/status" />
 
-
-
     <!-- Date of Insepction -->
-    <TextView
+
+        <TextView
         android:id="@+id/visitdate"
         android:layout_width="wrap_content"
+        android:layout_marginLeft="18dp"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
+        android:textColor="@color/lightgrey"
+        android:layout_below="@+id/thumbnail"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:textColor="@color/lightgrey"
         android:textSize="@dimen/date" />
+
 
     </RelativeLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="140dp"
+        android:layout_height="130dp"
         android:background="@color/turquoise"
         android:gravity="center_vertical"
         android:orientation="vertical"
@@ -128,3 +132,4 @@
     </LinearLayout>
 
 </RelativeLayout>
+    </android.support.v7.widget.CardView>

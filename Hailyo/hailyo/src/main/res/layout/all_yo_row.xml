@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/cv"
+    >
+    <RelativeLayout
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/list_row_selector"
@@ -16,6 +21,7 @@
         android:clickable="false"
         android:focusable="false"
         android:layout_marginRight="8dp" />
+
 
     <!--Spec Code -->
     <TextView
@@ -93,7 +99,9 @@
 
 
     <!-- Visits Conducted -->
-    <TextView
+
+
+        <TextView
         android:id="@+id/visit_count"
         android:layout_width="wrap_content"
         android:gravity="right"
@@ -102,7 +110,7 @@
         android:focusableInTouchMode="false"
         android:clickable="false"
         android:focusable="false"
-        android:layout_marginEnd="5dp"
+        android:layout_marginRight="5dp"
         android:layout_height="wrap_content"
 
         android:textSize="@dimen/genre"
@@ -110,3 +118,4 @@
 
 
 </RelativeLayout>
+    </android.support.v7.widget.CardView>

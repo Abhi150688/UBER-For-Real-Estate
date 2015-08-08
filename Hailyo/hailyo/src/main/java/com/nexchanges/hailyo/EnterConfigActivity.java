@@ -21,6 +21,7 @@ import android.widget.Toast;
 import com.hrules.horizontalnumberpicker.HorizontalNumberPicker;
 import com.hrules.horizontalnumberpicker.HorizontalNumberPickerListener;
 import com.nexchanges.hailyo.customSupportClass.ConfigSpecCode;
+import com.nexchanges.hailyo.customSupportClass.ShowToastMessage;
 import com.nexchanges.hailyo.model.SharedPrefs;
 
 import org.apache.http.HttpResponse;
@@ -152,8 +153,8 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
 
                 seeProp.setBackgroundColor(Color.parseColor("#FFA500"));
                 seeProp.setTextColor(Color.WHITE);
-                    showProp.setBackgroundResource(R.drawable.button_border);
-                    showProp.setTextColor(Color.BLACK);
+                    showProp.setBackgroundColor(Color.WHITE);
+                showProp.setTextColor(Color.BLACK);
 
             }
         });
@@ -169,8 +170,8 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
                 updateSpecCode(str1, msg1);
                 SharedPrefs.save(context, SharedPrefs.CURRENT_CUST_TYPE, "avl");
 
-                    seeProp.setBackgroundResource(R.drawable.button_border);
-                    seeProp.setTextColor(Color.BLACK);
+                seeProp.setBackgroundColor(Color.WHITE);
+                seeProp.setTextColor(Color.BLACK);
 
             }
         });
@@ -508,12 +509,14 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
                 if (success == false) {
                     Toast.makeText(
                             getApplicationContext(),
-                            "Hail Timed Out, No Service Provder responded \n Please try again!",
+                            "NO RESPONSE FROM BROKER, HAIL TIMED OUT! \n PLEASE TRY AGAIN!",
                             Toast.LENGTH_LONG).show();
                 } else
                 {
-                    if (result != null) {
+                    ShowToastMessage showToastMessage = new ShowToastMessage();
+                    showToastMessage.displayToast(context,"PLEASE SIT BACK & RELAX, \n WHILE WE FIND A SUITABLE BROKER TO MATCH ");
 
+/*
                     try {
                         JSONObject jObject = new JSONObject(result);
                         String tim_val = jObject.getString("time_to_meet");
@@ -541,9 +544,9 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
                         }
                     } catch (JSONException e) {
                         Log.e("JSONException", "Error: " + e.toString());
-                    }
+                    }*/
 
-                }
+
             }
             }
 
