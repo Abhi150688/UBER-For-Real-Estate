@@ -67,7 +67,6 @@ public class CustomListAdapter_Visit extends BaseAdapter {
                 .findViewById(R.id.thumbnail);
         TextView User_Name = (TextView) convertView.findViewById(R.id.user_name);
         TextView Prop_Count = (TextView) convertView.findViewById(R.id.prop_count);
-        //TextView genre = (TextView) convertView.findViewById(R.id.genre);
         TextView Visit_Date = (TextView) convertView.findViewById(R.id.visitdate);
         TextView Spec_Code = (TextView) convertView.findViewById(R.id.speccode);
         TextView Location = (TextView) convertView.findViewById(R.id.location);
@@ -90,14 +89,14 @@ public class CustomListAdapter_Visit extends BaseAdapter {
         Location.setText(m.getLocation());
 
         if (m.getDealingRoom().contentEquals("Yes")) {
-            Dealing_Room.setText("Dealing Room Initiated");
+            Dealing_Room.setText("DEALING ROOM INITIATED");
             Dealing_Room.setTextColor(Color.GREEN);
         }
         else
-            Dealing_Room.setText("Dealing Room Not Initiated");
+            Dealing_Room.setText("DEALING ROOM NOT INITIATED");
             Dealing_Room.setTextColor(Color.RED);
 
-        Prop_Count.setText("Properties Visited: " + String.valueOf(m.getPropsCount()));
+        Prop_Count.setText("PROPERTIES VISITED: " + String.valueOf(m.getPropsCount()));
 
         Visit_Date.setText(String.valueOf(m.getVisitDate()));
 
@@ -117,6 +116,8 @@ public class CustomListAdapter_Visit extends BaseAdapter {
                     SharedPrefs.save(activity, SharedPrefs.CURRENT_INTENT, "out");
 
                 SharedPrefs.save(activity, SharedPrefs.MY_CURRENT_BROKER, br_name);
+                SharedPrefs.save(activity, SharedPrefs.CURRENT_FLIPPER_VIEW, 1);
+
 
                 Intent newBid = new Intent(activity, NewBidActivity.class);
                 activity.startActivity(newBid);

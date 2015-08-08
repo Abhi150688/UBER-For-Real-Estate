@@ -17,6 +17,10 @@
         android:textColor="@color/white"
         android:text="My Profile and Role"/>
 
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        >
     <LinearLayout
         android:layout_width="match_parent"
 
@@ -137,7 +141,7 @@
         android:layout_width="match_parent"
         android:layout_height="8dp"
         android:background="@android:color/darker_gray"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="30dp"
         android:orientation="horizontal"
         android:layout_gravity="top">
     </LinearLayout>
@@ -151,7 +155,7 @@
             android:layout_marginTop="20dp"
             android:padding="5dp"
             android:textColor="@color/black"
-            android:text="Choose your Role here"/>
+            android:text="CHOOSE YOUR ROLE HERE"/>
 
         <View
             android:layout_width="fill_parent"
@@ -166,45 +170,41 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:background="@android:color/white"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:layout_weight="1"
             android:layout_gravity="top">
 
 
-        <Button
-        android:id="@+id/iamclient"
-        android:background="@color/white"
-        android:padding="10dp"
-        android:layout_marginTop="10dp"
-        android:text="CUSTOMER"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="5dp"
-        android:textColor="@color/black"
-        android:layout_weight="0.3"
-         />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="CLIENT"
+                android:id="@+id/iamclient"
+                android:layout_gravity="center_horizontal" />
 
-
-
-
-    <Button
-        android:id="@+id/iambroker"
-        android:background="@color/white"
-        android:text="BROKER"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginTop="10dp"
-        android:layout_weight=".4"
-        android:textColor="@color/black"
-        />
-
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BROKER"
+                android:layout_marginTop="12dp"
+                android:id="@+id/iambroker"
+                android:layout_gravity="center_horizontal" />
+            
             </LinearLayout>
 
 
+<Button
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="SUBMIT"
+    android:id="@+id/submitprofile"
+    android:background="@color/turquoise"
+    android:textColor="@color/white"
+    android:layout_gravity="bottom"
+    />
 
 
     </LinearLayout>
+    </ScrollView>
 
     </LinearLayout>

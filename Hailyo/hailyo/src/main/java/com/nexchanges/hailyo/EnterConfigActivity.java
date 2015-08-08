@@ -422,7 +422,7 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
 
             @Override
             protected void onPreExecute() {
-                showSplashScreen();
+                //showSplashScreen();
             }
 
 
@@ -504,7 +504,7 @@ public class EnterConfigActivity extends Activity implements HorizontalNumberPic
             @Override
             protected void onPostExecute(String result) {
                 super.onPostExecute(result);
-                removeSplashScreen();
+               // removeSplashScreen();
                 if (success == false) {
                     Toast.makeText(
                             getApplicationContext(),

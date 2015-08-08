@@ -497,7 +497,7 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
         customMapFragment.setOnDragListener(new MapWrapperLayout.OnDragListener() {
             @Override
             public void onDrag(MotionEvent motionEvent) {
-                if (motionEvent.getAction() == MotionEvent.ACTION_MOVE) {
+                if (motionEvent.getAction() ==  MotionEvent.ACTION_MOVE) {
 
                     SiteVisitAddressBar.setText("Fetching...");
                 } else {
@@ -509,11 +509,8 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
                     ConnectOnMaps connectOnMaps = new ConnectOnMaps();
                     LatLng point1 = new LatLng(p_lat, p_lng);
                     LatLng point = new LatLng(lat, lng);
-                    Log.i(TAG, "Calling Connect map from MainActivity");
 
-                    ArrayList<String> A2 = new ArrayList<String>();
-
-                    A2 = connectOnMaps.connectonMap(map, point, point1, context);
+                    connectOnMaps.connectonMap(map, point, point1, context);
                     Log.i(TAG, "Control back in Main Activity from Connect Maps");
 
                     String dist = SharedPrefs.getString(context,SharedPrefs.MY_COUNTER_DISTANCE);
@@ -687,10 +684,10 @@ public class MainActivity extends FragmentActivity implements SwipeRefreshLayout
                                 deal.setApartmentName(obj.getString("apt_name"));
                                 deal.setRent(obj.getInt("rent_amt"));
                                 deal.setDeposit(obj.getInt("deposit_amt"));
-                                deal.setDealType(obj.getString("deal_type"));
-                                deal.setOfferPrice(obj.getInt("offer_price"));
-                                deal.setLoanCom(obj.getInt("loan_comp"));
-                                deal.setLoanStatus(obj.getString("loan_status"));
+                               // deal.setDealType(obj.getString("deal_type"));
+                                //deal.setOfferPrice(obj.getInt("offer_price"));
+                                //deal.setLoanCom(obj.getInt("loan_comp"));
+                                //deal.setLoanStatus(obj.getString("loan_status"));
 
 
 

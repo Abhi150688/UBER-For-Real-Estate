@@ -826,10 +826,10 @@ import java.util.List;
                                 deal.setRent(obj.getInt("rent_amt"));
                                 deal.setDeposit(obj.getInt("deposit_amt"));
                                 deal.setStartDate(obj.getString("agr_start_date"));
-                                deal.setDealType(obj.getString("deal_type"));
-                                deal.setOfferPrice(obj.getInt("offer_price"));
-                                deal.setLoanCom(obj.getInt("loan_comp"));
-                                deal.setLoanStatus(obj.getString("loan_status"));
+                               // deal.setDealType(obj.getString("deal_type"));
+                                //deal.setOfferPrice(obj.getInt("offer_price"));
+                                //deal.setLoanCom(obj.getInt("loan_comp"));
+                                //deal.setLoanStatus(obj.getString("loan_status"));
 
                                 dealList.add(deal);
 

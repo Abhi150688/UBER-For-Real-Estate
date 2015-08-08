@@ -91,9 +91,7 @@ public class CustomListAdapter_Deals extends BaseAdapter {
 
         deal_type = m.getDealType();
 
-        if (deal_type.equalsIgnoreCase("rent"))
-
-        {
+     //   if (deal_type.equalsIgnoreCase("rent")) {
             RentOrPriceV.setText("RENT:");
             Rent.setText(Integer.toString(m.getRent()));
 
@@ -103,9 +101,9 @@ public class CustomListAdapter_Deals extends BaseAdapter {
             StartDateOrLoanSanctionedV.setText("START DATE: ");
             Ag_StartDate.setText(m.getStartDate());
 
-        }
+      //  }
 
-        else {
+       /* else {
 
             RentOrPriceV.setText("PRICE:");
             Rent.setText(Integer.toString(m.getOfferPrice()));
@@ -116,7 +114,8 @@ public class CustomListAdapter_Deals extends BaseAdapter {
             StartDateOrLoanSanctionedV.setText("LOAN STATUS: ");
             Ag_StartDate.setText(m.getLoanStatus());
 
-        }
+
+        }*/
 
         convertView.setOnClickListener(new View.OnClickListener() {
 
@@ -126,7 +125,7 @@ public class CustomListAdapter_Deals extends BaseAdapter {
                 SharedPrefs.save(activity,SharedPrefs.UPDATE_DEAL,"true");
                 SharedPrefs.save(activity, SharedPrefs.MY_CURRENT_BROKER, m.getUserName());
 
-                if (deal_type.equalsIgnoreCase("rent")) {
+               // if (deal_type.equalsIgnoreCase("rent")) {
 
                     SharedPrefs.save(activity, SharedPrefs.CURRENT_INTENT, "rent");
                     Intent newBid = new Intent(activity, NewBidActivity.class);
@@ -134,12 +133,13 @@ public class CustomListAdapter_Deals extends BaseAdapter {
                     newBid.putExtra("deposit",m.getDeposit());
                     newBid.putExtra("apt_name",m.getApartmentName());
                     newBid.putExtra("start_date",m.getStartDate());
+                    SharedPrefs.save(activity, SharedPrefs.CURRENT_FLIPPER_VIEW, 2);
                     activity.startActivity(newBid);
 
-                }
+              //  }
 
 
-                else{
+             /*   else{
                     SharedPrefs.save(activity, SharedPrefs.CURRENT_INTENT, "out");
                     Intent newSaleBid = new Intent(activity, NewBidActivity.class);
 
@@ -148,7 +148,7 @@ public class CustomListAdapter_Deals extends BaseAdapter {
                     newSaleBid.putExtra("apt_name",m.getApartmentName());
                     newSaleBid.putExtra("loan_status", m.getLoanStatus());
                     activity.startActivity(newSaleBid);
-                }
+                }*/
 
             }
 

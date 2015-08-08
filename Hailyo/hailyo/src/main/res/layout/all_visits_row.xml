@@ -3,14 +3,18 @@
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/list_row_selector"
-    android:padding="8dp" >
+    android:paddingLeft="15dp"
+   >
 
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp">
     <!-- Thumbnail Image -->
     <com.nexchanges.hailyo.customWidget.CircularNetworkImageView
         android:id="@+id/thumbnail"
         android:layout_width="105dp"
-
         android:layout_height="105dp"
         android:layout_alignParentLeft="true"
         android:layout_marginRight="15dp"
@@ -42,20 +46,20 @@
         android:textSize="@dimen/spec_code"
         android:textStyle="bold" />
 
-    <ImageView
+    <!--<ImageView
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_alignTop="@+id/speccode"
         android:layout_alignParentRight="true"
         android:layout_marginRight="5dp"
-        android:src="@drawable/bid_button"/>
+        android:src="@drawable/bid_button"/> -->
 
 
 
     <!-- Properties Visited -->
     <TextView
         android:id="@+id/prop_count"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/speccode"
         android:layout_marginTop="2.7dip"
@@ -67,7 +71,7 @@
     <!-- Location -->
     <TextView
         android:id="@+id/location"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/prop_count"
         android:layout_marginTop="2.7dip"
@@ -80,7 +84,7 @@
 
     <TextView
         android:id="@+id/activedealingroom"
-        android:layout_width="fill_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/location"
         android:layout_marginTop="2.7dip"
@@ -101,5 +105,26 @@
         android:textColor="@color/lightgrey"
         android:textSize="@dimen/date" />
 
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="140dp"
+        android:background="@color/turquoise"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="5dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="BID >"
+            android:padding="4dp"
+            />
+
+    </LinearLayout>
 
 </RelativeLayout>

@@ -128,10 +128,38 @@ public class NewBidActivity extends Activity {
 
        if (update_deal.equalsIgnoreCase("true"))
        {
-           
+           //if (role.equalsIgnoreCase("rent")) {
+                   Intent newBid = getIntent();
+                   int rent_f = newBid.getIntExtra("rent", 0);
+                   int deposit_f = newBid.getIntExtra("deposit", 0);
+                   String apt_name_f =  newBid.getStringExtra("apt_name");
+                   String start_date_f =  newBid.getStringExtra("start_date");
+
+                   srowtv1.setText(apt_name_f);
+                   srowtv2.setText(Integer.toString(rent_f));
+                   srowtv3.setText(Integer.toString(deposit_f));
+                   srowtv4.setText(start_date_f);
+         //  }
+
+
+              /* else{
+               Intent newBidS = getIntent();
+               int price_f = newBidS.getIntExtra("price", 0);
+               int loan_com_f = newBidS.getIntExtra("loan_com", 0);
+               String apt_name_f =  newBidS.getStringExtra("apt_name");
+               String loan_status_f =  newBidS.getStringExtra("loan_status");
+
+               srowtv1_Sale.setText(apt_name_f);
+               srowtv2_Sale.setText(Integer.toString(price_f));
+               srowtv3_Sale.setText(Integer.toString(loan_com_f));
+
+               if (loan_status_f.equalsIgnoreCase("Loan Sanctioned"))
+               loan_sanc.setChecked(true);
+               else
+               loan_not_sanc.setChecked(true);
+           }*/
 
        }
-
 
         submit.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -193,9 +221,6 @@ public class NewBidActivity extends Activity {
 
                 AlertDialog alert = builder.create();
                 alert.show();
-
-
-
 
             }
         });

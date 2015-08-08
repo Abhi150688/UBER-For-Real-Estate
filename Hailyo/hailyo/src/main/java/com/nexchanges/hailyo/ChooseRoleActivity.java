@@ -26,6 +26,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -66,7 +67,7 @@ public class ChooseRoleActivity extends Activity {
     private static final String TAG = ChooseRoleActivity.class.getSimpleName();
     String URL = "http://ec2-52-27-37-225.us-west-2.compute.amazonaws.com:9000/1/user/signup";
     StringEntity se;
-    Button clientBut, brokerBut;
+    CheckBox clientBut, brokerBut;
     Dialog alertD;
     Context context;
     EditText name, email;
@@ -74,10 +75,11 @@ public class ChooseRoleActivity extends Activity {
     String picturePath, mobile;
     private static final int SELECT_PHOTO = 1;
     GoogleCloudMessaging gcm;
+    Button submitBut;
     String regid, GCMID;
     String PROJECT_NUMBER = "250185285941";
     TextView edit, fbdata;
-    Boolean success = false;
+    Boolean success = false, is_role_selected=false, validation_success, email_success;
     String subphone=null;
     LocationManager mLocationManager;
     SendLocationUpdate sendLocationUpdate;
@@ -107,8 +109,10 @@ public class ChooseRoleActivity extends Activity {
         name = (EditText) findViewById(R.id.etname);
         email = (EditText) findViewById(R.id.etemail);
 
-        clientBut = (Button) findViewById(R.id.iamclient);
-        brokerBut = (Button) findViewById(R.id.iambroker);
+        clientBut = (CheckBox) findViewById(R.id.iamclient);
+        brokerBut = (CheckBox) findViewById(R.id.iambroker);
+
+        submitBut = (Button) findViewById(R.id.submitprofile);
 
         myphoto = (ImageView) findViewById(R.id.myphoto);
 
@@ -122,8 +126,10 @@ public class ChooseRoleActivity extends Activity {
         subphone = mobile.substring(3);
         SharedPrefs.save(context, SharedPrefs.MY_SHORTMOBILE_KEY, subphone);
     }
+
+        else subphone = shortPhone;
         // subphone = mobile.substring(3);
-        Log.i(TAG,"value of phone 10 digit is " + subphone);
+        Log.i(TAG, "value of phone 10 digit is " + subphone);
 
 
         String acc_email = getEmail(context);
@@ -138,44 +144,45 @@ public class ChooseRoleActivity extends Activity {
         mLocationManager.requestSingleUpdate(LocationManager.NETWORK_PROVIDER, mLocationListener, null);
 
 
-        clientBut.setOnClickListener(new View.OnClickListener()
-
-                                     {
-
+        clientBut.setOnClickListener(new View.OnClickListener() {
                                          @Override
                                          public void onClick(View v) {
-                                             validationCheck();
-                                             Log.i(TAG, "Validation success");
-                                             Log.i(TAG,"Client button clicked");
+                                             Log.i(TAG, "Client button clicked");
+                                             user_role = "client";
 
-
-
-                                             if ((name.getText().toString().length() > 0) &&
-                                                     (email.getText().toString().length() > 0)) {
-                                                 // TODO Auto-generated method stub
-                                                 clientBut.setBackgroundColor(Color.parseColor("#FFA500"));
-                                                 clientBut.setTextColor(Color.WHITE);
-                                                 brokerBut.setBackgroundColor(Color.LTGRAY);
-                                                 brokerBut.setTextColor(Color.BLACK);
-
-                                                 String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
-                                                 Sname = name.getText().toString();
-                                                 Semail = email.getText().toString();
-
-                                                 user_role = "client";
-
-                                                 if (!Str_Lat.isEmpty() && !Str_Lng.isEmpty())
-                                               sendPostRequest(subphone, "+91", Semail, Sname, user_role, regid, Str_Lng, Str_Lat,picturePath);
-                                                 Log.i(TAG, "Sending post request");
-
-                                                 signup_success();
-                                             }
-
-
+                                             clientBut.setChecked(true);
+                                             brokerBut.setChecked(false);
+                                             is_role_selected = true;
                                          }
                                      }
 
         );
+
+        submitBut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                validationCheck();
+                validation_success = roleSelected();
+                email_success = isEmailValid(Semail);
+
+
+                Log.i(TAG, "Validation success");
+
+                if (validation_success && email_success) {
+
+                    Sname = name.getText().toString();
+                    Semail = email.getText().toString();
+
+
+                    if (!Str_Lat.isEmpty() && !Str_Lng.isEmpty())
+                        sendPostRequest(subphone, "+91", Semail, Sname, user_role, regid, Str_Lng, Str_Lat, picturePath);
+                    Log.i(TAG, "Sending post request");
+
+                    //  signup_success();
+                }
+
+            }
+        });
 
 
         brokerBut.setOnClickListener(new View.OnClickListener()
@@ -185,29 +192,13 @@ public class ChooseRoleActivity extends Activity {
                                          @Override
                                          public void onClick(View v) {
 
-                                             validationCheck();
-                                             Log.i(TAG, "Validation success");
                                              Log.i(TAG, "Broker button clicked");
+                                             user_role = "BROKER";
 
+                                             clientBut.setChecked(false);
+                                             brokerBut.setChecked(true);
+                                             is_role_selected = true;
 
-                                             if ((name.getText().toString().length() > 0) &&
-                                                     (email.getText().toString().length() > 0)) {
-                                                 // TODO Auto-generated method stub
-                                                 brokerBut.setBackgroundColor(Color.parseColor("#FFA500"));
-                                                 brokerBut.setTextColor(Color.WHITE);
-                                                 clientBut.setBackgroundColor(Color.LTGRAY);
-                                                 clientBut.setTextColor(Color.BLACK);
-
-
-                                                 Sname = name.getText().toString();
-                                                 Semail = email.getText().toString();
-                                                 user_role = "broker";
-
-                                                 if (!Str_Lat.isEmpty() && !Str_Lng.isEmpty())
-                                                sendPostRequest(subphone, "+91", Semail, Sname, user_role, regid, Str_Lng, Str_Lat,picturePath);
-                                                 Log.i(TAG, "Senidng post request broker");
-                                                signup_success();
-                                             }
 
                                          }
                                      }
@@ -275,20 +266,35 @@ public class ChooseRoleActivity extends Activity {
         return account;
     }
 
+    private boolean roleSelected()
+    {
+        if (is_role_selected == true)
+            return true;
+        else
+        {     Toast.makeText(
+                getApplicationContext(),
+                "Please select your role - CLIENT / BROKER",
+                Toast.LENGTH_LONG).show();
+
+
+            return false;
+        }
+    }
+
     private void validationCheck() {
 
         if (name.getText().toString().trim().equalsIgnoreCase("")) {
             name.setError("Please enter name");
-            return;
+           return;
         }
 
 
         Semail = email.getText().toString();
 
-        if (email.getText().toString().trim().equalsIgnoreCase("")) {
+        /*if (email.getText().toString().trim().equalsIgnoreCase("")) {
             email.setError("Please enter email-id");
             return;
-        }
+        }*/
 
         name.addTextChangedListener(new TextWatcher() {
 
@@ -316,7 +322,8 @@ public class ChooseRoleActivity extends Activity {
         email.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                email.setError(null);
+             //   email.setError(null);
+
 
             }
 
@@ -329,7 +336,8 @@ public class ChooseRoleActivity extends Activity {
 
             @Override
             public void afterTextChanged(Editable s) {
-                email.setError(null);
+                //email.setError(null);
+                isEmailValid(Semail);
 
             }
         });
@@ -672,6 +680,20 @@ public class ChooseRoleActivity extends Activity {
         Intent mServiceIntent = new Intent(this, LocationServices.class);
         startService(mServiceIntent);
 
+    }
+
+    private boolean isEmailValid(CharSequence email) {
+        if(android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches())
+            return true;
+        else
+        {
+            Toast.makeText(
+                    getApplicationContext(),
+                    "Please enter a valid email address",
+                    Toast.LENGTH_LONG).show();
+
+            return false;
+        }
     }
 
 }
