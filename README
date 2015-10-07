@@ -15,3 +15,8 @@ a) Ability to start a objective 3 way chat (between owner - broker - buyer) on t
 b) Using the data points from the bids & counter bids performed on the app, we can generate real time indices that give information about ongoing prices in a particular location.
 
 I am still working on this project and we are in process of building the Server side logic. But I have open sourced the Android front end app (built in native code). People who are interested in this project can reach out to me on abhi150688@gmail.com
+
+The same app works for the broker as well as the user. At the time of downloading the app there is an activity - ChooseRoleActivity where the user is asked to enter his intent. He can either choose - User or Property Broker. 
+
+The main Activity for the User is 'MainActivity' while the MainActivity for the Broker is 'MainBrokerAcitivty'. 
+
