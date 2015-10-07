@@ -8,11 +8,15 @@ The realtor who accepts the users request gets connected to him instantly and ca
 
 
 Additional features include
+
 a) Tracking history of all property visits performed
+
 b) Ability to instantly give an offer (bid) to a property if the user likes it. 
 
 Other features that we are working on and which will be added in due course of time is: 
+
 a) Ability to start a objective 3 way chat (between owner - broker - buyer) on the app to negotiate on the property using bids & counter bids.
+
 b) Using the data points from the bids & counter bids performed on the app, we can generate real time indices that give information about ongoing prices in a particular location.  
 
 
